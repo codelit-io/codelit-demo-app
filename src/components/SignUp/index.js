@@ -70,21 +70,21 @@ class SignUpFormBase extends Component {
 					name="email"
 					value={email}
 					onChange={this.onChange}
-					type="text"
+					type="email"
 					placeholder="Your Email"
 				/>
 				<input
 					name="passwordOne"
 					value={passwordOne}
 					onChange={this.onChange}
-					type="text"
+					type="password"
 					placeholder="Password"
 				/>
 				<input
 					name="passwordTwo"
 					value={passwordTwo}
 					onChange={this.onChange}
-					type="text"
+					type="password"
 					placeholder="Confirm Password"
 				/>
 				<button type="submit" disabled={isInvalid}>
