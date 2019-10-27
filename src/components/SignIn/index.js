@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
 import { SignUpLink } from "../SignUp";
+import { PasswordForgetLink } from "../PasswordForgot";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
@@ -10,6 +11,7 @@ const SignInPage = () => (
 	<div>
 		<h1>Sign In</h1>
 		<SignInForm />
+		<PasswordForgetLink />
 		<SignUpLink />
 	</div>
 );
@@ -58,14 +60,14 @@ class SignInFormBase extends Component {
 					name="email"
 					value={email}
 					onChange={this.onChange}
-					type="text"
+					type="email"
 					placeholder="Email"
 				/>
 				<input
 					name="password"
 					value={password}
 					onChange={this.onChange}
-					type="text"
+					type="password"
 					placeholder="Password"
 				/>
 				<button disabled={isInvalid} type="submit">
