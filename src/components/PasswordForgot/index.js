@@ -49,6 +49,7 @@ class PasswordForgetFormBase extends Component {
 
 		return (
 			<form onSubmit={this.onSubmit}>
+                <label>Forgot Password: </label>
 				<input
 					name="email"
 					value={this.state.email}
