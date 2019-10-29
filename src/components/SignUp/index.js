@@ -34,7 +34,7 @@ const INITIAL_STATE = {
 
 const SignUpFormBase = props => {
 	const classes = useStyles();
-	const [state, setState] = useState([]);
+	const [state, setState] = useState({ ...INITIAL_STATE });
 	const { username, email, passwordOne, passwordTwo, error } = state;
 	const isInvalid =
 		passwordOne !== passwordTwo ||
@@ -43,7 +43,6 @@ const SignUpFormBase = props => {
 		username === "";
 
 	const onSubmit = event => {
-		const { username, email, passwordOne } = state;
 		props.firebase
 			.createUserWithEmailAndPassword(email, passwordOne)
 			.then(authUser => {
@@ -64,7 +63,7 @@ const SignUpFormBase = props => {
 	};
 
 	const onChange = event => {
-		setState({ [event.target.name]: event.target.value });
+		setState({ ...state, [event.target.name]: event.target.value });
 	};
 
 	return (
