@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-import { withFirebase } from "../Firebase";
+import { withAuthorization } from "../Session";
 
 const AdminPage = props => {
 	const [loading, setLoading] = useState(false);
@@ -24,6 +24,7 @@ const AdminPage = props => {
 			))}
 		</ul>
 	);
+
 	useEffect(() => {
 		setLoading(true);
 		props.firebase.users().on("value", snapshot => {
@@ -44,6 +45,7 @@ const AdminPage = props => {
 			props.firebase.users().off();
 		};
 	}, [props]);
+
 	return (
 		<div>
 			<h1>Users</h1>
@@ -55,4 +57,6 @@ const AdminPage = props => {
 	);
 };
 
-export default withFirebase(AdminPage);
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(AdminPage);
