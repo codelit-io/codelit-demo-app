@@ -1,8 +1,25 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
+
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Input } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+	button: {
+		margin: theme.spacing(1)
+	},
+	input: {
+		margin: theme.spacing(1)
+	}
+}));
+
+const INITIAL_STATE = {
+	email: "",
+	error: null
+};
 
 const PasswordForgotPage = () => (
 	<div>
@@ -11,60 +28,49 @@ const PasswordForgotPage = () => (
 	</div>
 );
 
-const INITIAL_STATE = {
-	email: "",
-	error: null
-};
+const PasswordForgetFormBase = props => {
+	const classes = useStyles();
+	const [state, setState] = useState({ ...INITIAL_STATE });
 
-class PasswordForgetFormBase extends Component {
-	constructor(props) {
-		super(props);
+	const { email, error } = state;
 
-		this.state = { ...INITIAL_STATE };
-	}
+	const isInvalid = email === "";
 
-	onSubmit = event => {
-		const { email } = this.state;
-
-		this.props.firebase
+	const onSubmit = event => {
+		props.firebase
 			.passwordReset(email)
 			.then(() => {
-				this.setState({ ...INITIAL_STATE });
+				setState({ ...INITIAL_STATE });
 			})
 			.catch(error => {
-				this.setState({ error });
+				setState({ error });
 			});
 
 		event.preventDefault();
 	};
 
-	onChange = event => {
-		this.setState({ [event.target.name]: event.target.value });
+	const onChange = event => {
+		setState({ ...state, [event.target.name]: event.target.value });
 	};
 
-	render() {
-		const { email, error } = this.state;
-
-		const isInvalid = email === "";
-
-		return (
-			<form onSubmit={this.onSubmit}>
-                <label>Forgot Password: </label>
-				<input
-					name="email"
-					value={this.state.email}
-					onChange={this.onChange}
-					type="email"
-					placeholder="Your Email"
-				/>
-				<button disabled={isInvalid} type="submit">
-					Reset My Password
-				</button>
-				{error && <p>{error.message}</p>}
-			</form>
-		);
-	}
-}
+	return (
+		<form onSubmit={onSubmit}>
+			<label>Forgot Password: </label>
+			<Input
+                className={classes.input}
+				name="email"
+				value={state.email}
+				onChange={onChange}
+				type="email"
+				placeholder="Your Email"
+			/>
+			<Button className={classes.button} disabled={isInvalid} type="submit">
+				Reset My Password
+			</Button>
+			{error && <p>{error.message}</p>}
+		</form>
+	);
+};
 
 const PasswordForgetLink = () => (
 	<p>
