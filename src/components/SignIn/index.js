@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
@@ -6,6 +6,18 @@ import { SignUpLink } from "../SignUp";
 import { PasswordForgetLink } from "../PasswordForgot";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
+
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Input } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+	button: {
+		margin: theme.spacing(1)
+	},
+	input: {
+		margin: theme.spacing(1)
+	}
+}));
 
 const SignInPage = () => (
 	<div>
@@ -22,63 +34,57 @@ const INITIAL_STATE = {
 	error: null
 };
 
-class SignInFormBase extends Component {
-	constructor(props) {
-		super(props);
+const SignInFormBase = props => {
+	const classes = useStyles();
+	const [state, setState] = useState({ ...INITIAL_STATE });
+	const { email, password, error } = state;
+	const isInvalid = password === "" || email === "";
 
-		this.state = { ...INITIAL_STATE };
-	}
-
-	onSubmit = event => {
-		const { email, password } = this.state;
-
-		this.props.firebase
+	const onSubmit = event => {
+		props.firebase
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
-				this.setState({ ...INITIAL_STATE });
-				this.props.history.push(ROUTES.HOME);
+				setState({ ...INITIAL_STATE });
+				props.history.push(ROUTES.HOME);
 			})
 			.catch(error => {
-				this.setState({ error });
+				setState({ error });
 			});
 
 		event.preventDefault();
 	};
 
-	onChange = event => {
-		this.setState({ [event.target.name]: event.target.value });
+	const onChange = event => {
+		console.log({ [event.target.name]: event.target.value });
+		setState({ ...state, [event.target.name]: event.target.value });
 	};
 
-	render() {
-		const { email, password, error } = this.state;
+	return (
+		<form onSubmit={onSubmit}>
+			<Input
+				className={classes.input}
+				name="email"
+				value={email}
+				onChange={onChange}
+				type="email"
+				placeholder="Email"
+			/>
+			<Input
+				className={classes.input}
+				name="password"
+				value={password}
+				onChange={onChange}
+				type="password"
+				placeholder="Password"
+			/>
+			<Button className={classes.button} disabled={isInvalid} type="submit">
+				Sign In
+			</Button>
 
-		const isInvalid = password === "" || email === "";
-
-		return (
-			<form onSubmit={this.onSubmit}>
-				<input
-					name="email"
-					value={email}
-					onChange={this.onChange}
-					type="email"
-					placeholder="Email"
-				/>
-				<input
-					name="password"
-					value={password}
-					onChange={this.onChange}
-					type="password"
-					placeholder="Password"
-				/>
-				<button disabled={isInvalid} type="submit">
-					Sign In
-				</button>
-
-				{error && <p> {error.message}</p>}
-			</form>
-		);
-	}
-}
+			{error && <p> {error.message}</p>}
+		</form>
+	);
+};
 
 const SignInForm = compose(
 	withRouter,
