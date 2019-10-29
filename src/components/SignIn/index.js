@@ -55,7 +55,6 @@ const SignInFormBase = props => {
 	};
 
 	const onChange = event => {
-		console.log({ [event.target.name]: event.target.value });
 		setState({ ...state, [event.target.name]: event.target.value });
 	};
 
