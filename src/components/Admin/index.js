@@ -1,26 +1,49 @@
 /* Refactor using hooks */
 
 import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 import { withAuthorization } from "../Session";
 
+const useStyles = makeStyles({
+	card: {
+		minWidth: 275
+	},
+	bullet: {
+		display: "inline-block",
+		margin: "0 2px",
+		transform: "scale(0.8)"
+	},
+	title: {
+		fontSize: 14
+	},
+	pos: {
+		marginBottom: 12
+	}
+});
+
 const AdminPage = props => {
+	const classes = useStyles();
 	const [loading, setLoading] = useState(false);
 	const [users, setUsers] = useState([]);
 	const UserList = ({ users }) => (
 		<ul>
 			{users.map(user => (
-				<li key={user.uid}>
-					<p>
-						<strong>ID:</strong> {user.uid}
-					</p>
-					<p>
-						<strong>Email:</strong> {user.email}
-					</p>
-					<p>
-						<strong>Username:</strong> {user.username}
-					</p>
-				</li>
+				<Card key={user.uid}>
+					<CardContent>
+						<p>
+							<strong>ID:</strong> {user.uid}
+						</p>
+						<p>
+							<strong>Email:</strong> {user.email}
+						</p>
+						<p>
+							<strong>Username:</strong> {user.username}
+						</p>
+					</CardContent>
+				</Card>
 			))}
 		</ul>
 	);
