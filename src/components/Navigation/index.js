@@ -5,43 +5,162 @@ import SignOutButton from "../SignOut";
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 
-const Navigation = () => (
-	<div>
-		<AuthUserContext.Consumer>
-			{authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
-		</AuthUserContext.Consumer>
-	</div>
-);
+import {
+	AppBar,
+	Toolbar,
+	IconButton,
+	Typography,
+	InputBase
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
 
-const NavigationAuth = () => (
-	<ul>
-		<li>
-			<Link to={ROUTES.LANDING}>Landing</Link>
-		</li>
-		<li>
-			<Link to={ROUTES.HOME}>Home</Link>
-		</li>
-		<li>
-			<Link to={ROUTES.ACCOUNT}>Account</Link>
-		</li>
-		<li>
-			<Link to={ROUTES.ADMIN}>Admin</Link>
-		</li>
-		<li>
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1
+	},
+	menuButton: {
+		marginRight: theme.spacing(2)
+	},
+	title: {
+		flexGrow: 1,
+		display: "none",
+		[theme.breakpoints.up("sm")]: {
+			display: "block"
+		}
+	},
+	search: {
+		position: "relative",
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: fade(theme.palette.common.white, 0.15),
+		"&:hover": {
+			backgroundColor: fade(theme.palette.common.white, 0.25)
+		},
+		marginLeft: 0,
+		width: "100%",
+		[theme.breakpoints.up("sm")]: {
+			marginLeft: theme.spacing(1),
+			width: "auto"
+		}
+	},
+	searchIcon: {
+		width: theme.spacing(7),
+		height: "100%",
+		position: "absolute",
+		pointerEvents: "none",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	inputRoot: {
+		color: "inherit"
+	},
+	inputInput: {
+		padding: theme.spacing(1, 1, 1, 7),
+		transition: theme.transitions.create("width"),
+		width: "100%",
+		[theme.breakpoints.up("sm")]: {
+			width: 120,
+			"&:focus": {
+				width: 200
+			}
+		}
+	},
+	sectionDesktop: {
+		display: "none",
+		[theme.breakpoints.up("md")]: {
+			display: "flex"
+		}
+	}
+}));
+
+const Navigation = () => {
+	const classes = useStyles();
+	return (
+		<div className={classes.root}>
+			<AppBar position="static" color="default">
+				<Toolbar>
+					<IconButton
+						edge="start"
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="open drawer"
+					>
+						<MenuIcon />
+					</IconButton>
+					<Typography className={classes.title} variant="h6" noWrap>
+						<Link
+							to={ROUTES.LANDING}
+							style={{ color: "black", textDecoration: "none" }}
+						>
+							Killer Bee
+						</Link>
+					</Typography>
+					<AuthUserContext.Consumer>
+						{authUser =>
+							authUser ? <NavigationAuth /> : <NavigationNonAuth />
+						}
+					</AuthUserContext.Consumer>
+					<div className={classes.search}>
+						<div className={classes.searchIcon}>
+							<SearchIcon />
+						</div>
+						<InputBase
+							placeholder="Search…"
+							classes={{
+								root: classes.inputRoot,
+								input: classes.inputInput
+							}}
+							inputProps={{ "aria-label": "search" }}
+						/>
+					</div>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
+};
+
+const NavigationAuth = () => {
+	const classes = useStyles();
+
+	return (
+		<div>
+			<Button className={classes.button}>
+				<Link
+					to={ROUTES.ACCOUNT}
+					style={{ color: "black", textDecoration: "none" }}
+				>
+					Account
+				</Link>
+			</Button>
+			<Button className={classes.button}>
+				<Link
+					to={ROUTES.ADMIN}
+					style={{ color: "black", textDecoration: "none" }}
+				>
+					Admin
+				</Link>
+			</Button>
+
 			<SignOutButton />
-		</li>
-	</ul>
-);
+		</div>
+	);
+};
 
-const NavigationNonAuth = () => (
-	<ul>
-		<li>
-			<Link to={ROUTES.LANDING}>Landing</Link>
-		</li>
-		<li>
-			<Link to={ROUTES.SIGN_IN}>Sign In</Link>
-		</li>
-	</ul>
-);
+const NavigationNonAuth = () => {
+	const classes = useStyles();
+	return (
+		<Button className={classes.button}>
+			<Link
+				to={ROUTES.SIGN_IN}
+				style={{ color: "black", textDecoration: "none" }}
+			>
+				Sign In
+			</Link>
+		</Button>
+	);
+};
 
 export default Navigation;
