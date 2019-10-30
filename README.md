@@ -7,4 +7,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `yarn build`
 ### `yarn deploy`
 
+## Features
+
+### Firebase
+### Redux
+### Material UI
+
+
 
