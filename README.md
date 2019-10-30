@@ -5,5 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `yarn start`
 ### `yarn test`
 ### `yarn build`
+### `yarn deploy`
 
 
