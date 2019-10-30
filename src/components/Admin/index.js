@@ -31,7 +31,7 @@ const AdminPage = props => {
 	const UserList = ({ users }) => (
 		<ul>
 			{users.map(user => (
-				<Card key={user.uid}>
+				<Card key={user.uid} className={classes}>
 					<CardContent>
 						<p>
 							<strong>ID:</strong> {user.uid}
