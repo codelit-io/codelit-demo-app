@@ -73,6 +73,9 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.up("md")]: {
 			display: "flex"
 		}
+	},
+	appBar: {
+		boxShadow: 0
 	}
 }));
 
@@ -80,8 +83,8 @@ const Navigation = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" color="default">
-				<Toolbar>
+			<AppBar position="static" color="default" >
+				<Toolbar className={classes.appBar}>
 					<IconButton
 						edge="start"
 						className={classes.menuButton}
@@ -95,7 +98,7 @@ const Navigation = () => {
 							to={ROUTES.LANDING}
 							style={{ color: "black", textDecoration: "none" }}
 						>
-							Killer Bee
+							Tool it
 						</Link>
 					</Typography>
 					<AuthUserContext.Consumer>
