@@ -12,11 +12,12 @@ import Admin from "../Admin";
 
 import * as ROUTES from "../../constants/routes";
 import { withAuthentication } from "../Session";
+import Container from "@material-ui/core/Container";
 
 const App = () => (
 	<Router>
-		<div>
-			<Navigation />
+		<Navigation />
+		<Container maxWidth="xl">
 			<Route exact path={ROUTES.LANDING} component={LandingPage} />
 			<Route path={ROUTES.SIGN_UP} component={SignUp} />
 			<Route path={ROUTES.SIGN_IN} component={SignIn} />
@@ -24,7 +25,7 @@ const App = () => (
 			<Route path={ROUTES.HOME} component={Home} />
 			<Route path={ROUTES.ACCOUNT} component={Account} />
 			<Route path={ROUTES.ADMIN} component={Admin} />
-		</div>
+		</Container>
 	</Router>
 );
 
