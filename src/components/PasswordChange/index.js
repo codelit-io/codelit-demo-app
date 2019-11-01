@@ -61,7 +61,7 @@ const PasswordChangeForm = props => {
 				type="password"
 				placeholder="Confirm New Password"
 			/>
-			<Button className={classes.Button} disabled={isInvalid} type="submit">
+			<Button className={classes.button} disabled={isInvalid} type="submit">
 				Reset My Password
 			</Button>
 
