@@ -9,6 +9,7 @@ import * as ROUTES from "../../constants/routes";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Input } from "@material-ui/core";
+// import FacebookIcon from '@material-ui/icons/Facebook';
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -23,6 +24,8 @@ const SignInPage = () => (
 	<div>
 		<h1>Sign In</h1>
 		<SignInForm />
+		<SignInWithGoogle />
+		<SignInWithFacebook />
 		<PasswordForgetLink />
 		<SignUpLink />
 	</div>
@@ -85,11 +88,90 @@ const SignInFormBase = props => {
 	);
 };
 
+const SignInWithGoogleBase = props => {
+	const classes = useStyles();
+	const [error, setError] = useState({ error: null });
+	const onSubmit = event => {
+		props.firebase
+			.signInWithGoogle()
+			.then(socialAuthUser => {
+				// Create a user in Firebase Realtime Database
+				return props.firebase.user(socialAuthUser.user.uid).set({
+					username: socialAuthUser.user.displayName,
+					email: socialAuthUser.user.email,
+					roles: {}
+				});
+			})
+			.then(() => {
+				setError(null);
+				// Investigate if this this the correct approach
+				props.history.push(ROUTES.HOME);
+			})
+			.catch(error => setError(error));
+		event.preventDefault();
+	};
+
+	return (
+		<form onSubmit={onSubmit}>
+			<Button className={classes.button} type="submit">
+				{" "}
+				SIgn In with Google
+			</Button>
+
+			{error && <p>{error.message}</p>}
+		</form>
+	);
+};
+
+const SignInWithFacebookBase = props => {
+	const classes = useStyles();
+	const [error, setError] = useState(null);
+	const onSubmit = event => {
+		props.firebase.signInWithFacebook().then(socialAuthUser => {
+			// Create a user in your Firebase Realtime Database too
+			return props.firebase
+				.user(socialAuthUser.user.uid)
+				.set({
+					username: socialAuthUser.additionalUserInfo.profile.name,
+					email: socialAuthUser.additionalUserInfo.profile.email || 'none',
+					roles: {}
+				})
+				.then(() => {
+					setError(null);
+					// Investigate if this this the correct approach
+					props.history.push(ROUTES.HOME);
+				})
+				.catch(error => setError(error));
+		});
+		event.preventDefault();
+	};
+
+	return (
+		<form onSubmit={onSubmit}>
+			<Button className={classes.button} type="submit">
+				Sign In with Facebook
+			</Button>
+
+			{error && <p>{error.message}</p>}
+		</form>
+	);
+};
+
 const SignInForm = compose(
 	withRouter,
 	withFirebase
 )(SignInFormBase);
 
+const SignInWithGoogle = compose(
+	withRouter,
+	withFirebase
+)(SignInWithGoogleBase);
+
+const SignInWithFacebook = compose(
+	withRouter,
+	withFirebase
+)(SignInWithFacebookBase);
+
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInWithGoogle, SignInWithFacebook };
