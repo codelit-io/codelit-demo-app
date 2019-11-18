@@ -2,7 +2,7 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Card } from "@material-ui/core";
-import CustomElement from "../../CustomElement";
+import Component from "../../Component";
 
 const useStyles = makeStyles(theme =>
 	createStyles({
@@ -24,7 +24,7 @@ const DraggableItem = ({ draggableItem, index }) => {
 					{...provided.draggableProps}
 					{...provided.dragHandleProps}
 				>
-					<CustomElement { ...draggableItem }></CustomElement>
+					<Component { ...draggableItem }></Component>
 				</Card>
 			)}
 		</Draggable>
