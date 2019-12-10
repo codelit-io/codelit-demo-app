@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 const Components = {
 	button: React.lazy(() => import("@material-ui/core/Button")),
@@ -10,13 +10,4 @@ const Components = {
 	link: React.lazy(() => import("@material-ui/core/Link")),
 };
 
-const CustomElement = props => {
-	const CustomElement = Components[props.content];
-	return (
-		<Suspense fallback={<div>Loading ...</div>}>
-			<CustomElement>{props.content}</CustomElement>
-		</Suspense>
-	);
-};
-
-export default CustomElement;
+export default Components;
