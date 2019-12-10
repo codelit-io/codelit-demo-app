@@ -17,7 +17,7 @@ import Container from "@material-ui/core/Container";
 const App = () => (
 	<Router>
 		<Navigation />
-		<Container maxWidth="xl">
+		<Container maxWidth="xl" className="container">
 			<Route exact path={ROUTES.LANDING} component={LandingPage} />
 			<Route path={ROUTES.SIGN_UP} component={SignUp} />
 			<Route path={ROUTES.SIGN_IN} component={SignIn} />
@@ -25,6 +25,8 @@ const App = () => (
 			<Route path={ROUTES.HOME} component={Home} />
 			<Route path={ROUTES.ACCOUNT} component={Account} />
 			<Route path={ROUTES.ADMIN} component={Admin} />
+			<Route path={ROUTES.NEW_PROJECT} component={Admin} />
+			{/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
 		</Container>
 	</Router>
 );
