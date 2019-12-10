@@ -7,7 +7,6 @@ import CustomElement from "../../CustomElement";
 const useStyles = makeStyles(theme =>
 	createStyles({
 		card: {
-			width: 275,
 			marginBottom: theme.spacing(2),
 			padding: theme.spacing(2)
 		}
