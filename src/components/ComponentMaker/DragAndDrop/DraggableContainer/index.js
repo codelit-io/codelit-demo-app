@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableItemList from "../DraggableItemList";
 import { reorder } from "../reorder.js";
+import { Grid } from "@material-ui/core";
 
 const DraggableContainer = props => {
 	const initial = props.list.map(item => {
@@ -34,14 +35,18 @@ const DraggableContainer = props => {
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
-			<Droppable droppableId="list">
-				{provided => (
-					<div ref={provided.innerRef} {...provided.droppableProps}>
-						<DraggableItemList draggableItems={state.draggableItems} />
-						{provided.placeholder}
-					</div>
-				)}
-			</Droppable>
+			<Grid container spacing={3}>
+				<Grid item xs={12} sm={6} md={4} lg={3}>
+					<Droppable droppableId="list">
+						{provided => (
+							<span ref={provided.innerRef} {...provided.droppableProps}>
+								<DraggableItemList draggableItems={state.draggableItems} />
+								{provided.placeholder}
+							</span>
+						)}
+					</Droppable>
+				</Grid>
+			</Grid>
 		</DragDropContext>
 	);
 };
