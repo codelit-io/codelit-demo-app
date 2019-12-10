@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	appBar: {
-		boxShadow: 0
+		boxShadow: "none"
 	}
 }));
 
@@ -83,8 +83,8 @@ const Navigation = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" color="default" >
-				<Toolbar className={classes.appBar}>
+			<AppBar position="static" color="default" className={classes.appBar}>
+				<Toolbar>
 					<IconButton
 						edge="start"
 						className={classes.menuButton}
