@@ -1,5 +1,9 @@
 import React from "react";
+import { Component } from "./Component";
 
 export const BuildProject = ({ match }) => {
-	return <h1>{match.params.type}</h1>;
+    
+	return (
+        <Component {...match.params}></Component>
+    );
 };
