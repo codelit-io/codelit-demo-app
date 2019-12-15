@@ -5,7 +5,7 @@ export const Component = props => {
     debugger
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
-			<Component>{props.type}</Component>
+			<Component {...props}></Component>
 		</Suspense>
 	);
 };
