@@ -6,3 +6,7 @@ export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const NEW_PROJECT = '/new_project';
+export const FORM = '/new_project/Form';
+export const CALENDAR = '/new_project/Calendar';
+export const TABLE = '/new_project/Table';
+export const BUILD_PROJECT = '/build_project';
