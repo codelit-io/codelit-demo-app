@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import SignOutButton from "../SignOut";
@@ -15,7 +15,8 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, SwipeableDrawer, List, ListItem } from "@material-ui/core";
+import { DrawerList } from "../shared/Drawer/DrawerList";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -80,6 +81,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Navigation = () => {
+	const [state, setState] = useState({
+		isDrawerOpen: false
+	});
+
+	const toggleDrawer = isDrawerOpen => {
+		setState({ ...state, isDrawerOpen });
+	};
+
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
@@ -90,9 +99,23 @@ const Navigation = () => {
 						className={classes.menuButton}
 						color="inherit"
 						aria-label="open drawer"
+						onClick={() => toggleDrawer(true)}
 					>
 						<MenuIcon />
 					</IconButton>
+					<SwipeableDrawer
+						anchor="left"
+						open={state.isDrawerOpen}
+						onClose={() => toggleDrawer(false)}
+						onOpen={() => toggleDrawer(true)}
+					>
+						<AuthUserContext.Consumer>
+							{authUser =>
+								authUser ? <NavigationAuth /> : <NavigationNonAuth />
+							}
+						</AuthUserContext.Consumer>
+					</SwipeableDrawer>
+
 					<Typography className={classes.title} variant="h6" noWrap>
 						<Link
 							to={ROUTES.LANDING}
@@ -101,11 +124,6 @@ const Navigation = () => {
 							Tool it
 						</Link>
 					</Typography>
-					<AuthUserContext.Consumer>
-						{authUser =>
-							authUser ? <NavigationAuth /> : <NavigationNonAuth />
-						}
-					</AuthUserContext.Consumer>
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
@@ -129,26 +147,31 @@ const NavigationAuth = () => {
 	const classes = useStyles();
 
 	return (
-		<div>
-			<Button className={classes.button}>
-				<Link
-					to={ROUTES.ACCOUNT}
-					style={{ color: "black", textDecoration: "none" }}
-				>
-					Account
-				</Link>
-			</Button>
-			<Button className={classes.button}>
-				<Link
-					to={ROUTES.ADMIN}
-					style={{ color: "black", textDecoration: "none" }}
-				>
-					Admin
-				</Link>
-			</Button>
-
-			<SignOutButton />
-		</div>
+		<List>
+			<ListItem>
+				<Button className={classes.button}>
+					<Link
+						to={ROUTES.ACCOUNT}
+						style={{ color: "black", textDecoration: "none" }}
+					>
+						Account
+					</Link>
+				</Button>
+			</ListItem>
+			<ListItem>
+				<Button className={classes.button}>
+					<Link
+						to={ROUTES.ADMIN}
+						style={{ color: "black", textDecoration: "none" }}
+					>
+						Admin
+					</Link>
+				</Button>
+			</ListItem>
+			<ListItem>
+				<SignOutButton />
+			</ListItem>
+		</List>
 	);
 };
 
