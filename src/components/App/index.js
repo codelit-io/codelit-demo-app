@@ -11,10 +11,11 @@ import Account from "../Account";
 import Admin from "../Admin";
 
 import * as ROUTES from "../../constants/routes";
-import { withAuthentication } from "../Session";
-import Container from "@material-ui/core/Container";
-import { Project } from "../Project";
 import { BuildProject } from "../Project/BuildProject";
+import Container from "@material-ui/core/Container";
+
+import { Project } from "../Project";
+import { withAuthentication } from "../Session";
 
 const App = () => (
 	<Router>
