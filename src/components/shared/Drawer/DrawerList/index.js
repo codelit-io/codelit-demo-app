@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { List, ListItem, ListItemText } from "@material-ui/core";
-// import { toggleDrawer } from "../../../../util";
+import useDrawer from "../useDrawer";
 
 const useStyles = makeStyles({
 	list: {
@@ -10,13 +10,14 @@ const useStyles = makeStyles({
 });
 
 export const DrawerList = () => {
+    const [isDrawerOpen, toggleDrawer] = useDrawer({});
 	const classes = useStyles();
 	return (
 		<div
 			className={classes.list}
 			role="presentation"
-			// onClick={() => toggleDrawer(false)}
-			// onKeyDown={() => toggleDrawer(false)}
+			onClick={() => toggleDrawer(false)}
+			onKeyDown={() => toggleDrawer(false)}
 		>
 			<List>
 				{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
