@@ -2,19 +2,19 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navigation from "../Navigation";
-import LandingPage from "../Landing";
-import SignUp from "../SignUp";
-import SignIn from "../SignIn";
+import LandingPage from "../../containers/Landing";
+import SignUp from "../../containers/SignUp";
+import SignIn from "../../containers/SignIn";
 import PasswordForgot from "../PasswordForgot";
-import Home from "../Home";
-import Account from "../Account";
-import Admin from "../Admin";
+import Home from "../../containers/Home";
+import Account from "../../containers/Account";
+import Admin from "../../containers/Admin";
 
 import * as ROUTES from "../../constants/routes";
-import { BuildProject } from "../Project/BuildProject";
+import { BuildProject } from "../../containers/Project/BuildProject";
 import Container from "@material-ui/core/Container";
 
-import { Project } from "../Project";
+import { Project } from "../../containers/Project";
 import { withAuthentication } from "../Session";
 
 const App = () => (
