@@ -5,13 +5,13 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1
 	},
 	title: {
-		flexGrow: 1,
 		display: "none",
 		[theme.breakpoints.up("sm")]: {
 			display: "block"
 		}
 	},
 	search: {
+		flexGrow: 1,
 		position: "relative",
 		borderRadius: theme.shape.borderRadius,
 		backgroundColor: fade(theme.palette.common.white, 0.15),
