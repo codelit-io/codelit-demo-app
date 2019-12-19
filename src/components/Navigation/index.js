@@ -7,10 +7,12 @@ import {
 	AppBar,
 	Toolbar,
 	Typography,
-	InputBase
+	InputBase,
+	Avatar
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./styles";
+import { AuthUserContext } from "../Session";
 
 const Navigation = () => {
 	const classes = useStyles();
@@ -40,6 +42,9 @@ const Navigation = () => {
 							inputProps={{ "aria-label": "search" }}
 						/>
 					</div>
+					<AuthUserContext.Consumer>
+						{authUser => <Avatar alt="Me" src={authUser && authUser.photoURL} />}
+					</AuthUserContext.Consumer>
 				</Toolbar>
 			</AppBar>
 		</div>
