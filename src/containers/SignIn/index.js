@@ -44,6 +44,7 @@ const SignInFormBase = props => {
 	const isInvalid = password === "" || email === "";
 
 	const onSubmit = event => {
+		event.preventDefault();
 		props.firebase
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
