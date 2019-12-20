@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { MoshCard } from "../../components/shared/MoshCard";
-// import { DraggableContainer } from "../ComponentMaker/index";
 import * as ROUTES from "../../constants/routes";
 
 const LandingPage = () => {
@@ -30,19 +29,13 @@ const LandingPage = () => {
 	];
 	// const list = ["input", "button", "switch", "checkbox", "slider", "link"];
 	return (
-		<div>
-			<Grid container spacing={1}>
-				<Grid container item xs={12} spacing={3}>
-					{icons.map((icon, index) => (
-						<Grid key={index} item md={3} sm={4} xs={12}>
-							<MoshCard icon={icon}></MoshCard>
-						</Grid>
-					))}
+		<Grid container spacing={3}>
+			{icons.map((icon, index) => (
+				<Grid key={index} item sm={6} md={3} xs={12}>
+					<MoshCard icon={icon}></MoshCard>
 				</Grid>
-			</Grid>
-
-			{/* <DraggableContainer list={list}></DraggableContainer> */}
-		</div>
+			))}
+		</Grid>
 	);
 };
 
