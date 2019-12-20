@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "toolit",
+    "site": "toolio",
     "public": "build",
     "ignore": [
       "firebase.json",
