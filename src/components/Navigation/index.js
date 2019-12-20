@@ -26,7 +26,7 @@ const Navigation = () => {
 							to={ROUTES.LANDING}
 							style={{ color: "black", textDecoration: "none" }}
 						>
-							Tool it
+							Toolio
 						</Link>
 					</Typography>
 					<div className={classes.search}>
@@ -43,7 +43,7 @@ const Navigation = () => {
 						/>
 					</div>
 					<AuthUserContext.Consumer>
-						{authUser => <Avatar alt="Me" src={authUser && authUser.photoURL} />}
+						{authUser => <Link to={ROUTES.ACCOUNT}><Avatar alt="Me" src={authUser && authUser.photoURL} /></Link> }
 					</AuthUserContext.Consumer>
 				</Toolbar>
 			</AppBar>
