@@ -26,7 +26,7 @@ const Navigation = () => {
 							to={ROUTES.LANDING}
 							style={{ color: "black", textDecoration: "none" }}
 						>
-							Toolio
+							Mo Skool
 						</Link>
 					</Typography>
 					<div className={classes.search}>
