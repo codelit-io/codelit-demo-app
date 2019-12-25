@@ -1,5 +1,5 @@
 {
-  "name": "Toolio",
+  "name": "moskool",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "react-scripts build && firebase deploy --only hosting:toolio",
+    "deploy": "react-scripts build && firebase deploy --only hosting:moskool",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
