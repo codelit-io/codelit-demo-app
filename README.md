@@ -1,6 +1,6 @@
 # Mo Skool
 
-Mo Skool offers a Simple and free way to learn any coding language
+Mo Skool offers a Simple and free path to becoming a software engineer
 
 ## Courses
 
