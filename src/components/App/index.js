@@ -11,10 +11,11 @@ import Account from "../../containers/Account";
 import Admin from "../../containers/Admin";
 
 import * as ROUTES from "../../constants/routes";
-import { BuildProject } from "../../containers/Project/BuildProject";
+import BuildCourse from "../../containers/Courses/BuildCourse";
 import Container from "@material-ui/core/Container";
 
-import { Project } from "../../containers/Project";
+import Courses from "../../containers/Courses";
+import Learn from "../../containers/Learn";
 import { withAuthentication } from "../Session";
 
 const App = () => (
@@ -29,8 +30,9 @@ const App = () => (
 				<Route path={ROUTES.HOME} component={Home} />
 				<Route path={ROUTES.ACCOUNT} component={Account} />
 				<Route path={ROUTES.ADMIN} component={Admin} />
-				<Route exact path={ROUTES.NEW_PROJECT} component={Project}/>
-				<Route path={ROUTES.NEW_PROJECT + "/:type"} component={BuildProject} />
+				<Route exact path={ROUTES.LEARN} component={Learn}/>
+				<Route exact path={ROUTES.LEARN + "/:course"} component={Courses}/>
+				<Route exact path={ROUTES.LEARN + "/:course/:topic"} component={BuildCourse} />
 			</Switch>
 			{/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
 		</Container>
