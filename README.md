@@ -2,7 +2,7 @@
 
 Mo Skool offers a Simple and free path to becoming a master software engineer at any stack
 
-Although this project is still under heavy development, my vision for the end product is crystal clear.
+Although this project is still under *heavy development*, my vision for the end product is crystal clear.
 Because learning should be free for everyone!
 
 
