@@ -1,17 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mo Skool
 
-## Available Scripts
+Free code learning platform for everyone!
 
-### `yarn start`
-### `yarn test`
-### `yarn build`
-### `yarn deploy`
+## Courses
 
-## Features
+### Front-End
+- HTML
+- CSS
+- JavaScript
+- React
+- Angular
+- Firebase
 
-### Firebase
-### Redux
-### Material UI
+### Backend-End
+- nodJs
+- Cloud functions
+- firebase
+- AWS
 
+### DevOps
+- Docker
+- Kubernetes
 
 
