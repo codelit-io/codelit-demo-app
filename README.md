@@ -1,6 +1,6 @@
 # Mo Skool
 
-Free code learning platform for everyone!
+Mo Skool offers a Simple and free way to learn any coding language
 
 ## Courses
 
