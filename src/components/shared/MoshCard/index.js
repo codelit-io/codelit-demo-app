@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export const MoshCard = ({ icon }) => {
+const MoshCard = ({ icon }) => {
 	const classes = useStyles();
 	return (
 		<Link to={icon.url || ''} className={classes.link}>
@@ -59,3 +59,5 @@ export const MoshCard = ({ icon }) => {
 		</Link>
 	);
 };
+
+export default MoshCard;
