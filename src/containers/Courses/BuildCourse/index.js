@@ -2,7 +2,7 @@ import React from "react";
 import * as ROUTES from "../../../constants/routes";
 import { Component } from "./Component";
 import { Typography, Grid } from "@material-ui/core";
-import MoshCard from "../../../components/shared/MoshCard";
+import MoCard from "../../../components/shared/MoCard";
 
 const BuildCourse = ({ match }) => {
 	const icons = [
@@ -51,7 +51,7 @@ const BuildCourse = ({ match }) => {
 				<Grid item xs={12}>
 					{icons.map((icon, index) => (
 						<Grid key={index} item sm={12} md={12} xs={12}>
-							<MoshCard icon={icon}></MoshCard>
+							<MoCard icon={icon}></MoCard>
 						</Grid>
 					))}
 				</Grid>
