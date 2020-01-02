@@ -43,17 +43,17 @@ const BuildCourse = ({ match }) => {
 				{match.params.type}
 			</Typography>
 			<Grid container spacing={3}>
-				<Grid item xs={8}>
+				<Grid item xs={12}>
 					<Component {...match.params}></Component>
 				</Grid>
-				<Grid item xs={4}>
-					<Grid container spacing={3}>
-						{icons.map((icon, index) => (
-							<Grid key={index} item sm={12} md={12} xs={12}>
-								<MoshCard icon={icon}></MoshCard>
-							</Grid>
-						))}
-					</Grid>
+			</Grid>
+			<Grid container spacing={3}>
+				<Grid item xs={12}>
+					{icons.map((icon, index) => (
+						<Grid key={index} item sm={12} md={12} xs={12}>
+							<MoshCard icon={icon}></MoshCard>
+						</Grid>
+					))}
 				</Grid>
 			</Grid>
 		</>
