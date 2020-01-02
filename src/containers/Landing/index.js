@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
-import MoshCard from "../../components/shared/MoshCard";
+import MoCard from "../../components/shared/MoCard";
 import * as ROUTES from "../../constants/routes";
 
 const LandingPage = () => {
@@ -31,12 +31,12 @@ const LandingPage = () => {
 	return (
 		<>
 			<Typography variant="h4" gutterBottom>
-				Learn Full-stack development for Free!
+				Making skool COOL again! 
 			</Typography>
 			<Grid container spacing={3}>
 				{icons.map((icon, index) => (
 					<Grid key={index} item sm={6} md={3} xs={12}>
-						<MoshCard icon={icon}></MoshCard>
+						<MoCard icon={icon}></MoCard>
 					</Grid>
 				))}
 			</Grid>
