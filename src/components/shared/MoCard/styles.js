@@ -11,7 +11,9 @@ const useStyles = makeStyles({
 		},
 		"&:hover .desc": {
 			color: "#1890ff"
-		}
+		},
+		transition: "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
+		transform: "translateY(0)"
 	},
 	content: {
 		padding: 20,
