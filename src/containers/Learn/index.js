@@ -1,5 +1,5 @@
 import React from "react";
-import MoshCard from "../../components/shared/MoshCard";
+import MoCard from "../../components/shared/MoCard";
 import { Grid, Typography } from "@material-ui/core";
 import * as ROUTES from "../../constants/routes";
 
@@ -32,7 +32,7 @@ const Learn = ({ match }) => {
 			<Grid container spacing={3}>
 				{icons.map((icon, index) => (
 					<Grid key={index} item sm={6} md={3} xs={12}>
-						<MoshCard icon={icon}></MoshCard>
+						<MoCard icon={icon}></MoCard>
 					</Grid>
 				))}
 			</Grid>
