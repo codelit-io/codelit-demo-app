@@ -19,7 +19,7 @@ const Navigation = () => {
 	return (
 		<div className={classes.root}>
 			<AppBar position="static" color="default" className={classes.appBar}>
-				<Toolbar>
+				<Toolbar className={classes.toolbar}>
 					<Drawer />
 					<Typography className={classes.title} variant="h6" noWrap>
 						<Link
