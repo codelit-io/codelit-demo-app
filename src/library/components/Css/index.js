@@ -1,9 +1,10 @@
 import React from "react";
+import PageHeader from "../../../components/shared/PageHeader";
 
 export const Css = ({ topic }) => {
 	return (
 		<>
-			<h1>{topic}</h1>
+			<PageHeader title={topic}></PageHeader>
 			<pre>
 				<code>{"<p class='paragraph'> I am a paragraph </p>"}</code>
 			</pre>
