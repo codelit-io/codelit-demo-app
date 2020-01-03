@@ -9,7 +9,7 @@ const NavigationAuth = () => (
 		<ListItem>
 			<Button>
 				<Link
-					to={ROUTES.ACCOUNT}
+					to={ROUTES.ACCOUNT.path}
 					style={{ color: "black", textDecoration: "none" }}
 				>
 					Account
@@ -19,7 +19,7 @@ const NavigationAuth = () => (
 		<ListItem>
 			<Button>
 				<Link
-					to={ROUTES.ADMIN}
+					to={ROUTES.ADMIN.path}
 					style={{ color: "black", textDecoration: "none" }}
 				>
 					Admin
