@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-
+import { Grid } from "@material-ui/core";
+import MoshCard from "../../components/shared/MoCard";
 import { withAuthorization } from "../../components/Session";
 
 const useStyles = makeStyles({
@@ -29,23 +28,20 @@ const AdminPage = props => {
 	const [loading, setLoading] = useState(false);
 	const [users, setUsers] = useState([]);
 	const UserList = ({ users }) => (
-		<ul>
+		<Grid container spacing={3}>
 			{users.map(user => (
-				<Card key={user.uid} className={classes.card}>
-					<CardContent>
-						<p>
-							<strong>ID:</strong> {user.uid}
-						</p>
-						<p>
-							<strong>Email:</strong> {user.email}
-						</p>
-						<p>
-							<strong>Username:</strong> {user.username}
-						</p>
-					</CardContent>
-				</Card>
+				<Grid item sm={6} md={3} xs={12}>
+					<MoshCard
+						key={user.uid}
+						className={classes.card}
+						icon={{
+							label: user.username,
+							desc: user.email
+						}}
+					></MoshCard>
+				</Grid>
 			))}
-		</ul>
+		</Grid>
 	);
 
 	useEffect(() => {
