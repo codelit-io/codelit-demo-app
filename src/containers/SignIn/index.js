@@ -49,7 +49,7 @@ const SignInFormBase = props => {
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
 				setState({ ...INITIAL_STATE });
-				props.history.push(ROUTES.HOME);
+				props.history.push(ROUTES.HOME.path);
 			})
 			.catch(error => {
 				setState({ error });
@@ -106,7 +106,7 @@ const SignInWithGoogleBase = props => {
 			.then(() => {
 				setError(null);
 				// Investigate if this this the correct approach
-				props.history.push(ROUTES.HOME);
+				props.history.push(ROUTES.HOME.path);
 			})
 			.catch(error => setError(error));
 		event.preventDefault();
@@ -140,7 +140,7 @@ const SignInWithFacebookBase = props => {
 				.then(() => {
 					setError(null);
 					// Investigate if this this the correct approach
-					props.history.push(ROUTES.HOME);
+					props.history.push(ROUTES.HOME.path);
 				})
 				.catch(error => setError(error));
 		});
