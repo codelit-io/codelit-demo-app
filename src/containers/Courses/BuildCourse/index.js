@@ -10,31 +10,31 @@ const BuildCourse = ({ match }) => {
 			label: "Html",
 			desc: "Elements on web pages",
 			img: "",
-			url: ROUTES.HTML
+			url: ROUTES.HTML.path
 		},
 		{
 			label: "Css",
 			desc: "Styling to elements",
 			img: "",
-			url: ROUTES.CSS
+			url: ROUTES.CSS.path
 		},
 		{
 			label: "JavaScript",
 			desc: "Functionality to elements",
 			img: "",
-			url: ROUTES.JAVASCRIPT
+			url: ROUTES.JAVASCRIPT.path
 		},
 		{
 			label: "React",
 			desc: "Web Apps JS framework",
 			img: "",
-			url: ROUTES.REACT
+			url: ROUTES.REACT.path
 		},
 		{
 			label: "Angular",
 			desc: "Web Apps JS framework",
 			img: "",
-			url: ROUTES.ANGULAR
+			url: ROUTES.ANGULAR.path
 		}
 	];
 	return (
