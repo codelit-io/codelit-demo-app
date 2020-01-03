@@ -74,7 +74,7 @@ const PasswordForgetFormBase = props => {
 
 const PasswordForgetLink = () => (
 	<p>
-		<Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+		<Link to={ROUTES.PASSWORD_FORGET.path}>Forgot Password?</Link>
 	</p>
 );
 
