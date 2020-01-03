@@ -8,7 +8,7 @@ const NavigationNonAuth = () => (
 		<ListItem>
 			<Button>
 				<Link
-					to={ROUTES.SIGN_IN}
+					to={ROUTES.SIGN_IN.path}
 					style={{ color: "black", textDecoration: "none" }}
 				>
 					Sign In
@@ -18,7 +18,7 @@ const NavigationNonAuth = () => (
 		<ListItem>
 			<Button>
 				<Link
-					to={ROUTES.SIGN_UP}
+					to={ROUTES.SIGN_UP.path}
 					style={{ color: "black", textDecoration: "none" }}
 				>
 					Sign Up
