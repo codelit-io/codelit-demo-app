@@ -9,7 +9,8 @@ import * as ROUTES from "../../constants/routes";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Input } from "@material-ui/core";
-// import FacebookIcon from '@material-ui/icons/Facebook';
+import PageCard from "../../components/shared/PageCard";
+import PageHeader from "../../components/shared/PageHeader";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -21,14 +22,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignInPage = () => (
-	<div>
-		<h1>Sign In</h1>
-		<SignInForm />
-		<SignInWithGoogle />
-		<SignInWithFacebook />
-		<PasswordForgetLink />
-		<SignUpLink />
-	</div>
+	<>
+		<PageHeader title="Sign in" />
+		<PageCard img="" title="Welcome Back!">
+			<SignInForm />
+			<SignInWithGoogle />
+			<SignInWithFacebook />
+			<PasswordForgetLink />
+			<SignUpLink />
+		</PageCard>
+	</>
 );
 
 const INITIAL_STATE = {
@@ -134,7 +137,7 @@ const SignInWithFacebookBase = props => {
 				.user(socialAuthUser.user.uid)
 				.set({
 					username: socialAuthUser.additionalUserInfo.profile.name,
-					email: socialAuthUser.additionalUserInfo.profile.email || 'none',
+					email: socialAuthUser.additionalUserInfo.profile.email || "none",
 					roles: {}
 				})
 				.then(() => {
@@ -158,10 +161,7 @@ const SignInWithFacebookBase = props => {
 	);
 };
 
-const SignInForm = compose(
-	withRouter,
-	withFirebase
-)(SignInFormBase);
+const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
 
 const SignInWithGoogle = compose(
 	withRouter,
