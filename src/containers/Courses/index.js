@@ -1,7 +1,8 @@
 import React from "react";
-import MoCard from "../../components/shared/MoCard";
-import { Grid, Typography } from "@material-ui/core";
 import * as ROUTES from "../../constants/routes";
+import MoCard from "../../components/shared/MoCard";
+import { Grid } from "@material-ui/core";
+import PageHeader from "../../components/shared/PageHeader";
 
 const Courses = ({ match }) => {
 	const icons = [
@@ -19,7 +20,7 @@ const Courses = ({ match }) => {
 		},
 		{
 			label: "JavaScript",
-			desc: "Functionality to elements",
+			desc: "Add script functionality",
 			img: "",
 			url: ROUTES.JAVASCRIPT.path
 		},
@@ -38,9 +39,7 @@ const Courses = ({ match }) => {
 	];
 	return (
 		<>
-			<Typography variant="h4" gutterBottom>
-				{match.params.course}
-			</Typography>
+			<PageHeader title={match.params.course}></PageHeader>
 			<Grid container spacing={3}>
 				{icons.map((icon, index) => (
 					<Grid key={index} item sm={6} md={3} xs={12}>
