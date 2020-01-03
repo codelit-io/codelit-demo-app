@@ -23,8 +23,8 @@ const Navigation = () => {
 					<Drawer />
 					<Typography className={classes.title} variant="h6" noWrap>
 						<Link
-							to={ROUTES.LANDING}
-							style={{ color: "black", textDecoration: "none" }}
+							to={ROUTES.LANDING.path}
+							style={{ color: "#383c40", textDecoration: "none" }}
 						>
 							Mo Skool
 						</Link>
@@ -43,7 +43,7 @@ const Navigation = () => {
 						/>
 					</div>
 					<AuthUserContext.Consumer>
-						{authUser => <Link to={ROUTES.ACCOUNT}><Avatar alt="Me" src={authUser && authUser.photoURL} /></Link> }
+						{authUser => <Link to={ROUTES.ACCOUNT.path}><Avatar alt="Me" src={authUser && authUser.photoURL} /></Link> }
 					</AuthUserContext.Consumer>
 				</Toolbar>
 			</AppBar>
