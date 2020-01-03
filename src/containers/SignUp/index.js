@@ -7,6 +7,8 @@ import * as ROUTES from "../../constants/routes";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Input } from "@material-ui/core";
+import PageCard from "../../components/shared/PageCard";
+import PageHeader from "../../components/shared/PageHeader";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -18,10 +20,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignUpPage = () => (
-	<div>
-		<h1> Sign Up</h1>
-		<SignUpForm />
-	</div>
+	<>
+		<PageHeader title="Sign up" />
+		<PageCard img="" title="Get Started today!">
+			<SignUpForm />
+		</PageCard>
+	</>
 );
 
 const INITIAL_STATE = {
@@ -120,10 +124,7 @@ const SignUpLink = () => (
 	</p>
 );
 
-const SignUpForm = compose(
-	withRouter,
-	withFirebase
-)(SignUpFormBase);
+const SignUpForm = compose(withRouter, withFirebase)(SignUpFormBase);
 
 export default SignUpPage;
 
