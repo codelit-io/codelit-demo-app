@@ -1,7 +1,7 @@
 import React from "react";
 import * as ROUTES from "../../../constants/routes";
 import { Component } from "./Component";
-import { Typography, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import MoCard from "../../../components/shared/MoCard";
 
 const BuildCourse = ({ match }) => {
@@ -20,7 +20,7 @@ const BuildCourse = ({ match }) => {
 		},
 		{
 			label: "JavaScript",
-			desc: "Functionality to elements",
+			desc: "Add script functionality",
 			img: "",
 			url: ROUTES.JAVASCRIPT.path
 		},
@@ -39,9 +39,6 @@ const BuildCourse = ({ match }) => {
 	];
 	return (
 		<>
-			<Typography variant="h4" gutterBottom>
-				{match.params.type}
-			</Typography>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					<Component {...match.params}></Component>
