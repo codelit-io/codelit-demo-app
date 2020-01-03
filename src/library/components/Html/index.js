@@ -8,13 +8,14 @@ import {
 } from "@material-ui/core";
 import Iframe from "react-iframe";
 import useStyles from "./styles";
+import PageHeader from "../../../components/shared/PageHeader";
 
 const Html = ({ onClick, topic }) => {
 	const classes = useStyles();
 	return (
 		<>
 			<form>
-				<h1>{topic}</h1>
+				<PageHeader title={topic}></PageHeader>
 				<pre>
 					<code>{"<p> I am a paragraph </p>"}</code>
 				</pre>
