@@ -10,7 +10,7 @@ import useStyles from "./styles";
 const MoCard = ({ icon }) => {
 	const classes = useStyles();
 	return (
-		<Link to={icon.url || ''} className={classes.link}>
+		<Link to={(icon && icon.url) || ""} className={classes.link}>
 			<Card className={classes.card}>
 				<CardActionArea className={classes.content}>
 					{icon && icon.img && (
@@ -22,10 +22,15 @@ const MoCard = ({ icon }) => {
 					)}
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
-							{icon.label}
+							{icon && icon.label ? icon.label : "No Name"}
 						</Typography>
-						<Typography className="desc" variant="body2" color="textSecondary" component="p">
-							{icon.desc}
+						<Typography
+							className="desc"
+							variant="body2"
+							color="textSecondary"
+							component="p"
+						>
+							{icon && icon.desc}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
