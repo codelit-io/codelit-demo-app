@@ -1,9 +1,8 @@
 import React from "react";
+import PageHeader from "../../../components/shared/PageHeader";
 
 const Angular = ({ topic }) => {
-    return(
-        <h1>{topic}</h1>
-    )
-}
+	return <PageHeader title={topic}></PageHeader>;
+};
 
 export default Angular;
