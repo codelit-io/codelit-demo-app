@@ -10,12 +10,12 @@ import Iframe from "react-iframe";
 import useStyles from "./styles";
 import PageHeader from "../../../components/shared/PageHeader";
 
-const Html = ({ onClick, topic }) => {
+const Html = ({ onClick, topic, course }) => {
 	const classes = useStyles();
 	return (
 		<>
 			<form>
-				<PageHeader title={topic}></PageHeader>
+				<PageHeader title={topic} course={course}></PageHeader>
 				<pre>
 					<code>{"<p> I am a paragraph </p>"}</code>
 				</pre>
