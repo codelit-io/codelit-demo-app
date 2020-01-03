@@ -1,22 +1,22 @@
 /*  Pages */
-export const LANDING = '/';
-export const SIGN_UP = '/signup';
-export const SIGN_IN = '/signin';
-export const HOME = '/home';
-export const ACCOUNT = '/account';
-export const ADMIN = '/admin';
-export const PASSWORD_FORGET = '/pw-forget';
-export const LEARN = '/learn';
-export const BUILD_PROJECT = '/build_project';
+export const LANDING = { path: '/', title: 'Make skool COOL again!'};
+export const SIGN_UP = { path: '/signup', title: 'Sign up'};
+export const SIGN_IN = { path: '/signin', title: 'Sign in'};
+export const HOME = { path: '/home', title: 'Home Page'};
+export const ACCOUNT = { path: '/account', title: 'My account'};
+export const ADMIN = { path: '/admin', title: 'Admin Page'};
+export const PASSWORD_FORGET = { path: '/pw-forget', title: 'Forgot Password'};
+export const LEARN = { path: '/learn', title: 'Pick your career path'};
+export const BUILD_PROJECT = { path: '/build_project', title: 'Build your project'};
 
 /*  Course */
-export const FRONTEND = '/learn/frontend'; 
-export const BACKEND = '/learn/backend'; 
-export const DEVOPS = '/learn/devops'; 
+export const FRONTEND = { path: '/learn/frontend', title: 'Get started with front end tech'};
+export const BACKEND = { path: '/learn/backend', title: 'Get started with backend end tech'};
+export const DEVOPS = { path: '/learn/devops', title: 'Get started with DevOps tech'};
 
 /* Topics */
-export const HTML = '/learn/frontend/Html';
-export const CSS = '/learn/frontend/Css';
-export const JAVASCRIPT = '/learn/frontend/JavaScript';
-export const REACT = '/learn/frontend/ReactJs';
-export const ANGULAR = '/learn/frontend/Angular';
+export const HTML = { path: '/learn/frontend/Html', title: 'Basics of HTML'};
+export const CSS = { path: '/learn/frontend/Css', title: 'Basics of CSS'};
+export const JAVASCRIPT = { path: '/learn/frontend/JavaScript', title: 'Basics of JavaScript'};
+export const REACT = { path: '/learn/frontend/ReactJs', title: 'Basics of React JS Library'};
+export const ANGULAR = { path: '/learn/frontend/Angular', title: 'Basics of Angular JS Framework'};
