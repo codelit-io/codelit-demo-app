@@ -23,16 +23,16 @@ const App = () => (
 		<Navigation />
 		<Container maxWidth="xl" className="container">
 			<Switch>
-				<Route exact path={ROUTES.LANDING} component={LandingPage} />
-				<Route path={ROUTES.SIGN_UP} component={SignUp} />
-				<Route path={ROUTES.SIGN_IN} component={SignIn} />
-				<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgot} />
-				<Route path={ROUTES.HOME} component={Home} />
-				<Route path={ROUTES.ACCOUNT} component={Account} />
-				<Route path={ROUTES.ADMIN} component={Admin} />
-				<Route exact path={ROUTES.LEARN} component={Learn}/>
-				<Route exact path={ROUTES.LEARN + "/:course"} component={Courses}/>
-				<Route exact path={ROUTES.LEARN + "/:course/:topic"} component={BuildCourse} />
+				<Route exact path={ROUTES.LANDING.path} component={LandingPage} />
+				<Route path={ROUTES.SIGN_UP.path} component={SignUp} />
+				<Route path={ROUTES.SIGN_IN.path} component={SignIn} />
+				<Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordForgot} />
+				<Route path={ROUTES.HOME.path} component={Home} />
+				<Route path={ROUTES.ACCOUNT.path} component={Account} />
+				<Route path={ROUTES.ADMIN.path} component={Admin} />
+				<Route exact path={ROUTES.LEARN.path} component={Learn}/>
+				<Route exact path={ROUTES.LEARN.path + "/:course"} component={Courses}/>
+				<Route exact path={ROUTES.LEARN.path + "/:course/:topic"} component={BuildCourse} />
 			</Switch>
 			{/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
 		</Container>
