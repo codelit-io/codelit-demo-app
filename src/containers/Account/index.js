@@ -4,15 +4,19 @@ import { PasswordForgetForm } from "../../components/PasswordForgot";
 import PasswordChangeForm from "../../components/PasswordChange";
 import { withAuthorization, AuthUserContext } from "../../components/Session";
 
+import PageCard from "../../components/shared/PageCard";
+import PageHeader from "../../components/shared/PageHeader";
+
 const AccountPage = () => (
 	<AuthUserContext.Consumer>
 		{authUser => (
-			<div>
-				<h1>{authUser.displayName}</h1>
-				<p>{authUser.email}</p>
-				<PasswordForgetForm />
-				<PasswordChangeForm />
-			</div>
+			<>
+				<PageHeader title={authUser.displayName} />
+				<PageCard img="" title={authUser.email}>
+					<PasswordForgetForm />
+					<PasswordChangeForm />
+				</PageCard>
+			</>
 		)}
 	</AuthUserContext.Consumer>
 );
