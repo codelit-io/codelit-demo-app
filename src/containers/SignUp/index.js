@@ -54,7 +54,7 @@ const SignUpFormBase = props => {
 			})
 			.then(() => {
 				setState({ ...INITIAL_STATE });
-				props.history.push(ROUTES.HOME);
+				props.history.push(ROUTES.HOME.path);
 			})
 			.catch(error => {
 				setState({ error });
@@ -116,7 +116,7 @@ const SignUpFormBase = props => {
 
 const SignUpLink = () => (
 	<p>
-		Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+		Don't have an account? <Link to={ROUTES.SIGN_UP.path}>Sign Up</Link>
 	</p>
 );
 
