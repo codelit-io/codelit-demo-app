@@ -3,28 +3,26 @@ import { Grid } from "@material-ui/core";
 import MoCard from "../../components/shared/MoCard";
 import PageHeader from "../../components/shared/PageHeader";
 import * as ROUTES from "../../constants/routes";
+import Typography from "@material-ui/core/Typography";
 
-const LandingPage = ( ) => {
+const LandingPage = () => {
 	const icons = [
 		{
 			label: "Start Learning",
 			desc: "Learn anything coding",
-			img:
-				"https://firebasestorage.googleapis.com/v0/b/mosh-599d5.appspot.com/o/tech_1.png?alt=media&token=71c84225-232d-4ca2-b391-f60632506adc",
+			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F006-science.png?alt=media&token=9942d7dd-19c9-497e-8597-4cb59df6cdc7",
 			url: ROUTES.LEARN.path
 		},
 		{
 			label: "My Lessons",
 			desc: "All in one place",
-			img:
-				"https://firebasestorage.googleapis.com/v0/b/mosh-599d5.appspot.com/o/tech_2.png?alt=media&token=e896ba8c-ef16-4f09-ac64-6b783bc8dd54",
+			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F026-education.png?alt=media&token=59b529d9-14ae-4f05-a5eb-c758ce55b2a1",
 			url: ROUTES.LEARN.path
 		},
 		{
 			label: "My Team",
 			desc: "Say Hi!",
-			img:
-				"https://firebasestorage.googleapis.com/v0/b/mosh-599d5.appspot.com/o/tech_3.png?alt=media&token=5426000f-2adb-4167-84dc-9b127caa5c58",
+			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F009-collaboration.png?alt=media&token=a7e1e9e8-8b2b-4a32-86ad-0302de87407e",
 			url: ROUTES.LEARN.path
 		}
 	];
@@ -39,6 +37,12 @@ const LandingPage = ( ) => {
 					</Grid>
 				))}
 			</Grid>
+			<Typography variant="subtitle1">
+				Icons made by{" "}
+				<a href="https://www.flaticon.com/authors/wanicon" title="wanicon">
+					wanicon
+				</a>
+			</Typography>
 		</>
 	);
 };
