@@ -13,7 +13,6 @@ import Admin from "../../containers/Admin";
 import * as ROUTES from "../../constants/routes";
 import BuildCourse from "../../containers/Courses/BuildCourse";
 import Container from "@material-ui/core/Container";
-
 import Courses from "../../containers/Courses";
 import Learn from "../../containers/Learn";
 import { withAuthentication } from "../Session";
@@ -34,7 +33,6 @@ const App = () => (
 				<Route exact path={ROUTES.LEARN.path + "/:course"} component={Courses}/>
 				<Route exact path={ROUTES.LEARN.path + "/:course/:topic"} component={BuildCourse} />
 			</Switch>
-			{/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
 		</Container>
 	</Router>
 );
