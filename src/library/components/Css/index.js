@@ -9,7 +9,7 @@ const Css = ({ course, topic }) => {
 	return (
 		<>
 			<PageHeader title={topic} course={course}></PageHeader>
-			<Typography gutterBottom variant="h5" component="h2"> Video Coming soon! </Typography>
+			<Typography gutterBottom variant="h5" component="h2"> Podcast Coming soon! </Typography>
 			<div className={classes.card}>
 				<Iframe url="https://stackblitz.com/edit/basic-css-moskool?embed=1&file=index.html&hideExplorer=1&hideNavigation=1" width="100%" height="100%" className={classes.iframe} />
 			</div>
