@@ -15,6 +15,9 @@ const useStyles = makeStyles({
 		transition: "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
 		transform: "translateY(0)"
 	},
+	disableCard: {
+		backgroundColor: "#f2f2f2"
+	},
 	content: {
 		padding: 20,
 		display: "flex",
@@ -29,6 +32,17 @@ const useStyles = makeStyles({
 		"&:hover": {
 			textDecorationLine: "none"
 		}
+	},
+	disableLink: {
+		pointerEvents: "none",
+		textDecoration: "none",
+		cursor: "default"
+	},
+	lockIcon: {
+		color: "#a6a6a6",
+		position: "absolute",
+		top: "10px",
+		right: "10px",
 	}
 });
 
