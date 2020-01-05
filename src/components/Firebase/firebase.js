@@ -1,6 +1,7 @@
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import "firebase/firestore";
 
 const config = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -17,6 +18,7 @@ class Firebase {
 
 		this.auth = app.auth();
 		this.db = app.database();
+		this.firestore = app.firestore();
 
 		this.googleProvider = new app.auth.GoogleAuthProvider();
 		this.facebookProvider = new app.auth.FacebookAuthProvider();
@@ -30,12 +32,10 @@ class Firebase {
 	signInWithEmailAndPassword = (email, password) =>
 		this.auth.signInWithEmailAndPassword(email, password);
 
-	signInWithGoogle = () => 
-		this.auth.signInWithPopup(this.googleProvider);
+	signInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-	signInWithFacebook = () =>
-		this.auth.signInWithPopup(this.facebookProvider);
-		
+	signInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
+
 	signOut = () => this.auth.signOut();
 
 	passwordReset = email => this.auth.sendPasswordResetEmail(email);
@@ -46,7 +46,19 @@ class Firebase {
 
 	user = uid => this.db.ref(`users/${uid}`);
 
-	users = () => this.db.ref('users');
+	users = () => this.db.ref("users");
+
+	/* Courses API */
+
+	course = uid => this.firestore.doc(`courses/${uid}`);
+
+	courses = () => this.firestore.collection('courses');
+
+	courseDb = uid => this.db.ref(`courses/${uid}`);
+
+	coursesDb = () => this.db.ref('courses');
+
+
 }
 
 export default Firebase;
