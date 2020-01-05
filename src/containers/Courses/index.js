@@ -1,54 +1,48 @@
-import React from "react";
-import * as ROUTES from "../../constants/routes";
+import React, { useState, useEffect } from "react";
 import MoCard from "../../components/shared/MoCard";
-import { Grid } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 import PageHeader from "../../components/shared/PageHeader";
+import { withAuthorization } from "../../components/Session/";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const Courses = ({ match }) => {
-	const icons = [
-		{
-			label: "Html",
-			desc: "Elements on web pages",
-			img: "",
-			url: ROUTES.HTML.path
-		},
-		{
-			label: "Css",
-			desc: "Styling to elements",
-			img: "",
-			url: ROUTES.CSS.path
-		},
-		{
-			label: "JavaScript",
-			desc: "Add script functionality",
-			img: "",
-			url: ROUTES.JAVASCRIPT.path
-		},
-		{
-			label: "React",
-			desc: "Web Apps JS framework",
-			img: "",
-			url: ROUTES.REACT.path
-		},
-		{
-			label: "Angular",
-			desc: "Web Apps JS framework",
-			img: "",
-			url: ROUTES.ANGULAR.path
-		}
-	];
+const Courses = props => {
+	const [loading, setLoading] = useState(false);
+	const [courses, setCourses] = useState([]);
+
+	const CoursesList = ({ courses }) => (
+		<Grid container spacing={3}>
+			{Object.keys(courses).map((course, index) => (
+				<Grid key={index} item sm={6} md={3} xs={12}>
+					<MoCard topic={courses[course]}></MoCard>
+				</Grid>
+			))}
+		</Grid>
+	);
+
+	useEffect(() => {
+		setLoading(true);
+		props.firebase.coursesDb().on("value", snapshot => {
+			const coursesObject = snapshot.val();
+			setCourses(coursesObject[props.match.params.course]);
+			setLoading(false);
+		});
+
+		return () => {
+			props.firebase.coursesDb().off();
+		};
+	}, [props]);
+
 	return (
 		<>
-			<PageHeader title={match.params.course}></PageHeader>
-			<Grid container spacing={3}>
-				{icons.map((icon, index) => (
-					<Grid key={index} item sm={6} md={3} xs={12}>
-						<MoCard icon={icon}></MoCard>
-					</Grid>
-				))}
-			</Grid>
+			<PageHeader title={props.match.params.course}></PageHeader>
+			{loading && <CircularProgress color="primary" />}
+			<CoursesList courses={courses} />
 		</>
 	);
 };
 
-export default Courses;
+// const condition = authUser => !!authUser;
+/* True for demo purposes */
+const condition = authUser => true;
+
+export default withAuthorization(condition)(Courses);
