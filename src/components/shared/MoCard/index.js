@@ -7,21 +7,37 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import Fade from "@material-ui/core/Fade";
+import LockIcon from "@material-ui/icons/Lock";
 
-const MoCard = ({ icon }) => {
+const MoCard = ({ topic }) => {
 	const classes = useStyles();
 	return (
-		<Link to={(icon && icon.url) || ""} className={classes.link}>
+		<Link
+			to={(topic && topic.url) || ""}
+			className={topic.disable ? classes.disableLink : classes.link}
+		>
 			<Fade timeout={{ enter: 1000 }} in={true}>
-				<Card className={classes.card}>
+				<Card className={`${classes.card} ${topic.disable && classes.disableCard}`}>
 					<CardActionArea className={classes.content}>
-						{icon && icon.img && <CardMedia className={classes.img} image={icon.img} title={icon.label} />}
+						{topic.disable && <LockIcon className={classes.lockIcon}/>}
+						{topic && topic.img && (
+							<CardMedia
+								className={classes.img}
+								image={topic.img}
+								title={topic.label}
+							/>
+						)}
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="h2">
-								{icon && icon.label ? icon.label : "No Name"}
+								{topic && topic.label ? topic.label : "No Name"}
 							</Typography>
-							<Typography className="desc" variant="body2" color="textSecondary" component="p">
-								{icon && icon.desc}
+							<Typography
+								className="desc"
+								variant="body2"
+								color="textSecondary"
+								component="p"
+							>
+								{topic && topic.desc}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
