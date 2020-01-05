@@ -32,6 +32,7 @@ const App = () => (
 				<Route exact path={ROUTES.LEARN.path} component={Learn}/>
 				<Route exact path={ROUTES.LEARN.path + "/:course"} component={Courses}/>
 				<Route exact path={ROUTES.LEARN.path + "/:course/:topic"} component={BuildCourse} />
+				<Route exact path={ROUTES.LEARN.path + "/:course/:topic/:subTopic"} component={BuildCourse} />
 			</Switch>
 		</Container>
 	</Router>
