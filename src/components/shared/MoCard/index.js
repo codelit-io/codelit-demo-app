@@ -16,7 +16,7 @@ const MoCard = ({ topic }) => {
 			to={(topic && topic.url) || ""}
 			className={topic && topic.disable ? classes.disableLink : classes.link}
 		>
-			<Fade timeout={{ enter: 1000 }} in={true}>
+			<Fade timeout={{ enter: 800 }} in={true}>
 				<Card className={`${classes.card} ${topic && topic.disable && classes.disableCard}`}>
 					<CardActionArea className={classes.content}>
 						{topic && topic.disable && <LockIcon className={classes.lockIcon}/>}
