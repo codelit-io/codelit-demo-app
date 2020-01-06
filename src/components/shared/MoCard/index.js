@@ -14,12 +14,12 @@ const MoCard = ({ topic }) => {
 	return (
 		<Link
 			to={(topic && topic.url) || ""}
-			className={topic.disable ? classes.disableLink : classes.link}
+			className={topic && topic.disable ? classes.disableLink : classes.link}
 		>
 			<Fade timeout={{ enter: 1000 }} in={true}>
-				<Card className={`${classes.card} ${topic.disable && classes.disableCard}`}>
+				<Card className={`${classes.card} ${topic && topic.disable && classes.disableCard}`}>
 					<CardActionArea className={classes.content}>
-						{topic.disable && <LockIcon className={classes.lockIcon}/>}
+						{topic && topic.disable && <LockIcon className={classes.lockIcon}/>}
 						{topic && topic.img && (
 							<CardMedia
 								className={classes.img}
