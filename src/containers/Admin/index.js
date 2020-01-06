@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import MoshCard from "../../components/shared/MoCard";
 import { withAuthorization } from "../../components/Session";
+import Spinner from "../../components/shared/Spinner";
 
 const useStyles = makeStyles({
 	card: {
@@ -30,11 +31,10 @@ const AdminPage = props => {
 	const UserList = ({ users }) => (
 		<Grid container spacing={3}>
 			{users.map(user => (
-				<Grid item sm={6} md={3} xs={12}>
+				<Grid item sm={6} md={3} xs={12} key={user.uid}>
 					<MoshCard
-						key={user.uid}
 						className={classes.card}
-						icon={{
+						topic={{
 							label: user.username,
 							desc: user.email
 						}}
@@ -69,7 +69,7 @@ const AdminPage = props => {
 		<div>
 			<h1>Users</h1>
 
-			{loading && <div>Loading ...</div>}
+			{<Spinner loading={loading} color="primary" />}
 
 			<UserList users={users} />
 		</div>
