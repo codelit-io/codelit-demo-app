@@ -3,7 +3,7 @@ import MoCard from "../../components/shared/MoCard";
 import Grid from "@material-ui/core/Grid";
 import PageHeader from "../../components/shared/PageHeader";
 import { withAuthorization } from "../../components/Session/";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Spinner from "../../components/shared/Spinner";
 
 const Courses = props => {
 	const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ const Courses = props => {
 	return (
 		<>
 			<PageHeader title={props.match.params.course}></PageHeader>
-			{loading && <CircularProgress color="primary" />}
+			<Spinner loading={loading} color="primary" />
 			<CoursesList courses={courses} />
 		</>
 	);
