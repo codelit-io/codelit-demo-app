@@ -58,6 +58,10 @@ class Firebase {
 
 	coursesDb = () => this.db.ref('courses');
 
+	topicDb = topic => this.db.ref(topic);
+
+	topicsDb = topic => this.db.ref(topic);
+
 
 }
 
