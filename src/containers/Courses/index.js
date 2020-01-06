@@ -9,18 +9,18 @@ const Courses = props => {
 	const [loading, setLoading] = useState(false);
 	const [courses, setCourses] = useState([]);
 
-	const CoursesList = ({ courses }) => (
-		<Grid container spacing={3}>
-			{Object.keys(courses).map((course, index) => (
-				<Grid key={index} item sm={6} md={3} xs={12}>
-					<MoCard topic={courses[course]}></MoCard>
-				</Grid>
-			))}
-		</Grid>
-	);
+	const CoursesList = ({ courses }) =>
+	<Grid container spacing={3}>
+		{Object.keys(courses).map((course, index) => (
+			<Grid key={index} item sm={6} md={3} xs={12}>
+				<MoCard topic={courses[course]}></MoCard>
+			</Grid>
+			
+		))}</Grid>;
 
 	useEffect(() => {
 		setLoading(true);
+
 		props.firebase.coursesDb().on("value", snapshot => {
 			const coursesObject = snapshot.val();
 			setCourses(coursesObject[props.match.params.course]);
@@ -36,7 +36,11 @@ const Courses = props => {
 		<>
 			<PageHeader title={props.match.params.course}></PageHeader>
 			<Spinner loading={loading} color="primary" />
-			<CoursesList courses={courses} />
+			<Grid container spacing={3}>
+				<Grid item xs={12}>
+					<CoursesList courses={courses} />
+				</Grid>
+			</Grid>
 		</>
 	);
 };
