@@ -12,7 +12,7 @@ const PasswordForgot = lazy(() => import("../PasswordForgot"));
 const Home = lazy(() => import("../../containers/Home"));
 const Account = lazy(() => import("../../containers/Account"));
 const Admin = lazy(() => import("../../containers/Admin"));
-const BuildCourse = lazy(() => import("../../containers/Courses/BuildCourse"));
+const Topics = lazy(() => import("../../containers/Courses/Topics"));
 const Container = lazy(() => import("@material-ui/core/Container"));
 const Courses = lazy(() => import("../../containers/Courses"));
 const Learn = lazy(() => import("../../containers/Learn"));
@@ -42,12 +42,12 @@ const App = () => (
 					<Route
 						exact
 						path={ROUTES.LEARN.path + "/:course/:topic"}
-						component={BuildCourse}
+						component={Topics}
 					/>
 					<Route
 						exact
 						path={ROUTES.LEARN.path + "/:course/:topic/:subTopic"}
-						component={BuildCourse}
+						component={Topics}
 					/>
 				</Switch>
 			</Container>
