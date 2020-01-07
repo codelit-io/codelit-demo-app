@@ -60,7 +60,7 @@ class Firebase {
 
 	topicDb = topic => this.db.ref(topic);
 
-	topicsDb = topic => this.db.ref(topic);
+	subTopicDb = (topic, subTopic) => this.db.ref(topic).orderByChild('label').equalTo(subTopic);
 
 
 }
