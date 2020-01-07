@@ -6,13 +6,13 @@ import { withAuthorization } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import PageHeader from "../../../components/shared/PageHeader";
 
-const Topics = props => {
+const Topics = ({ firebase, match }) => {
 	const [topics, setTopics] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const TopicList = ({ topicsProp }) => (
 		<Grid container spacing={3}>
-			{topicsProp &&
+			{topicsProp.length &&
 				topicsProp.map((topic, index) => (
 					<Grid item key={index} sm={6} md={3} xs={12}>
 						<MoCard topic={topic} key={index}></MoCard>
@@ -23,37 +23,56 @@ const Topics = props => {
 
 	useEffect(() => {
 		setLoading(true);
-		props.firebase.topicDb(props.match.params.topic).on("value", snapshot => {
-			const topicsObject = snapshot.val();
 
-			const topics =
-				topicsObject &&
-				topicsObject.map(topic => ({
-					...topic,
-					url: `learn/${topic.desc}/${topic.label.replace(/ /g, "-")}`
-				}));
+		/* change filtering by subTopic to id */
+		if (match.params.subTopic) {
+			firebase
+				.subTopicDb(
+					match.params.topic,
+					match.params.subTopic.replace(/-/g, " ")
+				)
+				.on("child_added", snapshot => {
+					const topic = snapshot.val();
+					setTopics(topic);
+					setLoading(false);
+				});
+		} else {
+			firebase.topicDb(match.params.topic).on("value", snapshot => {
+				const topicsObj = snapshot.val();
 
-			setTopics(topics);
-			setLoading(false);
-		});
-
+				const topics =
+					topicsObj &&
+					topicsObj.map(topic => ({
+						...topic,
+						url: `/learn/${match.params.course}/${
+							topic.desc
+						}/${topic.label.replace(/ /g, "-")}`
+					}));
+				setTopics(topics);
+				setLoading(false);
+			});
+		}
 		return () => {
-			props.firebase.topicDb().off();
+			firebase.topicDb().off();
 		};
-	}, [props]);
+	}, [firebase, match]);
 
 	return (
 		<>
-			<PageHeader title={props.match.params.topic} course={props.match.params.course}></PageHeader>
+			<PageHeader
+				course={match.params.course}
+				topic={match.params.topic}
+				subTopic={match.params.subTopic}
+			></PageHeader>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
-					<Component {...props.match.params} topics={topics}></Component>
+				{match.params.subTopic && <Component {...match.params} topics={topics}></Component>}
 				</Grid>
 			</Grid>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					<Spinner loading={loading} color="primary" />
-					<TopicList topicsProp={topics} />
+					{!match.params.subTopic && <TopicList topicsProp={topics} />}
 				</Grid>
 			</Grid>
 		</>
