@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
 	card: {
 		boxShadow: "0 0 51px 0 rgba(0,0,0,.08), 0 6px 18px 0 rgba(0,0,0,.05)",
 		"&:hover": {
@@ -11,7 +11,8 @@ const useStyles = makeStyles({
 		"&:hover .desc": {
 			color: "#1890ff"
 		},
-		transition: "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
+		transition:
+			"transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
 		transform: "translateY(0)"
 	},
 	disableCard: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 		flexDirection: "column"
 	},
 	cardContent: {
-		textAlign: "center",
+		textAlign: "center"
 	},
 	img: {
 		height: 200,
@@ -44,8 +45,8 @@ const useStyles = makeStyles({
 		color: "#a6a6a6",
 		position: "absolute",
 		top: "10px",
-		right: "10px",
+		right: "10px"
 	}
-});
+}));
 
 export default useStyles;
