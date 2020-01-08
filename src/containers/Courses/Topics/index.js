@@ -20,10 +20,9 @@ const Topics = ({ firebase, match }) => {
 				))}
 		</Grid>
 	);
-
+	
 	useEffect(() => {
 		setLoading(true);
-
 		/* change filtering by subTopic to id */
 		if (match.params.subTopic) {
 			firebase
