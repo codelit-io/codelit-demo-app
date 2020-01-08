@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import Fade from "@material-ui/core/Fade";
 import LockIcon from "@material-ui/icons/Lock";
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
-const MoCard = ({ topic }) => {
+const MoCard = ({ topic, icon }) => {
 	const classes = useStyles();
 	return (
 		<Link
@@ -17,9 +18,16 @@ const MoCard = ({ topic }) => {
 			className={topic && topic.disable ? classes.disableLink : classes.link}
 		>
 			<Fade timeout={{ enter: 800 }} in={true}>
-				<Card className={`${classes.card} ${topic && topic.disable && classes.disableCard}`}>
+				<Card
+					className={`${classes.card} ${topic &&
+						topic.disable &&
+						classes.disableCard}`}
+				>
 					<CardActionArea className={classes.content}>
-						{topic && topic.disable && <LockIcon className={classes.lockIcon}/>}
+						{topic && topic.disable && (
+							<LockIcon className={classes.lockIcon} />
+						)}
+						{icon && !topic.disable && <VolumeUpIcon className={classes.lockIcon} />}
 						{topic && topic.img && (
 							<CardMedia
 								className={classes.img}
