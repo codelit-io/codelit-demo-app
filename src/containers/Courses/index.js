@@ -12,7 +12,7 @@ const Courses = props => {
 	const CoursesList = ({ courses }) =>
 	<Grid container spacing={3}>
 		{Object.keys(courses).map((course, index) => (
-			<Grid key={index} item sm={6} md={3} xs={12}>
+			<Grid key={index} item sm={12} md={6} xs={12}>
 				<MoCard topic={courses[course]}></MoCard>
 			</Grid>
 			
