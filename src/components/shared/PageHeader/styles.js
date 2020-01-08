@@ -4,10 +4,15 @@ const useStyles = makeStyles(theme => ({
 	linkText: {
 		color: "#383c40",
 		textTransform: "capitalize",
-		textDecoration: "none"
+        textDecoration: "none",
+        verticalAlign: "middle"
     },
     header: {
-        marginBottom: "40px"
+        marginBottom: "40px",
+        textAlign: "center",
+    },
+    arrow: {
+        fontSize: "12px"
     }
 }));
 
