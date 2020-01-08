@@ -4,7 +4,6 @@ import useStyles from "./styles";
 import ReactPlayer from "react-player";
 
 export const Component = ({ topics }) => {
-	console.log(topics)
 	const classes = useStyles();
 	const [state, setState] = useState({ status: "" });
 	return (
