@@ -1,5 +1,5 @@
 /*  Pages */
-export const LANDING = { path: '/', title: 'Make skool COOL again!'};
+export const LANDING = { path: '/', title: 'New way to Mastering software engineering'};
 export const SIGN_UP = { path: '/signup', title: 'Sign up'};
 export const SIGN_IN = { path: '/signin', title: 'Sign in'};
 export const HOME = { path: '/home', title: 'Home Page'};
