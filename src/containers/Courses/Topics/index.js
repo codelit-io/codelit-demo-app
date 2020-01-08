@@ -12,18 +12,20 @@ const Topics = ({ firebase, match }) => {
 
 	const TopicList = ({ topicsProp }) => (
 		<Grid container spacing={3}>
-			{topicsProp.length &&
+			{topicsProp &&
+				topicsProp.length > 0 &&
 				topicsProp.map((topic, index) => (
-					<Grid item key={index} sm={6} md={3} xs={12}>
-						<MoCard topic={topic} key={index}></MoCard>
+					<Grid item key={index} sm={12} md={6} xs={12}>
+						<MoCard topic={topic} key={index} icon={true}></MoCard>
 					</Grid>
 				))}
 		</Grid>
 	);
-	
+
 	useEffect(() => {
 		setLoading(true);
 		/* change filtering by subTopic to id */
+
 		if (match.params.subTopic) {
 			firebase
 				.subTopicDb(
@@ -31,26 +33,24 @@ const Topics = ({ firebase, match }) => {
 					match.params.subTopic.replace(/-/g, " ")
 				)
 				.on("child_added", snapshot => {
-					const topic = snapshot.val();
-					setTopics(topic);
+					const topics = snapshot.val();
+					setTopics(topics);
 					setLoading(false);
 				});
 		} else {
 			firebase.topicDb(match.params.topic).on("value", snapshot => {
-				const topicsObj = snapshot.val();
-
-				const topics =
-					topicsObj &&
-					topicsObj.map(topic => ({
-						...topic,
-						url: `/learn/${match.params.course}/${
-							topic.desc
-						}/${topic.label.replace(/ /g, "-")}`
-					}));
+				const topics = snapshot.val().map(topic => ({
+					...topic,
+					url: `/learn/${match.params.course}/${
+						topic.desc
+					}/${topic.label.replace(/ /g, "-")}`,
+					disable: !topic.stackblitz
+				}));
 				setTopics(topics);
 				setLoading(false);
 			});
 		}
+
 		return () => {
 			firebase.topicDb().off();
 		};
@@ -65,7 +65,9 @@ const Topics = ({ firebase, match }) => {
 			></PageHeader>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
-				{match.params.subTopic && <Component {...match.params} topics={topics}></Component>}
+					{match.params.subTopic && (
+						<Component {...match.params} topics={topics}></Component>
+					)}
 				</Grid>
 			</Grid>
 			<Grid container spacing={3}>
