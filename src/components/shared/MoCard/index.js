@@ -27,7 +27,7 @@ const MoCard = ({ topic }) => {
 								title={topic.label}
 							/>
 						)}
-						<CardContent>
+						<CardContent className={classes.cardContent}>
 							<Typography gutterBottom variant="h5" component="h2">
 								{topic && topic.label ? topic.label : "No Name"}
 							</Typography>
