@@ -11,30 +11,28 @@ const PageHeader = ({ title, course, topic, subTopic }) => {
 	const classes = useStyles();
 	return (
 		<Fade in={true} timeout={{ enter: 1000 }}>
-			<Typography variant="h4" gutterBottom className={classes.header}>
+			<Typography variant="h5" gutterBottom className={classes.header}>
 				<Box fontWeight="fontWeightLight" className={classes.linkText}>
 					<Link
 						to={`${ROUTES.LEARN.path}/${course}`}
 						className={classes.linkText}
 					>
-						{course && <span> {course} </span>}
-					</Link>{" "}
+						{course && <span>{course}</span>}
+					</Link>
 					<Link
 						to={`${ROUTES.LEARN.path}/${course}/${topic}`}
 						className={classes.linkText}
 					>
 						{topic && (
-							<span>
-								<ChevronRightIcon /> {topic}{" "}
-							</span>
+							<span>&nbsp;/&nbsp;{topic}</span>
 						)}
-					</Link>{" "}
-					{subTopic && (
-						<span>
-							<ChevronRightIcon /> {subTopic.replace(/-/g, ' ')}{" "}
-						</span>
-					)}
-					{title}
+					</Link>
+					<Link className={classes.linkText}> 
+						{subTopic && (
+							<span>&nbsp;/&nbsp;{subTopic.replace(/-/g, " ")}</span>
+						)}
+						{title}
+					</Link>
 				</Box>
 			</Typography>
 		</Fade>
