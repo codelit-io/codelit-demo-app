@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
-
 import { withFirebase } from "../../components/Firebase";
+
 import * as ROUTES from "../../constants/routes";
+import * as ROLES from "../../constants/roles";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
 import PageCard from "../../components/shared/PageCard";
 import PageHeader from "../../components/shared/PageHeader";
 
@@ -33,13 +35,15 @@ const INITIAL_STATE = {
 	email: "",
 	passwordOne: "",
 	passwordTwo: "",
+	isAdmin: false,
 	error: null
 };
 
 const SignUpFormBase = props => {
 	const classes = useStyles();
 	const [state, setState] = useState({ ...INITIAL_STATE });
-	const { username, email, passwordOne, passwordTwo, error } = state;
+	const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
+	const roles = {};
 	const isInvalid =
 		passwordOne !== passwordTwo ||
 		passwordOne === "" ||
@@ -47,13 +51,18 @@ const SignUpFormBase = props => {
 		username === "";
 
 	const onSubmit = event => {
+		if (isAdmin) {
+			roles[ROLES.ADMIN] = ROLES.ADMIN;
+		}
+
 		props.firebase
 			.createUserWithEmailAndPassword(email, passwordOne)
 			.then(authUser => {
 				// Create a user in your Firebase realtime database
 				return props.firebase.user(authUser.user.uid).set({
 					username,
-					email
+					email,
+					roles
 				});
 			})
 			.then(() => {
