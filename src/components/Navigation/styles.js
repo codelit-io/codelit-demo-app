@@ -31,6 +31,17 @@ const useStyles = makeStyles(theme => ({
 	avatar: {
 		float: "right"
 	},
+	adminAvatar: {
+		border: "3px solid #c4f235",
+		'&::after': {
+			content: '"Admin"',
+			color: 'black',
+			height: 10,
+			marginTop: 10,
+			fontSize: "10px",
+			position: "absolute"
+		  }
+	},
 	sectionDesktop: {
 		display: "none",
 		[theme.breakpoints.up("md")]: {
