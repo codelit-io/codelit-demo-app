@@ -13,11 +13,6 @@ const AccountPage = () => (
 			<>
 				<PageHeader title={authUser.displayName} />
 				<PageCard img="" title={authUser.email}>
-					{authUser && authUser.roles.ADMIN && (
-						<>
-							<h4>Admin</h4>
-						</>
-					)}
 					<PasswordForgetForm />
 					<PasswordChangeForm />
 				</PageCard>
