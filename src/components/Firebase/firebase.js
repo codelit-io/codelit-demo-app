@@ -52,17 +52,45 @@ class Firebase {
 
 	course = uid => this.firestore.doc(`courses/${uid}`);
 
-	courses = () => this.firestore.collection('courses');
+	courses = () => this.firestore.collection("courses");
 
 	courseDb = uid => this.db.ref(`courses/${uid}`);
 
-	coursesDb = () => this.db.ref('courses');
+	coursesDb = () => this.db.ref("courses");
 
 	topicDb = topic => this.db.ref(topic);
 
-	subTopicDb = (topic, subTopic) => this.db.ref(topic).orderByChild('label').equalTo(subTopic);
+	subTopicDb = (topic, subTopic) =>
+		this.db
+			.ref(topic)
+			.orderByChild("label")
+			.equalTo(subTopic);
 
-
+	// *** Merge Auth and DB User API *** //
+	onAuthUserListener = (next, fallback) =>
+		this.auth.onAuthStateChanged(authUser => {
+			if (authUser) {
+				this.user(authUser.uid)
+					.once("value")
+					.then(snapshot => {
+						const dbUser = snapshot.val();
+						// default empty roles
+						if (dbUser && !dbUser.roles) {
+							dbUser.roles = {};
+						}
+						// merge auth and db user
+						authUser = {
+							uid: authUser.uid,
+							email: authUser.email,
+							...dbUser
+						};
+						next(authUser);
+					});
+			} else {
+				fallback();
+			}
+		});
 }
+
 
 export default Firebase;
