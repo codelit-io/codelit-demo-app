@@ -1,10 +1,13 @@
 /* Refactor using hooks */
 
 import React, { useState, useEffect } from "react";
+import * as ROLES from "../../constants/roles";
+import { compose } from "recompose";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import MoshCard from "../../components/shared/MoCard";
 import { withAuthorization } from "../../components/Session";
+import { withFirebase } from "../../components/Firebase";
 import Spinner from "../../components/shared/Spinner";
 
 const useStyles = makeStyles({
@@ -68,7 +71,7 @@ const AdminPage = props => {
 	return (
 		<div>
 			<h1>Users</h1>
-
+			<p>The Admin Page is accessible by every signed in admin user.</p>
 			{<Spinner loading={loading} color="primary" />}
 
 			<UserList users={users} />
@@ -76,6 +79,5 @@ const AdminPage = props => {
 	);
 };
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(AdminPage);
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
+export default compose(withAuthorization(condition), withFirebase)(AdminPage);
