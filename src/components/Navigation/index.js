@@ -3,7 +3,14 @@ import * as ROUTES from "../../constants/routes";
 import Drawer from "./Drawer";
 import { Link } from "react-router-dom";
 
-import { AppBar, Toolbar, Typography, Avatar, Grid, Box } from "@material-ui/core";
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	Avatar,
+	Grid,
+	Box
+} from "@material-ui/core";
 import useStyles from "./styles";
 import { AuthUserContext } from "../Session";
 
@@ -39,7 +46,10 @@ const Navigation = () => {
 										<Avatar
 											alt="Me"
 											src={authUser && authUser.photoURL}
-											className={classes.avatar}
+											className={`${classes.avatar} ${authUser &&
+												authUser.roles &&
+												authUser.roles.ADMIN &&
+												classes.adminAvatar}`}
 										/>
 									</Link>
 								)}
