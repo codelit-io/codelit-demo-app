@@ -46,14 +46,14 @@ const Drawer = () => {
 								onClick={() => toggleDrawer(false)}
 								onKeyDown={() => toggleDrawer(false)}
 							>
-								<NavigationAuth />
+								<NavigationAuth authUser={authUser} />
 							</div>
 						) : (
 							<div
 								onClick={() => toggleDrawer(false)}
 								onKeyDown={() => toggleDrawer(false)}
 							>
-								<NavigationNonAuth />
+								<NavigationNonAuth/>
 							</div>
 						)
 					}
