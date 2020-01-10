@@ -5,9 +5,11 @@ export const SIGN_IN = { path: '/signin', title: 'Sign in'};
 export const HOME = { path: '/home', title: 'Home Page'};
 export const ACCOUNT = { path: '/account', title: 'My account'};
 export const ADMIN = { path: '/admin', title: 'Admin Page'};
+export const ADMIN_DETAILS = { path: '/admin:id', title: 'Admin Details'};
 export const PASSWORD_FORGET = { path: '/pw-forget', title: 'Forgot Password'};
 export const LEARN = { path: '/learn', title: 'Pick your career path'};
 export const BUILD_PROJECT = { path: '/build_project', title: 'Build your project'};
+export const NOT_FOUND = {path: '/not_found', title: "Page Not Found"}
 
 /*  Course */
 export const FRONTEND = { path: '/learn/frontend', title: 'Get started with front end tech'};
