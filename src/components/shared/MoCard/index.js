@@ -12,6 +12,7 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 const MoCard = ({ topic, icon }) => {
 	const classes = useStyles();
+	console.log(topic)
 	return (
 		<Link
 			to={(topic && topic.url) || ""}
