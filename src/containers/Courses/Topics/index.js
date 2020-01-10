@@ -13,7 +13,7 @@ const Topics = ({ firebase, match }) => {
 	const TopicList = ({ topicsProp }) => (
 		<Grid container spacing={3}>
 			{topicsProp &&
-				topicsProp.length > 0 &&
+				topicsProp.length &&
 				topicsProp.map((topic, index) => (
 					<Grid item key={index} sm={12} md={6} xs={12}>
 						<MoCard topic={topic} key={index} icon={true}></MoCard>
@@ -44,7 +44,7 @@ const Topics = ({ firebase, match }) => {
 					url: `/learn/${match.params.course}/${
 						topic.desc
 					}/${topic.label.replace(/ /g, "-")}`,
-					disable: !topic.stackblitz
+					disable: !!topic.stackblitz
 				}));
 				setTopics(topics);
 				setLoading(false);
