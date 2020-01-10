@@ -20,15 +20,22 @@ class Firebase {
 		this.db = app.database();
 		this.firestore = app.firestore();
 
+		/* Helper */
+
+		this.serverValue = app.database.ServerValue;
+		this.emailAuthProvider = app.auth.EmailAuthProvider;
+
 		this.googleProvider = new app.auth.GoogleAuthProvider();
 		this.facebookProvider = new app.auth.FacebookAuthProvider();
 	}
 
 	/* Auth API */
 
-	createUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password);
+	createUserWithEmailAndPassword = (email, password) =>
+		this.auth.createUserWithEmailAndPassword(email, password);
 
-	signInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
+	signInWithEmailAndPassword = (email, password) =>
+		this.auth.signInWithEmailAndPassword(email, password);
 
 	signInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
@@ -40,6 +47,11 @@ class Firebase {
 
 	passwordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+	sendEmailVerification = () =>
+		this.auth.currentUser.sendEmailVerification({
+			url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
+		});
+
 	/* User API */
 
 	user = uid => this.db.ref(`users/${uid}`);
@@ -50,7 +62,7 @@ class Firebase {
 
 	course = uid => this.firestore.doc(`courses/${uid}`);
 
-	courses = () => this.firestore.collection("courses");
+	// courses = () => this.firestore.collection("courses");
 
 	courseDb = uid => this.db.ref(`courses/${uid}`);
 
@@ -65,6 +77,7 @@ class Firebase {
 			.equalTo(subTopic);
 
 	// *** Merge Auth and DB User API *** //
+
 	onAuthUserListener = (next, fallback) =>
 		this.auth.onAuthStateChanged(authUser => {
 			if (authUser) {
@@ -72,22 +85,32 @@ class Firebase {
 					.once("value")
 					.then(snapshot => {
 						const dbUser = snapshot.val();
+
 						// default empty roles
-						if (dbUser && !dbUser.roles) {
+						if (!dbUser.roles) {
 							dbUser.roles = {};
 						}
+
 						// merge auth and db user
 						authUser = {
 							uid: authUser.uid,
 							email: authUser.email,
+							emailVerified: authUser.emailVerified,
+							providerData: authUser.providerData,
 							...dbUser
 						};
+
 						next(authUser);
 					});
 			} else {
 				fallback();
 			}
 		});
-}
 
+	// *** Message API ***
+
+	message = uid => this.db.ref(`messages/${uid}`);
+
+	messages = () => this.db.ref("messages");
+}
 export default Firebase;
