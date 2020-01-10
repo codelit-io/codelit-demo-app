@@ -5,7 +5,7 @@ import PageHeader from "../../components/shared/PageHeader";
 import { withAuthorization } from "../../components/Session/";
 import Spinner from "../../components/shared/Spinner";
 
-const Courses = props => {
+const Courses = ({ firebase, match}) => {
 	const [loading, setLoading] = useState(false);
 	const [courses, setCourses] = useState([]);
 
@@ -20,21 +20,20 @@ const Courses = props => {
 
 	useEffect(() => {
 		setLoading(true);
-
-		props.firebase.coursesDb().on("value", snapshot => {
+		firebase.coursesDb().on("value", snapshot => {
 			const coursesObject = snapshot.val();
-			setCourses(coursesObject[props.match.params.course]);
+			setCourses(coursesObject[match.params.course]);
 			setLoading(false);
 		});
 
 		return () => {
-			props.firebase.coursesDb().off();
+			firebase.coursesDb().off();
 		};
-	}, [props]);
+	}, [firebase, match]);
 
 	return (
 		<>
-			<PageHeader title={props.match.params.course}></PageHeader>
+			<PageHeader title={match.params.course}></PageHeader>
 			<Spinner loading={loading} color="primary" />
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
