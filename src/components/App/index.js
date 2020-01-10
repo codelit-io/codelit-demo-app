@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import { withAuthentication } from "../Session";
 import Spinner from "../../components/shared/Spinner";
@@ -16,40 +16,38 @@ const Topics = lazy(() => import("../../containers/Courses/Topics"));
 const Container = lazy(() => import("@material-ui/core/Container"));
 const Courses = lazy(() => import("../../containers/Courses"));
 const Learn = lazy(() => import("../../containers/Learn"));
+const NotFound = lazy(() => import("../../components/NotFound"));
 
 const App = () => (
 	<Router>
 		<Suspense fallback={<Spinner loading={true} color="primary" />}>
 			<Navigation />
 			<Container maxWidth="xl" className="container">
-				<Switch>
-					<Route exact path={ROUTES.LANDING.path} component={LandingPage} />
-					<Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-					<Route path={ROUTES.SIGN_IN.path} component={SignIn} />
-					<Route
-						path={ROUTES.PASSWORD_FORGET.path}
-						component={PasswordForgot}
-					/>
-					<Route path={ROUTES.HOME.path} component={Home} />
-					<Route path={ROUTES.ACCOUNT.path} component={Account} />
-					<Route path={ROUTES.ADMIN.path} component={Admin} />
-					<Route exact path={ROUTES.LEARN.path} component={Learn} />
-					<Route
-						exact
-						path={ROUTES.LEARN.path + "/:course"}
-						component={Courses}
-					/>
-					<Route
-						exact
-						path={ROUTES.LEARN.path + "/:course/:topic"}
-						component={Topics}
-					/>
-					<Route
-						exact
-						path={ROUTES.LEARN.path + "/:course/:topic/:subTopic"}
-						component={Topics}
-					/>
-				</Switch>
+				<Route exact path={ROUTES.LANDING.path} component={LandingPage} />
+				<Route path={ROUTES.SIGN_UP.path} component={SignUp} />
+				<Route path={ROUTES.SIGN_IN.path} component={SignIn} />
+				<Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordForgot} />
+				<Route path={ROUTES.HOME.path} component={Home} />
+				<Route path={ROUTES.ACCOUNT.path} component={Account} />
+				<Route exact path={ROUTES.LEARN.path} component={Learn} />
+				<Route
+					exact
+					path={ROUTES.LEARN.path + "/:course"}
+					component={Courses}
+				/>
+				<Route
+					exact
+					path={ROUTES.LEARN.path + "/:course/:topic"}
+					component={Topics}
+				/>
+				<Route
+					exact
+					path={ROUTES.LEARN.path + "/:course/:topic/:subTopic"}
+					component={Topics}
+				/>
+				<Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
+
+				<Route path={ROUTES.ADMIN.path} component={Admin} />
 			</Container>
 		</Suspense>
 	</Router>
