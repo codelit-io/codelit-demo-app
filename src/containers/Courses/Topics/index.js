@@ -44,7 +44,7 @@ const Topics = ({ firebase, match }) => {
 					url: `/learn/${match.params.course}/${
 						topic.desc
 					}/${topic.label.replace(/ /g, "-")}`,
-					disable: !!topic.stackblitz
+					disable: !topic.stackblitz
 				}));
 				setTopics(topics);
 				setLoading(false);
