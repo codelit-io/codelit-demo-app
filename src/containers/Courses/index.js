@@ -5,14 +5,14 @@ import PageHeader from "../../components/shared/PageHeader";
 import { withAuthorization } from "../../components/Session/";
 import Spinner from "../../components/shared/Spinner";
 
-const Courses = ({ firebase, match}) => {
+const Courses = ({ firebase, match, history}) => {
 	const [loading, setLoading] = useState(false);
 	const [courses, setCourses] = useState([]);
 
 	const CoursesList = ({ courses }) =>
 	<Grid container spacing={3}>
 		{Object.keys(courses).map((course, index) => (
-			<Grid key={index} item sm={12} md={6} xs={12}>
+			<Grid key={index} item xs={12}sm={12} md={6}>
 				<MoCard topic={courses[course]}></MoCard>
 			</Grid>
 			
@@ -33,7 +33,7 @@ const Courses = ({ firebase, match}) => {
 
 	return (
 		<>
-			<PageHeader title={match.params.course}></PageHeader>
+			<PageHeader title={match.params.course} history={history}></PageHeader>
 			<Spinner loading={loading} color="primary" />
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
