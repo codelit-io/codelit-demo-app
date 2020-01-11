@@ -5,7 +5,7 @@ import PageHeader from "../../components/shared/PageHeader";
 import * as ROUTES from "../../constants/routes";
 import Typography from "@material-ui/core/Typography";
 
-const Learn = ({ match }) => {
+const Learn = ({ match, history }) => {
 	const topics = [
 		{
 			label: "Front-end",
@@ -28,7 +28,7 @@ const Learn = ({ match }) => {
 	];
 	return (
 		<>
-			<PageHeader title={ROUTES.LEARN.title}></PageHeader>
+			<PageHeader title={ROUTES.LEARN.title} history={history}></PageHeader>
 			<Grid container spacing={3}>
 				{topics.map((topic, index) => (
 					<Grid key={index} item sm={12} md={6} xs={12}>
