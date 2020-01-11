@@ -6,12 +6,12 @@ import {
 	withEmailVerification
 } from "../../components/Session";
 import Messages from "../../components/Messages";
+import PageCard from "../../components/shared/PageCard";
 
 const HomePage = () => (
-	<div>
-		<h1>Welcome to Mo Skool</h1>
+	<PageCard title="Welcome to Mo Skool">
 		<Messages />
-	</div>
+	</PageCard>
 );
 
 const condition = authUser => !!authUser;
