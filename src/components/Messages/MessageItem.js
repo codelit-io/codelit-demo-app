@@ -1,75 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 class MessageItem extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      editMode: false,
-      editText: this.props.message.text,
-    };
-  }
+		this.state = {
+			editMode: false,
+			editText: this.props.message.text
+		};
+	}
 
-  onToggleEditMode = () => {
-    this.setState(state => ({
-      editMode: !state.editMode,
-      editText: this.props.message.text,
-    }));
-  };
+	onToggleEditMode = () => {
+		this.setState(state => ({
+			editMode: !state.editMode,
+			editText: this.props.message.text
+		}));
+	};
 
-  onChangeEditText = event => {
-    this.setState({ editText: event.target.value });
-  };
+	onChangeEditText = event => {
+		this.setState({ editText: event.target.value });
+	};
 
-  onSaveEditText = () => {
-    this.props.onEditMessage(this.props.message, this.state.editText);
+	onSaveEditText = () => {
+		this.props.onEditMessage(this.props.message, this.state.editText);
 
-    this.setState({ editMode: false });
-  };
+		this.setState({ editMode: false });
+	};
 
-  render() {
-    const { authUser, message, onRemoveMessage } = this.props;
-    const { editMode, editText } = this.state;
+	render() {
+		const { authUser, message, onRemoveMessage } = this.props;
+		const { editMode, editText } = this.state;
 
-    return (
-      <li>
-        {editMode ? (
-          <input
-            type="text"
-            value={editText}
-            onChange={this.onChangeEditText}
-          />
-        ) : (
-          <span>
-            <strong>{message.userId}</strong> {message.text}
-            {message.editedAt && <span>(Edited)</span>}
-          </span>
-        )}
+		return (
+			<ListItem>
+				{editMode ? (
+					<input
+						type="text"
+						value={editText}
+						onChange={this.onChangeEditText}
+					/>
+				) : (
+					<span>
+						{message.text}
+						{message.editedAt && <span>(Edited)</span>}
+					</span>
+				)}
 
-        {authUser.uid === message.userId && (
-          <span>
-            {editMode ? (
-              <span>
-                <button onClick={this.onSaveEditText}>Save</button>
-                <button onClick={this.onToggleEditMode}>Reset</button>
-              </span>
-            ) : (
-              <button onClick={this.onToggleEditMode}>Edit</button>
-            )}
+				{authUser.uid === message.userId && (
+					<ButtonGroup variant="text" aria-label="Actions" color="primary">
+						{editMode ? (
+							<span>
+								<Button onClick={this.onSaveEditText}>Save</Button>
+								<Button onClick={this.onToggleEditMode}>Reset</Button>
+							</span>
+						) : (
+							<Button onClick={this.onToggleEditMode}>Edit</Button>
+						)}
 
-            {!editMode && (
-              <button
-                type="button"
-                onClick={() => onRemoveMessage(message.uid)}
-              >
-                Delete
-              </button>
-            )}
-          </span>
-        )}
-      </li>
-    );
-  }
+						{!editMode && (
+							<Button
+								type="button"
+								onClick={() => onRemoveMessage(message.uid)}
+							>
+								Delete
+							</Button>
+						)}
+					</ButtonGroup>
+				)}
+			</ListItem>
+		);
+	}
 }
 
 export default MessageItem;
