@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Project Component 1`] = `
+Array [
+  <div
+    className="makeStyles-card-2 makeStyles-audioCard-3"
+  />,
+  <div
+    className="makeStyles-card-2 makeStyles-playgroundCard-4"
+    onClick={[Function]}
+  />,
+  <p>
+    
+  </p>,
+]
+`;
+
 exports[`Project Component Matches the snapshot 1`] = `
 <div>
    Component 
