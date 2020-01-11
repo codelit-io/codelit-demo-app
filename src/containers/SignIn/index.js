@@ -10,7 +10,6 @@ import * as ROUTES from "../../constants/routes";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Input } from "@material-ui/core";
 import PageCard from "../../components/shared/PageCard";
-import PageHeader from "../../components/shared/PageHeader";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -23,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 const SignInPage = () => (
 	<>
-		<PageHeader title="Sign in" />
 		<PageCard img="" title="Welcome Back!">
 			<SignInForm />
 			<SignInWithGoogle />
@@ -83,7 +81,7 @@ const SignInFormBase = props => {
 				type="password"
 				placeholder="Password"
 			/>
-			<Button className={classes.button} disabled={isInvalid} type="submit">
+			<Button color="primary" className={classes.button} disabled={isInvalid} type="submit">
 				Sign In
 			</Button>
 
@@ -100,11 +98,14 @@ const SignInWithGoogleBase = props => {
 			.signInWithGoogle()
 			.then(socialAuthUser => {
 				// Create a user in Firebase Realtime Database
-				return props.firebase.user(socialAuthUser.user.uid).set({
-					username: socialAuthUser.user.displayName,
-					email: socialAuthUser.user.email,
-					roles: {}
-				});
+				return props.firebase.user(socialAuthUser.user.uid).set(
+					{
+						username: socialAuthUser.user.displayName,
+						email: socialAuthUser.user.email,
+						roles: {}
+					},
+					{ merge: true }
+				);
 			})
 			.then(() => {
 				setError(null);
@@ -117,7 +118,7 @@ const SignInWithGoogleBase = props => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Button className={classes.button} type="submit">
+			<Button color="primary" className={classes.button} type="submit">
 				{" "}
 				SIgn In with Google
 			</Button>
@@ -152,7 +153,7 @@ const SignInWithFacebookBase = props => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Button className={classes.button} type="submit">
+			<Button color="primary" className={classes.button} type="submit">
 				Sign In with Facebook
 			</Button>
 
