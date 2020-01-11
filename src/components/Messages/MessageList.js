@@ -1,5 +1,7 @@
 import React from 'react';
 
+import List from "@material-ui/core/List";
+
 import MessageItem from './MessageItem';
 
 const MessageList = ({
@@ -8,7 +10,7 @@ const MessageList = ({
   onEditMessage,
   onRemoveMessage,
 }) => (
-  <ul>
+  <List>
     {messages.map(message => (
       <MessageItem
         authUser={authUser}
@@ -18,7 +20,7 @@ const MessageList = ({
         onRemoveMessage={onRemoveMessage}
       />
     ))}
-  </ul>
+  </List>
 );
 
 export default MessageList;
