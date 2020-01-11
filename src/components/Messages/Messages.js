@@ -1,135 +1,127 @@
-import React, { Component } from 'react';
-
-import { AuthUserContext } from '../Session';
-import { withFirebase } from '../Firebase';
-import MessageList from './MessageList';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
+import { AuthUserContext } from "../Session";
+import MessageList from "./MessageList";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import Spinner from "../shared/Spinner";
+import { withFirebase } from "../Firebase";
 
 class Messages extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      text: '',
-      loading: false,
-      messages: [],
-      limit: 5,
-    };
-  }
+		this.state = {
+			text: "",
+			loading: false,
+			messages: [],
+			limit: 15
+		};
+	}
 
-  componentDidMount() {
-    this.onListenForMessages();
-  }
+	componentDidMount() {
+		this.onListenForMessages();
+	}
 
-  onListenForMessages = () => {
-    this.setState({ loading: true });
+	onListenForMessages = () => {
+		this.setState({ loading: true });
 
-    this.props.firebase
-      .messages()
-      .orderByChild('createdAt')
-      .limitToLast(this.state.limit)
-      .on('value', snapshot => {
-        const messageObject = snapshot.val();
+		this.unsubscribe = this.props.firebase
+			.messages()
+			.orderBy("createdAt", "desc")
+			.limit(this.state.limit)
+			.onSnapshot(snapshot => {
+				if (snapshot.size) {
+					let messages = [];
+					snapshot.forEach(doc =>
+						messages.push({ ...doc.data(), uid: doc.id })
+					);
+					this.setState({
+						messages: messages.reverse(),
+						loading: false
+					});
+				} else {
+					this.setState({ messages: null, loading: false });
+				}
+			});
+	};
 
-        if (messageObject) {
-          const messageList = Object.keys(messageObject).map(key => ({
-            ...messageObject[key],
-            uid: key,
-          }));
+	componentWillUnmount() {
+		this.unsubscribe();
+	}
 
-          this.setState({
-            messages: messageList,
-            loading: false,
-          });
-        } else {
-          this.setState({ messages: null, loading: false });
-        }
-      });
-  };
+	onChangeText = event => {
+		this.setState({ text: event.target.value });
+	};
 
-  componentWillUnmount() {
-    this.props.firebase.messages().off();
-  }
+	onCreateMessage = (event, authUser) => {
+		this.props.firebase.messages().add({
+			text: this.state.text,
+			userId: authUser.uid,
+			createdAt: this.props.firebase.fieldValue.serverTimestamp()
+		});
 
-  onChangeText = event => {
-    this.setState({ text: event.target.value });
-  };
+		this.setState({ text: "" });
 
-  onCreateMessage = (event, authUser) => {
-    this.props.firebase.messages().push({
-      text: this.state.text,
-      userId: authUser.uid,
-      createdAt: this.props.firebase.serverValue.TIMESTAMP,
-    });
+		event.preventDefault();
+	};
 
-    this.setState({ text: '' });
+	onEditMessage = (message, text) => {
+		const { uid, ...messageSnapshot } = message;
 
-    event.preventDefault();
-  };
+		this.props.firebase.message(message.uid).update({
+			...messageSnapshot,
+			text,
+			editedAt: this.props.firebase.fieldValue.serverTimestamp()
+		});
+	};
 
-  onEditMessage = (message, text) => {
-    const { uid, ...messageSnapshot } = message;
+	onRemoveMessage = uid => {
+		this.props.firebase.message(uid).delete();
+	};
 
-    this.props.firebase.message(message.uid).set({
-      ...messageSnapshot,
-      text,
-      editedAt: this.props.firebase.serverValue.TIMESTAMP,
-    });
-  };
+	onNextPage = () => {
+		this.setState(
+			state => ({ limit: state.limit + 15 }),
+			this.onListenForMessages
+		);
+	};
 
-  onRemoveMessage = uid => {
-    this.props.firebase.message(uid).remove();
-  };
+	render() {
+		const { text, messages, loading } = this.state;
 
-  onNextPage = () => {
-    this.setState(
-      state => ({ limit: state.limit + 5 }),
-      this.onListenForMessages,
-    );
-  };
+		return (
+			<AuthUserContext.Consumer>
+				{authUser => (
+					<div>
+						{loading && <Spinner loading={loading} />}
 
-  render() {
-    const { text, messages, loading } = this.state;
+						{messages && (
+							<MessageList
+								authUser={authUser}
+								messages={messages}
+								onEditMessage={this.onEditMessage}
+								onRemoveMessage={this.onRemoveMessage}
+							/>
+						)}
 
-    return (
-      <AuthUserContext.Consumer>
-        {authUser => (
-          <div>
-            {!loading && messages && (
-              <button type="button" onClick={this.onNextPage}>
-                More
-              </button>
-            )}
-
-            {loading && <div>Loading ...</div>}
-
-            {messages && (
-              <MessageList
-                authUser={authUser}
-                messages={messages}
-                onEditMessage={this.onEditMessage}
-                onRemoveMessage={this.onRemoveMessage}
-              />
-            )}
-
-            {!messages && <div>There are no messages ...</div>}
-
-            <form
-              onSubmit={event =>
-                this.onCreateMessage(event, authUser)
-              }
-            >
-              <input
-                type="text"
-                value={text}
-                onChange={this.onChangeText}
-              />
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        )}
-      </AuthUserContext.Consumer>
-    );
-  }
+						{!messages && <div>There are no messages ...</div>}
+						{!loading && messages && (
+							<Button variant="contained" onClick={this.onNextPage}>
+								<ExpandMoreIcon />
+								More
+							</Button>
+						)}
+						<form onSubmit={event => this.onCreateMessage(event, authUser)}>
+							<Input type="text" value={text} onChange={this.onChangeText} />
+							<Button variant="contained" color="primary">Post <PostAddIcon /></Button>
+						</form>
+					</div>
+				)}
+			</AuthUserContext.Consumer>
+		);
+	}
 }
 
 export default withFirebase(Messages);
