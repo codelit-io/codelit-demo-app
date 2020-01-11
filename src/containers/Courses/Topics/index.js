@@ -6,7 +6,7 @@ import { withAuthorization } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import PageHeader from "../../../components/shared/PageHeader";
 
-const Topics = ({ firebase, match }) => {
+const Topics = ({ firebase, match, history }) => {
 	const [topics, setTopics] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -62,6 +62,7 @@ const Topics = ({ firebase, match }) => {
 				course={match.params.course}
 				topic={match.params.topic}
 				subTopic={match.params.subTopic}
+				history={history}
 			></PageHeader>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
