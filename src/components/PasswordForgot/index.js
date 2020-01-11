@@ -5,7 +5,8 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input } from "@material-ui/core";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -23,7 +24,6 @@ const INITIAL_STATE = {
 
 const PasswordForgotPage = () => (
 	<div>
-		<h1>Password Forgot</h1>
 		<PasswordForgetForm />
 	</div>
 );
@@ -57,7 +57,7 @@ const PasswordForgetFormBase = props => {
 		<form onSubmit={onSubmit}>
 			<label>Forgot Password: </label>
 			<Input
-                className={classes.input}
+				className={classes.input}
 				name="email"
 				value={state.email}
 				onChange={onChange}
