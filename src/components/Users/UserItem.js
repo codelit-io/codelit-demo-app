@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Button from "@material-ui/core/Button";
+
 import { withFirebase } from "../Firebase";
 
 class UserItem extends Component {
@@ -14,25 +16,27 @@ class UserItem extends Component {
 	}
 
 	componentDidMount() {
+		console.log(this.state.user)
 		if (this.state.user) {
 			return;
 		}
 
 		this.setState({ loading: true });
-
-		this.props.firebase
+		console.log(this.props.match.params.id)
+		this.unsubscribe = this.props.firebase
 			.user(this.props.match.params.id)
-			.on("value", snapshot => {
+			.onSnapshot(snapshot => {
+				console.log(snapshot)
 				this.setState({
-					user: snapshot.val(),
+					user: snapshot.data(),
 					loading: false
 				});
-            });
-            debugger
+			});
+		debugger;
 	}
 
 	componentWillUnmount() {
-		this.props.firebase.user(this.props.match.params.id).off();
+		this.unsubscribe && this.unsubscribe();
 	}
 
 	onSendPasswordResetEmail = () => {
@@ -53,15 +57,15 @@ class UserItem extends Component {
 							<strong>ID:</strong> {user.uid}
 						</span>
 						<span>
-							<strong>E-Mail:</strong> {user.email}
+							<strong>Email:</strong> {user.email}
 						</span>
 						<span>
 							<strong>Username:</strong> {user.username}
 						</span>
 						<span>
-							<button type="button" onClick={this.onSendPasswordResetEmail}>
+							<Button type="button" onClick={this.onSendPasswordResetEmail}>
 								Send Password Reset
-							</button>
+							</Button>
 						</span>
 					</div>
 				)}
