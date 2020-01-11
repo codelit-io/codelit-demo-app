@@ -10,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import PageCard from "../../components/shared/PageCard";
-import PageHeader from "../../components/shared/PageHeader";
 
 const useStyles = makeStyles(theme => ({
 	button: {
@@ -23,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 const SignUpPage = () => (
 	<>
-		<PageHeader title="Sign up" />
 		<PageCard img="" title="Get Started today!">
 			<SignUpForm />
 		</PageCard>
@@ -59,11 +57,14 @@ const SignUpFormBase = props => {
 			.createUserWithEmailAndPassword(email, passwordOne)
 			.then(authUser => {
 				// Create a user in your Firebase realtime database
-				return props.firebase.user(authUser.user.uid).set({
-					username,
-					email,
-					roles
-				});
+				return props.firebase.user(authUser.user.uid).set(
+					{
+						username,
+						email,
+						roles
+					},
+					{ merge: true }
+				);
 			})
 			.then(() => {
 				setState({ ...INITIAL_STATE });
