@@ -22,7 +22,9 @@ class Firebase {
 
 		/* Helper */
 
-		this.serverValue = app.database.ServerValue;
+        this.serverValue = app.database.ServerValue;
+        this.fieldValue = app.firestore.FieldValue;
+
 		this.emailAuthProvider = app.auth.EmailAuthProvider;
 
 		this.googleProvider = new app.auth.GoogleAuthProvider();
@@ -54,9 +56,9 @@ class Firebase {
 
 	/* User API */
 
-	user = uid => this.db.ref(`users/${uid}`);
-
-	users = () => this.db.ref("users");
+	user = uid => this.firestore.doc(`users/${uid}`);
+    
+    users = () => this.firestore.collection("users");
 
 	/* Courses API */
 
@@ -82,12 +84,12 @@ class Firebase {
 		this.auth.onAuthStateChanged(authUser => {
 			if (authUser) {
 				this.user(authUser.uid)
-					.once("value")
+					.get()
 					.then(snapshot => {
-						const dbUser = snapshot.val();
+						const dbUser = snapshot.data();
 
 						// default empty roles
-						if (!dbUser.roles) {
+						if (dbUser && !dbUser.roles) {
 							dbUser.roles = {};
 						}
 
@@ -109,8 +111,8 @@ class Firebase {
 
 	// *** Message API ***
 
-	message = uid => this.db.ref(`messages/${uid}`);
+	message = uid => this.firestore.doc(`messages/${uid}`);
 
-	messages = () => this.db.ref("messages");
+	messages = () => this.firestore.collection("messages");
 }
 export default Firebase;
