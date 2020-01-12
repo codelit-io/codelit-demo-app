@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
-
-import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import Input from "@material-ui/core/Input";
+import { Link } from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { withFirebase } from "../Firebase";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	button: {
 		margin: theme.spacing(1)
 	},
 	input: {
 		margin: theme.spacing(1)
 	}
-}));
+});
 
 const INITIAL_STATE = {
 	email: "",
@@ -28,8 +28,7 @@ const PasswordForgotPage = () => (
 	</div>
 );
 
-const PasswordForgetFormBase = props => {
-	const classes = useStyles();
+const PasswordForgetFormBase = ({ firebase, classes }) => {
 	const [state, setState] = useState({ ...INITIAL_STATE });
 
 	const { email, error } = state;
@@ -37,7 +36,7 @@ const PasswordForgetFormBase = props => {
 	const isInvalid = email === "";
 
 	const onSubmit = event => {
-		props.firebase
+		firebase
 			.passwordReset(email)
 			.then(() => {
 				setState({ ...INITIAL_STATE });
@@ -80,6 +79,7 @@ const PasswordForgetLink = () => (
 
 export default PasswordForgotPage;
 
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+
+const PasswordForgetForm = compose(withStyles(styles), withFirebase)(PasswordForgetFormBase)
 
 export { PasswordForgetForm, PasswordForgetLink };
