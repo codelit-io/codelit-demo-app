@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MoCard from "../../components/shared/MoCard";
 import Grid from "@material-ui/core/Grid";
 import PageHeader from "../../components/shared/PageHeader";
-import { withAuthorization } from "../../components/Session/";
+import { withAuthentication } from "../../components/Session/";
 import Spinner from "../../components/shared/Spinner";
 
 const Courses = ({ firebase, match, history}) => {
@@ -44,8 +44,4 @@ const Courses = ({ firebase, match, history}) => {
 	);
 };
 
-// const condition = authUser => !!authUser;
-/* True for demo purposes */
-const condition = authUser => true;
-
-export default withAuthorization(condition)(Courses);
+export default withAuthentication(Courses);
