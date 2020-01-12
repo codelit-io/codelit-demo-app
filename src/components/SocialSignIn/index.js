@@ -21,7 +21,7 @@ const SocialSignIn = ({ classes }) => {
 				<Typography component="h1" variant="h5">
 					Social Media Sign in
 				</Typography>
-				<SignInWithFacebook className={classes.form} />
+				<SignInWithFacebook/>
 				<SignInWithGoogle />
 			</div>
 		</main>
