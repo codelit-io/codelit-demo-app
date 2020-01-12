@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { AuthUserContext } from "../../Session";
-import { IconButton, SwipeableDrawer, makeStyles } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import MenuIcon from "@material-ui/icons/Menu";
 import NavigationAuth from "../NavigationAuth";
 import NavigationNonAuth from "../NavigationNonAuth";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	menuButton: {
 		marginRight: theme.spacing(2)
 	}
-}));
+});
 
-const Drawer = () => {
+const Drawer = classes => {
 	const [state, setState] = useState({
 		isDrawerOpen: false
 	});
@@ -19,8 +21,6 @@ const Drawer = () => {
 	const toggleDrawer = isDrawerOpen => {
 		setState({ ...state, isDrawerOpen });
 	};
-
-	const classes = useStyles();
 
 	return (
 		<div>
@@ -53,7 +53,7 @@ const Drawer = () => {
 								onClick={() => toggleDrawer(false)}
 								onKeyDown={() => toggleDrawer(false)}
 							>
-								<NavigationNonAuth/>
+								<NavigationNonAuth />
 							</div>
 						)
 					}
@@ -63,4 +63,4 @@ const Drawer = () => {
 	);
 };
 
-export default Drawer;
+export default withStyles(styles)(Drawer);
