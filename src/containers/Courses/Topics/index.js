@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Component } from "./Component";
+import Component from "./Component";
 import Grid from "@material-ui/core/Grid";
 import MoCard from "../../../components/shared/MoCard";
 import { withAuthorization } from "../../../components/Session";
