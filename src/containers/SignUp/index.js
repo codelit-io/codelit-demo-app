@@ -8,14 +8,9 @@ import SignUpForm from "./SignUpForm";
 const SignUpPage = () => (
 	<>
 		<PageCard img="" title="Get Started today!">
-			<Grid container spacing={4}>
-				<Grid item md={6}>
-					<SignUpForm />
-				</Grid>
-				<Grid item md={6}>
-					<SocialSignIn />
-				</Grid>
-				<Grid item md={6}></Grid>
+			<Grid container spacing={3}>
+				<SignUpForm />
+				<SocialSignIn />
 			</Grid>
 		</PageCard>
 	</>
