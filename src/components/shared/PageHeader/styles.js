@@ -9,8 +9,11 @@ const styles = theme => ({
 		marginBottom: "40px",
 		textAlign: "center"
 	},
-	arrow: {
-		fontSize: "12px"
+	arrowSection: {
+        display:"none",
+        [theme.breakpoints.up("md")]: {
+            display: "block"
+        }
 	}
 });
 
