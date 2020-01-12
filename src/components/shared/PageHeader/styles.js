@@ -1,19 +1,17 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	linkText: {
 		color: "#383c40",
 		textTransform: "capitalize",
-        textDecoration: "none",
-        verticalAlign: "middle"
-    },
-    header: {
-        marginBottom: "40px",
-        textAlign: "center",
-    },
-    arrow: {
-        fontSize: "12px"
-    }
-}));
+		textDecoration: "none",
+		verticalAlign: "middle"
+	},
+	header: {
+		marginBottom: "40px",
+		textAlign: "center"
+	},
+	arrow: {
+		fontSize: "12px"
+	}
+});
 
-export default useStyles;
+export default styles;
