@@ -2,12 +2,13 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import useStyles from "./styles";
 import PageHeader from "../PageHeader";
+import styles from "./styles";
 import { withRouter } from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { compose } from "recompose";
 
-const PageCard = ({ img, title, children, history }) => {
-	const classes = useStyles();
+const PageCard = ({ img, title, children, history, classes }) => {
 	return (
 		<>
 			<PageHeader img="" title={title} history={history}/>
@@ -19,4 +20,4 @@ const PageCard = ({ img, title, children, history }) => {
 	);
 };
 
-export default withRouter(PageCard);
+export default compose(withStyles(styles), withRouter)(PageCard);
