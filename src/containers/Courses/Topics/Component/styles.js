@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	iframe: {
 		borderRadius: theme.shape.borderRadius,
 		border: "none"
@@ -22,6 +20,6 @@ const useStyles = makeStyles(theme => ({
 	playgroundCard: {
 		height: "550px"
 	}
-}));
+});
 
-export default useStyles;
+export default styles;
