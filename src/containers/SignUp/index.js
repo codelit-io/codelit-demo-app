@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { compose } from "recompose";
-import { withFirebase } from "../../components/Firebase";
 
 import * as ROUTES from "../../constants/routes";
 import * as ROLES from "../../constants/roles";
 
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
 import Input from "@material-ui/core/Input";
 import PageCard from "../../components/shared/PageCard";
+import { withFirebase } from "../../components/Firebase";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	button: {
 		margin: theme.spacing(1)
 	},
 	input: {
 		margin: theme.spacing(1)
 	}
-}));
+});
 
 const SignUpPage = () => (
 	<>
@@ -37,8 +37,7 @@ const INITIAL_STATE = {
 	error: null
 };
 
-const SignUpFormBase = props => {
-	const classes = useStyles();
+const SignUpFormBase = ({ firebase, history, classes}) => {
 	const [state, setState] = useState({ ...INITIAL_STATE });
 	const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
 	const roles = {};
@@ -53,11 +52,11 @@ const SignUpFormBase = props => {
 			roles[ROLES.ADMIN] = ROLES.ADMIN;
 		}
 
-		props.firebase
+		firebase
 			.createUserWithEmailAndPassword(email, passwordOne)
 			.then(authUser => {
 				// Create a user in your Firebase realtime database
-				return props.firebase.user(authUser.user.uid).set(
+				return firebase.user(authUser.user.uid).set(
 					{
 						username,
 						email,
@@ -68,7 +67,7 @@ const SignUpFormBase = props => {
 			})
 			.then(() => {
 				setState({ ...INITIAL_STATE });
-				props.history.push(ROUTES.HOME.path);
+				history.push(ROUTES.HOME.path);
 			})
 			.catch(error => {
 				setState({ error });
@@ -134,7 +133,7 @@ const SignUpLink = () => (
 	</p>
 );
 
-const SignUpForm = compose(withRouter, withFirebase)(SignUpFormBase);
+const SignUpForm = compose(withStyles(styles) ,withRouter, withFirebase)(SignUpFormBase);
 
 export default SignUpPage;
 
