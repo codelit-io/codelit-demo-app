@@ -44,7 +44,7 @@ const SignInWithGoogleBase = ({ firebase, classes, history }) => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<Button color="primary" className={classes.button} type="submit">
+			<Button color="primary" variant="contained" className={classes.button} type="submit">
 				{" "}
 				SIgn In with Google
 			</Button>
