@@ -7,14 +7,9 @@ import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
 	<PageCard img="" title="Welcome Back!">
-		<Grid container spacing={4}>
-			<Grid item md={6}>
-				<SignInForm />
-			</Grid>
-			<Grid item md={6}>
-				<SocialSignIn />
-			</Grid>
-			<Grid item md={6}></Grid>
+		<Grid container spacing={3}>
+			<SignInForm />
+			<SocialSignIn />
 		</Grid>
 	</PageCard>
 );
