@@ -1,11 +1,9 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	root: {
 		flexGrow: 1
 	},
 	container: {
-		alignItems: "center",
+		alignItems: "center"
 	},
 	title: {
 		textAlign: "center",
@@ -33,14 +31,14 @@ const useStyles = makeStyles(theme => ({
 	},
 	adminAvatar: {
 		border: "3px solid #c4f235",
-		'&::after': {
+		"&::after": {
 			content: '"Admin"',
-			color: 'black',
+			color: "black",
 			height: 10,
 			marginTop: 10,
 			fontSize: "10px",
 			position: "absolute"
-		  }
+		}
 	},
 	sectionDesktop: {
 		display: "none",
@@ -50,9 +48,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	appBar: {
 		boxShadow: "none",
-		backgroundColor: "transparent",
+		backgroundColor: "transparent"
 	}
-}));
+});
 
-
-export default useStyles;
+export default styles;
