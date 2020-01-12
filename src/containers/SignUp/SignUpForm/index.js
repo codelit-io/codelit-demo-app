@@ -8,6 +8,7 @@ import EmailSignUpForm from "../../../components/EmailSignUpForm";
 import { withFirebase } from "../../../components/Firebase";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
+import withLayout from "../../../components/shared/Layout";
 
 const styles = theme => ({
 	button: {
@@ -99,8 +100,9 @@ const SignUpFormBase = ({ firebase, history, classes }) => {
 
 const SignUpForm = compose(
 	withStyles(styles),
+    withLayout,
 	withRouter,
-	withFirebase
+    withFirebase,
 )(SignUpFormBase);
 
 export default SignUpForm;
