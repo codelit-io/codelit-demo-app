@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import { compose } from "recompose";
 
-import { SignUpLink } from "../SignUp";
-import { PasswordForgetLink } from "../../components/PasswordForgot";
-import { withFirebase } from "../../components/Firebase";
 import * as ROUTES from "../../constants/routes";
+import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import EmailSignInForm from "./EmailSignInForm";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input } from "@material-ui/core";
+import { PasswordForgetLink } from "../../components/PasswordForgot";
 import PageCard from "../../components/shared/PageCard";
+import PropTypes from "prop-types";
+import { SignUpLink } from "../SignUp";
+import { withFirebase } from "../../components/Firebase";
+import { withRouter } from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	button: {
 		margin: theme.spacing(1)
 	},
 	input: {
 		margin: theme.spacing(1)
 	}
-}));
+});
 
 const SignInPage = () => (
 	<>
@@ -39,13 +41,10 @@ const INITIAL_STATE = {
 };
 
 const SignInFormBase = props => {
-	const classes = useStyles();
 	const [state, setState] = useState({ ...INITIAL_STATE });
 	const { email, password, error } = state;
-	const isInvalid = password === "" || email === "";
 
-	const onSubmit = event => {
-		event.preventDefault();
+	const handleSubmit = event => {
 		props.firebase
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
@@ -53,7 +52,7 @@ const SignInFormBase = props => {
 				props.history.push(ROUTES.HOME.path);
 			})
 			.catch(error => {
-				setState({ error });
+				setState({ ...state, error });
 			});
 
 		event.preventDefault();
@@ -64,41 +63,23 @@ const SignInFormBase = props => {
 	};
 
 	return (
-		<form onSubmit={onSubmit}>
-			<Input
-				className={classes.input}
-				name="email"
-				value={email}
-				onChange={onChange}
-				type="email"
-				placeholder="Email"
-			/>
-			<Input
-				className={classes.input}
-				name="password"
-				value={password}
-				onChange={onChange}
-				type="password"
-				placeholder="Password"
-			/>
-			<Button color="primary" className={classes.button} disabled={isInvalid} type="submit">
-				Sign In
-			</Button>
-
-			{error && <p> {error.message}</p>}
-		</form>
+		<EmailSignInForm
+			onSubmit={handleSubmit}
+			isInvalid={password === "" || email === ""}
+			onChange={onChange}
+			error={error}
+		/>
 	);
 };
 
-const SignInWithGoogleBase = props => {
-	const classes = useStyles();
+const SignInWithGoogleBase = ({ firebase, classes, history }) => {
 	const [error, setError] = useState({ error: null });
 	const onSubmit = event => {
-		props.firebase
+		firebase
 			.signInWithGoogle()
 			.then(socialAuthUser => {
 				// Create a user in Firebase Realtime Database
-				return props.firebase.user(socialAuthUser.user.uid).set(
+				return firebase.user(socialAuthUser.user.uid).set(
 					{
 						username: socialAuthUser.user.displayName,
 						email: socialAuthUser.user.email,
@@ -110,7 +91,7 @@ const SignInWithGoogleBase = props => {
 			.then(() => {
 				setError(null);
 				// Investigate if this this the correct approach
-				props.history.push(ROUTES.HOME.path);
+				history.push(ROUTES.HOME.path);
 			})
 			.catch(error => setError(error));
 		event.preventDefault();
@@ -128,13 +109,12 @@ const SignInWithGoogleBase = props => {
 	);
 };
 
-const SignInWithFacebookBase = props => {
-	const classes = useStyles();
+const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 	const [error, setError] = useState(null);
 	const onSubmit = event => {
-		props.firebase.signInWithFacebook().then(socialAuthUser => {
+		firebase.signInWithFacebook().then(socialAuthUser => {
 			// Create a user in your Firebase Realtime Database too
-			return props.firebase
+			return firebase
 				.user(socialAuthUser.user.uid)
 				.set({
 					username: socialAuthUser.additionalUserInfo.profile.name,
@@ -144,7 +124,7 @@ const SignInWithFacebookBase = props => {
 				.then(() => {
 					setError(null);
 					// Investigate if this this the correct approach
-					props.history.push(ROUTES.HOME.path);
+					history.push(ROUTES.HOME.path);
 				})
 				.catch(error => setError(error));
 		});
@@ -162,14 +142,27 @@ const SignInWithFacebookBase = props => {
 	);
 };
 
-const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
+SignInWithFacebookBase.propTypes = {
+	classes: PropTypes.object.isRequired
+};
+
+SignInWithGoogleBase.propTypes = {
+	classes: PropTypes.object.isRequired
+}
+
+const SignInForm = compose(
+	withRouter,
+	withFirebase
+)(SignInFormBase);
 
 const SignInWithGoogle = compose(
+	withStyles(styles),
 	withRouter,
 	withFirebase
 )(SignInWithGoogleBase);
 
 const SignInWithFacebook = compose(
+	withStyles(styles),
 	withRouter,
 	withFirebase
 )(SignInWithFacebookBase);
