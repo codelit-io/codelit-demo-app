@@ -7,11 +7,11 @@ import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
-import useStyles from "./styles";
+import styles from "./styles";
 import IconButton from "@material-ui/core/IconButton";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const PageHeader = ({ title, course, topic, subTopic, history }) => {
-	const classes = useStyles();
+const PageHeader = ({ title, course, topic, subTopic, history, classes }) => {
 	return (
 		<Fade in={true} timeout={{ enter: 1000 }}>
 			<Grid container spacing={4}>
@@ -54,4 +54,4 @@ const PageHeader = ({ title, course, topic, subTopic, history }) => {
 	);
 };
 
-export default PageHeader;
+export default withStyles(styles)(PageHeader);
