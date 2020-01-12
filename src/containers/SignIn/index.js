@@ -1,37 +1,28 @@
 import React, { useState } from "react";
 
 import * as ROUTES from "../../constants/routes";
-import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import EmailSignInForm from "./EmailSignInForm";
+import Grid from "@material-ui/core/Grid";
 
-import { PasswordForgetLink } from "../../components/PasswordForgot";
 import PageCard from "../../components/shared/PageCard";
-import PropTypes from "prop-types";
-import { SignUpLink } from "../SignUp";
 import { withFirebase } from "../../components/Firebase";
 import { withRouter } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
-	button: {
-		margin: theme.spacing(1)
-	},
-	input: {
-		margin: theme.spacing(1)
-	}
-});
+import SocialSignIn from "../../components/SocialSignIn/";
 
 const SignInPage = () => (
-	<>
-		<PageCard img="" title="Welcome Back!">
-			<SignInForm />
-			<SignInWithGoogle />
-			<SignInWithFacebook />
-			<PasswordForgetLink />
-			<SignUpLink />
-		</PageCard>
-	</>
+	<PageCard img="" title="Welcome Back!">
+		<Grid container spacing={4}>
+			<Grid item md={6}>
+				<SignInForm />
+			</Grid>
+			<Grid item md={6}>
+				<SocialSignIn />
+			</Grid>
+			<Grid item md={6}></Grid>
+		</Grid>
+	</PageCard>
 );
 
 const INITIAL_STATE = {
@@ -72,101 +63,11 @@ const SignInFormBase = props => {
 	);
 };
 
-const SignInWithGoogleBase = ({ firebase, classes, history }) => {
-	const [error, setError] = useState({ error: null });
-	const onSubmit = event => {
-		firebase
-			.signInWithGoogle()
-			.then(socialAuthUser => {
-				// Create a user in Firebase Realtime Database
-				return firebase.user(socialAuthUser.user.uid).set(
-					{
-						username: socialAuthUser.user.displayName,
-						email: socialAuthUser.user.email,
-						roles: {}
-					},
-					{ merge: true }
-				);
-			})
-			.then(() => {
-				setError(null);
-				// Investigate if this this the correct approach
-				history.push(ROUTES.HOME.path);
-			})
-			.catch(error => setError(error));
-		event.preventDefault();
-	};
 
-	return (
-		<form onSubmit={onSubmit}>
-			<Button color="primary" className={classes.button} type="submit">
-				{" "}
-				SIgn In with Google
-			</Button>
 
-			{error && <p>{error.message}</p>}
-		</form>
-	);
-};
+const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
 
-const SignInWithFacebookBase = ({ firebase, history, classes }) => {
-	const [error, setError] = useState(null);
-	const onSubmit = event => {
-		firebase.signInWithFacebook().then(socialAuthUser => {
-			// Create a user in your Firebase Realtime Database too
-			return firebase
-				.user(socialAuthUser.user.uid)
-				.set({
-					username: socialAuthUser.additionalUserInfo.profile.name,
-					email: socialAuthUser.additionalUserInfo.profile.email || "none",
-					roles: {}
-				})
-				.then(() => {
-					setError(null);
-					// Investigate if this this the correct approach
-					history.push(ROUTES.HOME.path);
-				})
-				.catch(error => setError(error));
-		});
-		event.preventDefault();
-	};
-
-	return (
-		<form onSubmit={onSubmit}>
-			<Button color="primary" className={classes.button} type="submit">
-				Sign In with Facebook
-			</Button>
-
-			{error && <p>{error.message}</p>}
-		</form>
-	);
-};
-
-SignInWithFacebookBase.propTypes = {
-	classes: PropTypes.object.isRequired
-};
-
-SignInWithGoogleBase.propTypes = {
-	classes: PropTypes.object.isRequired
-}
-
-const SignInForm = compose(
-	withRouter,
-	withFirebase
-)(SignInFormBase);
-
-const SignInWithGoogle = compose(
-	withStyles(styles),
-	withRouter,
-	withFirebase
-)(SignInWithGoogleBase);
-
-const SignInWithFacebook = compose(
-	withStyles(styles),
-	withRouter,
-	withFirebase
-)(SignInWithFacebookBase);
 
 export default SignInPage;
 
-export { SignInForm, SignInWithGoogle, SignInWithFacebook };
+export { SignInForm };
