@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 
+import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import Input from "@material-ui/core/Input";
+import withStyles from "@material-ui/core/styles/withStyles";
 import { withFirebase } from "../Firebase";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Input } from "@material-ui/core";
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	button: {
 		margin: theme.spacing(1)
 	},
 	input: {
 		margin: theme.spacing(1)
 	}
-}));
+});
 
 const INITIAL_STATE = {
 	passwordOne: "",
@@ -20,14 +21,13 @@ const INITIAL_STATE = {
 	error: null
 };
 
-const PasswordChangeForm = props => {
-	const classes = useStyles();
+const PasswordChangeForm = ({ firebase, classes }) => {
 	const [state, setState] = useState({ ...INITIAL_STATE });
 	const { passwordOne, passwordTwo, error } = state;
 	const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
 	const onSubmit = event => {
-		props.firebase
+		firebase
 			.passwordUpdate(passwordOne)
 			.then(() => {
 				setState({ ...INITIAL_STATE });
@@ -70,4 +70,4 @@ const PasswordChangeForm = props => {
 	);
 };
 
-export default withFirebase(PasswordChangeForm);
+export default compose(withStyles(styles), withFirebase)(PasswordChangeForm);
