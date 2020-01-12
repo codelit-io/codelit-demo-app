@@ -15,10 +15,10 @@ const PageHeader = ({ title, course, topic, subTopic, history, classes }) => {
 	return (
 		<Fade in={true} timeout={{ enter: 1000 }}>
 			<Grid container spacing={4}>
-				<Grid item xs={12} sm={12} md={4}>
+				<Grid item xs={12} sm={12} md={4}  className={classes.arrowSection}>
 					{history && history.location.pathname !== "/" && (
 						<IconButton aria-label="delete" onClick={() => history.goBack()}>
-							<ArrowBackIcon />
+							<ArrowBackIcon  className={classes.arrow}/>
 						</IconButton>
 					)}
 				</Grid>
