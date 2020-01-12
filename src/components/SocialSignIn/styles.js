@@ -21,10 +21,6 @@ const styles = theme => ({
 		margin: theme.spacing(),
 		backgroundColor: theme.palette.primary.main
 	},
-	form: {
-		width: "100%", // Fix IE 11 issue.
-		marginTop: theme.spacing(3)
-	},
 });
 
 export default styles;
