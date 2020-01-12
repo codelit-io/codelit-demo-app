@@ -14,6 +14,10 @@ const styles = theme => ({
 	},
 	input: {
 		margin: theme.spacing(1)
+	},
+
+	form: {
+		marginTop: theme.spacing(4)
 	}
 });
 
@@ -40,8 +44,8 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 	};
 
 	return (
-		<form onSubmit={onSubmit}>
-			<Button color="primary" className={classes.button} type="submit">
+		<form onSubmit={onSubmit} className={classes.form}>
+			<Button color="primary" variant="contained" className={classes.button} type="submit">
 				Sign In with Facebook
 			</Button>
 
