@@ -20,14 +20,13 @@ const Courses = ({ firebase, match, history}) => {
 
 	useEffect(() => {
 		setLoading(true);
-		firebase.coursesDb().on("value", snapshot => {
-			const coursesObject = snapshot.val();
-			setCourses(coursesObject[match.params.course]);
+		firebase.courses().on("child_added", snapshot => {
+			setCourses(snapshot.val());
 			setLoading(false);
 		});
 
 		return () => {
-			firebase.coursesDb().off();
+			firebase.courses().off();
 		};
 	}, [firebase, match]);
 
