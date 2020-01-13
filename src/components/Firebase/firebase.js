@@ -62,15 +62,12 @@ class Firebase {
 
 	/* Courses API */
 
-	courses = () => this.db.ref(`courses`).orderByChild("id");
+	courses = () => this.db.ref("courses");
 
 	topics = (course, topic) => this.db.ref(`courses/${course}/${topic}`);
 
-	subTopic = (topic, subTopic) =>
-		this.db
-			.ref(`courses/frontend/${topic}/topics`)
-			.orderByChild("label")
-			.equalTo(subTopic);
+	subTopic = (topic) =>
+		this.db.ref(`courses/frontend/${topic}/topics`);
 
 	// *** Merge Auth and DB User API *** //
 
