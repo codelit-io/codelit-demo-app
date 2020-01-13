@@ -22,8 +22,8 @@ class Firebase {
 
 		/* Helper */
 
-        this.serverValue = app.database.ServerValue;
-        this.fieldValue = app.firestore.FieldValue;
+		this.serverValue = app.database.ServerValue;
+		this.fieldValue = app.firestore.FieldValue;
 
 		this.emailAuthProvider = app.auth.EmailAuthProvider;
 
@@ -57,24 +57,18 @@ class Firebase {
 	/* User API */
 
 	user = uid => this.firestore.doc(`users/${uid}`);
-    
-    users = () => this.firestore.collection("users");
+
+	users = () => this.firestore.collection("users");
 
 	/* Courses API */
 
-	course = uid => this.firestore.doc(`courses/${uid}`);
+	courses = () => this.db.ref(`courses`).orderByChild("id");
 
-	// courses = () => this.firestore.collection("courses");
+	topics = (course, topic) => this.db.ref(`courses/${course}/${topic}`);
 
-	courseDb = uid => this.db.ref(`courses/${uid}`);
-
-	coursesDb = () => this.db.ref("courses");
-
-	topicDb = topic => this.db.ref(topic);
-
-	subTopicDb = (topic, subTopic) =>
+	subTopic = (topic, subTopic) =>
 		this.db
-			.ref(topic)
+			.ref(`courses/frontend/${topic}/topics`)
 			.orderByChild("label")
 			.equalTo(subTopic);
 
