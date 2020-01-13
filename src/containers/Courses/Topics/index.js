@@ -13,7 +13,7 @@ const Topics = ({ firebase, match, history }) => {
 	const TopicList = ({ topicsProp }) => (
 		<Grid container spacing={3}>
 			{topicsProp &&
-				topicsProp.length &&
+				topicsProp.length > 0 &&
 				topicsProp.map((topic, index) => (
 					<Grid item key={index} sm={12} md={6} xs={12}>
 						<MoCard topic={topic} key={index} icon={true}></MoCard>
@@ -27,7 +27,7 @@ const Topics = ({ firebase, match, history }) => {
 		/* change filtering by subTopic to id */
 		if (match.params.subTopic) {
 			firebase
-				.subTopic(match.params.topic, match.params.subTopic.replace(/-/g, " "))
+				.subTopic(match.params.topic)
 				.on("child_added", snapshot => {
 					setTopics(snapshot.val());
 					setLoading(false);
@@ -49,6 +49,7 @@ const Topics = ({ firebase, match, history }) => {
 		}
 
 		return () => {
+			firebase.subTopic().off();
 			firebase.topics().off();
 		};
 	}, [firebase, match]);
