@@ -1,10 +1,11 @@
 import React, { Suspense, useState } from "react";
-import Spinner from "../../../../components/shared/Spinner";
-import useStyles from "./styles";
-import ReactPlayer from "react-player";
 
-export const Component = ({ topics }) => {
-	const classes = useStyles();
+import ReactPlayer from "react-player";
+import Spinner from "../../../../components/shared/Spinner";
+import styles from "./styles";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const Component = ({ topics, classes }) => {
 	const [state, setState] = useState({ status: "" });
 	return (
 		<Suspense fallback={<Spinner loading={true} color="primary" />}>
@@ -38,3 +39,5 @@ export const Component = ({ topics }) => {
 		</Suspense>
 	);
 };
+
+export default withStyles(styles)(Component);

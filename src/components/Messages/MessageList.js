@@ -1,9 +1,8 @@
 import React from 'react';
 
-import MessageItem from './MessageItem';
-
 import List from "@material-ui/core/List";
 
+import MessageItem from './MessageItem';
 
 const MessageList = ({
   authUser,
@@ -11,7 +10,7 @@ const MessageList = ({
   onEditMessage,
   onRemoveMessage,
 }) => (
-  <List component="nav" aria-label="Messages">
+  <List>
     {messages.map(message => (
       <MessageItem
         authUser={authUser}

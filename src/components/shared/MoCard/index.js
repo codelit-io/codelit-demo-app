@@ -5,14 +5,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-import useStyles from "./styles";
+import styles from "./styles";
 import Fade from "@material-ui/core/Fade";
 import LockIcon from "@material-ui/icons/Lock";
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ topic, icon }) => {
-	const classes = useStyles();
-	console.log(topic)
+const MoCard = ({ topic, icon, classes }) => {    
 	return (
 		<Link
 			to={(topic && topic.url) || ""}
@@ -56,4 +55,4 @@ const MoCard = ({ topic, icon }) => {
 	);
 };
 
-export default MoCard;
+export default withStyles(styles)(MoCard);

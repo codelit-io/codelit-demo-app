@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 class MessageItem extends Component {
 	constructor(props) {
@@ -37,7 +37,11 @@ class MessageItem extends Component {
 		return (
 			<ListItem>
 				{editMode ? (
-					<input type="text" value={editText} onChange={this.onChangeEditText} />
+					<input
+						type="text"
+						value={editText}
+						onChange={this.onChangeEditText}
+					/>
 				) : (
 					<span>
 						{message.text}
@@ -46,26 +50,25 @@ class MessageItem extends Component {
 				)}
 
 				{authUser.uid === message.userId && (
-					<span>
+					<ButtonGroup variant="text" aria-label="Actions" color="primary">
 						{editMode ? (
 							<span>
-								<Button color="secondary" onClick={this.onSaveEditText}>
-									Save
-								</Button>
+								<Button onClick={this.onSaveEditText}>Save</Button>
 								<Button onClick={this.onToggleEditMode}>Reset</Button>
 							</span>
 						) : (
-							<Button color="primary" onClick={this.onToggleEditMode}>
-								Edit
-							</Button>
+							<Button onClick={this.onToggleEditMode}>Edit</Button>
 						)}
 
 						{!editMode && (
-							<Button color="secondary" type="button" onClick={() => onRemoveMessage(message.uid)}>
+							<Button
+								type="button"
+								onClick={() => onRemoveMessage(message.uid)}
+							>
 								Delete
 							</Button>
 						)}
-					</span>
+					</ButtonGroup>
 				)}
 			</ListItem>
 		);

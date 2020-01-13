@@ -10,6 +10,16 @@ const NavigationAuth = ({ authUser }) => (
 		<ListItem>
 			<Button>
 				<Link
+					to={ROUTES.HOME.path}
+					style={{ color: "black", textDecoration: "none" }}
+				>
+					Home
+				</Link>
+			</Button>
+		</ListItem>
+		<ListItem>
+			<Button>
+				<Link
 					to={ROUTES.ACCOUNT.path}
 					style={{ color: "black", textDecoration: "none" }}
 				>

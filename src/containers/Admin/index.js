@@ -6,17 +6,15 @@ import { withAuthorization, withEmailVerification } from '../../components/Sessi
 import { UserList, UserItem } from '../../components/Users';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
+import PageCard from '../../components/shared/PageCard';
 
 const AdminPage = () => (
-  <div>
-    <h1>Admin</h1>
-    <p>The Admin Page is accessible by every signed in admin user.</p>
-
+  <PageCard title="Admin">
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserItem} />
       <Route exact path={ROUTES.ADMIN.path} component={UserList} />
     </Switch>
-  </div>
+  </PageCard>
 );
 
 const condition = authUser =>

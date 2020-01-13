@@ -1,6 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
 	card: {
 		boxShadow: "0 0 51px 0 rgba(0,0,0,.08), 0 6px 18px 0 rgba(0,0,0,.05)",
 		"&:hover": {
@@ -27,7 +25,8 @@ const useStyles = makeStyles(theme => ({
 		textAlign: "center"
 	},
 	img: {
-		height: 200,
+		backgroundSize: "contain",
+		height: 280,
 		width: 200
 	},
 	link: {
@@ -47,6 +46,6 @@ const useStyles = makeStyles(theme => ({
 		top: "10px",
 		right: "10px"
 	}
-}));
+})
 
-export default useStyles;
+export default styles;

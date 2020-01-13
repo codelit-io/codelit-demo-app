@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-
-import { AuthUserContext } from "../Session";
-import { withFirebase } from "../Firebase";
-import MessageList from "./MessageList";
 import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
+import { AuthUserContext } from "../Session";
+import MessageList from "./MessageList";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import Spinner from "../shared/Spinner";
+import { withFirebase } from "../Firebase";
 
 class Messages extends Component {
 	constructor(props) {
@@ -13,7 +16,7 @@ class Messages extends Component {
 			text: "",
 			loading: false,
 			messages: [],
-			limit: 5
+			limit: 15
 		};
 	}
 
@@ -24,21 +27,18 @@ class Messages extends Component {
 	onListenForMessages = () => {
 		this.setState({ loading: true });
 
-		this.props.firebase
+		this.unsubscribe = this.props.firebase
 			.messages()
-			.orderByChild("createdAt")
-			.limitToLast(this.state.limit)
-			.on("value", snapshot => {
-				const messageObject = snapshot.val();
-
-				if (messageObject) {
-					const messageList = Object.keys(messageObject).map(key => ({
-						...messageObject[key],
-						uid: key
-					}));
-
+			.orderBy("createdAt", "desc")
+			.limit(this.state.limit)
+			.onSnapshot(snapshot => {
+				if (snapshot.size) {
+					let messages = [];
+					snapshot.forEach(doc =>
+						messages.push({ ...doc.data(), uid: doc.id })
+					);
 					this.setState({
-						messages: messageList,
+						messages: messages.reverse(),
 						loading: false
 					});
 				} else {
@@ -48,7 +48,7 @@ class Messages extends Component {
 	};
 
 	componentWillUnmount() {
-		this.props.firebase.messages().off();
+		this.unsubscribe();
 	}
 
 	onChangeText = event => {
@@ -56,10 +56,10 @@ class Messages extends Component {
 	};
 
 	onCreateMessage = (event, authUser) => {
-		this.props.firebase.messages().push({
+		this.props.firebase.messages().add({
 			text: this.state.text,
 			userId: authUser.uid,
-			createdAt: this.props.firebase.serverValue.TIMESTAMP
+			createdAt: this.props.firebase.fieldValue.serverTimestamp()
 		});
 
 		this.setState({ text: "" });
@@ -70,19 +70,22 @@ class Messages extends Component {
 	onEditMessage = (message, text) => {
 		const { uid, ...messageSnapshot } = message;
 
-		this.props.firebase.message(message.uid).set({
+		this.props.firebase.message(message.uid).update({
 			...messageSnapshot,
 			text,
-			editedAt: this.props.firebase.serverValue.TIMESTAMP
+			editedAt: this.props.firebase.fieldValue.serverTimestamp()
 		});
 	};
 
 	onRemoveMessage = uid => {
-		this.props.firebase.message(uid).remove();
+		this.props.firebase.message(uid).delete();
 	};
 
 	onNextPage = () => {
-		this.setState(state => ({ limit: state.limit + 5 }), this.onListenForMessages);
+		this.setState(
+			state => ({ limit: state.limit + 15 }),
+			this.onListenForMessages
+		);
 	};
 
 	render() {
@@ -92,19 +95,27 @@ class Messages extends Component {
 			<AuthUserContext.Consumer>
 				{authUser => (
 					<div>
-						{loading && <div>Loading ...</div>}
+						{loading && <Spinner loading={loading} />}
 
-						{messages && <MessageList authUser={authUser} messages={messages} onEditMessage={this.onEditMessage} onRemoveMessage={this.onRemoveMessage} />}
+						{messages && (
+							<MessageList
+								authUser={authUser}
+								messages={messages}
+								onEditMessage={this.onEditMessage}
+								onRemoveMessage={this.onRemoveMessage}
+							/>
+						)}
 
 						{!messages && <div>There are no messages ...</div>}
 						{!loading && messages && (
 							<Button variant="contained" onClick={this.onNextPage}>
+								<ExpandMoreIcon />
 								More
 							</Button>
 						)}
 						<form onSubmit={event => this.onCreateMessage(event, authUser)}>
-							<input type="text" value={text} onChange={this.onChangeText} />
-							<Button type="submit">Send</Button>
+							<Input type="text" value={text} onChange={this.onChangeText} />
+							<Button variant="contained" color="primary">Post <PostAddIcon /></Button>
 						</form>
 					</div>
 				)}
