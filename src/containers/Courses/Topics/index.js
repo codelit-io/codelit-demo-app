@@ -25,34 +25,31 @@ const Topics = ({ firebase, match, history }) => {
 	useEffect(() => {
 		setLoading(true);
 		/* change filtering by subTopic to id */
-
 		if (match.params.subTopic) {
 			firebase
-				.subTopicDb(
-					match.params.topic,
-					match.params.subTopic.replace(/-/g, " ")
-				)
+				.subTopic(match.params.topic, match.params.subTopic.replace(/-/g, " "))
 				.on("child_added", snapshot => {
-					const topics = snapshot.val();
-					setTopics(topics);
+					setTopics(snapshot.val());
 					setLoading(false);
 				});
 		} else {
-			firebase.topicDb(match.params.topic).on("value", snapshot => {
-				const topics = snapshot.val().map(topic => ({
-					...topic,
-					url: `/learn/${match.params.course}/${
-						topic.desc
-					}/${topic.label.replace(/ /g, "-")}`,
-					disable: !topic.stackblitz
-				}));
-				setTopics(topics);
-				setLoading(false);
-			});
+			firebase
+				.topics(match.params.course, match.params.topic)
+				.on("value", snapshot => {
+					const topics = snapshot.val().topics.map(topic => ({
+						...topic,
+						url: `/learn/${match.params.course}/${
+							topic.desc
+						}/${topic.label.replace(/ /g, "-")}`,
+						disable: !topic.stackblitz
+					}));
+					setTopics(topics);
+					setLoading(false);
+				});
 		}
 
 		return () => {
-			firebase.topicDb().off();
+			firebase.topics().off();
 		};
 	}, [firebase, match]);
 
