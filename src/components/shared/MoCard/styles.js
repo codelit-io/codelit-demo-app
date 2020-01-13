@@ -25,7 +25,8 @@ const styles = theme => ({
 		textAlign: "center"
 	},
 	img: {
-		height: 200,
+		backgroundSize: "contain",
+		height: 280,
 		width: 200
 	},
 	link: {
