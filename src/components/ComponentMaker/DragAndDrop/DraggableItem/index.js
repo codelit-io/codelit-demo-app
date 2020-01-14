@@ -1,9 +1,9 @@
 import React from "react";
 
 import Card from "@material-ui/core/Card";
-import Component from "../../Component";
+import MoComponent from "../../MoComponent";
 import { Draggable } from "react-beautiful-dnd";
-import { withStyles } from "@material-ui/core/styles/withStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
 	card: {
@@ -12,7 +12,7 @@ const styles = theme => ({
 	}
 });
 
-const DraggableItem = ({ draggableItem, index, classes }) => {
+const DraggableItemBase = ({ draggableItem, index, classes }) => {
 	return (
 		<Draggable draggableId={draggableItem.id} index={index}>
 			{provided => (
@@ -22,11 +22,12 @@ const DraggableItem = ({ draggableItem, index, classes }) => {
 					{...provided.draggableProps}
 					{...provided.dragHandleProps}
 				>
-					<Component {...draggableItem}></Component>
+					<MoComponent {...draggableItem}></MoComponent>
 				</Card>
 			)}
 		</Draggable>
 	);
 };
+const DraggableItem = withStyles(styles)(DraggableItemBase);
 
-export default withStyles(styles)(DraggableItem);
+export default DraggableItem;
