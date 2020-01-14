@@ -4,11 +4,11 @@ import DraggableItemList from "../DraggableItemList";
 import { reorder } from "../reorder.js";
 import { Grid } from "@material-ui/core";
 
-const DraggableContainer = props => {
-	const initial = props.list.map(item => {
+const DraggableContainer = ({ list }) => {
+	const initial = list.map((item, index) => {
 		const custom = {
-			id: item,
-			content: item
+			id: `${item}${index}`,
+			element: item
 		};
 		return custom;
 	});
