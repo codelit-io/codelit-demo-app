@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Component from "./Component";
 import Grid from "@material-ui/core/Grid";
 import MoCard from "../../../components/shared/MoCard";
 import { withAuthentication } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import PageHeader from "../../../components/shared/PageHeader";
+import Dnd from "../../../components/Dnd";
 
 const Topics = ({ firebase, match, history }) => {
 	const [topics, setTopics] = useState([]);
@@ -65,7 +65,7 @@ const Topics = ({ firebase, match, history }) => {
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					{match.params.subTopic && (
-						<Component {...match.params} topics={topics}></Component>
+						<Dnd {...match.params} topics={topics}></Dnd>
 					)}
 				</Grid>
 			</Grid>
