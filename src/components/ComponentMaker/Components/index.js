@@ -8,6 +8,7 @@ const Components = {
 	checkbox: React.lazy(() => import("@material-ui/core/Checkbox")),
 	slider: React.lazy(() => import("@material-ui/core/Slider")),
 	link: React.lazy(() => import("@material-ui/core/Link")),
+	typography: React.lazy(() => import("@material-ui/core/Typography")),
 };
 
 export default Components;
