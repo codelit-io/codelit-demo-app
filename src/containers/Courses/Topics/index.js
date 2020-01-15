@@ -4,7 +4,7 @@ import MoCard from "../../../components/shared/MoCard";
 import { withAuthentication } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import PageHeader from "../../../components/shared/PageHeader";
-import Dnd from "../../../components/Dnd";
+import Dnd from "../../../components/DragAndDrag";
 
 const Topics = ({ firebase, match, history }) => {
 	const [topics, setTopics] = useState([]);
