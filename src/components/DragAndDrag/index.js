@@ -1,17 +1,23 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+
+import Avatar from "@material-ui/core/Avatar";
+import Box from "@material-ui/core/Box";
+import CodeIcon from "@material-ui/icons/Code";
+import CheckIcon from "@material-ui/icons/Check";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import Grid from "@material-ui/core/Grid";
-import MoComponent from "../ComponentMaker/MoComponent";
-import Input from "@material-ui/core/Input";
 import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/FormControl";
+import MoComponent from "../ComponentMaker/MoComponent";
+import Typography from "@material-ui/core/Typography";
 // fake data generator
-// const generateItems = (count, offset = 0) =>
-// 	Array.from({ length: count }, (v, k) => k).map(k => ({
-// 		id: `item-${k + offset}`,
-// 		content: `item ${k + offset}`,
-// 		code: `<h1> I am a Heading 1</h1>`
-// 	}));
+/* const generateItems = (count, offset = 0) =>
+	Array.from({ length: count }, (v, k) => k).map(k => ({
+		id: `item-${k + offset}`,
+		content: `item ${k + offset}`,
+		code: `<h1> I am a Heading 1</h1>`
+	})); */
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -58,93 +64,8 @@ const getListStyle = isDraggingOver => ({
 	padding: grid
 });
 
-class Dnd extends Component {
-	state = {
-		items: [
-			{
-				id: "0",
-				label: "Button",
-				element: "button",
-				question: "<button> I am a Button <button> ",
-				answer: "<button> I am a Button </button>",
-				status: "😴"
-			},
-			{
-				id: "1",
-				label: "Paragraph",
-				element: "typography",
-				question: "I am a Paragraph </p>",
-				answer: "<p> I am a Paragraph </p>",
-				status: "🤕"
-			},
-			{
-				id: "2",
-				label: "Input",
-				element: "input",
-				question: "<input value='I am a text Input' type='NULL' />",
-				answer: "<input value='I am an Input' type='text' />",
-				status: "😷"
-			},
-			{
-				id: "3",
-				label: "Switch",
-				element: "switch",
-				question: "<switch> I am a Material switch",
-				answer: "<switch> I am a Material switch </switch>",
-				status: "🤒"
-			},
-			{
-				id: "4",
-				label: "Checkbox",
-				element: "checkbox",
-				question: "<input type='NULL' /> I am a checkbox",
-				answer: "<input type='checkbox' /> I am a checkbox",
-				status: "🤧"
-			},
-			{
-				id: "5",
-				label: "Slider",
-				element: "slider",
-				question: "<Slider > I am a Material Slider",
-				answer: "<Slider > I am a Material Slider </Slider>",
-				status: "🥵"
-			},
-			{
-				id: "6",
-				label: "Html Link",
-				element: "link",
-				question: "<a src='moskool.com'> I am an html link </a>",
-				answer: "<a href='moskool.com'> I am an html link </a>",
-				status: "😵"
-			},
-			{
-				id: "7",
-				label: "Html text Input",
-				element: "inputHtml",
-				question: "<input type='text />",
-				answer: "<input type='text />",
-				status: "🥶"
-			},
-			{
-				id: "8",
-				label: "Html submit button",
-				element: "buttonHtml",
-				question: "<button type='NULL'>I am a submit button :)</button>",
-				answer: "<button type='submit'>I am a submit button :)</button>",
-				status: "🤒"
-			}
-		],
-		selected: [
-			{
-				id: "12",
-				label: "Drop Elements 👇",
-				element: "typography",
-				question: "I am Awesome! 😎",
-				answer: "I am Awesome! 😎",
-				status: "🧐"
-			}
-		]
-	};
+const DragAndDrop = props => {
+	const [state, setState] = useState(props);
 	// state = {
 	// 	items: generateItems(10),
 	// 	selected: generateItems(5, 10)
@@ -154,14 +75,14 @@ class Dnd extends Component {
 	 * the IDs of the droppable container to the names of the
 	 * source arrays stored in the state.
 	 */
-	id2List = {
+	const id2List = {
 		droppable: "items",
 		droppable2: "selected"
 	};
 
-	getList = id => this.state[this.id2List[id]];
+	const getList = id => state[id2List[id]];
 
-	onDragEnd = result => {
+	const onDragEnd = result => {
 		const { source, destination } = result;
 
 		// dropped outside the list
@@ -170,141 +91,109 @@ class Dnd extends Component {
 		}
 
 		if (source.droppableId === destination.droppableId) {
-			const items = reorder(
-				this.getList(source.droppableId),
-				source.index,
-				destination.index
-			);
+			const items = reorder(getList(source.droppableId), source.index, destination.index);
 
-			let state = { items };
+			let newState = { items };
 
 			if (source.droppableId === "droppable2") {
-				state = { selected: items };
+				newState = { selected: items };
 			}
 
-			this.setState(state);
+			setState({ ...state, ...newState });
 		} else {
-			const result = move(
-				this.getList(source.droppableId),
-				this.getList(destination.droppableId),
-				source,
-				destination
-			);
+			const result = move(getList(source.droppableId), getList(destination.droppableId), source, destination);
 
-			this.setState({
+			setState({
 				items: result.droppable,
 				selected: result.droppable2
 			});
 		}
 	};
 
-	handleOnChagne = event => {
-		console.log(event);
+	const handleOnChagne = event => {
+		if (event.target.value.replace(/\s/g, "") === state.items[event.target.id].answer.replace(/\s/g, "")) {
+			setState({ ...state }, (state.items[event.target.id].status = <CheckIcon />));
+		}
 	};
 
 	// Normally you would want to split things out into separate components.
 	// But in this example everything is just done in one place for simplicity
-	render() {
-		return (
-			<DragDropContext onDragEnd={this.onDragEnd}>
-				<Grid container spacing={3}>
-					<Grid item xs={12} sm={6} md={6}>
-						<Droppable droppableId="droppable">
-							{(provided, snapshot) => (
-								<div
-									ref={provided.innerRef}
-									style={getListStyle(snapshot.isDraggingOver)}
-								>
-									{this.state.items.map((item, index) => (
-										<Draggable
-											key={item.id}
-											draggableId={item.id}
-											index={index}
-										>
-											{(provided, snapshot) => (
-												/* ********************** EACH ITEM/CAD in the drop in drag ********************** */
-												<div
-													ref={provided.innerRef}
-													{...provided.draggableProps}
-													{...provided.dragHandleProps}
-													style={style(
-														snapshot.isDragging,
-														provided.draggableProps.style
-													)}
-												>
-													<Grid container style={{ alignItems: "center" }}>
-														<Grid item sm={10} md={10}>
-															<h4>{item.label}</h4>
-														</Grid>
-														<Grid item sm={2} md={2}>
-															{item && item.status && (
-																<div
-																	style={{ fontSize: "30px", float: "right" }}
-																>
-																	{item.status}
-																</div>
-															)}
-														</Grid>
+	return (
+		<DragDropContext onDragEnd={onDragEnd}>
+			<Grid container spacing={3}>
+				<Grid item xs={12} sm={6} md={6}>
+					<Typography component="h6" variant="h4" style={{ textAlign: "center", marginBottom: "20px" }}>
+						<Box fontWeight="fontWeightLight">Questions</Box>
+					</Typography>
+					<Droppable droppableId="droppable">
+						{(provided, snapshot) => (
+							<div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+								{state.items.map((item, index) => (
+									<Draggable key={item.id} draggableId={item.id} index={index}>
+										{(provided, snapshot) => (
+											/* ********************** EACH ITEM/CAD in the drop in drag ********************** */
+											<div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={style(snapshot.isDragging, provided.draggableProps.style)}>
+												<Grid container style={{ alignItems: "center" }}>
+													<Grid item sm={1} md={1}>
+														<Avatar>{item.id}</Avatar>
 													</Grid>
-													<FormControl margin="normal" required fullWidth>
-														<InputLabel htmlFor="question">
-															Try This!
-														</InputLabel>
-														<Input
-															id={item.id}
-															name={item.id}
-															type="text"
-															onChange={this.handleOnChagne}
-															placeholder={item.question}
-														/>
-													</FormControl>
-												</div>
-											)}
-										</Draggable>
-									))}
-									{provided.placeholder}
-								</div>
-							)}
-						</Droppable>
-					</Grid>
-					<Grid item xs={12} sm={6} md={6}>
-						<Droppable droppableId="droppable2">
-							{(provided, snapshot) => (
-								<div
-									ref={provided.innerRef}
-									style={getListStyle(snapshot.isDraggingOver)}
-								>
-									{this.state.selected.map((item, index) => (
-										<Draggable
-											key={item.id}
-											draggableId={item.id}
-											index={index}
-										>
-											{(provided, snapshot) => (
-												<div
-													ref={provided.innerRef}
-													{...provided.draggableProps}
-													{...provided.dragHandleProps}
-													style={style(
-														snapshot.isDragging,
-														provided.draggableProps.style
-													)}
-												>
-													<h4> {item.label} </h4>
-													<MoComponent {...item}></MoComponent>
-												</div>
-											)}
-										</Draggable>
-									))}
-									{provided.placeholder}
-								</div>
-							)}
-						</Droppable>
-					</Grid>
+													<Grid item sm={9} md={9}>
+														<h4>{item.label}</h4>
+													</Grid>
+													<Grid item sm={2} md={2}>
+														{item && item.status && <div style={{ fontSize: "30px", float: "right" }}>{item.status}</div>}
+													</Grid>
+												</Grid>
+												<FormControl margin="normal" required fullWidth>
+													{/* <InputLabel htmlFor="question">
+														<CodeIcon />
+													</InputLabel> */}
+													<Input
+														id={item.id}
+														name={item.id}
+														type="text"
+														onChange={handleOnChagne}
+														defaultValue={item.question}
+														// inputProps={{
+														// 	maxLength: item.answer.length
+														// }}
+													/>
+												</FormControl>
+											</div>
+										)}
+									</Draggable>
+								))}
+								{provided.placeholder}
+							</div>
+						)}
+					</Droppable>
 				</Grid>
-			</DragDropContext>
-		);
-	}
-}
+				<Grid item xs={12} sm={6} md={6}>
+					<Typography component="h6" variant="h4" style={{ textAlign: "center", marginBottom: "20px" }}>
+						<Box fontWeight="fontWeightLight">Preview</Box>
+					</Typography>
 
-export default Dnd;
+					<Droppable droppableId="droppable2">
+						{(provided, snapshot) => (
+							<div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+								{state.selected.map((item, index) => (
+									<Draggable key={item.id} draggableId={item.id} index={index}>
+										{(provided, snapshot) => (
+											<div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={style(snapshot.isDragging, provided.draggableProps.style)}>
+												<h4> {item.label} </h4>
+												<MoComponent {...item}></MoComponent>
+											</div>
+										)}
+									</Draggable>
+								))}
+								{provided.placeholder}
+							</div>
+						)}
+					</Droppable>
+				</Grid>
+			</Grid>
+		</DragDropContext>
+	);
+};
+
+export default DragAndDrop;
