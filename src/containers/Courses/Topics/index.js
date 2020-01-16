@@ -4,7 +4,8 @@ import MoCard from "../../../components/shared/MoCard";
 import { withAuthentication } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import PageHeader from "../../../components/shared/PageHeader";
-import DragAndDrop from "../../../components/DragAndDrag";
+import Dnd from "../../../components/Dnd";
+import DragAndDrop from "../../../components/ComponentMaker/DragAndDrop/DraggableContainer";
 
 const Topics = ({ firebase, match, history }) => {
 	const [topics, setTopics] = useState([]);
@@ -21,7 +22,6 @@ const Topics = ({ firebase, match, history }) => {
 				))}
 		</Grid>
 	);
-
 	const data = {
 		items: [
 			{
@@ -140,7 +140,8 @@ const Topics = ({ firebase, match, history }) => {
 			<PageHeader course={match.params.course} topic={match.params.topic} subTopic={match.params.subTopic} history={history}></PageHeader>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
-					{match.params.subTopic && <DragAndDrop {...data} />}
+					{/* {match.params.subTopic && <Dnd {...data} />} */}
+					{match.params.subTopic && <DragAndDrop data={data} />}
 				</Grid>
 			</Grid>
 			<Grid container spacing={3}>
