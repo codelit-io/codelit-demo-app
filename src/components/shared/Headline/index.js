@@ -8,22 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
 	container: {
 		display: "flex"
-	},
-	paper: {
-		margin: theme.spacing(1)
-	},
-	svg: {
-		width: 100,
-		height: 100
-	},
-	polygon: {
-		fill: theme.palette.common.white,
-		stroke: theme.palette.divider,
-		strokeWidth: 1
 	}
 }));
 
-const Headline = () => {
+const Headline = ( ) => {
 	const classes = useStyles();
 	const [checked, setChecked] = React.useState(false);
 
@@ -32,36 +20,10 @@ const Headline = () => {
 	};
 
 	return (
-		<div className={classes.root}>
-			<FormControlLabel
-				control={<Switch checked={checked} onChange={handleChange} />}
-				label="Show"
-			/>
-			<div className={classes.container}>
-				<Zoom in={checked}>
-					<Paper elevation={4} className={classes.paper}>
-						<svg className={classes.svg}>
-							<polygon
-								points="0,100 50,00, 100,100"
-								className={classes.polygon}
-							/>
-						</svg>
-					</Paper>
-				</Zoom>
-				<Zoom
-					in={checked}
-					style={{ transitionDelay: checked ? "500ms" : "0ms" }}
-				>
-					<Paper elevation={4} className={classes.paper}>
-						<svg className={classes.svg}>
-							<polygon
-								points="0,100 50,00, 100,100"
-								className={classes.polygon}
-							/>
-						</svg>
-					</Paper>
-				</Zoom>
-			</div>
+		<div className={classes.container}>
+			<Grow in={checked} style={{ transitionDelay: checked ? "1200ms" : "0ms" }}>
+				<h1>Level 1</h1>
+			</Grow>
 		</div>
 	);
 };
