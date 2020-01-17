@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Avatar from "@material-ui/core/Avatar";
 import CheckIcon from "@material-ui/icons/Check";
@@ -7,86 +7,75 @@ import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import MoComponent from "../../MoComponent";
-import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
-	card: {
-		marginBottom: theme.spacing(2),
-		padding: theme.spacing(4),
-		userSelect: "none",
-		borderRadius: 5,
-		boxShadow: "0 0 114px 0 rgba(0,0,0,.08), 0 30px 25px 0 rgba(0,0,0,.05)",
-		// change background colour if dragging
-		background: "white"
-	}
-});
-
-const DraggableItemBase = ({ draggableItem, index, classes, listId, setNewLists }) => {
+const DraggableItem = ({
+	draggableItem,
+	index,
+	classes,
+	listId,
+	setNewLists
+}) => {
+	const [item, setItem] = useState(draggableItem);
 
 	const handleOnChagne = event => {
 		if (
-			event.target.value.replace(/\s/g, "") ===
-			draggableItem.answer.replace(/\s/g, "")
+			event.target.value.replace(/\s/g, "") === item.answer.replace(/\s/g, "")
 		) {
-			setNewLists(
-				{ ...draggableItem },
-				(draggableItem.status = <CheckIcon />)
-			);
+			setItem({ ...item, isCorrect: true, userAnswer: event.target.value });
+		} else {
+			setItem({ ...item, isCorrect: false, userAnswer: event.target.value });
 		}
+		setNewLists(item);
 	};
-	
+
 	return (
-		<Draggable
-			key={draggableItem.id}
-			draggableId={draggableItem.id}
-			index={index}
-		>
+		<Draggable key={item.id} draggableId={item.id} index={index}>
 			{provided => (
-				<div
-					ref={provided.innerRef}
-					{...provided.draggableProps}
-					{...provided.dragHandleProps}
-					className={classes.card}
-				>
-					<Grid container style={{ alignItems: "center" }}>
-						<Grid item sm={1} md={2}>
-							<Avatar>{draggableItem.id}</Avatar>
+					<div
+						ref={provided.innerRef}
+						{...provided.draggableProps}
+						{...provided.dragHandleProps}
+						className={`${classes.card} ${item.isCorrect && classes.correct}`}
+					>
+						<Grid container style={{ alignItems: "center" }}>
+							<Grid item xs={2} sm={3} md={2}>
+								<Avatar>{item.id}</Avatar>
+							</Grid>
+							<Grid item xs={8} sm={7} md={8}>
+								<h4>{item.label}</h4>
+							</Grid>
+							<Grid item xs={2} sm={2} md={2}>
+								{item && item.status && (
+									<div style={{ fontSize: "30px", float: "right" }}>
+										{item.isCorrect ? <CheckIcon /> : item.status}
+									</div>
+								)}
+							</Grid>
 						</Grid>
-						<Grid item sm={8} md={8}>
-							<h4>{draggableItem.label}</h4>
-						</Grid>
-						<Grid item sm={2} md={2}>
-							{draggableItem && draggableItem.status && (
-								<div style={{ fontSize: "30px", float: "right" }}>
-									{draggableItem.status}
-								</div>
-							)}
-						</Grid>
-					</Grid>
-					{listId === "items" ? (
-						<FormControl margin="normal" required fullWidth>
-							{/* <InputLabel htmlFor="question">
+						{listId === "leftList" ? (
+							<FormControl margin="normal" required fullWidth>
+								{/* <InputLabel htmlFor="question">
 												<CodeIcon />
 											</InputLabel> */}
-							<Input
-								id={draggableItem.id}
-								name={draggableItem.id}
-								type="text"
-								onChange={handleOnChagne}
-								defaultValue={draggableItem.question}
-								// inputProps={{
-								// 	maxLength: item.answer.length
-								// }}
-							/>
-						</FormControl>
-					) : (
-						<MoComponent {...draggableItem}></MoComponent>
-					)}
-				</div>
+								<Input
+									error={!item.isCorrect}
+									id={item.id}
+									name={item.id}
+									type="text"
+									onChange={handleOnChagne}
+									defaultValue={item.userAnswer || item.question}
+									inputProps={{
+										maxLength: item.answer.length + 10
+									}}
+								/>
+							</FormControl>
+						) : (
+							<MoComponent {...item}></MoComponent>
+						)}
+					</div>
 			)}
 		</Draggable>
 	);
 };
-const DraggableItem = withStyles(styles)(DraggableItemBase);
 
 export default DraggableItem;
