@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import Box from "@material-ui/core/Box";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableItemList from "../DraggableItemList";
 import { reorder } from "../reorder";
 import { Grid } from "@material-ui/core";
-import CheckIcon from "@material-ui/icons/Check";
 import { move } from "../move";
+import styles from "./styles";
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 /* A semi-generic way to handle multiple lists. Matches
  * the IDs of the droppable container to the names of the
  * source arrays stored in the state.
  */
 
-const DraggableContainer = ({ data }) => {
+const DraggableContainer = ({ data, classes }) => {
 	const [lists, setLists] = useState(data);
 
 	const getList = id => {
@@ -29,12 +32,11 @@ const DraggableContainer = ({ data }) => {
 				source.index,
 				destination.index
 			);
-			
-			debugger;
-			let newLists = { items };
 
-			if (source.droppableId === "selected") {
-				newLists = { selected: items };
+			let newLists = { leftList: items };
+
+			if (source.droppableId === "rightList") {
+				newLists = { rightList: items };
 			}
 
 			setLists({ ...lists, ...newLists });
@@ -49,20 +51,29 @@ const DraggableContainer = ({ data }) => {
 		}
 	};
 
-	const setNewLists = (result) => {
-		console.log(result)
-		// setLists({ ...lists, ...result });
-	}
+	const setNewLists = item => {
+		setLists({ ...lists });
+	};
 
 	return (
 		<DragDropContext onDragEnd={onDragEnd}>
 			<Grid container spacing={3}>
 				{Object.keys(lists).map((list, index) => (
-					<Grid key={index} item xs={12} sm={6} md={6} lg={4}>
+					<Grid key={index} item xs={12} sm={6} md={6} lg={6}>
+						<Typography variant="h4" gutterBottom className={classes.header}>
+							<Box fontWeight="fontWeightLight" className={classes.linkText}>
+								{list === "leftList" ? "Input Queue" : "Completed"}
+							</Box>
+						</Typography>
 						<Droppable droppableId={list}>
 							{provided => (
 								<span ref={provided.innerRef} {...provided.droppableProps}>
-									<DraggableItemList draggableItems={lists[list]} listId={list} setNewLists={setNewLists} />
+									<DraggableItemList
+										draggableItems={lists[list]}
+										listId={list}
+										setNewLists={setNewLists}
+										classes={classes}
+									/>
 									{provided.placeholder}
 								</span>
 							)}
@@ -74,4 +85,4 @@ const DraggableContainer = ({ data }) => {
 	);
 };
 
-export default DraggableContainer;
+export default withStyles(styles)(DraggableContainer);
