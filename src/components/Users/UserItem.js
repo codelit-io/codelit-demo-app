@@ -16,25 +16,24 @@ class UserItem extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.state.user)
+		console.log(this.state.user);
 		if (this.state.user) {
 			return;
 		}
 
 		this.setState({ loading: true });
-		console.log(this.props.match.params.id)
+		console.log(this.props.match.params.id);
 		this.unsubscribe = this.props.firebase
 			.user(this.props.match.params.id)
 			.onSnapshot(snapshot => {
-				console.log(snapshot)
+				console.log(snapshot);
 				this.setState({
 					user: snapshot.data(),
 					loading: false
 				});
 			});
-		debugger;
 	}
-
+	
 	componentWillUnmount() {
 		this.unsubscribe && this.unsubscribe();
 	}
