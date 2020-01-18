@@ -65,7 +65,7 @@ const DraggableContainer = ({ data, classes }) => {
 								{list === "leftList" ? "Input Queue" : "Completed"}
 							</Box>
 						</Typography>
-						<Droppable droppableId={list}>
+						<Droppable droppableId={list} style={{maxHeight: "500px"}}>
 							{provided => (
 								<span ref={provided.innerRef} {...provided.droppableProps}>
 									<DraggableItemList
@@ -74,7 +74,7 @@ const DraggableContainer = ({ data, classes }) => {
 										setNewLists={setNewLists}
 										classes={classes}
 									/>
-									{provided.placeholder}
+									<div style={{minHeight: 400, backgroundColor: "red"}}>{provided.placeholder}</div>
 								</span>
 							)}
 						</Droppable>
