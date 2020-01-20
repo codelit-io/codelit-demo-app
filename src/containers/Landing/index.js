@@ -8,9 +8,15 @@ import Typography from "@material-ui/core/Typography";
 const LandingPage = () => {
 	const topics = [
 		{
+			label: "Get Started",
+			desc: "Your first step to success",
+			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F016-elearning.png?alt=media&token=cae6ea58-363c-4e6f-a7fe-563bb30b34bc",
+			url: ROUTES.MASTER.path
+		},
+		{
 			label: "Start Learning",
-			desc: "Learn anything coding",
-			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F006-science.png?alt=media&token=9942d7dd-19c9-497e-8597-4cb59df6cdc7",
+			desc: "Explorer Front-end topics",
+			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F023-teaching.png?alt=media&token=9d079583-6608-4c1f-8762-c52c15179bcc",
 			url: ROUTES.LEARN.path
 		},
 		{
