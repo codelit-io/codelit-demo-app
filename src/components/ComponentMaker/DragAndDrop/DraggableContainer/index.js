@@ -60,12 +60,12 @@ const DraggableContainer = ({ data, classes }) => {
 			<Grid container spacing={3}>
 				{Object.keys(lists).map((list, index) => (
 					<Grid key={index} item xs={12} sm={6} md={6} lg={6}>
-						<Typography variant="h4" gutterBottom className={classes.header}>
-							<Box fontWeight="fontWeightLight" className={classes.linkText}>
-								{list === "leftList" ? "Input Queue" : "Completed"}
+						<Typography variant="h4" gutterBottom className={classes.dropZone}>
+							<Box fontWeight="fontWeightLight" className={classes.dropZone}>
+								{!index ? "Input Queue" : "Completed" }
 							</Box>
 						</Typography>
-						<Droppable droppableId={list} style={{maxHeight: "500px"}}>
+						<Droppable droppableId={list} style={{ maxHeight: "500px" }}>
 							{provided => (
 								<span ref={provided.innerRef} {...provided.droppableProps}>
 									<DraggableItemList
@@ -74,7 +74,25 @@ const DraggableContainer = ({ data, classes }) => {
 										setNewLists={setNewLists}
 										classes={classes}
 									/>
-									<div style={{minHeight: 400, backgroundColor: "red"}}>{provided.placeholder}</div>
+									{list === "rightList" && (
+										<div
+											style={{ minHeight: 400, border: "20px dashed #e6e6e6" }}
+										>
+											{" "}
+											<Typography
+												variant="h4"
+												gutterBottom
+												className={classes.dropZone}
+											>
+												<Box
+													fontWeight="fontWeightLight"
+													className={classes.dropZone}
+												>
+													Drop Here for preview <span role="img" aria-label="hand pointing down">👇</span>
+												</Box>
+											</Typography>
+										</div>
+									)}
 								</span>
 							)}
 						</Droppable>
