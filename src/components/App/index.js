@@ -4,6 +4,7 @@ import * as ROUTES from "../../constants/routes";
 import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Master from "../../containers/Master";
 import Spinner from "../../components/shared/Spinner";
 
 import { withAuthentication } from "../Session";
@@ -52,6 +53,7 @@ const App = () => (
 				<Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
 				<Route path={ROUTES.ADMIN.path} component={Admin} />
+				<Route path={ROUTES.MASTER.path} component={Master} />
 			</Container>
 		</Suspense>
 	</Router>
