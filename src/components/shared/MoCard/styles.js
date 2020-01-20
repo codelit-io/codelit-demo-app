@@ -1,8 +1,7 @@
 const styles = theme => ({
 	card: {
-		boxShadow: "0 0 51px 0 rgba(0,0,0,.08), 0 6px 18px 0 rgba(0,0,0,.05)",
+		boxShadow: "0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)",
 		"&:hover": {
-			// boxShadow: "0 0 51px 0 rgba(0,0,0,.08), 0 6px 18px 0 rgba(0,0,0,.05)",
 			transform: "translateY(-5px)",
 			backgroundColor: "#FFF"
 		},
