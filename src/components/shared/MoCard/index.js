@@ -11,7 +11,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ topic, icon, classes }) => {    
+const MoCard = ({ topic, icon, classes }) => {  
 	return (
 		<Link
 			to={(topic && topic.url) || ""}
