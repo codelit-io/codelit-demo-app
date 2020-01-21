@@ -8,6 +8,7 @@ import Master from "../../containers/Master";
 import Spinner from "../../components/shared/Spinner";
 
 import { withAuthentication } from "../Session";
+import SubTopic from "../../containers/Master/SubTopic";
 
 const Navigation = lazy(() => import("../Navigation"));
 const LandingPage = lazy(() => import("../../containers/Landing"));
@@ -53,7 +54,8 @@ const App = () => (
 				<Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
 				<Route path={ROUTES.ADMIN.path} component={Admin} />
-				<Route path={ROUTES.MASTER.path} component={Master} />
+				<Route exact path={ROUTES.MASTER.path} component={Master} />
+				<Route exact path={ROUTES.MASTER.path + "/:subTopic"} component={SubTopic} />
 			</Container>
 		</Suspense>
 	</Router>
