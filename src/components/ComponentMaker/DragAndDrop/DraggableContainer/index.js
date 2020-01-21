@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core";
 import { move } from "../move";
 import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
+import Title from "../../../shared/Title";
 import withStyles from "@material-ui/core/styles/withStyles";
 /* A semi-generic way to handle multiple lists. Matches
  * the IDs of the droppable container to the names of the
@@ -60,11 +61,7 @@ const DraggableContainer = ({ data, classes }) => {
 			<Grid container spacing={3}>
 				{Object.keys(lists).map((list, index) => (
 					<Grid key={index} item xs={12} sm={6} md={6} lg={6}>
-						<Typography variant="h4" gutterBottom className={classes.dropZone}>
-							<Box fontWeight="fontWeightLight" className={classes.dropZone}>
-								{!index ? "Input Queue" : "Completed" }
-							</Box>
-						</Typography>
+						<Title text={!index ? "Input Queue" : "Completed" } fade={list}/>
 						<Droppable droppableId={list} style={{ maxHeight: "500px" }}>
 							{provided => (
 								<span ref={provided.innerRef} {...provided.droppableProps}>
