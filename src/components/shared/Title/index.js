@@ -18,7 +18,7 @@ const classes = {
 const Title = ({ text, fade }) => {
 	return (
 		<Fade in={fade} timeout={{ enter: 1000 }}>
-			<Typography variant="h4" gutterBottom>
+			<Typography variant="h6" gutterBottom>
 				<Box fontWeight="fontWeightLight" style={classes.text}>
 					{text}
 				</Box>
