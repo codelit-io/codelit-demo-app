@@ -68,7 +68,10 @@ class Firebase {
 
 	subTopic = (topic) =>
 		this.db.ref(`courses/frontend/${topic}/topics`);
+	
+	getSubTopics = () => this.db.ref("subtopics");
 
+	getDb = (path) => this.db.ref();
 	// *** Merge Auth and DB User API *** //
 
 	onAuthUserListener = (next, fallback) =>
