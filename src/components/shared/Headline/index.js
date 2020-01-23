@@ -1,8 +1,5 @@
-import React from "react";
-import Switch from "@material-ui/core/Switch";
-import Paper from "@material-ui/core/Paper";
-import Zoom from "@material-ui/core/Zoom";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import React, { useState } from "react";
+import Grow from "@material-ui/core/Grow";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -11,17 +8,21 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Headline = ( ) => {
+const Headline = ({ isCorrect }) => {
 	const classes = useStyles();
-	const [checked, setChecked] = React.useState(false);
+	const [isVisible, setIsVisible] = useState(isCorrect);
 
 	const handleChange = () => {
-		setChecked(prev => !prev);
+		setIsVisible(prev => !prev);
 	};
 
 	return (
 		<div className={classes.container}>
-			<Grow in={checked} style={{ transitionDelay: checked ? "1200ms" : "0ms" }}>
+			<Grow
+				in={isVisible}
+				style={{ transformOrigin: "0 0 0" }}
+				{...(isVisible ? { timeout: 1000 } : {})}
+			>
 				<h1>Level 1</h1>
 			</Grow>
 		</div>
