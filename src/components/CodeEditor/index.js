@@ -34,7 +34,7 @@ const CodeEditor = ({ classes, subTopic }) => {
 		<Grid container spacing={6}>
 			<Spinner loading={loading} color="primary" />
 
-			<LiveProvider code={state.question} language="html">
+			<LiveProvider code={state.question} language="jsx"  noInline={false}>
 				<Grid item md={6} sm={12} xs={12}>
 					<Title text={state.label} fade={true} />
 					<Slide
@@ -47,7 +47,7 @@ const CodeEditor = ({ classes, subTopic }) => {
 							className={`${classes.editor} ${state.isCorrect &&
 								classes.correct}`}
 						>
-							<LiveEditor onChange={handleOnChange} theme={reactLiveTheme} noInline={true}/>
+							<LiveEditor onChange={handleOnChange} theme={reactLiveTheme}/>
 						</div>
 					</Slide>
 				</Grid>
