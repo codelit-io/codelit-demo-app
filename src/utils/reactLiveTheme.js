@@ -16,7 +16,7 @@ export const reactLiveTheme = {
 		{
 			types: ["attr-name", "string", "char", "builtin", "insterted"],
 			style: {
-				color: "hsl(75, 70%, 70%)"
+				color: "#C82829"
 			}
 		},
 		{
@@ -59,7 +59,7 @@ export const reactLiveTheme = {
 		{
 			types: ["atrule", "attr-value", "keyword"],
 			style: {
-				color: "#8959A8"
+				color: "#718C00"
 			}
 		},
 		{
