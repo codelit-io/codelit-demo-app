@@ -11,7 +11,7 @@ const LandingPage = () => {
 			label: "Get Started",
 			desc: "Your first step to success",
 			img: "https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F016-elearning.png?alt=media&token=cae6ea58-363c-4e6f-a7fe-563bb30b34bc",
-			url: ROUTES.MASTER.path
+			url: ROUTES.QUESTIONS.path
 		},
 		{
 			label: "Start Learning",
