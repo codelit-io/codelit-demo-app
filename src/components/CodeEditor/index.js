@@ -10,7 +10,7 @@ import Title from "../../components/shared/Title";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { reactLiveTheme } from "../../utils/reactLiveTheme";
 
-const CodeEditor = ({ classes, subTopic }) => {
+const CodeEditor = ({ classes, question }) => {
 	const [state, setState] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -27,11 +27,11 @@ const CodeEditor = ({ classes, subTopic }) => {
 	};
 
 	useEffect(() => {
-		setState(subTopic);
+		setState(question);
 		setLoading(false);
-	}, [subTopic]);
+	}, [question]);
 	return (
-		<Grid container spacing={6}>
+		<Grid container spacing={3} style={{width: "100%"}}>
 			<Spinner loading={loading} color="primary" />
 
 			<LiveProvider code={state.question} language="jsx"  noInline={false}>
