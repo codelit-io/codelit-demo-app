@@ -19,6 +19,7 @@ const Headline = ({ isCorrect }) => {
 	return (
 		<div className={classes.container}>
 			<Grow
+				onChange={handleChange}
 				in={isVisible}
 				style={{ transformOrigin: "0 0 0" }}
 				{...(isVisible ? { timeout: 1000 } : {})}
