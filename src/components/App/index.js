@@ -4,11 +4,11 @@ import * as ROUTES from "../../constants/routes";
 import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Master from "../../containers/Master";
 import Spinner from "../../components/shared/Spinner";
 
 import { withAuthentication } from "../Session";
-import SubTopic from "../../containers/Master/SubTopic";
+import Questions from "../../containers/Questions";
+import Question from "../../containers/Questions/Question";
 
 const Navigation = lazy(() => import("../Navigation"));
 const LandingPage = lazy(() => import("../../containers/Landing"));
@@ -54,8 +54,8 @@ const App = () => (
 				<Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
 				<Route path={ROUTES.ADMIN.path} component={Admin} />
-				<Route exact path={ROUTES.MASTER.path} component={Master} />
-				<Route exact path={ROUTES.MASTER.path + "/:subTopic"} component={SubTopic} />
+				<Route exact path={ROUTES.QUESTIONS.path} component={Questions} />
+				<Route exact path={ROUTES.QUESTIONS.path + "/:question"} component={Question} />
 			</Container>
 		</Suspense>
 	</Router>
