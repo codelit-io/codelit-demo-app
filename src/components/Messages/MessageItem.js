@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 class MessageItem extends Component {
 	constructor(props) {
@@ -50,7 +49,7 @@ class MessageItem extends Component {
 				)}
 
 				{authUser.uid === message.userId && (
-					<ButtonGroup variant="text" aria-label="Actions" color="primary">
+					<div>
 						{editMode ? (
 							<span>
 								<Button onClick={this.onSaveEditText}>Save</Button>
@@ -68,7 +67,7 @@ class MessageItem extends Component {
 								Delete
 							</Button>
 						)}
-					</ButtonGroup>
+					</div>
 				)}
 			</ListItem>
 		);
