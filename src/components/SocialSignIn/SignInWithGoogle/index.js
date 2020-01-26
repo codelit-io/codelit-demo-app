@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import PropTypes from "prop-types";
@@ -36,7 +35,7 @@ const SignInWithGoogleBase = ({ firebase, classes, history }) => {
 			.then(() => {
 				setError(null);
 				// Investigate if this this the correct approach
-				history.push(ROUTES.HOME.path);
+				history.goBack();
 			})
 			.catch(error => setError(error));
 		event.preventDefault();
