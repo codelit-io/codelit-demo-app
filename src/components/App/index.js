@@ -7,22 +7,22 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Spinner from "../../components/shared/Spinner";
 
 import { withAuthentication } from "../Session";
-import Questions from "../../containers/Questions";
-import Question from "../../containers/Questions/Question";
 
-const Navigation = lazy(() => import("../Navigation"));
-const LandingPage = lazy(() => import("../../containers/Landing"));
-const SignUp = lazy(() => import("../../containers/SignUp"));
-const SignIn = lazy(() => import("../../containers/SignIn"));
-const PasswordForgot = lazy(() => import("../PasswordForgot"));
-const Home = lazy(() => import("../../containers/Home"));
 const Account = lazy(() => import("../../containers/Account"));
 const Admin = lazy(() => import("../../containers/Admin"));
-const Topics = lazy(() => import("../../containers/Courses/Topics"));
 const Container = lazy(() => import("@material-ui/core/Container"));
 const Courses = lazy(() => import("../../containers/Courses"));
+const Home = lazy(() => import("../../containers/Home"));
+const LandingPage = lazy(() => import("../../containers/Landing"));
 const Learn = lazy(() => import("../../containers/Learn"));
+const Navigation = lazy(() => import("../Navigation"));
 const NotFound = lazy(() => import("../../components/NotFound"));
+const PasswordForgot = lazy(() => import("../PasswordForgot"));
+const Questions = lazy(() => import("../../containers/Questions"));
+const Question = lazy(() => import("../../containers/Questions/Question"));
+const SignUp = lazy(() => import("../../containers/SignUp"));
+const SignIn = lazy(() => import("../../containers/SignIn"));
+const Topics = lazy(() => import("../../containers/Courses/Topics"));
 
 const App = () => (
 	<Router>
