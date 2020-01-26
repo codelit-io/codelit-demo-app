@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
 import * as ROLES from "../../../constants/roles";
 
 import { compose } from "recompose";
@@ -67,7 +66,7 @@ const SignUpFormBase = ({ firebase, history, classes }) => {
 			})
 			.then(() => {
 				setState({ ...INITIAL_STATE });
-				history.push(ROUTES.HOME.path);
+				history.goBack();
 			})
 			.catch(error => {
 				if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
