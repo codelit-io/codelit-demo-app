@@ -3,8 +3,8 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import { AuthUserContext } from "../Session";
 import MessageList from "./MessageList";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PostAddIcon from '@material-ui/icons/PostAdd';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import Spinner from "../shared/Spinner";
 import { withFirebase } from "../Firebase";
 
@@ -56,14 +56,15 @@ class Messages extends Component {
 	};
 
 	onCreateMessage = (event, authUser) => {
-		this.props.firebase.messages().add({
-			text: this.state.text,
-			userId: authUser.uid,
-			createdAt: this.props.firebase.fieldValue.serverTimestamp()
-		});
+		if (this.state.text) {
+			this.props.firebase.messages().add({
+				text: this.state.text,
+				userId: authUser.uid,
+				createdAt: this.props.firebase.fieldValue.serverTimestamp()
+			});
 
-		this.setState({ text: "" });
-
+			this.setState({ text: "" });
+		}
 		event.preventDefault();
 	};
 
@@ -115,7 +116,9 @@ class Messages extends Component {
 						)}
 						<form onSubmit={event => this.onCreateMessage(event, authUser)}>
 							<Input type="text" value={text} onChange={this.onChangeText} />
-							<Button variant="contained" color="primary">Post <PostAddIcon /></Button>
+							<Button variant="contained" color="primary" type="submit">
+								Post <PostAddIcon />
+							</Button>
 						</form>
 					</div>
 				)}
