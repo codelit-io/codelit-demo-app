@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
 import { compose } from "recompose";
 import EmailSignInForm from "../../../components/EmailSignInForm";
 
@@ -23,7 +22,7 @@ const SignInFormBase = ({ firebase, history}) => {
 			.signInWithEmailAndPassword(email, password)
 			.then(() => {
 				setState({ ...INITIAL_STATE });
-				history.push(ROUTES.HOME.path);
+				history.goBack();
 			})
 			.catch(error => {
 				setState({ ...state, error });
