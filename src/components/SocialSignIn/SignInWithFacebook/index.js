@@ -36,7 +36,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 				.then(() => {
 					setError(null);
 					// Investigate if this this the correct approach
-					history.push(ROUTES.HOME.path);
+					history.goBack(ROUTES.QUESTIONS.path);
 				})
 				.catch(error => setError(error));
 		});
