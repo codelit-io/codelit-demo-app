@@ -19,21 +19,30 @@ const Questions = ({ firebase, history }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		firebase.getQuestions().on("value", snapshot => {
-			if (snapshot.val()) {
-				const questions = snapshot.val().map(question => ({
+		const unsubscribe = firebase._getQuestions().onSnapshot(snapshot => {
+			if (snapshot.size) {
+				let questions = [];
+				snapshot.forEach(doc => {
+					questions.push({
+						...doc.data(),
+						uid: doc.id
+					});
+				});
+
+				const questionsWithUrl = questions.map(question => ({
 					...question,
 					url: `/questions/${question.label.replace(/ /g, "-")}`
 				}));
-				setQuestions(questions);
+
+				setQuestions(questionsWithUrl);
 				setLoading(false);
 			} else {
 				setQuestions(null);
 				setLoading(false);
 			}
 		});
-
-		return () => firebase.getQuestions().off;
+		/* Unsubscribe from firebase on unmount */
+		return () => unsubscribe();
 	}, [firebase]);
 
 	return (
