@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { AuthUserContext } from "../../../components/Session";
 import BottomNav from "../../../components/BottomNav";
 import CodeEditor from "../../../components/CodeEditor";
 import PageHeader from "../../../components/shared/PageHeader";
@@ -40,7 +41,16 @@ const Question = ({ firebase, history, match }) => {
 			<PageHeader img="" title="Code Playground" history={history} />
 			<Spinner loading={loading} color="primary" />
 			<CodeEditor question={question} />
-			<BottomNav question={question} history={history} firebase={firebase} />
+			<AuthUserContext.Consumer>
+				{authUser => (
+					<BottomNav
+						authUser={authUser}
+						firebase={firebase}
+						history={history}
+						question={question}
+					/>
+				)}
+			</AuthUserContext.Consumer>
 		</>
 	);
 };
