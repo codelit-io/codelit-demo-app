@@ -39,7 +39,6 @@ class UserList extends Component {
 
 		return (
 			<div>
-				<h2>Users</h2>
 				{loading && <Spinner loading={loading} />}
 				<List>
 					{users.map(user => (
@@ -47,21 +46,22 @@ class UserList extends Component {
 							key={user.uid}
 							variant="body2"
 							to={{
-								pathname: `${ROUTES.ADMIN.path}/${user.uid}`,
+								pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
 								state: { user }
 							}}
 						>
 							<ListItem>
-								<div>
+								<span>
 									<strong>ID:</strong> {user.uid}
-								</div>
-								<div>
+								</span>
+								<br></br>
+								<span>
 									<strong>Email:</strong> {user.email}
-								</div>
-								<div>
+								</span>
+								<br></br>
+								<span>
 									<strong>Username:</strong> {user.username}
-								</div>
-								<div></div>
+								</span>
 							</ListItem>
 						</Link>
 					))}
