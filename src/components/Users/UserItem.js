@@ -16,6 +16,7 @@ class UserItem extends Component {
 	}
 
 	componentDidMount() {
+		console.log("hi");
 		if (this.state.user) {
 			return;
 		}
@@ -30,7 +31,7 @@ class UserItem extends Component {
 				});
 			});
 	}
-	
+
 	componentWillUnmount() {
 		this.unsubscribe && this.unsubscribe();
 	}
@@ -44,7 +45,7 @@ class UserItem extends Component {
 
 		return (
 			<div>
-				<h2>User ({this.props.match.params.id})</h2>
+				<h2>{this.props.match.params.id}</h2>
 				{loading && <div>Loading ...</div>}
 
 				{user && (
@@ -52,12 +53,15 @@ class UserItem extends Component {
 						<span>
 							<strong>ID:</strong> {user.uid}
 						</span>
+						<br></br>
 						<span>
 							<strong>Email:</strong> {user.email}
 						</span>
+						<br></br>
 						<span>
 							<strong>Username:</strong> {user.username}
 						</span>
+						<br></br>
 						<span>
 							<Button type="button" onClick={this.onSendPasswordResetEmail}>
 								Send Password Reset
