@@ -1,16 +1,17 @@
 /*  Pages */
-export const LANDING = { path: '/', title: 'New way to Mastering Front-end Development'};
-export const SIGN_UP = { path: '/signup', title: 'Sign up'};
-export const SIGN_IN = { path: '/signin', title: 'Sign in'};
-export const HOME = { path: '/home', title: 'Home Page'};
 export const ACCOUNT = { path: '/account', title: 'My account'};
 export const ADMIN = { path: '/admin', title: 'Admin Page'};
 export const ADMIN_DETAILS = { path: '/admin/:id', title: 'Admin Details'};
-export const ADMIN_ADD_QUESTION = { path: '/admin/add', title: 'Add New Question'};
-export const PASSWORD_FORGET = { path: '/pw-forget', title: 'Forgot Password'};
+export const ADMIN_QUESTIONS = { path: '/admin/questions', title: 'Questions'};
+export const ADMIN_USERS = { path: '/admin/users', title: 'Users'};
+
+export const HOME = { path: '/home', title: 'Home Page'};
+export const LANDING = { path: '/', title: 'New way to Mastering Front-end Development'};
 export const LEARN = { path: '/learn', title: 'Pick your career path'};
 export const QUESTIONS = { path: '/questions', title: 'Question'}
-export const BUILD_PROJECT = { path: '/build_project', title: 'Build your project'};
+export const SIGN_IN = { path: '/signin', title: 'Sign in'};
+export const SIGN_UP = { path: '/signup', title: 'Sign up'};
+export const PASSWORD_FORGET = { path: '/pw-forget', title: 'Forgot Password'};
 export const NOT_FOUND = {path: '/not_found', title: "Page Not Found"}
 
 /*  Course */
