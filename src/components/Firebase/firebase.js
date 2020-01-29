@@ -74,6 +74,7 @@ class Firebase {
 
 	getQuestion = id => this.db.ref(`questions/${id}`);
 
+	_getQuestion = uid => this.firestore.collection(`questions/${uid}`)
 	/* Get Questions */
 
 	getDb = (path) => this.db.ref();
