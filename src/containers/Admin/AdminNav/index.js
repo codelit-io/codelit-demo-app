@@ -7,18 +7,27 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import PeopleIcon from "@material-ui/icons/People";
 
 const AdminNav = ({ history }) => {
-	const [value, setValue] = useState(0);
+	const [value, setValue] = useState(history.location.pathname);
+	
 	return (
 		<BottomNavigation
 			value={value}
 			onChange={(event, newValue) => {
-                setValue(newValue);
-                history.push(newValue);
+				setValue(newValue);
+				history.push(newValue);
 			}}
 			showLabels
 		>
-			<BottomNavigationAction label="Users" value={ROUTES.ADMIN.path} icon={<PeopleIcon />} />
-			<BottomNavigationAction label="Add Question" value={ROUTES.ADMIN_ADD_QUESTION.path} icon={<AddIcon />} />
+			<BottomNavigationAction
+				label="Users"
+				value={ROUTES.ADMIN_USERS.path}
+				icon={<PeopleIcon />}
+			/>
+			<BottomNavigationAction
+				label="Questions"
+				value={ROUTES.ADMIN_QUESTIONS.path}
+				icon={<AddIcon />}
+			/>
 		</BottomNavigation>
 	);
 };
