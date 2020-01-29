@@ -4,7 +4,7 @@ const styles = theme => ({
 		borderRadius: "8px",
 		boxShadow:
 			"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)",
-		width: "100%",
+
         padding: "1.2em",
         transition: "all 500ms",
         font: "16px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
