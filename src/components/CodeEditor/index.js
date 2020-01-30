@@ -31,11 +31,11 @@ const CodeEditor = ({ classes, question }) => {
 		setLoading(false);
 	}, [question]);
 	return (
-		<Grid container spacing={3} style={{width: "100%"}}>
+		<Grid container spacing={4}>
 			<Spinner loading={loading} color="primary" />
 
 			<LiveProvider code={state.question} language="jsx"  noInline={false}>
-				<Grid item md={6} sm={12} xs={12}>
+				<Grid item md={6} sm={12} xs={12} style={{width: "100%"}}>
 					<Title text={state.label} fade={true} />
 					<Slide
 						direction="right"
