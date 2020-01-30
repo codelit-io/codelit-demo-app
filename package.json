@@ -8,6 +8,7 @@
     "@sentry/browser": "^5.11.0",
     "ace-builds": "^1.4.8",
     "firebase": "^7.2.2",
+    "material-table": "^1.56.1",
     "react": "^16.11.0",
     "react-beautiful-dnd": "^12.2.0",
     "react-dom": "^16.11.0",
