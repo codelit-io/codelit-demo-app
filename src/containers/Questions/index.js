@@ -19,7 +19,7 @@ const Questions = ({ firebase, history }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		const unsubscribe = firebase._getQuestions().onSnapshot(snapshot => {
+		const unsubscribe = firebase.questions().onSnapshot(snapshot => {
 			if (snapshot.size) {
 				let questions = [];
 				snapshot.forEach(doc => {
