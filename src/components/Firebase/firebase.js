@@ -70,7 +70,7 @@ class Firebase {
 		this.db.ref(`courses/frontend/${topic}/topics`);
 	
 	getQuestions = () => this.db.ref("questions");
-	_getQuestions = () => this.firestore.collection("questions");
+	questions = () => this.firestore.collection("questions");
 
 	getQuestion = id => this.db.ref(`questions/${id}`);
 
