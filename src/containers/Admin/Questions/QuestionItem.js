@@ -1,77 +1,71 @@
-import React, { Component } from "react";
-import ListItem from "@material-ui/core/ListItem";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
+import TableCell from "@material-ui/core/TableCell";
 
-class QuestionItem extends Component {
-	constructor(props) {
-		super(props);
+const QuestionItem = ({
+	authUser,
+	question,
+	onEditQuestion,
+	onRemoveQuestion
+}) => {
+	const [state, setState] = useState({
+		editMode: false,
+		editLabel: question.label
+	});
+	const { editMode, editLabel } = state;
 
-		this.state = {
-			editMode: false,
-			editText: this.props.question.text
-		};
-	}
-
-	onToggleEditMode = () => {
-		this.setState(state => ({
+	const onToggleEditMode = () => {
+		setState(state => ({
 			editMode: !state.editMode,
-			editText: this.props.question.text
+			editLabel: question.label
 		}));
 	};
 
-	onChangeEditText = event => {
-		this.setState({ editText: event.target.value });
+	const onChangeEditLabel = event => {
+		setState({ editLabel: event.target.value });
 	};
 
-	onSaveEditText = () => {
-		this.props.onEditQuestion(this.props.question, this.state.editText);
+	const onSaveEditLabel = () => {
+		onEditQuestion(question, state.editLabel);
 
-		this.setState({ editMode: false });
+		setState({ editMode: false });
 	};
 
-	render() {
-		const { authUser, question, onRemoveQuestion } = this.props;
-		const { editMode, editText } = this.state;
-
-		return (
-			<ListItem>
+	return (
+		<div>
+			<TableCell align="right">
 				{editMode ? (
-					<input
-						type="text"
-						value={editText}
-						onChange={this.onChangeEditText}
-					/>
+					<input type="text" value={editLabel} onChange={onChangeEditLabel} />
 				) : (
 					<span>
-						{question.text}
+						{question.label}
 						{question.editedAt && <span>(Edited)</span>}
 					</span>
 				)}
+			</TableCell>
+			{authUser.uid === question.userId && (
+				<TableCell align="right" colSpan={6}>
+					{editMode ? (
+						<span>
+							<Button onClick={onSaveEditLabel}>Save</Button>
+							<Button onClick={onToggleEditMode}>Reset</Button>
+						</span>
+					) : (
+						<Button onClick={onToggleEditMode}>Edit</Button>
+					)}
 
-				{authUser.uid === question.userId && (
-					<div>
-						{editMode ? (
-							<span>
-								<Button onClick={this.onSaveEditText}>Save</Button>
-								<Button onClick={this.onToggleEditMode}>Reset</Button>
-							</span>
-						) : (
-							<Button onClick={this.onToggleEditMode}>Edit</Button>
-						)}
-
-						{!editMode && (
-							<Button
-								type="button"
-								onClick={() => onRemoveQuestion(question.uid)}
-							>
-								Delete
-							</Button>
-						)}
-					</div>
-				)}
-			</ListItem>
-		);
-	}
-}
+					{!editMode && (
+						<Button
+							type="button"
+							onClick={() => onRemoveQuestion(question.uid)}
+						>
+							Delete
+						</Button>
+					)}
+				</TableCell>
+			)}
+		</div>
+	);
+};
 
 export default QuestionItem;
