@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 	}
 });
 
-const BottomNav = ({ authUser, firebase, question, history }) => {
+const BottomNav = ({ authUser, firebase, question, history, match }) => {
 	const classes = useStyles();
 
 	const [state, setState] = useState(question);
@@ -46,7 +46,7 @@ const BottomNav = ({ authUser, firebase, question, history }) => {
 			return;
 		}
 
-		firebase.getQuestion(Number(state.id) - 1).on("value", snapshot => {
+		firebase.question(Number(state.id) - 1).on("value", snapshot => {
 			setState({ ...question, ...snapshot.val() });
 			history.push(
 				`${ROUTES.QUESTIONS.path}/${snapshot.val().label.replace(/ /g, "-")}`
@@ -56,16 +56,15 @@ const BottomNav = ({ authUser, firebase, question, history }) => {
 
 	useEffect(() => {
 		setLoading(true);
+		const unsubscribe = firebase
+			.question(match.params.question)
+			.onSnapshot(snapshot => {
+				setState(snapshot.data());
+				setLoading(false);
+			});
 
-		firebase.getQuestion(question.id).on("value", snapshot => {
-			setState({ ...question, ...snapshot.val() });
-			setLoading(false);
-		});
-
-		return () => {
-			firebase.getQuestion().off();
-		};
-	}, [firebase, question]);
+		return () => unsubscribe();
+	}, [firebase, match]);
 
 	return (
 		<Slide direction="up" in={!loading} mountOnEnter unmountOnExit>
