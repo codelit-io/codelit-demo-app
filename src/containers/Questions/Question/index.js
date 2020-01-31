@@ -13,27 +13,14 @@ const Question = ({ firebase, history, match }) => {
 
 	// const CodeEditorBase = ({})
 	useEffect(() => {
-		const questionRoute = match.params.question;
+		const slug = match.params.question;
 		setLoading(true);
-		firebase.getQuestions().on("value", snapshot => {
-			const filteredQuestion = snapshot
-				.val()
-				.filter(
-					question => question.label === questionRoute.replace(/-/g, " ")
-				);
-
-			/* Future Update */
-			/* Fetch data based on post id rather than label */
-			/* Fetch individual posts instead of the whole thing */
-			/* Use FB collections to help with this */
-
-			setQuestion(filteredQuestion[0]);
+		const unsubscribe = firebase.question(slug).onSnapshot(snapshot => {
+			setQuestion(snapshot.data());
 			setLoading(false);
 		});
 
-		return () => {
-			firebase.getQuestions(questionRoute).off();
-		};
+		return () => unsubscribe();
 	}, [firebase, match]);
 
 	return (
@@ -47,6 +34,7 @@ const Question = ({ firebase, history, match }) => {
 						authUser={authUser}
 						firebase={firebase}
 						history={history}
+						match={match}
 						question={question}
 					/>
 				)}
