@@ -26,66 +26,77 @@ const BottomNav = ({ authUser, firebase, question, history, match }) => {
 	const classes = useStyles();
 
 	const [state, setState] = useState(question);
-	const [loading, setLoading] = useState();
+	const [isNext, setIsNext] = useState(true);
+	const [isPrev, setIsPrev] = useState(true);
 
 	const handleNextClick = () => {
-		setLoading(true);
-
-		firebase.getQuestion(Number(state.id) + 1).on("value", snapshot => {
-			setState({ ...question, ...snapshot.val() });
-			history.push(
-				`${ROUTES.QUESTIONS.path}/${snapshot.val().label.replace(/ /g, "-")}`
-			);
-		});
+		getQuestionById(Number(state.id) + 1);
 	};
 
 	const handlePreviousClick = () => {
-		setLoading(true);
-
 		if (state.id === "0") {
+			setIsPrev(false);
 			return;
 		}
 
-		firebase.question(Number(state.id) - 1).on("value", snapshot => {
-			setState({ ...question, ...snapshot.val() });
-			history.push(
-				`${ROUTES.QUESTIONS.path}/${snapshot.val().label.replace(/ /g, "-")}`
-			);
+		getQuestionById(Number(state.id) - 1);
+	};
+
+	const getQuestionById = id => {
+		firebase.getQuestionById(id).onSnapshot(snapshot => {
+			if (snapshot.size) {
+				setIsNext(true);
+				setIsPrev(true);
+				let question = [];
+				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
+				setState(question[0]);
+				history.push(ROUTES.QUESTIONS.path + "/" + question[0].slug);
+			} else {
+				setIsNext(false);
+			}
 		});
 	};
 
 	useEffect(() => {
-		setLoading(true);
+		if (state.id === "0") {
+			setIsPrev(false);
+			return;
+		}
 		const unsubscribe = firebase
 			.question(match.params.question)
 			.onSnapshot(snapshot => {
 				setState(snapshot.data());
-				setLoading(false);
 			});
 
 		return () => unsubscribe();
-	}, [firebase, match]);
+	}, [firebase, match, state]);
 
 	return (
-		<Slide direction="up" in={!loading} mountOnEnter unmountOnExit>
+		<Slide direction="up" in={!!question} mountOnEnter unmountOnExit>
 			<div>
 				<BottomNavigation
 					value={state}
 					className={classes.root}
 					showLabels={true}
 				>
-					<BottomNavigationAction
-						label="Previous"
-						onClick={handlePreviousClick}
-						icon={<NavigateBeforeIcon />}
-					/>
+					{isPrev && (
+						<BottomNavigationAction
+							label="Previous"
+							onClick={handlePreviousClick}
+							icon={<NavigateBeforeIcon />}
+						/>
+					)}
 					<BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-					<BottomNavigationAction label="Nearby" icon={<RestoreIcon />} />
-					<BottomNavigationAction
-						label="Next"
-						onClick={handleNextClick}
-						icon={<NavigateNextIcon />}
-					/>
+
+					<BottomNavigationAction label="Reset" icon={<RestoreIcon />} />
+
+					{isNext && (
+						<BottomNavigationAction
+							label="Next"
+							onClick={handleNextClick}
+							icon={<NavigateNextIcon />}
+						/>
+					)}
 				</BottomNavigation>
 
 				{authUser && authUser.roles && authUser.roles.ADMIN && (
