@@ -5,7 +5,8 @@ const QuestionsTable = ({
 	questions,
 	onEditQuestion,
 	onRemoveQuestion,
-	onCreateQuestion
+	onCreateQuestion,
+	handleRowClick
 }) => {
 	const [state, setState] = useState(questions);
 	const [columns] = useState([
@@ -21,6 +22,7 @@ const QuestionsTable = ({
 		questions &&
 		state && (
 			<MaterialTable
+				onRowClick={(event, rowData) => handleRowClick(rowData.slug)}
 				options={{ pageSize: 10, pageSizeOptions: [10, 20, 30, 40, 50] }}
 				title="Questions"
 				columns={columns}
