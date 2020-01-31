@@ -8,10 +8,9 @@ import { withAuthentication } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 
 const Question = ({ firebase, history, match }) => {
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
 
-	// const CodeEditorBase = ({})
 	useEffect(() => {
 		const slug = match.params.question;
 		setLoading(true);
