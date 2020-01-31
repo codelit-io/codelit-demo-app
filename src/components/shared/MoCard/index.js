@@ -14,7 +14,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 const MoCard = ({ topic, icon, classes }) => {  
 	return (
 		<Link
-			to={(topic && topic.url) || ""}
+			to={(topic && topic.url) || (topic && `questions/${topic.slug}`) || ""}
 			className={topic && topic.disable ? classes.disableLink : classes.link}
 		>
 			<Fade timeout={{ enter: 800 }} in={true}>
