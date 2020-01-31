@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+
+import * as ROUTES from "../../../constants/routes";
 import { AuthUserContext } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import { withFirebase } from "../../../components/Firebase";
 import QuestionsTable from "./QuestionsTable";
 
-const Questions = ({ firebase }) => {
+const Questions = ({ firebase, history }) => {
 	const [loading, setLoading] = useState(false);
 	const [question] = useState({
 		answer: "<button> I am a Button </button>",
@@ -57,7 +59,11 @@ const Questions = ({ firebase }) => {
 
 	const onRemoveQuestion = slug => {
 		firebase.question(slug).delete();
-	};
+    };
+    
+    const handleRowClick = (slug) => {
+        history.push(ROUTES.QUESTIONS.path + "/" + slug)
+    }
 
 	return (
 		<AuthUserContext.Consumer>
@@ -70,7 +76,8 @@ const Questions = ({ firebase }) => {
 							questions={questions}
 							onEditQuestion={onEditQuestion}
 							onRemoveQuestion={onRemoveQuestion}
-							onCreateQuestion={event => onCreateQuestion(event, authUser)}
+                            onCreateQuestion={event => onCreateQuestion(event, authUser)}
+                            handleRowClick={handleRowClick}
 						/>
 					)}
 				</>
