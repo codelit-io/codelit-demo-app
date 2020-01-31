@@ -31,44 +31,46 @@ const CodeEditor = ({ classes, question }) => {
 		setLoading(false);
 	}, [question]);
 	return (
-		<Grid container spacing={4}>
-			<Spinner loading={loading} color="primary" />
+		question && (
+			<Grid container spacing={4}>
+				<Spinner loading={loading} color="primary" />
 
-			<LiveProvider code={state.question} language="jsx"  noInline={false}>
-				<Grid item md={6} sm={12} xs={12} style={{width: "100%"}}>
-					<Title text={state.label} fade={true} />
-					<Slide
-						direction="right"
-						in={state.answer && true}
-						mountOnEnter
-						unmountOnExit
-					>
-						<div
-							className={`${classes.editor} ${state.isCorrect &&
-								classes.correct}`}
+				<LiveProvider code={state.question} language="jsx" noInline={false}>
+					<Grid item md={6} sm={12} xs={12} style={{ width: "100%" }}>
+						<Title text={state.label} fade={true} />
+						<Slide
+							direction="right"
+							in={state.answer && true}
+							mountOnEnter
+							unmountOnExit
 						>
-							<LiveEditor onChange={handleOnChange} theme={reactLiveTheme}/>
-						</div>
-					</Slide>
-				</Grid>
-				<Grid item md={6} sm={12} xs={12}>
-					<Title text="Code Preview" fade={true} />
-					<Slide
-						direction="left"
-						in={state.question && true}
-						mountOnEnter
-						unmountOnExit
-					>
-						<div>
-							<LivePreview className={classes.preview} />
-						</div>
-					</Slide>
-				</Grid>
-				<Grid item md={12} sm={12} xs={12}>
-					<Headline isCorrect={state && state.isCorrect} />
-				</Grid>
-			</LiveProvider>
-		</Grid>
+							<div
+								className={`${classes.editor} ${state.isCorrect &&
+									classes.correct}`}
+							>
+								<LiveEditor onChange={handleOnChange} theme={reactLiveTheme} />
+							</div>
+						</Slide>
+					</Grid>
+					<Grid item md={6} sm={12} xs={12}>
+						<Title text="Code Preview" fade={true} />
+						<Slide
+							direction="left"
+							in={state.question && true}
+							mountOnEnter
+							unmountOnExit
+						>
+							<div>
+								<LivePreview className={classes.preview} />
+							</div>
+						</Slide>
+					</Grid>
+					<Grid item md={12} sm={12} xs={12}>
+						<Headline isCorrect={state && state.isCorrect} />
+					</Grid>
+				</LiveProvider>
+			</Grid>
+		)
 	);
 };
 
