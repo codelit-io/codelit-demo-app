@@ -21,6 +21,7 @@ const QuestionsTable = ({
 		questions &&
 		state && (
 			<MaterialTable
+				options={{ pageSize: 10, pageSizeOptions: [10, 20, 30, 40, 50] }}
 				title="Questions"
 				columns={columns}
 				data={state}
@@ -29,35 +30,33 @@ const QuestionsTable = ({
 						new Promise(resolve => {
 							resolve();
 							setState(prevState => {
-								const data = [...prevState];
+								let data = [...prevState];
 								data.push(newData);
-								onCreateQuestion(data);
+								onCreateQuestion(newData);
 								return data;
 							});
 						}),
 					onRowUpdate: (newData, oldData) =>
 						new Promise(resolve => {
-							setTimeout(() => {
-								resolve();
-								if (oldData) {
-									setState(prevState => {
-										const data = [...prevState];
-										data[data.indexOf(oldData)] = newData;
-										return { ...prevState, ...data };
-									});
-								}
-							}, 600);
+							resolve();
+							if (oldData) {
+								setState(prevState => {
+									let data = [...prevState];
+									data[data.indexOf(oldData)] = newData;
+									onEditQuestion(newData);
+									return data;
+								});
+							}
 						}),
 					onRowDelete: oldData =>
 						new Promise(resolve => {
-							setTimeout(() => {
-								resolve();
-								setState(prevState => {
-									const data = [...prevState];
-									data.splice(data.indexOf(oldData), 1);
-									return { ...prevState, ...data };
-								});
-							}, 600);
+							resolve();
+							setState(prevState => {
+								let data = [...prevState];
+								data.splice(data.indexOf(oldData), 1);
+								onRemoveQuestion(oldData.slug);
+								return data;
+							});
 						})
 				}}
 			/>
