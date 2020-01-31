@@ -29,12 +29,7 @@ const Questions = ({ firebase, history }) => {
 					});
 				});
 
-				const questionsWithUrl = questions.map(question => ({
-					...question,
-					url: `/questions/${question.label.replace(/ /g, "-")}`
-				}));
-
-				setQuestions(questionsWithUrl);
+				setQuestions(questions);
 				setLoading(false);
 			} else {
 				setQuestions(null);
