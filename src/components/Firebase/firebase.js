@@ -66,18 +66,30 @@ class Firebase {
 
 	topics = (course, topic) => this.db.ref(`courses/${course}/${topic}`);
 
-	subTopic = (topic) =>
-		this.db.ref(`courses/frontend/${topic}/topics`);
-	
+	subTopic = topic => this.db.ref(`courses/frontend/${topic}/topics`);
+
 	getQuestions = () => this.db.ref("questions");
+
 	questions = () => this.firestore.collection("questions");
+
+	question = slug => this.firestore.collection("questions").doc(slug);
+
+	questionBySlug = slug =>
+		this.firestore.collection("questions").where("slug", "==", slug);
+
+	createQuestionBySlug = question =>
+		this.firestore
+			.collection("questions")
+			.doc(question.slug)
+			.set(question);
 
 	getQuestion = id => this.db.ref(`questions/${id}`);
 
-	_getQuestion = uid => this.firestore.collection(`questions/${uid}`)
+	_getQuestion = uid => this.firestore.collection(`questions/${uid}`);
+
 	/* Get Questions */
 
-	getDb = (path) => this.db.ref();
+	getDb = path => this.db.ref();
 
 	// *** Merge Auth and DB User API *** //
 
