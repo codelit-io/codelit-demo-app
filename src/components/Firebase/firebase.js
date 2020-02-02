@@ -75,7 +75,7 @@ class Firebase {
 	question = slug => this.firestore.collection("questions").doc(slug);
 
 	questionBySlug = slug =>
-		this.firestore.collection("questions").where("slug", "==", slug);
+	this.firestore.collection("questions").where("slug", "==", slug);
 
 	getQuestionById = id => this.firestore.collection("questions").where("id", "==", String(id));
 
