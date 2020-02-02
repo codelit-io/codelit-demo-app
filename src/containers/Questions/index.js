@@ -19,23 +19,26 @@ const Questions = ({ firebase, history }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		const unsubscribe = firebase.questions().onSnapshot(snapshot => {
-			if (snapshot.size) {
-				let questions = [];
-				snapshot.forEach(doc => {
-					questions.push({
-						...doc.data(),
-						uid: doc.id
+		const unsubscribe = firebase
+			.questions()
+			.orderBy("id")
+			.onSnapshot(snapshot => {
+				if (snapshot.size) {
+					let questions = [];
+					snapshot.forEach(doc => {
+						questions.push({
+							...doc.data(),
+							uid: doc.id
+						});
 					});
-				});
 
-				setQuestions(questions);
-				setLoading(false);
-			} else {
-				setQuestions(null);
-				setLoading(false);
-			}
-		});
+					setQuestions(questions);
+					setLoading(false);
+				} else {
+					setQuestions(null);
+					setLoading(false);
+				}
+			});
 		/* Unsubscribe from firebase on unmount */
 		return () => unsubscribe();
 	}, [firebase]);
