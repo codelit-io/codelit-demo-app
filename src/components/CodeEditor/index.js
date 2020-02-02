@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { LiveEditor, LiveProvider, LivePreview } from "react-live";
+import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import { Grid } from "@material-ui/core";
 import Headline from "../shared/Headline";
 import styles from "./styles";
@@ -10,7 +10,7 @@ import Title from "../../components/shared/Title";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { reactLiveTheme } from "../../utils/reactLiveTheme";
 
-const CodeEditor = ({ classes, question }) => {
+const CodeEditor = ({ classes, question, setIsCorrect }) => {
 	const [state, setState] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -18,18 +18,21 @@ const CodeEditor = ({ classes, question }) => {
 		if (userAnswer === "{}" || userAnswer === "") {
 			return;
 		}
-
 		if (userAnswer.replace(/\s/g, "") === state.answer.replace(/\s/g, "")) {
 			setState({ ...state, isCorrect: true, question: userAnswer });
+			setIsCorrect(true);
 		} else {
 			setState({ ...state, isCorrect: false, question: userAnswer });
+			setIsCorrect(false);
 		}
 	};
 
 	useEffect(() => {
 		setState(question);
 		setLoading(false);
+		return () => setState([]);
 	}, [question]);
+
 	return (
 		question && (
 			<Grid container spacing={4}>
@@ -56,7 +59,7 @@ const CodeEditor = ({ classes, question }) => {
 						<Title text="Code Preview" fade={true} />
 						<Slide
 							direction="left"
-							in={state.question && true}
+							in={question.isPlayground || state.isCorrect}
 							mountOnEnter
 							unmountOnExit
 						>
@@ -65,6 +68,11 @@ const CodeEditor = ({ classes, question }) => {
 							</div>
 						</Slide>
 					</Grid>
+					{question.isPlayground && (
+						<Grid item md={12} sm={12} xs={12}>
+							<LiveError />
+						</Grid>
+					)}
 					<Grid item md={12} sm={12} xs={12}>
 						<Headline isCorrect={state && state.isCorrect} />
 					</Grid>
