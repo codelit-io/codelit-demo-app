@@ -29,10 +29,10 @@ const config2 = {
 const MoConfettiBase = ({ isActive }) => {
 	return (
 		<>
-			<div style={{ position: "absolute", bottom: "0", left: "0" }}>
+			<div style={{ position: "fixed", bottom: "0", left: "0" }}>
 				<Confetti active={isActive} config={config} />
 			</div>
-			<div style={{ position: "absolute", bottom: "0", right: "0" }}>
+			<div style={{ position: "fixed", bottom: "0", right: "0" }}>
 				<Confetti active={isActive} config={config2} />
 			</div>
 		</>
