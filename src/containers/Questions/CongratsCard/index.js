@@ -1,30 +1,36 @@
-import React, { lazy } from "react";
+import React from "react";
 
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import Grow from "@material-ui/core/Grow";
+import Slide from "@material-ui/core/Slide";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import congrats from "../../../assets/congrats.png";
 
-const MoConfetti = lazy(() => import("../../../components/shared/MoConfetti"));
-
-const CongratsCard = ({ isActive, classes, triggerNextQuestion }) => {
+const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 	return (
 		<>
 			<div className={classes.container}>
 				<Grid container>
 					<Grid item md={6} sm={12} xs={12}>
-						<Grow in={isActive} timeout={{ enter: 2200, exit: 400 }} mountOnEnter unmountOnExit>
-							<img
-								alt="Congrats"
-								className={classes.img}
-								src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2Fcongrats.png?alt=media&token=b10c7d54-60ed-431c-8e1b-7081d61fabec"
-							/>
-						</Grow>
+						<Slide
+							direction="up"
+							in={isActive}
+							timeout={{ enter: 800, exit: 400 }}
+							
+						>
+							<img alt="Congrats" className={classes.img} src={congrats} />
+						</Slide>
 					</Grid>
 					<Grid item md={6} sm={12} xs={12}>
-						<Grow in={isActive} timeout={{ enter: 2200, exit: 400 }} mountOnEnter>
+						<Slide
+							direction="up"
+							in={isActive}
+							timeout={{ enter: 800, exit: 400 }}
+							mountOnEnter
+							unmountOnExit
+						>
 							<div>
 								<h1>Great work!</h1>
 								<Button
@@ -36,13 +42,14 @@ const CongratsCard = ({ isActive, classes, triggerNextQuestion }) => {
 									Next Question <ArrowForwardIcon />
 								</Button>
 							</div>
-						</Grow>
+						</Slide>
 					</Grid>
 				</Grid>
 			</div>
-			<MoConfetti isActive={isActive} />
 		</>
 	);
 };
+
+const CongratsCard = React.memo(CongratsCardBase);
 
 export default withStyles(styles)(CongratsCard);
