@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 
 import * as ROUTES from "../../../constants/routes";
 
@@ -9,6 +9,7 @@ import PageHeader from "../../../components/shared/PageHeader";
 import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
 
+const MoConfetti = lazy(() => import('../../../components/shared/MoConfetti'));
 const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
@@ -59,6 +60,8 @@ const Question = ({ firebase, history, match }) => {
 					/>
 				)}
 			</AuthUserContext.Consumer>
+
+			<MoConfetti isActive={isCorrect} />
 		</>
 	);
 };
