@@ -7,18 +7,15 @@ import Grow from "@material-ui/core/Grow";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoConfettiBase = lazy(() =>
-	import("../../../components/shared/MoConfetti")
-);
-const MoConfetti = React.memo(MoConfettiBase);
+const MoConfetti = lazy(() => import("../../../components/shared/MoConfetti"));
 
 const CongratsCard = ({ isActive, classes, triggerNextQuestion }) => {
 	return (
 		<>
 			<div className={classes.container}>
 				<Grid container>
-					<Grid item xs={12} md={12}>
-						<Grow in={isActive} timeout={{ enter: 800, exit: 400 }}>
+					<Grid item md={6} sm={12} xs={12}>
+						<Grow in={isActive} timeout={{ enter: 2200, exit: 400 }} mountOnEnter unmountOnExit>
 							<img
 								alt="Congrats"
 								className={classes.img}
@@ -26,16 +23,19 @@ const CongratsCard = ({ isActive, classes, triggerNextQuestion }) => {
 							/>
 						</Grow>
 					</Grid>
-					<Grid item xs={12} md={12}>
-						<Grow in={isActive} timeout={{ enter: 2400, exit: 200 }}>
-							<Button
-								variant="contained"
-								color="primary"
-								className={classes.button}
-								onClick={triggerNextQuestion}
-							>
-								Next Question <ArrowForwardIcon />
-							</Button>
+					<Grid item md={6} sm={12} xs={12}>
+						<Grow in={isActive} timeout={{ enter: 2200, exit: 400 }} mountOnEnter>
+							<div>
+								<h1>Great work!</h1>
+								<Button
+									variant="contained"
+									color="primary"
+									className={classes.button}
+									onClick={triggerNextQuestion}
+								>
+									Next Question <ArrowForwardIcon />
+								</Button>
+							</div>
 						</Grow>
 					</Grid>
 				</Grid>
