@@ -39,4 +39,6 @@ const MoConfettiBase = ({ isActive }) => {
 	);
 };
 
-export default MoConfettiBase;
+const MoConfetti = React.memo(MoConfettiBase);
+
+export default MoConfetti;
