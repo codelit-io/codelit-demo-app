@@ -4,12 +4,14 @@ import * as ROUTES from "../../../constants/routes";
 
 import { AuthUserContext } from "../../../components/Session";
 import CodeEditor from "../../../components/CodeEditor";
-import CongratsCard from "../CongratsCard";
 import PageHeader from "../../../components/shared/PageHeader";
+
 import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
 
-const MoConfetti = lazy(() => import('../../../components/shared/MoConfetti'));
+const CongratsCard = lazy(() => import("../CongratsCard"));
+const MoConfetti = lazy(() => import("../../../components/shared/MoConfetti"));
+
 const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
