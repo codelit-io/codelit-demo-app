@@ -1,14 +1,14 @@
-import React, {lazy} from "react";
+import React from "react";
 
-const Confetti = lazy(() => import('react-dom-confetti'));
+import Confetti from "react-dom-confetti";
 
 const config = {
 	angle: 50,
 	spread: 45,
 	startVelocity: 50,
 	elementCount: "42",
-	dragFriction: "0.03",
-	duration: "7000",
+	dragFriction: "0.04",
+	duration: "3000",
 	stagger: "12",
 	width: "17px",
 	height: "17px",
@@ -19,8 +19,8 @@ const config2 = {
 	spread: 45,
 	startVelocity: 50,
 	elementCount: "42",
-	dragFriction: "0.03",
-	duration: "7000",
+	dragFriction: "0.04",
+	duration: "3000",
 	stagger: "12",
 	width: "17px",
 	height: "17px",
