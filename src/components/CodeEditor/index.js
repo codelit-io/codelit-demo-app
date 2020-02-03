@@ -22,8 +22,7 @@ const CodeEditor = ({ classes, question, setIsCorrect }) => {
 			setState({ ...state, isCorrect: true, question: userAnswer });
 			setIsCorrect(true);
 		} else {
-			setState({ ...state, isCorrect: false, question: userAnswer });
-			setIsCorrect(false);
+			setState({ ...state, question: userAnswer });
 		}
 	};
 
