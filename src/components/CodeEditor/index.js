@@ -47,7 +47,7 @@ const CodeEditor = ({ classes, question, setIsCorrect }) => {
 							unmountOnExit
 						>
 							<div
-								className={`${classes.editor} ${state.isCorrect &&
+								className={`${classes.editor} ${classes.card} ${state.isCorrect &&
 									classes.correct}`}
 							>
 								<LiveEditor onChange={handleOnChange} theme={reactLiveTheme} />
@@ -63,7 +63,7 @@ const CodeEditor = ({ classes, question, setIsCorrect }) => {
 							unmountOnExit
 						>
 							<div>
-								<LivePreview className={classes.preview} />
+								<LivePreview className={`${classes.preview} ${classes.card}`} />
 							</div>
 						</Slide>
 					</Grid>
