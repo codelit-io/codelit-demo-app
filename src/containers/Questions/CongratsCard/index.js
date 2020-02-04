@@ -2,11 +2,12 @@ import React from "react";
 
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Button from "@material-ui/core/Button";
+import congrats from "../../../assets/congrats.png";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
 import styles from "./styles";
+import Title from "../../../components/shared/Title";
 import withStyles from "@material-ui/core/styles/withStyles";
-import congrats from "../../../assets/congrats.png";
 
 const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 	return (
@@ -18,7 +19,6 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 							direction="up"
 							in={isActive}
 							timeout={{ enter: 800, exit: 400 }}
-							
 						>
 							<img alt="Congrats" className={classes.img} src={congrats} />
 						</Slide>
@@ -32,7 +32,7 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 							unmountOnExit
 						>
 							<div>
-								<h1>Great work!</h1>
+								<Title text="👏Great work!👏" fade={isActive}/>
 								<Button
 									variant="contained"
 									color="primary"
