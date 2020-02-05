@@ -1,16 +1,15 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import * as ROUTES from "../../../constants/routes";
 
 import { AuthUserContext } from "../../../components/Session";
 import CodeEditor from "../../../components/CodeEditor";
-import PageHeader from "../../../components/shared/PageHeader";
+import CongratsCard from  "./CongratsCard"
 
+import MoConfetti from "../../../components/shared/MoConfetti"
+import PageHeader from "../../../components/shared/PageHeader";
 import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
-
-const CongratsCard = lazy(() => import("../CongratsCard"));
-const MoConfetti = lazy(() => import("../../../components/shared/MoConfetti"));
 
 const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
@@ -38,6 +37,7 @@ const Question = ({ firebase, history, match }) => {
 		const unsubscribe = firebase.question(slug).onSnapshot(snapshot => {
 			setQuestion(snapshot.data());
 			setLoading(false);
+			return;
 		});
 
 		return () => unsubscribe();
