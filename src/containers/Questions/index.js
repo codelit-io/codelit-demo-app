@@ -35,7 +35,7 @@ const Questions = ({ firebase, history }) => {
 					setQuestions(questions);
 					setLoading(false);
 				} else {
-					setQuestions(null);
+					setQuestions([]);
 					setLoading(false);
 				}
 			});
