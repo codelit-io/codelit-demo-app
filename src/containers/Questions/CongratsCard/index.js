@@ -37,7 +37,7 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 									variant="contained"
 									color="primary"
 									className={classes.button}
-									onClick={triggerNextQuestion}
+									onClick={() => triggerNextQuestion()}
 								>
 									Next Question <ArrowForwardIcon />
 								</Button>
