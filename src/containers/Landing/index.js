@@ -1,19 +1,17 @@
 import React from "react";
+
+import * as ROUTES from "../../constants/routes";
+import congrats from "../../assets/congrats.png";
 import Grid from "@material-ui/core/Grid";
 import MoCard from "../../components/shared/MoCard";
-import PageHeader from "../../components/shared/PageHeader";
-import * as ROUTES from "../../constants/routes";
+import styles from "./styles";
+import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
+import MoButton from "../../components/shared/MoButton";
 
-const LandingPage = () => {
+const LandingPage = ({ classes }) => {
 	const topics = [
-		{
-			label: "Get Started",
-			desc: "Your first step to success",
-			img:
-				"https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/icons%2F016-elearning.png?alt=media&token=cae6ea58-363c-4e6f-a7fe-563bb30b34bc",
-			url: ROUTES.QUESTIONS.path
-		},
 		{
 			label: "Playground",
 			desc: "Live React JSX environment",
@@ -39,8 +37,25 @@ const LandingPage = () => {
 
 	return (
 		<>
-			<PageHeader title={ROUTES.LANDING.title}></PageHeader>
-			<Grid container spacing={3}>
+			<Grid container spacing={3} className={classes.container}>
+				<Grid item sm={12} md={6} xs={12}>
+					<Typography component="div" className={classes.heroText}>
+						Learn React inspired development
+					</Typography>
+					<Typography className={classes.heroSubtitle}>
+						Experience a new visual way of learning frontend development
+					</Typography>
+					<MoButton text="Get Started" href={ROUTES.QUESTIONS.path}/>
+				</Grid>
+				<Grid item sm={12} md={6} xs={12}>
+					<Slide
+						direction="up"
+						in={congrats && true}
+						timeout={{ enter: 400, exit: 400 }}
+					>
+						<img alt="Congrats" className={classes.img} src={congrats} />
+					</Slide>
+				</Grid>
 				{topics.map((topic, index) => (
 					<Grid key={index} item sm={12} md={6} xs={12}>
 						<MoCard topic={topic}></MoCard>
@@ -61,4 +76,4 @@ const LandingPage = () => {
 	);
 };
 
-export default LandingPage;
+export default withStyles(styles)(LandingPage);
