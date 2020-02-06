@@ -15,7 +15,8 @@ const QuestionsTable = ({
 		{ title: "Answer", field: "answer" },
 		{ title: "Element", field: "element" },
 		{ title: "Id", field: "id", type: "numeric" },
-		{ title: "Status", field: "status" }
+		{ title: "Topic", field: "topic", },
+		{ title: "Language", field: "language" },
 	]);
 
 	return (
