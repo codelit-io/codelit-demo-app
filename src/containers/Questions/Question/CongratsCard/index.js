@@ -1,13 +1,11 @@
 import React from "react";
 
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import Button from "@material-ui/core/Button";
-import congrats from "../../../../assets/congrats.png";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
 import styles from "./styles";
 import Title from "../../../../components/shared/Title";
 import withStyles from "@material-ui/core/styles/withStyles";
+import MoButton from "../../../../components/shared/MoButton";
 
 const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 	return (
@@ -15,13 +13,6 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 			<div className={classes.container}>
 				<Grid container>
 					<Grid item md={6} sm={12} xs={12}>
-						<Slide
-							direction="up"
-							in={isActive}
-							timeout={{ enter: 400, exit: 400 }}
-						>
-							<img alt="Congrats" className={classes.img} src={congrats} />
-						</Slide>
 					</Grid>
 					<Grid item md={6} sm={12} xs={12}>
 						<Slide
@@ -33,14 +24,7 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 						>
 							<div>
 								<Title text="👏Great work!👏" fade={isActive} />
-								<Button
-									variant="contained"
-									color="primary"
-									className={classes.button}
-									onClick={() => triggerNextQuestion()}
-								>
-									Next Question <ArrowForwardIcon />
-								</Button>
+								<MoButton  text="Next Question" handleClick={triggerNextQuestion} />
 							</div>
 						</Slide>
 					</Grid>
