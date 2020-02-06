@@ -12,7 +12,7 @@ const Questions = ({ firebase, history }) => {
 
 	const QuestionsList = ({ questions }) =>
 		Object.keys(questions).map((question, index) => (
-			<Grid key={index} item xs={12} sm={12} md={6}>
+			<Grid key={index} item xs={6} sm={6} md={3}>
 				<MoCard topic={questions[question]}></MoCard>
 			</Grid>
 		));
@@ -47,7 +47,7 @@ const Questions = ({ firebase, history }) => {
 		<>
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
-			<Grid container spacing={3}>
+			<Grid container spacing={8}>
 				<QuestionsList questions={questions} />
 			</Grid>
 		</>
