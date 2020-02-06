@@ -1,4 +1,5 @@
 import React from "react";
+
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,10 +9,10 @@ import { Link } from "react-router-dom";
 import styles from "./styles";
 import Fade from "@material-ui/core/Fade";
 import LockIcon from "@material-ui/icons/Lock";
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ topic, icon, classes }) => {  
+const MoCard = ({ topic, icon, classes }) => {
 	return (
 		<Link
 			to={(topic && topic.url) || (topic && `questions/${topic.slug}`) || ""}
@@ -27,7 +28,9 @@ const MoCard = ({ topic, icon, classes }) => {
 						{topic && topic.disable && (
 							<LockIcon className={classes.lockIcon} />
 						)}
-						{icon && !topic.disable && <VolumeUpIcon className={classes.lockIcon} />}
+						{icon && !topic.disable && (
+							<VolumeUpIcon className={classes.lockIcon} />
+						)}
 						{topic && topic.img && (
 							<CardMedia
 								className={classes.img}
@@ -37,7 +40,7 @@ const MoCard = ({ topic, icon, classes }) => {
 						)}
 						<CardContent className={classes.cardContent}>
 							<Typography gutterBottom variant="h5" component="h2">
-								{topic && topic.label ? topic.label : "No Name"}
+								{topic && topic.label ? topic.topic || topic.label : "No Name"}
 							</Typography>
 							<Typography
 								className="desc"
@@ -45,7 +48,7 @@ const MoCard = ({ topic, icon, classes }) => {
 								color="textSecondary"
 								component="p"
 							>
-								{topic && topic.desc}
+								{topic && (topic.desc || topic.language)}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
