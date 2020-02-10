@@ -4,9 +4,9 @@ import * as ROUTES from "../../../constants/routes";
 
 import { AuthUserContext } from "../../../components/Session";
 import CodeEditor from "../../../components/CodeEditor";
-import CongratsCard from  "./CongratsCard"
+import CongratsCard from "./CongratsCard";
 
-import MoConfetti from "../../../components/shared/MoConfetti"
+import MoConfetti from "../../../components/shared/MoConfetti";
 import PageHeader from "../../../components/shared/PageHeader";
 import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
@@ -15,6 +15,17 @@ const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
 	const [isCorrect, setIsCorrect] = useState(false);
+
+	const triggerNextQuestion = authUser => {
+		const nextLevelId = Number(question.id) + 1;
+		getQuestionById(nextLevelId);
+		if (authUser) {
+			/* Prevents overwriting player level if played older questions */
+			/* TODO move me */
+			const level = nextLevelId > authUser.level ? nextLevelId : authUser.level;
+			firebase.user(authUser.uid).update({ level });
+		}
+	};
 
 	const getQuestionById = id => {
 		firebase.getQuestionById(id).onSnapshot(snapshot => {
@@ -58,7 +69,7 @@ const Question = ({ firebase, history, match }) => {
 					<CongratsCard
 						isActive={isCorrect}
 						authUser={authUser}
-						triggerNextQuestion={() => getQuestionById(Number(question.id) + 1)}
+						triggerNextQuestion={() => triggerNextQuestion(authUser)}
 					/>
 				)}
 			</AuthUserContext.Consumer>
