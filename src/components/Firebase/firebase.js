@@ -58,26 +58,27 @@ class Firebase {
 
 	user = uid => this.firestore.doc(`users/${uid}`);
 
+	currentUser = user => {
+		if (!user) {
+			return;
+		}
+		const uid = user.uid;
+		return this.firestore.doc(`users/${uid}`);
+	};
+
 	users = () => this.firestore.collection("users");
 
-	/* Courses API */
-
-	courses = () => this.db.ref("courses");
-
-	topics = (course, topic) => this.db.ref(`courses/${course}/${topic}`);
-
-	subTopic = topic => this.db.ref(`courses/frontend/${topic}/topics`);
-
-	getQuestions = () => this.db.ref("questions");
-
-	questions = () => this.firestore.collection("questions");
+	/* Questions API */
 
 	question = slug => this.firestore.collection("questions").doc(slug);
 
-	questionBySlug = slug =>
-	this.firestore.collection("questions").where("slug", "==", slug);
+	questions = () => this.firestore.collection("questions");
 
-	getQuestionById = id => this.firestore.collection("questions").where("id", "==", String(id));
+	questionBySlug = slug =>
+		this.firestore.collection("questions").where("slug", "==", slug);
+
+	getQuestionById = id =>
+		this.firestore.collection("questions").where("id", "==", String(id));
 
 	createQuestionBySlug = question =>
 		this.firestore
@@ -85,13 +86,7 @@ class Firebase {
 			.doc(question.slug)
 			.set(question);
 
-	getQuestion = id => this.db.ref(`questions/${id}`);
-
-	_getQuestion = uid => this.firestore.collection(`questions/${uid}`);
-
-	/* Get Questions */
-
-	getDb = path => this.db.ref();
+	/*  Levels */
 
 	// *** Merge Auth and DB User API *** //
 
@@ -114,6 +109,7 @@ class Firebase {
 							email: authUser.email,
 							emailVerified: authUser.emailVerified,
 							providerData: authUser.providerData,
+							level: authUser.level || 0,
 							...dbUser
 						};
 
