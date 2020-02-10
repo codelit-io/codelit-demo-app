@@ -12,35 +12,36 @@ import LockIcon from "@material-ui/icons/Lock";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ topic, icon, classes }) => {
+const MoCard = ({ item, icon, classes, userLevel }) => {
+	const disable = userLevel < item.id;
 	return (
 		<Link
-			to={(topic && topic.url) || (topic && `questions/${topic.slug}`) || ""}
-			className={topic && topic.disable ? classes.disableLink : classes.link}
+			to={(item && item.url) || (item && `questions/${item.slug}`) || ""}
+			className={item && disable ? classes.disableLink : classes.link}
 		>
 			<Fade timeout={{ enter: 800 }} in={true}>
 				<Card
-					className={`${classes.card} ${topic &&
-						topic.disable &&
+					className={`${classes.card} ${item &&
+						disable &&
 						classes.disableCard}`}
 				>
 					<CardActionArea className={classes.content}>
-						{topic && topic.disable && (
+						{item && disable && (
 							<LockIcon className={classes.lockIcon} />
 						)}
-						{icon && !topic.disable && (
+						{icon && !disable && (
 							<VolumeUpIcon className={classes.lockIcon} />
 						)}
-						{topic && topic.img && (
+						{item && item.img && (
 							<CardMedia
 								className={classes.img}
-								image={topic.img}
-								title={topic.label}
+								image={item.img}
+								title={item.label}
 							/>
 						)}
 						<CardContent className={classes.cardContent}>
 							<Typography gutterBottom variant="h5" component="h2">
-								{topic && topic.label ? topic.topic || topic.label : "No Name"}
+								{item && item.label ? item.item || item.label : "No Name"}
 							</Typography>
 							<Typography
 								className="desc"
@@ -48,7 +49,7 @@ const MoCard = ({ topic, icon, classes }) => {
 								color="textSecondary"
 								component="p"
 							>
-								{topic && (topic.desc || topic.language)}
+								{item && (item.desc || item.language)}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
