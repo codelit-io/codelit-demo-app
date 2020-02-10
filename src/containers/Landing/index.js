@@ -18,7 +18,7 @@ const LandingPage = ({ classes }) => {
 						Learn React inspired development
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
-						Experience a new visual way of learning frontend development
+						Experience a new visual way of learning frontend React and JSX development
 					</Typography>
 					<MoButton text="Get Started" href={ROUTES.QUESTIONS.path} />
 				</Grid>
