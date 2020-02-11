@@ -31,7 +31,6 @@ const Questions = ({ firebase, history }) => {
 				if (snapshot.size) {
 					let questions = [];
 					snapshot.forEach(doc => {
-						console.log(doc)
 						questions.push({
 							...doc.data(),
 							uid: doc.id
