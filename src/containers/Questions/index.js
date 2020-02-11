@@ -13,8 +13,8 @@ const Questions = ({ firebase, history }) => {
 
 	const QuestionsList = ({ authUser, questions }) => {
 		if (authUser) {
-			setUserLevel(authUser.level);
-		}
+			setUserLevel(authUser.level)
+		};
 		return questions.map((question, index) => (
 			<Grid key={index} item xs={6} sm={6} md={3}>
 				<MoCard userLevel={userLevel} item={question}></MoCard>
@@ -31,6 +31,7 @@ const Questions = ({ firebase, history }) => {
 				if (snapshot.size) {
 					let questions = [];
 					snapshot.forEach(doc => {
+						console.log(doc)
 						questions.push({
 							...doc.data(),
 							uid: doc.id
