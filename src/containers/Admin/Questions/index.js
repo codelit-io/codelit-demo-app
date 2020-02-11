@@ -11,7 +11,7 @@ const Questions = ({ firebase, history }) => {
 	const [question] = useState({
 		answer: "<button> I am a Button </button>",
 		element: "button",
-		id: "0",
+		id: 0,
 		isCorrect: false,
 		label: "Fix Html button tag syntax",
 		slug: "Fix-Html-button-tag-syntax",
@@ -40,6 +40,7 @@ const Questions = ({ firebase, history }) => {
 		if (question.label) {
 			firebase.createQuestionBySlug({
 				...event,
+				id: Number(event.id),
 				slug: event.label
 					.toLowerCase()
 					.trim()
@@ -53,6 +54,7 @@ const Questions = ({ firebase, history }) => {
 	const onEditQuestion = event => {
 		firebase.question(event.slug).update({
 			...event,
+			id: Number(event.id),
 			editedAt: firebase.fieldValue.serverTimestamp()
 		});
 	};
