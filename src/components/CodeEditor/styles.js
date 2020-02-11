@@ -19,9 +19,6 @@ const styles = theme => ({
 		display: "flex",
 		justifyContent: "center",
 		borderRadius: "8px",
-		[theme.breakpoints.up(600)]: {
-			width: "300px"
-		}
 	},
 	card: {
 		minHeight: "60px",
