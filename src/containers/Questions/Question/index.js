@@ -28,7 +28,6 @@ const Question = ({ firebase, history, match }) => {
 	};
 
 	const getQuestionById = id => {
-		console.log(id)
 		firebase.getQuestionById(id).onSnapshot(snapshot => {
 			if (snapshot.size) {
 				let question = [];
@@ -40,6 +39,18 @@ const Question = ({ firebase, history, match }) => {
 				setIsCorrect(false);
 			}
 		});
+	};
+
+	const handleOnChange = userAnswer => {
+		if (userAnswer === "{}" || userAnswer === "") {
+			return;
+		}
+		if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
+			setQuestion({ ...question, isCorrect: true, question: userAnswer });
+			setIsCorrect(true);
+		} else {
+			setQuestion({ ...question, question: userAnswer });
+		}
 	};
 
 	useEffect(() => {
@@ -60,10 +71,7 @@ const Question = ({ firebase, history, match }) => {
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
 
-			<CodeEditor
-				question={question}
-				setIsCorrect={isCorrect => setIsCorrect(isCorrect)}
-			/>
+			<CodeEditor handleOnChange={handleOnChange} question={question} />
 
 			<AuthUserContext.Consumer>
 				{authUser => (
