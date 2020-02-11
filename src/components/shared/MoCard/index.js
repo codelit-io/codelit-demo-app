@@ -13,7 +13,8 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoCard = ({ item, icon, classes, userLevel }) => {
-	const disable = userLevel < item.id;
+	const disable = userLevel <= Number(item.id);
+
 	return (
 		<Link
 			to={(item && item.url) || (item && `questions/${item.slug}`) || ""}
