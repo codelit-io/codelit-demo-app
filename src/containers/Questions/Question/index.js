@@ -28,6 +28,7 @@ const Question = ({ firebase, history, match }) => {
 	};
 
 	const getQuestionById = id => {
+		console.log(id)
 		firebase.getQuestionById(id).onSnapshot(snapshot => {
 			if (snapshot.size) {
 				let question = [];
