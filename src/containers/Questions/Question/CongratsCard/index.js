@@ -24,7 +24,7 @@ const CongratsCardBase = ({ isActive, classes, triggerNextQuestion }) => {
 						>
 							<div>
 								<Title text="👏Great work!👏" fade={isActive} />
-								<MoButton  text="Next Question" handleClick={triggerNextQuestion} />
+								<MoButton  text="Next Question" handleClick={() => triggerNextQuestion()} />
 							</div>
 						</Slide>
 					</Grid>
