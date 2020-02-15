@@ -14,7 +14,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoCard = ({ item, icon, classes, userLevel }) => {
 	const disable = userLevel <= Number(item.id) && Number(item.id) !== 0;
-debugger
 	return (
 		<Link
 			to={(item && item.url) || (item && `questions/${item.slug}`) || ""}
