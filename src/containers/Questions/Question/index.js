@@ -18,6 +18,7 @@ const Question = ({ firebase, history, match }) => {
 
 	const triggerNextQuestion = authUser => {
 		const nextLevelId = Number(question.id) + 1;
+		setQuestion({})
 		getQuestionById(nextLevelId);
 		if (authUser) {
 			/* Prevents overwriting player level if played older questions */
@@ -52,7 +53,7 @@ const Question = ({ firebase, history, match }) => {
 			setQuestion({ ...question, question: userAnswer });
 		}
 	};
-
+	
 	useEffect(() => {
 		const slug = match.params.question;
 		setLoading(true);
