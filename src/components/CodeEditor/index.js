@@ -19,6 +19,7 @@ const CodeEditor = ({ classes, question, handleOnChange }) => {
 						direction="right"
 						in={question.label && true}
 						mountOnEnter
+						timeout={{ enter: 400, exit: 400 }}
 						unmountOnExit
 					>
 						<div
@@ -34,8 +35,9 @@ const CodeEditor = ({ classes, question, handleOnChange }) => {
 					<Title text="Code Preview" fade={true} />
 					<Slide
 						direction="left"
-						in={question.isPlayground || question.isCorrect}
+						in={question.isPlayground || question.question}
 						mountOnEnter
+						timeout={{ enter: 400, exit: 400 }}
 						unmountOnExit
 					>
 						<div className={classes.browserMockup}>
