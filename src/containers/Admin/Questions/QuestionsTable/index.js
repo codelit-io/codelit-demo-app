@@ -23,7 +23,7 @@ const QuestionsTable = ({
 		questions &&
 		state && (
 			<MaterialTable
-				onRowClick={(event, rowData) => handleRowClick(rowData.slug)}
+				onRowClick={(event, rowData) => handleRowClick(rowData.id)}
 				options={{ pageSize: 10, pageSizeOptions: [10, 20, 30, 40, 50] }}
 				title="Questions"
 				columns={columns}
@@ -57,7 +57,7 @@ const QuestionsTable = ({
 							setState(prevState => {
 								let data = [...prevState];
 								data.splice(data.indexOf(oldData), 1);
-								onRemoveQuestion(oldData.slug);
+								onRemoveQuestion(oldData.uid);
 								return data;
 							});
 						})
