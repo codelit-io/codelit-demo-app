@@ -18,8 +18,10 @@ const Question = ({ firebase, history, match }) => {
 
 	const triggerNextQuestion = authUser => {
 		const nextLevelId = Number(question.id) + 1;
-		setQuestion({})
-		getQuestionById(nextLevelId);
+		setQuestion({});
+
+		pushToNewLevel(nextLevelId);
+
 		if (authUser) {
 			/* Prevents overwriting player level if played older questions */
 			/* TODO move me */
@@ -28,18 +30,8 @@ const Question = ({ firebase, history, match }) => {
 		}
 	};
 
-	const getQuestionById = id => {
-		firebase.getQuestionById(id).onSnapshot(snapshot => {
-			if (snapshot.size) {
-				let question = [];
-				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
-				history.push(ROUTES.QUESTIONS.path + "/" + question[0].slug);
-				// setQuestion(question[0]);
-			} else {
-				setQuestion({});
-				setIsCorrect(false);
-			}
-		});
+	const pushToNewLevel = id => {
+		history.push(ROUTES.QUESTIONS.path + "/" + id);
 	};
 
 	const handleOnChange = userAnswer => {
@@ -53,16 +45,23 @@ const Question = ({ firebase, history, match }) => {
 			setQuestion({ ...question, question: userAnswer });
 		}
 	};
-	
+
 	useEffect(() => {
-		const slug = match.params.question;
+		const id = match.params.question;
 		setLoading(true);
 		setIsCorrect(false);
-		const unsubscribe = firebase.question(slug).onSnapshot(snapshot => {
-			setQuestion(snapshot.data());
+		const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
+			if (snapshot.size) {
+				let question = [];
+				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
+				setQuestion(question[0]);
+			} else {
+				setQuestion({});
+				setIsCorrect(false);
+			}
 			setLoading(false);
-			return;
 		});
+
 		return () => unsubscribe();
 	}, [firebase, match]);
 
@@ -71,7 +70,12 @@ const Question = ({ firebase, history, match }) => {
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
 
-			{question && <CodeEditor handleOnChange={(userAnswer) => handleOnChange(userAnswer)} question={question} />}
+			{question && (
+				<CodeEditor
+					handleOnChange={userAnswer => handleOnChange(userAnswer)}
+					question={question}
+				/>
+			)}
 
 			<AuthUserContext.Consumer>
 				{authUser => (
