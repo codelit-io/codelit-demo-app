@@ -51,12 +51,12 @@ const Question = ({ firebase, history, match }) => {
 		setLoading(true);
 		setIsCorrect(false);
 		const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
-			setQuestion();
 			if (snapshot.size) {
 				let question = [];
 				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
 				setQuestion(question[0]);
 			} else {
+				setQuestion();
 				setIsCorrect(false);
 			}
 			setLoading(false);
