@@ -8,16 +8,6 @@ import QuestionsTable from "./QuestionsTable";
 
 const Questions = ({ firebase, history }) => {
 	const [loading, setLoading] = useState(false);
-	const [question] = useState({
-		answer: "<button> I am a Button </button>",
-		element: "button",
-		id: 0,
-		isCorrect: false,
-		label: "Fix Html button tag syntax",
-		slug: "Fix-Html-button-tag-syntax",
-		question: "<button> I am a Button <button>",
-		status: "😴"
-	});
 	const [questions, setQuestions] = useState(null);
 
 	useEffect(() => {
@@ -37,14 +27,10 @@ const Questions = ({ firebase, history }) => {
 	}, [firebase]);
 
 	const onCreateQuestion = (event, authUser) => {
-		if (question.label) {
-			firebase.createQuestionBySlug({
+		if (event.label) {
+			firebase.createQuestionById({
 				...event,
 				id: Number(event.id),
-				slug: event.label
-					.toLowerCase()
-					.trim()
-					.replace(/ /g, "-"),
 				userId: authUser.uid,
 				createdAt: firebase.fieldValue.serverTimestamp()
 			});
@@ -52,19 +38,18 @@ const Questions = ({ firebase, history }) => {
 	};
 
 	const onEditQuestion = event => {
-		firebase.question(event.slug).update({
+		firebase.question(event.uid).update({
 			...event,
-			id: Number(event.id),
 			editedAt: firebase.fieldValue.serverTimestamp()
 		});
 	};
 
-	const onRemoveQuestion = slug => {
-		firebase.question(slug).delete();
+	const onRemoveQuestion = uid => {
+		firebase.question(uid).delete();
     };
     
-    const handleRowClick = (slug) => {
-        history.push(ROUTES.QUESTIONS.path + "/" + slug)
+    const handleRowClick = (id) => {
+        history.push(ROUTES.QUESTIONS.path + "/" + id)
     }
 
 	return (
