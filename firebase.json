@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "moskool",
+    "site": "tool-builder",
     "public": "build",
     "ignore": [
       "firebase.json",
