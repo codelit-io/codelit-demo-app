@@ -16,7 +16,7 @@ const MoCard = ({ item, icon, classes, userLevel }) => {
 	const disable = userLevel <= Number(item.id) && Number(item.id) !== 0;
 	return (
 		<Link
-			to={(item && item.url) || (item && `questions/${item.slug}`) || ""}
+			to={(item && item.url) || (item && `questions/${item.id}`) || ""}
 			className={item && disable ? classes.disableLink : classes.link}
 		>
 			<Fade timeout={{ enter: 800 }} in={true}>
