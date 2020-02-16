@@ -70,21 +70,22 @@ class Firebase {
 
 	/* Questions API */
 
-	question = slug => this.firestore.collection("questions").doc(slug);
+	question = id => this.firestore.collection("questions").doc(id);
 
 	questions = () => this.firestore.collection("questions");
 
-	questionBySlug = slug =>
-		this.firestore.collection("questions").where("slug", "==", slug);
-
 	getQuestionById = id =>
-		this.firestore.collection("questions").where("id", "==", id);
+		this.firestore.collection("questions").where("id", "==", Number(id));
 
-	createQuestionBySlug = question =>
+	createQuestionById = question => {
+		const uid = this.createId();
 		this.firestore
 			.collection("questions")
-			.doc(question.slug)
-			.set(question);
+			.doc(uid)
+			.set({ ...question, uid: uid });
+	};
+
+	createId = () => this.firestore.collection("questions").doc().id;
 
 	/*  Levels */
 
