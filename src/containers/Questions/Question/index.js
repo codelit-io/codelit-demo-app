@@ -34,7 +34,7 @@ const Question = ({ firebase, history, match }) => {
 				let question = [];
 				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
 				history.push(ROUTES.QUESTIONS.path + "/" + question[0].slug);
-				setQuestion(question[0]);
+				// setQuestion(question[0]);
 			} else {
 				setQuestion({});
 				setIsCorrect(false);
@@ -63,7 +63,6 @@ const Question = ({ firebase, history, match }) => {
 			setLoading(false);
 			return;
 		});
-
 		return () => unsubscribe();
 	}, [firebase, match]);
 
@@ -72,7 +71,7 @@ const Question = ({ firebase, history, match }) => {
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
 
-			<CodeEditor handleOnChange={handleOnChange} question={question} />
+			{question && <CodeEditor handleOnChange={(userAnswer) => handleOnChange(userAnswer)} question={question} />}
 
 			<AuthUserContext.Consumer>
 				{authUser => (
