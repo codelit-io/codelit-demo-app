@@ -16,7 +16,7 @@ const Questions = ({ firebase, history }) => {
 			setUserLevel(authUser.level)
 		};
 		return questions.map((question, index) => (
-			<Grid key={index} item xs={12} sm={6} md={3}>
+			<Grid key={index} item xs={12} sm={6} md={6}>
 				<MoCard userLevel={userLevel} item={question}></MoCard>
 			</Grid>
 		));
