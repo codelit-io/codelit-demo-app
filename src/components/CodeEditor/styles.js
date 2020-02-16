@@ -1,6 +1,5 @@
 const styles = theme => ({
 	editor: {
-		transition: "all 500ms",
 		font:
 			"16px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
 		[theme.breakpoints.up(600)]: {
