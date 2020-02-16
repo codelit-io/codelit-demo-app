@@ -13,7 +13,7 @@ import { withAuthentication } from "../../../components/Session";
 
 const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
-	const [question, setQuestion] = useState({});
+	const [question, setQuestion] = useState();
 	const [isCorrect, setIsCorrect] = useState(false);
 
 	const triggerNextQuestion = authUser => {
@@ -51,12 +51,12 @@ const Question = ({ firebase, history, match }) => {
 		setLoading(true);
 		setIsCorrect(false);
 		const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
+			setQuestion();
 			if (snapshot.size) {
 				let question = [];
 				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
 				setQuestion(question[0]);
 			} else {
-				setQuestion({});
 				setIsCorrect(false);
 			}
 			setLoading(false);
