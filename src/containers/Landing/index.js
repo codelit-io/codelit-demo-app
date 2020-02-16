@@ -15,7 +15,7 @@ const LandingPage = ({ classes }) => {
 			<Grid container spacing={10} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
 					<Typography component="div" className={classes.heroText}>
-						Learn React inspired development
+						Master React frontend development
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
 						Experience a new visual way of learning frontend React and JSX development
