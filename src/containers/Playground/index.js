@@ -10,7 +10,6 @@ const Playground = () => {
 		id: "0",
 		isCorrect: false,
 		label: "Write JSX code",
-		slug: "Fix-Html-button-tag-syntax",
         question: `<section>
     <h1>I am a Heading 1</h1>
 
