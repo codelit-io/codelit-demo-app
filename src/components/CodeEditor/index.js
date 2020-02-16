@@ -35,7 +35,7 @@ const CodeEditor = ({ classes, question, handleOnChange }) => {
 					<Title text="Code Preview" fade={true} />
 					<Slide
 						direction="left"
-						in={question.isPlayground || question.question}
+						in={(question.isPlayground && true) || (question.question && true)}
 						mountOnEnter
 						timeout={{ enter: 400, exit: 400 }}
 						unmountOnExit
