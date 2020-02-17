@@ -20,26 +20,33 @@ const Question = ({ firebase, history, match }) => {
 		const nextLevelId = Number(question.id) + 1;
 		setQuestion({});
 
-		pushToNewLevel(nextLevelId);
+		navigateToNextLevel(nextLevelId);
+	};
+
+	const navigateToNextLevel = id => {
+		history.push(ROUTES.QUESTIONS.path + "/" + id);
+	};
+
+	const levelUpPlayer = (authUser) => {
+		const nextLevelId = Number(question.id) + 1;
 
 		if (authUser) {
 			/* Prevents overwriting player level if played older questions */
 			/* TODO move me */
 			const level = nextLevelId > authUser.level ? nextLevelId : authUser.level;
 			firebase.user(authUser.uid).update({ level });
+		} else {
+			console.log("User not signed up");
 		}
-	};
+	}
 
-	const pushToNewLevel = id => {
-		history.push(ROUTES.QUESTIONS.path + "/" + id);
-	};
-
-	const handleOnChange = userAnswer => {
+	const handleOnChange = (userAnswer, authUser) => {
 		if (userAnswer === "{}" || userAnswer === "") {
 			return;
 		}
 		if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
 			setQuestion({ ...question, isCorrect: true, question: userAnswer });
+			levelUpPlayer(authUser)
 			setIsCorrect(true);
 		} else {
 			setQuestion({ ...question, question: userAnswer });
@@ -69,21 +76,22 @@ const Question = ({ firebase, history, match }) => {
 		<>
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
-
-			{question && (
-				<CodeEditor
-					handleOnChange={userAnswer => handleOnChange(userAnswer)}
-					question={question}
-				/>
-			)}
-
 			<AuthUserContext.Consumer>
 				{authUser => (
-					<CongratsCard
-						isActive={isCorrect}
-						authUser={authUser}
-						triggerNextQuestion={() => triggerNextQuestion(authUser)}
-					/>
+					<>
+						{question && (
+							<CodeEditor
+								handleOnChange={userAnswer => handleOnChange(userAnswer, authUser)}
+								question={question}
+							/>
+						)}
+
+						<CongratsCard
+							isActive={isCorrect}
+							authUser={authUser}
+							triggerNextQuestion={() => triggerNextQuestion(authUser)}
+						/>
+					</>
 				)}
 			</AuthUserContext.Consumer>
 
