@@ -17,7 +17,6 @@ const Question = ({ firebase, history, match }) => {
  
 	const triggerNextQuestion = () => {
 		const nextLevelId = Number(question.id) + 1;
-		setQuestion({});
 		navigateToNextLevel(nextLevelId);
 	};
 
@@ -61,7 +60,6 @@ const Question = ({ firebase, history, match }) => {
 				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
 				setQuestion(question[0]);
 			} else {
-				setQuestion();
 				setIsCorrect(false);
 			}
 			setLoading(false);

@@ -48,7 +48,9 @@ const CodeEditor = ({ classes, question, handleOnChange }) => {
 						<div className={classes.browserMockup}>
 							<div className={classes.browserButtons}></div>
 							<div className={classes.browserButtons2}></div>
-							<LivePreview className={classes.preview} />
+							<div className={classes.preview} >
+							<LivePreview />
+							</div>
 						</div>
 					</Slide>
 				</Grid>
