@@ -4,7 +4,7 @@ import CodeEditor from "../../components/CodeEditor";
 import PageHeader from "../../components/shared/PageHeader";
 
 const Playground = () => {
-	const [question] = useState({
+	const initialState = {
 		answer: "<button> I am a Button </button>",
 		element: "button",
 		id: "0",
@@ -21,15 +21,21 @@ const Playground = () => {
 </section>`,
 		status: "😴",
 		isPlayground: true
-	});
+	}
 
-    const setIsCorrect = () => {
-        return;
-    }
+	const [question, setQuestion] = useState(initialState);
+
+	const handleOnChange = userAnswer => {
+		if (userAnswer === "{}" || userAnswer === "") {
+			return;
+		}
+		setQuestion({ ...question, question: userAnswer });
+	};
+
 	return (
 		<>
 			<PageHeader img="" title="React Playground" />
-			<CodeEditor question={question} setIsCorrect={setIsCorrect}/>
+			<CodeEditor handleOnChange={userAnswer => handleOnChange(userAnswer)} question={question}/>
 		</>
 	);
 };
