@@ -5,7 +5,6 @@ import * as ROUTES from "../../../constants/routes";
 import { AuthUserContext } from "../../../components/Session";
 import CodeEditor from "../../../components/CodeEditor";
 import CongratsCard from "./CongratsCard";
-
 import MoConfetti from "../../../components/shared/MoConfetti";
 import PageHeader from "../../../components/shared/PageHeader";
 import Spinner from "../../../components/shared/Spinner";
@@ -15,11 +14,10 @@ const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState();
 	const [isCorrect, setIsCorrect] = useState(false);
-
-	const triggerNextQuestion = authUser => {
+ 
+	const triggerNextQuestion = () => {
 		const nextLevelId = Number(question.id) + 1;
 		setQuestion({});
-
 		navigateToNextLevel(nextLevelId);
 	};
 
@@ -89,7 +87,7 @@ const Question = ({ firebase, history, match }) => {
 						<CongratsCard
 							isActive={isCorrect}
 							authUser={authUser}
-							triggerNextQuestion={() => triggerNextQuestion(authUser)}
+							triggerNextQuestion={() => triggerNextQuestion()}
 						/>
 					</>
 				)}
