@@ -51,7 +51,7 @@ const Questions = ({ firebase, history }) => {
 		<>
 			<PageHeader img="" title="Questions" history={history} />
 			<Spinner loading={loading} color="primary" />
-			<Grid container spacing={8}>
+			<Grid container spacing={4}>
 				<AuthUserContext.Consumer>
 					{authUser => (
 						<QuestionsList authUser={authUser} questions={questions} />
