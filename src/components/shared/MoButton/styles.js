@@ -1,13 +1,14 @@
 const styles = theme => ({
 	button: {
-		marginBottom: theme.spacing(6),
-		color: "#252828",
-		border: "0",
-		height: "48px",
-		fontSize: "16px",
-		padding: "0 30px",
-		background: "linear-gradient(45deg, #dbf2a1 30%, #04baab 90%)",
-		radius: "3px"
+		padding: theme.spacing(2),
+		color: "black",
+		fontSize: "20px",
+		boxShadow: "0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)",
+		backgroundColor: "#daff81",
+		borderRadius: "3px",
+		"&:hover": {
+			backgroundColor: "#daff81",
+		}
 	}
 });
 
