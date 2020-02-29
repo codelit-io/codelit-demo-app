@@ -6,7 +6,7 @@ const styles = theme => ({
 			backgroundColor: "#FFF"
 		},
 		"&:hover .desc": {
-			color: "#1890ff"
+			color: "white"
 		},
 		transition:
 			"transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
