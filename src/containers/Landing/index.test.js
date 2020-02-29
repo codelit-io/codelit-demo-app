@@ -1,8 +1,8 @@
 import React from "react";
-import Landing from "./index.js";
+import LandingPage from "./index.js";
 import renderer from "react-test-renderer";
 
 it("Landing Page", () => {
-	const tree = renderer.create(<Landing />).toJSON();
+	const tree = renderer.create(<LandingPage />).toJSON();
 	expect(tree).toMatchSnapshot();
 });
