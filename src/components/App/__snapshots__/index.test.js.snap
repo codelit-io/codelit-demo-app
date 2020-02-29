@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`Should render App 1`] = `
 <div
-  className="MuiCircularProgress-root makeStyles-spinner-1 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+  className="MuiCircularProgress-root Spinner-spinner-1 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
   role="progressbar"
   style={
     Object {
