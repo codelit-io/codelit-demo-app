@@ -10,11 +10,10 @@ const QuestionsTable = ({
 }) => {
 	const [state, setState] = useState(questions);
 	const [columns] = useState([
+		{ title: "Id", field: "id", type: "numeric" },
 		{ title: "Label", field: "label" },
 		{ title: "Question", field: "question" },
 		{ title: "Answer", field: "answer" },
-		{ title: "Element", field: "element" },
-		{ title: "Id", field: "id", type: "numeric" },
 		{ title: "Topic", field: "topic", },
 		{ title: "Language", field: "language" },
 	]);
