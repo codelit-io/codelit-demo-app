@@ -7,7 +7,7 @@ import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoButton from "../../components/shared/MoButton";
+import MoLink from "../../components/shared/MoLink";
 
 const LandingPage = ({ classes }) => {
 	return (
@@ -20,7 +20,7 @@ const LandingPage = ({ classes }) => {
 					<Typography className={classes.heroSubtitle}>
 						Experience a new visual way of learning frontend React and JSX development
 					</Typography>
-					<MoButton text="Get Started" href={ROUTES.QUESTIONS.path} />
+					<MoLink text="Get Started" href={ROUTES.QUESTIONS.path} />
 				</Grid>
 
 				<Grid item sm={12} md={6} xs={12}>
@@ -49,7 +49,7 @@ const LandingPage = ({ classes }) => {
 							😉
 						</span>
 					</Typography>
-					<MoButton text="Try the playground" href={ROUTES.PLAYGROUND.path} />
+					<MoLink text="Try the playground" href={ROUTES.PLAYGROUND.path} />
 				</Grid>
 			</Grid>
 		</>
