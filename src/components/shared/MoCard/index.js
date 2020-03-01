@@ -41,13 +41,11 @@ const MoCard = ({ item, icon, classes, userLevel }) => {
 						)}
 						<CardContent className={classes.cardContent}>
 							<Typography gutterBottom variant="h5" component="h2">
-								{item && item.label ? item.item || item.label : "No Name"}
+								{item && item.label ? item.item || item.topic || item.label : "No Name"}
 							</Typography>
 							<Typography
-								className="desc"
-								variant="body2"
-								color="textSecondary"
-								component="p"
+								variant="overline"
+								gutterBottom
 							>
 								{item && (item.desc || item.language)}
 							</Typography>
