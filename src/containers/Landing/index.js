@@ -15,10 +15,10 @@ const LandingPage = ({ classes }) => {
 			<Grid container spacing={6} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
 					<Typography component="div" className={classes.heroText}>
-						Master React frontend development
+						Master React frontend development.
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
-						Experience a new visual way of learning frontend React and JSX development
+						Experience interactive learning to master frontend React and JSX development
 					</Typography>
 					<MoLink text="Get Started" href={ROUTES.QUESTIONS.path} />
 				</Grid>
