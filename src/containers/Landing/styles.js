@@ -1,6 +1,7 @@
 const styles = theme => ({
 	container: {
-		alignItems: "center"
+		alignItems: "center",
+		marginBottom: theme.spacing(6)
 	},
 	heroText: {
 		color: "rgb(43, 43, 43)",
@@ -25,6 +26,9 @@ const styles = theme => ({
 	},
 	centeredContainer: {
 		textAlign: "center"
+	},
+	checkMark: {
+		color: "#41D3BD"
 	}
 });
 
