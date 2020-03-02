@@ -87,7 +87,7 @@ class Firebase {
 
 	createId = () => this.firestore.collection("questions").doc().id;
 
-	/*  Levels */
+	/*  Points */
 
 	// *** Merge Auth and DB User API *** //
 
@@ -110,7 +110,7 @@ class Firebase {
 							email: authUser.email,
 							emailVerified: authUser.emailVerified,
 							providerData: authUser.providerData,
-							level: authUser.level || 0,
+							points: authUser.points || 0,
 							...dbUser
 						};
 
