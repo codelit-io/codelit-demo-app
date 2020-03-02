@@ -12,8 +12,8 @@ import LockIcon from "@material-ui/icons/Lock";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ item, icon, classes, userLevel }) => {
-	const disable = userLevel <= Number(item.id) && Number(item.id) !== 0;
+const MoCard = ({ item, icon, classes, userPoints }) => {
+	const disable = userPoints <= Number(item.id) && Number(item.id) !== 0;
 	return (
 		<Link
 			to={(item && item.url) || (item && `topics/${item.id}`) || ""}
