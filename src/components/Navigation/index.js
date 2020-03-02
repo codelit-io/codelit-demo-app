@@ -78,7 +78,7 @@ const Navigation = ({ classes }) => {
 											onClose={handleClose}
 										>
 											{authUser ? (
-												<>
+												<div>
 													<MenuItem
 														to={ROUTES.ACCOUNT.path}
 														component={Link}
@@ -89,9 +89,9 @@ const Navigation = ({ classes }) => {
 													<SignOutButton
 														handleClose={handleClose}
 													></SignOutButton>
-												</>
+												</div>
 											) : (
-												<>
+												<div>
 													<MenuItem
 														to={ROUTES.SIGN_IN.path}
 														component={Link}
@@ -106,7 +106,7 @@ const Navigation = ({ classes }) => {
 													>
 														Sign up
 													</MenuItem>
-												</>
+												</div>
 											)}
 										</Menu>
 									</>
