@@ -9,15 +9,15 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 const Questions = ({ firebase, history }) => {
 	const [loading, setLoading] = useState(false);
 	const [questions, setQuestions] = useState([]);
-	const [userLevel, setUserLevel] = useState(0);
+	const [userPoints, setUserPoints] = useState(0);
 
 	const QuestionsList = ({ authUser, questions }) => {
 		if (authUser) {
-			setUserLevel(authUser.level)
+			setUserPoints(authUser.points)
 		};
 		return questions.map((question, index) => (
 			<Grid key={index} item xs={12} sm={6} md={6}>
-				<MoCard userLevel={userLevel} item={question}></MoCard>
+				<MoCard userPoints={userPoints} item={question}></MoCard>
 			</Grid>
 		));
 	};
