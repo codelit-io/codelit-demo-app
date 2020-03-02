@@ -12,7 +12,7 @@ import { withAuthentication } from "../../../components/Session";
 
 const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
-	const [question, setQuestion] = useState();
+	const [question, setQuestion] = useState({});
 	const [isCorrect, setIsCorrect] = useState(false);
 
 	const triggerNextQuestion = () => {
@@ -71,7 +71,7 @@ const Question = ({ firebase, history, match }) => {
 
 	return (
 		<>
-			<PageHeader img="" title="Questions" history={history} />
+			<PageHeader img="" title={question.topic} history={history} />
 			<Spinner loading={loading} color="primary" />
 			<AuthUserContext.Consumer>
 				{authUser => (
