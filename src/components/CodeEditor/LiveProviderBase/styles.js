@@ -10,22 +10,14 @@ const styles = theme => ({
 		"& textarea": {
 			fontSize: "14px",
 			outline: "none"
-		}
+		},
+		padding: "20px",
 	},
 	preview: {
 		padding: "20px",
 		margin: "0 auto",
 		display: "flex",
 		justifyContent: "center",
-		borderRadius: "8px",
-	},
-	card: {
-		minHeight: "60px",
-		background: "white",
-		borderRadius: "8px",
-		padding: "1.2em",
-		boxShadow:
-			"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)"
 	},
 	error: {
 		background: "rgb(255, 85, 85)",
@@ -59,16 +51,30 @@ const styles = theme => ({
 		backgroundColor: "#f44",
 		boxShadow: "0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5"
 	},
+	browserFilename: {
+		display: "block",
+		position: "absolute",
+		textAlign: "center",
+		top: "-1.8em",
+		left: "0em",
+		width: "100%",
+		height: "1.2em",
+		borderRadius: "2px",
+		color: "#424B54",
+		fontSize: "14px"
+	},
 	browserButtons2: {
 		display: "block",
 		position: "absolute",
 		content: "",
-		top: "-1.6em",
-		left: "5.5em",
-		width: "calc(100% - 6em)",
+		top: "-1.88em",
+		left: "6.5em",
+		width: "calc(100% - 7.8em)",
 		height: "1.2em",
 		borderRadius: "2px",
-		backgroundColor: "white"
+		backgroundColor: "white",
+		fontSize: "14px",
+		padding:"2px 2px 2px 8px"
 	}
 });
 
