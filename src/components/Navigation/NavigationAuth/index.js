@@ -13,7 +13,7 @@ const NavigationAuth = ({ authUser }) => (
 			My Account
 		</ListItem>
 		{authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
-			<ListItem button component={Link} to={ROUTES.ACCOUNT.path}>
+			<ListItem button component={Link} to={ROUTES.ADMIN.path}>
 				Admin
 			</ListItem>
 		)}
