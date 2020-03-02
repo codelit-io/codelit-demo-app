@@ -41,6 +41,9 @@ const AccountPage = () => (
 				<Typography variant="h6" noWrap>
 					Email: {authUser.email}
 				</Typography>
+				<Typography variant="h6" noWrap>
+					Points: {authUser.points}
+				</Typography>
 				<PasswordForgetForm />
 				<PasswordChangeForm />
 				<LoginManagement authUser={authUser} />
