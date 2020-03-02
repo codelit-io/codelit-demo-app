@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as ROUTES from "../../../constants/routes";
 
 import { AuthUserContext } from "../../../components/Session";
+import Content from "./Content";
 import CodeEditor from "../../../components/CodeEditor";
 import CongratsCard from "./CongratsCard";
 import MoConfetti from "../../../components/shared/MoConfetti";
@@ -30,7 +31,10 @@ const Question = ({ firebase, history, match }) => {
 		if (authUser) {
 			/* Prevents overwriting player points if played older questions */
 			/* TODO move me */
-			const points = nextLevelReqPoints > authUser.points ? nextLevelReqPoints : authUser.points;
+			const points =
+				nextLevelReqPoints > authUser.points
+					? nextLevelReqPoints
+					: authUser.points;
 			firebase.user(authUser.uid).update({ points });
 		} else {
 			console.log("User not signed up");
@@ -73,6 +77,7 @@ const Question = ({ firebase, history, match }) => {
 		<>
 			<PageHeader img="" title={question.topic} history={history} />
 			<Spinner loading={loading} color="primary" />
+			{question.content && <Content content={question.content} />}
 			<AuthUserContext.Consumer>
 				{authUser => (
 					<>
