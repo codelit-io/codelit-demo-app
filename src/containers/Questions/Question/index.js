@@ -16,22 +16,22 @@ const Question = ({ firebase, history, match }) => {
 	const [isCorrect, setIsCorrect] = useState(false);
 
 	const triggerNextQuestion = () => {
-		const nextLevelId = Number(question.id) + 1;
-		navigateToNextLevel(nextLevelId);
+		const nextLevelReqPoints = Number(question.id) + 1;
+		navigateToNextLevel(nextLevelReqPoints);
 	};
 
 	const navigateToNextLevel = id => {
 		history.push(ROUTES.QUESTIONS.path + "/" + id);
 	};
 
-	const levelUpPlayer = authUser => {
-		const nextLevelId = Number(question.id) + 1;
+	const awardPlayerPoints = authUser => {
+		const nextLevelReqPoints = Number(question.id) + 1;
 
 		if (authUser) {
-			/* Prevents overwriting player level if played older questions */
+			/* Prevents overwriting player points if played older questions */
 			/* TODO move me */
-			const level = nextLevelId > authUser.level ? nextLevelId : authUser.level;
-			firebase.user(authUser.uid).update({ level });
+			const points = nextLevelReqPoints > authUser.points ? nextLevelReqPoints : authUser.points;
+			firebase.user(authUser.uid).update({ points });
 		} else {
 			console.log("User not signed up");
 		}
@@ -43,7 +43,7 @@ const Question = ({ firebase, history, match }) => {
 		}
 		if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
 			setQuestion({ ...question, isCorrect: true, question: userAnswer });
-			levelUpPlayer(authUser);
+			awardPlayerPoints(authUser);
 			setIsCorrect(true);
 		} else {
 			setQuestion({ ...question, question: userAnswer });
