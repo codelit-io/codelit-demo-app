@@ -14,7 +14,7 @@ const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState();
 	const [isCorrect, setIsCorrect] = useState(false);
- 
+
 	const triggerNextQuestion = () => {
 		const nextLevelId = Number(question.id) + 1;
 		navigateToNextLevel(nextLevelId);
@@ -24,7 +24,7 @@ const Question = ({ firebase, history, match }) => {
 		history.push(ROUTES.QUESTIONS.path + "/" + id);
 	};
 
-	const levelUpPlayer = (authUser) => {
+	const levelUpPlayer = authUser => {
 		const nextLevelId = Number(question.id) + 1;
 
 		if (authUser) {
@@ -35,7 +35,7 @@ const Question = ({ firebase, history, match }) => {
 		} else {
 			console.log("User not signed up");
 		}
-	}
+	};
 
 	const handleOnChange = (userAnswer, authUser) => {
 		if (userAnswer === "{}" || userAnswer === "") {
@@ -43,7 +43,7 @@ const Question = ({ firebase, history, match }) => {
 		}
 		if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
 			setQuestion({ ...question, isCorrect: true, question: userAnswer });
-			levelUpPlayer(authUser)
+			levelUpPlayer(authUser);
 			setIsCorrect(true);
 		} else {
 			setQuestion({ ...question, question: userAnswer });
@@ -54,6 +54,7 @@ const Question = ({ firebase, history, match }) => {
 		const id = match.params.question;
 		setLoading(true);
 		setIsCorrect(false);
+
 		const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
 			if (snapshot.size) {
 				let question = [];
@@ -77,7 +78,9 @@ const Question = ({ firebase, history, match }) => {
 					<>
 						{question && (
 							<CodeEditor
-								handleOnChange={userAnswer => handleOnChange(userAnswer, authUser)}
+								handleOnChange={userAnswer =>
+									handleOnChange(userAnswer, authUser)
+								}
 								question={question}
 							/>
 						)}
