@@ -49,7 +49,7 @@ const Questions = ({ firebase, history }) => {
 
 	return (
 		<>
-			<PageHeader img="" title="Questions" history={history} />
+			<PageHeader img="" title="Topics" history={history} />
 			<Spinner loading={loading} color="primary" />
 			<Grid container spacing={4}>
 				<AuthUserContext.Consumer>
