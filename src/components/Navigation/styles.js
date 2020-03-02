@@ -30,7 +30,7 @@ const styles = theme => ({
 		float: "right"
 	},
 	adminAvatar: {
-		border: "3px solid #c4f235",
+		border: "3px solid #41D3BD",
 		"&::after": {
 			content: '"Admin"',
 			color: "black",
