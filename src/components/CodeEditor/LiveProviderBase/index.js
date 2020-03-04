@@ -13,7 +13,7 @@ const LiveProviderBase = ({ classes, question, handleOnChange }) => {
 	return (
 		<LiveProvider code={question.question} language="jsx" noInline={false}>
 			<Grid item md={6} sm={12} xs={12} style={{ width: "100%" }}>
-				<Title text={question.label} fade={question.label && true} />
+				<Title text={question.label} fade={question.label && true} margin={true} />
 				<Slide
 					direction="right"
 					in={question.question && true}
@@ -36,7 +36,7 @@ const LiveProviderBase = ({ classes, question, handleOnChange }) => {
 				</Slide>
 			</Grid>
 			<Grid item md={6} sm={12} xs={12}>
-				<Title text="Live Preview" fade={true} />
+				<Title text="Live Preview" fade={true}  margin={true} />
 				<Slide
 					direction="left"
 					in={(question.isPlayground && true) || (question.question && true)}
