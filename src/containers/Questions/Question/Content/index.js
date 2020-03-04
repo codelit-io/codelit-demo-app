@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Grow from "@material-ui/core/Grow";
 
 const Content = ({ classes, content }) => (
 	<Grid container spacing={4}>
