@@ -9,9 +9,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const Content = ({ classes, content }) => (
 	<Grid container spacing={4}>
-		<Grid item sm={12}>
+		<Grid item md={12}>
 			<Card className={classes.card}>
-				<Typography variant="h4" gutterBottom className={classes.content}>
+				<Typography variant="h6" gutterBottom className={classes.content}>
 					<Box fontWeight="fontWeightLight">{content}</Box>
 				</Typography>
 			</Card>
