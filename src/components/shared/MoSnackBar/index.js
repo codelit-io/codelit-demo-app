@@ -1,6 +1,7 @@
 import React from "react";
 
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
@@ -35,11 +36,16 @@ const MoSnackbar = ({ isActive, handleClick }) => {
 			TransitionComponent={state.Transition}
 		>
 			<SnackbarContent
-				message={<Title text="👏Great work!👏" fade={true} margin={false} />}
+				message={
+					<div style={{ display: "flex", alignItems: "center" }}>
+						<CheckCircleIcon style={{ color: " #99bb33", fontSize: "40px", marginRight: "20px" }} />
+						<Title text="Great work!" fade={true} margin={false} />
+					</div>
+				}
 				style={{
 					backgroundColor: "white",
-                    color: "black",
-                    padding: "2em",
+					color: "black",
+					padding: "2em",
 					boxShadow:
 						"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)"
 				}}
