@@ -39,7 +39,7 @@ const MoSnackbar = ({ isActive, handleClick }) => {
 				message={
 					<div style={{ display: "flex", alignItems: "center" }}>
 						<CheckCircleIcon style={{ color: " #99bb33", fontSize: "40px", marginRight: "20px" }} />
-						<Title text="Great work!" fade={true} margin={false} />
+						<Title text="Hooray!" fade={true} margin={false} />
 					</div>
 				}
 				style={{
