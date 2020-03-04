@@ -10,11 +10,13 @@ import withStyles from "@material-ui/core/styles/withStyles";
 const Content = ({ classes, content }) => (
 	<Grid container spacing={4}>
 		<Grid item md={12}>
-			<Card className={classes.card}>
-				<Typography variant="h6" gutterBottom className={classes.content}>
-					<Box fontWeight="fontWeightLight">{content}</Box>
-				</Typography>
-			</Card>
+			<Grow timeout={{ enter: 800, exit: 800 }} in={content && true}>
+				<Card className={classes.card}>
+					<Typography variant="h6" gutterBottom className={classes.content}>
+						<Box fontWeight="fontWeightLight">{content}</Box>
+					</Typography>
+				</Card>
+			</Grow>
 		</Grid>
 	</Grid>
 );
