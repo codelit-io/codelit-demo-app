@@ -8,7 +8,6 @@ const Title = ({ text, fade, margin }) => {
 	const classes = {
 		text: {
 			color: "#383c40",
-			textTransform: "capitalize",
 			verticalAlign: "middle",
 			textDecoration: "none",
 			textAlign: "center",
