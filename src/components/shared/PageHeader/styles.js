@@ -1,7 +1,6 @@
 const styles = theme => ({
 	linkText: {
 		color: "#383c40",
-		textTransform: "capitalize",
 		textDecoration: "none",
 		verticalAlign: "middle"
 	},
