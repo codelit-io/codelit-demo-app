@@ -26,19 +26,10 @@ const Questions = ({ firebase, history }) => {
     return () => unsubscribe();
   }, [firebase]);
 
-  const stringifyQuestionFromEvent = event => {
-    return {
-      ...event,
-      question: JSON.stringify(event.question, null, 2)
-    };
-  };
-
   const onCreateQuestion = (event, authUser) => {
     if (event.label) {
-      const question = stringifyQuestionFromEvent(event);
-
       firebase.createQuestionById({
-        ...question,
+        ...event,
         id: Number(event.id),
         userId: authUser.uid,
         createdAt: firebase.fieldValue.serverTimestamp()
@@ -47,10 +38,8 @@ const Questions = ({ firebase, history }) => {
   };
 
   const onEditQuestion = event => {
-	  debugger
-	const question = stringifyQuestionFromEvent(event);
     firebase.question(event.uid).update({
-      ...question,
+      ...event,
       editedAt: firebase.fieldValue.serverTimestamp()
     });
   };
