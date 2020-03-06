@@ -4,17 +4,26 @@ import Grid from "@material-ui/core/Grid";
 import LiveProviderBase from "./LiveProviderBase";
 
 const CodeEditor = ({ question, handleOnChange }) => {
-	const [state, setState] = useState(question);
+  const [state, setState] = useState(question);
 
-	useEffect(() => {
-		setState(question);
-	}, [question]);
+  useEffect(() => {
+    if (question.question) {
+      try {
+        const prettyQuestion = JSON.parse(question.question);
+        setState({ ...question, question: prettyQuestion });
+      } catch {
+        setState(question);
+      }
+    }
+  }, [question]);
 
-	return (
-		<Grid container spacing={4}>
-			<LiveProviderBase question={state} handleOnChange={handleOnChange} />
-		</Grid>
-	);
+  return (
+    <Grid container spacing={4}>
+      <LiveProviderBase question={state} handleOnChange={handleOnChange} />
+    </Grid>
+  );
 };
 
-export default CodeEditor;
+const CodeEditorContainer = React.memo(CodeEditor);
+
+export default CodeEditorContainer;
