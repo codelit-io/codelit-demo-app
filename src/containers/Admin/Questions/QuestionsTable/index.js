@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
+import MoTextarea from "../../../../components/shared/MoTextarea";
 
 const QuestionsTable = ({
 	questions,
@@ -11,12 +12,28 @@ const QuestionsTable = ({
 	const [state, setState] = useState(questions);
 	const [columns] = useState([
 		{ title: "Id", field: "id", type: "numeric" },
-		{ title: "Label", field: "label" },
-		{ title: "Question", field: "question" },
-		{ title: "Answer", field: "answer" },
+		{
+			title: "Label",
+			field: "label",
+			editComponent: props => <MoTextarea {...props} />
+		},
+		{
+			title: "Question",
+			field: "question",
+			editComponent: props => <MoTextarea {...props} />
+		},
+		{
+			title: "Answer",
+			field: "answer",
+			editComponent: props => <MoTextarea {...props} />
+		},
 		{ title: "Topic", field: "topic" },
 		{ title: "Language", field: "language" },
-		{ title: "Content", field: "content" }
+		{
+			title: "Content",
+			field: "content",
+			editComponent: props => <MoTextarea {...props} />
+		}
 	]);
 
 	return (
@@ -29,6 +46,7 @@ const QuestionsTable = ({
 				columns={columns}
 				data={state}
 				editable={{
+					EditField: props => <textarea></textarea>,
 					onRowAdd: newData =>
 						new Promise(resolve => {
 							resolve();
