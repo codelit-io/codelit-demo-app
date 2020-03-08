@@ -20,7 +20,7 @@ const AdminPage = ({ history }) => (
 		<AdminNav history={history} />
 		<Suspense fallback={<Spinner loading={true} color="primary" />}></Suspense>
 		<Switch>
-			<Route exact path={ROUTES.ADMIN_QUESTIONS.path} component={Questions} />
+			<Route exact path={ROUTES.ADMIN_QUESTIONS.path + "/:level"} component={Questions} />
 			<Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
 			<Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
 			<Route
