@@ -4,21 +4,24 @@ import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
 
-const Title = ({ text, fade, margin }) => {
-	const classes = {
+const Title = ({ text, fade, margin, textAlign, width }) => {
+	const styles = {
 		text: {
 			color: "#383c40",
 			verticalAlign: "middle",
 			textDecoration: "none",
-			textAlign: "center",
-			marginBottom: margin ? "40px" : "0px"
+			textAlign: textAlign ? textAlign : "center",
+			margin: margin ? margin : ""
 		},
+		container: {
+			width: width ? width : ""
+		}
 	};
 
 	return (
 		<Fade in={fade} timeout={{ enter: 1000 }}>
-			<Typography variant="h6">
-				<Box fontWeight="fontWeightLight" style={classes.text}>
+			<Typography variant="h6" style={styles.container}>
+				<Box fontWeight="fontWeightLight" style={styles.text}>
 					{text}
 				</Box>
 			</Typography>
