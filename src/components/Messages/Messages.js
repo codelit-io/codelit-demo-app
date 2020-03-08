@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import Spinner from "../shared/Spinner";
 import { withFirebase } from "../Firebase";
+import MoTextarea from "../shared/MoTextarea";
 
 class Messages extends Component {
 	constructor(props) {
@@ -52,7 +53,7 @@ class Messages extends Component {
 	}
 
 	onChangeText = event => {
-		this.setState({ text: event.target.value });
+		this.setState({ text: event });
 	};
 
 	onCreateMessage = (event, authUser) => {
@@ -97,7 +98,7 @@ class Messages extends Component {
 				{authUser => (
 					<div>
 						{loading && <Spinner loading={loading} />}
-
+						<h1> Upcoming new features</h1>
 						{messages && (
 							<MessageList
 								authUser={authUser}
@@ -115,7 +116,7 @@ class Messages extends Component {
 							</Button>
 						)}
 						<form onSubmit={event => this.onCreateMessage(event, authUser)}>
-							<Input type="text" value={text} onChange={this.onChangeText} />
+						<MoTextarea type="text" value={text} onChange={this.onChangeText} />
 							<Button variant="contained" color="primary" type="submit">
 								Post <PostAddIcon />
 							</Button>
