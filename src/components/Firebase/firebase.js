@@ -74,6 +74,13 @@ class Firebase {
 
 	questions = () => this.firestore.collection("questions");
 
+	/* Get Any collection or Doc  */
+
+	collection = collectionPath => this.firestore.collection(collectionPath);
+	
+	doc = (collectionPath, id) => this.firestore.collection(collectionPath).doc(id);
+
+
 	getQuestionById = id =>
 		this.firestore.collection("questions").where("id", "==", Number(id));
 
