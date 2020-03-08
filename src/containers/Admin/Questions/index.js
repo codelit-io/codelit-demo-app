@@ -6,13 +6,14 @@ import Spinner from "../../../components/shared/Spinner";
 import { withFirebase } from "../../../components/Firebase";
 import QuestionsTable from "./QuestionsTable";
 
-const Questions = ({ firebase, history }) => {
+const Questions = ({ firebase, history, match }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    const unsubscribe = firebase.questions().onSnapshot(snapshot => {
+    setQuestions(null);
+    const unsubscribe = firebase.collection(match.params.level).onSnapshot(snapshot => {
       if (snapshot.size) {
         let questions = [];
         snapshot.forEach(doc => questions.push({ ...doc.data(), uid: doc.id }));
@@ -24,7 +25,7 @@ const Questions = ({ firebase, history }) => {
     });
 
     return () => unsubscribe();
-  }, [firebase]);
+  }, [firebase, match]);
 
   const onCreateQuestion = (event, authUser) => {
     if (event.label) {
@@ -38,14 +39,14 @@ const Questions = ({ firebase, history }) => {
   };
 
   const onEditQuestion = event => {
-    firebase.question(event.uid).update({
+    firebase.doc(match.params.level, event.uid).update({
       ...event,
       editedAt: firebase.fieldValue.serverTimestamp()
     });
   };
 
   const onRemoveQuestion = uid => {
-    firebase.question(uid).delete();
+    firebase.doc(match.params.level, uid).delete();
   };
 
   const handleRowClick = id => {
