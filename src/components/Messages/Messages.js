@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import { AuthUserContext } from "../Session";
 import MessageList from "./MessageList";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
