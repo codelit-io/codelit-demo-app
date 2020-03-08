@@ -15,12 +15,11 @@ const style = {
 const MoTextarea = props => {
 	return (
 		<textarea
-			// rowsMax={4}
-			aria-label="maximum height"
-			placeholder="Maximum 4 rows"
+			aria-label={props.value}
+			placeholder=""
 			value={props.value}
-            onChange={e => props.onChange(e.target.value)}
-            style={style.textarea}
+			onChange={e => props.onChange(e.target.value)}
+			style={style.textarea}
 		/>
 	);
 };
