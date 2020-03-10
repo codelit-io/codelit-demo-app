@@ -11,21 +11,20 @@ const styles = theme => ({
 			fontSize: "14px",
 			outline: "none"
 		},
-		padding: "20px",
+		padding: "20px"
 	},
 	preview: {
 		padding: "20px",
 		margin: "0 auto",
 		display: "flex",
-		justifyContent: "center",
+		justifyContent: "center"
 	},
 	error: {
 		background: "rgb(255, 85, 85)",
 		color: "rgb(248, 248, 242)",
 		padding: "10px",
 		borderRadius: "8px",
-		boxShadow:
-			"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)"
+		boxShadow: theme.bigShadow
 	},
 	correct: {
 		boxShadow:
@@ -36,8 +35,7 @@ const styles = theme => ({
 		borderTop: "2em solid rgba(230, 230, 230, 0.7)",
 		position: "relative",
 		borderRadius: "3px 3px 0 0",
-		boxShadow:
-			"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)"
+		boxShadow: theme.bigShadow
 	},
 	browserButtons: {
 		display: "block",
@@ -74,7 +72,7 @@ const styles = theme => ({
 		borderRadius: "2px",
 		backgroundColor: "white",
 		fontSize: "14px",
-		padding:"2px 2px 2px 8px"
+		padding: "2px 2px 2px 8px"
 	}
 });
 
