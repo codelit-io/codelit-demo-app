@@ -16,7 +16,9 @@ const Questions = ({ firebase, history }) => {
 			setUserPoints(authUser.points);
 		}
 		return questions.map((question, index) => (
-			<QuestionCard key={index} userPoints={userPoints} question={question}/>
+			<React.Fragment key={index}>
+				<QuestionCard userPoints={userPoints} question={question} />
+			</React.Fragment>
 		));
 	};
 
