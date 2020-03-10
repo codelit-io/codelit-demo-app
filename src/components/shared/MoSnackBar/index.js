@@ -1,62 +1,23 @@
 import React from "react";
 
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Slide from "@material-ui/core/Slide";
-import Snackbar from "@material-ui/core/Snackbar";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import Button from "@material-ui/core/Button";
-import Title from "../Title";
+import MoSnackbarCore from "./MoSnackbarCore";
 
-const MoSnackbar = ({ isActive, handleClick }) => {
-	const [state, setState] = React.useState({
-		isActive: isActive,
-		Transition: Slide
-	});
-
-	const handleButtonClick = () => {
-		setState({
-			isActive: false,
-			Transition: Slide
-		});
-		handleClick();
-	};
-
-	const handleClose = () => {
-		setState({
-			...state,
-			isActive: false
-		});
-	};
-
+const MoSnackbarContainer = ({
+	isActive,
+	authUser,
+	snackbarProps,
+	triggerNextQuestion
+}) => {
 	return (
-		<Snackbar
-			open={isActive}
-			onClose={handleClose}
-			TransitionComponent={state.Transition}
-		>
-			<SnackbarContent
-				message={
-					<div style={{ display: "flex", alignItems: "center" }}>
-						<CheckCircleIcon style={{ color: " #99bb33", fontSize: "40px", marginRight: "20px" }} />
-						<Title text="Hooray!" fade={true} margin={false} />
-					</div>
-				}
-				style={{
-					backgroundColor: "white",
-					color: "black",
-					padding: "2em",
-					boxShadow:
-						"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)"
-				}}
-				action={
-					<Button onClick={() => handleButtonClick()}>
-						Next Question <ArrowForwardIcon />
-					</Button>
-				}
-			></SnackbarContent>
-		</Snackbar>
+		<MoSnackbarCore
+			isActive={isActive}
+			authUser={authUser}
+			handleClick={() => triggerNextQuestion()}
+			snackbarProps={snackbarProps}
+		></MoSnackbarCore>
 	);
 };
+
+const MoSnackbar = React.memo(MoSnackbarContainer);
 
 export default MoSnackbar;
