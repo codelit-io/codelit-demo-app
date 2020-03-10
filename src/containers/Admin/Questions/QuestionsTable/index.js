@@ -29,6 +29,7 @@ const QuestionsTable = ({
 		},
 		{ title: "Topic", field: "topic" },
 		{ title: "Language", field: "language" },
+		{ title: "Category", field: "category" },
 		{
 			title: "Content",
 			field: "content",
