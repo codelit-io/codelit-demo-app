@@ -4,7 +4,7 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 import Grid from "@material-ui/core/Grid";
 import PageHeader from "../../components/shared/PageHeader";
 import Spinner from "../../components/shared/Spinner";
-import QuestionCard from "./Question/QuestionCard";
+import QuestionCard from "./QuestionCard";
 
 const Questions = ({ firebase, history }) => {
 	const [loading, setLoading] = useState(false);
