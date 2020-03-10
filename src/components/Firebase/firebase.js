@@ -110,7 +110,7 @@ class Firebase {
 						if (dbUser && !dbUser.roles) {
 							dbUser.roles = {};
 						}
-
+						
 						// merge auth and db user
 						authUser = {
 							uid: authUser.uid,
@@ -118,6 +118,7 @@ class Firebase {
 							emailVerified: authUser.emailVerified,
 							providerData: authUser.providerData,
 							points: authUser.points || 0,
+							photoURL: authUser.photoURL || "",
 							...dbUser
 						};
 
