@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import * as ROUTES from "../../../constants/routes";
 
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+
 import { AuthUserContext } from "../../../components/Session";
 import Content from "./Content";
 import CodeEditor from "../../../components/CodeEditor";
-import CongratsCard from "./CongratsCard";
 import MoConfetti from "../../../components/shared/MoConfetti";
+import MoSnackbar from "../../../components/shared/MoSnackBar";
 import PageHeader from "../../../components/shared/PageHeader";
 import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
@@ -15,6 +17,7 @@ const Question = ({ firebase, history, match }) => {
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
 	const [isCorrect, setIsCorrect] = useState(false);
+	const [snackbarProps, setSnackbarProps] = useState(null);
 
 	const triggerNextQuestion = () => {
 		const nextLevelReqPoints = Number(question.id) + 1;
@@ -24,6 +27,10 @@ const Question = ({ firebase, history, match }) => {
 	const navigateToNextLevel = id => {
 		history.push(ROUTES.QUESTIONS.path + "/" + id);
 	};
+
+	/* * *  awardPlayerPoints   * * * * * * * * * * * * *
+	 *  Awards users a point based on level completion  *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 	const awardPlayerPoints = authUser => {
 		const nextLevelReqPoints = Number(question.id) + 1;
@@ -41,6 +48,10 @@ const Question = ({ firebase, history, match }) => {
 		}
 	};
 
+	/* * *  handleOnChange  *  * * * * * * * * * * * *
+	 *  Checks if user code matches Pre made answer  *
+	 * * * * * * * * * * * * * * * * * * * * * * *  */
+
 	const handleOnChange = (userAnswer, authUser) => {
 		if (userAnswer === "{}" || userAnswer === "") {
 			return;
@@ -49,6 +60,11 @@ const Question = ({ firebase, history, match }) => {
 			setQuestion({ ...question, isCorrect: true, question: userAnswer });
 			awardPlayerPoints(authUser);
 			setIsCorrect(true);
+			setSnackbarProps({
+				title: "Hooray!",
+				buttonText: "Next Question",
+				buttonIcon: <ArrowForwardIcon />
+			});
 		} else {
 			setQuestion({ ...question, question: userAnswer });
 		}
@@ -65,12 +81,17 @@ const Question = ({ firebase, history, match }) => {
 				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
 				setQuestion(question[0]);
 			} else {
+				setQuestion();
 				setIsCorrect(false);
 			}
 			setLoading(false);
 		});
 
-		return () => unsubscribe();
+		return () => {
+			unsubscribe();
+			setSnackbarProps(null);
+			setIsCorrect(false);
+		};
 	}, [firebase, match]);
 
 	return (
@@ -89,12 +110,14 @@ const Question = ({ firebase, history, match }) => {
 								question={question}
 							/>
 						)}
-
-						<CongratsCard
-							isActive={isCorrect}
-							authUser={authUser}
-							triggerNextQuestion={() => triggerNextQuestion()}
-						/>
+						{snackbarProps && (
+							<MoSnackbar
+								isActive={isCorrect}
+								authUser={authUser}
+								snackbarProps={snackbarProps}
+								triggerNextQuestion={() => triggerNextQuestion()}
+							/>
+						)}
 					</>
 				)}
 			</AuthUserContext.Consumer>
