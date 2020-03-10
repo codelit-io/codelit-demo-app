@@ -14,7 +14,7 @@ const LiveProviderBase = ({ classes, question, handleOnChange }) => {
 
 	useEffect(() => {
 		addFocusOnEditor();
-	}, [question]);
+	}, []);
 
 	return (
 		<LiveProvider code={question.question} language="jsx" noInline={false}>
