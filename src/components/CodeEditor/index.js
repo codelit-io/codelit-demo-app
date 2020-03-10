@@ -24,6 +24,4 @@ const CodeEditor = ({ question, handleOnChange }) => {
   );
 };
 
-const CodeEditorContainer = React.memo(CodeEditor);
-
-export default CodeEditorContainer;
+export default CodeEditor;
