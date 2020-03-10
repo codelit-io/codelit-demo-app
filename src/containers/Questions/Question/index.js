@@ -12,7 +12,6 @@ import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
 
 const Question = ({ firebase, history, match }) => {
-	
 	const [loading, setLoading] = useState(true);
 	const [question, setQuestion] = useState({});
 	const [isCorrect, setIsCorrect] = useState(false);
