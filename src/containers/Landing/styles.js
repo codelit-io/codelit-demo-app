@@ -28,7 +28,7 @@ const styles = theme => ({
 		textAlign: "center"
 	},
 	checkMark: {
-		color: "#41D3BD"
+		color: theme.green
 	}
 });
 
