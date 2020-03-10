@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 import Grid from "@material-ui/core/Grid";
-import MoCard from "../../components/shared/MoCard";
 import PageHeader from "../../components/shared/PageHeader";
 import Spinner from "../../components/shared/Spinner";
-import Title from "../../components/shared/Title";
+import QuestionCard from "./Question/QuestionCard";
 
 const Questions = ({ firebase, history }) => {
 	const [loading, setLoading] = useState(false);
@@ -17,21 +16,7 @@ const Questions = ({ firebase, history }) => {
 			setUserPoints(authUser.points);
 		}
 		return questions.map((question, index) => (
-			<React.Fragment key={index}>
-				{question.content && (
-					<Grid item xs={12} sm={12} md={12}>
-						<Title
-							text={question.content}
-							fade={true}
-							margin="40px 0 0 0"
-							width="100%"
-						></Title>
-					</Grid>
-				)}
-				<Grid item xs={12} sm={6} md={6}>
-					<MoCard userPoints={userPoints} item={question}></MoCard>
-				</Grid>
-			</React.Fragment>
+			<QuestionCard key={index} userPoints={userPoints} question={question}/>
 		));
 	};
 
