@@ -1,4 +1,5 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
 const bigShadow =
 	"0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)";
@@ -12,15 +13,16 @@ const colors = {
 	green: {
 		light: "#41D3BD",
 		dark: "",
-		darkest: ""	
+		darkest: ""
 	},
 	yellow: {
 		light: "#F5D547",
 		dark: "",
 		darkest: ""
-	},
+	}
 };
-const theme = createMuiTheme({
+
+let theme = createMuiTheme({
 	bigShadow: bigShadow,
 	card: {
 		boxShadow: bigShadow,
@@ -32,7 +34,7 @@ const theme = createMuiTheme({
 			color: "white"
 		},
 		transition:
-		"transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
+			"transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
 		transform: "translateY(0)"
 	},
 	container: {
@@ -40,11 +42,17 @@ const theme = createMuiTheme({
 	},
 	flexAlignCenter: {
 		display: "flex",
-		alignItems: "center",
+		alignItems: "center"
 	},
 	grey: colors.grey,
 	green: colors.green,
-	yellow: colors.yellow,
+	yellow: colors.yellow
 });
+
+const fontOptions = {
+	breakpoints: ["sm", "md", "lg", "xl"]
+};
+
+theme = responsiveFontSizes(theme, fontOptions);
 
 export default theme;
