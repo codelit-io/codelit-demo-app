@@ -5,7 +5,7 @@ import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import Button from "@material-ui/core/Button";
-import Title from "../../Title";
+import MoTitle from "../../MoTitle";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -46,7 +46,8 @@ const MoSnackbarCore = ({
 				message={
 					<div className={classes.message}>
 						<CheckCircleIcon className={classes.checkIcon} />
-						<Title
+						<MoTitle
+							
 							text={snackbarProps && snackbarProps.title}
 							fade={true}
 							margin={false}
