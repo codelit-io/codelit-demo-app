@@ -9,7 +9,7 @@ import { withFirebase } from "../Firebase";
 import PageHeader from "../shared/PageHeader";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
-import PageCard from "../shared/PageCard";
+import MoPage from "../shared/MoPage";
 
 class Messages extends Component {
 	constructor(props) {
@@ -114,14 +114,14 @@ class Messages extends Component {
 
 								{!messages && <div>There are no messages ...</div>}
 								{!loading && messages && (
-									<Button variant="link" onClick={this.onNextPage}>
+									<Button variant="text" onClick={this.onNextPage}>
 										<ExpandMoreIcon />
 										See previous posts
 									</Button>
 								)}
 							</Grid>
 							<Grid item md={6} sm={12} xs={12}>
-								<PageCard title="Post a request">
+								<MoPage title="Post a request" loading={loading} isCard={true}>
 									<form
 										onSubmit={event => this.onCreateMessage(event, authUser)}
 									>
@@ -145,7 +145,7 @@ class Messages extends Component {
 											</Grid>
 										</Grid>
 									</form>
-								</PageCard>
+								</MoPage>
 							</Grid>
 						</Grid>
 					</>
