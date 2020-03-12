@@ -12,7 +12,7 @@ const colors = {
 	green: {
 		light: "#41D3BD",
 		dark: "",
-		darkest: ""
+		darkest: ""	
 	},
 	yellow: {
 		light: "#F5D547",
