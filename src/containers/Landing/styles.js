@@ -1,15 +1,13 @@
 const styles = theme => ({
 	container: {
-		alignItems: "center",
-		marginBottom: theme.spacing(6)
+		marginTop: theme.spacing(12),
+		marginBottom: theme.spacing(12),
 	},
 	heroText: {
 		color: "rgb(43, 43, 43)",
-		fontSize: "40px",
 		fontWeight: "500",
 		lineHeight: "1.2",
 		letterSpacing: "-0.01em",
-		marginBottom: "30px"
 	},
 	heroSubtitle: {
 		color: "rgb(94, 94, 94)",
@@ -23,9 +21,6 @@ const styles = theme => ({
 		[theme.breakpoints.down("sm")]: {
 			display: "none"
 		}
-	},
-	centeredContainer: {
-		textAlign: "center"
 	},
 	checkMark: {
 		color: theme.green
