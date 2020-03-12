@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 import Button from "@material-ui/core/Button";
-import Drawer from "./Drawer";
+import MoDrawer from "./MoDrawer";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -32,10 +32,7 @@ const Navigation = ({ classes }) => {
 		<div className={classes.root}>
 			<AppBar position="static" color="default" className={classes.appBar}>
 				<Toolbar className={classes.toolbar}>
-					<Grid container spacing={3} className={classes.container}>
-						<Grid item xs={4} sm={4} md={4} lg={4}>
-							<Drawer />
-						</Grid>
+					<Grid container className={classes.alignCenter}>
 						<Grid item xs={4} sm={4} md={4} lg={4}>
 							<Typography className={classes.title} variant="h6" noWrap>
 								<Link
@@ -44,27 +41,29 @@ const Navigation = ({ classes }) => {
 								>
 									<Box
 										fontWeight="fontWeightLight"
-										className={classes.linkText}
+										className={classes.MoSkool}
 									>
 										Mo Skool
 									</Box>
 								</Link>
 							</Typography>
 						</Grid>
-						<Grid item xs={4} sm={4} md={4} lg={4}>
+						<Grid item xs={4} sm={4} md={4} lg={4}></Grid>
+						<Grid item xs={4} sm={4} md={4} lg={4} style={{textAlign: "right"}}>
+							<MoDrawer />
 							<AuthUserContext.Consumer>
 								{authUser => (
 									<>
 										<Button
 											aria-controls="avatar-menu"
 											aria-haspopup="true"
-											className={classes.avatar}
+											className={classes.avatarButton}
 											onClick={handleClick}
 										>
 											<Avatar
 												alt="Me"
 												src={authUser && authUser.photoURL}
-												className={`${authUser &&
+												className={`${classes.avatar} ${authUser &&
 													authUser.roles &&
 													authUser.roles.ADMIN &&
 													classes.adminAvatar}`}
