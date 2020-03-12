@@ -6,7 +6,7 @@ import PageHeader from "../../components/shared/PageHeader";
 import Spinner from "../../components/shared/Spinner";
 import QuestionCard from "./QuestionCard";
 
-const Questions = ({ firebase, history }) => {
+const Questions = ({ firebase }) => {
 	const [loading, setLoading] = useState(false);
 	const [questions, setQuestions] = useState([]);
 	const [userPoints, setUserPoints] = useState(0);
@@ -15,11 +15,14 @@ const Questions = ({ firebase, history }) => {
 		if (authUser) {
 			setUserPoints(authUser.points);
 		}
-		return questions.map((question, index) => (
-			<React.Fragment key={index}>
-				<QuestionCard userPoints={userPoints} question={question} />
-			</React.Fragment>
-		));
+
+		return (
+			questions.map((question, index) => (
+				<React.Fragment key={index}>
+					<QuestionCard userPoints={userPoints} question={question} index={index}/>
+				</React.Fragment>
+			))
+		);
 	};
 
 	useEffect(() => {
@@ -31,7 +34,7 @@ const Questions = ({ firebase, history }) => {
 				if (snapshot.size) {
 					let questions = [];
 					snapshot.forEach(doc => {
-						questions.push({
+							questions.push({
 							...doc.data(),
 							uid: doc.id
 						});
@@ -44,19 +47,22 @@ const Questions = ({ firebase, history }) => {
 				}
 			});
 		/* Unsubscribe from firebase on unmount */
-		return () => getQuestions();
+		return () => {
+			setQuestions([]);
+			getQuestions();
+		};
 	}, [firebase]);
 
 	return (
 		<>
-			<PageHeader img="" title="Topics" history={history} />
+			<PageHeader img="" title="Topics" />
 			<Spinner loading={loading} color="primary" />
 			<Grid container spacing={4}>
-				<AuthUserContext.Consumer>
+				{questions && <AuthUserContext.Consumer>
 					{authUser => (
 						<QuestionsList authUser={authUser} questions={questions} />
 					)}
-				</AuthUserContext.Consumer>
+				</AuthUserContext.Consumer>}
 			</Grid>
 		</>
 	);
