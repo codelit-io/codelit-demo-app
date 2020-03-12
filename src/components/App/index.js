@@ -23,13 +23,12 @@ const Question = lazy(() => import("../../containers/Questions/Question"));
 const SignUp = lazy(() => import("../../containers/SignUp"));
 const SignIn = lazy(() => import("../../containers/SignIn"));
 
-
 const App = () => (
 	<ThemeProvider theme={theme}>
 		<Router>
 			<Suspense fallback={<Spinner loading={true} color="primary" />}>
-				<Navigation />
-				<Container maxWidth="xl" className="container">
+				<Container>
+					<Navigation />
 					<Switch>
 						<Route path={ROUTES.ADMIN.path} component={Admin} />
 						<Route path={ROUTES.ACCOUNT.path} component={Account} />
