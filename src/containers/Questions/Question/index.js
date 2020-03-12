@@ -62,7 +62,7 @@ const Question = ({ firebase, history, match }) => {
 			setIsCorrect(true);
 			setSnackbarProps({
 				title: "Hooray!",
-				buttonText: "Next Question",
+				buttonText: "Keep Going",
 				buttonIcon: <ArrowForwardIcon />
 			});
 		} else {
@@ -96,7 +96,7 @@ const Question = ({ firebase, history, match }) => {
 
 	return (
 		<>
-			<PageHeader img="" title={question.topic} history={history} />
+			<PageHeader img="" title={question.topic} />
 			<Spinner loading={loading} color="primary" />
 			{question.content && <Content content={question.content} />}
 			<AuthUserContext.Consumer>
