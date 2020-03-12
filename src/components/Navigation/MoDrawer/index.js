@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { AuthUserContext } from "../../Session";
 import IconButton from "@material-ui/core/IconButton";
-import Drawer from "@material-ui/core/Drawer";
 import MenuIcon from "@material-ui/icons/Menu";
 import NavigationAuth from "../NavigationAuth";
 import NavigationNonAuth from "../NavigationNonAuth";
 import withStyles from "@material-ui/core/styles/withStyles";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const styles = theme => ({
 	menuButton: {
@@ -32,7 +32,7 @@ const MoDrawer = classes => {
 			>
 				<MenuIcon />
 			</IconButton>
-			<Drawer
+			<SwipeableDrawer
 				anchor="right"
 				open={state.isDrawerOpen}
 				onClose={() => toggleDrawer(false)}
@@ -57,7 +57,7 @@ const MoDrawer = classes => {
 						)
 					}
 				</AuthUserContext.Consumer>
-			</Drawer>
+			</SwipeableDrawer>
 		</>
 	);
 };
