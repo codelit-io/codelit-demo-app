@@ -12,7 +12,7 @@ import {
 import { withFirebase } from "../../components/Firebase";
 import PasswordForgetForm from "../../components/PasswordForgot";
 import PasswordChangeForm from "../../components/PasswordChange";
-import PageCard from "../../components/shared/PageCard";
+import MoPage from "../../components/shared/MoPage";
 import Typography from "@material-ui/core/Typography";
 
 const SIGN_IN_METHODS = [
@@ -37,7 +37,7 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
 	<AuthUserContext.Consumer>
 		{authUser => (
-			<PageCard img="" title="My Account">
+			<MoPage img="" title="My Account" loading={false} isCard={true}>
 				<Typography variant="h6" noWrap>
 					Email: {authUser.email}
 				</Typography>
@@ -47,7 +47,7 @@ const AccountPage = () => (
 				<PasswordForgetForm />
 				<PasswordChangeForm />
 				<LoginManagement authUser={authUser} />
-			</PageCard>
+			</MoPage>
 		)}
 	</AuthUserContext.Consumer>
 );
