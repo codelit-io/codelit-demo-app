@@ -23,7 +23,7 @@ const styles = theme => ({
 		}
 	},
 	checkMark: {
-		color: theme.green
+		color: theme.green.light
 	}
 });
 
