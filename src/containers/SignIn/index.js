@@ -1,17 +1,17 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
-import PageCard from "../../components/shared/PageCard";
+import MoPage from "../../components/shared/MoPage";
 import SocialSignIn from "../../components/SocialSignIn/";
 import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
-	<PageCard img="" title="Welcome Back!">
+	<MoPage img="" title="Welcome Back!" loading={true} isCard={true}>
 		<Grid container spacing={3}>
 			<SignInForm />
 			<SocialSignIn />
 		</Grid>
-	</PageCard>
+	</MoPage>
 );
 
 export default SignInPage;
