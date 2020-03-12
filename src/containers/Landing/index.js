@@ -21,7 +21,7 @@ const congrats =
 const LandingPage = ({ classes }) => {
 	return (
 		<>
-			<Grid container spacing={6} className={classes.container}>
+			<Grid container spacing={4} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
 					<Typography variant="h1" component="h2" className={classes.heroText}>
 						Master React without the fees
@@ -43,7 +43,7 @@ const LandingPage = ({ classes }) => {
 					</Slide>
 				</Grid>
 			</Grid>
-			<Grid container spacing={6} className={classes.container}>
+			<Grid container spacing={4} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
 					<Typography variant="h1" component="h2" className={classes.heroText} gutterBottom>
 						Learn All About React
@@ -93,7 +93,7 @@ const LandingPage = ({ classes }) => {
 					</Slide>
 				</Grid>
 			</Grid>
-			<Grid container spacing={6} className={classes.container}>
+			<Grid container spacing={4} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
 					<Typography variant="h1" component="h2" className={classes.heroText} gutterBottom>
 						Try the playground
