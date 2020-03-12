@@ -6,7 +6,10 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import Spinner from "../shared/Spinner";
 import { withFirebase } from "../Firebase";
-import MoTextarea from "../shared/MoTextarea";
+import PageHeader from "../shared/PageHeader";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import PageCard from "../shared/PageCard";
 
 class Messages extends Component {
 	constructor(props) {
@@ -52,7 +55,7 @@ class Messages extends Component {
 	}
 
 	onChangeText = event => {
-		this.setState({ text: event });
+		this.setState({ text: event.target.value });
 	};
 
 	onCreateMessage = (event, authUser) => {
@@ -95,32 +98,57 @@ class Messages extends Component {
 		return (
 			<AuthUserContext.Consumer>
 				{authUser => (
-					<div>
-						{loading && <Spinner loading={loading} />}
-						<h1> Upcoming new features</h1>
-						{messages && (
-							<MessageList
-								authUser={authUser}
-								messages={messages}
-								onEditMessage={this.onEditMessage}
-								onRemoveMessage={this.onRemoveMessage}
-							/>
-						)}
+					<>
+						<PageHeader img="" title="New Feature Requests" />
+						<Spinner loading={loading} color="primary" />
+						<Grid container spacing={4}>
+							<Grid item md={6} sm={12} xs={12}>
+								{messages && (
+									<MessageList
+										authUser={authUser}
+										messages={messages}
+										onEditMessage={this.onEditMessage}
+										onRemoveMessage={this.onRemoveMessage}
+									/>
+								)}
 
-						{!messages && <div>There are no messages ...</div>}
-						{!loading && messages && (
-							<Button variant="contained" onClick={this.onNextPage}>
-								<ExpandMoreIcon />
-								More
-							</Button>
-						)}
-						<form onSubmit={event => this.onCreateMessage(event, authUser)}>
-						<MoTextarea type="text" value={text} onChange={this.onChangeText} />
-							<Button variant="contained" color="primary" type="submit">
-								Post <PostAddIcon />
-							</Button>
-						</form>
-					</div>
+								{!messages && <div>There are no messages ...</div>}
+								{!loading && messages && (
+									<Button variant="link" onClick={this.onNextPage}>
+										<ExpandMoreIcon />
+										See previous posts
+									</Button>
+								)}
+							</Grid>
+							<Grid item md={6} sm={12} xs={12}>
+								<PageCard title="Post a request">
+									<form
+										onSubmit={event => this.onCreateMessage(event, authUser)}
+									>
+										<Grid container spacing={6} >
+											<Grid item md={6} sm={12}>
+												<Input
+													type="text"
+													value={text}
+													placeholder="Use more colors!@?"
+													onChange={this.onChangeText}
+												/>
+											</Grid>
+											<Grid item md={6} sm={12}>
+												<Button
+													variant="contained"
+													color="primary"
+													type="submit"
+												>
+													Post your request <PostAddIcon />
+												</Button>
+											</Grid>
+										</Grid>
+									</form>
+								</PageCard>
+							</Grid>
+						</Grid>
+					</>
 				)}
 			</AuthUserContext.Consumer>
 		);
