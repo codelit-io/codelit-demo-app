@@ -1,18 +1,11 @@
 const styles = theme => ({
 	linkText: {
-		color: "#383c40",
+		color: theme.grey.dark,
 		textDecoration: "none",
 		verticalAlign: "middle"
 	},
-	header: {
-		marginBottom: "40px",
-		textAlign: "center"
-	},
-	arrowSection: {
-        display:"none",
-        [theme.breakpoints.up("md")]: {
-            display: "block"
-        }
+	container: {
+		margin: "26px 0px 26px"
 	}
 });
 
