@@ -2,9 +2,7 @@ const styles = theme => ({
 	root: {
 		flexGrow: 1
 	},
-	container: {
-		alignItems: "center"
-	},
+	alignCenter: theme.flexAlignCenter,
 	title: {
 		textAlign: "center",
 		alignSelf: "center",
@@ -12,43 +10,24 @@ const styles = theme => ({
 			display: "block"
 		}
 	},
-	inputRoot: {
-		color: "inherit"
-	},
-	inputInput: {
-		padding: theme.spacing(1, 1, 1, 7),
-		transition: theme.transitions.create("width"),
-		width: "100%",
-		[theme.breakpoints.up("sm")]: {
-			width: 120,
-			"&:focus": {
-				width: 200
-			}
-		}
+	toolbar: {
+		padding: "0"
 	},
 	avatar: {
-		float: "right"
+		width: theme.spacing(4),
+		height: theme.spacing(4)
 	},
 	adminAvatar: {
-		border: "3px solid #41D3BD",
-		"&::after": {
-			content: '"Admin"',
-			color: "black",
-			height: 10,
-			marginTop: 10,
-			fontSize: "10px",
-			position: "absolute"
-		}
-	},
-	sectionDesktop: {
-		display: "none",
-		[theme.breakpoints.up("md")]: {
-			display: "flex"
-		}
+		border: `2px solid ${theme.yellow.light}`,
+		overflow: "visible",
 	},
 	appBar: {
 		boxShadow: "none",
-		backgroundColor: "transparent"
+		backgroundColor: "transparent",
+		marginBottom: "96px",
+	},
+	MoSkool: {
+		textAlign: "left"
 	}
 });
 
