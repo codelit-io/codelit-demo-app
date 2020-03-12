@@ -1,7 +1,6 @@
 import React from "react";
 
 import * as ROUTES from "../../constants/routes";
-import congrats from "../../assets/congrats.png";
 import CheckIcon from "@material-ui/icons/Check";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -10,17 +9,22 @@ import Grid from "@material-ui/core/Grid";
 import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
-import rocketLearn from "../../assets/rocket-learn.png";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoLink from "../../components/shared/MoLink";
+
+/* Improve image loading */
+const rocketLearn =
+	"https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Frocket-learn.png?alt=media&token=2a3a0cc9-21bd-4119-865f-f5bb920ce939";
+const congrats =
+	"https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fcongrats.png?alt=media&token=6e591903-a43c-413a-b861-52982750e530";
 
 const LandingPage = ({ classes }) => {
 	return (
 		<>
 			<Grid container spacing={6} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
-					<Typography component="div" className={classes.heroText}>
-						Master React development for free!
+					<Typography variant="h1" component="h2" className={classes.heroText}>
+						Master React without the fees
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
 						Experience a modern interactive approach to mastering React frontend
@@ -41,8 +45,8 @@ const LandingPage = ({ classes }) => {
 			</Grid>
 			<Grid container spacing={6} className={classes.container}>
 				<Grid item sm={12} md={6} xs={12}>
-					<Typography component="div" className={classes.heroText}>
-						Free learning for everyone!
+					<Typography variant="h1" component="h2" className={classes.heroText} gutterBottom>
+						Learn All About React
 					</Typography>
 					<ListItem>
 						<ListItemAvatar className={classes.checkMark}>
@@ -90,15 +94,9 @@ const LandingPage = ({ classes }) => {
 				</Grid>
 			</Grid>
 			<Grid container spacing={6} className={classes.container}>
-				<Grid
-					item
-					sm={12}
-					md={12}
-					xs={12}
-					className={classes.centeredContainer}
-				>
-					<Typography component="div" className={classes.heroText}>
-						Try the playground!
+				<Grid item sm={12} md={6} xs={12}>
+					<Typography variant="h1" component="h2" className={classes.heroText} gutterBottom>
+						Try the playground
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
 						Write code in JSX and it will render your code magically{" "}
