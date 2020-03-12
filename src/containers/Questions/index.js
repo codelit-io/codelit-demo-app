@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 import Grid from "@material-ui/core/Grid";
-import PageHeader from "../../components/shared/PageHeader";
-import Spinner from "../../components/shared/Spinner";
 import QuestionCard from "./QuestionCard";
+import MoPage from "../../components/shared/MoPage";
 
 const Questions = ({ firebase }) => {
 	const [loading, setLoading] = useState(false);
@@ -16,13 +15,15 @@ const Questions = ({ firebase }) => {
 			setUserPoints(authUser.points);
 		}
 
-		return (
-			questions.map((question, index) => (
-				<React.Fragment key={index}>
-					<QuestionCard userPoints={userPoints} question={question} index={index}/>
-				</React.Fragment>
-			))
-		);
+		return questions.map((question, index) => (
+			<React.Fragment key={index}>
+				<QuestionCard
+					userPoints={userPoints}
+					question={question}
+					index={index}
+				/>
+			</React.Fragment>
+		));
 	};
 
 	useEffect(() => {
@@ -34,7 +35,7 @@ const Questions = ({ firebase }) => {
 				if (snapshot.size) {
 					let questions = [];
 					snapshot.forEach(doc => {
-							questions.push({
+						questions.push({
 							...doc.data(),
 							uid: doc.id
 						});
@@ -54,17 +55,17 @@ const Questions = ({ firebase }) => {
 	}, [firebase]);
 
 	return (
-		<>
-			<PageHeader img="" title="Topics" />
-			<Spinner loading={loading} color="primary" />
+		<MoPage title="Topics" loading={loading} isCard={false}>
 			<Grid container spacing={4}>
-				{questions && <AuthUserContext.Consumer>
-					{authUser => (
-						<QuestionsList authUser={authUser} questions={questions} />
-					)}
-				</AuthUserContext.Consumer>}
+				{questions && (
+					<AuthUserContext.Consumer>
+						{authUser => (
+							<QuestionsList authUser={authUser} questions={questions} />
+						)}
+					</AuthUserContext.Consumer>
+				)}
 			</Grid>
-		</>
+		</MoPage>
 	);
 };
 export default withAuthentication(Questions);
