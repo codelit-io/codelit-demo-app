@@ -5,7 +5,7 @@ import * as ROUTES from "../../constants/routes";
 import AdminNav from "./AdminNav";
 import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
-import PageCard from "../../components/shared/PageCard";
+import MoPage from "../../components/shared/MoPage";
 import Spinner from "../../components/shared/Spinner";
 import { UserList, UserItem } from "../../components/Users";
 import {
@@ -16,7 +16,7 @@ import {
 const Questions = lazy(() => import("./Questions"));
 
 const AdminPage = ({ history }) => (
-	<PageCard title="Admin">
+	<MoPage title="Admin" isCard={true} loading={false}>
 		<AdminNav history={history} />
 		<Suspense fallback={<Spinner loading={true} color="primary" />}></Suspense>
 		<Switch>
@@ -29,7 +29,7 @@ const AdminPage = ({ history }) => (
 				component={UserItem}
 			/>
 		</Switch>
-	</PageCard>
+	</MoPage>
 );
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
