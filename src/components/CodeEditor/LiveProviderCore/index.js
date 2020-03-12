@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Headline from "../../shared/Headline";
 import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
-import Title from "../../shared/Title";
+import MoTitle from "../../shared/MoTitle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { reactLiveTheme } from "../../../utils/reactLiveTheme";
 
@@ -19,10 +19,10 @@ const LiveProviderCore = ({ classes, question, handleOnChange }) => {
 	return (
 		<LiveProvider code={question.question} language="jsx" noInline={false}>
 			<Grid item md={6} sm={12} xs={12} style={{ width: "100%" }}>
-				<Title
+				<MoTitle
 					text={question.label}
 					fade={question.label && true}
-					margin="0 0 40px 0"
+					margin="36px 0 36px"
 				/>
 				<Slide
 					direction="right"
@@ -46,7 +46,7 @@ const LiveProviderCore = ({ classes, question, handleOnChange }) => {
 				</Slide>
 			</Grid>
 			<Grid item md={6} sm={12} xs={12}>
-				<Title text="Live Preview" fade={true} margin="0 0 40px 0" />
+				<MoTitle text="Live Preview" fade={true} margin="36px 0 36px" />
 				<Slide
 					direction="left"
 					in={(question.isPlayground && true) || (question.question && true)}
