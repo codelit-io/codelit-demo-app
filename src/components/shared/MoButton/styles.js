@@ -1,14 +1,22 @@
 const styles = theme => ({
-	button: {
-		padding: theme.spacing(2),
-		color: "#FFFFF2",
-		fontSize: "20px",
-		boxShadow: bigShadow,
-		backgroundColor: "#41D3BD",
-		borderRadius: "3px",
+	link: {
+		backgroundColor: theme.blue.medium,
+		textDecoration: "none",
+		padding: "12px 22px",
+    color: theme.white.medium,
+		fontSize: "1.1rem",
+    borderRadius: "3px",
+    textTransform: "initial",
+    fontWeight: "600",
 		"&:hover": {
-			backgroundColor: "#41D3BD",
-		}
+      background:theme.grey.dark
+		},
+		"&:hover .arrow": {
+      transform: "translateX(5px)",
+    },
+    ".arrow": {
+      fontSize: "1.0rem",
+    }
 	}
 });
 
