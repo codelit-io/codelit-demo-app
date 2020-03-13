@@ -10,13 +10,7 @@ import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoLink from "../../components/shared/MoLink";
-
-/* Improve image loading */
-const rocketLearn =
-	"https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Frocket-learn.png?alt=media&token=2a3a0cc9-21bd-4119-865f-f5bb920ce939";
-const congrats =
-	"https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fcongrats.png?alt=media&token=6e591903-a43c-413a-b861-52982750e530";
+import MoLinkButton from "../../components/shared/MoLinkButton";
 
 const LandingPage = ({ classes }) => {
 	return (
@@ -30,16 +24,16 @@ const LandingPage = ({ classes }) => {
 						Experience a modern interactive approach to mastering React frontend
 						development.
 					</Typography>
-					<MoLink text="Get Started" href={ROUTES.QUESTIONS.path} />
+					<MoLinkButton text="Get started" href={ROUTES.QUESTIONS.path} />
 				</Grid>
 
 				<Grid item sm={12} md={6} xs={12}>
 					<Slide
 						direction="up"
-						in={congrats && true}
+						in={classes && true}
 						timeout={{ enter: 400, exit: 400 }}
 					>
-						<img alt="Congrats" className={classes.img} src={congrats} />
+						<img alt="Congrats" className={classes.img} src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fcongrats.png?alt=media&token=6e591903-a43c-413a-b861-52982750e530" />
 					</Slide>
 				</Grid>
 			</Grid>
@@ -86,10 +80,10 @@ const LandingPage = ({ classes }) => {
 				<Grid item sm={12} md={6} xs={12}>
 					<Slide
 						direction="up"
-						in={congrats && true}
+						in={classes && true}
 						timeout={{ enter: 400, exit: 400 }}
 					>
-						<img alt="Congrats" className={classes.img} src={rocketLearn} />
+						<img alt="Congrats" className={classes.img} src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Frocket-learn.png?alt=media&token=2a3a0cc9-21bd-4119-865f-f5bb920ce939" />
 					</Slide>
 				</Grid>
 			</Grid>
@@ -104,7 +98,7 @@ const LandingPage = ({ classes }) => {
 							😉
 						</span>
 					</Typography>
-					<MoLink text="Try the playground" href={ROUTES.PLAYGROUND.path} />
+					<MoLinkButton text="Try the playground" href={ROUTES.PLAYGROUND.path} />
 				</Grid>
 			</Grid>
 		</>
