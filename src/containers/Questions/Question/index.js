@@ -96,6 +96,7 @@ const Question = ({ firebase, history, match }) => {
 
 	return (
 		<>
+			<MoConfetti isActive={isCorrect} />
 			<PageHeader img="" title={question.topic} />
 			<Spinner loading={loading} color="primary" />
 			{question.content && <Content content={question.content} />}
@@ -121,8 +122,6 @@ const Question = ({ firebase, history, match }) => {
 					</>
 				)}
 			</AuthUserContext.Consumer>
-
-			<MoConfetti isActive={isCorrect} />
 		</>
 	);
 };
