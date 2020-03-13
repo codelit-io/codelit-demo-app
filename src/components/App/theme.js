@@ -7,19 +7,28 @@ const bigShadow =
 const colors = {
 	grey: {
 		light: "#a6a6a6",
+		medium: "#424B54",
 		dark: "#383c40",
-		darkest: "#2b2b2b"
+		darkest: "#2b2b2b",
 	},
 	green: {
 		light: "#41D3BD",
-		dark: "",
+		dark: "#157A6E",
 		darkest: ""
 	},
 	yellow: {
 		light: "#F5D547",
 		dark: "",
 		darkest: ""
+	},
+	white: { 
+		medium: "#FFFFF2",
+	},
+	blue: {
+		medium: "#276ef1",
 	}
+		
+
 };
 
 let theme = createMuiTheme({
@@ -46,7 +55,9 @@ let theme = createMuiTheme({
 	},
 	grey: colors.grey,
 	green: colors.green,
-	yellow: colors.yellow
+	yellow: colors.yellow,
+	white: colors.white,
+	blue: colors.blue
 });
 
 const fontOptions = {
