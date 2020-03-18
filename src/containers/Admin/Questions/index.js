@@ -13,16 +13,20 @@ const Questions = ({ firebase, history, match }) => {
   useEffect(() => {
     setLoading(true);
     setQuestions(null);
-    const unsubscribe = firebase.collection(match.params.level).onSnapshot(snapshot => {
-      if (snapshot.size) {
-        let questions = [];
-        snapshot.forEach(doc => questions.push({ ...doc.data(), uid: doc.id }));
-        setQuestions(questions);
-      } else {
-        setQuestions(null);
-      }
-      setLoading(false);
-    });
+    const unsubscribe = firebase
+      .collection(match.params.level)
+      .onSnapshot(snapshot => {
+        if (snapshot.size) {
+          let questions = [];
+          snapshot.forEach(doc =>
+            questions.push({ ...doc.data(), uid: doc.id })
+          );
+          setQuestions(questions);
+        } else {
+          setQuestions(null);
+        }
+        setLoading(false);
+      });
 
     return () => unsubscribe();
   }, [firebase, match]);
@@ -41,6 +45,7 @@ const Questions = ({ firebase, history, match }) => {
   const onEditQuestion = event => {
     firebase.doc(match.params.level, event.uid).update({
       ...event,
+      id: Number(event.id),
       editedAt: firebase.fieldValue.serverTimestamp()
     });
   };
