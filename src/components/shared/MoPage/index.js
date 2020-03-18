@@ -7,13 +7,15 @@ import PageHeader from "../PageHeader";
 import Spinner from "../Spinner";
 
 const MoPage = ({ classes, children, img, loading, isCard, title }) => {
-	return (
-		<>
-			<PageHeader img="" title={title} />
-			<Spinner loading={loading} color="primary" />
-			<section className={`${classes.content} ${isCard && classes.card}`}>{children}</section>
-		</>
-	);
+  return (
+    <>
+      <PageHeader img="" title={title} />
+      <Spinner loading={loading} color="primary" />
+      <section className={`${classes.content} ${isCard && classes.card}`}>
+        {children}
+      </section>
+    </>
+  );
 };
 
 export default compose(withStyles(styles), withRouter)(MoPage);
