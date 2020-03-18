@@ -93,10 +93,7 @@ const LandingPage = ({ classes }) => {
 						Try the playground
 					</Typography>
 					<Typography className={classes.heroSubtitle}>
-						Write code in JSX and it will render your code magically{" "}
-						<span role="img" aria-label="wink">
-							😉
-						</span>
+						Write code in JSX and it will render your code magically.
 					</Typography>
 					<MoLinkButton text="Try the playground" href={ROUTES.PLAYGROUND.path} />
 				</Grid>
