@@ -14,7 +14,7 @@ const styles = theme => ({
 		fontSize: "24px",
 		lineHeight: "1.5",
 		letterSpacing: "-0.01em",
-		marginBottom: "30px"
+		marginBottom: "24px"
 	},
 	img: {
 		width: "100%",
