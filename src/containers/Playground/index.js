@@ -4,13 +4,13 @@ import CodeEditor from "../../components/CodeEditor";
 import PageHeader from "../../components/shared/PageHeader";
 
 const Playground = () => {
-	const initialState = {
-		answer: "<button> I am a Button </button>",
-		element: "button",
-		id: "0",
-		isCorrect: false,
-		label: "Write JSX code",
-        question: `<section>
+  const initialState = {
+    answer: "<button> I am a Button </button>",
+    element: "button",
+    id: "0",
+    isCorrect: false,
+    label: "Write JSX code",
+    question: `<section>
     <h1>I am a Heading 1</h1>
 
     <p>I am a Paragraph</p>
@@ -19,25 +19,28 @@ const Playground = () => {
 
     <input type="text" placeholder="I am a text input"/>
 </section>`,
-		status: "😴",
-		isPlayground: true
-	}
+    status: "😴",
+    isPlayground: true
+  };
 
-	const [question, setQuestion] = useState(initialState);
+  const [question, setQuestion] = useState(initialState);
 
-	const handleOnChange = userAnswer => {
-		if (userAnswer === "{}" || userAnswer === "") {
-			return;
-		}
-		setQuestion({ ...question, question: userAnswer });
-	};
+  const handleOnChange = userAnswer => {
+    if (userAnswer === "{}" || userAnswer === "") {
+      return;
+    }
+    setQuestion({ ...question, question: userAnswer });
+  };
 
-	return (
-		<>
-			<PageHeader img="" title="React Playground" />
-			<CodeEditor handleOnChange={userAnswer => handleOnChange(userAnswer)} question={question}/>
-		</>
-	);
+  return (
+    <>
+      <PageHeader img="" title="React Playground" />
+      <CodeEditor
+        handleOnChange={userAnswer => handleOnChange(userAnswer)}
+        question={question}
+      />
+    </>
+  );
 };
 
 export default Playground;
