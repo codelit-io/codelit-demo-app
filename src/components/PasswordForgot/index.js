@@ -9,77 +9,79 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { withFirebase } from "../Firebase";
 
 const styles = theme => ({
-	button: {
-		margin: theme.spacing(1)
-	},
-	input: {
-		margin: theme.spacing(1)
-	}
+  button: {
+    margin: theme.spacing(1)
+  },
+  input: {
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
-	email: "",
-	error: null
+  email: "",
+  error: null
 };
 
 const PasswordForgotPage = () => (
-	<div>
-		<PasswordForgetForm />
-	</div>
+  <div>
+    <PasswordForgetForm />
+  </div>
 );
 
 const PasswordForgetFormBase = ({ firebase, classes }) => {
-	const [state, setState] = useState({ ...INITIAL_STATE });
+  const [state, setState] = useState({ ...INITIAL_STATE });
 
-	const { email, error } = state;
+  const { email, error } = state;
 
-	const isInvalid = email === "";
+  const isInvalid = email === "";
 
-	const onSubmit = event => {
-		firebase
-			.passwordReset(email)
-			.then(() => {
-				setState({ ...INITIAL_STATE });
-			})
-			.catch(error => {
-				setState({ error });
-			});
+  const onSubmit = event => {
+    firebase
+      .passwordReset(email)
+      .then(() => {
+        setState({ ...INITIAL_STATE });
+      })
+      .catch(error => {
+        setState({ error });
+      });
 
-		event.preventDefault();
-	};
+    event.preventDefault();
+  };
 
-	const onChange = event => {
-		setState({ ...state, [event.target.name]: event.target.value });
-	};
+  const onChange = event => {
+    setState({ ...state, [event.target.name]: event.target.value });
+  };
 
-	return (
-		<form onSubmit={onSubmit}>
-			<label>Forgot Password: </label>
-			<Input
-				className={classes.input}
-				name="email"
-				value={state.email}
-				onChange={onChange}
-				type="email"
-				placeholder="Your Email"
-			/>
-			<Button className={classes.button} disabled={isInvalid} type="submit">
-				Reset My Password
-			</Button>
-			{error && <p>{error.message}</p>}
-		</form>
-	);
+  return (
+    <form onSubmit={onSubmit}>
+      <label>Forgot Password: </label>
+      <Input
+        className={classes.input}
+        name="email"
+        value={state.email}
+        onChange={onChange}
+        type="email"
+        placeholder="Your Email"
+      />
+      <Button className={classes.button} disabled={isInvalid} type="submit">
+        Reset My Password
+      </Button>
+      {error && <p>{error.message}</p>}
+    </form>
+  );
 };
 
 const PasswordForgetLink = () => (
-	<p style={{ marginTop: "40px"}}>
-		<Link to={ROUTES.PASSWORD_FORGET.path}>Forgot Password?</Link>
-	</p>
+  <p style={{ marginTop: "40px" }}>
+    <Link to={ROUTES.PASSWORD_FORGET.path}>Forgot Password?</Link>
+  </p>
 );
 
 export default PasswordForgotPage;
 
-
-const PasswordForgetForm = compose(withStyles(styles), withFirebase)(PasswordForgetFormBase)
+const PasswordForgetForm = compose(
+  withStyles(styles),
+  withFirebase
+)(PasswordForgetFormBase);
 
 export { PasswordForgetForm, PasswordForgetLink };
