@@ -8,41 +8,41 @@ import { withRouter } from "react-router-dom";
 import Layout from "../../../components/shared/Layout";
 
 const INITIAL_STATE = {
-	email: "",
-	password: "",
-	error: null
+  email: "",
+  password: "",
+  error: null
 };
 
-const SignInFormBase = ({ firebase, history}) => {
-	const [state, setState] = useState({ ...INITIAL_STATE });
-	const { email, password, error } = state;
+const SignInFormBase = ({ firebase, history }) => {
+  const [state, setState] = useState({ ...INITIAL_STATE });
+  const { email, password, error } = state;
 
-	const handleSubmit = event => {
-		firebase
-			.signInWithEmailAndPassword(email, password)
-			.then(() => {
-				setState({ ...INITIAL_STATE });
-				history.goBack();
-			})
-			.catch(error => {
-				setState({ ...state, error });
-			});
+  const handleSubmit = event => {
+    firebase
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        setState({ ...INITIAL_STATE });
+        history.goBack();
+      })
+      .catch(error => {
+        setState({ ...state, error });
+      });
 
-		event.preventDefault();
-	};
+    event.preventDefault();
+  };
 
-	const onChange = event => {
-		setState({ ...state, [event.target.name]: event.target.value });
-	};
+  const onChange = event => {
+    setState({ ...state, [event.target.name]: event.target.value });
+  };
 
-	return (
-		<EmailSignInForm
-			onSubmit={handleSubmit}
-			isInvalid={password === "" || email === ""}
-			onChange={onChange}
-			error={error}
-		/>
-	);
+  return (
+    <EmailSignInForm
+      onSubmit={handleSubmit}
+      isInvalid={password === "" || email === ""}
+      onChange={onChange}
+      error={error}
+    />
+  );
 };
 
 const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
