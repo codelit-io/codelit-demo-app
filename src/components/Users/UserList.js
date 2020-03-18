@@ -7,68 +7,68 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
 class UserList extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			loading: false,
-			users: []
-		};
-	}
+    this.state = {
+      loading: false,
+      users: []
+    };
+  }
 
-	componentDidMount() {
-		this.setState({ loading: true });
+  componentDidMount() {
+    this.setState({ loading: true });
 
-		this.unsubscribe = this.props.firebase.users().onSnapshot(snapShot => {
-			let users = [];
-			snapShot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
+    this.unsubscribe = this.props.firebase.users().onSnapshot(snapShot => {
+      let users = [];
+      snapShot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
 
-			this.setState({
-				users: users,
-				loading: false
-			});
-		});
-	}
+      this.setState({
+        users: users,
+        loading: false
+      });
+    });
+  }
 
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
-	render() {
-		const { users, loading } = this.state;
+  render() {
+    const { users, loading } = this.state;
 
-		return (
-			<div>
-				{loading && <Spinner loading={loading} />}
-				<List>
-					{users.map(user => (
-						<Link
-							key={user.uid}
-							variant="body2"
-							to={{
-								pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
-								state: { user }
-							}}
-						>
-							<ListItem>
-								<span>
-									<strong>ID:</strong> {user.uid}
-								</span>
-								<br></br>
-								<span>
-									<strong>Email:</strong> {user.email}
-								</span>
-								<br></br>
-								<span>
-									<strong>Username:</strong> {user.username}
-								</span>
-							</ListItem>
-						</Link>
-					))}
-				</List>
-			</div>
-		);
-	}
+    return (
+      <div>
+        {loading && <Spinner loading={loading} />}
+        <List>
+          {users.map(user => (
+            <Link
+              key={user.uid}
+              variant="body2"
+              to={{
+                pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
+                state: { user }
+              }}
+            >
+              <ListItem>
+                <span>
+                  <strong>ID:</strong> {user.uid}
+                </span>
+                <br></br>
+                <span>
+                  <strong>Email:</strong> {user.email}
+                </span>
+                <br></br>
+                <span>
+                  <strong>Username:</strong> {user.username}
+                </span>
+              </ListItem>
+            </Link>
+          ))}
+        </List>
+      </div>
+    );
+  }
 }
 
 export default withFirebase(UserList);
