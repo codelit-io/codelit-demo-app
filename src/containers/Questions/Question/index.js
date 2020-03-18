@@ -33,8 +33,8 @@ const Question = ({ firebase, history, match }) => {
    * * * * * * * * * * * * * * * * * * * * * * * * * */
 
   const awardPlayerPoints = authUser => {
-    const nextLevelReqPoints = Number(question.id) + 1;
-
+	const nextLevelReqPoints = Number(question.id) + 1;
+	
     if (authUser) {
       /* Prevents overwriting player points if played older questions */
       /* TODO move me */
