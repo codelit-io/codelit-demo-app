@@ -43,6 +43,10 @@ const Questions = ({ firebase, history, match }) => {
   };
 
   const onEditQuestion = event => {
+    if (!match.params.level) {
+      return;
+    }
+    console.log(match.params.level)
     firebase.doc(match.params.level, event.uid).update({
       ...event,
       id: Number(event.id),
