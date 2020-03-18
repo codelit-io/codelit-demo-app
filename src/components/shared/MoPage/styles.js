@@ -1,5 +1,4 @@
 const styles = theme => ({
-  card: theme.card,
   content: {
     display: "flex",
     flexDirection: "column"
