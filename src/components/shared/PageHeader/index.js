@@ -7,15 +7,15 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const PageHeader = ({ classes, title }) => {
-	return (
-		<Fade in={title && true} timeout={{ enter: 1000 }}>
-			<Typography variant="h2" gutterBottom>
-				<Box fontWeight="fontWeightLight" className={classes.linkText}>
-					{title}
-				</Box>
-			</Typography>
-		</Fade>
-	);
+  return (
+    <Fade in={title && true} timeout={{ enter: 1000 }}>
+      <Typography variant="h2" gutterBottom>
+        <Box fontWeight="fontWeightLight" className={classes.linkText}>
+          {title}
+        </Box>
+      </Typography>
+    </Fade>
+  );
 };
 
 export default withStyles(styles)(PageHeader);
