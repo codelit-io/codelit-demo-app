@@ -46,6 +46,7 @@ const QuestionsTable = ({
         title="Questions"
         columns={columns}
         data={state}
+        style={{backgroundColor: "none", boxShadow: "none"}}
         editable={{
           EditField: props => <textarea></textarea>,
           onRowAdd: newData =>
