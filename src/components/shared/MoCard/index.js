@@ -18,7 +18,9 @@ const MoCard = ({ item, classes, userPoints }) => {
 
   return (
     <Link
-      to={(item && item.url) || (item && !isDisabled && `topics/${item.id}`) || ""}
+      to={
+        (item && item.url) || (item && !isDisabled && `topics/${item.id}`) || ""
+      }
       className={item && isDisabled ? classes.disableLink : classes.link}
     >
       <Fade timeout={{ enter: 800 }} in={true}>
@@ -29,7 +31,9 @@ const MoCard = ({ item, classes, userPoints }) => {
         >
           <CardActionArea className={classes.content}>
             {item && isDisabled && <LockIcon className={classes.lockIcon} />}
-            {item && !isDisabled && isAnswered && <CheckCircleIcon className={classes.checkIcon} />}
+            {item && !isDisabled && isAnswered && (
+              <CheckCircleIcon className={classes.checkIcon} />
+            )}
             {item && item.img && (
               <CardMedia
                 className={classes.img}
