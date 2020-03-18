@@ -14,115 +14,116 @@ import Spinner from "../../../components/shared/Spinner";
 import { withAuthentication } from "../../../components/Session";
 
 const Question = ({ firebase, history, match }) => {
-  const [loading, setLoading] = useState(true);
-  const [question, setQuestion] = useState({});
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [snackbarProps, setSnackbarProps] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [question, setQuestion] = useState({});
+	const [isCorrect, setIsCorrect] = useState(false);
+	const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const triggerNextQuestion = () => {
-    const nextLevelReqPoints = Number(question.id) + 1;
-    navigateToNextLevel(nextLevelReqPoints);
-  };
+	const triggerNextQuestion = () => {
+		const nextLevelReqPoints = Number(question.id) + 1;
+		navigateToNextLevel(nextLevelReqPoints);
+	};
 
-  const navigateToNextLevel = id => {
-    history.push(ROUTES.QUESTIONS.path + "/" + id);
-  };
+	const navigateToNextLevel = id => {
+		history.push(ROUTES.QUESTIONS.path + "/" + id);
+	};
 
-  /* * *  awardPlayerPoints   * * * * * * * * * * * * *
-   *  Awards users a point based on level completion  *
-   * * * * * * * * * * * * * * * * * * * * * * * * * */
+	/* * *  awardPlayerPoints   * * * * * * * * * * * * *
+	 *  Awards users a point based on level completion  *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-  const awardPlayerPoints = authUser => {
-	const nextLevelReqPoints = Number(question.id) + 1;
-	
-    if (authUser) {
-      /* Prevents overwriting player points if played older questions */
-      /* TODO move me */
-      const points =
-        nextLevelReqPoints > authUser.points
-          ? nextLevelReqPoints
-          : authUser.points;
-      firebase.user(authUser.uid).update({ points });
-    } else {
-      console.log("User not signed up");
-    }
-  };
+	const awardPlayerPoints = authUser => {
+		const nextLevelReqPoints = Number(question.id);
 
-  /* * *  handleOnChange  *  * * * * * * * * * * * *
-   *  Checks if user code matches Pre made answer  *
-   * * * * * * * * * * * * * * * * * * * * * * *  */
+		if (authUser) {
+			debugger;
+			/* Prevents overwriting player points if played older questions */
+			/* TODO move me */
+			const points =
+				nextLevelReqPoints > authUser.points
+					? nextLevelReqPoints
+					: authUser.points;
+			firebase.user(authUser.uid).update({ points });
+		} else {
+			console.log("User not signed up");
+		}
+	};
 
-  const handleOnChange = (userAnswer, authUser) => {
-    if (userAnswer === "{}" || userAnswer === "") {
-      return;
-    }
-    if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
-      setQuestion({ ...question, isCorrect: true, question: userAnswer });
-      awardPlayerPoints(authUser);
-      setIsCorrect(true);
-      setSnackbarProps({
-        title: "Hooray!",
-        buttonText: "Keep Going",
-        buttonIcon: <ArrowForwardIcon />
-      });
-    } else {
-      setQuestion({ ...question, question: userAnswer });
-    }
-  };
+	/* * *  handleOnChange  *  * * * * * * * * * * * *
+	 *  Checks if user code matches Pre made answer  *
+	 * * * * * * * * * * * * * * * * * * * * * * *  */
 
-  useEffect(() => {
-    const id = match.params.question;
-    setLoading(true);
-    setIsCorrect(false);
+	const handleOnChange = (userAnswer, authUser) => {
+		if (userAnswer === "{}" || userAnswer === "") {
+			return;
+		}
+		if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
+			setQuestion({ ...question, isCorrect: true, question: userAnswer });
+			awardPlayerPoints(authUser);
+			setIsCorrect(true);
+			setSnackbarProps({
+				title: "Hooray!",
+				buttonText: "Keep Going",
+				buttonIcon: <ArrowForwardIcon />
+			});
+		} else {
+			setQuestion({ ...question, question: userAnswer });
+		}
+	};
 
-    const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
-      if (snapshot.size) {
-        let question = [];
-        snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
-        setQuestion(question[0]);
-      } else {
-        setQuestion();
-        setIsCorrect(false);
-      }
-      setLoading(false);
-    });
+	useEffect(() => {
+		const id = match.params.question;
+		setLoading(true);
+		setIsCorrect(false);
 
-    return () => {
-      unsubscribe();
-      setSnackbarProps(null);
-      setIsCorrect(false);
-    };
-  }, [firebase, match]);
+		const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
+			if (snapshot.size) {
+				let question = [];
+				snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
+				setQuestion(question[0]);
+			} else {
+				setQuestion();
+				setIsCorrect(false);
+			}
+			setLoading(false);
+		});
 
-  return (
-    <>
-      <MoConfetti isActive={isCorrect} />
-      <PageHeader img="" title={question.topic} />
-      <Spinner loading={loading} color="primary" />
-      {question.content && <Content content={question.content} />}
-      <AuthUserContext.Consumer>
-        {authUser => (
-          <>
-            {question && (
-              <CodeEditor
-                handleOnChange={userAnswer =>
-                  handleOnChange(userAnswer, authUser)
-                }
-                question={question}
-              />
-            )}
-            {snackbarProps && (
-              <MoSnackbar
-                isActive={isCorrect}
-                authUser={authUser}
-                snackbarProps={snackbarProps}
-                triggerNextQuestion={() => triggerNextQuestion()}
-              />
-            )}
-          </>
-        )}
-      </AuthUserContext.Consumer>
-    </>
-  );
+		return () => {
+			unsubscribe();
+			setSnackbarProps(null);
+			setIsCorrect(false);
+		};
+	}, [firebase, match]);
+
+	return (
+		<>
+			<MoConfetti isActive={isCorrect} />
+			<PageHeader img="" title={question.topic} />
+			<Spinner loading={loading} color="primary" />
+			{question.content && <Content content={question.content} />}
+			<AuthUserContext.Consumer>
+				{authUser => (
+					<>
+						{question && (
+							<CodeEditor
+								handleOnChange={userAnswer =>
+									handleOnChange(userAnswer, authUser)
+								}
+								question={question}
+							/>
+						)}
+						{snackbarProps && (
+							<MoSnackbar
+								isActive={isCorrect}
+								authUser={authUser}
+								snackbarProps={snackbarProps}
+								triggerNextQuestion={() => triggerNextQuestion()}
+							/>
+						)}
+					</>
+				)}
+			</AuthUserContext.Consumer>
+		</>
+	);
 };
 export default withAuthentication(Question);
