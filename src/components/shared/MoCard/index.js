@@ -13,48 +13,43 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoCard = ({ item, icon, classes, userPoints }) => {
-	const disable = userPoints <= Number(item.id) && Number(item.id) !== 0;
-	return (
-		<Link
-			to={(item && item.url) || (item && !disable && `topics/${item.id}`) || ""}
-			className={item && disable ? classes.disableLink : classes.link}
-		>
-			<Fade timeout={{ enter: 800 }} in={true}>
-				<Card
-					className={`${classes.card} ${item &&
-						disable &&
-						classes.disableCard}`}
-				>
-					<CardActionArea className={classes.content}>
-						{item && disable && (
-							<LockIcon className={classes.lockIcon} />
-						)}
-						{icon && !disable && (
-							<VolumeUpIcon className={classes.lockIcon} />
-						)}
-						{item && item.img && (
-							<CardMedia
-								className={classes.img}
-								image={item.img}
-								title={item.label}
-							/>
-						)}
-						<CardContent className={classes.cardContent}>
-							<Typography gutterBottom variant="h5" component="h2">
-								{item && item.label ? item.item || item.topic || item.label : "No Name"}
-							</Typography>
-							<Typography
-								variant="overline"
-								gutterBottom
-							>
-								{item && (item.desc || item.language)}
-							</Typography>
-						</CardContent>
-					</CardActionArea>
-				</Card>
-			</Fade>
-		</Link>
-	);
+  const disable = userPoints <= Number(item.id) && Number(item.id) !== 0;
+  return (
+    <Link
+      to={(item && item.url) || (item && !disable && `topics/${item.id}`) || ""}
+      className={item && disable ? classes.disableLink : classes.link}
+    >
+      <Fade timeout={{ enter: 800 }} in={true}>
+        <Card
+          className={`${classes.card} ${item &&
+            disable &&
+            classes.disableCard}`}
+        >
+          <CardActionArea className={classes.content}>
+            {item && disable && <LockIcon className={classes.lockIcon} />}
+            {icon && !disable && <VolumeUpIcon className={classes.lockIcon} />}
+            {item && item.img && (
+              <CardMedia
+                className={classes.img}
+                image={item.img}
+                title={item.label}
+              />
+            )}
+            <CardContent className={classes.cardContent}>
+              <Typography gutterBottom variant="h5" component="h2">
+                {item && item.label
+                  ? item.item || item.topic || item.label
+                  : "No Name"}
+              </Typography>
+              <Typography variant="overline" gutterBottom>
+                {item && (item.desc || item.language)}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Fade>
+    </Link>
+  );
 };
 
 export default withStyles(styles)(MoCard);
