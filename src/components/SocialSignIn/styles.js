@@ -17,10 +17,6 @@ const styles = theme => ({
 		alignItems: "center",
 		padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`
 	},
-	avatar: {
-		margin: theme.spacing(),
-		backgroundColor: theme.palette.primary.main
-	},
 });
 
 export default styles;
