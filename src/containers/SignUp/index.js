@@ -7,7 +7,7 @@ import SignUpForm from "./SignUpForm";
 
 const SignUpPage = () => (
 	<>
-		<MoPage img="" title="Get Started today!" loading={true} isCard={true}>
+		<MoPage img="" title="Get Started today!" loading={false} isCard={true}>
 			<Grid container spacing={3}>
 				<SignUpForm />
 				<SocialSignIn />
