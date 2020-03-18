@@ -32,6 +32,12 @@ const styles = theme => ({
     position: "absolute",
     top: "10px",
     right: "10px"
+  },
+  checkIcon: {
+    color: " #99bb33",
+	position: "absolute",
+    top: "10px",
+    right: "10px"
   }
 });
 
