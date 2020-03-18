@@ -10,21 +10,21 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import withLayout from "../../../components/shared/Layout";
 
 const styles = theme => ({
-	button: {
-		margin: theme.spacing(1)
-	},
-	input: {
-		margin: theme.spacing(1)
-	}
+  button: {
+    margin: theme.spacing(1)
+  },
+  input: {
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
-	username: "",
-	email: "",
-	passwordOne: "",
-	passwordTwo: "",
-	isAdmin: false,
-	error: null
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
+  isAdmin: false,
+  error: null
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
@@ -38,70 +38,70 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 `;
 
 const SignUpFormBase = ({ firebase, history, classes }) => {
-	const [state, setState] = useState({ ...INITIAL_STATE });
-	const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
+  const [state, setState] = useState({ ...INITIAL_STATE });
+  const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
 
-	const handleSubmit = event => {
-		const roles = {};
+  const handleSubmit = event => {
+    const roles = {};
 
-		if (isAdmin) {
-			roles[ROLES.ADMIN] = ROLES.ADMIN;
-		}
+    if (isAdmin) {
+      roles[ROLES.ADMIN] = ROLES.ADMIN;
+    }
 
-		firebase
-			.createUserWithEmailAndPassword(email, passwordOne)
-			.then(authUser => {
-				// Create a user in your Firebase realtime database
-				return firebase.user(authUser.user.uid).set(
-					{
-						username,
-						email,
-						roles
-					},
-					{ merge: true }
-				);
-			})
-			.then(() => {
-				return firebase.sendEmailVerification();
-			})
-			.then(() => {
-				setState({ ...INITIAL_STATE });
-				history.goBack();
-			})
-			.catch(error => {
-				if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-					error.message = ERROR_MSG_ACCOUNT_EXISTS;
-				}
-				setState({ ...state, error });
-			});
+    firebase
+      .createUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        // Create a user in your Firebase realtime database
+        return firebase.user(authUser.user.uid).set(
+          {
+            username,
+            email,
+            roles
+          },
+          { merge: true }
+        );
+      })
+      .then(() => {
+        return firebase.sendEmailVerification();
+      })
+      .then(() => {
+        setState({ ...INITIAL_STATE });
+        history.goBack();
+      })
+      .catch(error => {
+        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+          error.message = ERROR_MSG_ACCOUNT_EXISTS;
+        }
+        setState({ ...state, error });
+      });
 
-		event.preventDefault();
-	};
+    event.preventDefault();
+  };
 
-	const onChange = event => {
-		setState({ ...state, [event.target.name]: event.target.value });
-	};
+  const onChange = event => {
+    setState({ ...state, [event.target.name]: event.target.value });
+  };
 
-	return (
-		<EmailSignUpForm
-			onSubmit={handleSubmit}
-			isInvalid={
-				passwordOne !== passwordTwo ||
-				passwordOne === "" ||
-				email === "" ||
-				username === ""
-			}
-			onChange={onChange}
-			error={error}
-		/>
-	);
+  return (
+    <EmailSignUpForm
+      onSubmit={handleSubmit}
+      isInvalid={
+        passwordOne !== passwordTwo ||
+        passwordOne === "" ||
+        email === "" ||
+        username === ""
+      }
+      onChange={onChange}
+      error={error}
+    />
+  );
 };
 
 const SignUpForm = compose(
-	withStyles(styles),
-    withLayout,
-	withRouter,
-    withFirebase,
+  withStyles(styles),
+  withLayout,
+  withRouter,
+  withFirebase
 )(SignUpFormBase);
 
 export default SignUpForm;
