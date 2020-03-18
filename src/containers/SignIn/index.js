@@ -6,12 +6,12 @@ import SocialSignIn from "../../components/SocialSignIn/";
 import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
-	<MoPage img="" title="Welcome Back!" loading={false} isCard={true}>
-		<Grid container spacing={3}>
-			<SignInForm />
-			<SocialSignIn />
-		</Grid>
-	</MoPage>
+  <MoPage img="" title="Welcome Back!" loading={false} isCard={true}>
+    <Grid container spacing={3}>
+      <SignInForm />
+      <SocialSignIn />
+    </Grid>
+  </MoPage>
 );
 
 export default SignInPage;
