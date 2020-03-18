@@ -11,20 +11,20 @@ import withLayout from "../shared/Layout";
 import MoTitle from "../shared/MoTitle";
 
 const SocialSignIn = ({ classes }) => {
-	return (
-		<main className={classes.main}>
-			<CssBaseline />
-			<div className={classes.paper}>
-				<MoTitle text="Social Media Sign in" fade={true} margin="36px 0 36px" />
-				<SignInWithFacebook />
-				<SignInWithGoogle />
-			</div>
-		</main>
-	);
+  return (
+    <main className={classes.main}>
+      <CssBaseline />
+      <div className={classes.paper}>
+        <MoTitle text="Social Media Sign in" fade={true} margin="36px 0 36px" />
+        <SignInWithFacebook />
+        <SignInWithGoogle />
+      </div>
+    </main>
+  );
 };
 
 SocialSignIn.propTypes = {
-	classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default compose(withLayout, withStyles(styles))(SocialSignIn);
