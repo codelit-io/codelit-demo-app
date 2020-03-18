@@ -4,30 +4,32 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import Fade from "@material-ui/core/Fade";
 import LockIcon from "@material-ui/icons/Lock";
-import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ item, icon, classes, userPoints }) => {
-  const disable = userPoints <= Number(item.id) && Number(item.id) !== 0;
+const MoCard = ({ item, classes, userPoints }) => {
+  const isDisabled = userPoints < Number(item.id) - 1 && Number(item.id) !== 1;
+  const isAnswered = userPoints >= Number(item.id);
+
   return (
     <Link
-      to={(item && item.url) || (item && !disable && `topics/${item.id}`) || ""}
-      className={item && disable ? classes.disableLink : classes.link}
+      to={(item && item.url) || (item && !isDisabled && `topics/${item.id}`) || ""}
+      className={item && isDisabled ? classes.disableLink : classes.link}
     >
       <Fade timeout={{ enter: 800 }} in={true}>
         <Card
           className={`${classes.card} ${item &&
-            disable &&
+            isDisabled &&
             classes.disableCard}`}
         >
           <CardActionArea className={classes.content}>
-            {item && disable && <LockIcon className={classes.lockIcon} />}
-            {icon && !disable && <VolumeUpIcon className={classes.lockIcon} />}
+            {item && isDisabled && <LockIcon className={classes.lockIcon} />}
+            {item && !isDisabled && isAnswered && <CheckCircleIcon className={classes.checkIcon} />}
             {item && item.img && (
               <CardMedia
                 className={classes.img}
