@@ -1,6 +1,6 @@
 const styles = theme => ({
   link: {
-    backgroundColor: "none",
+    background: "none",
     textDecoration: "none",
     padding: "0px",
     color: theme.blue.medium,
@@ -13,10 +13,11 @@ const styles = theme => ({
     },
     "&:hover arrow": {
       transform: "translateX(5px)"
-    },
-    arrow: {
-      fontSize: "1.0rem"
     }
+  },
+  arrow: {
+    fontSize: "1.0rem",
+    paddingLeft: "4px"
   }
 });
 
