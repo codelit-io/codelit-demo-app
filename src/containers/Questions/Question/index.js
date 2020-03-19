@@ -82,7 +82,11 @@ const Question = ({ firebase, history, match }) => {
         snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
         setQuestion(question[0]);
       } else {
-        setQuestion();
+        setQuestion({
+          label: "You have finished all questions ✅",
+          question: "<h1>Nice Job 🎉</h1>",
+          language: "html"
+        });
         setIsCorrect(false);
       }
       setLoading(false);
