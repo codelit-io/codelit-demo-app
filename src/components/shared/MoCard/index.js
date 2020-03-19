@@ -14,7 +14,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoCard = ({ item, classes, userPoints }) => {
   const isDisabled = userPoints < Number(item.id) - 1 && Number(item.id) !== 1;
-  const isAnswered = userPoints >= Number(item.id);
 
   return (
     <Link
@@ -31,9 +30,6 @@ const MoCard = ({ item, classes, userPoints }) => {
         >
           <CardActionArea className={classes.content}>
             {item && isDisabled && <LockIcon className={classes.lockIcon} />}
-            {item && !isDisabled && isAnswered && (
-              <CheckCircleIcon className={classes.checkIcon} />
-            )}
             {item && item.img && (
               <CardMedia
                 className={classes.img}
