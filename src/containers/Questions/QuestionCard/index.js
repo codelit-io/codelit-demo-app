@@ -16,7 +16,7 @@ const QuestionCard = ({ index, question, userPoints }) => (
         ></MoTitle>
       </Grid>
     )}
-    <Grid item xs={12} sm={6} md={6}>
+    <Grid item xs={12} sm={6} md={3}>
       <MoCard userPoints={userPoints} item={question}></MoCard>
     </Grid>
   </>
