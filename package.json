@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "pretty": "eslint './src/**/*.js' --fix",
     "build": "react-scripts build",
-    "deploy": "react-scripts build && firebase deploy --only hosting:tool-builder",
+    "deploy": "npm run pretty && react-scripts build && firebase deploy --only hosting:tool-builder",
     "check-updates": "ncu -u",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
