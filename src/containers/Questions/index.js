@@ -4,7 +4,8 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 import Grid from "@material-ui/core/Grid";
 import QuestionCard from "./QuestionCard";
 import MoPage from "../../components/shared/MoPage";
-
+import MoLink from "../../components/shared/MoLink";
+import * as ROUTES from "../../constants/routes";
 const Questions = ({ firebase }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
@@ -55,16 +56,30 @@ const Questions = ({ firebase }) => {
   }, [firebase]);
 
   return (
-    <MoPage title="Topics" loading={loading} isCard={false}>
-      <Grid container spacing={4}>
-        {questions && (
-          <AuthUserContext.Consumer>
-            {authUser => (
-              <QuestionsList authUser={authUser} questions={questions} />
-            )}
-          </AuthUserContext.Consumer>
-        )}
-      </Grid>
+    <MoPage title="Easy" loading={loading} isCard={false}>
+      {questions && (
+        <AuthUserContext.Consumer>
+          {authUser => (
+            <>
+              <div>
+                {authUser && authUser.points ? (
+                  <p>
+                    <strong>{authUser.points}</strong> Points
+                  </p>
+                ) : (
+                  <MoLink
+                    text="Login to earn points and save progress"
+                    href={ROUTES.SIGN_UP.path}
+                  />
+                )}
+              </div>
+              <Grid container spacing={4}>
+                <QuestionsList authUser={authUser} questions={questions} />
+              </Grid>
+            </>
+          )}
+        </AuthUserContext.Consumer>
+      )}
     </MoPage>
   );
 };
