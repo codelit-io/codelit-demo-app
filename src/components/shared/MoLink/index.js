@@ -9,11 +9,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 const MoLink = ({ classes, href, text }) => {
   return (
     <Button component={Link} to={href ? href : "#"} className={classes.link}>
-      {text}{" "}
-      <ArrowForwardIcon
-        className="arrow"
-        style={{ fontSize: "1em", paddingLeft: "4px" }}
-      />
+      {text}
+      <ArrowForwardIcon className={classes.arrow} />
     </Button>
   );
 };
