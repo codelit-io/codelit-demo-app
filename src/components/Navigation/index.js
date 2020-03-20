@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 import Button from "@material-ui/core/Button";
-import MoDrawer from "./MoDrawer";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,8 +14,8 @@ import Box from "@material-ui/core/Box";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import SignOutButton from "../SignOut";
+import NavigationAuth from "./NavigationAuth";
+import NavigationNonAuth from "./NavigationNonAuth";
 
 const Navigation = ({ classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -54,7 +53,6 @@ const Navigation = ({ classes }) => {
               lg={4}
               style={{ textAlign: "right" }}
             >
-              <MoDrawer />
               <AuthUserContext.Consumer>
                 {authUser => (
                   <>
@@ -81,35 +79,12 @@ const Navigation = ({ classes }) => {
                       onClose={handleClose}
                     >
                       {authUser ? (
-                        <div>
-                          <MenuItem
-                            to={ROUTES.ACCOUNT.path}
-                            component={Link}
-                            onClick={handleClose}
-                          >
-                            My account
-                          </MenuItem>
-                          <SignOutButton
-                            handleClose={handleClose}
-                          ></SignOutButton>
-                        </div>
+                        <NavigationAuth
+                          authUser={authUser}
+                          handleClose={handleClose}
+                        />
                       ) : (
-                        <div>
-                          <MenuItem
-                            to={ROUTES.SIGN_IN.path}
-                            component={Link}
-                            onClick={handleClose}
-                          >
-                            Sign in
-                          </MenuItem>
-                          <MenuItem
-                            to={ROUTES.SIGN_UP.path}
-                            component={Link}
-                            onClick={handleClose}
-                          >
-                            Sign up
-                          </MenuItem>
-                        </div>
+                        <NavigationNonAuth handleClose={handleClose} />
                       )}
                     </Menu>
                   </>
