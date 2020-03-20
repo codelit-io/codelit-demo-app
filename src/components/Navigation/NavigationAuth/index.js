@@ -6,7 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import SignOutButton from "../../SignOut";
 
 const NavigationAuth = ({ authUser, handleClose }) => (
-  <>
+  <div>
     <MenuItem to={ROUTES.ACCOUNT.path} component={Link} onClick={handleClose}>
       My account
     </MenuItem>
@@ -22,7 +22,7 @@ const NavigationAuth = ({ authUser, handleClose }) => (
       </MenuItem>
     )}
     <SignOutButton handleClose={handleClose}></SignOutButton>
-  </>
+  </div>
 );
 
 export default NavigationAuth;
