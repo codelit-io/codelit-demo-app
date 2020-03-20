@@ -13,14 +13,6 @@ const styles = theme => ({
   toolbar: {
     padding: "0"
   },
-  avatar: {
-    width: theme.spacing(4),
-    height: theme.spacing(4)
-  },
-  adminAvatar: {
-    border: `2px solid ${theme.yellow.light}`,
-    overflow: "visible"
-  },
   appBar: {
     boxShadow: "none",
     backgroundColor: "transparent",
