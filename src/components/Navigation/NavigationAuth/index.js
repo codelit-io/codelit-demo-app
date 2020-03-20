@@ -1,23 +1,28 @@
 import React from "react";
 import * as ROUTES from "../../../constants/routes";
-import { Link } from "react-router-dom";
-import { List, ListItem } from "@material-ui/core";
 import * as ROLES from "../../../constants/roles";
+import { Link } from "react-router-dom";
+import MenuItem from "@material-ui/core/MenuItem";
+import SignOutButton from "../../SignOut";
 
-const NavigationAuth = ({ authUser }) => (
-  <List>
-    <ListItem button component={Link} to={ROUTES.HOME.path}>
-      Home
-    </ListItem>
-    <ListItem button component={Link} to={ROUTES.ACCOUNT.path}>
+const NavigationAuth = ({ authUser, handleClose }) => (
+  <>
+    <MenuItem to={ROUTES.ACCOUNT.path} component={Link} onClick={handleClose}>
+      My account
+    </MenuItem>
+    <MenuItem to={ROUTES.HOME.path} component={Link} onClick={handleClose}>
+      Feature Request
+    </MenuItem>
+    <MenuItem to={ROUTES.ACCOUNT.path} component={Link} onClick={handleClose}>
       My Account
-    </ListItem>
+    </MenuItem>
     {authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
-      <ListItem button component={Link} to={ROUTES.ADMIN.path}>
+      <MenuItem to={ROUTES.ADMIN.path} component={Link} onClick={handleClose}>
         Admin
-      </ListItem>
+      </MenuItem>
     )}
-  </List>
+    <SignOutButton handleClose={handleClose}></SignOutButton>
+  </>
 );
 
 export default NavigationAuth;
