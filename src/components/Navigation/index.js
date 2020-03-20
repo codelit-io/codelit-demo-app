@@ -1,32 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
+import MoAvatar from "./MoAvatar";
+import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Menu from "@material-ui/core/Menu";
-import NavigationAuth from "./NavigationAuth";
-import NavigationNonAuth from "./NavigationNonAuth";
 
 const Navigation = ({ classes }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
@@ -54,41 +40,7 @@ const Navigation = ({ classes }) => {
               style={{ textAlign: "right" }}
             >
               <AuthUserContext.Consumer>
-                {authUser => (
-                  <>
-                    <Button
-                      aria-controls="avatar-menu"
-                      aria-haspopup="true"
-                      className={classes.avatarButton}
-                      onClick={handleClick}
-                    >
-                      <Avatar
-                        alt="Me"
-                        src={authUser && authUser.photoURL}
-                        className={`${classes.avatar} ${authUser &&
-                          authUser.roles &&
-                          authUser.roles.ADMIN &&
-                          classes.adminAvatar}`}
-                      />
-                    </Button>
-                    <Menu
-                      id="avatar-menu"
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}
-                    >
-                      {authUser ? (
-                        <NavigationAuth
-                          authUser={authUser}
-                          handleClose={handleClose}
-                        />
-                      ) : (
-                        <NavigationNonAuth handleClose={handleClose} />
-                      )}
-                    </Menu>
-                  </>
-                )}
+                {authUser => <MoAvatar authUser={authUser} />}
               </AuthUserContext.Consumer>
             </Grid>
           </Grid>
