@@ -10,13 +10,13 @@ const styles = theme => ({
   },
   section: {
     width: "100%",
-	  paddingTop: theme.padding.lg,
-	  paddingBottom: theme.padding.lg
+    paddingTop: theme.padding.lg,
+    paddingBottom: theme.padding.lg
   },
   scoreBoard: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   }
 });
 
