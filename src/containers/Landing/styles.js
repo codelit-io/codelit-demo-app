@@ -1,7 +1,7 @@
 const styles = theme => ({
   container: {
-    marginTop: theme.spacing(12),
-    marginBottom: theme.spacing(12)
+    marginTop: theme.padding.lg,
+    marginBottom: theme.padding.lg,
   },
   heroText: {
     color: "rgb(43, 43, 43)",
