@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import CodeEditor from "../../components/CodeEditor";
-import PageHeader from "../../components/shared/PageHeader";
+import MoPageHeader from "../../components/shared/MoPageHeader";
 
 const Playground = () => {
   const initialState = {
@@ -34,7 +34,7 @@ const Playground = () => {
 
   return (
     <>
-      <PageHeader img="" title="React Playground" />
+      <MoPageHeader img="" title="React Playground" />
       <CodeEditor
         handleOnChange={userAnswer => handleOnChange(userAnswer)}
         question={question}
