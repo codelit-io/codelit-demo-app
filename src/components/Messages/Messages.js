@@ -121,7 +121,7 @@ class Messages extends Component {
                 )}
               </Grid>
               <Grid item md={6} sm={12} xs={12}>
-                <MoPage title="Post a request" loading={loading} >
+                <MoPage title="Post a request" loading={loading}>
                   <form
                     onSubmit={event => this.onCreateMessage(event, authUser)}
                   >
