@@ -14,7 +14,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const Navigation = ({ classes }) => {
   return (
-    <div className={classes.root}>
+    <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Grid container className={classes.alignCenter}>
@@ -46,7 +46,7 @@ const Navigation = ({ classes }) => {
           </Grid>
         </Toolbar>
       </AppBar>
-    </div>
+    </header>
   );
 };
 
