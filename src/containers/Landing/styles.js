@@ -1,7 +1,7 @@
 const styles = theme => ({
   container: {
     marginTop: theme.padding.lg,
-    marginBottom: theme.padding.lg,
+    marginBottom: theme.padding.lg
   },
   heroText: {
     color: "rgb(43, 43, 43)",
