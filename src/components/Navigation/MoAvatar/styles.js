@@ -4,8 +4,11 @@ const styles = theme => ({
     height: theme.spacing(4)
   },
   adminAvatar: {
-    border: `2px solid ${theme.yellow.light}`,
+    border: `2px solid ${theme.blue.medium}`,
     overflow: "visible"
+  },
+  menu: {
+     boxShadow: theme.bigShadow
   }
 });
 
