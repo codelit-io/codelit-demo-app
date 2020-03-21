@@ -6,7 +6,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import Spinner from "../shared/Spinner";
 import { withFirebase } from "../Firebase";
-import PageHeader from "../shared/PageHeader";
+import MoPageHeader from "../shared/MoPageHeader";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import MoPage from "../shared/MoPage";
@@ -99,7 +99,7 @@ class Messages extends Component {
       <AuthUserContext.Consumer>
         {authUser => (
           <>
-            <PageHeader img="" title="New Feature Requests" />
+            <MoPageHeader img="" title="New Feature Requests" />
             <Spinner loading={loading} color="primary" />
             <Grid container spacing={4}>
               <Grid item md={6} sm={12} xs={12}>
@@ -121,7 +121,7 @@ class Messages extends Component {
                 )}
               </Grid>
               <Grid item md={6} sm={12} xs={12}>
-                <MoPage title="Post a request" loading={loading} isCard={true}>
+                <MoPage title="Post a request" loading={loading} >
                   <form
                     onSubmit={event => this.onCreateMessage(event, authUser)}
                   >
