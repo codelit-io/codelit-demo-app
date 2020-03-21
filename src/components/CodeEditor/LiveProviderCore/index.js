@@ -45,7 +45,7 @@ const LiveProviderCore = ({ classes, question, handleOnChange }) => {
         </Slide>
       </Grid>
       <Grid item md={6} sm={12} xs={12}>
-        <MoTitle text="Live Preview" fade={true} margin="36px 0 36px" />
+        {question.question && <MoTitle text="Live Preview" fade={true} margin="36px 0 36px" />}
         <Slide
           direction="left"
           in={(question.isPlayground && true) || (question.question && true)}
