@@ -55,6 +55,7 @@ let theme = createMuiTheme({
   container: {
     width: "calc(100vw - 28.799999999999997rem)"
   },
+  editorFont: "16px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
   flexAlignCenter: {
     display: "flex",
     alignItems: "center"
