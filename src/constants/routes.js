@@ -23,7 +23,10 @@ export const LANDING = {
   title: "New way to Mastering Front-end Development"
 };
 export const QUESTIONS = { path: "/topics", title: "Topics" };
-export const SUPER_EASY_QUESTIONS = { path: "/topics/super-easy", title: "Super Easy"}
+export const SUPER_EASY_QUESTIONS = {
+  path: "/topics/super-easy",
+  title: "Super Easy"
+};
 export const SIGN_IN = { path: "/signin", title: "Sign in" };
 export const SIGN_UP = { path: "/signup", title: "Sign up" };
 export const PASSWORD_FORGET = { path: "/pw-forget", title: "Forgot Password" };
