@@ -57,6 +57,22 @@ const MoMenu = ({ authUser, classes }) => {
           >
             {ROUTES.SUPER_EASY_QUESTIONS.title}
           </MenuItem>
+          <MenuItem
+            disabled
+            to={ROUTES.SUPER_EASY_QUESTIONS.path}
+            component={Link}
+            onClick={handleClose}
+          >
+            Medium
+          </MenuItem>
+          <MenuItem
+            disabled
+            to={ROUTES.SUPER_EASY_QUESTIONS.path}
+            component={Link}
+            onClick={handleClose}
+          >
+            Pro
+          </MenuItem>
         </div>
       </Menu>
     </>
