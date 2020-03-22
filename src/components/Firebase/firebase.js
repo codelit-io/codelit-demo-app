@@ -74,6 +74,8 @@ class Firebase {
 
   questions = () => this.firestore.collection("questions");
 
+  moskool = () => this.firestore.collection("moskool");
+
   /* Get Any collection or Doc  */
 
   collection = collectionPath => this.firestore.collection(collectionPath);
