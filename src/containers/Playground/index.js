@@ -8,10 +8,13 @@ const Playground = () => {
     element: "button",
     id: "0",
     isCorrect: false,
-    question: `<section>
-    <h1>I am a Heading 1</h1>
-</section>`,
-    status: "😴",
+    question: `() => {
+      return (
+        <section>
+          <h1>I love React 💙</h1>
+        </section>
+      );
+    };`,
     isPlayground: true
   };
 
