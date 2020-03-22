@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import CodeEditor from "../../components/CodeEditor";
-import MoPageHeader from "../../components/shared/MoPageHeader";
 
 const Playground = () => {
   const initialState = {
@@ -9,15 +8,8 @@ const Playground = () => {
     element: "button",
     id: "0",
     isCorrect: false,
-    label: "Write JSX code",
     question: `<section>
     <h1>I am a Heading 1</h1>
-
-    <p>I am a Paragraph</p>
-
-    <button>I am a button</button>
-
-    <input type="text" placeholder="I am a text input"/>
 </section>`,
     status: "😴",
     isPlayground: true
@@ -33,13 +25,12 @@ const Playground = () => {
   };
 
   return (
-    <>
-      <MoPageHeader img="" title="React Playground" />
-      <CodeEditor
-        handleOnChange={userAnswer => handleOnChange(userAnswer)}
-        question={question}
-      />
-    </>
+    <CodeEditor
+      handleOnChange={userAnswer => handleOnChange(userAnswer)}
+      md={12}
+      sm={12}
+      question={question}
+    />
   );
 };
 
