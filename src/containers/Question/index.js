@@ -24,7 +24,9 @@ const Question = ({ firebase, history, match }) => {
   };
 
   const navigateToNextLevel = id => {
-    history.push(ROUTES.QUESTIONS.path + "/" +match.params.collection + "/" + id);
+    history.push(
+      ROUTES.QUESTIONS.path + "/" + match.params.collection + "/" + id
+    );
   };
 
   /* * *  awardPlayerPoints   * * * * * * * * * * * * *
@@ -110,6 +112,8 @@ const Question = ({ firebase, history, match }) => {
                   handleOnChange={userAnswer =>
                     handleOnChange(userAnswer, authUser)
                   }
+                  sm={6}
+                  md={6}
                   question={question}
                 />
               )}
