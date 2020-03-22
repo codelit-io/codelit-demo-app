@@ -7,7 +7,7 @@ const config = {
   spread: 285,
   startVelocity: 30,
   elementCount: "102",
-  duration: "3000",
+  duration: "1000",
   width: "12px",
   height: "12px",
   colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
