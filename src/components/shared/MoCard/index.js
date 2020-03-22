@@ -11,13 +11,12 @@ import Fade from "@material-ui/core/Fade";
 import LockIcon from "@material-ui/icons/Lock";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ item, classes, userPoints }) => {
+const MoCard = ({ item, classes, userPoints, url }) => {
   const isDisabled = userPoints < Number(item.id) - 1 && Number(item.id) !== 1;
-
   return (
     <Link
       to={
-        (item && item.url) || (item && !isDisabled && `topics/${item.id}`) || ""
+        (item && item.url) || (item && !isDisabled && `${url}/${item.id}`) || ""
       }
       className={item && isDisabled ? classes.disableLink : classes.link}
     >
