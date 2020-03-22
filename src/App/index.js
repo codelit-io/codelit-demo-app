@@ -43,7 +43,11 @@ const App = () => (
               component={PasswordForgot}
             />
             <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-            <Route exact path={ROUTES.QUESTIONS.path + "/:collection"} component={Questions} />
+            <Route
+              exact
+              path={ROUTES.QUESTIONS.path + "/:collection"}
+              component={Questions}
+            />
             <Route
               exact
               path={ROUTES.QUESTIONS.path + "/:collection/:question"}
