@@ -48,7 +48,7 @@ const LandingPage = ({ classes }) => {
             >
               <div>
                 <MoBrowserMockup fileType="jsx" isEditor={true}>
-                  <pre>
+                  <pre className={classes.editorFont}>
                     () => &lt;h1&gt;Hello React
                     <span aria-label="img" role="img">
                       🤩
