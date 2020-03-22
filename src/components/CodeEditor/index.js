@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import LiveProviderCore from "./LiveProviderCore";
 
-const CodeEditor = ({ question, handleOnChange }) => {
+const CodeEditor = ({ handleOnChange, md, sm, question }) => {
   const [state, setState] = useState(question);
 
   useEffect(() => {
@@ -19,7 +19,12 @@ const CodeEditor = ({ question, handleOnChange }) => {
 
   return (
     <Grid container spacing={4}>
-      <LiveProviderCore question={state} handleOnChange={handleOnChange} />
+      <LiveProviderCore
+        question={state}
+        handleOnChange={handleOnChange}
+        md={md}
+        sm={sm}
+      />
     </Grid>
   );
 };
