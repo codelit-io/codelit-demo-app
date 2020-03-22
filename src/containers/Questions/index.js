@@ -1,83 +1,41 @@
 import React, { useEffect, useState } from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
-import Grid from "@material-ui/core/Grid";
-import QuestionCard from "./QuestionCard";
-import MoPage from "../../components/shared/MoPage";
-import QuestionCategory from "./QuestionCategory";
+import QuestionsPage from "./QuestionsPage";
 
-const Questions = ({ firebase }) => {
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
-  const [userPoints, setUserPoints] = useState(0);
+const Questions = ({ firebase, match }) => {
+	const [configs, setConfigs] = useState([]);
 
-  const QuestionsList = ({ authUser, questions }) => {
-    if (authUser) {
-      setUserPoints(authUser.points);
-    }
+	useEffect(() => {
+		firebase
+			.moskool()
+			.doc(match.params.collection)
+			.get()
+			.then(doc => {
+				if (doc.exists) {
+					// Convert to configs object
+					let configs = doc.data();
+					// Use a configs instance method
+					setConfigs(configs);
+				} else {
+					console.log("No such document!");
+				}
+			})
+			.catch(error => {
+				console.log("Error getting document:", error);
+			});
+	}, [firebase, match]);
 
-    return questions.map((question, index) => (
-      <React.Fragment key={index}>
-        {question.category && (
-          <QuestionCategory category={question.category} index={index} />
-        )}
-        <QuestionCard
-          userPoints={userPoints}
-          question={question}
-          index={index}
-        />
-      </React.Fragment>
-    ));
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    const getQuestions = firebase
-      .questions()
-      .orderBy("id")
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          let questions = [];
-          snapshot.forEach(doc => {
-            questions.push({
-              ...doc.data(),
-              uid: doc.id
-            });
-          });
-          setQuestions(questions);
-          setLoading(false);
-        } else {
-          setQuestions([]);
-          setLoading(false);
-        }
-      });
-    /* Unsubscribe from firebase on unmount */
-    return () => {
-      setQuestions([]);
-      getQuestions();
-    };
-  }, [firebase]);
-
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <MoPage
-          title="Super Easy"
-          points={authUser && authUser.points}
-          loading={loading}
-          numberOfQuestions={questions.length}
-          isScoreBoard={true}
-        >
-          <>
-            {questions && (
-              <Grid container spacing={4}>
-                <QuestionsList authUser={authUser} questions={questions} />
-              </Grid>
-            )}
-          </>
-        </MoPage>
-      )}
-    </AuthUserContext.Consumer>
-  );
+	return (
+		<AuthUserContext.Consumer>
+			{authUser => (
+				<QuestionsPage
+					authUser={authUser}
+					configs={configs}
+					firebase={firebase}
+				/>
+			)}
+		</AuthUserContext.Consumer>
+	);
 };
 export default withAuthentication(Questions);
