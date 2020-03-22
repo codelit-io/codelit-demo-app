@@ -14,46 +14,46 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import MoMenu from "./MoMenu";
 
 const Navigation = ({ classes }) => {
-	return (
-		<header className={classes.root}>
-			<AppBar position="static" color="default" className={classes.appBar}>
-				<Toolbar className={classes.toolbar}>
-					<Grid container className={classes.alignCenter}>
-						<Grid item xs={4} sm={4} md={4} lg={4}>
-							<Typography className={classes.title} variant="h6" noWrap>
-								<Link
-									to={ROUTES.LANDING.path}
-									style={{ color: "#383c40", textDecoration: "none" }}
-								>
-									<Box fontWeight="fontWeightLight" className={classes.MoSkool}>
-										Mo Skool
-									</Box>
-								</Link>
-							</Typography>
-						</Grid>
-						<Grid item xs={4} sm={4} md={4} lg={4}></Grid>
-						<Grid
-							item
-							xs={4}
-							sm={4}
-							md={4}
-							lg={4}
-							style={{ textAlign: "right" }}
-						>
-							<AuthUserContext.Consumer>
-								{authUser => (
-									<>
-										<MoMenu authUser={authUser} />
-										<MoAvatar authUser={authUser} />
-									</>
-								)}
-							</AuthUserContext.Consumer>
-						</Grid>
-					</Grid>
-				</Toolbar>
-			</AppBar>
-		</header>
-	);
+  return (
+    <header className={classes.root}>
+      <AppBar position="static" color="default" className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <Grid container className={classes.alignCenter}>
+            <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Typography className={classes.title} variant="h6" noWrap>
+                <Link
+                  to={ROUTES.LANDING.path}
+                  style={{ color: "#383c40", textDecoration: "none" }}
+                >
+                  <Box fontWeight="fontWeightLight" className={classes.MoSkool}>
+                    Mo Skool
+                  </Box>
+                </Link>
+              </Typography>
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} lg={4}></Grid>
+            <Grid
+              item
+              xs={4}
+              sm={4}
+              md={4}
+              lg={4}
+              style={{ textAlign: "right" }}
+            >
+              <AuthUserContext.Consumer>
+                {authUser => (
+                  <>
+                    <MoMenu authUser={authUser} />
+                    <MoAvatar authUser={authUser} />
+                  </>
+                )}
+              </AuthUserContext.Consumer>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </header>
+  );
 };
 
 export default withStyles(styles)(Navigation);
