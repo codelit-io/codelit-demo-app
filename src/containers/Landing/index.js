@@ -24,7 +24,7 @@ const LandingPage = ({ classes }) => {
             Experience a modern interactive approach to mastering React frontend
             development.
           </Typography>
-          <MoLinkButton text="Get started" href={ROUTES.QUESTIONS.path} />
+          <MoLinkButton text="Get started" href={ROUTES.SUPER_EASY_QUESTIONS.path} />
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
