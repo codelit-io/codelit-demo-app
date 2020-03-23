@@ -1,6 +1,7 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import MoTitle from "../../../../components/shared/MoTitle";
+import React, { lazy } from "react";
+
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const MoTitle = lazy(() => import("../../../../components/shared/MoTitle"));
 
 const QuestionCategory = ({ category, index }) => (
   <Grid item xs={12} sm={12} md={12}>
