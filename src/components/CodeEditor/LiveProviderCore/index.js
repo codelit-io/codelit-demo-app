@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { lazy, useEffect } from "react";
 
 import { addFocusOnEditor } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
-import Grid from "@material-ui/core/Grid";
-import Headline from "../../shared/Headline";
-import Slide from "@material-ui/core/Slide";
-import MoParagraph from "../../shared/MoParagraph";
 import { reactLiveTheme } from "../../../utils/reactLiveTheme";
-import MoBrowserMockup from "../../shared/MoBrowserMockup";
+
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const Slide = lazy(() => import("@material-ui/core/Slide"));
+const Headline = lazy(() => import("../../shared/Headline"));
+const MoParagraph = lazy(() => import("../../shared/MoParagraph"));
+const MoBrowserMockup = lazy(() => import("../../shared/MoBrowserMockup"));
 
 const LiveProviderCore = ({ handleOnChange, md, sm, question }) => {
   useEffect(() => {
