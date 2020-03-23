@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { lazy, useState, useEffect } from "react";
 
-import Grid from "@material-ui/core/Grid";
-import LiveProviderCore from "./LiveProviderCore";
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const LiveProviderCore = lazy(() => import("./LiveProviderCore"));
 
 const CodeEditor = ({ handleOnChange, md, sm, question }) => {
   const [state, setState] = useState(question);
