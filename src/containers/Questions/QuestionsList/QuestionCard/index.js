@@ -1,7 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 
-import Grid from "@material-ui/core/Grid";
-import MoCard from "../../../../components/shared/MoCard";
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const MoCard = lazy(() => import("../../../../components/shared/MoCard"));
 
 const QuestionCard = ({ question, userPoints, url }) => (
   <Grid item xs={12} sm={6} md={3}>
