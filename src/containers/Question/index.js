@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 
 import * as ROUTES from "../../constants/routes";
 
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
-import { AuthUserContext } from "../../components/Session";
-import Content from "./Content";
-import CodeEditor from "../../components/CodeEditor";
-import MoConfetti from "../../components/shared/MoConfetti";
 import MoSnackbar from "../../components/shared/MoSnackBar";
-import MoPage from "../../components/shared/MoPage";
-import { withAuthentication } from "../../components/Session";
+import AuthUserContext from "../../components/Session/context";
+import withAuthentication from "../../components/Session/withAuthentication";
+
+const ArrowForwardIcon = lazy(() => import("@material-ui/icons/ArrowForward"));
+const Content = lazy(() => import("./Content"));
+const CodeEditor = lazy(() => import("../../components/CodeEditor"));
+const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
+const MoPage = lazy(() => import("../../components/shared/MoPage"));
 
 const Question = ({ firebase, history, match }) => {
   const [loading, setLoading] = useState(true);
