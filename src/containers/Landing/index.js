@@ -1,34 +1,50 @@
-import React from "react";
+import React, { useState, lazy } from "react";
 
 import * as ROUTES from "../../constants/routes";
-import CheckIcon from "@material-ui/icons/Check";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
-import Grid from "@material-ui/core/Grid";
+
 import styles from "./styles";
-import Slide from "@material-ui/core/Slide";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoLinkButton from "../../components/shared/MoLinkButton";
-import MoBrowserMockup from "../../components/shared/MoBrowserMockup";
+
+const CheckIcon = lazy(() => import("@material-ui/icons/Check"));
+const Fade = lazy(() => import("@material-ui/core/Fade"));
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const ListItem = lazy(() => import("@material-ui/core/ListItem"));
+const ListItemText = lazy(() => import("@material-ui/core/ListItemText"));
+const ListItemAvatar = lazy(() => import("@material-ui/core/ListItemAvatar"));
+const MoBrowserMockup = lazy(() =>
+  import("../../components/shared/MoBrowserMockup")
+);
+const MoLinkButton = lazy(() => import("../../components/shared/MoLinkButton"));
+const Typist = lazy(() => import("react-typist"));
 
 const LandingPage = ({ classes }) => {
+  const [isPreview, setIsPreview] = useState(false);
   return (
     <>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
-          <Typography variant="h1" component="h2" className={classes.heroText}>
-            Master React without the fees
-          </Typography>
-          <Typography className={classes.heroSubtitle}>
-            Experience a modern interactive approach to mastering React frontend
-            development.
-          </Typography>
-          <MoLinkButton
-            text="Get started"
-            href={ROUTES.SUPER_EASY_QUESTIONS.path}
-          />
+          <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
+            <div>
+              <Typography
+                variant="h1"
+                component="h2"
+                className={classes.heroText}
+              >
+                Master React without the fees
+              </Typography>
+
+              <Typography className={classes.heroSubtitle}>
+                Experience a modern interactive approach to mastering React
+                frontend development.
+              </Typography>
+
+              <MoLinkButton
+                text="Get started"
+                href={ROUTES.SUPER_EASY_QUESTIONS.path}
+              />
+            </div>
+          </Fade>
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
@@ -39,45 +55,70 @@ const LandingPage = ({ classes }) => {
             xs={12}
             style={{ width: "100%", marginBottom: "50px" }}
           >
-            <Slide
-              direction="up"
-              in={true}
-              mountOnEnter
-              timeout={{ enter: 800, exit: 400 }}
-              unmountOnExit
-            >
+            <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
               <div>
+                <Typography variant="body1" gutterBottom>
+                  Write your code
+                </Typography>
                 <MoBrowserMockup fileType="jsx" isEditor={true}>
                   <pre className={classes.editorFont}>
-                    () => &lt;h1&gt;Hello React
-                    <span aria-label="img" role="img">
-                      🤩
-                    </span>
-                    &lt;/h1&gt;
+                    <Typist
+                      avgTypingDelay={60}
+                      stdTypingDelay={30}
+                      cursor={{
+                        show: true,
+                        blink: true,
+                        element: "|",
+                        hideWhenDone: true
+                      }}
+                      onTypingDone={() => setIsPreview(true)}
+                    >
+                      <span style={{ color: "#4d4d4c" }}>() =></span>{" "}
+                      <span style={{ color: "#c82829" }}>&lt;h1&gt;</span>
+                      <span style={{ color: "#4d4d4c" }}>Hello React</span>
+                      <span
+                        aria-label="img"
+                        role="img"
+                        className={classes.emoji}
+                      >
+                        🤩
+                      </span>
+                      <span style={{ color: "#c82829" }}>&lt;/h1&gt;</span>
+                    </Typist>
                   </pre>
                 </MoBrowserMockup>
               </div>
-            </Slide>
+            </Fade>
           </Grid>
           <Grid item md={12} sm={12} xs={12}>
-            <Slide
-              direction="left"
-              in={true}
-              mountOnEnter
-              timeout={{ enter: 800, exit: 800 }}
-              unmountOnExit
-            >
+            <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
               <div>
+                <Typography variant="body1" gutterBottom>
+                  Preview in real-time
+                </Typography>
                 <MoBrowserMockup isBrowser={true}>
-                  <h1>
-                    Hello React{" "}
-                    <span aria-label="img" role="img">
-                      🤩
-                    </span>
+                  <h1 style={{ height: "46px" }}>
+                    <Fade
+                      in={isPreview}
+                      mountOnEnter
+                      timeout={{ enter: 800 }}
+                      unmountOnExit
+                    >
+                      <div>
+                        Hello React
+                        <span
+                          aria-label="img"
+                          role="img"
+                          className={classes.emoji}
+                        >
+                          🤩
+                        </span>
+                      </div>
+                    </Fade>
                   </h1>
                 </MoBrowserMockup>
               </div>
-            </Slide>
+            </Fade>
           </Grid>
         </Grid>
       </Grid>
@@ -127,17 +168,11 @@ const LandingPage = ({ classes }) => {
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
-          <Slide
-            direction="up"
-            in={classes && true}
-            timeout={{ enter: 400, exit: 400 }}
-          >
-            <img
-              alt="Congrats"
-              className={classes.img}
-              src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fcongrats.png?alt=media&token=6e591903-a43c-413a-b861-52982750e530"
-            />
-          </Slide>
+          <img
+            alt="Congrats"
+            className={classes.img}
+            src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fcongrats.png?alt=media&token=6e591903-a43c-413a-b861-52982750e530"
+          />
         </Grid>
       </Grid>
       <Grid container spacing={4} className={classes.container}>
