@@ -1,10 +1,13 @@
 const styles = theme => ({
   container: {
-    paddingTop: theme.padding.lg,
-    paddingBottom: theme.padding.lg
+    paddingTop: theme.padding.xl,
+    paddingBottom: theme.padding.xl
   },
   editorFont: {
     font: theme.editorFont
+  },
+  emoji: {
+    lineHeight: "1"
   },
   heroText: {
     color: "rgb(43, 43, 43)",
