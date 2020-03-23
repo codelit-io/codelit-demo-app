@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext, withAuthentication } from "../../components/Session";
-import QuestionsPage from "./QuestionsPage";
+
+const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ firebase, match, history }) => {
   const [configs, setConfigs] = useState([]);
