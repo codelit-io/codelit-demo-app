@@ -1,6 +1,6 @@
-import React from "react";
+import React, { lazy } from "react";
 
-import Confetti from "react-dom-confetti";
+const Confetti = lazy(() => import("react-dom-confetti"));
 
 const config = {
   angle: 260,
