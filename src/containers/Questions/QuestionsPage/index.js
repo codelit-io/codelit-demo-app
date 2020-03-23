@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import QuestionsList from "../QuestionsList";
-import { Grid } from "@material-ui/core";
-import MoPage from "../../../components/shared/MoPage";
+import React, { lazy, useEffect, useState } from "react";
+
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const MoPage = lazy(() => import("../../../components/shared/MoPage"));
+const QuestionsList = lazy(() => import("../QuestionsList"));
 
 const QuestionsPage = ({ authUser, configs, firebase }) => {
   const [loading, setLoading] = useState(false);
