@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -7,9 +7,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import styles from "./styles";
-import Fade from "@material-ui/core/Fade";
-import LockIcon from "@material-ui/icons/Lock";
 import withStyles from "@material-ui/core/styles/withStyles";
+
+const Fade = lazy(() => import("@material-ui/core/Fade"));
+const LockIcon = lazy(() => import("@material-ui/icons/Lock"));
 
 const MoCard = ({ item, classes, userPoints, url }) => {
   const isDisabled = userPoints < Number(item.id) - 1 && Number(item.id) !== 1;
