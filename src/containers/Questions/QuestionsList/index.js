@@ -1,7 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 
-import QuestionCard from "./QuestionCard";
-import QuestionCategory from "./QuestionCategory";
+const QuestionCard = lazy(() => import("./QuestionCard"));
+const QuestionCategory = lazy(() => import("./QuestionCategory"));
 
 const QuestionsList = ({ authUser, questions, configs }) => {
   let url = configs.slug;
