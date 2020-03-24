@@ -8,7 +8,6 @@ import Spinner from "../components/shared/Spinner";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
 import { withAuthentication } from "../components/Session";
-
 const Account = lazy(() => import("../containers/Account"));
 const Admin = lazy(() => import("../containers/Admin"));
 const Container = lazy(() => import("@material-ui/core/Container"));
