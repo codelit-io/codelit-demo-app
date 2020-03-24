@@ -1,7 +1,7 @@
-import React, { lazy } from "react";
+import React from "react";
 
-const QuestionCard = lazy(() => import("./QuestionCard"));
-const QuestionCategory = lazy(() => import("./QuestionCategory"));
+import QuestionCategory from "./QuestionCategory";
+import QuestionCard from "./QuestionCard";
 
 const QuestionsList = ({ authUser, questions, configs }) =>
 	questions.map((question, index) => (
