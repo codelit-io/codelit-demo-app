@@ -1,9 +1,7 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import * as ROUTES from "../../constants/routes";
 import { AuthUserContext, withAuthentication } from "../../components/Session";
-
-const QuestionsPage = lazy(() => import("./QuestionsPage"));
+import QuestionsPage from "./QuestionsPage";
 
 const Questions = ({ firebase, match, history }) => {
 	const [configs, setConfigs] = useState({});
@@ -16,7 +14,7 @@ const Questions = ({ firebase, match, history }) => {
 				if (doc.exists) {
 					setConfigs(doc.data());
 				} else {
-					history.push(ROUTES.NOT_FOUND.path);
+					setConfigs({});
 				}
 			})
 			.catch(error => {
