@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 import QuestionsPage from "./QuestionsPage";
 
-const Questions = ({ firebase, match, history }) => {
+const Questions = ({ firebase, match }) => {
   const [configs, setConfigs] = useState({});
   useEffect(() => {
     firebase
@@ -24,7 +24,7 @@ const Questions = ({ firebase, match, history }) => {
     return () => {
       setConfigs({});
     };
-  }, [firebase, match, history]);
+  }, [firebase, match]);
 
   return (
     <AuthUserContext.Consumer>
