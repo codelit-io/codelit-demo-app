@@ -4,9 +4,7 @@ import { AuthUserContext } from "../Session";
 import MessageList from "./MessageList";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PostAddIcon from "@material-ui/icons/PostAdd";
-import Spinner from "../shared/Spinner";
 import { withFirebase } from "../Firebase";
-import MoPageHeader from "../shared/MoPageHeader";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import MoPage from "../shared/MoPage";
@@ -98,9 +96,7 @@ class Messages extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <>
-            <MoPageHeader img="" title="New Feature Requests" />
-            <Spinner loading={loading} color="primary" />
+          <MoPage loading={loading} title="New Feature Requests">
             <Grid container spacing={4}>
               <Grid item md={6} sm={12} xs={12}>
                 {messages && (
@@ -148,7 +144,7 @@ class Messages extends Component {
                 </MoPage>
               </Grid>
             </Grid>
-          </>
+          </MoPage>
         )}
       </AuthUserContext.Consumer>
     );
