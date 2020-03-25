@@ -1,16 +1,18 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy, useEffect, useState, Suspense } from "react";
 
 import * as ROUTES from "../../constants/routes";
 
-import MoSnackbar from "../../components/shared/MoSnackBar";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import AuthUserContext from "../../components/Session/context";
+import Content from "./Content";
+import Grid from "@material-ui/core/Grid";
+import MoParagraph from "../../components/shared/MoParagraph";
+import MoPage from "../../components/shared/MoPage";
+import MoSnackbar from "../../components/shared/MoSnackBar";
 import withAuthentication from "../../components/Session/withAuthentication";
 
-const ArrowForwardIcon = lazy(() => import("@material-ui/icons/ArrowForward"));
-const Content = lazy(() => import("./Content"));
 const CodeEditor = lazy(() => import("../../components/CodeEditor"));
 const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
-const MoPage = lazy(() => import("../../components/shared/MoPage"));
 
 const Question = ({ firebase, history, match }) => {
   const [loading, setLoading] = useState(true);
@@ -100,13 +102,21 @@ const Question = ({ firebase, history, match }) => {
 
   return (
     question && (
-      <>
+      <Suspense>
         <MoConfetti isActive={isCorrect} />
         <MoPage img="" title={question.topic} loading={loading} isCard={false}>
           {question.content && <Content content={question.content} />}
           <AuthUserContext.Consumer>
             {authUser => (
               <>
+                <Grid item md={6} sm={12} xs={12}>
+                  <MoParagraph
+                    text={question.label}
+                    fade={question.label && true}
+                    margin="36px 0 36px"
+                  />
+                </Grid>
+                <Grid item md={6} sm={12} xs={12}></Grid>
                 {question && (
                   <CodeEditor
                     handleOnChange={userAnswer =>
@@ -129,7 +139,7 @@ const Question = ({ firebase, history, match }) => {
             )}
           </AuthUserContext.Consumer>
         </MoPage>
-      </>
+      </Suspense>
     )
   );
 };
