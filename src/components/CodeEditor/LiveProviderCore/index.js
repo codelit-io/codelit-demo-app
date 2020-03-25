@@ -1,14 +1,12 @@
-import React, { lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { addFocusOnEditor } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import { reactLiveTheme } from "../../../utils/reactLiveTheme";
-
-const Grid = lazy(() => import("@material-ui/core/Grid"));
-const Slide = lazy(() => import("@material-ui/core/Slide"));
-const Headline = lazy(() => import("../../shared/Headline"));
-const MoParagraph = lazy(() => import("../../shared/MoParagraph"));
-const MoBrowserMockup = lazy(() => import("../../shared/MoBrowserMockup"));
+import Grid from "@material-ui/core/Grid";
+import Slide from "@material-ui/core/Slide";
+import Headline from "../../shared/Headline";
+import MoBrowserMockup from "../../shared/MoBrowserMockup";
 
 const LiveProviderCore = ({ handleOnChange, md, sm, question }) => {
   useEffect(() => {
@@ -17,14 +15,6 @@ const LiveProviderCore = ({ handleOnChange, md, sm, question }) => {
 
   return (
     <LiveProvider code={question.question} language="jsx" noInline={false}>
-      <Grid item md={6} sm={12} xs={12}>
-        <MoParagraph
-          text={question.label}
-          fade={question.label && true}
-          margin="36px 0 36px"
-        />
-      </Grid>
-      <Grid item md={6} sm={12} xs={12}></Grid>
       <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
         <Slide
           direction="right"
