@@ -12,7 +12,7 @@ const QuestionsList = ({ authUser, questions, configs }) =>
       <QuestionCard
         userPoints={authUser && authUser.points}
         question={question}
-        url={configs.slug}
+        url={configs.collection}
       />
     </React.Fragment>
   ));
