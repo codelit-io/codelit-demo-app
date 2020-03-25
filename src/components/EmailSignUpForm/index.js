@@ -2,7 +2,6 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Card from "@material-ui/core/Card";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Input from "@material-ui/core/Input";
@@ -14,7 +13,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <Card>
+    <div className={classes.card}>
       <main className={classes.main}>
         <CssBaseline />
         <div className={classes.paper}>
@@ -87,7 +86,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           </form>
         </div>
       </main>
-    </Card>
+    </div>
   );
 };
 
