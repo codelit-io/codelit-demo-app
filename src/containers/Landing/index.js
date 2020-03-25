@@ -1,21 +1,19 @@
-import React, { useState, lazy } from "react";
+import React, { useState, lazy, Suspense } from "react";
 
 import * as ROUTES from "../../constants/routes";
 
+import CheckIcon from "@material-ui/icons/Check";
+import Fade from "@material-ui/core/Fade";
+import Grid from "@material-ui/core/Grid";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import MoBrowserMockup from "../../components/shared/MoBrowserMockup";
+import MoLinkButton from "../../components/shared/MoLinkButton";
 import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const CheckIcon = lazy(() => import("@material-ui/icons/Check"));
-const Fade = lazy(() => import("@material-ui/core/Fade"));
-const Grid = lazy(() => import("@material-ui/core/Grid"));
-const ListItem = lazy(() => import("@material-ui/core/ListItem"));
-const ListItemText = lazy(() => import("@material-ui/core/ListItemText"));
-const ListItemAvatar = lazy(() => import("@material-ui/core/ListItemAvatar"));
-const MoBrowserMockup = lazy(() =>
-  import("../../components/shared/MoBrowserMockup")
-);
-const MoLinkButton = lazy(() => import("../../components/shared/MoLinkButton"));
 const Typist = lazy(() => import("react-typist"));
 
 const LandingPage = ({ classes }) => {
@@ -62,29 +60,31 @@ const LandingPage = ({ classes }) => {
                 </Typography>
                 <MoBrowserMockup fileType="jsx" isEditor={true}>
                   <pre className={classes.editorFont}>
-                    <Typist
-                      avgTypingDelay={60}
-                      stdTypingDelay={30}
-                      cursor={{
-                        show: true,
-                        blink: true,
-                        element: "|",
-                        hideWhenDone: true
-                      }}
-                      onTypingDone={() => setIsPreview(true)}
-                    >
-                      <span style={{ color: "#4d4d4c" }}>() =></span>{" "}
-                      <span style={{ color: "#c82829" }}>&lt;h1&gt;</span>
-                      <span style={{ color: "#4d4d4c" }}>Hello React</span>
-                      <span
-                        aria-label="img"
-                        role="img"
-                        className={classes.emoji}
+                    <Suspense>
+                      <Typist
+                        avgTypingDelay={60}
+                        stdTypingDelay={30}
+                        cursor={{
+                          show: true,
+                          blink: true,
+                          element: "|",
+                          hideWhenDone: true
+                        }}
+                        onTypingDone={() => setIsPreview(true)}
                       >
-                        🤩
-                      </span>
-                      <span style={{ color: "#c82829" }}>&lt;/h1&gt;</span>
-                    </Typist>
+                        <span style={{ color: "#4d4d4c" }}>() =></span>{" "}
+                        <span style={{ color: "#c82829" }}>&lt;h1&gt;</span>
+                        <span style={{ color: "#4d4d4c" }}>Hello React</span>
+                        <span
+                          aria-label="img"
+                          role="img"
+                          className={classes.emoji}
+                        >
+                          🤩
+                        </span>
+                        <span style={{ color: "#c82829" }}>&lt;/h1&gt;</span>
+                      </Typist>
+                    </Suspense>
                   </pre>
                 </MoBrowserMockup>
               </div>
@@ -101,7 +101,7 @@ const LandingPage = ({ classes }) => {
                     <Fade
                       in={isPreview}
                       mountOnEnter
-                      timeout={{ enter: 800 }}
+                      timeout={{ enter: 600 }}
                       unmountOnExit
                     >
                       <div>
