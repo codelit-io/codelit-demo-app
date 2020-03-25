@@ -7,7 +7,6 @@ import EmailSignUpForm from "../../../components/EmailSignUpForm";
 import { withFirebase } from "../../../components/Firebase";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
-import withLayout from "../../../components/shared/Layout";
 
 const styles = theme => ({
   button: {
@@ -37,7 +36,8 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   on your personal account page.
 `;
 
-const SignUpFormBase = ({ firebase, history, classes }) => {
+const SignUpFormBase = props => {
+  console.log(props);
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
 
@@ -48,11 +48,11 @@ const SignUpFormBase = ({ firebase, history, classes }) => {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
 
-    firebase
+    props.firebase
       .createUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return firebase.user(authUser.user.uid).set(
+        return props.firebase.user(authUser.user.uid).set(
           {
             username,
             email,
@@ -62,11 +62,11 @@ const SignUpFormBase = ({ firebase, history, classes }) => {
         );
       })
       .then(() => {
-        return firebase.sendEmailVerification();
+        return props.firebase.sendEmailVerification();
       })
       .then(() => {
         setState({ ...INITIAL_STATE });
-        history.goBack();
+        props.history.goBack();
       })
       .catch(error => {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
@@ -99,7 +99,6 @@ const SignUpFormBase = ({ firebase, history, classes }) => {
 
 const SignUpForm = compose(
   withStyles(styles),
-  withLayout,
   withRouter,
   withFirebase
 )(SignUpFormBase);
