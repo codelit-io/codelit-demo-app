@@ -1,6 +1,6 @@
 const styles = theme => ({
   editor: {
-    font: theme.editorFont,
+    ...theme.editorFont,
     [theme.breakpoints.up(600)]: {
       width: "380",
       marginLeft: "auto",
