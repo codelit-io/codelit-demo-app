@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 
 const Confetti = lazy(() => import("react-dom-confetti"));
 
@@ -16,7 +16,9 @@ const config = {
 const MoConfetti = ({ isActive }) => {
   return (
     <div style={{ position: "absolute", top: "0", left: "50%" }}>
-      <Confetti active={isActive} config={config} />
+      <Suspense>
+        <Confetti active={isActive} config={config} />
+      </Suspense>
     </div>
   );
 };
