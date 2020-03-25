@@ -1,18 +1,17 @@
-import React, { lazy } from "react";
+import React from "react";
 
 import * as ROUTES from "../../constants/routes";
 import { AuthUserContext } from "../Session";
 import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
+import MoAvatar from "./MoAvatar";
+import MoMenu from "./MoMenu";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-
-const Box = lazy(() => import("@material-ui/core/Box"));
-const Grid = lazy(() => import("@material-ui/core/Grid"));
-const MoAvatar = lazy(() => import("./MoAvatar"));
-const MoMenu = lazy(() => import("./MoMenu"));
 
 const Navigation = ({ classes }) => {
   return (
