@@ -5,7 +5,6 @@ import EmailSignInForm from "../../../components/EmailSignInForm";
 
 import { withFirebase } from "../../../components/Firebase";
 import { withRouter } from "react-router-dom";
-import Layout from "../../../components/shared/Layout";
 
 const INITIAL_STATE = {
   email: "",
@@ -47,4 +46,4 @@ const SignInFormBase = ({ firebase, history }) => {
 
 const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
 
-export default Layout(SignInForm);
+export default SignInForm;
