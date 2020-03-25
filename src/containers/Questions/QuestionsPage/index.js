@@ -4,14 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import QuestionsList from "./QuestionsList";
 import MoPage from "../../../components/shared/MoPage";
 
-const QuestionsPage = ({ authUser, configs, firebase }) => {
+const QuestionsPage = ({ authUser, configs, firebase, match }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     setLoading(true);
     const getQuestions = firebase
-      .collection(configs.slug === "super-easy" ? "questions" : configs.slug)
+      .collection(match.params.collection)
       .orderBy("id")
       .onSnapshot(snapshot => {
         if (snapshot.size) {
@@ -22,6 +22,7 @@ const QuestionsPage = ({ authUser, configs, firebase }) => {
               uid: doc.id
             });
           });
+
           setQuestions(questions);
           setLoading(false);
         } else {
@@ -34,7 +35,7 @@ const QuestionsPage = ({ authUser, configs, firebase }) => {
       setQuestions([]);
       getQuestions();
     };
-  }, [firebase, configs]);
+  }, [firebase, match]);
 
   return (
     <MoPage
@@ -42,7 +43,7 @@ const QuestionsPage = ({ authUser, configs, firebase }) => {
       points={authUser && authUser.points}
       loading={loading}
       numberOfQuestions={questions.length}
-      isScoreBoard={true}
+      isScoreBoard={configs && true}
     >
       {questions && (
         <Grid container spacing={4}>
