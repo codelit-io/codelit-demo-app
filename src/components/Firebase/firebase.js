@@ -83,18 +83,18 @@ class Firebase {
   doc = (collectionPath, id) =>
     this.firestore.collection(collectionPath).doc(id);
 
-  getQuestionById = id =>
-    this.firestore.collection("questions").where("id", "==", Number(id));
+  getCollectionById = (collectionPath, id) =>
+    this.firestore.collection(collectionPath).where("id", "==", Number(id));
 
-  createQuestionById = question => {
-    const uid = this.createId();
+  createQuestionById = (collectionPath, question) => {
+    const uid = this.createId(collectionPath);
     this.firestore
-      .collection("questions")
+      .collection(collectionPath)
       .doc(uid)
       .set({ ...question, uid: uid });
   };
 
-  createId = () => this.firestore.collection("questions").doc().id;
+  createId = (collectionPath) => this.firestore.collection(collectionPath).doc().id;
 
   /*  Points */
 
