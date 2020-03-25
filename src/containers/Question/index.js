@@ -77,21 +77,25 @@ const Question = ({ firebase, history, match }) => {
     const id = match.params.question;
     setLoading(true);
     setIsCorrect(false);
-    const unsubscribe = firebase.getCollectionById(match.params.collection, id).onSnapshot(snapshot => {
-      if (snapshot.size) {
-        let question = [];
-        snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
-        setQuestion(question[0]);
-      } else {
-        setQuestion({
-          label: "You have finished all questions ✅",
-          question: "<h1>Nice Job 🎉</h1>",
-          language: "html"
-        });
-        setIsCorrect(false);
-      }
-      setLoading(false);
-    });
+    const unsubscribe = firebase
+      .getCollectionById(match.params.collection, id)
+      .onSnapshot(snapshot => {
+        if (snapshot.size) {
+          let question = [];
+          snapshot.forEach(doc =>
+            question.push({ ...doc.data(), uid: doc.id })
+          );
+          setQuestion(question[0]);
+        } else {
+          setQuestion({
+            label: "You have finished all questions ✅",
+            question: "<h1>Nice Job 🎉</h1>",
+            language: "html"
+          });
+          setIsCorrect(false);
+        }
+        setLoading(false);
+      });
 
     return () => {
       unsubscribe();
