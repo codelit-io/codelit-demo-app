@@ -10,6 +10,7 @@ const styles = theme => ({
       marginRight: "auto"
     }
   },
+  card: theme.card,
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
