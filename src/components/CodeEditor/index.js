@@ -8,7 +8,7 @@ const CodeEditor = ({ handleOnChange, md, sm, question }) => {
   const [state, setState] = useState(question);
 
   useEffect(() => {
-    if (question.question) {
+    if (question) {
       try {
         const prettyQuestion = JSON.parse(question.question);
         setState({ ...question, question: prettyQuestion });
