@@ -33,7 +33,7 @@ const Questions = ({ firebase, history, match }) => {
 
   const onCreateQuestion = (event, authUser) => {
     if (event.label) {
-      firebase.createQuestionById({
+      firebase.createQuestionById(match.params.level, {
         ...event,
         id: Number(event.id),
         userId: authUser.uid,
@@ -46,6 +46,7 @@ const Questions = ({ firebase, history, match }) => {
     if (!match.params.level) {
       return;
     }
+
     firebase.doc(match.params.level, event.uid).update({
       ...event,
       id: Number(event.id),
