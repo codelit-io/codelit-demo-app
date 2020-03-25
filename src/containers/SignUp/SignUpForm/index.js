@@ -37,7 +37,6 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 `;
 
 const SignUpFormBase = props => {
-  console.log(props);
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
 
