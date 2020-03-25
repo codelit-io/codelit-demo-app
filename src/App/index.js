@@ -24,47 +24,47 @@ const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
 
 const App = () => (
-	<ThemeProvider theme={theme}>
-		<Router>
-			<Suspense fallback={<Spinner loading={true} color="primary" />}>
-				<Container style={{height: "100%", maxHeight: "100%"}}>
-					<Navigation />
-					<Switch>
-						<Route path={ROUTES.ADMIN.path} component={Admin} />
-						<Route path={ROUTES.ACCOUNT.path} component={Account} />
-						<Route path={ROUTES.HOME.path} component={Home} />
-						<Route exact path={ROUTES.LANDING.path} component={LandingPage} />
-						<Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
+  <ThemeProvider theme={theme}>
+    <Router>
+      <Suspense fallback={<Spinner loading={true} color="primary" />}>
+        <Container style={{ height: "100%", maxHeight: "100%" }}>
+          <Navigation />
+          <Switch>
+            <Route path={ROUTES.ADMIN.path} component={Admin} />
+            <Route path={ROUTES.ACCOUNT.path} component={Account} />
+            <Route path={ROUTES.HOME.path} component={Home} />
+            <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
+            <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
-						<Route path={ROUTES.SIGN_IN.path} component={SignIn} />
-						<Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-						<Route
-							path={ROUTES.PASSWORD_FORGET.path}
-							component={PasswordForgot}
-						/>
-						<Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-						<Route
-							exact
-							path={ROUTES.QUESTIONS.path + "/:collection"}
-							component={Questions}
-						/>
-						<Route
-							exact
-							path={ROUTES.QUESTIONS.path + "/:collection/:question"}
-							component={Question}
-						/>
-						<Route component={NotFound} />
-					</Switch>
-				</Container>
-			</Suspense>
-		</Router>
-	</ThemeProvider>
+            <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
+            <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
+            <Route
+              path={ROUTES.PASSWORD_FORGET.path}
+              component={PasswordForgot}
+            />
+            <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
+            <Route
+              exact
+              path={ROUTES.QUESTIONS.path + "/:collection"}
+              component={Questions}
+            />
+            <Route
+              exact
+              path={ROUTES.QUESTIONS.path + "/:collection/:question"}
+              component={Question}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </Container>
+      </Suspense>
+    </Router>
+  </ThemeProvider>
 );
 
 if (process.env.NODE_ENV === "production") {
-	Sentry.init({
-		dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
-	});
+  Sentry.init({
+    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
+  });
 }
 
 export default withAuthentication(App);
