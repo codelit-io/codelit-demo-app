@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Card from "@material-ui/core/Card";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -17,7 +16,7 @@ import MoTitle from "../shared/MoTitle";
 
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <Card>
+    <div className={classes.card}>
       <main className={classes.main}>
         <CssBaseline />
         <div className={classes.paper}>
@@ -74,7 +73,7 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           <SignUpLink />
         </div>
       </main>
-    </Card>
+    </div>
   );
 };
 
