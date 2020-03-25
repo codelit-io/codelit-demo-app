@@ -94,7 +94,8 @@ class Firebase {
       .set({ ...question, uid: uid });
   };
 
-  createId = (collectionPath) => this.firestore.collection(collectionPath).doc().id;
+  createId = collectionPath =>
+    this.firestore.collection(collectionPath).doc().id;
 
   /*  Points */
 
