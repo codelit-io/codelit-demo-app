@@ -77,7 +77,7 @@ const Question = ({ firebase, history, match }) => {
     const id = match.params.question;
     setLoading(true);
     setIsCorrect(false);
-    const unsubscribe = firebase.getQuestionById(id).onSnapshot(snapshot => {
+    const unsubscribe = firebase.getCollectionById(match.params.collection, id).onSnapshot(snapshot => {
       if (snapshot.size) {
         let question = [];
         snapshot.forEach(doc => question.push({ ...doc.data(), uid: doc.id }));
