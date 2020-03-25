@@ -12,6 +12,7 @@ const Questions = ({ firebase, match }) => {
       .get()
       .then(doc => {
         if (doc.exists) {
+
           setConfigs(doc.data());
         } else {
           setConfigs({});
@@ -29,14 +30,12 @@ const Questions = ({ firebase, match }) => {
   return (
     <AuthUserContext.Consumer>
       {authUser =>
-        configs &&
-        configs.slug && (
           <QuestionsPage
             authUser={authUser}
             configs={configs}
             firebase={firebase}
+            match={match}
           />
-        )
       }
     </AuthUserContext.Consumer>
   );
