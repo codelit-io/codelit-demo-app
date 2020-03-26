@@ -3,6 +3,11 @@ const styles = theme => ({
     paddingTop: theme.padding.xl,
     paddingBottom: theme.padding.xl
   },
+  responsiveGrid: {
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: theme.padding.lg
+    }
+  },
   editorFont: {
     font: theme.editorFont
   },
