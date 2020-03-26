@@ -113,14 +113,13 @@ const Question = ({ firebase, history, match }) => {
           <AuthUserContext.Consumer>
             {authUser => (
               <>
-                <Grid item md={6} sm={12} xs={12}>
+                <Grid item md={6} sm={12} >
                   <MoParagraph
                     text={question.label}
                     fade={question.label && true}
                     margin="36px 0 36px"
                   />
                 </Grid>
-                <Grid item md={6} sm={12} xs={12}></Grid>
                 {question && (
                   <CodeEditor
                     handleOnChange={userAnswer =>
