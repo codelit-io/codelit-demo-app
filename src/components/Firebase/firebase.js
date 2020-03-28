@@ -3,6 +3,8 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
 
+/*  Api keys and configs  */
+
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -97,8 +99,6 @@ class Firebase {
   createId = collectionPath =>
     this.firestore.collection(collectionPath).doc().id;
 
-  /*  Points */
-
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
@@ -120,7 +120,7 @@ class Firebase {
               email: authUser.email,
               emailVerified: authUser.emailVerified,
               providerData: authUser.providerData,
-              points: authUser.points || 0,
+              reports: authUser.reports,
               photoURL: authUser.photoURL || "",
               ...dbUser
             };
