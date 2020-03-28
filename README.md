@@ -20,6 +20,40 @@ The app has a React frontend and paired with a Firebase cloud backend
 ## Can I contribute to this project? 🤩
 I am excited to collaborate with other frontend engineers to get this up and going. I am also enthusiastic about the opportunity to share React knowledge with new contributors.
 
+
+
+
+
+
+
+
+# Engineering 💪🏻
+
+## Getting Started
+
+* Install `npm i`
+* Start `npm run start`
+* Prettify `npm run pretty`
+
+* check npm dependencies for updates `npm run check-updates`
+* build `npm run build`
+* test `npm run test`
+* Deploy to prod `npm run deploy`
+* Deploy to st `tbd`
+
+
+
+## 3rd Party Dependencies
+* Material UI + icons
+* @sentry/browser for monitoring prod for console errors
+* firebase
+* material-table, an admin tool for adding questions
+* react-dom-confetti: confetti effect
+* react-live: code editor + live preview + error debugger
+* react-typist: typist effect seen throughout
+* recompose: used to compose a wrappedComponent with multiple HOCs
+
+
 ## Colors
 
 https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
