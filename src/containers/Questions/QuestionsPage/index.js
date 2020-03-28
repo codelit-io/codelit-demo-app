@@ -7,7 +7,7 @@ import MoPage from "../../../components/shared/MoPage";
 const QuestionsPage = ({ authUser, configs, firebase, match }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
-  const [points, setPoints] = useState(0)
+  const [points, setPoints] = useState(0);
 
   useEffect(() => {
     setLoading(true);
