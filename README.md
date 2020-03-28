@@ -27,7 +27,7 @@ https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
 ## File Structure
 
-
+```
 build/
     ... Static files ready to be deployed
 public/
@@ -135,20 +135,4 @@ src/
             ... shared utils, currently it has a theme for the liveEditor
         index.js
             ... Wrap App.js with firebase
-
-
-            
-
-
-
-
-
-                
-
-             
-            
-   constants/
-   containers/
-   stories/
-   utils/
-
+```
