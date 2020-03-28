@@ -113,7 +113,7 @@ const Question = ({ firebase, history, match }) => {
           <AuthUserContext.Consumer>
             {authUser => (
               <>
-                <Grid item md={6} sm={12} >
+                <Grid item md={6} sm={12}>
                   <MoParagraph
                     text={question.label}
                     fade={question.label && true}
