@@ -24,6 +24,47 @@ I am excited to collaborate with other frontend engineers to get this up and goi
 
 https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
+## HOC
+
+* `withRouter(wrappedComponent)` Provider router props
+* `withStyles(stylesObject)(wrappedComponent)`  Provider classes prop to wrappedComponent from styles object
+* `withFirebase(wrappedComponent)` Provides firebase props
+* `withAuthentication(wrappedContainer)` Only authenticated can access
+* `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
+* `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
+* `withEmailVerification(wrappedContainer)` Provides email verification stuff
+
+## Props
+
+All container can have access to the following props from HOC mentioned above
+
+* classes: provides css classes for your component
+* match: routing props and hold route params/state
+* history: browser history api
+* firebase: all firebase stuff
+
+# React Hooks
+
+* useEffect
+```
+useEffect(() => {
+    // componentDidMount happens ones
+    // componentDidUpdate happens based on prop1 and prop2
+    const listener = prop1.update();
+
+    // componentWillUnmount 
+    return () => listener()
+
+}, [prop1, prop2])
+```
+* useState 
+
+```
+const [isLoading, setIsLoading] = setState(false)
+
+setIsLoading(true)
+```
+
 
 ## File Structure
 
