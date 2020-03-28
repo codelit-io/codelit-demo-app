@@ -24,17 +24,39 @@ I am excited to collaborate with other frontend engineers to get this up and goi
 
 https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
+
+# Material UI
+
+Currently using some elements form material UI but considering other options such as styled-components
+
+Pros:
+    - Easy and convenient
+    - withStyles HOC provides styles to components
+    - Global theme
+    - default theme (breakpoints, spacing...)
+    - Dark mode ready
+    - Responsive + accessible
+
+Cons:
+    - Pig heavy weight
+    - Hard to customize
+
+
 ## HOC
 
 * `withRouter(wrappedComponent)` Provider router props
-* `withStyles(stylesObject)(wrappedComponent)`  Provider classes prop to wrappedComponent from styles object
+* `withStyles(stylesObject)(wrappedComponent)`  Provider classes prop to wrappedComponent from styles object. This is specific to Material UI and similar to styled-components
 * `withFirebase(wrappedComponent)` Provides firebase props
 * `withAuthentication(wrappedContainer)` Only authenticated can access
 * `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
 * `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
 * `withEmailVerification(wrappedContainer)` Provides email verification stuff
 
-## Props
+## State management
+
+Using context api for all firebase stuff and they are provided to most pages
+
+
 
 All container can have access to the following props from HOC mentioned above
 
@@ -177,3 +199,8 @@ src/
         index.js
             ... Wrap App.js with firebase
 ```
+
+
+## Testing
+
+* Jest for snapshot and integration/unit/functional testing
