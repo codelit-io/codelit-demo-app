@@ -15,7 +15,7 @@ const MoScoreBoard = ({ numberOfQuestions, points }) => (
       aria-label="Points and progress"
       variant="text"
       color="default"
-      style={{marginBottom: "48px"}}
+      style={{ marginBottom: "48px" }}
     >
       <Button> {points ? `${points} Points` : "0 Points"}</Button>
       <Button>
