@@ -23,6 +23,7 @@ const MoPage = ({
   title
 }) => {
   return (
+    /* TODO Refactor and remove MoScoreBoard from here */
     <Grid container className={classes.section}>
       <Grid item md={6}>
         <MoPageHeader img="" title={title} />
