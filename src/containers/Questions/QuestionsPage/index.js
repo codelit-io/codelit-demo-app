@@ -7,9 +7,12 @@ import MoPage from "../../../components/shared/MoPage";
 const QuestionsPage = ({ authUser, configs, firebase, match }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [points, setPoints] = useState(0)
 
   useEffect(() => {
     setLoading(true);
+
+    setPoints(authUser?.reports?.[match.params.collection]?.points);
     const getQuestions = firebase
       .collection(match.params.collection)
       .orderBy("id")
@@ -35,12 +38,12 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
       setQuestions([]);
       getQuestions();
     };
-  }, [firebase, match]);
+  }, [authUser, firebase, match]);
 
   return (
     <MoPage
       title={configs.label}
-      points={authUser && authUser.points}
+      points={points}
       loading={loading}
       numberOfQuestions={questions.length}
       isScoreBoard={configs && true}
@@ -48,7 +51,7 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
       {questions && (
         <Grid container spacing={4}>
           <QuestionsList
-            authUser={authUser}
+            points={points}
             questions={questions}
             configs={configs}
           />
