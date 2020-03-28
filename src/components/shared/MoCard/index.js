@@ -11,8 +11,8 @@ import LockIcon from "@material-ui/icons/Lock";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoCard = ({ item, classes, userPoints, url }) => {
-  const isDisabled = userPoints < Number(item.id) - 1 && Number(item.id) !== 1;
+const MoCard = ({ item, classes, points, url }) => {
+  const isDisabled = points ? points < Number(item.id) - 1 && Number(item.id) !== 1 : Number(item.id) !== 1;
   return (
     <Link
       to={
