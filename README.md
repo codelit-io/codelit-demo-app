@@ -31,16 +31,15 @@ I am excited to collaborate with other frontend engineers to get this up and goi
 
 ## Getting Started
 
-**Install** `npm i`
-**Start** `npm run start`
-**Prettify** `npm run pretty`
+* Install `npm i`
+* Start `npm run start`
+* Prettify `npm run pretty`
 
-check npm dependencies for updates `npm run check-updates`
-
-build `npm run build`
-test `npm run test`
-Deploy to prod `npm run deploy`
-Deploy to st `tbd`
+* check npm dependencies for updates `npm run check-updates`
+* build `npm run build`
+* test `npm run test`
+* Deploy to prod `npm run deploy`
+* Deploy to st `tbd`
 
 
 
@@ -64,17 +63,17 @@ https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
 Currently using some elements form material UI but considering other options such as styled-components
 
-Pros:
-    -Easy and convenient
-    -withStyles HOC provides styles to components
-    -Global theme
-    -default theme (breakpoints, spacing...)
-    -Dark mode ready
-    -Responsive + accessible
+**Pros:**
+* Easy and convenient
+* withStyles HOC provides styles to components
+* Global theme
+* default theme (breakpoints, spacing...)
+* Dark mode ready
+* Responsive + accessible
 
-Cons:
-    -Pig heavy weight
-    -Hard to customize
+**Cons:**
+* Pig heavy weight
+* Hard to customize
 
 
 ## HOC
