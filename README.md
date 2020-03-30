@@ -17,19 +17,8 @@ Although this project is still under *heavy development*, my vision for the end 
 The app has a React frontend and paired with a Firebase cloud backend
 
 
-## Can I contribute to this project? 🤩
-I am excited to collaborate with other frontend engineers to get this up and going. I am also enthusiastic about the opportunity to share React knowledge with new contributors.
 
-
-
-
-
-
-
-
-# Engineering 💪🏻
-
-## Getting Started
+# Getting Started
 
 * Install `npm i`
 * Start `npm run start`
@@ -43,7 +32,7 @@ I am excited to collaborate with other frontend engineers to get this up and goi
 
 
 
-## 3rd Party Dependencies
+# 3rd Party Dependencies
 * Material UI + icons
 * @sentry/browser for monitoring prod for console errors
 * firebase
@@ -54,7 +43,7 @@ I am excited to collaborate with other frontend engineers to get this up and goi
 * recompose: used to compose a wrappedComponent with multiple HOCs
 
 
-## Colors
+# Colors
 
 https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
@@ -76,7 +65,7 @@ Currently using some elements form material UI but considering other options suc
 * Hard to customize
 
 
-## HOC
+# HOC
 
 * `withRouter(wrappedComponent)` Provider router props
 * `withStyles(stylesObject)(wrappedComponent)`  Provider classes prop to wrappedComponent from styles object. This is specific to Material UI and similar to styled-components
@@ -86,7 +75,7 @@ Currently using some elements form material UI but considering other options suc
 * `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
 * `withEmailVerification(wrappedContainer)` Provides email verification stuff
 
-## State management
+# State management
 
 Using context api for all firebase stuff and they are provided to most pages
 
@@ -122,7 +111,7 @@ setIsLoading(true)
 ```
 
 
-## File Structure
+# File Structure
 
 ```
 build/
@@ -235,6 +224,6 @@ src/
 ```
 
 
-## Testing
+# Testing
 
 * Jest for snapshot and integration/unit/functional testing
