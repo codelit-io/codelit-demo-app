@@ -131,37 +131,39 @@ const Question = ({ firebase, history, match }) => {
         <MoConfetti isActive={isCorrect} />
         <MoPage img="" title={question.topic} loading={loading} isCard={false}>
           {question.content && <Content content={question.content} />}
-          <AuthUserContext.Consumer>
-            {authUser => (
-              <>
-                <Grid item md={6} sm={12}>
-                  <MoParagraph
-                    text={question.label}
-                    fade={question.label && true}
-                    margin="36px 0 36px"
-                  />
-                </Grid>
-                {question && (
-                  <CodeEditor
-                    handleOnChange={userAnswer =>
-                      handleOnChange(userAnswer, authUser)
-                    }
-                    sm={6}
-                    md={6}
-                    question={question}
-                  />
-                )}
-                {snackbarProps && (
-                  <MoSnackbar
-                    isActive={isCorrect}
-                    authUser={authUser}
-                    snackbarProps={snackbarProps}
-                    triggerNextQuestion={() => triggerNextQuestion()}
-                  />
-                )}
-              </>
-            )}
-          </AuthUserContext.Consumer>
+          {!loading && (
+            <AuthUserContext.Consumer>
+              {authUser => (
+                <>
+                  <Grid item md={6} sm={12}>
+                    <MoParagraph
+                      text={question.label}
+                      fade={question.label && true}
+                      margin="36px 0 36px"
+                    />
+                  </Grid>
+                  {question && (
+                    <CodeEditor
+                      handleOnChange={userAnswer =>
+                        handleOnChange(userAnswer, authUser)
+                      }
+                      sm={6}
+                      md={6}
+                      question={question}
+                    />
+                  )}
+                  {snackbarProps && (
+                    <MoSnackbar
+                      isActive={isCorrect}
+                      authUser={authUser}
+                      snackbarProps={snackbarProps}
+                      triggerNextQuestion={() => triggerNextQuestion()}
+                    />
+                  )}
+                </>
+              )}
+            </AuthUserContext.Consumer>
+          )}
         </MoPage>
       </Suspense>
     )
