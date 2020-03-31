@@ -10,8 +10,9 @@ const CodeEditor = ({ handleOnChange, md, sm, question }) => {
   useEffect(() => {
     if (question) {
       try {
-        const prettyQuestion = JSON.parse(question.question);
-        setState({ ...question, question: prettyQuestion });
+        /* Questions can contain special JSON characters that needs to be parsed */
+        const parseQuestion = JSON.parse(question.question);
+        setState({ ...question, question: parseQuestion });
       } catch {
         setState(question);
       }
