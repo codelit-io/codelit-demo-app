@@ -8,36 +8,28 @@ import MoPageHeader from "../MoPageHeader";
 import Spinner from "../Spinner";
 import MoPageSubtitle from "../MoPageSubtitle";
 import { Grid } from "@material-ui/core";
-import MoScoreBoard from "../MoScoreBoard";
 
 const MoPage = ({
-  classes,
-  children,
-  img,
-  loading,
-  isCard,
-  isScoreBoard,
-  subtitle,
-  points,
-  numberOfQuestions,
-  title
+	classes,
+	children,
+	loading,
+	subtitle,
+	title,
+	Component
 }) => {
-  return (
-    /* TODO Refactor and remove MoScoreBoard from here */
-    <Grid container className={classes.section}>
-      <Grid item md={6}>
-        <MoPageHeader img="" title={title} />
-      </Grid>
-      <Grid item md={6} className={classes.scoreBoard}>
-        {isScoreBoard && !loading && (
-          <MoScoreBoard points={points} numberOfQuestions={numberOfQuestions} />
-        )}
-        {subtitle && <MoPageSubtitle subtitle={subtitle} />}
-      </Grid>
-      <Spinner loading={loading} color="primary" />
-      <section className={classes.content}>{children}</section>
-    </Grid>
-  );
+	return (
+		<Grid container className={classes.section}>
+			<Grid item md={6}>
+				<MoPageHeader title={title} />
+			</Grid>
+			<Grid item md={6} className={classes.component}>
+				{<Component />}
+				{subtitle && <MoPageSubtitle subtitle={subtitle} />}
+			</Grid>
+			<Spinner loading={loading} color="primary" />
+			<section className={classes.content}>{children}</section>
+		</Grid>
+	);
 };
 
 export default compose(withStyles(styles), withRouter)(MoPage);
