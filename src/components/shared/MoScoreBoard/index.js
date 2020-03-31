@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const MoScoreBoard = ({ authUser, numberOfQuestions, points }) => (
   <Fade
     direction="left"
-    in={authUser && points && true}
+    in={authUser && true}
     mountOnEnter
     timeout={{ enter: 800, exit: 400 }}
     unmountOnExit
@@ -24,7 +24,7 @@ const MoScoreBoard = ({ authUser, numberOfQuestions, points }) => (
     >
       {authUser.roles && !!authUser.roles[ROLES.AUTHOR] && (
         <Button to={ROUTES.ADMIN.path} component={Link}>
-          <PostAddIcon />
+          Add <PostAddIcon />
         </Button>
       )}
       <Button> {points ? `${points} Points` : "0 Points"}</Button>
