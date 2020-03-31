@@ -19,7 +19,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "baseline",
     [theme.breakpoints.up(400)]: {
-      justifyContent: "flex-end",
+      justifyContent: "flex-end"
     }
   }
 });
