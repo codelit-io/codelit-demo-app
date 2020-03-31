@@ -43,6 +43,11 @@ The app has a React frontend and paired with a Firebase cloud backend
 * recompose: used to compose a wrappedComponent with multiple HOCs
 
 
+# Mind Map
+
+(App flow mind map)[https://www.mindmeister.com/1454606428/pages-containers]
+
+
 # Colors
 
 https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
