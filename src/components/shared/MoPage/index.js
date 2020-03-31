@@ -14,10 +14,10 @@ const MoPage = ({ classes, children, loading, subtitle, title, Component }) => {
     <Spinner loading={loading} color="primary" />
   ) : (
     <Grid container className={classes.section}>
-      <Grid item md={6}>
+      <Grid item xs={12} sm={6} md={6}>
         <MoPageHeader title={title} />
       </Grid>
-      <Grid item md={6} className={classes.component}>
+      <Grid item xs={12} sm={6} md={6} className={classes.component}>
         {Component && <Component />}
         {subtitle && <MoPageSubtitle subtitle={subtitle} />}
       </Grid>
