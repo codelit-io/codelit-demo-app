@@ -7,6 +7,10 @@ const styles = theme => ({
     border: `2px solid ${theme.blue.medium}`,
     overflow: "visible"
   },
+  authorAvatar: {
+    border: `2px solid ${theme.green.light}`,
+    overflow: "visible"
+  },
   menu: {
     boxShadow: theme.bigShadow
   }
