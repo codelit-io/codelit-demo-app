@@ -45,7 +45,7 @@ The app has a React frontend and paired with a Firebase cloud backend
 
 # Mind Map
 
-(App flow mind map)[https://www.mindmeister.com/1454606428/pages-containers]
+[App flow mind map]:https://www.mindmeister.com/1454606428/pages-containers
 
 
 # Colors
