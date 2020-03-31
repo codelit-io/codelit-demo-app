@@ -19,12 +19,19 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "pretty": "eslint './src/**/*.js' --fix",
     "build": "react-scripts build",
-    "deploy": "npm run pretty && react-scripts build && firebase deploy --only hosting:tool-builder",
+    "deploy": "npm run lint && react-scripts build && firebase deploy --only hosting:tool-builder",
     "check-updates": "ncu -u",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src",
+    "lintAndFix": "eslint './src/**/*.js' --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lintAndFix",
+      "pre-push": "npm run lintAndFix && npm test"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -52,8 +59,10 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.2",
+    "cross-env": "^7.0.2",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
   }
