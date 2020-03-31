@@ -15,7 +15,7 @@ const styles = theme => ({
     paddingTop: theme.padding.lg,
     paddingBottom: theme.padding.lg
   },
-  scoreBoard: {
+  component: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end"
