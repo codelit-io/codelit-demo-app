@@ -46,7 +46,11 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
       title={configs.label}
       loading={loading}
       Component={() => (
-        <MoScoreBoard points={points} numberOfQuestions={questions.length} />
+        <MoScoreBoard
+          authUser={authUser}
+          points={points}
+          numberOfQuestions={questions.length}
+        />
       )}
     >
       {questions && (
