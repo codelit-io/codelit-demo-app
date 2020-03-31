@@ -1,12 +1,17 @@
 import React from "react";
+
+import * as ROLES from "../../../constants/roles";
+import * as ROUTES from "../../../constants/routes";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import Fade from "@material-ui/core/Fade";
+import { Link } from "react-router-dom";
 
-const MoScoreBoard = ({ numberOfQuestions, points }) => (
+const MoScoreBoard = ({ authUser, numberOfQuestions, points }) => (
   <Fade
     direction="left"
-    in={points ? true : false}
+    in={authUser && points && true}
     mountOnEnter
     timeout={{ enter: 800, exit: 400 }}
     unmountOnExit
@@ -17,6 +22,11 @@ const MoScoreBoard = ({ numberOfQuestions, points }) => (
       color="default"
       style={{ marginBottom: "48px" }}
     >
+      {authUser.roles && !!authUser.roles[ROLES.AUTHOR] && (
+        <Button to={ROUTES.ADMIN.path} component={Link}>
+          <PostAddIcon />
+        </Button>
+      )}
       <Button> {points ? `${points} Points` : "0 Points"}</Button>
       <Button>
         {numberOfQuestions
