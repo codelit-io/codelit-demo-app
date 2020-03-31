@@ -10,7 +10,9 @@ import MoPageSubtitle from "../MoPageSubtitle";
 import { Grid } from "@material-ui/core";
 
 const MoPage = ({ classes, children, loading, subtitle, title, Component }) => {
-  return (
+  return loading ? (
+    <Spinner loading={loading} color="primary" />
+  ) : (
     <Grid container className={classes.section}>
       <Grid item md={6}>
         <MoPageHeader title={title} />
@@ -19,7 +21,7 @@ const MoPage = ({ classes, children, loading, subtitle, title, Component }) => {
         {Component && <Component />}
         {subtitle && <MoPageSubtitle subtitle={subtitle} />}
       </Grid>
-      <Spinner loading={loading} color="primary" />
+
       <section className={classes.content}>{children}</section>
     </Grid>
   );
