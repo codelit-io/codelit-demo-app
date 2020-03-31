@@ -17,8 +17,10 @@ const styles = theme => ({
   },
   component: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end"
+    alignItems: "baseline",
+    [theme.breakpoints.up(400)]: {
+      justifyContent: "flex-end",
+    }
   }
 });
 
