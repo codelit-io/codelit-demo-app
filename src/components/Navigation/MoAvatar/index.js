@@ -34,10 +34,9 @@ const MoAvatar = ({ authUser, classes }) => {
         <Avatar
           alt="Me"
           src={authUser && authUser.photoURL}
-          className={`${classes.avatar} ${authUser &&
-            authUser.roles &&
-            authUser.roles.ADMIN &&
-            classes.adminAvatar}`}
+          className={`${classes.avatar} ${authUser?.roles?.ADMIN &&
+            classes.adminAvatar}
+            ${authUser?.roles?.AUTHOR && classes.authorAvatar}`}
           aria-controls="avatar-menu"
           aria-haspopup="true"
         />
