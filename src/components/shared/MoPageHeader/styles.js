@@ -1,9 +1,9 @@
 const styles = theme => ({
   linkText: {
-    color: theme.grey.dark,
+    color: theme.grey?.dark,
     textDecoration: "none",
     verticalAlign: "middle",
-    marginBottom: theme.padding.lg
+    marginBottom: theme.padding?.lg
   },
   container: {
     margin: "26px 0px 26px"
