@@ -54,7 +54,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         className={classes.button}
         type="submit"
       >
-        Sign In with Facebook
+        Continue with Facebook
       </Button>
 
       {error && <p>{error.message}</p>}
