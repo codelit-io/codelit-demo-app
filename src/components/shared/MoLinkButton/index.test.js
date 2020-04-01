@@ -1,8 +1,16 @@
 import React from "react";
-import MoLink from "./index.js.js";
+
+import { BrowserRouter as Router } from "react-router-dom";
 import renderer from "react-test-renderer";
+import MoLinkButton from "./index";
 
 it("Should render MoLink", () => {
-  const tree = renderer.create(<MoLink />).toJSON();
+  const tree = renderer
+    .create(
+      <Router>
+        <MoLinkButton />
+      </Router>
+    )
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });
