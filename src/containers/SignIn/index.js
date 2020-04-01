@@ -6,7 +6,7 @@ import SocialSignIn from "../../components/SocialSignIn/";
 import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
-  <MoPage img="" title="Welcome Back!" loading={false}>
+  <MoPage img="" title="Welcome Back 🤩" loading={false}>
     <Grid container spacing={3}>
       <SignInForm />
       <SocialSignIn />
