@@ -50,7 +50,7 @@ const SignInWithGoogleBase = ({ firebase, classes, history }) => {
         type="submit"
       >
         {" "}
-        SIgn In with Google
+        Continue with Google
       </Button>
 
       {error && <p>{error.message}</p>}
