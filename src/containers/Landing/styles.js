@@ -1,11 +1,11 @@
 const styles = theme => ({
   container: {
-    paddingTop: theme.padding.xl,
-    paddingBottom: theme.padding.xl
+    paddingTop: theme.padding?.xl,
+    paddingBottom: theme.padding?.xl
   },
   responsiveGrid: {
     [theme.breakpoints.down("sm")]: {
-      paddingBottom: theme.padding.lg
+      paddingBottom: theme.padding?.lg
     }
   },
   editorFont: {

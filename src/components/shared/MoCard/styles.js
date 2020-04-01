@@ -28,7 +28,7 @@ const styles = theme => ({
     cursor: "default"
   },
   lockIcon: {
-    color: theme.grey.dark,
+    color: theme.grey?.dark,
     position: "absolute",
     top: "10px",
     right: "10px"

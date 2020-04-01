@@ -3,7 +3,7 @@ const styles = theme => ({
     background: "none",
     textDecoration: "none",
     padding: "0px",
-    color: theme.blue.medium,
+    color: theme.blue?.medium,
     fontSize: "1.1rem",
     borderRadius: "3px",
     textTransform: "initial",

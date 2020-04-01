@@ -2,7 +2,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
 
-    paddingBottom: theme.padding.lg
+    paddingBottom: theme.padding?.lg
   },
   alignCenter: theme.flexAlignCenter,
   title: {
