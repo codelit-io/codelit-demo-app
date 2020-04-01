@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "deploy": "npm run lint && react-scripts build && firebase deploy --only hosting:tool-builder",
     "check-updates": "ncu -u",
-    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "test": "react-scripts test",
+    "ci-test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lintAndFix": "eslint './src/**/*.js' --fix"
@@ -30,7 +31,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lintAndFix",
-      "pre-push": "npm run lintAndFix && npm test"
+      "pre-push": "npm run lintAndFix && npm ci-test"
     }
   },
   "eslintConfig": {
