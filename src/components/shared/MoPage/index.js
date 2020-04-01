@@ -27,4 +27,4 @@ const MoPage = ({ classes, children, loading, subtitle, title, Component }) => {
   );
 };
 
-export default compose(withStyles(styles), withRouter)(MoPage);
+export default compose(withRouter, withStyles(styles))(MoPage);
