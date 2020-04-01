@@ -12,8 +12,8 @@ const styles = theme => ({
     maxHeight: "100%",
     height: "100%",
     width: "100%",
-    paddingTop: theme.padding.lg,
-    paddingBottom: theme.padding.lg
+    paddingTop: theme.padding?.lg,
+    paddingBottom: theme.padding?.lg
   },
   component: {
     display: "flex",
