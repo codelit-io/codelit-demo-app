@@ -13,7 +13,7 @@ const SocialSignIn = ({ classes }) => {
     <main className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
-        <MoTitle text="Social Media Sign in" fade={true} margin="36px 0 36px" />
+        <MoTitle text="Skip the email Login" fade={true} margin="36px 0 36px" />
         <SignInWithFacebook />
         <SignInWithGoogle />
       </div>
