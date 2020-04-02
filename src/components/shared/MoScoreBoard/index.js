@@ -28,16 +28,15 @@ const MoScoreBoard = ({ authUser, numberOfQuestions, points }) => (
           Add <PostAddIcon />
         </Button>
       )}
-      {authUser ? (
-        <>
-          <Button> {points ? `${points} Points` : "0 Points"}</Button>
-          <Button>
-            {numberOfQuestions && points
-              ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
-              : "0% Complete"}
-          </Button>
-        </>
-      ) : (
+      {authUser && <Button> {points ? `${points} Points` : "0 Points"}</Button>}
+      {authUser && (
+        <Button>
+          {numberOfQuestions && points
+            ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
+            : "0% Complete"}
+        </Button>
+      )}
+      {!authUser && (
         <Button to={ROUTES.SIGN_UP.path} component={Link}>
           Sign up to earn points{" "}
           <CheckCircleIcon style={{ marginLeft: "10px" }} />
