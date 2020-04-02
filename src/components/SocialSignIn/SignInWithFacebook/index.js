@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import facebook from "../../../assets/facebook.svg";
 import PropTypes from "prop-types";
 import { withFirebase } from "../../Firebase";
-import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
@@ -39,8 +37,6 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         )
         .then(() => {
           setError(null);
-          // Investigate if this this the correct approach
-          history.goBack(ROUTES.QUESTIONS.path);
         })
         .catch(error => setError(error));
     });
@@ -69,7 +65,6 @@ SignInWithFacebookBase.propTypes = {
 
 const SignInWithFacebook = compose(
   withStyles(styles),
-  withRouter,
   withFirebase
 )(SignInWithFacebookBase);
 
