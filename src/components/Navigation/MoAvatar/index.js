@@ -11,6 +11,8 @@ import SignOutButton from "../../SignOut";
 import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import withStyles from "@material-ui/core/styles/withStyles";
+import SignInWithFacebook from "../../SocialSignIn/SignInWithFacebook";
+import SignInWithGoogle from "../../SocialSignIn/SignInWithGoogle";
 
 const MoAvatar = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -88,19 +90,21 @@ const MoAvatar = ({ authUser, classes }) => {
           </div>
         ) : (
           <div>
+            <SignInWithFacebook />
+            <SignInWithGoogle />
             <MenuItem
               to={ROUTES.SIGN_IN.path}
               component={Link}
               onClick={handleClose}
             >
-              Sign in
+              Email Login
             </MenuItem>
             <MenuItem
               to={ROUTES.SIGN_UP.path}
               component={Link}
               onClick={handleClose}
             >
-              Sign up
+              Email Sign Up
             </MenuItem>
           </div>
         )}
