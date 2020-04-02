@@ -10,6 +10,7 @@ import MoTitle from "../shared/MoTitle";
 
 const SocialSignIn = ({ classes }) => {
   return (
+    <div className={classes.card}>
     <main className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
@@ -18,6 +19,7 @@ const SocialSignIn = ({ classes }) => {
         <SignInWithGoogle />
       </div>
     </main>
+    </div>
   );
 };
 
