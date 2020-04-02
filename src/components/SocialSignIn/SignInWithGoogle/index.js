@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
+import google from "../../../assets/google.svg";
 import PropTypes from "prop-types";
 import { withFirebase } from "../../Firebase";
 import { withRouter } from "react-router-dom";
@@ -9,10 +10,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing(1)
-  },
-  input: {
-    margin: theme.spacing(1)
+    width: "100%",
+    textAlign: "center",
+    textTransform: "initial",
+    justifyContent: "end",
+    paddingLeft: "1em"
   }
 });
 
@@ -44,12 +46,11 @@ const SignInWithGoogleBase = ({ firebase, classes, history }) => {
   return (
     <form onSubmit={onSubmit}>
       <Button
-        color="primary"
-        variant="contained"
+        aria-label="Login with Google"
         className={classes.button}
+        startIcon={<img src={google} alt="google logo" />}
         type="submit"
       >
-        {" "}
         Continue with Google
       </Button>
 
