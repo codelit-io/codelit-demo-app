@@ -19,8 +19,12 @@ const SignInPage = () => (
             ""
           ) : (
             <>
-              <SignInForm />
+            <Grid item sm={6} md={6}>
               <SocialSignIn />
+            </Grid>
+            <Grid item sm={6} md={6}>
+              <SignInForm />
+            </Grid>
             </>
           )}
         </Grid>
