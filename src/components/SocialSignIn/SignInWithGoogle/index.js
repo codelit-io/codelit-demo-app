@@ -5,7 +5,6 @@ import { compose } from "recompose";
 import google from "../../../assets/google.svg";
 import PropTypes from "prop-types";
 import { withFirebase } from "../../Firebase";
-import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
@@ -18,7 +17,7 @@ const styles = theme => ({
   }
 });
 
-const SignInWithGoogleBase = ({ firebase, classes, history }) => {
+const SignInWithGoogleBase = ({ firebase, classes }) => {
   const [error, setError] = useState({ error: null });
   const onSubmit = event => {
     firebase
@@ -36,8 +35,6 @@ const SignInWithGoogleBase = ({ firebase, classes, history }) => {
       })
       .then(() => {
         setError(null);
-        // Investigate if this this the correct approach
-        history.goBack();
       })
       .catch(error => setError(error));
     event.preventDefault();
@@ -65,7 +62,6 @@ SignInWithGoogleBase.propTypes = {
 
 const SignInWithGoogle = compose(
   withStyles(styles),
-  withRouter,
   withFirebase
 )(SignInWithGoogleBase);
 
