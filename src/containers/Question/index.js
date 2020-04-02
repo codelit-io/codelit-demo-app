@@ -2,6 +2,7 @@ import React, { lazy, useEffect, useState, Suspense } from "react";
 
 import * as ROUTES from "../../constants/routes";
 
+import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import AuthUserContext from "../../components/Session/context";
 import Content from "./Content";
@@ -31,58 +32,18 @@ const Question = ({ firebase, history, match }) => {
     );
   };
 
-  /* * *  awardPlayerPoints   * * * * * * * * * * * * *
-   *  Awards users a point based on level completion  *
-   * * * * * * * * * * * * * * * * * * * * * * * * * */
+  /* Awards users a point based on level completion */
+  const handleAwardPlayerPoints = authUser =>
+    awardPlayerPoints(authUser, firebase, question.id, match.params.collection);
 
-  const awardPlayerPoints = authUser => {
-    /* TODO Change the source of authUser to the HOC */
-
-    const nextLevelReqPoints = Number(question.id);
-
-    if (authUser) {
-      /* Prevents overwriting player points if played older questions */
-      /* TODO move me */
-
-      if (authUser.reports?.[match.params.collection]) {
-        // debugger
-        const userPoints = authUser.reports[match.params.collection]["points"];
-        const points =
-          nextLevelReqPoints > userPoints ? nextLevelReqPoints : userPoints;
-
-        /* Update user profile in db with points object of current question collection in db  */
-
-        firebase
-          .user(authUser.uid)
-          .set(
-            { reports: { [match.params.collection]: { points } } },
-            { merge: true }
-          );
-      } else {
-        /* First time user */
-        firebase
-          .user(authUser.uid)
-          .set(
-            { reports: { [match.params.collection]: { points: 1 } } },
-            { merge: true }
-          );
-      }
-    } else {
-      console.log("User not signed up");
-    }
-  };
-
-  /* * *  handleOnChange  *  * * * * * * * * * * * *
-   *  Checks if user code matches Pre made answer  *
-   * * * * * * * * * * * * * * * * * * * * * * *  */
-
+  /* Checks if user code matches Pre made answer */
   const handleOnChange = (userAnswer, authUser) => {
     if (userAnswer === "{}" || userAnswer === "") {
       return;
     }
     if (userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")) {
       setQuestion({ ...question, isCorrect: true, question: userAnswer });
-      awardPlayerPoints(authUser);
+      handleAwardPlayerPoints(authUser);
       setIsCorrect(true);
       setSnackbarProps({
         title: "Hooray!",
