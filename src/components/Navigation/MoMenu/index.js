@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const MoMenu = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,15 +24,15 @@ const MoMenu = ({ authUser, classes }) => {
 
   return (
     <>
-    <Tooltip title="View levels" arrow>
-      <IconButton
-        aria-label="View Topics Menu"
-        aria-controls="topics-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <AppsIcon />
-      </IconButton>
+      <Tooltip title="View levels" arrow>
+        <IconButton
+          aria-label="View Topics Menu"
+          aria-controls="topics-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          <AppsIcon />
+        </IconButton>
       </Tooltip>
       <Menu
         anchorEl={anchorEl}

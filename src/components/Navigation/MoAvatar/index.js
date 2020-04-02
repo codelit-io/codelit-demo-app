@@ -13,7 +13,7 @@ import Slide from "@material-ui/core/Slide";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SignInWithFacebook from "../../SocialSignIn/SignInWithFacebook";
 import SignInWithGoogle from "../../SocialSignIn/SignInWithGoogle";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 
 const MoAvatar = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,22 +28,22 @@ const MoAvatar = ({ authUser, classes }) => {
 
   return (
     <>
-    <Tooltip title="Menu" arrow>
-      <Button
-        aria-controls="avatar-menu"
-        aria-haspopup="true"
-        className={classes.avatarButton}
-        onClick={handleClick}
-      >
-        <Avatar
-          alt="Me"
-          src={authUser && authUser.photoURL}
-          className={`${classes.avatar} ${authUser?.roles?.ADMIN &&
-            classes.adminAvatar}
-            ${authUser?.roles?.AUTHOR && classes.authorAvatar}`}
+      <Tooltip title="Menu" arrow>
+        <Button
           aria-controls="avatar-menu"
           aria-haspopup="true"
-        />
+          className={classes.avatarButton}
+          onClick={handleClick}
+        >
+          <Avatar
+            alt="Me"
+            src={authUser && authUser.photoURL}
+            className={`${classes.avatar} ${authUser?.roles?.ADMIN &&
+              classes.adminAvatar}
+            ${authUser?.roles?.AUTHOR && classes.authorAvatar}`}
+            aria-controls="avatar-menu"
+            aria-haspopup="true"
+          />
         </Button>
       </Tooltip>
       <Menu

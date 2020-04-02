@@ -11,14 +11,18 @@ import MoTitle from "../shared/MoTitle";
 const SocialSignIn = ({ classes }) => {
   return (
     <div className={classes.card}>
-    <main className={classes.main}>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <MoTitle text="Skip the email Login" fade={true} margin="36px 0 36px" />
-        <SignInWithFacebook />
-        <SignInWithGoogle />
-      </div>
-    </main>
+      <main className={classes.main}>
+        <CssBaseline />
+        <div className={classes.paper}>
+          <MoTitle
+            text="Skip the email Login"
+            fade={true}
+            margin="36px 0 36px"
+          />
+          <SignInWithFacebook />
+          <SignInWithGoogle />
+        </div>
+      </main>
     </div>
   );
 };
