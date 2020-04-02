@@ -7,26 +7,26 @@ import SocialSignIn from "../../components/SocialSignIn/";
 import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
-	<AuthUserContext.Consumer>
-		{authUser => (
-			<MoPage
-				img=""
-				title={authUser ? "You are logged in 👍" : "Welcome Back 🤩"}
-				loading={false}
-			>
-				<Grid container spacing={3}>
-					{authUser ? (
-						""
-					) : (
-						<>
-							<SignInForm />
-							<SocialSignIn />
-						</>
-					)}
-				</Grid>
-			</MoPage>
-		)}
-	</AuthUserContext.Consumer>
+  <AuthUserContext.Consumer>
+    {authUser => (
+      <MoPage
+        img=""
+        title={authUser ? "You are logged in 👍" : "Welcome Back 🤩"}
+        loading={false}
+      >
+        <Grid container spacing={3}>
+          {authUser ? (
+            ""
+          ) : (
+            <>
+              <SignInForm />
+              <SocialSignIn />
+            </>
+          )}
+        </Grid>
+      </MoPage>
+    )}
+  </AuthUserContext.Consumer>
 );
 
 export default SignInPage;
