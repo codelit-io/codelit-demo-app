@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as ROUTES from "../../../constants/routes";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
+import facebook from "../../../assets/facebook.svg";
 import PropTypes from "prop-types";
 import { withFirebase } from "../../Firebase";
 import { withRouter } from "react-router-dom";
@@ -10,12 +11,12 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing(1)
+    width: "100%",
+    textAlign: "center",
+    textTransform: "initial",
+    justifyContent: "end",
+    paddingLeft: "1em"
   },
-  input: {
-    margin: theme.spacing(1)
-  },
-
   form: {
     marginTop: theme.spacing(4)
   }
@@ -49,9 +50,9 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
   return (
     <form onSubmit={onSubmit} className={classes.form}>
       <Button
-        color="primary"
-        variant="contained"
+        aria-label="Login with Facebook"
         className={classes.button}
+        startIcon={<img src={facebook} alt="facebook logo" />}
         type="submit"
       >
         Continue with Facebook
