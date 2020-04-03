@@ -10,6 +10,16 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
   const [questions, setQuestions] = useState([]);
   const [points, setPoints] = useState(0);
 
+  const calculateProgress = () => {
+    if (!authUser) {
+      return false;
+    }
+    let numberOfQuestions = questions.length;
+    return numberOfQuestions && points
+      ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
+      : "0% Complete";
+  };
+
   useEffect(() => {
     setLoading(true);
 
@@ -49,7 +59,8 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
         <MoScoreBoard
           authUser={authUser}
           points={points}
-          numberOfQuestions={questions.length}
+          skeleton={configs.label}
+          progress={calculateProgress()}
         />
       )}
     >
