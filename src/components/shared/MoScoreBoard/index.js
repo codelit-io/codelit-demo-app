@@ -29,7 +29,7 @@ const MoScoreBoard = ({ authUser, points, progress }) => (
         </Button>
       )}
       {authUser && <Button> {points ? `${points} Points` : "0 Points"}</Button>}
-      <Button>{progress}</Button>
+      {authUser && <Button>{progress}</Button>}
       {!authUser && (
         <Button to={ROUTES.SIGN_UP.path} component={Link}>
           Sign up to earn points
