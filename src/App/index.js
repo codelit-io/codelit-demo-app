@@ -56,7 +56,7 @@ const App = () => (
             />
             <Route component={NotFound} />
           </Switch>
-          <Footer/>
+          <Footer />
         </Container>
       </Suspense>
     </Router>
