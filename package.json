@@ -30,6 +30,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run lintAndFix",
       "pre-push": "npm run lintAndFix"
     }
   },
