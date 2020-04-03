@@ -5,8 +5,8 @@ import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Spinner from "../components/shared/Spinner";
-import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { withAuthentication } from "../components/Session";
 
 const Navigation = lazy(() => import("../components/Navigation"));
@@ -22,6 +22,7 @@ const Questions = lazy(() => import("../containers/Questions"));
 const Question = lazy(() => import("../containers/Question"));
 const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
+const Footer = lazy(() => import("../components/Footer"));
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -55,6 +56,7 @@ const App = () => (
             />
             <Route component={NotFound} />
           </Switch>
+          <Footer/>
         </Container>
       </Suspense>
     </Router>
