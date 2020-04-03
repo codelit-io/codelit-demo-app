@@ -59,7 +59,6 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
         <MoScoreBoard
           authUser={authUser}
           points={points}
-          skeleton={configs.label}
           progress={calculateProgress()}
         />
       )}
