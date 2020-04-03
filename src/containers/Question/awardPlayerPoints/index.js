@@ -8,7 +8,6 @@ const awardPlayerPoints = (authUser, firebase, questionId, collection) => {
     /* TODO move me */
 
     if (authUser.reports?.[collection]) {
-      // debugger
       const userPoints = authUser.reports[collection]["points"];
       const points =
         nextLevelReqPoints > userPoints ? nextLevelReqPoints : userPoints;
