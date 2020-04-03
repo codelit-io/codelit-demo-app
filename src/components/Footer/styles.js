@@ -1,7 +1,12 @@
 const styles = theme => ({
   container: {
-    position: "absolute",
-    bottom: "0px"
+    paddingTop: theme.padding.xl
+  },
+  footerText: {
+    textAlign: "right"
+  },
+  footerButton: {
+    textTransform: "initial"
   }
 });
 
