@@ -38,7 +38,7 @@ const MoScoreBoard = ({ authUser, numberOfQuestions, points }) => (
       )}
       {!authUser && (
         <Button to={ROUTES.SIGN_UP.path} component={Link}>
-          Sign up to earn points{" "}
+          Sign up to earn points
           <CheckCircleIcon style={{ marginLeft: "10px" }} />
         </Button>
       )}
