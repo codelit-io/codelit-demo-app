@@ -27,9 +27,16 @@ const Question = ({ firebase, history, match }) => {
   };
 
   const navigateToNextLevel = id => {
-    history.push(
-      ROUTES.QUESTIONS.path + "/" + match.params.collection + "/" + id
-    );
+    /* Clear questions */
+    setQuestion({});
+
+    setIsCorrect(false);
+    /* A delay before navigating to a new page */
+    setTimeout(() => {
+      history.push(
+        ROUTES.QUESTIONS.path + "/" + match.params.collection + "/" + id
+      );
+    }, 600);
   };
 
   /* Awards users a point based on level completion */
