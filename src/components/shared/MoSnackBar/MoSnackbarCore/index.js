@@ -32,6 +32,7 @@ const MoSnackbarCore = ({
   const handleClose = () => {
     setState({
       ...state,
+      Transition: Slide,
       isActive: false
     });
   };
