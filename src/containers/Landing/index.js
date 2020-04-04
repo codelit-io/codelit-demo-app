@@ -14,6 +14,7 @@ import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
+const Footer = lazy(() => import("../../components/Footer"));
 const Typist = lazy(() => import("react-typist"));
 
 const LandingPage = ({ classes }) => {
@@ -195,6 +196,7 @@ const LandingPage = ({ classes }) => {
           />
         </Grid>
       </Grid>
+      <Footer />
     </>
   );
 };
