@@ -25,7 +25,7 @@ const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
           direction="right"
           in={question.answer && true}
           mountOnEnter
-          timeout={{ enter: 800, exit: 400 }}
+          timeout={{ enter: 400, exit: 400 }}
           unmountOnExit
         >
           <div>
@@ -56,7 +56,7 @@ const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
           direction="left"
           in={(question.isPlayground && true) || (question.answer && true)}
           mountOnEnter
-          timeout={{ enter: 800, exit: 800 }}
+          timeout={{ enter: 400, exit: 400 }}
           unmountOnExit
         >
           <div>
