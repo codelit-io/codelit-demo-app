@@ -22,7 +22,6 @@ const Questions = lazy(() => import("../containers/Questions"));
 const Question = lazy(() => import("../containers/Question"));
 const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
-const Footer = lazy(() => import("../components/Footer"));
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -56,7 +55,6 @@ const App = () => (
             />
             <Route component={NotFound} />
           </Switch>
-          <Footer />
         </Container>
       </Suspense>
     </Router>
