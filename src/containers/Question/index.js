@@ -67,7 +67,7 @@ const Question = ({ firebase, history, match }) => {
     setLoading(true);
     setIsCorrect(false);
     const unsubscribe = firebase
-      .getCollectionById(match.params.collection, id)
+      .getCollectionById("topics/" + match.params.collection + "/questions", id)
       .onSnapshot(snapshot => {
         if (snapshot.size) {
           let question = [];
