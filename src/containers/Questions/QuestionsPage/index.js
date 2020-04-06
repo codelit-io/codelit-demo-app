@@ -5,9 +5,13 @@ import QuestionsList from "./QuestionsList";
 import MoPage from "../../../components/shared/MoPage";
 import MoScoreBoard from "../../../components/shared/MoScoreBoard";
 
-const QuestionsPage = ({ authUser, configs, firebase, match }) => {
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
+const QuestionsPage = ({
+  authUser,
+  loading,
+  match,
+  questions,
+  topicDetails
+}) => {
   const [points, setPoints] = useState(0);
 
   const calculateProgress = () => {
@@ -21,39 +25,12 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
-
     setPoints(authUser?.reports?.[match.params.collection]?.points);
-    const getQuestions = firebase
-      .collection(match.params.collection)
-      .orderBy("id")
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          let questions = [];
-          snapshot.forEach(doc => {
-            questions.push({
-              ...doc.data(),
-              uid: doc.id
-            });
-          });
-
-          setQuestions(questions);
-          setLoading(false);
-        } else {
-          setQuestions([]);
-          setLoading(false);
-        }
-      });
-    /* Unsubscribe from firebase on unmount */
-    return () => {
-      setQuestions([]);
-      getQuestions();
-    };
-  }, [authUser, firebase, match]);
+  }, [authUser, match]);
 
   return (
     <MoPage
-      title={configs.label}
+      title={topicDetails.label}
       loading={loading}
       Component={() => (
         <MoScoreBoard
@@ -68,7 +45,7 @@ const QuestionsPage = ({ authUser, configs, firebase, match }) => {
           <QuestionsList
             points={points}
             questions={questions}
-            configs={configs}
+            url={match.params.collection}
           />
         </Grid>
       )}
