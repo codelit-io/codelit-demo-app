@@ -4,15 +4,15 @@ export const ADMIN = { path: "/admin", title: "Admin Page" };
 export const ADMIN_DETAILS = { path: "/admin/:id", title: "Admin Details" };
 export const ADMIN_QUESTIONS = { path: "/admin/questions", title: "Questions" };
 export const ADMIN_QUESTIONS_EASY = {
-  path: "/admin/questions/questions",
+  path: "/admin/questions/mo-easy",
   title: "Questions Easy"
 };
 export const ADMIN_QUESTIONS_MID = {
-  path: "/admin/questions/questions-mid",
+  path: "/admin/questions/mo-medium",
   title: "Questions Mid"
 };
 export const ADMIN_QUESTIONS_PRO = {
-  path: "/admin/questions/questions-pro",
+  path: "/admin/questions/mo-pro",
   title: "Questions Pro"
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
@@ -24,15 +24,15 @@ export const LANDING = {
 };
 export const QUESTIONS = { path: "/topics", title: "Topics" };
 export const EASY_QUESTIONS = {
-  path: "/topics/questions",
+  path: "/topics/mo-easy",
   title: "Easy"
 };
 export const MEDIUM_QUESTIONS = {
-  path: "/topics/questions-mid",
+  path: "/topics/mo-medium",
   title: "Medium"
 };
 export const PRO_QUESTIONS = {
-  path: "/topics/questions-pro",
+  path: "/topics/mo-pro",
   title: "Pro"
 };
 export const SIGN_IN = { path: "/signin", title: "Sign in" };
