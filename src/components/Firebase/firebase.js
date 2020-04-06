@@ -76,8 +76,6 @@ class Firebase {
 
   questions = () => this.firestore.collection("questions");
 
-  moskool = () => this.firestore.collection("moskool");
-
   /* Get Any collection or Doc  */
 
   collection = collectionPath => this.firestore.collection(collectionPath);
@@ -91,7 +89,9 @@ class Firebase {
   createQuestionById = (collectionPath, question) => {
     const uid = this.createId(collectionPath);
     this.firestore
-      .collection(collectionPath)
+      .collection("topics")
+      .doc(collectionPath)
+      .collection("questions")
       .doc(uid)
       .set({ ...question, uid: uid });
   };

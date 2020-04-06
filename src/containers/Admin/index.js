@@ -22,7 +22,7 @@ const AdminPage = ({ history }) => (
     <Switch>
       <Route
         exact
-        path={ROUTES.ADMIN_QUESTIONS.path + "/:level"}
+        path={ROUTES.ADMIN_QUESTIONS.path + "/:collection"}
         component={Questions}
       />
       <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />

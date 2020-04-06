@@ -7,80 +7,83 @@ import { withFirebase } from "../../../components/Firebase";
 import QuestionsTable from "./QuestionsTable";
 
 const Questions = ({ firebase, history, match }) => {
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const [questions, setQuestions] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
+	useEffect(() => {
+		setLoading(true);
     setQuestions(null);
-    const unsubscribe = firebase
-      .collection(match.params.level)
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          let questions = [];
-          snapshot.forEach(doc =>
-            questions.push({ ...doc.data(), uid: doc.id })
-          );
-          setQuestions(questions);
-        } else {
-          setQuestions(null);
-        }
-        setLoading(false);
-      });
+		const getQuestions = firebase
+			.collection("topics")
+			.doc(match.params.collection)
+			.collection("questions")
+			.orderBy("id")
+			.onSnapshot(snapshot => {
+				if (snapshot.size) {
+					let questions = [];
+					snapshot.forEach(doc =>
+						questions.push({ ...doc.data(), uid: doc.id })
+					);
+					setQuestions(questions);
+				} else {
+					setQuestions(null);
+				}
+				setLoading(false);
+			});
 
-    return () => unsubscribe();
-  }, [firebase, match]);
+		return () => getQuestions();
+	}, [firebase, match]);
 
-  const onCreateQuestion = (event, authUser) => {
-    if (event.label) {
-      firebase.createQuestionById(match.params.level, {
-        ...event,
-        id: Number(event.id),
-        userId: authUser.uid,
-        createdAt: firebase.fieldValue.serverTimestamp()
-      });
-    }
-  };
+	const onCreateQuestion = (event, authUser) => {
+		if (event.label) {
+			firebase.createQuestionById(match.params.collection, {
+				...event,
+				id: Number(event.id),
+				userId: authUser.uid,
+				createdAt: firebase.fieldValue.serverTimestamp()
+			});
+		}
+	};
 
-  const onEditQuestion = event => {
-    if (!match.params.level) {
-      return;
-    }
+	const onEditQuestion = event => {
+		if (!match.params.collection) {
+			return;
+		}
 
-    firebase.doc(match.params.level, event.uid).update({
-      ...event,
-      id: Number(event.id),
-      editedAt: firebase.fieldValue.serverTimestamp()
-    });
-  };
+		firebase.doc("topics/" + match.params.collection + "/questions", event.uid).update({
+			...event,
+			id: Number(event.id),
+			editedAt: firebase.fieldValue.serverTimestamp()
+		});
+	};
 
-  const onRemoveQuestion = uid => {
-    firebase.doc(match.params.level, uid).delete();
-  };
+	const onRemoveQuestion = uid => {
+		firebase.doc("topics/" + match.params.collection + "/questions", uid).delete();
+	};
 
-  const handleRowClick = id => {
-    history.push(ROUTES.QUESTIONS.path + "/" + id);
-  };
+	const handleRowClick = id => {
+		history.push(ROUTES.QUESTIONS.path + "/" + id);
+	};
 
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <>
-          {loading && <Spinner loading={loading} />}
+	return (
+		<AuthUserContext.Consumer>
+			{authUser => (
+				<>
+					{loading && <Spinner loading={loading} />}
 
-          {questions && (
-            <QuestionsTable
-              questions={questions}
-              onEditQuestion={onEditQuestion}
-              onRemoveQuestion={onRemoveQuestion}
-              onCreateQuestion={event => onCreateQuestion(event, authUser)}
-              handleRowClick={handleRowClick}
-            />
-          )}
-        </>
-      )}
-    </AuthUserContext.Consumer>
-  );
+					{questions && (
+						<QuestionsTable
+							questions={questions}
+							onEditQuestion={onEditQuestion}
+							onRemoveQuestion={onRemoveQuestion}
+							onCreateQuestion={event => onCreateQuestion(event, authUser)}
+							handleRowClick={handleRowClick}
+						/>
+					)}
+				</>
+			)}
+		</AuthUserContext.Consumer>
+	);
 };
 
 export default withFirebase(Questions);
