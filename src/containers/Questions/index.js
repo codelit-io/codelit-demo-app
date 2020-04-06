@@ -4,26 +4,64 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 import QuestionsPage from "./QuestionsPage";
 
 const Questions = ({ firebase, match }) => {
-  const [configs, setConfigs] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [topicDetails, setTopicDetails] = useState({});
+
   useEffect(() => {
-    firebase
-      .moskool()
+    setLoading(true);
+
+    /* Make a firebase query to get details about 
+      the topic or questions Such as name of this 
+      topic and description
+     */
+
+    const getTopicDetails = firebase
+      .collection("topics")
       .doc(match.params.collection)
       .get()
       .then(doc => {
         if (doc.exists) {
-          setConfigs(doc.data());
+          setTopicDetails(doc.data());
+          setLoading(false);
         } else {
-          setConfigs({});
+          setTopicDetails({});
+          setLoading(false);
         }
       })
       .catch(error => {
         console.log("Error getting document:", error);
       });
 
-    return () => {
-      setConfigs({});
-    };
+    /* Make a firebase query to get details about 
+      the topic or questions Such as name of this 
+      topic and description
+     */
+
+    const getQuestions = firebase
+      .collection("topics")
+      .doc(match.params.collection)
+      .collection("questions")
+      .orderBy("id")
+      .onSnapshot(snapshot => {
+        if (snapshot.size) {
+          let questions = [];
+          snapshot.forEach(doc =>
+            questions.push({ ...doc.data(), uid: doc.id })
+          );
+          setQuestions(questions);
+          setLoading(false);
+        } else {
+          setQuestions([]);
+          setLoading(false);
+        }
+        /* Unsubscribe from firebase on unmount */
+        return () => {
+          setQuestions([]);
+          getQuestions();
+          getTopicDetails();
+        };
+      });
   }, [firebase, match]);
 
   return (
@@ -31,9 +69,10 @@ const Questions = ({ firebase, match }) => {
       {authUser => (
         <QuestionsPage
           authUser={authUser}
-          configs={configs}
-          firebase={firebase}
+          loading={loading}
           match={match}
+          questions={questions}
+          topicDetails={topicDetails}
         />
       )}
     </AuthUserContext.Consumer>
