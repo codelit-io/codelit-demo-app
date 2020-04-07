@@ -7,7 +7,7 @@ import MoScoreBoard from "../../../components/shared/MoScoreBoard";
 
 const QuestionsPage = ({
   authUser,
-  loading,
+  isLoading,
   match,
   questions,
   topicDetails
@@ -18,7 +18,7 @@ const QuestionsPage = ({
     if (!authUser) {
       return false;
     }
-    let numberOfQuestions = questions.length;
+    let numberOfQuestions = questions && questions.length;
     return numberOfQuestions && points
       ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
       : "0% Complete";
@@ -31,7 +31,7 @@ const QuestionsPage = ({
   return (
     <MoPage
       title={topicDetails.label}
-      loading={loading}
+      isLoading={isLoading}
       Component={() => (
         <MoScoreBoard
           authUser={authUser}
