@@ -16,9 +16,9 @@ import {
 const Questions = lazy(() => import("./Questions"));
 
 const AdminPage = ({ history }) => (
-  <MoPage title="Admin" loading={false}>
+  <MoPage title="Admin" isLoading={false}>
     <AdminNav history={history} />
-    <Suspense fallback={<Spinner loading={true} color="primary" />}></Suspense>
+    <Suspense fallback={<Spinner isLoading={true} color="primary" />}></Suspense>
     <Switch>
       <Route
         exact
