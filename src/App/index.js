@@ -26,7 +26,7 @@ const SignIn = lazy(() => import("../containers/SignIn"));
 const App = () => (
   <ThemeProvider theme={theme}>
     <Router>
-      <Suspense fallback={<Spinner loading={true} color="primary" />}>
+      <Suspense fallback={<Spinner isLoading={true} color="primary" />}>
         <Container style={{ height: "100%", maxHeight: "100%" }}>
           <Navigation />
           <Switch>

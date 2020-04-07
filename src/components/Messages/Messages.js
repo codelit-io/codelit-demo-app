@@ -15,7 +15,7 @@ class Messages extends Component {
 
     this.state = {
       text: "",
-      loading: false,
+      isLoading: false,
       messages: [],
       limit: 15
     };
@@ -26,7 +26,7 @@ class Messages extends Component {
   }
 
   onListenForMessages = () => {
-    this.setState({ loading: true });
+    this.setState({ isLoading: true });
 
     this.unsubscribe = this.props.firebase
       .messages()
@@ -40,10 +40,10 @@ class Messages extends Component {
           );
           this.setState({
             messages: messages.reverse(),
-            loading: false
+            isLoading: false
           });
         } else {
-          this.setState({ messages: null, loading: false });
+          this.setState({ messages: null, isLoading: false });
         }
       });
   };
@@ -91,12 +91,12 @@ class Messages extends Component {
   };
 
   render() {
-    const { text, messages, loading } = this.state;
+    const { text, messages, isLoading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <MoPage loading={loading} title="New Feature Requests">
+          <MoPage isLoading={isLoading} title="New Feature Requests">
             <Grid container spacing={4}>
               <Grid item md={6} sm={12} xs={12}>
                 {messages && (
@@ -109,7 +109,7 @@ class Messages extends Component {
                 )}
 
                 {!messages && <div>There are no messages ...</div>}
-                {!loading && messages && (
+                {!isLoading && messages && (
                   <Button variant="text" onClick={this.onNextPage}>
                     <ExpandMoreIcon />
                     See previous posts
@@ -117,7 +117,7 @@ class Messages extends Component {
                 )}
               </Grid>
               <Grid item md={6} sm={12} xs={12}>
-                <MoPage title="Post a request" loading={loading}>
+                <MoPage title="Post a request" isLoading={isLoading}>
                   <form
                     onSubmit={event => this.onCreateMessage(event, authUser)}
                   >

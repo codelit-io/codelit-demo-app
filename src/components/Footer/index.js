@@ -9,7 +9,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 const Footer = ({ classes }) => (
   <Fade
     in={true}
-    timeout={{ enter: 2200, exit: 1200 }}
+    timeout={{ enter: 1200, exit: 1200 }}
     mountOnEnter
     unmountOnExit
   >

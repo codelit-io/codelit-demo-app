@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoPageHeader = ({ classes, title }) => {
   return (
-    <Fade in={title && true} timeout={{ enter: 1000 }}>
+    <Fade in={title && true} timeout={{ enter: 800 }}>
       <Typography variant="h2">
         <Box fontWeight="fontWeightLight" className={classes.linkText}>
           {title}

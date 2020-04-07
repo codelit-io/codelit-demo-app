@@ -9,9 +9,9 @@ import Spinner from "../Spinner";
 import MoPageSubtitle from "../MoPageSubtitle";
 import { Grid } from "@material-ui/core";
 
-const MoPage = ({ classes, children, loading, subtitle, title, Component }) => {
-  return loading ? (
-    <Spinner loading={loading} color="primary" />
+const MoPage = ({ classes, children, isLoading, subtitle, title, Component }) => {
+  return isLoading ? (
+    <Spinner isLoading={isLoading} color="primary" />
   ) : (
     <Grid container className={classes.section}>
       <Grid item xs={12} sm={6} md={6}>
