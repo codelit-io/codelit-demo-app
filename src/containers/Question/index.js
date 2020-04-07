@@ -1,3 +1,12 @@
+/**
+ * Single Question is code editor, code preview and error console. This container fetches a single question
+ * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
+ * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @prop {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
+ * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components 
+ * @withAuthentication - HOC provides firebase and match props
+ */
+
 import React, { lazy, useEffect, useState, Suspense } from "react";
 
 import * as ROUTES from "../../constants/routes";
