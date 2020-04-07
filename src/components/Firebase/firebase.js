@@ -89,7 +89,7 @@ class Firebase {
   createQuestionById = (collectionPath, question) => {
     const uid = this.createId(collectionPath);
     this.firestore
-      .collection("topics")
+      .collection("collections")
       .doc(collectionPath)
       .collection("questions")
       .doc(uid)

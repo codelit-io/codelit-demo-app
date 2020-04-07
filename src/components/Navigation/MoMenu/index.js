@@ -26,8 +26,8 @@ const MoMenu = ({ authUser, classes }) => {
     <>
       <Tooltip title="View levels" arrow>
         <IconButton
-          aria-label="View Topics Menu"
-          aria-controls="topics-menu"
+          aria-label="View Collections Menu"
+          aria-controls="collections-menu"
           aria-haspopup="true"
           onClick={handleClick}
         >
@@ -42,7 +42,7 @@ const MoMenu = ({ authUser, classes }) => {
         }}
         elevation={2}
         getContentAnchorEl={null}
-        id="topics-menu"
+        id="collections-menu"
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}

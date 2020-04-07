@@ -22,17 +22,17 @@ export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"
 };
-export const QUESTIONS = { path: "/topics", title: "Topics" };
+export const QUESTIONS = { path: "/collections", title: "Collections" };
 export const EASY_QUESTIONS = {
-  path: "/topics/mo-easy",
+  path: "/collections/mo-easy",
   title: "Easy"
 };
 export const MEDIUM_QUESTIONS = {
-  path: "/topics/mo-medium",
+  path: "/collections/mo-medium",
   title: "Medium"
 };
 export const PRO_QUESTIONS = {
-  path: "/topics/mo-pro",
+  path: "/collections/mo-pro",
   title: "Pro"
 };
 export const SIGN_IN = { path: "/signin", title: "Sign in" };

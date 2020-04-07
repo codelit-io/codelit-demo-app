@@ -14,7 +14,7 @@ const Questions = ({ firebase, history, match }) => {
     setIsLoading(true);
     setQuestions(null);
     const getQuestions = firebase
-      .collection("topics")
+      .collection("collections")
       .doc(match.params.collection)
       .collection("questions")
       .orderBy("id")
@@ -51,7 +51,7 @@ const Questions = ({ firebase, history, match }) => {
     }
 
     firebase
-      .doc("topics/" + match.params.collection + "/questions", event.uid)
+      .doc("collections/" + match.params.collection + "/questions", event.uid)
       .update({
         ...event,
         id: Number(event.id),
@@ -61,7 +61,7 @@ const Questions = ({ firebase, history, match }) => {
 
   const onRemoveQuestion = uid => {
     firebase
-      .doc("topics/" + match.params.collection + "/questions", uid)
+      .doc("collections/" + match.params.collection + "/questions", uid)
       .delete();
   };
 

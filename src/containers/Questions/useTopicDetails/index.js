@@ -18,7 +18,7 @@ const useTopicDetails = (firebase, match) => {
             the topic or questions Such as name of this 
             topic and description */
 			const getTopicDetails = firebase
-				.collection("topics")
+				.collection("collections")
 				.doc(match.params.collection)
 				.get()
 				.then(doc => {
