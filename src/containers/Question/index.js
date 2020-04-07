@@ -53,7 +53,7 @@ const Question = ({ firebase, history, match }) => {
     awardPlayerPoints(authUser, firebase, question.id, match.params.collection);
 
   /* Checks if user code matches Pre made answer */
-  const handleOnChange = (userAnswer, authUser) => {
+  const handleOnChange = (authUser, userAnswer) => {
     if (userAnswer === "{}" || userAnswer === "") {
       return;
     }
@@ -74,7 +74,6 @@ const Question = ({ firebase, history, match }) => {
   useEffect(() => {
     const id = match.params.question;
     setIsLoading(true);
-    setIsCorrect(false);
     const unsubscribe = firebase
       .getCollectionById("topics/" + match.params.collection + "/questions", id)
       .onSnapshot(snapshot => {
@@ -90,7 +89,6 @@ const Question = ({ firebase, history, match }) => {
             question: "<h1>Nice Job 🎉</h1>",
             language: "html"
           });
-          setIsCorrect(false);
         }
         setIsLoading(false);
       });
@@ -98,7 +96,6 @@ const Question = ({ firebase, history, match }) => {
     return () => {
       unsubscribe();
       setSnackbarProps(null);
-      setIsCorrect(false);
     };
   }, [firebase, match]);
 
@@ -122,7 +119,7 @@ const Question = ({ firebase, history, match }) => {
                   {question && (
                     <CodeEditor
                       handleOnChange={userAnswer =>
-                        handleOnChange(userAnswer, authUser)
+                        handleOnChange(authUser, userAnswer)
                       }
                       sm={6}
                       md={6}
