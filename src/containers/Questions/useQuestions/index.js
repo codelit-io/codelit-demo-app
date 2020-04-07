@@ -19,7 +19,7 @@ const useQuestions = (firebase, match) => {
             topic and description
             */
 			const getQuestions = firebase
-				.collection("topics")
+				.collection("collections")
 				.doc(match.params.collection)
 				.collection("questions")
 				.orderBy("id")
