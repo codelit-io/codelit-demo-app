@@ -12,7 +12,7 @@ const SignInPage = () => (
       <MoPage
         img=""
         title={authUser ? "You are logged in 👍" : "Welcome Back 🤩"}
-        loading={false}
+        isLoading={false}
       >
         <Grid container spacing={3}>
           {authUser ? (
