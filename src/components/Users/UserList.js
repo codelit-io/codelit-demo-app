@@ -11,13 +11,13 @@ class UserList extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      isLoading: false,
       users: []
     };
   }
 
   componentDidMount() {
-    this.setState({ loading: true });
+    this.setState({ isLoading: true });
 
     this.unsubscribe = this.props.firebase.users().onSnapshot(snapShot => {
       let users = [];
@@ -25,7 +25,7 @@ class UserList extends Component {
 
       this.setState({
         users: users,
-        loading: false
+        isLoading: false
       });
     });
   }
@@ -35,11 +35,11 @@ class UserList extends Component {
   }
 
   render() {
-    const { users, loading } = this.state;
+    const { users, isLoading } = this.state;
 
     return (
       <div>
-        {loading && <Spinner loading={loading} />}
+        {isLoading && <Spinner isLoading={isLoading} />}
         <List>
           {users.map(user => (
             <Link

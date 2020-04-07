@@ -9,7 +9,7 @@ class UserItem extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      isLoading: false,
       user: null,
       ...props.location.state
     };
@@ -20,13 +20,13 @@ class UserItem extends Component {
       return;
     }
 
-    this.setState({ loading: true });
+    this.setState({ isLoading: true });
     this.unsubscribe = this.props.firebase
       .user(this.props.match.params.id)
       .onSnapshot(snapshot => {
         this.setState({
           user: snapshot.data(),
-          loading: false
+          isLoading: false
         });
       });
   }
@@ -40,12 +40,12 @@ class UserItem extends Component {
   };
 
   render() {
-    const { user, loading } = this.state;
+    const { user, isLoading } = this.state;
 
     return (
       <div>
         <h2>{this.props.match.params.id}</h2>
-        {loading && <div>Loading ...</div>}
+        {isLoading && <div>loading ...</div>}
 
         {user && (
           <div>
