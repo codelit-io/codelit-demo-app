@@ -5,7 +5,7 @@
  * @returns {isLoading: boolean, isError: Object, questions: Strings[]} - returns loading boolean, error Object and an Array of questions
  */
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useQuestions = (firebase, match) => {
 	const [isLoading, setIsLoading] = useState(false);
