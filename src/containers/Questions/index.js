@@ -1,81 +1,35 @@
-import React, { useEffect, useState } from "react";
+/**
+ * Questions/Topic is a container that fetches firebase data using hooks and renders cards of questions 
+ * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
+ * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @returns {<QuestionsPage/>} - returns QuestionsPage component which renders the rest of the components 
+ * @withAuthentication - HOC provides firebase and match props
+ */
+
+
+import React from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 import QuestionsPage from "./QuestionsPage";
+import useQuestions from "./useQuestions";
+import useTopicDetails from "./useTopicDetails";
 
 const Questions = ({ firebase, match }) => {
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
-  const [topicDetails, setTopicDetails] = useState({});
-
-  useEffect(() => {
-    setLoading(true);
-
-    /* Make a firebase query to get details about 
-      the topic or questions Such as name of this 
-      topic and description
-     */
-
-    const getTopicDetails = firebase
-      .collection("topics")
-      .doc(match.params.collection)
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          setTopicDetails(doc.data());
-          setLoading(false);
-        } else {
-          setTopicDetails({});
-          setLoading(false);
-        }
-      })
-      .catch(error => {
-        console.log("Error getting document:", error);
-      });
-
-    /* Make a firebase query to get details about 
-      the topic or questions Such as name of this 
-      topic and description
-     */
-
-    const getQuestions = firebase
-      .collection("topics")
-      .doc(match.params.collection)
-      .collection("questions")
-      .orderBy("id")
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          let questions = [];
-          snapshot.forEach(doc =>
-            questions.push({ ...doc.data(), uid: doc.id })
-          );
-          setQuestions(questions);
-          setLoading(false);
-        } else {
-          setQuestions([]);
-          setLoading(false);
-        }
-        /* Unsubscribe from firebase on unmount */
-        return () => {
-          setQuestions([]);
-          getQuestions();
-          getTopicDetails();
-        };
-      });
-  }, [firebase, match]);
-
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <QuestionsPage
-          authUser={authUser}
-          loading={loading}
-          match={match}
-          questions={questions}
-          topicDetails={topicDetails}
-        />
-      )}
-    </AuthUserContext.Consumer>
-  );
+	const questions = useQuestions(firebase, match);
+  const topicDetails = useTopicDetails(firebase, match);
+  
+	return (
+		<AuthUserContext.Consumer>
+			{authUser => (
+				<QuestionsPage
+					authUser={authUser}
+					isLoading={topicDetails.isLoading || questions.isLoading}
+					match={match}
+					questions={questions.data}
+					topicDetails={topicDetails.data}
+				/>
+			)}
+		</AuthUserContext.Consumer>
+	);
 };
 export default withAuthentication(Questions);
