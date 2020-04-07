@@ -16,7 +16,7 @@ const CodeEditor = lazy(() => import("../../components/CodeEditor"));
 const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
 
 const Question = ({ firebase, history, match }) => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState({});
   const [isCorrect, setIsCorrect] = useState(false);
   const [snackbarProps, setSnackbarProps] = useState(null);
@@ -64,7 +64,7 @@ const Question = ({ firebase, history, match }) => {
 
   useEffect(() => {
     const id = match.params.question;
-    setLoading(true);
+    setIsLoading(true);
     setIsCorrect(false);
     const unsubscribe = firebase
       .getCollectionById("topics/" + match.params.collection + "/questions", id)
@@ -83,7 +83,7 @@ const Question = ({ firebase, history, match }) => {
           });
           setIsCorrect(false);
         }
-        setLoading(false);
+        setIsLoading(false);
       });
 
     return () => {
@@ -97,9 +97,9 @@ const Question = ({ firebase, history, match }) => {
     question && (
       <Suspense>
         <MoConfetti isActive={isCorrect} />
-        <MoPage img="" title={question.topic} loading={loading} isCard={false}>
+        <MoPage img="" title={question.topic} isLoading={isLoading} isCard={false}>
           {question.content && <Content content={question.content} />}
-          {!loading && (
+          {!isLoading && (
             <AuthUserContext.Consumer>
               {authUser => (
                 <>
