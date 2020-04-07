@@ -7,11 +7,11 @@ import { withFirebase } from "../../../components/Firebase";
 import QuestionsTable from "./QuestionsTable";
 
 const Questions = ({ firebase, history, match }) => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     setQuestions(null);
     const getQuestions = firebase
       .collection("topics")
@@ -28,7 +28,7 @@ const Questions = ({ firebase, history, match }) => {
         } else {
           setQuestions(null);
         }
-        setLoading(false);
+        setIsLoading(false);
       });
 
     return () => getQuestions();
@@ -73,7 +73,7 @@ const Questions = ({ firebase, history, match }) => {
     <AuthUserContext.Consumer>
       {authUser => (
         <>
-          {loading && <Spinner loading={loading} />}
+          {isLoading && <Spinner isLoading={isLoading} />}
 
           {questions && (
             <QuestionsTable
