@@ -2,18 +2,18 @@
 export const ACCOUNT = { path: "/account", title: "My account" };
 export const ADMIN = { path: "/admin", title: "Admin Page" };
 export const ADMIN_DETAILS = { path: "/admin/:id", title: "Admin Details" };
-export const ADMIN_QUESTIONS = { path: "/admin/questions", title: "Questions" };
-export const ADMIN_QUESTIONS_EASY = {
-  path: "/admin/questions/mo-easy",
-  title: "Questions Easy"
+export const ADMIN_COLLECTIONS = { path: "/admin/collections", title: "Collections" };
+export const ADMIN_COLLECTIONS_EASY = {
+  path: "/admin/collections/mo-easy",
+  title: "Collections Easy"
 };
-export const ADMIN_QUESTIONS_MID = {
-  path: "/admin/questions/mo-medium",
-  title: "Questions Mid"
+export const ADMIN_COLLECTIONS_MID = {
+  path: "/admin/collections/mo-medium",
+  title: "Collections Mid"
 };
-export const ADMIN_QUESTIONS_PRO = {
-  path: "/admin/questions/mo-pro",
-  title: "Questions Pro"
+export const ADMIN_COLLECTIONS_PRO = {
+  path: "/admin/collections/mo-pro",
+  title: "Collections Pro"
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
 
@@ -22,16 +22,16 @@ export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"
 };
-export const QUESTIONS = { path: "/collections", title: "Collections" };
-export const EASY_QUESTIONS = {
+export const COLLECTIONS = { path: "/collections", title: "Collections" };
+export const EASY_COLLECTIONS = {
   path: "/collections/mo-easy",
   title: "Easy"
 };
-export const MEDIUM_QUESTIONS = {
+export const MEDIUM_COLLECTIONS = {
   path: "/collections/mo-medium",
   title: "Medium"
 };
-export const PRO_QUESTIONS = {
+export const PRO_COLLECTIONS = {
   path: "/collections/mo-pro",
   title: "Pro"
 };

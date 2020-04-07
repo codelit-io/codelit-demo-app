@@ -13,7 +13,7 @@ import {
   withEmailVerification
 } from "../../components/Session";
 
-const Questions = lazy(() => import("./Questions"));
+const Collection = lazy(() => import("./Collection"));
 
 const AdminPage = ({ history }) => (
   <MoPage title="Admin" isLoading={false}>
@@ -22,8 +22,8 @@ const AdminPage = ({ history }) => (
     <Switch>
       <Route
         exact
-        path={ROUTES.ADMIN_QUESTIONS.path + "/:collection"}
-        component={Questions}
+        path={ROUTES.ADMIN_COLLECTIONS.path + "/:collection"}
+        component={Collection}
       />
       <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
       <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />

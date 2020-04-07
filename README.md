@@ -195,9 +195,9 @@ src/
         Admin/
             AdminNav
                 ... Sub nav for admin page
-            Questions
-                ... Questions container, wraps QuestionsTable 
-                QuestionsTable
+            Collection
+                ... Collection container, wraps CollectionTable 
+                CollectionTable
                     ... An interactive table to add delete edit and manage questions that show up to the user
             Home
                 ... Crazy page that loads Messages component (Feature request)
@@ -208,7 +208,7 @@ src/
             Question
                 ... A question is like a post, an object that has a question, an answer, label, desc. This component is  
                 Currently being used to display the code editor, Confetti effect and snackbar. It has logic to handle winning and gaining points.
-            Questions
+            Collection
                 ... A collection of questions, or a list of questions container.
                 You see this before accessing each question.
                 It first load the configs for the type of questions you access ( EX: easy, medium or pro questions) then based on that it will load the list of questions from configs

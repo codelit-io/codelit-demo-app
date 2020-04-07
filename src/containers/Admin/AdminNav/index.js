@@ -24,18 +24,18 @@ const AdminNav = ({ history }) => {
         icon={<PeopleIcon />}
       />
       <BottomNavigationAction
-        label={ROUTES.ADMIN_QUESTIONS_EASY.title}
-        value={ROUTES.ADMIN_QUESTIONS_EASY.path}
+        label={ROUTES.ADMIN_COLLECTIONS_EASY.title}
+        value={ROUTES.ADMIN_COLLECTIONS_EASY.path}
         icon={<AddIcon />}
       />
       <BottomNavigationAction
-        label={ROUTES.ADMIN_QUESTIONS_MID.title}
-        value={ROUTES.ADMIN_QUESTIONS_MID.path}
+        label={ROUTES.ADMIN_COLLECTIONS_MID.title}
+        value={ROUTES.ADMIN_COLLECTIONS_MID.path}
         icon={<AddIcon />}
       />
       <BottomNavigationAction
-        label={ROUTES.ADMIN_QUESTIONS_PRO.title}
-        value={ROUTES.ADMIN_QUESTIONS_PRO.path}
+        label={ROUTES.ADMIN_COLLECTIONS_PRO.title}
+        value={ROUTES.ADMIN_COLLECTIONS_PRO.path}
         icon={<AddIcon />}
       />
     </BottomNavigation>

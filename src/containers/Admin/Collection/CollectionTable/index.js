@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MaterialTable from "material-table";
 import MoTextarea from "../../../../components/shared/MoTextarea";
 
-const QuestionsTable = ({
+const CollectionTable = ({
   questions,
   onEditQuestion,
   onRemoveQuestion,
@@ -87,4 +87,4 @@ const QuestionsTable = ({
   );
 };
 
-export default QuestionsTable;
+export default CollectionTable;

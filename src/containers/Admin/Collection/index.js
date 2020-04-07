@@ -4,9 +4,9 @@ import * as ROUTES from "../../../constants/routes";
 import { AuthUserContext } from "../../../components/Session";
 import Spinner from "../../../components/shared/Spinner";
 import { withFirebase } from "../../../components/Firebase";
-import QuestionsTable from "./QuestionsTable";
+import QuestionsTable from "./CollectionTable";
 
-const Questions = ({ firebase, history, match }) => {
+const Collection = ({ firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
 
@@ -66,7 +66,7 @@ const Questions = ({ firebase, history, match }) => {
   };
 
   const handleRowClick = id => {
-    history.push(ROUTES.QUESTIONS.path + "/" + id);
+    history.push(ROUTES.COLLECTIONS.path + "/" + id);
   };
 
   return (
@@ -90,4 +90,4 @@ const Questions = ({ firebase, history, match }) => {
   );
 };
 
-export default withFirebase(Questions);
+export default withFirebase(Collection);

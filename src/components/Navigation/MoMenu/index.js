@@ -54,21 +54,21 @@ const MoMenu = ({ authUser, classes }) => {
       >
         <div>
           <MenuItem
-            to={ROUTES.EASY_QUESTIONS.path}
+            to={ROUTES.EASY_COLLECTIONS.path}
             component={Link}
             onClick={handleClose}
           >
-            {ROUTES.EASY_QUESTIONS.title}
+            {ROUTES.EASY_COLLECTIONS.title}
           </MenuItem>
           <MenuItem
-            to={ROUTES.MEDIUM_QUESTIONS.path}
+            to={ROUTES.MEDIUM_COLLECTIONS.path}
             component={Link}
             onClick={handleClose}
           >
             Medium
           </MenuItem>
           <MenuItem
-            to={ROUTES.PRO_QUESTIONS.path}
+            to={ROUTES.PRO_COLLECTIONS.path}
             component={Link}
             onClick={handleClose}
           >

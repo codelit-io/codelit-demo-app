@@ -40,7 +40,7 @@ const LandingPage = ({ classes }) => {
 
               <MoLinkButton
                 text="Get started"
-                href={ROUTES.EASY_QUESTIONS.path}
+                href={ROUTES.EASY_COLLECTIONS.path}
               />
             </div>
           </Fade>

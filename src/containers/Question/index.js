@@ -43,7 +43,7 @@ const Question = ({ firebase, history, match }) => {
     /* A delay before navigating to a new page */
     setTimeout(() => {
       history.push(
-        ROUTES.QUESTIONS.path + "/" + match.params.collection + "/" + id
+        ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
       );
     }, 600);
   };
