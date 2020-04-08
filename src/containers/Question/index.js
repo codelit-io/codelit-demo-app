@@ -3,7 +3,7 @@
  * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @prop {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
- * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components 
+ * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
  * @withAuthentication - HOC provides firebase and match props
  */
 
@@ -75,7 +75,10 @@ const Question = ({ firebase, history, match }) => {
     const id = match.params.question;
     setIsLoading(true);
     const unsubscribe = firebase
-      .getCollectionById("collections/" + match.params.collection + "/questions", id)
+      .getCollectionById(
+        "collections/" + match.params.collection + "/questions",
+        id
+      )
       .onSnapshot(snapshot => {
         if (snapshot.size) {
           let question = [];
@@ -103,7 +106,12 @@ const Question = ({ firebase, history, match }) => {
     question && (
       <Suspense>
         <MoConfetti isActive={isCorrect} />
-        <MoPage img="" title={question.topic} isLoading={isLoading} isCard={false}>
+        <MoPage
+          img=""
+          title={question.topic}
+          isLoading={isLoading}
+          isCard={false}
+        >
           {question.content && <Content content={question.content} />}
           {!isLoading && (
             <AuthUserContext.Consumer>
