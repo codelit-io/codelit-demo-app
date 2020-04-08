@@ -13,7 +13,6 @@ const QuestionsPage = ({
   topicDetails
 }) => {
   const [points, setPoints] = useState(0);
-
   const calculateProgress = () => {
     if (!authUser) {
       return false;
