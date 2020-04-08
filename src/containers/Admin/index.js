@@ -18,7 +18,9 @@ const Collection = lazy(() => import("./Collection"));
 const AdminPage = ({ history }) => (
   <MoPage title="Admin" isLoading={false}>
     <AdminNav history={history} />
-    <Suspense fallback={<Spinner isLoading={true} color="primary" />}></Suspense>
+    <Suspense
+      fallback={<Spinner isLoading={true} color="primary" />}
+    ></Suspense>
     <Switch>
       <Route
         exact
