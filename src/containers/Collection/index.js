@@ -14,24 +14,24 @@ import useTopicDetails from "./useTopicDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
-	const collectionQuery = firebase
-		.collection("collections/" + match.params.collection + "/questions")
-		.orderBy("id");
-	const questions = useCollections(collectionQuery);
-	const topicDetails = useTopicDetails(firebase, match);
+  const collectionQuery = firebase
+    .collection("collections/" + match.params.collection + "/questions")
+    .orderBy("id");
+  const questions = useCollections(collectionQuery);
+  const topicDetails = useTopicDetails(firebase, match);
 
-	return (
-		<AuthUserContext.Consumer>
-			{(authUser) => (
-				<QuestionsPage
-					authUser={authUser}
-					isLoading={topicDetails.isLoading || questions.isLoading}
-					match={match}
-					questions={questions.data}
-					topicDetails={topicDetails.data}
-				/>
-			)}
-		</AuthUserContext.Consumer>
-	);
+  return (
+    <AuthUserContext.Consumer>
+      {authUser => (
+        <QuestionsPage
+          authUser={authUser}
+          isLoading={topicDetails.isLoading || questions.isLoading}
+          match={match}
+          questions={questions.data}
+          topicDetails={topicDetails.data}
+        />
+      )}
+    </AuthUserContext.Consumer>
+  );
 };
 export default withAuthentication(Collection);

@@ -13,21 +13,21 @@ import QuestionsPage from "../Collection/QuestionsPage";
 import useCollections from "../../Hooks/useCollections";
 
 const Collections = ({ firebase, match }) => {
-	const collectionQuery = firebase.collection("collections");
-	const collections = useCollections(collectionQuery);
+  const collectionQuery = firebase.collection("collections");
+  const collections = useCollections(collectionQuery);
 
-	return (
-		<AuthUserContext.Consumer>
-			{(authUser) => (
-				<QuestionsPage
-					authUser={authUser}
-					isLoading={collections.isLoading}
-					match={match}
-					questions={collections.data}
-					topicDetails={{ label: "Collections" }}
-				/>
-			)}
-		</AuthUserContext.Consumer>
-	);
+  return (
+    <AuthUserContext.Consumer>
+      {authUser => (
+        <QuestionsPage
+          authUser={authUser}
+          isLoading={collections.isLoading}
+          match={match}
+          questions={collections.data}
+          topicDetails={{ label: "Collections" }}
+        />
+      )}
+    </AuthUserContext.Consumer>
+  );
 };
 export default withAuthentication(Collections);
