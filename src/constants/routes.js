@@ -2,7 +2,10 @@
 export const ACCOUNT = { path: "/account", title: "My account" };
 export const ADMIN = { path: "/admin", title: "Admin Page" };
 export const ADMIN_DETAILS = { path: "/admin/:id", title: "Admin Details" };
-export const ADMIN_COLLECTIONS = { path: "/admin/collections", title: "Collections" };
+export const ADMIN_COLLECTIONS = {
+  path: "/admin/collections",
+  title: "Collections"
+};
 export const ADMIN_COLLECTIONS_EASY = {
   path: "/admin/collections/mo-easy",
   title: "Collections Easy"
