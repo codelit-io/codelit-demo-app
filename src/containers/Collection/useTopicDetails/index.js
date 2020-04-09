@@ -28,8 +28,7 @@ const useTopicDetails = (firebase, match) => {
                 data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data[0]);
-			  setIsLoading(false);
-			  
+              setIsLoading(false);
             } else {
               setData([]);
               setIsLoading(false);

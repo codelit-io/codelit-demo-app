@@ -14,7 +14,8 @@ import useTopicDetails from "./useTopicDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
-  const collectionPath = "collections/" + match.params.collection + "/questions";
+  const collectionPath =
+    "collections/" + match.params.collection + "/questions";
   const questions = useCollections(collectionPath, firebase, collectionPath);
   const topicDetails = useTopicDetails(firebase, match);
 
