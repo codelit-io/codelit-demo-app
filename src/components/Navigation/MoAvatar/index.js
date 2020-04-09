@@ -80,6 +80,13 @@ const MoAvatar = ({ authUser, classes }) => {
             >
               My Account
             </MenuItem>
+            <MenuItem
+              to={ROUTES.COLLECTIONS.path}
+              component={Link}
+              onClick={handleClose}
+            >
+              My Collections
+            </MenuItem>
             {authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
               <MenuItem
                 to={ROUTES.ADMIN.path}
