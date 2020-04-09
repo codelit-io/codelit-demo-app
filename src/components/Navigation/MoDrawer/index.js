@@ -45,14 +45,14 @@ const MoDrawer = classes => {
                 onClick={() => toggleDrawer(false)}
                 onKeyDown={() => toggleDrawer(false)}
               >
-                <NavigationAuth authUser={authUser} />
+                <h1>NavigationAuth</h1>
               </div>
             ) : (
               <div
                 onClick={() => toggleDrawer(false)}
                 onKeyDown={() => toggleDrawer(false)}
               >
-                <NavigationNonAuth />
+                <h1>NavigationNonAuth</h1>
               </div>
             )
           }
