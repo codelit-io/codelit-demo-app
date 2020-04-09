@@ -19,7 +19,7 @@ const useTopicDetails = (firebase, match) => {
             topic and description */
       const getTopicDetails = firebase
         .collection("collections")
-        .where("slug", "==", match.params.collection)
+        .where("id", "==", match.params.collection)
         .onSnapshot(
           snapshot => {
             if (snapshot.size) {
@@ -28,7 +28,8 @@ const useTopicDetails = (firebase, match) => {
                 data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data[0]);
-              setIsLoading(false);
+			  setIsLoading(false);
+			  
             } else {
               setData([]);
               setIsLoading(false);
