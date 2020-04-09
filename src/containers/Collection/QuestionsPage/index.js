@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import QuestionsList from "./QuestionsList";
@@ -13,7 +13,7 @@ const QuestionsPage = ({
   topicDetails
 }) => {
   const [points, setPoints] = useState(0);
-  const calculateProgress = () => {
+  const calculateProgress = useCallback(() => {
     if (!authUser) {
       return false;
     }
@@ -21,7 +21,7 @@ const QuestionsPage = ({
     return numberOfQuestions && points
       ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
       : "0% Complete";
-  };
+  }, [authUser, points, questions]);
 
   useEffect(() => {
     setPoints(authUser?.reports?.[match.params.collection]?.points);
