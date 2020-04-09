@@ -116,6 +116,7 @@ setIsLoading(true)
 ```
 
 
+[File Architecture](docs/ARCHITECTURE.md)
 
 # Testing
 
