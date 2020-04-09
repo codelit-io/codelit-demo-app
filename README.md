@@ -54,11 +54,10 @@ https://coolors.co/424b54-157a6e-41d3bd-f5d547-fffff2
 
 # Tech details
 
-[HOC](docs/HOC.md)
-[File Architecture](docs/ARCHITECTURE.md)
-[Firebase](docs/FIREBASE.md)
-[React Hooks](docs/REACT_HOOKS.md)
-[File Architecture](docs/ARCHITECTURE.md)
-[Material UI](docs/MATERIAL.md)
-[State Management](docs/STATE_MANAGEMENT.md)
-[Testing](docs/TESTING.md)
+- [HOC](docs/HOC.md)
+- [File Architecture](docs/ARCHITECTURE.md)
+- [Firebase](docs/FIREBASE.md)
+- [Material UI](docs/MATERIAL.md)
+- [React Hooks](docs/REACT_HOOKS.md)
+- [State Management](docs/STATE_MANAGEMENT.md)
+- [Testing](docs/TESTING.md)
