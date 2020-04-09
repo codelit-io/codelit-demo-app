@@ -7,41 +7,45 @@
 
 import { useEffect, useState } from "react";
 
-const useCollections = collectionQueryProp => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState([]);
-  const [collectionQuery] = useState(collectionQueryProp);
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      /* Make a firebase query to get details about 
+const useCollections = (collectionPath, firebase, match) => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState(false);
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		(async () => {
+			setIsLoading(true);
+			/* Make a firebase query to get details about 
             the topic or questions Such as name of this 
             topic and description
             */
-      const getCollection = collectionQuery.onSnapshot(
-        snapshot => {
-          if (snapshot.size) {
-            let data = [];
-            snapshot.forEach(doc => data.push({ ...doc.data(), uid: doc.id }));
-            setData(data);
-            setIsLoading(false);
-          } else {
-            setData([]);
-            setIsLoading(false);
-          }
-          /* Unsubscribe from firebase on unmount */
-        },
-        error => setIsError(error.message)
-      );
+			const getCollection = firebase
+				.collection(collectionPath)
+				.orderBy("id")
+				.onSnapshot(
+					(snapshot) => {
+						if (snapshot.size) {
+							let data = [];
+							snapshot.forEach((doc) =>
+								data.push({ ...doc.data(), uid: doc.id })
+							);
+							setData(data);
+							setIsLoading(false);
+						} else {
+							setData([]);
+							setIsLoading(false);
+						}
+						/* Unsubscribe from firebase on unmount */
+					},
+					(error) => setIsError(error.message)
+				);
+			return () => {
+				setData([]);
+				getCollection();
+			};
+		})();
+	}, [collectionPath, firebase, match]);
 
-      return () => {
-        setData([]);
-        getCollection();
-      };
-    })();
-  }, [collectionQuery]);
-
-  return { isLoading, isError, data };
+	return { isLoading, isError, data };
 };
 export default useCollections;
