@@ -24,7 +24,7 @@ const MoMenu = ({ authUser, classes }) => {
 
   return (
     <>
-      <Tooltip title="View levels" arrow>
+      <Tooltip title="My Collection" arrow>
         <IconButton
           aria-label="View Collections Menu"
           aria-controls="collections-menu"
