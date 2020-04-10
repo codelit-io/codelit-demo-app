@@ -25,7 +25,7 @@ export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"
 };
-export const COLLECTIONS = { path: "/collections", title: "My Collections" };
+export const COLLECTIONS = { path: "/collections", title: "My Courses" };
 export const EASY_COLLECTIONS = {
   path: "/collections/mo-easy",
   title: "Easy"

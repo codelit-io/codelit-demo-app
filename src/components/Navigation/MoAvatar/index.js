@@ -85,7 +85,7 @@ const MoAvatar = ({ authUser, classes }) => {
               component={Link}
               onClick={handleClose}
             >
-              My Collections
+              My Courses
             </MenuItem>
             {authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
               <MenuItem

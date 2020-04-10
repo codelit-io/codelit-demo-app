@@ -24,7 +24,7 @@ const Collections = ({ firebase, match }) => {
           isLoading={collections.isLoading}
           match={match}
           questions={collections.data}
-          topicDetails={{ label: "My Collections" }}
+          topicDetails={{ label: "My Courses" }}
         />
       )}
     </AuthUserContext.Consumer>
