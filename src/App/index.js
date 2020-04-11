@@ -4,7 +4,7 @@ import * as ROUTES from "../constants/routes";
 import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Spinner from "../components/shared/Spinner";
+import MoSpinner from "../components/shared/MoSpinner";
 import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { withAuthentication } from "../components/Session";
@@ -27,7 +27,7 @@ const SignIn = lazy(() => import("../containers/SignIn"));
 const App = () => (
   <ThemeProvider theme={theme}>
     <Router>
-      <Suspense fallback={<Spinner isLoading={true} color="primary" />}>
+      <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
         <Container style={{ height: "100%", maxHeight: "100%" }}>
           <Navigation />
           <Switch>
