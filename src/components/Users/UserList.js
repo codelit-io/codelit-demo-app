@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Spinner from "../../components/shared/Spinner";
+import MoSpinner from "../shared/MoSpinner";
 import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
 
@@ -39,7 +39,7 @@ class UserList extends Component {
 
     return (
       <div>
-        {isLoading && <Spinner isLoading={isLoading} />}
+        {isLoading && <MoSpinner isLoading={isLoading} />}
         <List>
           {users.map(user => (
             <Link
