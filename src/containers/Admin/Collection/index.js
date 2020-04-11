@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import * as ROUTES from "../../../constants/routes";
 import { AuthUserContext } from "../../../components/Session";
-import Spinner from "../../../components/shared/Spinner";
+import MoSpinner from "../../../components/shared/MoSpinner";
 import { withFirebase } from "../../../components/Firebase";
 import QuestionsTable from "./CollectionTable";
 
@@ -73,7 +73,7 @@ const Collection = ({ firebase, history, match }) => {
     <AuthUserContext.Consumer>
       {authUser => (
         <>
-          {isLoading && <Spinner isLoading={isLoading} />}
+          {isLoading && <MoSpinner isLoading={isLoading} />}
 
           {questions && (
             <QuestionsTable
