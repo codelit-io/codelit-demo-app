@@ -6,7 +6,7 @@ import AdminNav from "./AdminNav";
 import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
 import MoPage from "../../components/shared/MoPage";
-import Spinner from "../../components/shared/Spinner";
+import MoSpinner from "../../components/shared/MoSpinner";
 import { UserList, UserItem } from "../../components/Users";
 import {
   withAuthorization,
@@ -19,7 +19,7 @@ const AdminPage = ({ history }) => (
   <MoPage title="Admin" isLoading={false}>
     <AdminNav history={history} />
     <Suspense
-      fallback={<Spinner isLoading={true} color="primary" />}
+      fallback={<MoSpinner isLoading={true} color="primary" />}
     ></Suspense>
     <Switch>
       <Route
