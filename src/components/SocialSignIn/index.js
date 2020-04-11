@@ -15,7 +15,7 @@ const SocialSignIn = ({ classes }) => {
         <CssBaseline />
         <div className={classes.paper}>
           <MoTitle
-            text="Skip the email Login"
+            text="1-click Signup"
             fade={true}
             margin="36px 0 36px"
           />
