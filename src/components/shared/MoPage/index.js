@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
 import MoPageHeader from "../MoPageHeader";
-import Spinner from "../Spinner";
+import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
 import { Grid } from "@material-ui/core";
 
@@ -18,7 +18,7 @@ const MoPage = ({
   Component
 }) => {
   return isLoading ? (
-    <Spinner isLoading={isLoading} color="primary" />
+    <MoSpinner isLoading={isLoading} color="primary" />
   ) : (
     <Grid container className={classes.section}>
       <Grid item xs={12} sm={6} md={6}>
