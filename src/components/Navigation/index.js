@@ -9,6 +9,7 @@ import MoSkoolLogo from "../MoSkoolLogo";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";
+import AddCourse from "./AddCourse";
 
 const Navigation = ({ classes }) => {
 	return (
@@ -16,21 +17,21 @@ const Navigation = ({ classes }) => {
 			<AppBar position="static" color="default" className={classes.appBar}>
 				<Toolbar className={classes.toolbar}>
 					<Grid container className={classes.alignCenter}>
-						<Grid item xs={4} sm={4} md={4} lg={4}>
+						<Grid item xs={6} sm={6} md={6} lg={6}>
 							<MoSkoolLogo />
 						</Grid>
-						<Grid item xs={4} sm={4} md={4} lg={4}></Grid>
 						<Grid
 							item
-							xs={4}
-							sm={4}
-							md={4}
-							lg={4}
+							xs={6}
+							sm={6}
+							md={6}
+							lg={6}
 							style={{ textAlign: "right" }}
 						>
 							<AuthUserContext.Consumer>
 								{(authUser) => (
 									<>
+										{authUser && <AddCourse />}
 										<MoMenu authUser={authUser} />
 										<MoAvatar authUser={authUser} />
 									</>
