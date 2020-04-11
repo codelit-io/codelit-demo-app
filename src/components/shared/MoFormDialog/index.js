@@ -17,32 +17,32 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
 
 const MoFormDialog = ({ Component }) => {
-	const theme = useTheme();
-	const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-	const [isOpenState, setIsOpenState] = useState(false);
-	return (
-		<>
-			<Tooltip title="Add New Course" arrow>
-				<IconButton
-					aria-label="Add Course"
-					aria-haspopup="true"
-					onClick={() => setIsOpenState(true)}
-				>
-					<PostAddIcon />
-				</IconButton>
-			</Tooltip>
-			<Dialog
-				aria-labelledby="form-dialog"
-				fullScreen={fullScreen}
-				open={isOpenState}
-				onClose={() => setIsOpenState(false)}
-			>
-				{Component && (
-					<Component handleDialogState={(isOpen) => setIsOpenState(isOpen)} />
-				)}
-			</Dialog>
-		</>
-	);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [isOpenState, setIsOpenState] = useState(false);
+  return (
+    <>
+      <Tooltip title="Add New Course" arrow>
+        <IconButton
+          aria-label="Add Course"
+          aria-haspopup="true"
+          onClick={() => setIsOpenState(true)}
+        >
+          <PostAddIcon />
+        </IconButton>
+      </Tooltip>
+      <Dialog
+        aria-labelledby="form-dialog"
+        fullScreen={fullScreen}
+        open={isOpenState}
+        onClose={() => setIsOpenState(false)}
+      >
+        {Component && (
+          <Component handleDialogState={isOpen => setIsOpenState(isOpen)} />
+        )}
+      </Dialog>
+    </>
+  );
 };
 
 export default MoFormDialog;

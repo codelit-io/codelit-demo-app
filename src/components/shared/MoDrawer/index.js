@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { AuthUserContext } from "../../Session";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import NavigationAuth from "../NavigationAuth";
-import NavigationNonAuth from "../NavigationNonAuth";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
