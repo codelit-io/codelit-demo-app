@@ -32,15 +32,15 @@ export const COLLECTIONS_ADD = {
 };
 export const EASY_COLLECTIONS = {
   path: "/collections/mo-easy",
-  title: "Easy"
+  title: "New to React"
 };
 export const MEDIUM_COLLECTIONS = {
   path: "/collections/mo-medium",
-  title: "Medium"
+  title: "React Mid level"
 };
 export const PRO_COLLECTIONS = {
   path: "/collections/mo-pro",
-  title: "Pro"
+  title: "React for Pros"
 };
 export const SIGN_IN = { path: "/signin", title: "Sign in" };
 export const SIGN_UP = { path: "/signup", title: "Sign up" };
