@@ -26,6 +26,10 @@ export const LANDING = {
   title: "New way to Mastering Front-end Development"
 };
 export const COLLECTIONS = { path: "/collections", title: "My Courses" };
+export const COLLECTIONS_ADD = {
+  path: "/collections/add",
+  title: "Add New Course"
+};
 export const EASY_COLLECTIONS = {
   path: "/collections/mo-easy",
   title: "Easy"
