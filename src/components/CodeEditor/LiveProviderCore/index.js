@@ -5,7 +5,7 @@ import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import { reactLiveTheme } from "../../../utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
-import Headline from "../../shared/Headline";
+import Headline from "../../shared/MoHeadline";
 import MoBrowserMockup from "../../shared/MoBrowserMockup";
 import styles from "./styles";
 import Typist from "react-typist";
