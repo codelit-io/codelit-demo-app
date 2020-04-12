@@ -1,7 +1,7 @@
 /**
  * Custom Hook to get more details about a collection in firebase
  * @param {Object} firebase - Firebase class provides access to authUser and db
- * @param {String} collectionName - Name or path of collection 
+ * @param {String} collectionName - Name or path of collection
  * @returns {isLoading: boolean, isError: Object, collectionDetails: Object} - returns loading boolean, error Object and collectionDetails
  */
 
