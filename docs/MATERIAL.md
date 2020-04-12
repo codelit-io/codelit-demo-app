@@ -1,6 +1,7 @@
 # Material UI
 
-Currently using some elements form material UI but considering other options such as styled-components
+- Material UI is a total UI kit with many awesome features
+- Biggest alternative to Material-UI is Chakra UI
 
 **Pros:**
 * Easy and convenient
