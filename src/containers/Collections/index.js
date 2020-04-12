@@ -13,9 +13,9 @@ import QuestionsPage from "../Collection/QuestionsPage";
 import useCollections from "../../Hooks/useCollections";
 
 const Collections = ({ firebase, match }) => {
-  const collectionPath = "collections";
-  const collections = useCollections(collectionPath, firebase, match);
-
+  const collections = useCollections("collections", firebase);
+  const courses = useCollections("courses", firebase);
+  
   return (
     <AuthUserContext.Consumer>
       {authUser => (
@@ -23,8 +23,8 @@ const Collections = ({ firebase, match }) => {
           authUser={authUser}
           isLoading={collections.isLoading}
           match={match}
-          questions={collections.data}
-          topicDetails={{ label: "My Courses" }}
+          questions={[...collections.data, ...courses.data]}
+          collectionDetails={{ label: "My Courses" }}
         />
       )}
     </AuthUserContext.Consumer>
