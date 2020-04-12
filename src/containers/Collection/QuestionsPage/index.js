@@ -44,7 +44,7 @@ const QuestionsPage = ({
           <QuestionsList
             points={points}
             questions={questions}
-            url={match.params.collection}
+            url={match?.params?.collection}
           />
           <QuestionCard
             isDisabled={false}
