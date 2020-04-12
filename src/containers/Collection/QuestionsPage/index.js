@@ -50,7 +50,7 @@ const QuestionsPage = ({
             isDisabled={false}
             points={points}
             question={{ label: "Add New Course", desc: "Get Started" }}
-            url={`collections/add`}
+            url={`courses/add`}
           />
         </Grid>
       )}
