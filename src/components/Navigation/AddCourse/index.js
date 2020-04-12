@@ -18,71 +18,71 @@ import MoFormDialog from "../../shared/MoFormDialog";
 import TextField from "@material-ui/core/TextField";
 
 const AddCourse = ({ authUser, firebase }) => {
-	// const { control, register, handleSubmit, watch, errors } = useForm();
-	const { control, handleSubmit } = useForm();
+  // const { control, register, handleSubmit, watch, errors } = useForm();
+  const { control, handleSubmit } = useForm();
 
-	const [formData] = useState({
-		label: "Master React Course",
-		desc:
-			"A series of questions to learn advanced courses in react such as React hooks and Context API",
-		id: "master-react-course",
-	});
+  const [formData] = useState({
+    label: "Master React Course",
+    desc:
+      "A series of questions to learn advanced courses in react such as React hooks and Context API",
+    id: "master-react-course"
+  });
 
-	const Form = ({ handleDialogState }) => {
-		const onSubmit = (formData) => {
-			if (formData.label) {
-				const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
-				const payload = {
-					...formData,
-					id,
-					useId: authUser.uid,
-					createdAt: firebase.fieldValue.serverTimestamp(),
-				};
-				const uid = firebase.createId(id);
-				firebase
-					.collection("courses")
-					.doc(uid)
-					.set(payload, { merge: true });
-			}
-		};
-		const handleDialog = () => {
-			handleDialogState(false);
-		};
-		return (
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<DialogTitle id="form-dialog">Add New Course</DialogTitle>
-				<DialogContent>
-					<DialogContentText>
-						Short title and description for your new course
-					</DialogContentText>
-					<Controller
-						as={<TextField autoFocus fullWidth margin="dense" />}
-						name="label"
-						control={control}
-						defaultValue=""
-						placeholder={formData.label}
-					/>
-					<Controller
-						as={<TextField fullWidth margin="dense" />}
-						name="desc"
-						control={control}
-						defaultValue=""
-						placeholder={formData.desc}
-					/>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => handleDialog()} color="default">
-						Cancel
-					</Button>
-					<Button type="submit" color="primary">
-						Create
-					</Button>
-				</DialogActions>
-			</form>
-		);
-	};
+  const Form = ({ handleDialogState }) => {
+    const onSubmit = formData => {
+      if (formData.label) {
+        const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
+        const payload = {
+          ...formData,
+          id,
+          useId: authUser.uid,
+          createdAt: firebase.fieldValue.serverTimestamp()
+        };
+        const uid = firebase.createId(id);
+        firebase
+          .collection("courses")
+          .doc(uid)
+          .set(payload, { merge: true });
+      }
+    };
+    const handleDialog = () => {
+      handleDialogState(false);
+    };
+    return (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <DialogTitle id="form-dialog">Add New Course</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Short title and description for your new course
+          </DialogContentText>
+          <Controller
+            as={<TextField autoFocus fullWidth margin="dense" />}
+            name="label"
+            control={control}
+            defaultValue=""
+            placeholder={formData.label}
+          />
+          <Controller
+            as={<TextField fullWidth margin="dense" />}
+            name="desc"
+            control={control}
+            defaultValue=""
+            placeholder={formData.desc}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => handleDialog()} color="default">
+            Cancel
+          </Button>
+          <Button type="submit" color="primary">
+            Create
+          </Button>
+        </DialogActions>
+      </form>
+    );
+  };
 
-	return <MoFormDialog Component={Form} />;
+  return <MoFormDialog Component={Form} />;
 };
 
 export default AddCourse;
