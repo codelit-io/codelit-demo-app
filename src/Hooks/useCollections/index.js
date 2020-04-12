@@ -8,43 +8,43 @@
 import { useEffect, useState } from "react";
 
 const useCollections = (collectionPath, firebase) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState(false);
+	const [data, setData] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      /* Make a firebase query to get details about 
+	useEffect(() => {
+		(async () => {
+			setIsLoading(true);
+			/* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
-      const getCollections = firebase
-        .collection(collectionPath)
-        .orderBy("id")
-        .onSnapshot(
-          snapshot => {
-            if (snapshot.size) {
-              let data = [];
-              snapshot.forEach(doc =>
-                data.push({ ...doc.data(), uid: doc.id })
-              );
-              setData(data);
-              setIsLoading(false);
-            } else {
-              setData([]);
-              setIsLoading(false);
-            }
-            /* Unsubscribe from firebase on unmount */
-          },
-          error => setIsError(error.message)
-        );
-      return () => {
-        setData([]);
-        getCollections();
-      };
-    })();
-  }, [collectionPath, firebase]);
+			const getCollections = firebase
+				.collection(collectionPath)
+				.orderBy("id")
+				.onSnapshot(
+					(snapshot) => {
+						if (snapshot.size) {
+							let data = [];
+							snapshot.forEach((doc) =>
+								data.push({ ...doc.data(), uid: doc.id })
+							);
+							setData(data);
+							setIsLoading(false);
+						} else {
+							setData([]);
+							setIsLoading(false);
+						}
+						/* Unsubscribe from firebase on unmount */
+					},
+					(error) => setIsError(error.message)
+				);
+			return () => {
+				setData([]);
+				getCollections();
+			};
+		})();
+	}, [collectionPath, firebase]);
 
-  return { isLoading, isError, data };
+	return { isLoading, isError, data };
 };
 export default useCollections;
