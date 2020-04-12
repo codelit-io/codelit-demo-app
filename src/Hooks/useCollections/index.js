@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 
-const useCollections = (collectionPath, firebase, match) => {
+const useCollections = (collectionPath, firebase) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState([]);
@@ -16,10 +16,9 @@ const useCollections = (collectionPath, firebase, match) => {
     (async () => {
       setIsLoading(true);
       /* Make a firebase query to get details about 
-            the topic or questions Such as name of this 
-            topic and description
+            the collection or questions Such as name and description
             */
-      const getCollection = firebase
+      const getCollections = firebase
         .collection(collectionPath)
         .orderBy("id")
         .onSnapshot(
@@ -41,10 +40,10 @@ const useCollections = (collectionPath, firebase, match) => {
         );
       return () => {
         setData([]);
-        getCollection();
+        getCollections();
       };
     })();
-  }, [collectionPath, firebase, match]);
+  }, [collectionPath, firebase]);
 
   return { isLoading, isError, data };
 };
