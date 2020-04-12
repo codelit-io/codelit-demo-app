@@ -24,12 +24,12 @@ const Question = lazy(() => import("../containers/Question"));
 const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
 
-const App = (props) => (
+const App = props => (
   <ThemeProvider theme={theme}>
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
         <Container style={{ height: "100%", maxHeight: "100%" }}>
-          <Navigation {...props}/>
+          <Navigation {...props} />
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={Admin} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
