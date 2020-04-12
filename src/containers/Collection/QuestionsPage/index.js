@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import QuestionsList from "./QuestionsList";
 import MoPage from "../../../components/shared/MoPage";
 import MoScoreBoard from "../../../components/shared/MoScoreBoard";
-import QuestionCard from "./QuestionsList/QuestionCard";
 
 const QuestionsPage = ({
   authUser,
@@ -45,12 +44,6 @@ const QuestionsPage = ({
             points={points}
             questions={questions}
             url={match?.params?.collection}
-          />
-          <QuestionCard
-            isDisabled={false}
-            points={points}
-            question={{ label: "Add New Course", desc: "Get Started" }}
-            url={`courses/add`}
           />
         </Grid>
       )}
