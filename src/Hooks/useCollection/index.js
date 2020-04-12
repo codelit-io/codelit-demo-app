@@ -8,26 +8,26 @@
 import { useEffect, useState } from "react";
 
 const useCollection = (firebase, payload) => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
-	const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [data, setData] = useState([]);
 
-	useEffect(() => {
-		(async () => {
-			setIsLoading(true);
-			/* Make a firebase query to get details about 
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
-			const createCollection = firebase.createCollection("Test", payload)
-				// (data) => {setData(data)},
-				// (error) => setIsError(error.message)
-			return () => {
-				setData({});
-				createCollection();
-			};
-		})();
-	}, [firebase, payload]);
+      const createCollection = firebase.createCollection("Test", payload);
+      // (data) => {setData(data)},
+      // (error) => setIsError(error.message)
+      return () => {
+        setData({});
+        createCollection();
+      };
+    })();
+  }, [firebase, payload]);
 
-	return { isLoading, isError, data };
+  return { isLoading, isError, data };
 };
 export default useCollection;
