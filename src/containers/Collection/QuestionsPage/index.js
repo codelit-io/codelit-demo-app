@@ -11,7 +11,7 @@ const QuestionsPage = ({
   isLoading,
   match,
   questions,
-  topicDetails
+  collectionDetails
 }) => {
   const [points, setPoints] = useState(0);
   const calculateProgress = useCallback(() => {
@@ -23,14 +23,13 @@ const QuestionsPage = ({
       ? Math.round((points / numberOfQuestions) * 100) + "% Complete"
       : "0% Complete";
   }, [authUser, points, questions]);
-
   useEffect(() => {
     setPoints(authUser?.reports?.[match.params.collection]?.points);
   }, [authUser, match]);
 
   return (
     <MoPage
-      title={topicDetails.label}
+      title={collectionDetails?.label}
       isLoading={isLoading}
       Component={() => (
         <MoScoreBoard
