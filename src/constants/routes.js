@@ -25,21 +25,21 @@ export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"
 };
-export const COLLECTIONS = { path: "/collections", title: "My Courses" };
+export const COLLECTIONS = { path: "/courses", title: "My Courses" };
 export const COLLECTIONS_ADD = {
-  path: "/collections/add",
+  path: "/courses/add",
   title: "Add New Course"
 };
 export const EASY_COLLECTIONS = {
-  path: "/collections/mo-easy",
+  path: "/courses/mo-easy",
   title: "New to React"
 };
 export const MEDIUM_COLLECTIONS = {
-  path: "/collections/mo-medium",
+  path: "/courses/mo-medium",
   title: "React Mid level"
 };
 export const PRO_COLLECTIONS = {
-  path: "/collections/mo-pro",
+  path: "/courses/mo-pro",
   title: "React for Pros"
 };
 export const SIGN_IN = { path: "/signin", title: "Sign in" };
