@@ -12,4 +12,4 @@
 * `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
 * `withAuthorization(wrappedContainer)` Only authorized can access based on a condition ex: admin role
 * `withEmailVerification(wrappedContainer)` Provides email verification stuff
-* `withLive`:[Live Editor hook](https://formidable.com/open-source/react-live/)
+* `withLive` [Live Editor hook](https://formidable.com/open-source/react-live/)
