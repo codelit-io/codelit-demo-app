@@ -17,7 +17,10 @@ const Collection = ({ firebase, match }) => {
   const collectionPath =
     "collections/" + match.params.collection + "/questions";
   const questions = useCollections(collectionPath, firebase);
-  const collectionDetails = useCollectionDetails(firebase, match.params.collection);
+  const collectionDetails = useCollectionDetails(
+    firebase,
+    match.params.collection
+  );
 
   return (
     <AuthUserContext.Consumer>
