@@ -10,24 +10,24 @@ import React from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 import QuestionsPage from "./QuestionsPage";
-import useTopicDetails from "./useTopicDetails";
+import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
   const collectionPath =
     "collections/" + match.params.collection + "/questions";
-  const questions = useCollections(collectionPath, firebase, collectionPath);
-  const topicDetails = useTopicDetails(firebase, match);
+  const questions = useCollections(collectionPath, firebase);
+  const collectionDetails = useCollectionDetails(firebase, match.params.collection);
 
   return (
     <AuthUserContext.Consumer>
       {authUser => (
         <QuestionsPage
           authUser={authUser}
-          isLoading={topicDetails.isLoading || questions.isLoading}
+          isLoading={collectionDetails.isLoading || questions.isLoading}
           match={match}
           questions={questions.data}
-          topicDetails={topicDetails.data}
+          collectionDetails={collectionDetails.data}
         />
       )}
     </AuthUserContext.Consumer>
