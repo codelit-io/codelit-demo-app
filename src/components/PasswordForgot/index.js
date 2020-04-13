@@ -64,7 +64,7 @@ const PasswordForgetFormBase = ({ firebase, classes }) => {
         placeholder="Your Email"
       />
       <Button className={classes.button} disabled={isInvalid} type="submit">
-        Reset My Password
+        Reset Your Password
       </Button>
       {error && <p>{error.message}</p>}
     </form>
