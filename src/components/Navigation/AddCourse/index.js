@@ -38,10 +38,9 @@ const AddCourse = ({ authUser, firebase, history }) => {
           useId: authUser.uid,
           createdAt: firebase.fieldValue.serverTimestamp()
         };
-        const uid = firebase.createId(id);
         firebase
-          .collection("collections")
-          .doc(uid)
+          .collection("courses")
+          .doc(id)
           .set(payload, { merge: true });
         handleDialogState(false);
         history.push(`/courses/${id}`);

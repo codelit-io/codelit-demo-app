@@ -96,6 +96,8 @@ class Firebase {
       .set({ ...question, uid: uid });
   };
 
+  /* Helper  */
+
   createId = collectionPath =>
     this.firestore.collection(collectionPath).doc().id;
 
