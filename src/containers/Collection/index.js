@@ -14,29 +14,29 @@ import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
-	const collectionPath =
-		"collections/" + match.params.collection + "/questions";
-	const questions = useCollections(collectionPath, firebase);
-	const collectionDetails = useCollectionDetails(
-		firebase,
-		match.params.collection
-	);
+  const collectionPath =
+    "collections/" + match.params.collection + "/questions";
+  const questions = useCollections(collectionPath, firebase);
+  const collectionDetails = useCollectionDetails(
+    firebase,
+    match.params.collection
+  );
 
-	return (
-		<AuthUserContext.Consumer>
-			{(authUser) => (
-				<QuestionsPage
-					authUser={authUser}
-					isLoading={collectionDetails.isLoading || questions.isLoading}
-					match={match}
-					questions={questions.data}
-					collectionDetails={{
-						...collectionDetails.data,
-						isProgressBar: true,
-					}}
-				/>
-			)}
-		</AuthUserContext.Consumer>
-	);
+  return (
+    <AuthUserContext.Consumer>
+      {authUser => (
+        <QuestionsPage
+          authUser={authUser}
+          isLoading={collectionDetails.isLoading || questions.isLoading}
+          match={match}
+          questions={questions.data}
+          collectionDetails={{
+            ...collectionDetails.data,
+            isProgressBar: true
+          }}
+        />
+      )}
+    </AuthUserContext.Consumer>
+  );
 };
 export default withAuthentication(Collection);

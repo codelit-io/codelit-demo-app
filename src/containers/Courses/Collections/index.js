@@ -13,19 +13,19 @@ import QuestionsPage from "../../Collection/QuestionsPage";
 import useCollections from "../../../Hooks/useCollections";
 
 const Collections = ({ authUser, collection, firebase, match }) => {
-	const collections = useCollections(collection.path, firebase);
+  const collections = useCollections(collection.path, firebase);
 
-	return (
-		<QuestionsPage
-			authUser={authUser}
-			isLoading={collections.isLoading}
-			match={match}
-			questions={collections.data}
-			collectionDetails={{
-				label: collection.title,
-				isProgressBar: collection.isProgressBar,
-			}}
-		/>
-	);
+  return (
+    <QuestionsPage
+      authUser={authUser}
+      isLoading={collections.isLoading}
+      match={match}
+      questions={collections.data}
+      collectionDetails={{
+        label: collection.title,
+        isProgressBar: collection.isProgressBar
+      }}
+    />
+  );
 };
 export default Collections;

@@ -14,30 +14,30 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 const Collections = lazy(() => import("./Collections"));
 
 const collections = [
-	{ path: "collections", title: "Your Courses", isProgressBar: false },
-	{
-		path: "community-collections",
-		title: "Community Courses",
-		isProgressBar: false,
-	},
+  { path: "collections", title: "Your Courses", isProgressBar: false },
+  {
+    path: "community-collections",
+    title: "Community Courses",
+    isProgressBar: false
+  }
 ];
 
 const Courses = ({ firebase, match }) => (
-	<Suspense>
-		<AuthUserContext.Consumer>
-			{(authUser) =>
-				collections.map((collection, index) => (
-					<Collections
-						key={index}
-						authUser={authUser}
-						collection={collection}
-						firebase={firebase}
-						match={match}
-					/>
-				))
-			}
-		</AuthUserContext.Consumer>
-	</Suspense>
+  <Suspense>
+    <AuthUserContext.Consumer>
+      {authUser =>
+        collections.map((collection, index) => (
+          <Collections
+            key={index}
+            authUser={authUser}
+            collection={collection}
+            firebase={firebase}
+            match={match}
+          />
+        ))
+      }
+    </AuthUserContext.Consumer>
+  </Suspense>
 );
 
 export default withAuthentication(Courses);
