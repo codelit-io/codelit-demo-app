@@ -7,30 +7,37 @@
  * @returns {<Collections/>} - returns Collections component which then the children fetch the correct data
  */
 
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 
 import { AuthUserContext, withAuthentication } from "../../components/Session";
 
 const Collections = lazy(() => import("./Collections"));
 
 const collections = [
-	{ path: "collections", title: "Your Courses" },
-	{ path: "community-collections", title: "Community Courses" },
+	{ path: "collections", title: "Your Courses", isProgressBar: false },
+	{
+		path: "community-collections",
+		title: "Community Courses",
+		isProgressBar: false,
+	},
 ];
 
 const Courses = ({ firebase, match }) => (
-	<AuthUserContext.Consumer>
-		{(authUser) =>
-			collections.map((collection) => (
-				<Collections
-					authUser={authUser}
-					collection={collection}
-					firebase={firebase}
-					match={match}
-				/>
-			))
-		}
-	</AuthUserContext.Consumer>
+	<Suspense>
+		<AuthUserContext.Consumer>
+			{(authUser) =>
+				collections.map((collection, index) => (
+					<Collections
+						key={index}
+						authUser={authUser}
+						collection={collection}
+						firebase={firebase}
+						match={match}
+					/>
+				))
+			}
+		</AuthUserContext.Consumer>
+	</Suspense>
 );
 
 export default withAuthentication(Courses);
