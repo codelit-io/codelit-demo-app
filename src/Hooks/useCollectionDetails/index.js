@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 
-const useCollectionDetails = (firebase, collectionName) => {
+const useCollectionDetails = (collectionName, firebase) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState({});
@@ -18,7 +18,7 @@ const useCollectionDetails = (firebase, collectionName) => {
             the collection or questions Such as name and description */
       const getCollectionDetails = firebase
         .collection("collections")
-        .where("id", "==", collectionName)
+        .where("doc", "==", collectionName)
         .onSnapshot(
           snapshot => {
             if (snapshot.size) {
