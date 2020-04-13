@@ -17,7 +17,7 @@ const QuestionsList = ({ url, questions, points }) =>
       ? ""
       : url
       ? `${url}/${question.id}`
-      : `courses/${question.id}`;
+      : `courses/${question.doc}`;
 
     return (
       <React.Fragment key={index}>
