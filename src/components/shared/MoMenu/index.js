@@ -25,7 +25,7 @@ const MoMenu = ({ authUser, classes }) => {
 
   return (
     <>
-      <Tooltip title="My Courses" arrow>
+      <Tooltip title="Your Courses" arrow>
         <IconButton
           aria-label="View Collections Menu"
           aria-controls="collections-menu"
@@ -81,7 +81,7 @@ const MoMenu = ({ authUser, classes }) => {
             component={Link}
             onClick={handleClose}
           >
-            My Courses
+            Your Courses
           </MenuItem>
         </div>
       </Menu>
