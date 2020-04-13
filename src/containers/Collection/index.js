@@ -2,8 +2,8 @@
  * Collections is a container that fetches firebase data using hooks and renders cards of questions
  * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @returns {<QuestionsPage/>} - returns QuestionsPage component which renders the rest of the components
  * @withAuthentication - HOC provides firebase and match props
+ * @returns {<QuestionsPage/>} - returns QuestionsPage component which renders the rest of the components
  */
 
 import React from "react";
