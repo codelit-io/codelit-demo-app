@@ -16,7 +16,7 @@ const Collections = lazy(() => import("./Collections"));
 const collections = [
   { path: "collections", title: "Your Courses", isProgressBar: false },
   {
-    path: "community-collections",
+    path: "courses",
     title: "Community Courses",
     isProgressBar: false
   }
