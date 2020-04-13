@@ -16,7 +16,7 @@ const Collections = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
 
   return (
-    <QuestionsPage
+    collections && <QuestionsPage
       authUser={authUser}
       isLoading={collections.isLoading}
       match={match}
