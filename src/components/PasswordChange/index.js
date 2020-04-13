@@ -62,7 +62,7 @@ const PasswordChangeForm = ({ firebase, classes }) => {
         placeholder="Confirm New Password"
       />
       <Button className={classes.button} disabled={isInvalid} type="submit">
-        Reset My Password
+        Reset Your Password
       </Button>
 
       {error && <p> {error.message} </p>}
