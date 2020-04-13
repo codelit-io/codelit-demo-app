@@ -7,10 +7,10 @@ import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
 
-const MoScoreBoard = ({ authUser, points, progress }) => (
+const MoProgressBar = ({ authUser, points, progress }) => (
   <Fade
     direction="left"
-    in={true}
+    in={authUser && true}
     mountOnEnter
     timeout={{ enter: 800, exit: 400 }}
     unmountOnExit
@@ -33,4 +33,4 @@ const MoScoreBoard = ({ authUser, points, progress }) => (
   </Fade>
 );
 
-export default MoScoreBoard;
+export default MoProgressBar;
