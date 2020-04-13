@@ -19,7 +19,7 @@ const NotFound = lazy(() => import("../components/NotFound"));
 const PasswordForgot = lazy(() => import("../components/PasswordForgot"));
 const Playground = lazy(() => import("../containers/Playground"));
 const Collection = lazy(() => import("../containers/Collection"));
-const Collections = lazy(() => import("../containers/Collections"));
+const Courses = lazy(() => import("../containers/Courses"));
 const Question = lazy(() => import("../containers/Question"));
 const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
@@ -47,7 +47,7 @@ const App = props => (
             <Route
               exact
               path={ROUTES.COLLECTIONS.path}
-              component={Collections}
+              component={Courses}
             />
             <Route
               exact
