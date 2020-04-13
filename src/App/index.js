@@ -44,11 +44,7 @@ const App = props => (
               component={PasswordForgot}
             />
             <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-            <Route
-              exact
-              path={ROUTES.COLLECTIONS.path}
-              component={Courses}
-            />
+            <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
             <Route
               exact
               path={ROUTES.COLLECTIONS.path + "/:collection"}
