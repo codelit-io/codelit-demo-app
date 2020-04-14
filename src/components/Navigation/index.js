@@ -34,14 +34,16 @@ const Navigation = ({ classes, firebase, history, match }) => {
               <AuthUserContext.Consumer>
                 {authUser => (
                   <>
-                    {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
-                      <AddCourse
-                        authUser={authUser}
-                        firebase={firebase}
-                        history={history}
-                        match={match}
-                      />
-                    )}
+                    {authUser &&
+                      authUser.roles &&
+                      !!authUser.roles[ROLES.ADMIN] && (
+                        <AddCourse
+                          authUser={authUser}
+                          firebase={firebase}
+                          history={history}
+                          match={match}
+                        />
+                      )}
                     <MoAvatar authUser={authUser} firebase={firebase} />
                   </>
                 )}

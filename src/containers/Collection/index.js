@@ -30,10 +30,7 @@ const Collection = ({ firebase, match }) => {
       {authUser => (
         <QuestionsPage
           authUser={authUser}
-          isLoading={
-            courseDetails.isLoading ||
-            courses.isLoading
-          }
+          isLoading={courseDetails.isLoading || courses.isLoading}
           match={match}
           questions={[...courses.data]}
           collectionDetails={{
