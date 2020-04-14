@@ -14,33 +14,46 @@ import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
-  const collectionPath =
-    "collections/" + match.params.collection + "/questions";
-  const questions = useCollections(collectionPath, firebase);
-  /* 
-	doc: match.params.collection
-	collectionName: 
-	 */
-  const collectionDetails = useCollectionDetails(
-    match.params.collection,
-    firebase
-  );
+	const collectionDetails = useCollectionDetails(
+		"collections",
+		match.params.collection,
+		firebase
+	);
 
-  return (
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <QuestionsPage
-          authUser={authUser}
-          isLoading={collectionDetails.isLoading || questions.isLoading}
-          match={match}
-          questions={questions.data}
-          collectionDetails={{
-            ...collectionDetails.data,
-            isProgressBar: true
-          }}
-        />
-      )}
-    </AuthUserContext.Consumer>
-  );
+	const courseDetails = useCollectionDetails(
+		"courses",
+		match.params.collection,
+		firebase
+	);
+	const collections = useCollections(
+		"collections/" + match.params.collection + "/questions",
+		firebase
+	);
+	const courses = useCollections(
+		"courses/" + match.params.collection + "/questions",
+		firebase
+	);
+
+	return (
+		<AuthUserContext.Consumer>
+			{(authUser) => (
+				<QuestionsPage
+					authUser={authUser}
+					isLoading={
+						collectionDetails.isLoading ||
+						collections.isLoading ||
+						courses.isLoading
+					}
+					match={match}
+					questions={[...collections.data, ...courses.data]}
+					collectionDetails={{
+						...collectionDetails.data,
+						...courseDetails.data,
+						isProgressBar: true,
+					}}
+				/>
+			)}
+		</AuthUserContext.Consumer>
+	);
 };
 export default withAuthentication(Collection);

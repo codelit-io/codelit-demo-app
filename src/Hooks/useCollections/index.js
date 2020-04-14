@@ -31,7 +31,7 @@ const useCollections = (collectionPath, firebase) => {
               setData(data);
               setIsLoading(false);
             } else {
-              setData([]);
+              // setData(null);
               setIsLoading(false);
             }
             /* Unsubscribe from firebase on unmount */
@@ -39,7 +39,7 @@ const useCollections = (collectionPath, firebase) => {
           error => setIsError(error.message)
         );
       return () => {
-        setData([]);
+        // setData([]);
         getCollections();
       };
     })();
