@@ -8,7 +8,7 @@
 
 import { useEffect, useState } from "react";
 
-const useCollectionDetails = (collectionName,doc , firebase) => {
+const useCollectionDetails = (collectionName, doc, firebase) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState({});

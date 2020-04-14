@@ -1,3 +1,5 @@
+/* TODO */
+
 /**
  * Custom Hook to get list of all Collections
  * @param {Object} firebase.collection - Collection function in firebase provides access to collection in db
