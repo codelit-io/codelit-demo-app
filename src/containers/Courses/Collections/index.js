@@ -16,16 +16,18 @@ const Collections = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
 
   return (
-    collections && <QuestionsPage
-      authUser={authUser}
-      isLoading={collections.isLoading}
-      match={match}
-      questions={collections.data}
-      collectionDetails={{
-        label: collection.title,
-        isProgressBar: collection.isProgressBar
-      }}
-    />
+    collections && (
+      <QuestionsPage
+        authUser={authUser}
+        isLoading={collections.isLoading}
+        match={match}
+        questions={collections.data}
+        collectionDetails={{
+          label: collection.title,
+          isProgressBar: collection.isProgressBar
+        }}
+      />
+    )
   );
 };
 export default Collections;
