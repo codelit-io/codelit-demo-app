@@ -80,7 +80,7 @@ const Question = ({ firebase, history, match }) => {
 		setIsLoading(true);
 		const unsubscribe = firebase
 			.getCollectionById(
-				"collections/" + match.params.collection + "/questions",
+				"courses/" + match.params.collection + "/questions",
 				id
 			)
 			.onSnapshot((snapshot) => {

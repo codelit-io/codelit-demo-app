@@ -14,21 +14,12 @@ import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Collection = ({ firebase, match }) => {
-  const collectionDetails = useCollectionDetails(
-    "collections",
-    match.params.collection,
-    firebase
-  );
-
   const courseDetails = useCollectionDetails(
     "courses",
     match.params.collection,
     firebase
   );
-  const collections = useCollections(
-    "collections/" + match.params.collection + "/questions",
-    firebase
-  );
+
   const courses = useCollections(
     "courses/" + match.params.collection + "/questions",
     firebase
@@ -40,14 +31,12 @@ const Collection = ({ firebase, match }) => {
         <QuestionsPage
           authUser={authUser}
           isLoading={
-            collectionDetails.isLoading ||
-            collections.isLoading ||
+            courseDetails.isLoading ||
             courses.isLoading
           }
           match={match}
-          questions={[...collections.data, ...courses.data]}
+          questions={[...courses.data]}
           collectionDetails={{
-            ...collectionDetails.data,
             ...courseDetails.data,
             isProgressBar: true
           }}
