@@ -52,7 +52,7 @@ const App = props => (
             />
             <Route
               exact
-              path={ROUTES.COLLECTIONS.path + "/:collection/:question"}
+              path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
               component={Question}
             />
             <Route component={NotFound} />
