@@ -1,5 +1,7 @@
 import React from "react";
 
+import * as ROLES from "../../constants/roles";
+
 import { AuthUserContext } from "../Session";
 import AddCourse from "./AddCourse";
 import AppBar from "@material-ui/core/AppBar";
@@ -32,7 +34,7 @@ const Navigation = ({ classes, firebase, history, match }) => {
               <AuthUserContext.Consumer>
                 {authUser => (
                   <>
-                    {authUser && (
+                    {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
                       <AddCourse
                         authUser={authUser}
                         firebase={firebase}
