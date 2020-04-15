@@ -28,7 +28,7 @@ const MoCard = ({ item, isDisabled, classes, url }) => (
           <Typography gutterBottom variant="h5" component="h2">
             {item.label ? item.item || item.topic || item.label : "No Name"}
           </Typography>
-          <Typography variant="overline" gutterBottom>
+          <Typography className={classes.editorFont} component="p" gutterBottom>
             {item.desc || item.language}
           </Typography>
         </Grid>

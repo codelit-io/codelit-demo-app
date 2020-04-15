@@ -2,7 +2,8 @@ const styles = theme => ({
   card: {
     ...theme.card,
     marginTop: theme.padding.md,
-    marginBottom: theme.padding.md
+    marginBottom: theme.padding.md,
+    fontFamily: "monospace",
   },
   disableCard: {
     backgroundColor: "#f2f2f2"
@@ -44,7 +45,8 @@ const styles = theme => ({
   heroIcon: {
     fontSize: theme.fontSize.xl,
     color: theme.grey.superLight
-  }
+  },
+  editorFont: theme.editorFont
 });
 
 export default styles;
