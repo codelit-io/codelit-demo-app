@@ -8,9 +8,7 @@ const styles = theme => ({
       paddingBottom: theme.padding?.md
     }
   },
-  editorFont: {
-    font: theme.editorFont
-  },
+  editorFont: theme.editorFont,
   emoji: {
     lineHeight: "1"
   },
