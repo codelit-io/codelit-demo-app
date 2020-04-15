@@ -51,7 +51,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         startIcon={<img src={facebook} alt="facebook logo" />}
         type="submit"
       >
-        Continue with Facebook
+        Sign in with Facebook
       </Button>
 
       {error && <p>{error.message}</p>}
