@@ -8,7 +8,7 @@ const QuestionCategory = ({ category, index }) => (
     <MoTitle
       text={category}
       fade={true}
-      margin={index === 0 ? "0px" : "40px 0 36px"}
+      margin={index === 0 ? "0px 0 36px" : "66px 0 62px"}
       width="100%"
     ></MoTitle>
   </Grid>
