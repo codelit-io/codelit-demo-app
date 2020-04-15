@@ -3,7 +3,6 @@ const styles = theme => ({
     ...theme.card,
     marginTop: theme.padding.md,
     marginBottom: theme.padding.md,
-    fontFamily: "monospace",
   },
   disableCard: {
     backgroundColor: "#f2f2f2"
