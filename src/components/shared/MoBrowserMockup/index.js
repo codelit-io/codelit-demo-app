@@ -15,7 +15,7 @@ const MoBrowserMockup = ({
       <div className={classes.browserMockup}>
         <div className={classes.browserButtons}></div>
         <div className={classes.browserFilename}>
-          <span>{`index.${fileType}`}</span>
+          <span className={classes.font}>{`index.${fileType}`}</span>
         </div>
         <div className={classes.editor}>{children}</div>
       </div>
@@ -24,7 +24,7 @@ const MoBrowserMockup = ({
       <div className={classes.browserMockup}>
         <div className={classes.browserButtons}></div>
         <div className={classes.browserButtons2}>
-          <span>localhost:3000</span>
+          <span className={classes.font}>localhost:3000</span>
         </div>
         <div className={classes.preview}>{children}</div>
       </div>
