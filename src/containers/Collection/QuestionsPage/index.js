@@ -28,7 +28,7 @@ const QuestionsPage = ({
 
   return (
     <MoPage
-      title={collectionDetails?.label}
+      title={collectionDetails?.title}
       isLoading={isLoading}
       Component={() =>
         collectionDetails.isProgressBar && (
