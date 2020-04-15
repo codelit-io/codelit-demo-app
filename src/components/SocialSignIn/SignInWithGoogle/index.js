@@ -48,7 +48,7 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
         startIcon={<img src={google} alt="google logo" />}
         type="submit"
       >
-        Continue with Google
+        Sign in with Google
       </Button>
 
       {error && <p>{error.message}</p>}
