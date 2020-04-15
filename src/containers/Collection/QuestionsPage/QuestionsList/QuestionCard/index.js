@@ -2,9 +2,11 @@ import React from "react";
 
 import Grid from "@material-ui/core/Grid";
 import MoCard from "../../../../../components/shared/MoCard";
+import { withStyles } from "@material-ui/core";
+import styles from "./styles";
 
-const QuestionCard = ({ isDisabled, question, points, url }) => (
-  <Grid item xs={12} sm={6} md={6}>
+const QuestionCard = ({ classes, isDisabled, question, points, url }) => (
+  <Grid item xs={12} sm={6} md={6} className={classes.padding}>
     <MoCard
       isDisabled={isDisabled}
       points={points}
@@ -14,4 +16,4 @@ const QuestionCard = ({ isDisabled, question, points, url }) => (
   </Grid>
 );
 
-export default QuestionCard;
+export default withStyles(styles)(QuestionCard);
