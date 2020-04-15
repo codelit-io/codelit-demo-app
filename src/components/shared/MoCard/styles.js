@@ -2,7 +2,7 @@ const styles = theme => ({
   card: {
     ...theme.card,
     marginTop: theme.padding.md,
-    marginBottom: theme.padding.md,
+    marginBottom: theme.padding.md
   },
   disableCard: {
     backgroundColor: "#f2f2f2"
