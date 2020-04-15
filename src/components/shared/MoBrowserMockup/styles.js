@@ -15,7 +15,7 @@ const styles = theme => ({
   preview: {
     padding: "20px",
     margin: "0 auto",
-    display: "flex",
+    display: "flex"
   },
 
   browserMockup: {
@@ -61,7 +61,8 @@ const styles = theme => ({
     backgroundColor: "white",
     fontSize: "14px",
     padding: "2px 2px 2px 8px"
-  }
+  },
+  font: theme.typography
 });
 
 export default styles;
