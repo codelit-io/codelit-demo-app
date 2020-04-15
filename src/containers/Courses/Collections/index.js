@@ -23,7 +23,7 @@ const Collections = ({ authUser, collection, firebase, match }) => {
         match={match}
         questions={collections.data}
         collectionDetails={{
-          label: collection.title,
+          title: collection.title,
           isProgressBar: collection.isProgressBar
         }}
       />
