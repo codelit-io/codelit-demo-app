@@ -111,7 +111,7 @@ const Question = ({ firebase, history, match }) => {
       <MoConfetti isActive={isCorrect} />
       <MoPage
         img=""
-        title={question.topic}
+        title={question.title}
         isLoading={isLoading}
         isCard={false}
       >
