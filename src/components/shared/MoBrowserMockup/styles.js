@@ -16,7 +16,6 @@ const styles = theme => ({
     padding: "20px",
     margin: "0 auto",
     display: "flex",
-    justifyContent: "center"
   },
 
   browserMockup: {
