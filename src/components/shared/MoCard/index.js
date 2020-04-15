@@ -26,10 +26,10 @@ const MoCard = ({ item, isDisabled, classes, url }) => (
           lg={10}
         >
           <Typography gutterBottom variant="h5" component="h2">
-            {item.label ? item.item || item.topic || item.label : "No Name"}
+            {item.title ? item.title || item.topic || item.label : "No Name"}
           </Typography>
           <Typography className={classes.editorFont} component="p" gutterBottom>
-            {item.desc || item.language}
+            {(item.subtitle && item.subtitle) || item.desc || item.language}
           </Typography>
         </Grid>
       </Grid>
