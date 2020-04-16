@@ -34,7 +34,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint"
+      "pre-push": "yarn lintAndFix"
     }
   },
   "eslintConfig": {
