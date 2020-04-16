@@ -13,14 +13,14 @@ jobs:
           keys:
             - 'v1-dependencies-{{ checksum "package.json" }}'
             - v1-dependencies-
-      - run: "npm install"
+      - run: "yarn install"
       - save_cache:
           paths:
             - node_modules
           key: 'v1-dependencies-{{ checksum "package.json" }}'
       - run:
           name: 'Build Project'
-          command: 'npm run build'
+          command: 'yarn build'
       - run:
           name: "Deploy to Firebase Hosting"
           command: "./node_modules/.bin/firebase deploy --only hosting:tool-builder --token=$FIREBASE_TOKEN"
