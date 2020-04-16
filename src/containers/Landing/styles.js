@@ -1,7 +1,10 @@
 const styles = theme => ({
   container: {
     paddingTop: theme.padding?.xl,
-    paddingBottom: theme.padding?.xl
+    paddingBottom: theme.padding?.xl,
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: theme.padding?.lg
+    }
   },
   responsiveGrid: {
     [theme.breakpoints.down("sm")]: {
