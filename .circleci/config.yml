@@ -1,49 +1,42 @@
-# Github Firbase deploy CI
-# - /
-# - /.circleci/config.yml : It is this file
-# - /react-folder : it has the react project
-# - /react-folder/build : the compiled code will be saved here
-# - /firebase : it has the folders to deploy to firebase
-# - /firebase/public : the content of this folder will be deployed to firebase.
-# CI will compile the react project, then it will copy the files from build to public and it will deploy to firebase using the token that we got running `firebase login:ci` in our local machines.
-# Don't forget to add the variable $FIREBASE_TOKEN into the Environment Variables: 
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/ for more details
 
 version: 2
+
 jobs:
-  build-deploy:
+  build:
     docker:
-      - image: circleci/node:7.10
-      # - image: ubuntu:14.04
-    working_directory: ~/repo
-
-    branches:
-      only: release
-
+      - image: circleci/node:dubnium
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - yarn-v1-{{ checksum "yarn.lock" }}
+            - yarn-v1-
       - run:
+          name: Install NPM modules
           command: |
-            cd react-folder
-            yarn install
+            yarn cache dir
+            yarn install --frozen-lockfile
+            yarn add firebase-tools
+            yarn run firebase --version
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn/v1
+      - run:
+          name: Build
+          command: |
+            yarn relay --watchman=false
             yarn build
-      # each time there is a run command , it starts in working_directory
       - run:
+          name: List
           command: |
-            cd firebase
-            cp -R ../react-folder/build/* ./public/
-            sudo npm install -g firebase-tools
-            firebase deploy --only hosting --token=$FIREBASE_TOKEN --non-interactive
-
-      # Save artifacts
-      - store_artifacts:
-          path: ~/repo/firebase/public
-          destination: build
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build-deploy:
-          filters:
-            branches:
-              only: master
+            yarn lint
+      - run:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "release" ]; then
+              yarn run firebase use dev
+              yarn run firebase deploy --token=$FIREBASE_TOKEN
+            fi
