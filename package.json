@@ -28,8 +28,9 @@
     "test": "react-scripts test",
     "ci-test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint src",
-    "lintAndFix": "eslint './src/**/*.js' --fix"
+    "lintAndFix": "eslint './src/**/*.js' --fix",
+    "lint": "eslint src/**/*.js --max-warnings 5",
+    "size": "yarn build && size-limit"
   },
   "husky": {
     "hooks": {
@@ -60,6 +61,11 @@
       "last 1 safari version"
     ]
   },
+  "size-limit": [
+    {
+      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
+    }
+  ],
   "devDependencies": {
     "@types/jest": "^25.1.2",
     "cross-env": "^7.0.2",
