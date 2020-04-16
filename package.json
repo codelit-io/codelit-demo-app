@@ -30,7 +30,6 @@
     "eject": "react-scripts eject",
     "lintAndFix": "eslint './src/**/*.js' --fix",
     "lint": "eslint src/**/*.js --max-warnings 5",
-    "size": "yarn build && size-limit"
   },
   "husky": {
     "hooks": {
@@ -62,7 +61,6 @@
     ]
   },
   "devDependencies": {
-    "@size-limit/preset-app": "^2.1.6",
     "@types/jest": "^25.1.2",
     "cross-env": "^7.0.2",
     "eslint-config-prettier": "^6.10.0",
@@ -70,10 +68,5 @@
     "husky": "^4.2.3",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
-  },
-  "size-limit": [
-    {
-      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
-    }
-  ]
+  }
 }
