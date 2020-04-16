@@ -5,7 +5,7 @@ jobs:
         only:
         - release # list of branches to build
     docker:
-      - image: "circleci/node:12"
+      - image: "circleci/node:10"
     working_directory: ~/repo
     steps:
       - checkout
