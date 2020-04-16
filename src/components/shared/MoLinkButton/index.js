@@ -1,7 +1,7 @@
 import React from "react";
 
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import Button from "@material-ui/core/button";
+import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
