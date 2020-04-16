@@ -17,5 +17,5 @@ jobs:
           key: 'v1-dependencies-{{ checksum "package.json" }}'
       # - run: "npm test"
       - run:
-      name: "Deploy to Firebase Hosting"
-    command: "./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN"
+          name: "Deploy to Firebase Hosting"
+          command: "./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN"
