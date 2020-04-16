@@ -20,16 +20,13 @@ The app has a React frontend and paired with a Firebase cloud backend
 
 # Getting Started
 
-* Install `npm i`
-* Start `npm run start`
-* Prettify `npm run pretty`
+* Install `yarn`
+* Start `yarn start`
 
-* check npm dependencies for updates `npm run check-updates`
-* build `npm run build`
-* test `npm run test`
-* Deploy to prod `npm run deploy`
-* Deploy to st `tbd`
-
+* check yarn dependencies for updates `yarn check-updates`
+* build `yarn build`
+* test `yarn test`
+* Deploy to prod `yarn deploy`
 
 
 # 3rd Party Dependencies
