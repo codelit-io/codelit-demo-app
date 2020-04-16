@@ -1,5 +1,8 @@
 version: 2
 jobs:
+  branches:
+      only:
+      - release # list of branches to build
   build:
     docker:
       - image: "circleci/node:12"
@@ -20,4 +23,4 @@ jobs:
           command: 'npm build'
       - run:
           name: "Deploy to Firebase Hosting"
-          command: "./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN"
+          command: "./node_modules/.bin/firebase deploy --only hosting:tool-builder --token=$FIREBASE_TOKEN"
