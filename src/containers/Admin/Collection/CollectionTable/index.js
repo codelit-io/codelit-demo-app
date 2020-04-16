@@ -27,7 +27,8 @@ const CollectionTable = ({
       field: "answer",
       editComponent: props => <MoTextarea {...props} />
     },
-    { title: "Topic", field: "topic" },
+    { title: "Title", field: "title" },
+    { title: "Subtitle", field: "subtitle" },
     { title: "Language", field: "language" },
     { title: "Category", field: "category" },
     {
