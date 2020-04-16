@@ -1,11 +1,8 @@
-version: 2
+version: 2.1
 orbs:
   snyk: snyk/snyk@0.0.8
 jobs:
     build:
-      branches:
-        only:
-          - release
         docker:
             - image: circleci/node:12.9.1-browsers
         working_directory: ~/repo
