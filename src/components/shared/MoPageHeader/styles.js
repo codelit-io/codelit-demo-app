@@ -3,7 +3,7 @@ const styles = theme => ({
     color: theme.grey?.dark,
     textDecoration: "none",
     verticalAlign: "middle",
-    marginBottom: theme.padding?.lg
+    marginBottom: theme.padding?.xl
   },
   container: {
     margin: "26px 0px 26px"
