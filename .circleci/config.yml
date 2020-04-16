@@ -1,26 +1,29 @@
 version: 2
 jobs:
-  build:
-    branches:
-        only:
-        - release # list of branches to build
-    docker:
-      - image: "circleci/node:10"
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - 'v1-dependencies-{{ checksum "package.json" }}'
-            - v1-dependencies-
-      - run: "yarn install"
-      - save_cache:
-          paths:
-            - node_modules
-          key: 'v1-dependencies-{{ checksum "package.json" }}'
-      - run:
-          name: 'Build Project'
-          command: 'yarn build'
-      - run:
-          name: "Deploy to Firebase Hosting"
-          command: "./node_modules/.bin/firebase deploy --only hosting:tool-builder --token=$FIREBASE_TOKEN"
+    build:
+        docker:
+            - image: circleci/node:10.16.0
+        working_directory: ~/repo
+        branches:
+            only:
+                - release # list of branches to build
+        steps:
+            - checkout
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package.json" }}
+                      - v1-dependencies-
+            - run:
+                  name: Install Dependencies
+                  command: npm install
+            - save_cache:
+                  key: v1-npm-deps-{{ checksum "package-lock.json" }}
+                  paths:
+                      - ./node_modules
+            - run:
+                  name: Build
+                  command: npm build
+            - run:
+                  name: Firebase Deploy
+                  command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
