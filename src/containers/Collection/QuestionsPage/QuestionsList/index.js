@@ -1,6 +1,6 @@
 import React from "react";
 
-import QuestionCategory from "./QuestionCategory";
+import CourseCategory from "./CourseCategory";
 import QuestionCard from "./QuestionCard";
 
 const QuestionsList = ({ url, questions, points }) =>
@@ -22,7 +22,7 @@ const QuestionsList = ({ url, questions, points }) =>
     return (
       <React.Fragment key={index}>
         {question.category && (
-          <QuestionCategory category={question.category} index={index} />
+          <CourseCategory category={question.category} index={index} />
         )}
         <QuestionCard
           isDisabled={isDisabled}
