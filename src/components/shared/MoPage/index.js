@@ -9,15 +9,15 @@ import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
 
 const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
-	return isLoading ? (
-		<MoSpinner isLoading={isLoading} color="primary" />
-	) : (
-		<section className={classes.section}>
-			{title && <MoPageHeader title={title} />}
-			{subtitle && <MoPageSubtitle subtitle={subtitle} />}
-			{children}
-		</section>
-	);
+  return isLoading ? (
+    <MoSpinner isLoading={isLoading} color="primary" />
+  ) : (
+    <section className={classes.section}>
+      {title && <MoPageHeader title={title} />}
+      {subtitle && <MoPageSubtitle subtitle={subtitle} />}
+      {children}
+    </section>
+  );
 };
 
 export default compose(withRouter, withStyles(styles))(MoPage);
