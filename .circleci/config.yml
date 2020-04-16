@@ -33,6 +33,10 @@ jobs:
           command: |
             yarn lint
       - run:
+          name: Size
+          command: |
+            yarn size
+      - run:
           name: Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "release" ]; then
