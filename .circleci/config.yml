@@ -36,6 +36,6 @@ jobs:
           name: Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "release" ]; then
-              yarn run firebase use dev
+              yarn run firebase use tool-builder
               yarn run firebase deploy --token=$FIREBASE_TOKEN
             fi
