@@ -16,17 +16,13 @@ const styles = theme => ({
     lineHeight: "1"
   },
   heroText: {
-    color: "rgb(43, 43, 43)",
-    fontWeight: "500",
-    lineHeight: "1.2",
-    letterSpacing: "-0.01em"
+    color: theme.grey.dark,
+    marginBottom: theme.padding.sm
   },
   heroSubtitle: {
-    color: "rgb(94, 94, 94)",
-    fontSize: "24px",
-    lineHeight: "1.5",
-    letterSpacing: "-0.01em",
-    marginBottom: "24px"
+    fontSize: theme.fontSize.sm,
+    color: theme.grey.dark,
+    marginBottom: theme.padding.sm
   },
   img: {
     width: "100%",
