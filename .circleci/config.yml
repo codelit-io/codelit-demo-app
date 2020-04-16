@@ -1,9 +1,9 @@
 version: 2
 jobs:
-  branches:
-      only:
-      - release # list of branches to build
   build:
+    branches:
+        only:
+        - release # list of branches to build
     docker:
       - image: "circleci/node:12"
     working_directory: ~/repo
