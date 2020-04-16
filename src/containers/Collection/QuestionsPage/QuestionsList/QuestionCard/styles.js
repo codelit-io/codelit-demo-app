@@ -1,7 +1,7 @@
 const styles = theme => ({
   padding: {
-    paddingTop: theme.padding.md,
-    paddingBottom: theme.padding.md
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   }
 });
 
