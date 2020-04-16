@@ -1,8 +1,10 @@
-version: 2
+version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.8
 jobs:
     build:
         docker:
-            - image: circleci/node:10.16.0
+            - image: circleci/node:12.9.1-browsers
         working_directory: ~/repo
         branches:
             only:
@@ -11,19 +13,34 @@ jobs:
             - checkout
             # Download and cache dependencies
             - restore_cache:
-                  keys:
-                      - v1-dependencies-{{ checksum "package.json" }}
-                      - v1-dependencies-
+                keys:
+                  - v1-dependencies-{{ checksum "package.json" }}
+                  # fallback to using the latest cache if no exact match is found
+                  - v1-dependencies-
+
+
             - run:
                   name: Install Dependencies
-                  command: npm install
+                  command: yarn install
+
             - save_cache:
-                  key: v1-npm-deps-{{ checksum "package-lock.json" }}
-                  paths:
-                      - ./node_modules
+                paths:
+                  - node_modules
+                key: v1-dependencies-{{ checksum "package.json" }}
+
+            - snyk/scan:
+                  fail-on-issues: false
+                  monitor-on-build: false
+                  severity-threshold: high
+
+            - run: yarn lint
+
+            - run: yarn size
+
             - run:
                   name: Build
-                  command: npm build
+                  command: yarn build
+
             - run:
                   name: Firebase Deploy
                   command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
