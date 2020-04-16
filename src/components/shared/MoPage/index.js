@@ -7,31 +7,17 @@ import { compose } from "recompose";
 import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
-import { Grid } from "@material-ui/core";
 
-const MoPage = ({
-  classes,
-  children,
-  isLoading,
-  subtitle,
-  title,
-  Component
-}) => {
-  return isLoading ? (
-    <MoSpinner isLoading={isLoading} color="primary" />
-  ) : (
-    <Grid container className={classes.section}>
-      <Grid item xs={12} sm={6} md={6}>
-        <MoPageHeader title={title} />
-      </Grid>
-      <Grid item xs={12} sm={6} md={6} className={classes.component}>
-        {Component && <Component />}
-        {subtitle && <MoPageSubtitle subtitle={subtitle} />}
-      </Grid>
-
-      <section className={classes.content}>{children}</section>
-    </Grid>
-  );
+const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
+	return isLoading ? (
+		<MoSpinner isLoading={isLoading} color="primary" />
+	) : (
+		<section className={classes.section}>
+			{title && <MoPageHeader title={title} />}
+			{subtitle && <MoPageSubtitle subtitle={subtitle} />}
+			{children}
+		</section>
+	);
 };
 
 export default compose(withRouter, withStyles(styles))(MoPage);
