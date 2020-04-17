@@ -19,11 +19,6 @@ const styles = (theme) => ({
     color: theme.grey.dark,
     marginBottom: theme.padding.sm,
   },
-  heroSubtitle: {
-    fontSize: theme.fontSize.sm,
-    color: theme.grey.dark,
-    marginBottom: theme.padding.sm,
-  },
   img: {
     width: "100%",
     [theme.breakpoints.down("sm")]: {
