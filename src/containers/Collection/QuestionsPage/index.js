@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import QuestionsList from "./QuestionsList";
 import MoPage from "../../../components/shared/MoPage";
 import MoProgressBar from "../../../components/shared/MoProgressBar";
-import MoTitle from "../../../components/shared/MoTitle";
+import MoPageSubtitle from "../../../components/shared/MoPageSubtitle";
 
 const QuestionsPage = ({
   authUser,
@@ -39,12 +39,12 @@ const QuestionsPage = ({
             />
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
-            <MoTitle
+            <MoPageSubtitle
               text={collectionDetails.isProgressBar && "Your Progress"}
               fade={true}
               margin="0px 0 36px"
               width="100%"
-            ></MoTitle>
+            ></MoPageSubtitle>
             {collectionDetails.isProgressBar && (
               <MoProgressBar
                 authUser={authUser}
