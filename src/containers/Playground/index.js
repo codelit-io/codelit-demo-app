@@ -15,12 +15,12 @@ const Playground = () => {
         </section>
       );
     };`,
-    isPlayground: true
+    isPlayground: true,
   };
 
   const [question, setQuestion] = useState(initialState);
 
-  const handleOnChange = userAnswer => {
+  const handleOnChange = (userAnswer) => {
     if (userAnswer === "{}" || userAnswer === "") {
       return;
     }
@@ -29,7 +29,7 @@ const Playground = () => {
 
   return (
     <CodeEditor
-      handleOnChange={userAnswer => handleOnChange(userAnswer)}
+      handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
       md={12}
       sm={12}
       question={question}

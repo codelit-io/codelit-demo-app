@@ -11,11 +11,11 @@ const MoTitle = ({ text, fade, margin, textAlign, width }) => {
       verticalAlign: "middle",
       textDecoration: "none",
       textAlign: textAlign ? textAlign : "",
-      margin: margin ? margin : ""
+      margin: margin ? margin : "",
     },
     container: {
-      width: width ? width : ""
-    }
+      width: width ? width : "",
+    },
   };
 
   return (

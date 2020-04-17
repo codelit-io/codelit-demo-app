@@ -13,11 +13,11 @@ const MoParagraph = ({ text, fade, textAlign, margin, width }) => {
       textAlign: textAlign ? textAlign : "",
       margin: margin ? margin : "",
       lineHeight: "3rem",
-      fontSize: "2rem"
+      fontSize: "2rem",
     },
     container: {
-      width: width ? width : ""
-    }
+      width: width ? width : "",
+    },
   };
   return (
     <Fade in={fade} timeout={{ enter: 800 }}>

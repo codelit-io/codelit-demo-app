@@ -8,7 +8,7 @@ const MoBrowserMockup = ({
   children,
   fileType,
   isEditor,
-  isBrowser
+  isBrowser,
 }) => (
   <>
     {isEditor && (

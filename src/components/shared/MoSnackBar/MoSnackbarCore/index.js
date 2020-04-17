@@ -14,17 +14,17 @@ const MoSnackbarCore = ({
   handleClick,
   snackbarProps,
   authUser,
-  classes
+  classes,
 }) => {
   const [state, setState] = React.useState({
     isActive: isActive,
-    Transition: Slide
+    Transition: Slide,
   });
 
   const handleButtonClick = () => {
     setState({
       isActive: false,
-      Transition: Slide
+      Transition: Slide,
     });
     handleClick();
   };
@@ -33,7 +33,7 @@ const MoSnackbarCore = ({
     setState({
       ...state,
       Transition: Slide,
-      isActive: false
+      isActive: false,
     });
   };
 

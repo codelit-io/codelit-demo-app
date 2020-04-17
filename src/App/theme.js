@@ -10,24 +10,24 @@ const colors = {
     light: "#a6a6a6",
     medium: "#424B54",
     dark: "#383c40",
-    darkest: "#2b2b2b"
+    darkest: "#2b2b2b",
   },
   green: {
     light: "#41D3BD",
     dark: "#157A6E",
-    darkest: ""
+    darkest: "",
   },
   yellow: {
     light: "#F5D547",
     dark: "",
-    darkest: ""
+    darkest: "",
   },
   white: {
-    medium: "#FFFFF2"
+    medium: "#FFFFF2",
   },
   blue: {
-    medium: "#276ef1"
-  }
+    medium: "#276ef1",
+  },
 };
 
 const padding = {
@@ -35,7 +35,7 @@ const padding = {
   sm: "12px",
   md: "36px",
   lg: "48px",
-  xl: "96px"
+  xl: "96px",
 };
 
 const fontSize = {
@@ -43,7 +43,7 @@ const fontSize = {
   sm: "1.5rem",
   md: "2rem",
   lg: "3rem",
-  xl: "4rem"
+  xl: "4rem",
 };
 
 let theme = createMuiTheme({
@@ -52,26 +52,26 @@ let theme = createMuiTheme({
     boxShadow: bigShadow,
     "&:hover": {
       transform: "translateY(-5px)",
-      backgroundColor: "#FFF"
+      backgroundColor: "#FFF",
     },
     "&:hover .desc": {
-      color: "white"
+      color: "white",
     },
     transition:
       "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-    transform: "translateY(0)"
+    transform: "translateY(0)",
   },
   container: {
-    width: "calc(100vw - 28.799999999999997rem)"
+    width: "calc(100vw - 28.799999999999997rem)",
   },
   editorFont: {
     fontFamily: "monospace",
     fontSize: "16px",
-    color: "rgb(77, 77, 76)"
+    color: "rgb(77, 77, 76)",
   },
   flexAlignCenter: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   fontSize: fontSize,
   padding: padding,
@@ -81,12 +81,12 @@ let theme = createMuiTheme({
   white: colors.white,
   blue: colors.blue,
   typography: {
-    fontFamily: "Roboto Mono"
-  }
+    fontFamily: "Roboto Mono",
+  },
 });
 
 const fontOptions = {
-  breakpoints: ["sm", "md", "lg", "xl"]
+  breakpoints: ["sm", "md", "lg", "xl"],
 };
 
 theme = responsiveFontSizes(theme, fontOptions);

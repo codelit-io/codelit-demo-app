@@ -24,7 +24,7 @@ const Question = lazy(() => import("../containers/Question"));
 const SignUp = lazy(() => import("../containers/SignUp"));
 const SignIn = lazy(() => import("../containers/SignIn"));
 
-const App = props => (
+const App = (props) => (
   <ThemeProvider theme={theme}>
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
@@ -65,7 +65,7 @@ const App = props => (
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
-    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
+    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459",
   });
 }
 

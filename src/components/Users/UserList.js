@@ -12,20 +12,20 @@ class UserList extends Component {
 
     this.state = {
       isLoading: false,
-      users: []
+      users: [],
     };
   }
 
   componentDidMount() {
     this.setState({ isLoading: true });
 
-    this.unsubscribe = this.props.firebase.users().onSnapshot(snapShot => {
+    this.unsubscribe = this.props.firebase.users().onSnapshot((snapShot) => {
       let users = [];
-      snapShot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
+      snapShot.forEach((doc) => users.push({ ...doc.data(), uid: doc.id }));
 
       this.setState({
         users: users,
-        isLoading: false
+        isLoading: false,
       });
     });
   }
@@ -41,13 +41,13 @@ class UserList extends Component {
       <div>
         {isLoading && <MoSpinner isLoading={isLoading} />}
         <List>
-          {users.map(user => (
+          {users.map((user) => (
             <Link
               key={user.uid}
               variant="body2"
               to={{
                 pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
-                state: { user }
+                state: { user },
               }}
             >
               <ListItem>

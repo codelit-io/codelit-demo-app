@@ -38,7 +38,7 @@ const MoFormDialog = ({ Component }) => {
         onClose={() => setIsOpenState(false)}
       >
         {Component && (
-          <Component handleDialogState={isOpen => setIsOpenState(isOpen)} />
+          <Component handleDialogState={(isOpen) => setIsOpenState(isOpen)} />
         )}
       </Dialog>
     </>

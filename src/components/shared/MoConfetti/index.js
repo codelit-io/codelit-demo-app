@@ -10,7 +10,7 @@ const config = {
   duration: "1000",
   width: "12px",
   height: "12px",
-  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
 };
 
 const MoConfetti = ({ isActive }) => {

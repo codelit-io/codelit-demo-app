@@ -8,18 +8,18 @@ class MessageItem extends Component {
 
     this.state = {
       editMode: false,
-      editText: this.props.message.text
+      editText: this.props.message.text,
     };
   }
 
   onToggleEditMode = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       editMode: !state.editMode,
-      editText: this.props.message.text
+      editText: this.props.message.text,
     }));
   };
 
-  onChangeEditText = event => {
+  onChangeEditText = (event) => {
     this.setState({ editText: event.target.value });
   };
 

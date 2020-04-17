@@ -10,7 +10,7 @@ import MoSpinner from "../../components/shared/MoSpinner";
 import { UserList, UserItem } from "../../components/Users";
 import {
   withAuthorization,
-  withEmailVerification
+  withEmailVerification,
 } from "../../components/Session";
 
 const Collection = lazy(() => import("./Collection"));
@@ -38,7 +38,7 @@ const AdminPage = ({ history }) => (
   </MoPage>
 );
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
   withEmailVerification,

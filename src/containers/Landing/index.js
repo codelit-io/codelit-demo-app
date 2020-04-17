@@ -70,7 +70,7 @@ const LandingPage = ({ classes }) => {
                           show: true,
                           blink: true,
                           element: "|",
-                          hideWhenDone: true
+                          hideWhenDone: true,
                         }}
                         onTypingDone={() => setIsPreview(true)}
                       >

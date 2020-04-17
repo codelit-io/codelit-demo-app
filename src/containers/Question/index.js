@@ -66,7 +66,7 @@ const Question = ({ firebase, history, match }) => {
         setSnackbarProps({
           title: "Hooray!",
           buttonText: "Keep Going",
-          buttonIcon: <ArrowForwardIcon />
+          buttonIcon: <ArrowForwardIcon />,
         });
       } else {
         setQuestion({ ...question, question: userAnswer });
@@ -83,10 +83,10 @@ const Question = ({ firebase, history, match }) => {
         "courses/" + match.params.collection + "/questions",
         id
       )
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         if (snapshot.size) {
           let question = [];
-          snapshot.forEach(doc =>
+          snapshot.forEach((doc) =>
             question.push({ ...doc.data(), uid: doc.id })
           );
           setQuestion(question[0]);
@@ -94,7 +94,7 @@ const Question = ({ firebase, history, match }) => {
           setQuestion({
             label: "You have finished all questions ✅",
             question: "<h1>Nice Job 🎉</h1>",
-            language: "html"
+            language: "html",
           });
         }
         setIsLoading(false);
@@ -118,7 +118,7 @@ const Question = ({ firebase, history, match }) => {
         {question.content && <Content content={question.content} />}
         {!isLoading && (
           <AuthUserContext.Consumer>
-            {authUser => (
+            {(authUser) => (
               <>
                 <Grid item md={6} sm={12}>
                   <MoParagraph
@@ -129,7 +129,7 @@ const Question = ({ firebase, history, match }) => {
                 </Grid>
                 {question && (
                   <CodeEditor
-                    handleOnChange={userAnswer =>
+                    handleOnChange={(userAnswer) =>
                       handleOnChange(authUser, userAnswer)
                     }
                     sm={6}

@@ -7,23 +7,23 @@ import PropTypes from "prop-types";
 import { withFirebase } from "../../Firebase";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     width: "100%",
     textAlign: "center",
     textTransform: "initial",
     justifyContent: "end",
-    paddingLeft: "1em"
+    paddingLeft: "1em",
   },
   form: {
-    marginTop: theme.spacing(4)
-  }
+    marginTop: theme.spacing(4),
+  },
 });
 
 const SignInWithFacebookBase = ({ firebase, history, classes }) => {
   const [error, setError] = useState(null);
-  const onSubmit = event => {
-    firebase.signInWithFacebook().then(socialAuthUser => {
+  const onSubmit = (event) => {
+    firebase.signInWithFacebook().then((socialAuthUser) => {
       // Create a user in your Firebase Realtime Database too
       return firebase
         .user(socialAuthUser.user.uid)
@@ -31,14 +31,14 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
           {
             username: socialAuthUser.additionalUserInfo.profile.name,
             email: socialAuthUser.additionalUserInfo.profile.email || "none",
-            roles: {}
+            roles: {},
           },
           { merge: true }
         )
         .then(() => {
           setError(null);
         })
-        .catch(error => setError(error));
+        .catch((error) => setError(error));
     });
     event.preventDefault();
   };
@@ -60,7 +60,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 };
 
 SignInWithFacebookBase.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const SignInWithFacebook = compose(

@@ -8,18 +8,18 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withFirebase } from "../Firebase";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    margin: theme.spacing(1)
-  }
+    margin: theme.spacing(1),
+  },
 });
 
 const INITIAL_STATE = {
   email: "",
-  error: null
+  error: null,
 };
 
 const PasswordForgotPage = () => (
@@ -35,20 +35,20 @@ const PasswordForgetFormBase = ({ firebase, classes }) => {
 
   const isInvalid = email === "";
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     firebase
       .passwordReset(email)
       .then(() => {
         setState({ ...INITIAL_STATE });
       })
-      .catch(error => {
+      .catch((error) => {
         setState({ error });
       });
 
     event.preventDefault();
   };
 
-  const onChange = event => {
+  const onChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 

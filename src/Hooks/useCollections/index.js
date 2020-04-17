@@ -22,10 +22,10 @@ const useCollections = (collectionPath, firebase) => {
         .collection(collectionPath)
         .orderBy("id")
         .onSnapshot(
-          snapshot => {
+          (snapshot) => {
             if (snapshot.size) {
               let data = [];
-              snapshot.forEach(doc =>
+              snapshot.forEach((doc) =>
                 data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data);
@@ -36,7 +36,7 @@ const useCollections = (collectionPath, firebase) => {
             }
             /* Unsubscribe from firebase on unmount */
           },
-          error => setIsError(error.message)
+          (error) => setIsError(error.message)
         );
       return () => {
         // setData([]);

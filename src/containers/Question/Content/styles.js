@@ -1,10 +1,10 @@
-const styles = theme => ({
+const styles = (theme) => ({
   card: theme.card,
   content: {
     padding: 20,
     display: "flex",
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
 });
 
 export default styles;

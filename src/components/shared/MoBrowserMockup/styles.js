@@ -1,21 +1,21 @@
-const styles = theme => ({
+const styles = (theme) => ({
   editor: {
     ...theme.editorFont,
     [theme.breakpoints.up(600)]: {
       width: "380",
       marginLeft: "auto",
-      marginRight: "auto"
+      marginRight: "auto",
     },
     "& textarea": {
       fontSize: "14px",
-      outline: "none"
+      outline: "none",
     },
-    padding: "20px"
+    padding: "20px",
   },
   preview: {
     padding: "20px",
     margin: "0 auto",
-    display: "flex"
+    display: "flex",
   },
 
   browserMockup: {
@@ -23,7 +23,7 @@ const styles = theme => ({
     borderTop: "2em solid rgba(230, 230, 230, 0.7)",
     position: "relative",
     borderRadius: "3px 3px 0 0",
-    boxShadow: theme.bigShadow
+    boxShadow: theme.bigShadow,
   },
   browserButtons: {
     display: "block",
@@ -35,7 +35,7 @@ const styles = theme => ({
     height: "0.5em",
     borderRadius: "50%",
     backgroundColor: "#f44",
-    boxShadow: "0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5"
+    boxShadow: "0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5",
   },
   browserFilename: {
     display: "block",
@@ -47,7 +47,7 @@ const styles = theme => ({
     height: "1.2em",
     borderRadius: "2px",
     color: "#424B54",
-    fontSize: "14px"
+    fontSize: "14px",
   },
   browserButtons2: {
     display: "block",
@@ -60,9 +60,9 @@ const styles = theme => ({
     borderRadius: "2px",
     backgroundColor: "white",
     fontSize: "14px",
-    padding: "2px 2px 2px 8px"
+    padding: "2px 2px 2px 8px",
   },
-  font: theme.typography
+  font: theme.typography,
 });
 
 export default styles;

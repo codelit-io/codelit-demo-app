@@ -41,7 +41,7 @@ const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
                     show: true,
                     blink: true,
                     element: <BrushIcon className={classes.brush} />,
-                    hideWhenDone: true
+                    hideWhenDone: true,
                   }}
                 >
                   {question.answer}

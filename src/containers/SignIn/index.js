@@ -8,7 +8,7 @@ import SignInForm from "./SignInForm";
 
 const SignInPage = () => (
   <AuthUserContext.Consumer>
-    {authUser => (
+    {(authUser) => (
       <MoPage
         img=""
         title={authUser ? "You are logged in 👍" : "Welcome Back 🤩"}

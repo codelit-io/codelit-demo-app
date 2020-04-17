@@ -6,7 +6,7 @@ const MoSnackbarContainer = ({
   isActive,
   authUser,
   snackbarProps,
-  triggerNextQuestion
+  triggerNextQuestion,
 }) => {
   return (
     <MoSnackbarCore

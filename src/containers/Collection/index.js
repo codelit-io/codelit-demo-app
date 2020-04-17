@@ -27,7 +27,7 @@ const Collection = ({ firebase, match }) => {
 
   return (
     <AuthUserContext.Consumer>
-      {authUser => (
+      {(authUser) => (
         <QuestionsPage
           authUser={authUser}
           isLoading={courseDetails.isLoading || courses.isLoading}
@@ -35,7 +35,7 @@ const Collection = ({ firebase, match }) => {
           questions={[...courses.data]}
           collectionDetails={{
             ...courseDetails.data,
-            isProgressBar: true
+            isProgressBar: true,
           }}
         />
       )}

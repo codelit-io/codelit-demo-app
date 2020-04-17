@@ -15,7 +15,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 const MoMenu = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -39,7 +39,7 @@ const MoMenu = ({ authUser, classes }) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center"
+          horizontal: "center",
         }}
         elevation={2}
         getContentAnchorEl={null}
@@ -49,7 +49,7 @@ const MoMenu = ({ authUser, classes }) => {
         onClose={handleClose}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center"
+          horizontal: "center",
         }}
         TransitionComponent={Slide}
       >

@@ -4,43 +4,43 @@ export const ADMIN = { path: "/admin", title: "Admin Page" };
 export const ADMIN_DETAILS = { path: "/admin/:id", title: "Admin Details" };
 export const ADMIN_COLLECTIONS = {
   path: "/admin/collections",
-  title: "Collections"
+  title: "Collections",
 };
 export const ADMIN_COLLECTIONS_EASY = {
   path: "/admin/collections/mo-easy",
-  title: "Collections Easy"
+  title: "Collections Easy",
 };
 export const ADMIN_COLLECTIONS_MID = {
   path: "/admin/collections/mo-medium",
-  title: "Collections Mid"
+  title: "Collections Mid",
 };
 export const ADMIN_COLLECTIONS_PRO = {
   path: "/admin/collections/mo-pro",
-  title: "Collections Pro"
+  title: "Collections Pro",
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
 
 export const HOME = { path: "/home", title: "Feature Request" };
 export const LANDING = {
   path: "/",
-  title: "New way to Mastering Front-end Development"
+  title: "New way to Mastering Front-end Development",
 };
 export const COLLECTIONS = { path: "/courses", title: "Your Courses" };
 export const COLLECTIONS_ADD = {
   path: "/courses/add",
-  title: "Add New Course"
+  title: "Add New Course",
 };
 export const EASY_COLLECTIONS = {
   path: "/courses/mo-easy",
-  title: "New to React"
+  title: "New to React",
 };
 export const MEDIUM_COLLECTIONS = {
   path: "/courses/mo-medium",
-  title: "React Mid level"
+  title: "React Mid level",
 };
 export const PRO_COLLECTIONS = {
   path: "/courses/mo-pro",
-  title: "React for Pros"
+  title: "React for Pros",
 };
 export const SIGN_IN = { path: "/signin", title: "Email Sign in" };
 export const SIGN_UP = { path: "/signup", title: "Email Sign up" };

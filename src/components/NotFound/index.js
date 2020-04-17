@@ -9,7 +9,7 @@ const NotFound = () => (
         width: "60%",
         display: "block",
         margin: "auto",
-        position: "relative"
+        position: "relative",
       }}
       alt="Page Not Found"
     />

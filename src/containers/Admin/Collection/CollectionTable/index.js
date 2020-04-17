@@ -7,7 +7,7 @@ const CollectionTable = ({
   onEditQuestion,
   onRemoveQuestion,
   onCreateQuestion,
-  handleRowClick
+  handleRowClick,
 }) => {
   const [state, setState] = useState(questions);
   const [columns] = useState([
@@ -15,17 +15,17 @@ const CollectionTable = ({
     {
       title: "Label",
       field: "label",
-      editComponent: props => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     {
       title: "Question",
       field: "question",
-      editComponent: props => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     {
       title: "Answer",
       field: "answer",
-      editComponent: props => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     { title: "Title", field: "title" },
     { title: "Subtitle", field: "subtitle" },
@@ -34,8 +34,8 @@ const CollectionTable = ({
     {
       title: "Content",
       field: "content",
-      editComponent: props => <MoTextarea {...props} />
-    }
+      editComponent: (props) => <MoTextarea {...props} />,
+    },
   ]);
 
   return (
@@ -49,11 +49,11 @@ const CollectionTable = ({
         data={state}
         style={{ backgroundColor: "none", boxShadow: "none" }}
         editable={{
-          EditField: props => <textarea></textarea>,
-          onRowAdd: newData =>
-            new Promise(resolve => {
+          EditField: (props) => <textarea></textarea>,
+          onRowAdd: (newData) =>
+            new Promise((resolve) => {
               resolve();
-              setState(prevState => {
+              setState((prevState) => {
                 let data = [...prevState];
                 data.push(newData);
                 onCreateQuestion(newData);
@@ -61,10 +61,10 @@ const CollectionTable = ({
               });
             }),
           onRowUpdate: (newData, oldData) =>
-            new Promise(resolve => {
+            new Promise((resolve) => {
               resolve();
               if (oldData) {
-                setState(prevState => {
+                setState((prevState) => {
                   let data = [...prevState];
                   data[data.indexOf(oldData)] = newData;
                   onEditQuestion(newData);
@@ -72,16 +72,16 @@ const CollectionTable = ({
                 });
               }
             }),
-          onRowDelete: oldData =>
-            new Promise(resolve => {
+          onRowDelete: (oldData) =>
+            new Promise((resolve) => {
               resolve();
-              setState(prevState => {
+              setState((prevState) => {
                 let data = [...prevState];
                 data.splice(data.indexOf(oldData), 1);
                 onRemoveQuestion(oldData.uid);
                 return data;
               });
-            })
+            }),
         }}
       />
     )

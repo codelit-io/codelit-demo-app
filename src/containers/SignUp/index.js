@@ -8,7 +8,7 @@ import SignUpForm from "./SignUpForm";
 
 const SignUpPage = () => (
   <AuthUserContext.Consumer>
-    {authUser => (
+    {(authUser) => (
       <MoPage
         img=""
         title={authUser ? "You are signed up 👍" : "Sign up to get started 😎"}

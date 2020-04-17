@@ -11,7 +11,7 @@ const QuestionsPage = ({
   isLoading,
   match,
   questions,
-  collectionDetails
+  collectionDetails,
 }) => {
   const [points, setPoints] = useState(0);
   const calculateProgress = useCallback(() => {

@@ -9,28 +9,28 @@ import { withRouter } from "react-router-dom";
 const INITIAL_STATE = {
   email: "",
   password: "",
-  error: null
+  error: null,
 };
 
 const SignInFormBase = ({ firebase, history }) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { email, password, error } = state;
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     firebase
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setState({ ...INITIAL_STATE });
         history.goBack();
       })
-      .catch(error => {
+      .catch((error) => {
         setState({ ...state, error });
       });
 
     event.preventDefault();
   };
 
-  const onChange = event => {
+  const onChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 

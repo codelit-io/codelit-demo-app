@@ -14,13 +14,13 @@ import { AuthUserContext, withAuthentication } from "../../components/Session";
 const Collections = lazy(() => import("./Collections"));
 
 const collections = [
-  { path: "courses", title: "Your Courses", isProgressBar: false }
+  { path: "courses", title: "Your Courses", isProgressBar: false },
 ];
 
 const Courses = ({ firebase, match }) => (
   <Suspense>
     <AuthUserContext.Consumer>
-      {authUser =>
+      {(authUser) =>
         collections.map((collection, index) => (
           <Collections
             key={index}

@@ -18,10 +18,10 @@ const Collection = ({ firebase, history, match }) => {
       .doc(match.params.collection)
       .collection("questions")
       .orderBy("id")
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         if (snapshot.size) {
           let questions = [];
-          snapshot.forEach(doc =>
+          snapshot.forEach((doc) =>
             questions.push({ ...doc.data(), uid: doc.id })
           );
           setQuestions(questions);
@@ -40,12 +40,12 @@ const Collection = ({ firebase, history, match }) => {
         ...event,
         id: Number(event.id),
         userId: authUser.uid,
-        createdAt: firebase.fieldValue.serverTimestamp()
+        createdAt: firebase.fieldValue.serverTimestamp(),
       });
     }
   };
 
-  const onEditQuestion = event => {
+  const onEditQuestion = (event) => {
     if (!match.params.collection) {
       return;
     }
@@ -55,23 +55,23 @@ const Collection = ({ firebase, history, match }) => {
       .update({
         ...event,
         id: Number(event.id),
-        editedAt: firebase.fieldValue.serverTimestamp()
+        editedAt: firebase.fieldValue.serverTimestamp(),
       });
   };
 
-  const onRemoveQuestion = uid => {
+  const onRemoveQuestion = (uid) => {
     firebase
       .doc("courses/" + match.params.collection + "/questions", uid)
       .delete();
   };
 
-  const handleRowClick = id => {
+  const handleRowClick = (id) => {
     history.push(ROUTES.COLLECTIONS.path + "/" + id);
   };
 
   return (
     <AuthUserContext.Consumer>
-      {authUser => (
+      {(authUser) => (
         <>
           {isLoading && <MoSpinner isLoading={isLoading} />}
 
@@ -80,7 +80,7 @@ const Collection = ({ firebase, history, match }) => {
               questions={questions}
               onEditQuestion={onEditQuestion}
               onRemoveQuestion={onRemoveQuestion}
-              onCreateQuestion={event => onCreateQuestion(event, authUser)}
+              onCreateQuestion={(event) => onCreateQuestion(event, authUser)}
               handleRowClick={handleRowClick}
             />
           )}

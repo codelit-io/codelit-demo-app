@@ -32,7 +32,7 @@ const Navigation = ({ classes, firebase, history, match }) => {
               style={{ textAlign: "right" }}
             >
               <AuthUserContext.Consumer>
-                {authUser => (
+                {(authUser) => (
                   <>
                     {authUser &&
                       authUser.roles &&

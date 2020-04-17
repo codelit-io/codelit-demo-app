@@ -25,23 +25,20 @@ const AddCourse = ({ authUser, firebase, history }) => {
     label: "Master React Course",
     desc:
       "A series of questions to learn advanced courses in react such as React hooks and Context API",
-    id: "master-react-course"
+    id: "master-react-course",
   });
 
   const Form = ({ handleDialogState }) => {
-    const onSubmit = formData => {
+    const onSubmit = (formData) => {
       if (formData.label) {
         const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
         const payload = {
           ...formData,
           id,
           useId: authUser.uid,
-          createdAt: firebase.fieldValue.serverTimestamp()
+          createdAt: firebase.fieldValue.serverTimestamp(),
         };
-        firebase
-          .collection("courses")
-          .doc(id)
-          .set(payload, { merge: true });
+        firebase.collection("courses").doc(id).set(payload, { merge: true });
         handleDialogState(false);
         history.push(`/courses/${id}`);
       }

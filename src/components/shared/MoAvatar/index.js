@@ -24,7 +24,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 const MoAvatar = ({ authUser, classes, firebase }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -44,8 +44,9 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
           <Avatar
             alt="Me"
             src={authUser && authUser.photoURL}
-            className={`${classes.avatar} ${authUser?.roles?.ADMIN &&
-              classes.adminAvatar}
+            className={`${classes.avatar} ${
+              authUser?.roles?.ADMIN && classes.adminAvatar
+            }
             ${authUser?.roles?.AUTHOR && classes.authorAvatar}`}
             aria-controls="avatar-menu"
             aria-haspopup="true"
@@ -56,7 +57,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center"
+          horizontal: "center",
         }}
         elevation={2}
         getContentAnchorEl={null}
@@ -66,7 +67,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
         onClose={handleClose}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center"
+          horizontal: "center",
         }}
         TransitionComponent={Slide}
       >
