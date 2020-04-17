@@ -17,7 +17,7 @@ jobs:
           name: Install NPM modules
           command: |
             yarn cache dir
-            yarn install --frozen-lockfile
+            yarn install
             yarn add firebase-tools
             yarn run firebase --version
       - save_cache:
