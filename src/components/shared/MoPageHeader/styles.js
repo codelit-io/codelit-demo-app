@@ -1,13 +1,9 @@
 const styles = (theme) => ({
-  linkText: {
-    color: theme.grey?.dark,
-    textDecoration: "none",
-    verticalAlign: "middle",
-    marginBottom: theme.padding?.xl,
-  },
-  container: {
-    margin: "26px 0px 26px",
-  },
+	title: {
+		color: theme.grey?.dark,
+		textDecoration: "none",
+		marginBottom: theme.padding?.md,
+	},
 });
 
 export default styles;
