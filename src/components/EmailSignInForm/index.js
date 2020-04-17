@@ -12,7 +12,7 @@ import styles from "./styles";
 import SignUpLink from "../../components/SignUpLink";
 import { PasswordForgetLink } from "../PasswordForgot";
 import PropTypes from "prop-types";
-import MoTitle from "../../components/shared/MoTitle"
+import MoTitle from "../../components/shared/MoTitle";
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
     <div className={classes.card}>
