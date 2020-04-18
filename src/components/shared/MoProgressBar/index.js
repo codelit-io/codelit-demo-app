@@ -25,7 +25,7 @@ const MoProgressBar = ({ authUser, points, progress }) => (
       {authUser && <Button>{progress}</Button>}
       {!authUser && (
         <Button to={ROUTES.SIGN_UP.path} component={Link}>
-          Sign up to earn points
+          Sign up to track your progress
           <CheckCircleIcon style={{ marginLeft: "10px" }} />
         </Button>
       )}
