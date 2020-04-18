@@ -2,7 +2,7 @@
 
 exports[`Should render App 1`] = `
 <div
-  className="MuiCircularProgress-root Spinner-spinner-1 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+  className="MuiCircularProgress-root MoSpinner-spinner-1 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
   role="progressbar"
   style={
     Object {

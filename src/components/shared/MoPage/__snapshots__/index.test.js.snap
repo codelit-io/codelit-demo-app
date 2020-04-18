@@ -1,31 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render MoPage 1`] = `
-<div
-  className="MuiGrid-root MoPage-section-3 MuiGrid-container"
->
-  <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6"
-  >
-    <h2
-      className="MuiTypography-root MuiTypography-h2"
-      style={
-        Object {
-          "opacity": 0,
-          "visibility": "hidden",
-        }
-      }
-    >
-      <div
-        className="MuiBox-root MuiBox-root-141 MoPageHeader-linkText-108"
-      />
-    </h2>
-  </div>
-  <div
-    className="MuiGrid-root MoPage-component-4 MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6"
-  />
-  <section
-    className="MoPage-content-1"
-  />
-</div>
+<section
+  className="MoPage-section-1"
+/>
 `;

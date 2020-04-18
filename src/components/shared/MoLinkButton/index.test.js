@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import renderer from "react-test-renderer";
 import MoLinkButton from "./index";
 
-it("Should render MoLink", () => {
+it("Should render MoLinkButton", () => {
   const tree = renderer
     .create(
       <Router>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render MoLink 1`] = `
+exports[`Should render MoLinkButton 1`] = `
 <a
   aria-disabled={false}
   className="MuiButtonBase-root MuiButton-root MuiButton-text MoLinkButton-link-1"
@@ -27,7 +27,6 @@ exports[`Should render MoLink 1`] = `
       aria-hidden="true"
       className="MuiSvgIcon-root arrow"
       focusable="false"
-      role="presentation"
       style={
         Object {
           "fontSize": "1em",

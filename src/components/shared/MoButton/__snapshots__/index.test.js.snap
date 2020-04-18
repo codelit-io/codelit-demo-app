@@ -2,7 +2,7 @@
 
 exports[`Should render MoButton 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root MuiButton-contained MoButton-button-1 MuiButton-containedPrimary"
+  className="MuiButtonBase-root MuiButton-root MuiButton-text MoButton-link-1"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -24,9 +24,14 @@ exports[`Should render MoButton 1`] = `
   >
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root"
+      className="MuiSvgIcon-root arrow"
       focusable="false"
-      role="presentation"
+      style={
+        Object {
+          "fontSize": "1em",
+          "paddingLeft": "4px",
+        }
+      }
       viewBox="0 0 24 24"
     >
       <path
