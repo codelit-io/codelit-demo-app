@@ -7,10 +7,10 @@ const styles = (theme) => ({
     zIndex: "-1",
     padding: "10px",
   },
-  brush: {
+  typistEmoji: {
     position: "absolute",
     top: "1px",
-    font: "30px",
+    fontSize: "30px",
   },
 });
 
