@@ -44,7 +44,7 @@ const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
                         aria-label="magical dust"
                         className={classes.typistEmoji}
                       >
-                        🚀
+                        ✨
                       </span>
                     ),
                     hideWhenDone: true,
