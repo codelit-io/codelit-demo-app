@@ -15,33 +15,33 @@ import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
 
 const Course = ({ firebase, match }) => {
-	const courseDetails = useCollectionDetails(
-		"courses",
-		match.params.collection,
-		firebase
-	);
+  const courseDetails = useCollectionDetails(
+    "courses",
+    match.params.collection,
+    firebase
+  );
 
-	const courses = useCollections(
-		"courses/" + match.params.collection + "/questions",
-		firebase
-	);
+  const courses = useCollections(
+    "courses/" + match.params.collection + "/questions",
+    firebase
+  );
 
-	return (
-		<AuthUserContext.Consumer>
-			{(authUser) => (
-				<Lessons
-					authUser={authUser}
-					isLoading={courseDetails.isLoading || courses.isLoading}
-					match={match}
-					questions={[...courses.data]}
-					collectionDetails={{
-						...courseDetails.data,
-						isProgressBar: true,
-					}}
-					calculateProgress={calculateProgress}
-				/>
-			)}
-		</AuthUserContext.Consumer>
-	);
+  return (
+    <AuthUserContext.Consumer>
+      {(authUser) => (
+        <Lessons
+          authUser={authUser}
+          isLoading={courseDetails.isLoading || courses.isLoading}
+          match={match}
+          questions={[...courses.data]}
+          collectionDetails={{
+            ...courseDetails.data,
+            isProgressBar: true,
+          }}
+          calculateProgress={calculateProgress}
+        />
+      )}
+    </AuthUserContext.Consumer>
+  );
 };
 export default withAuthentication(Course);
