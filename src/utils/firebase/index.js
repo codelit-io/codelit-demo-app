@@ -18,7 +18,7 @@ const useCollections = (collectionPath, firebase) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
-      const getCollections = firebase
+      const getCollections = await firebase
         .collection(collectionPath)
         .orderBy("id")
         .onSnapshot(

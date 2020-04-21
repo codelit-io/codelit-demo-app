@@ -51,7 +51,7 @@ import { AuthUserContext } from "../Session";
       setIsLoading(true);
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description */
-      const getCollectionDetails = firebase
+      const getCollectionDetails = await firebase
         .collection("collections")
         .where("id", "==", collectionName)
         .onSnapshot(
