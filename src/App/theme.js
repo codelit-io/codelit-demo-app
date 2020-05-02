@@ -46,6 +46,11 @@ const fontSize = {
   xl: "4rem",
 };
 
+const fontFamily = {
+  RobotoMono: "Roboto Mono",
+  MonoSpace: "monospace"
+}
+
 let theme = createMuiTheme({
   bigShadow: bigShadow,
   card: {
@@ -65,7 +70,7 @@ let theme = createMuiTheme({
     width: "calc(100vw - 28.799999999999997rem)",
   },
   editorFont: {
-    fontFamily: "monospace",
+    fontFamily: fontFamily.MonoSpace,
     fontSize: "16px",
     color: "rgb(77, 77, 76)",
   },
@@ -81,8 +86,9 @@ let theme = createMuiTheme({
   white: colors.white,
   blue: colors.blue,
   typography: {
-    fontFamily: "Roboto Mono",
+    fontFamily: fontFamily.RobotoMono,
   },
+  fontFamily: fontFamily.RobotoMono,
 });
 
 const fontOptions = {
