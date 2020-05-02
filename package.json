@@ -32,7 +32,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js --max-warnings 5",
     "lintAndFix": "eslint './src/**/*.js' --fix",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
