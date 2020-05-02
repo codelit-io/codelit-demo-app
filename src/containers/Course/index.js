@@ -44,6 +44,8 @@ const Course = ({ authUser, firebase, match }) => {
       <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <LessonsList
+            authUser={authUser}
+            match={match}
             points={points}
             questions={courses.data}
             url={match?.params?.collection}
