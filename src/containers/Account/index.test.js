@@ -1,16 +1,15 @@
+
+
 import React from "react";
 
 import Account from "./index.js";
-import { BrowserRouter as Router } from "react-router-dom";
-import renderer from "react-test-renderer";
+import ShallowRenderer from "react-test-renderer/shallow";
 
-it("renders Account Page", () => {
-  const tree = renderer
-    .create(
-      <Router>
-        <Account />
-      </Router>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+const renderer = new ShallowRenderer();
+
+describe("Account Component", () => {
+	test("should match the snapshot", () => {
+		renderer.render(<Account />);
+		expect(renderer.getRenderOutput()).toMatchSnapshot();
+	});
 });
