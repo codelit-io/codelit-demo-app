@@ -48,8 +48,8 @@ const fontSize = {
 
 const fontFamily = {
   RobotoMono: "Roboto Mono",
-  MonoSpace: "monospace"
-}
+  MonoSpace: "monospace",
+};
 
 let theme = createMuiTheme({
   bigShadow: bigShadow,

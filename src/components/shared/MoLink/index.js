@@ -7,12 +7,12 @@ import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoLink = ({ classes, href, text }) => {
-	return (
-		<Button component={Link} to={href ? href : "#"} className={classes.link}>
-			{text}
-			<ArrowForwardIcon className="arrow" />
-		</Button>
-	);
+  return (
+    <Button component={Link} to={href ? href : "#"} className={classes.link}>
+      {text}
+      <ArrowForwardIcon className="arrow" />
+    </Button>
+  );
 };
 
 export default withStyles(styles)(MoLink);
