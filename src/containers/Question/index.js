@@ -24,136 +24,136 @@ const CodeEditor = lazy(() => import("../../components/CodeEditor"));
 const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
 
 const Question = ({ authUser, firebase, history, match }) => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [question, setQuestion] = useState({});
-	const [isCorrect, setIsCorrect] = useState(false);
-	const [snackbarProps, setSnackbarProps] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [question, setQuestion] = useState({});
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [snackbarProps, setSnackbarProps] = useState(null);
 
-	const triggerNextQuestion = useCallback(() => {
-		const id = Number(question.id) + 1;
-		/* Clear questions */
-		setQuestion({});
+  const triggerNextQuestion = useCallback(() => {
+    const id = Number(question.id) + 1;
+    /* Clear questions */
+    setQuestion({});
 
-		setIsCorrect(false);
-		/* A delay before navigating to a new page */
-		setTimeout(() => {
-			history.push(
-				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
-			);
-		}, 600);
-	}, [history, match.params.collection, question.id]);
+    setIsCorrect(false);
+    /* A delay before navigating to a new page */
+    setTimeout(() => {
+      history.push(
+        ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
+      );
+    }, 600);
+  }, [history, match.params.collection, question.id]);
 
-	/* Checks if user code matches Pre made answer */
-	const handleOnChange = useCallback(
-		(userAnswer) => {
-			if (userAnswer === "{}" || userAnswer === "") {
-				return;
-			}
-			if (
-				userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")
-			) {
-				setQuestion({ ...question, isCorrect: true, question: userAnswer });
-				/* Awards users a point based on level completion */
+  /* Checks if user code matches Pre made answer */
+  const handleOnChange = useCallback(
+    (userAnswer) => {
+      if (userAnswer === "{}" || userAnswer === "") {
+        return;
+      }
+      if (
+        userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")
+      ) {
+        setQuestion({ ...question, isCorrect: true, question: userAnswer });
+        /* Awards users a point based on level completion */
 
-				awardPlayerPoints(
-					authUser,
-					firebase,
-					question.id,
-					match.params.collection
-				);
-				setIsCorrect(true);
-				setSnackbarProps({
-					title: "Hooray!",
-					buttonText: "Keep Going",
-					buttonIcon: <ArrowForwardIcon />,
-				});
-			} else {
-				setQuestion({ ...question, question: userAnswer });
-			}
-		},
-		[authUser, firebase, match.params.collection, question]
-	);
+        awardPlayerPoints(
+          authUser,
+          firebase,
+          question.id,
+          match.params.collection
+        );
+        setIsCorrect(true);
+        setSnackbarProps({
+          title: "Hooray!",
+          buttonText: "Keep Going",
+          buttonIcon: <ArrowForwardIcon />,
+        });
+      } else {
+        setQuestion({ ...question, question: userAnswer });
+      }
+    },
+    [authUser, firebase, match.params.collection, question]
+  );
 
-	useEffect(() => {
-		const id = match.params.questionId;
-		setIsLoading(true);
-		const unsubscribe = firebase
-			.getCollectionById(
-				"courses/" + match.params.collection + "/questions",
-				id
-			)
-			.onSnapshot((snapshot) => {
-				if (snapshot.size) {
-					let question = [];
-					snapshot.forEach((doc) =>
-						question.push({ ...doc.data(), uid: doc.id })
-					);
-					setQuestion(question[0]);
-				} else {
-					if (id === "new") {
+  useEffect(() => {
+    const id = match.params.questionId;
+    setIsLoading(true);
+    const unsubscribe = firebase
+      .getCollectionById(
+        "courses/" + match.params.collection + "/questions",
+        id
+      )
+      .onSnapshot((snapshot) => {
+        if (snapshot.size) {
+          let question = [];
+          snapshot.forEach((doc) =>
+            question.push({ ...doc.data(), uid: doc.id })
+          );
+          setQuestion(question[0]);
+        } else {
+          if (id === "new") {
             setQuestion({
-							title: "Title goes here",
-							label: "Subtitle goes here",
-							question: "<h1>Question goes here</h1>",
-							answer: "<h1>Answer goes here🎉</h1>",
-							language: "html",
-						});
-					} else {
-						setQuestion({
-							label: "You have finished all questions ✅",
-							question: "<h1>Nice Job 🎉</h1>",
-							language: "html",
-						});
-					}
-				}
-				setIsLoading(false);
-			});
+              title: "Title goes here",
+              label: "Subtitle goes here",
+              question: "<h1>Question goes here</h1>",
+              answer: "<h1>Answer goes here🎉</h1>",
+              language: "html",
+            });
+          } else {
+            setQuestion({
+              label: "You have finished all questions ✅",
+              question: "<h1>Nice Job 🎉</h1>",
+              language: "html",
+            });
+          }
+        }
+        setIsLoading(false);
+      });
 
-		return () => {
-			unsubscribe();
-			setSnackbarProps(null);
-		};
-	}, [firebase, match]);
+    return () => {
+      unsubscribe();
+      setSnackbarProps(null);
+    };
+  }, [firebase, match]);
 
-	return (
-		<Suspense>
-			<MoConfetti isActive={isCorrect} />
-			<MoPage
-				img=""
-				title={question.title}
-				isLoading={isLoading}
-				isCard={false}
-			>
-				{question.content && <Content content={question.content} />}
-				{!isLoading && (
-					<>
-						<Grid item md={6} sm={12}>
-							<MoParagraph
-								text={question.label}
-								fade={question.label && true}
-								margin="36px 0 36px"
-							/>
-						</Grid>
-						{question && (
-							<CodeEditor
-								handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-								sm={6}
-								md={6}
-								question={question}
-							/>
-						)}
-						{snackbarProps && (
-							<MoSnackbar
-								isActive={isCorrect}
-								authUser={authUser}
-								snackbarProps={snackbarProps}
-								triggerNextQuestion={() => triggerNextQuestion()}
-							/>
-						)}
-					</>
-				)}
-			</MoPage>
-		</Suspense>
-	);
+  return (
+    <Suspense>
+      <MoConfetti isActive={isCorrect} />
+      <MoPage
+        img=""
+        title={question.title}
+        isLoading={isLoading}
+        isCard={false}
+      >
+        {question.content && <Content content={question.content} />}
+        {!isLoading && (
+          <>
+            <Grid item md={6} sm={12}>
+              <MoParagraph
+                text={question.label}
+                fade={question.label && true}
+                margin="36px 0 36px"
+              />
+            </Grid>
+            {question && (
+              <CodeEditor
+                handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+                sm={6}
+                md={6}
+                question={question}
+              />
+            )}
+            {snackbarProps && (
+              <MoSnackbar
+                isActive={isCorrect}
+                authUser={authUser}
+                snackbarProps={snackbarProps}
+                triggerNextQuestion={() => triggerNextQuestion()}
+              />
+            )}
+          </>
+        )}
+      </MoPage>
+    </Suspense>
+  );
 };
 export default withAuthentication(Question);
