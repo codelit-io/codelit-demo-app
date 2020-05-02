@@ -34,7 +34,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lintAndFix"
+      "pre-push": "npm lintAndFix"
     }
   },
   "eslintConfig": {
@@ -62,7 +62,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^25.1.2",
+    "@types/jest": "^25.2.1",
     "cross-env": "^7.0.2",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
