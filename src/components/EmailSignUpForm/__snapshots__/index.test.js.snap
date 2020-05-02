@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailSignUpForm Component should match the snapshot 1`] = `
+<EmailSignUpForm
+  classes={
+    Object {
+      "card": "EmailSignUpForm-card-2",
+      "error": "EmailSignUpForm-error-6",
+      "form": "EmailSignUpForm-form-4",
+      "main": "EmailSignUpForm-main-1",
+      "paper": "EmailSignUpForm-paper-3",
+      "submit": "EmailSignUpForm-submit-5",
+    }
+  }
+/>
+`;

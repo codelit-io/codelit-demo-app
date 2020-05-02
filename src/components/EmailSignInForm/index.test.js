@@ -1,13 +1,13 @@
 import React from "react";
 
-import Admin from "./index.js";
+import EmailSignInForm from "./index.js";
 import ShallowRenderer from "react-test-renderer/shallow";
 
 const renderer = new ShallowRenderer();
 
-describe("Admin Component", () => {
+describe("EmailSignInForm Component", () => {
   test("should match the snapshot", () => {
-    renderer.render(<Admin />);
+    renderer.render(<EmailSignInForm />);
     expect(renderer.getRenderOutput()).toMatchSnapshot();
   });
 });

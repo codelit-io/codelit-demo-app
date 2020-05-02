@@ -90,11 +90,21 @@ const Question = ({ authUser, firebase, history, match }) => {
           );
           setQuestion(question[0]);
         } else {
-          setQuestion({
-            label: "You have finished all questions ✅",
-            question: "<h1>Nice Job 🎉</h1>",
-            language: "html",
-          });
+          if (id === "new") {
+            setQuestion({
+              title: "Title goes here",
+              label: "Subtitle goes here",
+              question: "<h1>Question goes here</h1>",
+              answer: "<h1>Answer goes here🎉</h1>",
+              language: "html",
+            });
+          } else {
+            setQuestion({
+              label: "You have finished all questions ✅",
+              question: "<h1>Nice Job 🎉</h1>",
+              language: "html",
+            });
+          }
         }
         setIsLoading(false);
       });
