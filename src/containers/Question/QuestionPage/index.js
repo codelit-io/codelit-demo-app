@@ -1,9 +1,11 @@
 import React from "react";
+
+import * as ROLES from "constants/roles";
 import MoPage from "components/shared/MoPage";
 import MoPageEdit from "components/shared/MoPageEdit";
 
 const QuestionPage = ({ authUser, children, isLoading, subtitle, title }) =>
-  authUser ? (
+  authUser?.roles[ROLES.ADMIN] ? (
     <MoPageEdit
       subtitle={subtitle}
       title={title}
