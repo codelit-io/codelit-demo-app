@@ -1,16 +1,13 @@
 import React from "react";
 
-import { BrowserRouter as Router } from "react-router-dom";
-import renderer from "react-test-renderer";
-import SignInPage from "./index.js";
+import SignInForm from "./index.js";
+import ShallowRenderer from "react-test-renderer/shallow";
 
-it("Sign In Page", () => {
-  const tree = renderer
-    .create(
-      <Router>
-        <SignInPage />
-      </Router>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+const renderer = new ShallowRenderer();
+
+describe("SignInForm Component", () => {
+  test("should match the snapshot", () => {
+    renderer.render(<SignInForm />);
+    expect(renderer.getRenderOutput()).toMatchSnapshot();
+  });
 });

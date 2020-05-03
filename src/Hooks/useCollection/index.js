@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 const useCollection = (firebase, payload) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {

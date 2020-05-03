@@ -29,6 +29,8 @@ const Lessons = ({
               points={points}
               questions={questions}
               url={match?.params?.collection}
+              authUser={authUser}
+              match={match}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -39,17 +41,15 @@ const Lessons = ({
               width="100%"
             ></MoPageSubtitle>
             {collectionDetails.isProgressBar && (
-              <>
-                <MoProgressBar
-                  authUser={authUser}
-                  points={points}
-                  progress={calculateProgress(
-                    authUser,
-                    points,
-                    questions?.length
-                  )}
-                />
-              </>
+              <MoProgressBar
+                authUser={authUser}
+                points={points}
+                progress={calculateProgress(
+                  authUser,
+                  points,
+                  questions?.length
+                )}
+              />
             )}
           </Grid>
         </Grid>

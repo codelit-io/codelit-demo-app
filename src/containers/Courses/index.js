@@ -9,7 +9,7 @@
 
 import React, { lazy, Suspense } from "react";
 
-import { AuthUserContext, withAuthentication } from "../../components/Session";
+import { withAuthentication } from "../../components/Session";
 
 const CoursesCollection = lazy(() => import("./CoursesCollection"));
 
@@ -17,21 +17,17 @@ const collections = [
   { path: "courses", title: "Your Courses", isProgressBar: false },
 ];
 
-const Courses = ({ firebase, match }) => (
+const Courses = ({ authUser, firebase, match }) => (
   <Suspense>
-    <AuthUserContext.Consumer>
-      {(authUser) =>
-        collections.map((collection, index) => (
-          <CoursesCollection
-            key={index}
-            authUser={authUser}
-            collection={collection}
-            firebase={firebase}
-            match={match}
-          />
-        ))
-      }
-    </AuthUserContext.Consumer>
+    {collections.map((collection, index) => (
+      <CoursesCollection
+        key={index}
+        authUser={authUser}
+        collection={collection}
+        firebase={firebase}
+        match={match}
+      />
+    ))}
   </Suspense>
 );
 

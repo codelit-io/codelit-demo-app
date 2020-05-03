@@ -16,8 +16,8 @@ const styles = (theme) => ({
     lineHeight: "1",
   },
   heroText: {
-    color: theme.grey.dark,
-    marginBottom: theme.padding.sm,
+    color: theme.grey?.dark,
+    marginBottom: theme.padding?.sm,
   },
   img: {
     width: "100%",
@@ -26,7 +26,7 @@ const styles = (theme) => ({
     },
   },
   checkMark: {
-    color: theme.green.light,
+    color: theme.green?.light,
   },
 });
 

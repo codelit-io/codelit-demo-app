@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playground Component should match the snapshot 1`] = `
+<CodeEditor
+  handleOnChange={[Function]}
+  md={12}
+  question={
+    Object {
+      "answer": "<button> I am a Button </button>",
+      "element": "button",
+      "id": "0",
+      "isCorrect": false,
+      "isPlayground": true,
+      "language": "jsx",
+      "question": "() => {
+      return (
+        <section>
+          <h1>I love React 💙</h1>
+        </section>
+      );
+    };",
+    }
+  }
+  sm={12}
+/>
+`;

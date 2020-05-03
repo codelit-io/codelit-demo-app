@@ -1,9 +1,11 @@
 import React from "react";
 
+import * as ROLES from "constants/roles";
 import LessonCategory from "./LessonCategory";
 import LessonCard from "./LessonCard";
+import NewLessonCard from "./NewLessonCard";
 
-const LessonsList = ({ url, questions, points }) => {
+const LessonsList = ({ authUser, match, url, questions, points }) => {
   return questions.map((question, index) => {
     /* isDisabled is configured based on points and question's id */
     const isDisabled = url
@@ -22,7 +24,12 @@ const LessonsList = ({ url, questions, points }) => {
     return (
       <React.Fragment key={index}>
         {question.category && (
-          <LessonCategory category={question.category} index={index} />
+          <>
+            <LessonCategory category={question?.category} index={index} />
+            {authUser?.roles[ROLES.ADMIN] && (
+              <NewLessonCard url={`${match.url}/new`} />
+            )}
+          </>
         )}
         <LessonCard
           isDisabled={isDisabled}

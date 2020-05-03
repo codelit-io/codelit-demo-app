@@ -13,18 +13,15 @@ import * as ROUTES from "../../constants/routes";
 
 import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import AuthUserContext from "../../components/Session/context";
 import Content from "./Content";
-import Grid from "@material-ui/core/Grid";
-import MoParagraph from "../../components/shared/MoParagraph";
-import MoPage from "../../components/shared/MoPage";
 import MoSnackbar from "../../components/shared/MoSnackBar";
+import QuestionPage from "./QuestionPage";
 import withAuthentication from "../../components/Session/withAuthentication";
 
 const CodeEditor = lazy(() => import("../../components/CodeEditor"));
 const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
 
-const Question = ({ firebase, history, match }) => {
+const Question = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState({});
   const [isCorrect, setIsCorrect] = useState(false);
@@ -46,7 +43,7 @@ const Question = ({ firebase, history, match }) => {
 
   /* Checks if user code matches Pre made answer */
   const handleOnChange = useCallback(
-    (authUser, userAnswer) => {
+    (userAnswer) => {
       if (userAnswer === "{}" || userAnswer === "") {
         return;
       }
@@ -72,7 +69,7 @@ const Question = ({ firebase, history, match }) => {
         setQuestion({ ...question, question: userAnswer });
       }
     },
-    [firebase, match.params.collection, question]
+    [authUser, firebase, match.params.collection, question]
   );
 
   useEffect(() => {
@@ -91,11 +88,21 @@ const Question = ({ firebase, history, match }) => {
           );
           setQuestion(question[0]);
         } else {
-          setQuestion({
-            label: "You have finished all questions ✅",
-            question: "<h1>Nice Job 🎉</h1>",
-            language: "html",
-          });
+          if (id === "new") {
+            setQuestion({
+              title: "Title goes here",
+              label: "Subtitle goes here",
+              question: "<h1>Question goes here</h1>",
+              answer: "<h1>Answer goes here🎉</h1>",
+              language: "html",
+            });
+          } else {
+            setQuestion({
+              label: "You have finished all questions ✅",
+              question: "<h1>Nice Job 🎉</h1>",
+              language: "html",
+            });
+          }
         }
         setIsLoading(false);
       });
@@ -109,47 +116,34 @@ const Question = ({ firebase, history, match }) => {
   return (
     <Suspense>
       <MoConfetti isActive={isCorrect} />
-      <MoPage
-        img=""
+      <QuestionPage
+        authUser={authUser}
+        subtitle={question.label}
         title={question.title}
         isLoading={isLoading}
         isCard={false}
-      >
-        {question.content && <Content content={question.content} />}
-        {!isLoading && (
-          <AuthUserContext.Consumer>
-            {(authUser) => (
-              <>
-                <Grid item md={6} sm={12}>
-                  <MoParagraph
-                    text={question.label}
-                    fade={question.label && true}
-                    margin="36px 0 36px"
-                  />
-                </Grid>
-                {question && (
-                  <CodeEditor
-                    handleOnChange={(userAnswer) =>
-                      handleOnChange(authUser, userAnswer)
-                    }
-                    sm={6}
-                    md={6}
-                    question={question}
-                  />
-                )}
-                {snackbarProps && (
-                  <MoSnackbar
-                    isActive={isCorrect}
-                    authUser={authUser}
-                    snackbarProps={snackbarProps}
-                    triggerNextQuestion={() => triggerNextQuestion()}
-                  />
-                )}
-              </>
-            )}
-          </AuthUserContext.Consumer>
-        )}
-      </MoPage>
+      />
+      {question.content && <Content content={question.content} />}
+      {!isLoading && (
+        <>
+          {question && (
+            <CodeEditor
+              handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+              sm={6}
+              md={6}
+              question={question}
+            />
+          )}
+          {snackbarProps && (
+            <MoSnackbar
+              isActive={isCorrect}
+              authUser={authUser}
+              snackbarProps={snackbarProps}
+              triggerNextQuestion={() => triggerNextQuestion()}
+            />
+          )}
+        </>
+      )}
     </Suspense>
   );
 };

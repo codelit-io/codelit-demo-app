@@ -6,7 +6,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
 import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
-import MoPageSubtitle from "../MoBodyText";
+import MoPageSubtitle from "../MoPageSubtitle";
 
 const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
   return isLoading ? (
