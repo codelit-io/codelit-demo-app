@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import * as ROLES from "../../../constants/roles";
+import * as ROLES from "constants/roles";
 
 import { compose } from "recompose";
-import EmailSignUpForm from "../../../components/EmailSignUpForm";
-import { withFirebase } from "../../../components/Firebase";
+import EmailSignUpForm from "components/EmailSignUpForm";
+import { withFirebase } from "components/Firebase";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
