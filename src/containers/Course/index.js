@@ -15,63 +15,50 @@ import calculateProgress from "./calculateProgress";
 import MoPage from "../../components/shared/MoPage";
 import useCollectionDetails from "../../Hooks/useCollectionDetails";
 import useCollections from "../../Hooks/useCollections";
-import MoPageSubtitle from "../../components/shared/MoPageSubtitle";
 import MoProgressBar from "../../components/shared/MoProgressBar";
 
 const Course = ({ authUser, firebase, match }) => {
-  const courseDetails = useCollectionDetails(
-    "courses",
-    match.params.collection,
-    firebase
-  );
+	const courseDetails = useCollectionDetails(
+		"courses",
+		match.params.collection,
+		firebase
+	);
 
-  const courses = useCollections(
-    "courses/" + match.params.collection + "/questions",
-    firebase
-  );
+	const courses = useCollections(
+		"courses/" + match.params.collection + "/questions",
+		firebase
+	);
 
-  const [points, setPoints] = useState(0);
+	const [points, setPoints] = useState(0);
 
-  useEffect(() => {
-    setPoints(authUser?.reports?.[match.params.collection]?.points);
-  }, [authUser, match]);
+	useEffect(() => {
+		setPoints(authUser?.reports?.[match.params.collection]?.points);
+	}, [authUser, match]);
 
-  return (
-    <MoPage
-      title={courseDetails?.data?.title}
-      isLoading={courseDetails.isLoading || courses.isLoading}
-    >
-      <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <LessonsList
-            authUser={authUser}
-            match={match}
-            points={points}
-            questions={courses.data}
-            url={match?.params?.collection}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <>
-            <MoPageSubtitle
-              text={"Your Progress"}
-              fade={true}
-              margin="0px 0 36px"
-              width="100%"
-            ></MoPageSubtitle>
-            <MoProgressBar
-              authUser={authUser}
-              points={points}
-              progress={calculateProgress(
-                authUser,
-                points,
-                courses.data?.length
-              )}
-            />
-          </>
-        </Grid>
-      </Grid>
-    </MoPage>
-  );
+	return (
+		<MoPage
+			title={courseDetails?.data?.title}
+			isLoading={courseDetails.isLoading || courses.isLoading}
+		>
+			<Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
+				<Grid item xs={12} sm={12} md={6} lg={6}>
+					<LessonsList
+						authUser={authUser}
+						match={match}
+						points={points}
+						questions={courses.data}
+						url={match?.params?.collection}
+					/>
+				</Grid>
+				<Grid item xs={12} sm={12} md={6} lg={6}>
+					<MoProgressBar
+						authUser={authUser}
+						points={points}
+						progress={calculateProgress(authUser, points, courses.data?.length)}
+					/>
+				</Grid>
+			</Grid>
+		</MoPage>
+	);
 };
 export default withAuthentication(Course);
