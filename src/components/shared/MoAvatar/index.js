@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
-import * as ROLES from "../../../constants/roles";
+import * as ROUTES from "constants/routes";
+import * as ROLES from "constants/roles";
 import AppsIcon from "@material-ui/icons/Apps";
 import Avatar from "@material-ui/core/Avatar";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -15,8 +15,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import withStyles from "@material-ui/core/styles/withStyles";
-import SignInWithFacebook from "../../SocialSignIn/SignInWithFacebook";
-import SignInWithGoogle from "../../SocialSignIn/SignInWithGoogle";
+import SignInWithFacebook from "components/SocialSignIn/SignInWithFacebook";
+import SignInWithGoogle from "components/SocialSignIn/SignInWithGoogle";
 import SportsMotorsportsIcon from "@material-ui/icons/SportsMotorsports";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Tooltip from "@material-ui/core/Tooltip";
