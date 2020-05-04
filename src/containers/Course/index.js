@@ -13,8 +13,8 @@ import Grid from "@material-ui/core/Grid";
 import LessonsList from "components/Lessons/LessonsList";
 import calculateProgress from "./calculateProgress";
 import MoPage from "components/shared/MoPage";
-import useCollectionDetails from "hooks/useCollectionDetails";
-import useCollections from "hooks/useCollections";
+import useCollectionDetails from "Hooks/useCollectionDetails";
+import useCollections from "Hooks/useCollections";
 import MoProgressBar from "components/shared/MoProgressBar";
 import MoHelmet from "components/shared/MoHelmet";
 

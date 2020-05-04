@@ -9,7 +9,7 @@
 
 import React from "react";
 import Lessons from "components/Lessons";
-import useCollections from "hooks/useCollections";
+import useCollections from "Hooks/useCollections";
 
 const CoursesCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
