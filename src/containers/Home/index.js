@@ -4,8 +4,8 @@ import { compose } from "recompose";
 import {
   withAuthorization,
   withEmailVerification,
-} from "../../components/Session";
-import Messages from "../../components/Messages";
+} from "components/Session";
+import Messages from "components/Messages";
 
 const HomePage = () => <Messages />;
 
