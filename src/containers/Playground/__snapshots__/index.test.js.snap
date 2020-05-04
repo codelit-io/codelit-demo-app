@@ -1,26 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Playground Component should match the snapshot 1`] = `
-<CodeEditor
-  handleOnChange={[Function]}
-  md={12}
-  question={
-    Object {
-      "answer": "<button> I am a Button </button>",
-      "element": "button",
-      "id": "0",
-      "isCorrect": false,
-      "isPlayground": true,
-      "language": "jsx",
-      "question": "() => {
+<React.Fragment>
+  <MoHelmet
+    description="MoSkool - Try out free React development playground, master JavaScript, Html and Css without the fees"
+    title="Moskool - React frontend development playground"
+  />
+  <CodeEditor
+    handleOnChange={[Function]}
+    md={12}
+    question={
+      Object {
+        "answer": "<button> I am a Button </button>",
+        "element": "button",
+        "id": "0",
+        "isCorrect": false,
+        "isPlayground": true,
+        "language": "jsx",
+        "question": "() => {
       return (
         <section>
           <h1>I love React 💙</h1>
         </section>
       );
     };",
+      }
     }
-  }
-  sm={12}
-/>
+    sm={12}
+  />
+</React.Fragment>
 `;

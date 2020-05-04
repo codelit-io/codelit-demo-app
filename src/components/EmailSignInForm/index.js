@@ -9,10 +9,10 @@ import InputLabel from "@material-ui/core/InputLabel";
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import styles from "./styles";
-import SignUpLink from "../../components/SignUpLink";
+import SignUpLink from "components/SignUpLink";
 import { PasswordForgetLink } from "../PasswordForgot";
 import PropTypes from "prop-types";
-import MoTitle from "../../components/shared/MoTitle";
+import MoTitle from "components/shared/MoTitle";
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
     <div className={classes.card}>

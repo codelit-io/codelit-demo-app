@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import * as ROUTES from "../../../constants/routes";
-import { AuthUserContext } from "../../../components/Session";
-import MoSpinner from "../../../components/shared/MoSpinner";
-import { withFirebase } from "../../../components/Firebase";
+import * as ROUTES from "constants/routes";
+import { AuthUserContext } from "components/Session";
+import MoSpinner from "components/shared/MoSpinner";
+import { withFirebase } from "components/Firebase";
 import QuestionsTable from "./CollectionTable";
 
 const Collection = ({ firebase, history, match }) => {

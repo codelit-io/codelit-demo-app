@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "constants/routes";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";

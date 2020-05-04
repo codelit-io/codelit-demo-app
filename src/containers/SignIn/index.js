@@ -1,9 +1,9 @@
 import React from "react";
 
-import { AuthUserContext } from "../../components/Session";
+import { AuthUserContext } from "components/Session";
 import Grid from "@material-ui/core/Grid";
-import MoPage from "../../components/shared/MoPage";
-import SocialSignIn from "../../components/SocialSignIn/";
+import MoPage from "components/shared/MoPage";
+import SocialSignIn from "components/SocialSignIn/";
 import SignInForm from "./SignInForm";
 
 const SignInPage = () => (

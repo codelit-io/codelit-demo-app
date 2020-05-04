@@ -1,6 +1,6 @@
 import React from "react";
 
-import MoTitle from "../../../shared/MoTitle";
+import MoTitle from "components/shared/MoTitle";
 
 const LessonCategory = ({ category, index }) => (
   <MoTitle

@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as ROLES from "../../constants/roles";
+import * as ROLES from "constants/roles";
 
 import { AuthUserContext } from "../Session";
 import AddCourse from "./AddCourse";

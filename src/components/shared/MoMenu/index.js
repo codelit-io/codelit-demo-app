@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "constants/routes";
 import AppsIcon from "@material-ui/icons/Apps";
 import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
