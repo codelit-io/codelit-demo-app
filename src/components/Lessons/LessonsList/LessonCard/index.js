@@ -1,6 +1,6 @@
 import React from "react";
 
-import MoCard from "../../../shared/MoCard";
+import MoCard from "components/shared/MoCard";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
