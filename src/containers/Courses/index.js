@@ -9,25 +9,30 @@
 
 import React, { lazy, Suspense } from "react";
 
-import { withAuthentication } from "../../components/Session";
+import { withAuthentication } from "components/Session";
+import MoHelmet from "components/shared/MoHelmet";
 
 const CoursesCollection = lazy(() => import("./CoursesCollection"));
 
-const collections = [
-  { path: "courses", title: "Your Courses", isProgressBar: false },
-];
+const collection = {
+  path: "courses",
+  title: "Your Courses",
+  isProgressBar: false,
+};
 
 const Courses = ({ authUser, firebase, match }) => (
   <Suspense>
-    {collections.map((collection, index) => (
-      <CoursesCollection
-        key={index}
-        authUser={authUser}
-        collection={collection}
-        firebase={firebase}
-        match={match}
-      />
-    ))}
+    <MoHelmet
+      title="Moskool - React frontend development courses"
+      description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
+      path={match.url}
+    />
+    <CoursesCollection
+      authUser={authUser}
+      collection={collection}
+      firebase={firebase}
+      match={match}
+    />
   </Suspense>
 );
 
