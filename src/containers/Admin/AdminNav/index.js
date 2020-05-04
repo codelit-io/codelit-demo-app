@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "constants/routes";
 import AddIcon from "@material-ui/icons/Add";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
