@@ -7,7 +7,7 @@
  * @returns {isLoading: boolean, isError: Object, data: Strings[]} - returns loading boolean, error Object and an Array of questions
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "hooks/useCollection/node_modules/react";
 
 const useCollection = (firebase, payload) => {
   const [isLoading, setIsLoading] = useState(false);
