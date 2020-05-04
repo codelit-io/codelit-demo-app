@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import { compose } from "recompose";
-import EmailSignInForm from "../../../components/EmailSignInForm";
+import EmailSignInForm from "components/EmailSignInForm";
 
-import { withFirebase } from "../../../components/Firebase";
+import { withFirebase } from "components/Firebase";
 import { withRouter } from "react-router-dom";
 
 const INITIAL_STATE = {
