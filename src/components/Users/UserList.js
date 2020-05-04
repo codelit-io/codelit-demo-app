@@ -4,7 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import MoSpinner from "../shared/MoSpinner";
 import { withFirebase } from "../Firebase";
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "constants/routes";
 
 class UserList extends Component {
   constructor(props) {
