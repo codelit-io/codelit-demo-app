@@ -8,10 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import MoPage from "components/shared/MoPage";
 import MoSpinner from "components/shared/MoSpinner";
 import { UserList, UserItem } from "components/Users";
-import {
-  withAuthorization,
-  withEmailVerification,
-} from "components/Session";
+import { withAuthorization, withEmailVerification } from "components/Session";
 
 const Collection = lazy(() => import("./Collection"));
 
