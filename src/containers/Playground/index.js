@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import CodeEditor from "../../components/CodeEditor";
+import CodeEditor from "components/CodeEditor";
+import MoHelmet from "components/shared/MoHelmet";
 
 const Playground = () => {
   const initialState = {
@@ -29,12 +30,18 @@ const Playground = () => {
   };
 
   return (
-    <CodeEditor
-      handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-      md={12}
-      sm={12}
-      question={question}
-    />
+    <>
+      <MoHelmet
+        title="Moskool - React frontend development playground"
+        description="MoSkool - Try out free React development playground, master JavaScript, Html and Css without the fees"
+      />
+      <CodeEditor
+        handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+        md={12}
+        sm={12}
+        question={question}
+      />
+    </>
   );
 };
 

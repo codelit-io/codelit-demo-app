@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from "react";
 
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "constants/routes";
 
 import CheckIcon from "@material-ui/icons/Check";
 import Fade from "@material-ui/core/Fade";
@@ -8,21 +8,26 @@ import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import MoBrowserMockup from "../../components/shared/MoBrowserMockup";
-import MoLinkButton from "../../components/shared/MoLinkButton";
-import MoPageHeader from "../../components/shared/MoPageHeader";
-import MoPageSubtitle from "../../components/shared/MoPageSubtitle";
+import MoBrowserMockup from "components/shared/MoBrowserMockup";
+import MoLinkButton from "components/shared/MoLinkButton";
+import MoPageHeader from "components/shared/MoPageHeader";
+import MoPageSubtitle from "components/shared/MoPageSubtitle";
+import MoHelmet from "components/shared/MoHelmet";
 import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const Footer = lazy(() => import("../../components/Footer"));
+const Footer = lazy(() => import("components/Footer"));
 const Typist = lazy(() => import("react-typist"));
 
 const LandingPage = ({ classes }) => {
   const [isPreview, setIsPreview] = useState(false);
   return (
     <>
+      <MoHelmet
+        title="Moskool - Learn React development for Free"
+        description="MoSkool - Free React learning experience platform, master frontend development without the fees"
+      />
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>

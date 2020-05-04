@@ -29,6 +29,10 @@ jobs:
           command: |
             yarn build
       - run:
+          name: Test
+          command: |
+            yarn ci-test
+      - run:
           name: Lint
           command: |
             yarn lint

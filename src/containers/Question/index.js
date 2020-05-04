@@ -9,17 +9,18 @@
 
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "constants/routes";
 
 import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Content from "./Content";
-import MoSnackbar from "../../components/shared/MoSnackBar";
+import MoSnackbar from "components/shared/MoSnackBar";
 import QuestionPage from "./QuestionPage";
-import withAuthentication from "../../components/Session/withAuthentication";
+import withAuthentication from "components/Session/withAuthentication";
+import MoHelmet from "components/shared/MoHelmet";
 
-const CodeEditor = lazy(() => import("../../components/CodeEditor"));
-const MoConfetti = lazy(() => import("../../components/shared/MoConfetti"));
+const CodeEditor = lazy(() => import("components/CodeEditor"));
+const MoConfetti = lazy(() => import("components/shared/MoConfetti"));
 
 const Question = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -115,6 +116,11 @@ const Question = ({ authUser, firebase, history, match }) => {
 
   return (
     <Suspense>
+      <MoHelmet
+        title="Moskool - React frontend development learning questions"
+        description="MoSkool - Play Free React learning questions and master all aspects of frontend development without any fees"
+        path={match.url}
+      />
       <MoConfetti isActive={isCorrect} />
       <QuestionPage
         authUser={authUser}

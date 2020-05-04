@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
-import google from "../../../assets/google.svg";
+import google from "assets/google.svg";
 import PropTypes from "prop-types";
-import { withFirebase } from "../../Firebase";
+import { withFirebase } from "components/Firebase";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({

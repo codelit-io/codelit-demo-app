@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "constants/routes";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
@@ -19,7 +19,6 @@ const MoProgressBar = ({ authUser, points, progress }) => (
       aria-label="Points and progress"
       variant="text"
       color="default"
-      style={{ marginBottom: "48px" }}
     >
       {authUser && <Button> {points ? `${points} Points` : "0 Points"}</Button>}
       {authUser && <Button>{progress}</Button>}

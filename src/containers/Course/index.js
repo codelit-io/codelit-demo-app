@@ -8,15 +8,15 @@
 
 import React, { useEffect, useState } from "react";
 
-import { withAuthentication } from "../../components/Session";
+import { withAuthentication } from "components/Session";
 import Grid from "@material-ui/core/Grid";
-import LessonsList from "../../components/Lessons/LessonsList";
+import LessonsList from "components/Lessons/LessonsList";
 import calculateProgress from "./calculateProgress";
-import MoPage from "../../components/shared/MoPage";
-import useCollectionDetails from "../../Hooks/useCollectionDetails";
-import useCollections from "../../Hooks/useCollections";
-import MoPageSubtitle from "../../components/shared/MoPageSubtitle";
-import MoProgressBar from "../../components/shared/MoProgressBar";
+import MoPage from "components/shared/MoPage";
+import useCollectionDetails from "Hooks/useCollectionDetails";
+import useCollections from "Hooks/useCollections";
+import MoProgressBar from "components/shared/MoProgressBar";
+import MoHelmet from "components/shared/MoHelmet";
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
@@ -41,6 +41,11 @@ const Course = ({ authUser, firebase, match }) => {
       title={courseDetails?.data?.title}
       isLoading={courseDetails.isLoading || courses.isLoading}
     >
+      <MoHelmet
+        title="Moskool - React frontend development courses"
+        description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
+        path={match.url}
+      />
       <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <LessonsList
@@ -52,23 +57,11 @@ const Course = ({ authUser, firebase, match }) => {
           />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          <>
-            <MoPageSubtitle
-              text={"Your Progress"}
-              fade={true}
-              margin="0px 0 36px"
-              width="100%"
-            ></MoPageSubtitle>
-            <MoProgressBar
-              authUser={authUser}
-              points={points}
-              progress={calculateProgress(
-                authUser,
-                points,
-                courses.data?.length
-              )}
-            />
-          </>
+          <MoProgressBar
+            authUser={authUser}
+            points={points}
+            progress={calculateProgress(authUser, points, courses.data?.length)}
+          />
         </Grid>
       </Grid>
     </MoPage>

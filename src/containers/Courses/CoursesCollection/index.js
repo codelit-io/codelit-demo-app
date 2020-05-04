@@ -8,8 +8,8 @@
  */
 
 import React from "react";
-import Lessons from "../../../components/Lessons";
-import useCollections from "../../../Hooks/useCollections";
+import Lessons from "components/Lessons";
+import useCollections from "Hooks/useCollections";
 
 const CoursesCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);

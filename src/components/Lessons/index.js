@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import LessonsList from "./LessonsList";
-import MoPage from "../shared/MoPage";
-import MoProgressBar from "../shared/MoProgressBar";
-import MoPageSubtitle from "../shared/MoPageSubtitle";
+import MoPage from "components/shared/MoPage";
+import MoProgressBar from "components/shared/MoProgressBar";
+import MoPageSubtitle from "components/shared/MoPageSubtitle";
 
 const Lessons = ({
   authUser,
@@ -33,14 +33,17 @@ const Lessons = ({
               match={match}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            <MoPageSubtitle
-              text={collectionDetails.isProgressBar && "Your Progress"}
-              fade={true}
-              margin="0px 0 36px"
-              width="100%"
-            ></MoPageSubtitle>
-            {collectionDetails.isProgressBar && (
+          {collectionDetails.isProgressBar && (
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              {"hello"}
+              <MoPageSubtitle
+                subtitle={"Your Progress"}
+                margin="0px 0 36px"
+                width="100%"
+              >
+                Your Progress
+              </MoPageSubtitle>
+
               <MoProgressBar
                 authUser={authUser}
                 points={points}
@@ -50,8 +53,8 @@ const Lessons = ({
                   questions?.length
                 )}
               />
-            )}
-          </Grid>
+            </Grid>
+          )}
         </Grid>
       )}
     </MoPage>

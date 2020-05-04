@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "constants/routes";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import Input from "@material-ui/core/Input";

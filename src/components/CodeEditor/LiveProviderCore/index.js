@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 
 import { addFocusOnEditor } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
-import { reactLiveTheme } from "../../../utils/reactLiveTheme";
+import { reactLiveTheme } from "utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
-import Headline from "../../shared/MoHeadline";
-import MoBrowserMockup from "../../shared/MoBrowserMockup";
+import Headline from "components/shared/MoHeadline";
+import MoBrowserMockup from "components/shared/MoBrowserMockup";
 import styles from "./styles";
 import Typist from "react-typist";
 import withStyles from "@material-ui/core/styles/withStyles";

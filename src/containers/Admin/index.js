@@ -1,17 +1,14 @@
 import React, { Suspense, lazy } from "react";
 
-import * as ROLES from "../../constants/roles";
-import * as ROUTES from "../../constants/routes";
+import * as ROLES from "constants/roles";
+import * as ROUTES from "constants/routes";
 import AdminNav from "./AdminNav";
 import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
-import MoPage from "../../components/shared/MoPage";
-import MoSpinner from "../../components/shared/MoSpinner";
-import { UserList, UserItem } from "../../components/Users";
-import {
-  withAuthorization,
-  withEmailVerification,
-} from "../../components/Session";
+import MoPage from "components/shared/MoPage";
+import MoSpinner from "components/shared/MoSpinner";
+import { UserList, UserItem } from "components/Users";
+import { withAuthorization, withEmailVerification } from "components/Session";
 
 const Collection = lazy(() => import("./Collection"));
 

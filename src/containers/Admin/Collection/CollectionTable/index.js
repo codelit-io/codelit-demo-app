@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
-import MoTextarea from "../../../../components/shared/MoTextarea";
+import MoTextarea from "components/shared/MoTextarea";
 
 const CollectionTable = ({
   questions,

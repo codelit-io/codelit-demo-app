@@ -4,10 +4,10 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
-import MoTitle from "../../MoTitle";
+import MoTitle from "components/shared/MoTitle";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoButton from "../../MoButton";
+import MoButton from "components/shared/MoButton";
 
 const MoSnackbarCore = ({
   isActive,

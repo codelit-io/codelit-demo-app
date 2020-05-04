@@ -8,11 +8,11 @@ import {
   AuthUserContext,
   withAuthorization,
   withEmailVerification,
-} from "../../components/Session";
-import { withFirebase } from "../../components/Firebase";
-import PasswordForgetForm from "../../components/PasswordForgot";
-import PasswordChangeForm from "../../components/PasswordChange";
-import MoPage from "../../components/shared/MoPage";
+} from "components/Session";
+import { withFirebase } from "components/Firebase";
+import PasswordForgetForm from "components/PasswordForgot";
+import PasswordChangeForm from "components/PasswordChange";
+import MoPage from "components/shared/MoPage";
 import Typography from "@material-ui/core/Typography";
 
 const SIGN_IN_METHODS = [
