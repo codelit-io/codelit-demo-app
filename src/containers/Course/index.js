@@ -19,7 +19,6 @@ import MoProgressBar from "components/shared/MoProgressBar";
 import MoHelmet from "components/shared/MoHelmet";
 
 const Course = ({ authUser, firebase, match }) => {
-  console.log(match);
   const courseDetails = useCollectionDetails(
     "courses",
     match.params.collection,
