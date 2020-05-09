@@ -1,28 +1,29 @@
 import React, { Suspense, lazy } from "react";
 
-import * as ROUTES from "../constants/routes";
+import * as ROUTES from "constants/routes";
 import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MoSpinner from "../components/shared/MoSpinner";
+import MoSpinner from "components/shared/MoSpinner";
 import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { withAuthentication } from "../components/Session";
+import { withAuthentication } from "components/Session";
 
-const Navigation = lazy(() => import("../components/Navigation"));
-const Account = lazy(() => import("../containers/Account"));
-const Admin = lazy(() => import("../containers/Admin"));
+const Navigation = lazy(() => import("components/Navigation"));
+const Account = lazy(() => import("containers/Account"));
+const AdminPage = lazy(() => import("containers/AdminPage"));
 const Container = lazy(() => import("@material-ui/core/Container"));
-const Home = lazy(() => import("../containers/Home"));
-const LandingPage = lazy(() => import("../containers/Landing"));
-const NotFound = lazy(() => import("../components/NotFound"));
-const PasswordForgot = lazy(() => import("../components/PasswordForgot"));
-const Playground = lazy(() => import("../containers/Playground"));
-const Course = lazy(() => import("../containers/Course"));
-const Courses = lazy(() => import("../containers/Courses"));
-const Question = lazy(() => import("../containers/Question"));
-const SignUp = lazy(() => import("../containers/SignUp"));
-const SignIn = lazy(() => import("../containers/SignIn"));
+const Home = lazy(() => import("containers/Home"));
+const LandingPage = lazy(() => import("containers/Landing"));
+const NotFound = lazy(() => import("components/NotFound"));
+const PasswordForgot = lazy(() => import("components/PasswordForgot"));
+const Playground = lazy(() => import("containers/Playground"));
+const Course = lazy(() => import("containers/Course"));
+const Courses = lazy(() => import("containers/Courses"));
+const Question = lazy(() => import("containers/Question"));
+const QuestionEditMode = lazy(() => import("containers/QuestionEditMode"));
+const SignUp = lazy(() => import("containers/SignUp"));
+const SignIn = lazy(() => import("containers/SignIn"));
 
 const App = (props) => (
   <ThemeProvider theme={theme}>
@@ -31,7 +32,7 @@ const App = (props) => (
         <Container style={{ height: "100%", maxHeight: "100%" }}>
           <Navigation {...props} />
           <Switch>
-            <Route path={ROUTES.ADMIN.path} component={Admin} />
+            <Route path={ROUTES.ADMIN.path} component={AdminPage} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
             <Route path={ROUTES.HOME.path} component={Home} />
             <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
@@ -54,6 +55,13 @@ const App = (props) => (
               exact
               path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
               component={Question}
+            />
+            <Route
+              exact
+              path={
+                ROUTES.COLLECTIONS.path + "/:collection/:questionId/isEditMode"
+              }
+              component={QuestionEditMode}
             />
             <Route component={NotFound} />
           </Switch>
