@@ -8,13 +8,30 @@ import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
 
-const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
-  return isLoading ? (
-    <MoSpinner isLoading={isLoading} color="primary" />
-  ) : (
+const MoPage = ({
+  classes,
+  children,
+  handleOnClick,
+  isAdmin,
+  isLoading,
+  subtitle,
+  title,
+}) => {
+  if (isLoading) {
+    return <MoSpinner isLoading={isLoading} color="primary" />;
+  }
+  return (
     <section className={classes.section}>
-      {title && <MoPageHeader title={title} />}
-      {subtitle && <MoPageSubtitle subtitle={subtitle} />}
+      <MoPageHeader
+        title={title}
+        handleOnClick={handleOnClick}
+        isAdmin={isAdmin}
+      />
+      <MoPageSubtitle
+        subtitle={subtitle}
+        handleOnClick={handleOnClick}
+        isAdmin={isAdmin}
+      />
       {children}
     </section>
   );
