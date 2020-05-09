@@ -6,8 +6,10 @@ const MoPageSubtitleEdit = ({
   children,
   subtitle,
   margin,
+  name,
   textAlign,
   width,
+  register,
 }) => {
   const styles = {
     text: {
@@ -28,9 +30,12 @@ const MoPageSubtitleEdit = ({
     <Fade in={true} timeout={{ enter: 800 }}>
       <div style={styles.container}>
         <input
-          style={styles.text}
           className="MuiTypography-h4"
+          name={name}
           placeholder={subtitle || children}
+          defaultValue={subtitle || children}
+          ref={register}
+          style={styles.text}
         />
       </div>
     </Fade>
