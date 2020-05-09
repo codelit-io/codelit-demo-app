@@ -1,5 +1,5 @@
 /**
- * !!Still Work in Progress!!
+ * 🚧 Still Work in Progress 🚧
  * Dialog shell with state to handle open and closing the Dialog
  * It takes an input of a component and renders it inside the Dialog
  *
