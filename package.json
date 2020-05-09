@@ -35,8 +35,14 @@
     "lintAndFix": "eslint './src/**/*.js' --fix",
     "snyk-protect": "snyk protect"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "yarn lintAndFix"
     }
   },
@@ -65,6 +71,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^25.2.1",
     "cross-env": "^7.0.2",
     "eslint-config-prettier": "^6.11.0",
