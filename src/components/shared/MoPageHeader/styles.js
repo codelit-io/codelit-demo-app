@@ -4,6 +4,11 @@ const styles = (theme) => ({
     textDecoration: "none",
     marginBottom: theme.padding?.md,
   },
+  titleHover: {
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
 });
 
 export default styles;
