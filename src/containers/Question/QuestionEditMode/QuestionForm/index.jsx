@@ -37,7 +37,6 @@ const QuestionForm = ({
 
 	const handleOnChange = useCallback(
 		(userAnswer) => {
-			console.log(userAnswer);
 			setFormData((preState) => ({ ...preState, question: userAnswer }));
 		},
 		[setFormData]

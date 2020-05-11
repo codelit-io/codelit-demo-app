@@ -23,16 +23,11 @@ exports[`Should render MoLinkButton 1`] = `
   <span
     className="MuiButton-label"
   >
+     
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root arrow"
+      className="MuiSvgIcon-root MoLinkButton-icon-2"
       focusable="false"
-      style={
-        Object {
-          "fontSize": "1em",
-          "paddingLeft": "4px",
-        }
-      }
       viewBox="0 0 24 24"
     >
       <path

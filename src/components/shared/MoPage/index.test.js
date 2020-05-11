@@ -1,16 +1,13 @@
 import React from "react";
 
-import { BrowserRouter as Router } from "react-router-dom";
 import MoPage from "./index.js";
-import renderer from "react-test-renderer";
+import ShallowRenderer from "react-test-renderer/shallow";
 
-it("Should render MoPage", () => {
-  const tree = renderer
-    .create(
-      <Router>
-        <MoPage />
-      </Router>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+const renderer = new ShallowRenderer();
+
+describe("MoPage Component", () => {
+  test("should match the snapshot", () => {
+    renderer.render(<MoPage />);
+    expect(renderer.getRenderOutput()).toMatchSnapshot();
+  });
 });
