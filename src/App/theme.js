@@ -9,6 +9,7 @@ const colors = {
     superLight: "#e0e3ea",
     light: "#a6a6a6",
     medium: "#424B54",
+    mediumDark: "#747474",
     dark: "#383c40",
     darkest: "#2b2b2b",
   },

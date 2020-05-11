@@ -14,10 +14,10 @@ const styles = (theme) => ({
     "&:hover arrow": {
       transform: "translateX(5px)",
     },
-    arrow: {
-      fontSize: "1.0rem",
-    },
   },
+  icon: {
+	  paddingLeft: "4px"
+  }
 });
 
 export default styles;

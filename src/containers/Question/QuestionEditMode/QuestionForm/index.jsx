@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
 
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -9,25 +9,44 @@ import { compose } from "recompose";
 import MoPageHeaderEdit from "../../../../components/shared/MoPageHeaderEdit";
 import MoSpinner from "../../../../components/shared/MoSpinner";
 import MoPageSubtitleEdit from "../../../../components/shared/MoPageSubtitleEdit";
+import { useCallback } from "react";
 
-const QuestionForm = ({ classes, children, isLoading, subtitle, title }) => {
-	const { control, handleSubmit, register } = useForm();
+const CodeEditor = lazy(() => import("components/CodeEditor"));
 
-	const [formData] = useState({
+const QuestionForm = ({
+	classes,
+	children,
+	isLoading,
+	question,
+	subtitle,
+	title,
+}) => {
+	const { handleSubmit, register } = useForm();
+
+	const [formData, setFormData] = useState({
 		label: "Master React Course",
 		desc:
 			"A series of questions to learn advanced courses in react such as React hooks and Context API",
 		id: "0",
+		question: "<h1>Hello World</h1>",
 	});
 
 	// const handleChange = (e) => {
 	//   setValue("AntdInput", e.target.value);
 	// }
 
+	const handleOnChange = useCallback(
+		(userAnswer) => {
+			console.log(userAnswer);
+			setFormData((preState) => ({ ...preState, question: userAnswer }));
+		},
+		[setFormData]
+	);
+
 	const onSubmit = (formData) => {
 		console.log(formData);
 		if (formData.label) {
-			const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
+			// const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
 			// const payload = {
 			//   ...formData,
 			//   id,
@@ -57,10 +76,20 @@ const QuestionForm = ({ classes, children, isLoading, subtitle, title }) => {
 						name="desc"
 					/>
 				)}
+				{question && (
+					<CodeEditor
+						handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+						sm={6}
+						md={6}
+						question={question}
+						name="trdt"
+					/>
+				)}
 				{children}
 				<Button type="submit" color="primary">
 					Save
 				</Button>
+				{formData.label}
 			</form>
 		</section>
 	);

@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoLinkButton = ({ classes, href, text }) => {
+const MoLinkButton = ({ classes, children, href, text }) => {
+  const hrefProp = href ? href : "#";
+
   return (
-    <Button component={Link} to={href ? href : "#"} className={classes.link}>
-      {text}
+    <Button component={Link} to={hrefProp} className={classes.link}>
+      {text} {children}
       <ArrowForwardIcon
-        className="arrow"
-        style={{ fontSize: "1em", paddingLeft: "4px" }}
+        className={classes.icon}
       />
     </Button>
   );

@@ -7,7 +7,7 @@
  * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
  */
 
-import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
+import React, { useCallback, useEffect, useState, Suspense } from "react";
 
 import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
@@ -15,8 +15,6 @@ import * as ROLES from "constants/roles";
 import MoSnackbar from "components/shared/MoSnackBar";
 import QuestionForm from "containers/Question/QuestionEditMode/QuestionForm";
 import withAuthorization from "components/Session/withAuthorization";
-
-const CodeEditor = lazy(() => import("components/CodeEditor"));
 
 const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -39,9 +37,9 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 	}, [history, match.params.collection, question.id]);
 
 	/* Checks if user code matches Pre made answer */
-	const handleOnChange = useCallback({
+	// const handleOnChange = useCallback({
 		
-	},[authUser, firebase, match, question]);
+	// },[authUser, firebase, match, question]);
 
 	useEffect(() => {
 		const id = match.params.questionId;
@@ -84,18 +82,11 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 				subtitle={question.label}
 				title={question.title}
 				isLoading={isLoading}
+				question={question}
 				isCard={false}
 			/>
 			{!isLoading && (
 				<>
-					{question && (
-						<CodeEditor
-							handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-							sm={6}
-							md={6}
-							question={question}
-						/>
-					)}
 					{snackbarProps && (
 						<MoSnackbar
 							isActive={isCorrect}

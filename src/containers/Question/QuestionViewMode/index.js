@@ -120,7 +120,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
       />
       <MoConfetti isActive={isCorrect} />
       <MoPage
-        isAdmin={!!authUser.roles[ROLES.ADMIN] && true}
+        isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
         subtitle={question.label}
         title={question.title}
         isLoading={isLoading}

@@ -20,6 +20,7 @@ const MoPageSubtitleEdit = ({
       margin: margin ? margin : "",
       width: "100%",
       border: "none",
+      outline: "none",
     },
     container: {
       width: width ? width : "",
