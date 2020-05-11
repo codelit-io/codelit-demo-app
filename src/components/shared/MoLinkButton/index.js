@@ -12,9 +12,7 @@ const MoLinkButton = ({ classes, children, href, text }) => {
   return (
     <Button component={Link} to={hrefProp} className={classes.link}>
       {text} {children}
-      <ArrowForwardIcon
-        className={classes.icon}
-      />
+      <ArrowForwardIcon className={classes.icon} />
     </Button>
   );
 };

@@ -16,8 +16,8 @@ const styles = (theme) => ({
     },
   },
   icon: {
-	  paddingLeft: "4px"
-  }
+    paddingLeft: "4px",
+  },
 });
 
 export default styles;
