@@ -8,15 +8,15 @@ export const ADMIN_COLLECTIONS = {
 };
 export const ADMIN_COLLECTIONS_EASY = {
   path: "/admin/collections/mo-easy",
-  title: "Collections Easy",
+  title: "Basic HTML",
 };
 export const ADMIN_COLLECTIONS_MID = {
   path: "/admin/collections/mo-medium",
-  title: "Collections Mid",
+  title: "Styling Components",
 };
 export const ADMIN_COLLECTIONS_PRO = {
   path: "/admin/collections/mo-pro",
-  title: "Collections Pro",
+  title: "Functional Components",
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
 
