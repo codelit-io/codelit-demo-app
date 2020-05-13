@@ -12,6 +12,7 @@ const AdminNav = ({ history }) => {
   return (
     <BottomNavigation
       value={value}
+      style={{height: "72px"}}
       onChange={(event, newValue) => {
         setValue(newValue);
         history.push(newValue);
