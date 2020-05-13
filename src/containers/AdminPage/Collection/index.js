@@ -66,7 +66,7 @@ const Collection = ({ firebase, history, match }) => {
   };
 
   const handleRowClick = (id) => {
-    history.push(ROUTES.COLLECTIONS.path + "/" + id);
+    history.push(ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id);
   };
 
   return (
