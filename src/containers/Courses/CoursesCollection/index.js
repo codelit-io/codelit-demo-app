@@ -12,23 +12,23 @@ import Lessons from "components/Lessons";
 import useCollections from "Hooks/useCollections";
 
 const CoursesCollection = ({ authUser, collection, firebase, match }) => {
-	const collections = useCollections(collection.path, firebase);
+  const collections = useCollections(collection.path, firebase);
 
-	if (!collections) {
-		return;
+  if (!collections) {
+    return;
   }
-  
-	return (
-		<Lessons
-			authUser={authUser}
-			isLoading={collections.isLoading}
-			match={match}
-			questions={collections.data}
-			collectionDetails={{
-				title: collection.title,
-				isProgressBar: collection.isProgressBar,
-			}}
-		/>
-	);
+
+  return (
+    <Lessons
+      authUser={authUser}
+      isLoading={collections.isLoading}
+      match={match}
+      questions={collections.data}
+      collectionDetails={{
+        title: collection.title,
+        isProgressBar: collection.isProgressBar,
+      }}
+    />
+  );
 };
 export default CoursesCollection;

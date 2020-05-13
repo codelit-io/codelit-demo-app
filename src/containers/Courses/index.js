@@ -16,25 +16,25 @@ import MoSpinner from "components/shared/MoSpinner";
 const CoursesCollection = lazy(() => import("./CoursesCollection"));
 
 const collection = {
-	path: "courses",
-	title: "Your Courses",
-	isProgressBar: false,
+  path: "courses",
+  title: "Your Courses",
+  isProgressBar: false,
 };
 
 const Courses = ({ authUser, firebase, match }) => (
-	<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-		<MoHelmet
-			title="Moskool - React frontend development courses"
-			description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
-			path={match.url}
-		/>
-		<CoursesCollection
-			authUser={authUser}
-			collection={collection}
-			firebase={firebase}
-			match={match}
-		/>
-	</Suspense>
+  <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+    <MoHelmet
+      title="Moskool - React frontend development courses"
+      description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
+      path={match.url}
+    />
+    <CoursesCollection
+      authUser={authUser}
+      collection={collection}
+      firebase={firebase}
+      match={match}
+    />
+  </Suspense>
 );
 
 export default withAuthentication(Courses);
