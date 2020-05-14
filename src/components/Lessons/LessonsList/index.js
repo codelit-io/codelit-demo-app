@@ -1,6 +1,7 @@
 import React from "react";
 
 import * as ROLES from "constants/roles";
+import * as ROUTES from "constants/routes";
 import LessonCategory from "./LessonCategory";
 import LessonCard from "./LessonCard";
 import NewLessonCard from "./NewLessonCard";
@@ -27,7 +28,7 @@ const LessonsList = ({ authUser, match, url, questions, points }) => {
           <>
             <LessonCategory category={question?.category} index={index} />
             {authUser?.roles[ROLES.ADMIN] && (
-              <NewLessonCard url={`${match.url}/new`} />
+              <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
             )}
           </>
         )}
