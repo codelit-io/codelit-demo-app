@@ -12,10 +12,10 @@ import React, { useCallback, useEffect, useState, Suspense } from "react";
 import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
-import MoSnackbar from "components/shared/MoSnackBar";
-import MoSpinner from "components/shared/MoSpinner";
+import MoSnackbar from "components/library/MoSnackBar";
+import MoSpinner from "components/library/MoSpinner";
 import QuestionForm from "containers/Question/QuestionEditMode/QuestionForm";
-import withAuthorization from "components/Session/withAuthorization";
+import withAuthorization from "components/shared/Session/withAuthorization";
 
 const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
