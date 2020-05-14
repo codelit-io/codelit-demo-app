@@ -8,7 +8,7 @@
  */
 
 import React from "react";
-import Lessons from "components/Lessons";
+import Lessons from "components/shared/Lessons";
 import useCollections from "hooks/useCollections";
 
 const CoursesCollection = ({ authUser, collection, firebase, match }) => {
