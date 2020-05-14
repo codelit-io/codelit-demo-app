@@ -1,4 +1,4 @@
-const question = () => {
+export const question = () => {
 	return {
 		answer: "<button> I am a Button </button>",
 		language: "jsx",
