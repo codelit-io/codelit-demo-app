@@ -1,8 +1,8 @@
 import React from "react";
 import { compose } from "recompose";
 
-import { withAuthorization, withEmailVerification } from "components/Session";
-import Messages from "components/Messages";
+import { withAuthorization, withEmailVerification } from "components/shared/Session";
+import Messages from "components/shared/Messages";
 
 const HomePage = () => <Messages />;
 
