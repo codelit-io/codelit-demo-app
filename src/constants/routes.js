@@ -47,3 +47,8 @@ export const SIGN_UP = { path: "/signup", title: "Email Sign up" };
 export const PASSWORD_FORGET = { path: "/pw-forget", title: "Forgot Password" };
 export const PLAYGROUND = { path: "/playgound", title: "React Playground" };
 export const NOT_FOUND = { path: "/not_found", title: "Page Not Found" };
+
+export const IS_EDIT_MODE = {
+  path: "new/isEditMode",
+  title: "Add a new course",
+};
