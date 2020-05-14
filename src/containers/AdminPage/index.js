@@ -5,10 +5,10 @@ import * as ROUTES from "constants/routes";
 import AdminNav from "./AdminNav";
 import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
-import MoPage from "components/shared/MoPage";
-import MoSpinner from "components/shared/MoSpinner";
-import { UserList, UserItem } from "components/Users";
-import { withAuthorization, withEmailVerification } from "components/Session";
+import MoPage from "components/library/MoPage";
+import MoSpinner from "components/library/MoSpinner";
+import { UserList, UserItem } from "components/shared/Users";
+import { withAuthorization, withEmailVerification } from "components/shared/Session";
 
 const Collection = lazy(() => import("./Collection"));
 
