@@ -15,14 +15,14 @@ import * as ROLES from "constants/roles";
 import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Content from "./Content";
-import MoSnackbar from "components/shared/MoSnackBar";
-import MoPage from "components/shared/MoPage";
-import withAuthentication from "components/Session/withAuthentication";
-import MoHelmet from "components/shared/MoHelmet";
-import MoSpinner from "components/shared/MoSpinner";
+import MoSnackbar from "components/library/MoSnackBar";
+import MoPage from "components/library/MoPage";
+import withAuthentication from "components/shared/Session/withAuthentication";
+import MoHelmet from "components/library/MoHelmet";
+import MoSpinner from "components/library/MoSpinner";
 
-const CodeEditor = lazy(() => import("components/CodeEditor"));
-const MoConfetti = lazy(() => import("components/shared/MoConfetti"));
+const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
+const MoConfetti = lazy(() => import("components/library/MoConfetti"));
 
 const QuestionViewMode = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
