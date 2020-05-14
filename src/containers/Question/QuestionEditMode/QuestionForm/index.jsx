@@ -6,12 +6,12 @@ import styles from "./styles";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
-import MoPageHeaderEdit from "components/shared/MoPageHeaderEdit";
-import MoSpinner from "components/shared/MoSpinner";
-import MoPageSubtitleEdit from "components/shared/MoPageSubtitleEdit";
+import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
+import MoSpinner from "components/library/MoSpinner";
+import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
 
-const CodeEditor = lazy(() => import("components/CodeEditor"));
+const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
 const QuestionForm = ({
 	classes,
