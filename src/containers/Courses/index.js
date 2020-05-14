@@ -9,9 +9,9 @@
 
 import React, { lazy, Suspense } from "react";
 
-import { withAuthentication } from "components/Session";
-import MoHelmet from "components/shared/MoHelmet";
-import MoSpinner from "components/shared/MoSpinner";
+import { withAuthentication } from "components/shared/Session";
+import MoHelmet from "components/library/MoHelmet";
+import MoSpinner from "components/library/MoSpinner";
 
 const CoursesCollection = lazy(() => import("./CoursesCollection"));
 
