@@ -8,15 +8,15 @@
 
 import React, { useEffect, useState } from "react";
 
-import { withAuthentication } from "components/Session";
+import { withAuthentication } from "components/shared/Session";
 import Grid from "@material-ui/core/Grid";
-import LessonsList from "components/Lessons/LessonsList";
+import LessonsList from "components/shared/Lessons/LessonsList";
 import calculateProgress from "./calculateProgress";
-import MoPage from "components/shared/MoPage";
+import MoPage from "components/library/MoPage";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import MoProgressBar from "components/shared/MoProgressBar";
-import MoHelmet from "components/shared/MoHelmet";
+import MoProgressBar from "components/library/MoProgressBar";
+import MoHelmet from "components/library/MoHelmet";
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
