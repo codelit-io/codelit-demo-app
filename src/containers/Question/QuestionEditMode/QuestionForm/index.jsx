@@ -6,9 +6,9 @@ import styles from "./styles";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
-import MoPageHeaderEdit from "../../../../components/shared/MoPageHeaderEdit";
-import MoSpinner from "../../../../components/shared/MoSpinner";
-import MoPageSubtitleEdit from "../../../../components/shared/MoPageSubtitleEdit";
+import MoPageHeaderEdit from "components/shared/MoPageHeaderEdit";
+import MoSpinner from "components/shared/MoSpinner";
+import MoPageSubtitleEdit from "components/shared/MoPageSubtitleEdit";
 import { useCallback } from "react";
 
 const CodeEditor = lazy(() => import("components/CodeEditor"));
@@ -63,8 +63,8 @@ const QuestionForm = ({
 	}
 
 	return (
-		<section className={classes.section}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<section className={classes.section}>
 				{title && (
 					<MoPageHeaderEdit title={title} register={register} name="label" />
 				)}
@@ -75,6 +75,8 @@ const QuestionForm = ({
 						name="desc"
 					/>
 				)}
+			</section>
+			<section>
 				{question && (
 					<CodeEditor
 						handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
@@ -84,13 +86,15 @@ const QuestionForm = ({
 						name="trdt"
 					/>
 				)}
-				{children}
+			</section>
+			<section>{children}</section>
+			<section>
 				<Button type="submit" color="primary">
 					Save
 				</Button>
 				{formData.label}
-			</form>
-		</section>
+			</section>
+		</form>
 	);
 };
 
