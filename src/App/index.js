@@ -4,19 +4,19 @@ import * as ROUTES from "constants/routes";
 import * as Sentry from "@sentry/browser";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MoSpinner from "components/shared/MoSpinner";
+import MoSpinner from "components/library/MoSpinner";
 import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { withAuthentication } from "components/Session";
+import { withAuthentication } from "components/shared/Session";
 
-const Navigation = lazy(() => import("components/Navigation"));
+const Navigation = lazy(() => import("components/shared/Navigation"));
 const Account = lazy(() => import("containers/Account"));
 const AdminPage = lazy(() => import("containers/AdminPage"));
 const Container = lazy(() => import("@material-ui/core/Container"));
 const Home = lazy(() => import("containers/Home"));
 const LandingPage = lazy(() => import("containers/Landing"));
-const NotFound = lazy(() => import("components/NotFound"));
-const PasswordForgot = lazy(() => import("components/PasswordForgot"));
+const NotFound = lazy(() => import("components/shared/NotFound"));
+const PasswordForgot = lazy(() => import("components/shared/PasswordForgot"));
 const Playground = lazy(() => import("containers/Playground"));
 const Course = lazy(() => import("containers/Course"));
 const Courses = lazy(() => import("containers/Courses"));
