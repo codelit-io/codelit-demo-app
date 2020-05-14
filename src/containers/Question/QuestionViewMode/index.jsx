@@ -19,6 +19,7 @@ import MoSnackbar from "components/shared/MoSnackBar";
 import MoPage from "components/shared/MoPage";
 import withAuthentication from "components/Session/withAuthentication";
 import MoHelmet from "components/shared/MoHelmet";
+import MoSpinner from "components/shared/MoSpinner";
 
 const CodeEditor = lazy(() => import("components/CodeEditor"));
 const MoConfetti = lazy(() => import("components/shared/MoConfetti"));
@@ -112,7 +113,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
   }, [firebase, match]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
       <MoHelmet
         title="Moskool - React frontend development learning questions"
         description="MoSkool - Play Free React learning questions and master all aspects of frontend development without any fees"
@@ -128,8 +129,6 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
         handleOnClick={() => handleOnClick()}
       />
       {question.content && <Content content={question.content} />}
-      {!isLoading && (
-        <>
           {question && (
             <CodeEditor
               handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
@@ -146,8 +145,6 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
               triggerNextQuestion={() => triggerNextQuestion()}
             />
           )}
-        </>
-      )}
     </Suspense>
   );
 };
