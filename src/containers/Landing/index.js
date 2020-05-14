@@ -8,16 +8,16 @@ import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import MoBrowserMockup from "components/shared/MoBrowserMockup";
-import MoLinkButton from "components/shared/MoLinkButton";
-import MoPageHeader from "components/shared/MoPageHeader";
-import MoPageSubtitle from "components/shared/MoPageSubtitle";
-import MoHelmet from "components/shared/MoHelmet";
+import MoBrowserMockup from "components/library/MoBrowserMockup";
+import MoLinkButton from "components/library/MoLinkButton";
+import MoPageHeader from "components/library/MoPageHeader";
+import MoPageSubtitle from "components/library/MoPageSubtitle";
+import MoHelmet from "components/library/MoHelmet";
 import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const Footer = lazy(() => import("components/Footer"));
+const Footer = lazy(() => import("components/shared/Footer"));
 const Typist = lazy(() => import("react-typist"));
 
 const LandingPage = ({ classes }) => {
