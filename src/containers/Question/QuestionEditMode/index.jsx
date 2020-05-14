@@ -13,6 +13,7 @@ import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/shared/MoSnackBar";
+import MoSpinner from "components/shared/MoSpinner";
 import QuestionForm from "containers/Question/QuestionEditMode/QuestionForm";
 import withAuthorization from "components/Session/withAuthorization";
 
@@ -38,7 +39,7 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 
 	/* Checks if user code matches Pre made answer */
 	// const handleOnChange = useCallback({
-		
+
 	// },[authUser, firebase, match, question]);
 
 	useEffect(() => {
@@ -76,8 +77,12 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 		};
 	}, [firebase, match]);
 
+	if (!match.params) {
+		return;
+	}
+
 	return (
-		<Suspense>
+		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
 			<QuestionForm
 				subtitle={question.label}
 				title={question.title}
