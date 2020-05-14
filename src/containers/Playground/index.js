@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import CodeEditor from "components/CodeEditor";
-import MoHelmet from "components/shared/MoHelmet";
+import CodeEditor from "components/shared/CodeEditor";
+import MoHelmet from "components/library/MoHelmet";
 
 const Playground = () => {
   const initialState = {
