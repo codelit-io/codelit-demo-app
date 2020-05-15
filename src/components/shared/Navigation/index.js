@@ -8,7 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import { compose } from "recompose";
 import Grid from "@material-ui/core/Grid";
 import MoAvatar from "components/library/MoAvatar";
-import MoSkoolLogo from "../MoSkoolLogo";
+import MoSkoolLogo from "../../library/MoSkoolLogo";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";

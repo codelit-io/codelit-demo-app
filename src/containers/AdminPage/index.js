@@ -7,8 +7,12 @@ import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
-import { UserList, UserItem } from "components/shared/Users";
-import { withAuthorization, withEmailVerification } from "components/shared/Session";
+import { UserList } from "components/shared/Users/UserList";
+import { UserItem } from "components/shared/Users/UserItem";
+import {
+  withAuthorization,
+  withEmailVerification,
+} from "components/shared/Session";
 
 const Collection = lazy(() => import("./Collection"));
 
