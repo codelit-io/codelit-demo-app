@@ -7,8 +7,8 @@ import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
-import { UserList } from "components/shared/Users/UserList";
-import { UserItem } from "components/shared/Users/UserItem";
+import { UserList } from "components/shared/Users";
+import { UserItem } from "components/shared/Users";
 import {
   withAuthorization,
   withEmailVerification,
