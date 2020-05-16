@@ -8,7 +8,7 @@ const styles = (theme) => ({
     overflow: "visible",
   },
   authorAvatar: {
-    border: `2px solid ${theme.green.light}`,
+    border: `2px solid ${theme.green.medium}`,
     overflow: "visible",
   },
   menu: {
