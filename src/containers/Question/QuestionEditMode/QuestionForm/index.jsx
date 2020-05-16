@@ -49,7 +49,7 @@ const QuestionForm = ({
 			// const payload = {
 			//   ...formData,
 			//   id,
-			//   useId: authUser.uid,
+			//   userId: authUser.uid,
 			//   createdAt: firebase.fieldValue.serverTimestamp(),
 			// };
 			// firebase.collection("courses").doc(id).set(payload, { merge: true });
