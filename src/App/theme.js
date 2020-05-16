@@ -15,6 +15,7 @@ const colors = {
   },
   green: {
     light: "#41D3BD",
+    medium: "#99bb33",
     dark: "#157A6E",
     darkest: "",
   },
@@ -90,6 +91,14 @@ let theme = createMuiTheme({
     fontFamily: fontFamily.RobotoMono,
   },
   fontFamily: fontFamily.RobotoMono,
+  palette: {
+    primary: {
+      main: colors.blue["medium"],
+    },
+    secondary: {
+      main: colors.green["medium"],
+    },
+  },
 });
 
 const fontOptions = {
