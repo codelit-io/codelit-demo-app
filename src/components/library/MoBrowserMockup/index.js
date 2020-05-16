@@ -1,5 +1,6 @@
 import React from "react";
 
+import MoLinearProgress from "components/library/MoLinearProgress";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -9,6 +10,7 @@ const MoBrowserMockup = ({
   fileType,
   isEditor,
   isBrowser,
+  matchPercent,
 }) => (
   <>
     {isEditor && (
@@ -18,6 +20,7 @@ const MoBrowserMockup = ({
           <span className={classes.font}>{`index.${fileType}`}</span>
         </div>
         <div className={classes.editor}>{children}</div>
+        {matchPercent && <MoLinearProgress percent={matchPercent} />}
       </div>
     )}
     {isBrowser && (
