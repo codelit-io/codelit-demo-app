@@ -61,13 +61,13 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				userAnswerTrimmed,
 				correctAnswerTrimmed
 			);
-			setMatchPercent(cosineSimilarityMatchPercent || 0.1);
+			setMatchPercent((cosineSimilarityMatchPercent * 100) || 10);
 
 			if (
 				// if user answer equals the stored answer in db
 				userAnswerTrimmed === correctAnswerTrimmed ||
 				// or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
-				cosineSimilarityMatchPercent >= 0.995
+				cosineSimilarityMatchPercent >= 99.5
 			) {
 				setQuestion({ ...question, isCorrect: true, question: userAnswer });
 				/* Awards users a point based on level completion */
