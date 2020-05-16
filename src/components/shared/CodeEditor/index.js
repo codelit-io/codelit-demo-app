@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 
 const LiveProviderCore = lazy(() => import("./LiveProviderCore"));
 
-const CodeEditor = ({ handleOnChange, md, sm, question }) => {
+const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
   const [state, setState] = useState(question);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const CodeEditor = ({ handleOnChange, md, sm, question }) => {
           handleOnChange={handleOnChange}
           md={md}
           sm={sm}
+          matchPercent={matchPercent}
         />
       </Suspense>
     </Grid>
