@@ -7,11 +7,19 @@ import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
 import Headline from "components/library/MoHeadline";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
+import MoLinearProgress from "components/library/MoLinearProgress";
 import styles from "./styles";
 import Typist from "react-typist";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
+const LiveProviderCore = ({
+  classes,
+  handleOnChange,
+  md,
+  sm,
+  matchPercent,
+  question,
+}) => {
   useEffect(() => {
     addFocusOnEditor();
   }, [question]);
@@ -52,6 +60,9 @@ const LiveProviderCore = ({ classes, handleOnChange, md, sm, question }) => {
                 >
                   {question.answer}
                 </Typist>
+              )}
+              {matchPercent && (
+                <MoLinearProgress percent={matchPercent * 100} />
               )}
             </MoBrowserMockup>
           </div>
