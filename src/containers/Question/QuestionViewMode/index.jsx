@@ -20,132 +20,149 @@ import MoPage from "components/library/MoPage";
 import withAuthentication from "components/shared/Session/withAuthentication";
 import MoHelmet from "components/library/MoHelmet";
 import MoSpinner from "components/library/MoSpinner";
-
+import stringSimilarity from "string-similarity";
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 const MoConfetti = lazy(() => import("components/library/MoConfetti"));
 
 const QuestionViewMode = ({ authUser, firebase, history, match }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [question, setQuestion] = useState({});
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [snackbarProps, setSnackbarProps] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [question, setQuestion] = useState({});
+	const [isCorrect, setIsCorrect] = useState(false);
+	const [snackbarProps, setSnackbarProps] = useState(null);
+	const [matchPercent, setMatchPercent] = useState();
 
-  const triggerNextQuestion = useCallback(() => {
-    const id = Number(question.id) + 1;
-    /* Clear questions */
-    setQuestion({});
+	const triggerNextQuestion = useCallback(() => {
+		const id = Number(question.id) + 1;
+		/* Clear questions */
+		setQuestion({});
 
-    setIsCorrect(false);
-    /* A delay before navigating to a new page */
-    setTimeout(() => {
-      history.push(
-        ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
-      );
-    }, 600);
-  }, [history, match.params.collection, question.id]);
+		/* Clear matchPercent */
+		setMatchPercent();
 
-  /* Checks if user code matches Pre made answer */
-  const handleOnChange = useCallback(
-    (userAnswer) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
-      if (
-        userAnswer.replace(/\s/g, "") === question.answer.replace(/\s/g, "")
-      ) {
-        setQuestion({ ...question, isCorrect: true, question: userAnswer });
-        /* Awards users a point based on level completion */
+		setIsCorrect(false);
+		/* A delay before navigating to a new page */
+		setTimeout(() => {
+			history.push(
+				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
+			);
+		}, 600);
+	}, [history, match.params.collection, question.id]);
 
-        awardPlayerPoints(
-          authUser,
-          firebase,
-          question.id,
-          match.params.collection
-        );
-        setIsCorrect(true);
-        setSnackbarProps({
-          title: "Hooray!",
-          buttonText: "Keep Going",
-          buttonIcon: <ArrowForwardIcon />,
-        });
-      } else {
-        setQuestion({ ...question, question: userAnswer });
-      }
-    },
-    [authUser, firebase, match, question]
-  );
-  /* Handler to send user to editMode page */
-  const handleOnClick = useCallback(() => {
-    if (authUser.roles[ROLES.ADMIN]) {
-      history.push(`${question.id}/isEditMode`);
-    }
-  }, [authUser, history, question.id]);
+	/* Checks if user code matches Pre made answer */
+	const handleOnChange = useCallback(
+		(userAnswer) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
 
-  useEffect(() => {
-    const id = match.params.questionId;
-    setIsLoading(true);
-    const unsubscribe = firebase
-      .getCollectionById(
-        "courses/" + match.params.collection + "/questions",
-        id
-      )
-      .onSnapshot((snapshot) => {
-        if (snapshot.size) {
-          let question = [];
-          snapshot.forEach((doc) =>
-            question.push({ ...doc.data(), uid: doc.id })
-          );
-          setQuestion(question[0]);
-        } else {
-          setQuestion({
-            label: "You have finished all questions ✅",
-            question: "<h1>Nice Job 🎉</h1>",
-            language: "html",
-          });
-        }
-        setIsLoading(false);
-      });
+			const userAnswerTrimmed = userAnswer.replace(/\s/g, "");
+			const correctAnswerTrimmed = question.answer.replace(/\s/g, "");
+			const cosineSimilarityMatchPercent = stringSimilarity.compareTwoStrings(
+				userAnswerTrimmed,
+				correctAnswerTrimmed
+			);
+			setMatchPercent(cosineSimilarityMatchPercent || 0.1);
 
-    return () => {
-      unsubscribe();
-      setSnackbarProps(null);
-    };
-  }, [firebase, match]);
+			if (
+				// if user answer equals the stored answer in db
+				userAnswerTrimmed === correctAnswerTrimmed ||
+				// or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
+				cosineSimilarityMatchPercent >= 0.995
+			) {
+				setQuestion({ ...question, isCorrect: true, question: userAnswer });
+				/* Awards users a point based on level completion */
 
-  return (
-    <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-      <MoHelmet
-        title="Moskool - React frontend development learning questions"
-        description="MoSkool - Play Free React learning questions and master all aspects of frontend development without any fees"
-        path={match.url}
-      />
-      <MoConfetti isActive={isCorrect} />
-      <MoPage
-        isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
-        subtitle={question.label}
-        title={question.title}
-        isLoading={isLoading}
-        isCard={false}
-        handleOnClick={() => handleOnClick()}
-      />
-      {question.content && <Content content={question.content} />}
-          {question && (
-            <CodeEditor
-              handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-              sm={6}
-              md={6}
-              question={question}
-            />
-          )}
-          {snackbarProps && (
-            <MoSnackbar
-              isActive={isCorrect}
-              authUser={authUser}
-              snackbarProps={snackbarProps}
-              triggerNextQuestion={() => triggerNextQuestion()}
-            />
-          )}
-    </Suspense>
-  );
+				awardPlayerPoints(
+					authUser,
+					firebase,
+					question.id,
+					match.params.collection
+				);
+				setIsCorrect(true);
+				setSnackbarProps({
+					title: "Hooray!",
+					buttonText: "Keep Going",
+					buttonIcon: <ArrowForwardIcon />,
+				});
+			} else {
+				setQuestion({ ...question, question: userAnswer });
+			}
+		},
+		[authUser, firebase, match, question]
+	);
+	/* Handler to send user to editMode page */
+	const handleOnClick = useCallback(() => {
+		if (authUser.roles[ROLES.ADMIN]) {
+			history.push(`${question.id}/isEditMode`);
+		}
+	}, [authUser, history, question.id]);
+
+	useEffect(() => {
+		const id = match.params.questionId;
+		setIsLoading(true);
+		const unsubscribe = firebase
+			.getCollectionById(
+				"courses/" + match.params.collection + "/questions",
+				id
+			)
+			.onSnapshot((snapshot) => {
+				if (snapshot.size) {
+					let question = [];
+					snapshot.forEach((doc) =>
+						question.push({ ...doc.data(), uid: doc.id })
+					);
+					setQuestion(question[0]);
+				} else {
+					setQuestion({
+						label: "You have finished all questions ✅",
+						question: "<h1>Nice Job 🎉</h1>",
+						language: "html",
+					});
+				}
+				setIsLoading(false);
+			});
+
+		return () => {
+			unsubscribe();
+			setSnackbarProps(null);
+		};
+	}, [firebase, match]);
+
+	return (
+		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+			<MoHelmet
+				title="Moskool - React frontend development learning questions"
+				description="MoSkool - Play Free React learning questions and master all aspects of frontend development without any fees"
+				path={match.url}
+			/>
+			<MoConfetti isActive={isCorrect} />
+			<MoPage
+				isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
+				subtitle={question.label}
+				title={question.title}
+				isLoading={isLoading}
+				isCard={false}
+				handleOnClick={() => handleOnClick()}
+			/>
+			{question.content && <Content content={question.content} />}
+			{question && (
+				<CodeEditor
+					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+					sm={6}
+					md={6}
+          question={question}
+          matchPercent={matchPercent}
+				/>
+			)}
+			{snackbarProps && (
+				<MoSnackbar
+					isActive={isCorrect}
+					authUser={authUser}
+					snackbarProps={snackbarProps}
+					triggerNextQuestion={() => triggerNextQuestion()}
+				/>
+			)}
+		</Suspense>
+	);
 };
 export default withAuthentication(QuestionViewMode);
