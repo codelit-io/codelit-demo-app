@@ -13,7 +13,7 @@ const MoLinearProgress = ({ percent }) => (
       variant="buffer"
       value={percent}
       valueBuffer={10}
-      color="primary"
+      color="secondary"
     />
   </Fade>
 );
