@@ -1,9 +1,18 @@
+/**
+ * MoPage
+ * Default page used through out the app, used to wrap elements with page like styles
+ * provides a heading title and a subtitle for the page with loading spinner
+ * @param {Boolean} isAdmin - based on user role
+ * @param {Boolean} isLoading - loading or not
+ * @param {String} title - Title for the page
+ * @param {String} subtitle - Subtitle for the page
+ * @return {<Dialog></Dialog>}
+ */
+
 import React from "react";
 
 import styles from "./styles";
-import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { compose } from "recompose";
 import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
@@ -37,4 +46,4 @@ const MoPage = ({
   );
 };
 
-export default compose(withRouter, withStyles(styles))(MoPage);
+export default withStyles(styles)(MoPage);
