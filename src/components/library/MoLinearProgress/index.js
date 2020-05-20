@@ -4,7 +4,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 /**
  *
- * @param {percent} percent - this will be in the format 0.x
+ * @param {number} percent - this will be in the format 0.x
  */
 
 const MoLinearProgress = ({ percent }) => (
