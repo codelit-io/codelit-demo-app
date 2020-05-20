@@ -61,13 +61,13 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				userAnswerTrimmed,
 				correctAnswerTrimmed
 			);
-			setMatchPercent((cosineSimilarityMatchPercent * 100) || 10);
+			setMatchPercent(cosineSimilarityMatchPercent * 100 || 10);
 
 			if (
 				// if user answer equals the stored answer in db
 				userAnswerTrimmed === correctAnswerTrimmed ||
 				// or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
-				cosineSimilarityMatchPercent >= 99.5
+				cosineSimilarityMatchPercent >= 0.99
 			) {
 				setQuestion({ ...question, isCorrect: true, question: userAnswer });
 				/* Awards users a point based on level completion */
@@ -150,8 +150,8 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
 					sm={6}
 					md={6}
-          question={question}
-          matchPercent={matchPercent}
+					question={question}
+					matchPercent={matchPercent}
 				/>
 			)}
 			{snackbarProps && (
