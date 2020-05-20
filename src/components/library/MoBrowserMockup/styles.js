@@ -2,7 +2,6 @@ const styles = (theme) => ({
   editor: {
     ...theme.editorFont,
     [theme.breakpoints.up(600)]: {
-      width: "380",
       marginLeft: "auto",
       marginRight: "auto",
     },
@@ -10,10 +9,10 @@ const styles = (theme) => ({
       fontSize: "14px",
       outline: "none",
     },
-    padding: "20px",
+    padding: "1.25rem",
   },
   preview: {
-    padding: "20px",
+    padding: "1.25rem",
     margin: "0 auto",
     display: "flex",
   },
