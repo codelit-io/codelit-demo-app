@@ -96,7 +96,7 @@ const LandingPage = ({ classes }) => {
                 <Typography variant="body1" gutterBottom>
                   Preview in real-time
                 </Typography>
-                <MoBrowserMockup isBrowser={true}>
+                <MoBrowserMockup isEditor={false}>
                   <Fade
                     in={isPreview}
                     mountOnEnter
