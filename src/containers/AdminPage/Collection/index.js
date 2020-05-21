@@ -21,9 +21,21 @@ const Collection = ({ firebase, history, match }) => {
       .onSnapshot((snapshot) => {
         if (snapshot.size) {
           let questions = [];
-          snapshot.forEach((doc) =>
-            questions.push({ ...doc.data(), uid: doc.id })
-          );
+          snapshot.forEach((doc) => {
+            let data = { ...doc.data() };
+            let question;
+            try {
+              /* Questions can contain special JSON characters that needs to be parsed */
+              question = JSON.parse(data.question);
+            } catch {
+              console.log("String can't be parsed");
+            }
+            questions.push({
+              ...doc.data(),
+              uid: doc.id,
+              question,
+            });
+          });
           setQuestions(questions);
         } else {
           setQuestions(null);
@@ -41,6 +53,7 @@ const Collection = ({ firebase, history, match }) => {
         id: Number(event.id),
         userId: authUser.uid,
         createdAt: firebase.fieldValue.serverTimestamp(),
+        question: escapeCode(event.question),
       });
     }
   };
@@ -49,13 +62,13 @@ const Collection = ({ firebase, history, match }) => {
     if (!match.params.collection) {
       return;
     }
-
     firebase
       .doc("courses/" + match.params.collection + "/questions", event.uid)
       .update({
         ...event,
         id: Number(event.id),
         editedAt: firebase.fieldValue.serverTimestamp(),
+        question: escapeCode(event.question),
       });
   };
 
@@ -69,6 +82,10 @@ const Collection = ({ firebase, history, match }) => {
     history.push(
       ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
     );
+  };
+
+  const escapeCode = (code) => {
+    return JSON.stringify(code, null, 2);
   };
 
   return (
