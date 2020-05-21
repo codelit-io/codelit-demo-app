@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 import MoTextarea from "components/library/MoTextarea";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const CollectionTable = ({
   questions,
   onEditQuestion,
   onRemoveQuestion,
   onCreateQuestion,
-  handleRowClick,
+  // handleRowClick,
 }) => {
   const [state, setState] = useState(questions);
   const [columns] = useState([
@@ -29,6 +31,21 @@ const CollectionTable = ({
     },
     { title: "Title", field: "title" },
     { title: "Subtitle", field: "subtitle" },
+    {
+      title: "Match %",
+      field: "matchPercent",
+      editComponent: (props) => (
+        <Select
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        >
+          <MenuItem value={0.1}>100%</MenuItem>
+          <MenuItem value={0.96}>96%</MenuItem>
+          <MenuItem value={0.92}>94%</MenuItem>
+          <MenuItem value={0.92}>92%</MenuItem>
+        </Select>
+      ),
+    },
     { title: "Language", field: "language" },
     { title: "Category", field: "category" },
     {
@@ -42,7 +59,8 @@ const CollectionTable = ({
     questions &&
     state && (
       <MaterialTable
-        onRowClick={(event, rowData) => handleRowClick(rowData.id)}
+        // Todo move to actions array
+        // onRowClick={(event, rowData) => handleRowClick(rowData.id)}
         options={{ pageSize: 10, pageSizeOptions: [10, 20, 30, 40, 50] }}
         title="Questions"
         columns={columns}
