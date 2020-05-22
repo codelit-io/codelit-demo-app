@@ -20,12 +20,7 @@ const PasswordForgot = lazy(() => import("components/shared/PasswordForgot"));
 const Playground = lazy(() => import("containers/Playground"));
 const Course = lazy(() => import("containers/Course"));
 const Courses = lazy(() => import("containers/Courses"));
-const QuestionViewMode = lazy(() =>
-  import("containers/Question/QuestionViewMode")
-);
-const QuestionEditMode = lazy(() =>
-  import("containers/Question/QuestionEditMode")
-);
+const Question = lazy(() => import("containers/Question"));
 const SignUp = lazy(() => import("containers/SignUp"));
 const SignIn = lazy(() => import("containers/SignIn"));
 
@@ -56,16 +51,8 @@ const App = (props) => (
               component={Course}
             />
             <Route
-              exact
               path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-              component={QuestionViewMode}
-            />
-            <Route
-              exact
-              path={
-                ROUTES.COLLECTIONS.path + "/:collection/:questionId/isEditMode"
-              }
-              component={QuestionEditMode}
+              component={Question}
             />
             <Route component={NotFound} />
           </Switch>
