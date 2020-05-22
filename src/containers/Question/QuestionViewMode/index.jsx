@@ -14,6 +14,7 @@ import * as ROLES from "constants/roles";
 
 import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import Content from "./Content";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
@@ -21,12 +22,13 @@ import withAuthentication from "components/shared/Session/withAuthentication";
 import MoHelmet from "components/library/MoHelmet";
 import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
+
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 const MoConfetti = lazy(() => import("components/library/MoConfetti"));
 
 const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [question, setQuestion] = useState({});
+	const [question, setQuestion] = useState(null);
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [snackbarProps, setSnackbarProps] = useState(null);
 	const [matchPercent, setMatchPercent] = useState();
@@ -46,7 +48,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
 			);
 		}, 600);
-	}, [history, match.params.collection, question.id]);
+	}, [history, match.params.collection, question]);
 
 	/* Checks if user code matches Pre made answer */
 	const handleOnChange = useCallback(
@@ -60,7 +62,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 			const cosineSimilarityMatchPercent = stringSimilarity.compareTwoStrings(
 				userAnswerTrimmed,
 				correctAnswerTrimmed
-      );
+			);
 			setMatchPercent(cosineSimilarityMatchPercent * 100 || 10);
 			if (
 				// if user answer equals the stored answer in db
@@ -94,7 +96,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 		if (authUser.roles[ROLES.ADMIN]) {
 			history.push(`${question.id}/isEditMode`);
 		}
-	}, [authUser, history, question.id]);
+	}, [authUser, history, question]);
 
 	useEffect(() => {
 		const id = match.params.questionId;
@@ -135,15 +137,20 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				path={match.url}
 			/>
 			<MoConfetti isActive={isCorrect} />
-			<MoPage
-				isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
-				subtitle={question.label}
-				title={question.title}
-				isLoading={isLoading}
-				isCard={false}
-				handleOnClick={() => handleOnClick()}
-			/>
-			{question.content && <Content content={question.content} />}
+				<ButtonBase
+					onClick={() => handleOnClick()}
+					disabled={!authUser?.roles[ROLES.ADMIN]}
+					style={{ textAlign: "left" }}
+				>
+					<MoPage
+						isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
+						subtitle={question?.label}
+						title={question?.title}
+						isLoading={isLoading}
+						isCard={false}
+					/>
+				</ButtonBase>
+			{question?.content && <Content content={question.content} />}
 			{question && (
 				<CodeEditor
 					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
