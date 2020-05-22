@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 
 const MoPageSubtitle = ({
   children,
-  handleOnClick,
   isAdmin,
   subtitle,
   margin,
@@ -33,11 +32,7 @@ const MoPageSubtitle = ({
 
   return (
     <Fade in={true} timeout={{ enter: 800 }}>
-      <Typography
-        variant="h4"
-        style={styles.container}
-        onClick={() => handleOnClick()}
-      >
+      <Typography variant="h4" style={styles.container}>
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {subtitle} {children}
         </Box>
