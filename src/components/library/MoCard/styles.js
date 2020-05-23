@@ -39,7 +39,7 @@ const styles = (theme) => ({
   },
   heroIcon: {
     fontSize: theme.fontSize.xl,
-    color: theme.grey.superLight,
+    color: theme.blue.superLight,
   },
   editorFont: theme.editorFont,
 });
