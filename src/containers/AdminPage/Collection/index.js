@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-import * as ROUTES from "constants/routes";
 import { AuthUserContext } from "components/shared/Session";
 import MoSpinner from "components/library/MoSpinner";
 import { withFirebase } from "components/shared/Firebase";
 import QuestionsTable from "./CollectionTable";
-
+import {
+  createQuestion,
+  editQuestion,
+  removeQuestion,
+  rowClick,
+} from "utils/firebase/questionFirebase";
 const Collection = ({ firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
@@ -46,64 +50,48 @@ const Collection = ({ firebase, history, match }) => {
     return () => getQuestions();
   }, [firebase, match]);
 
-  const onCreateQuestion = (event, authUser) => {
-    if (event.label) {
-      firebase.createQuestionById(match.params.collection, {
-        ...event,
-        id: Number(event.id),
-        userId: authUser.uid,
-        createdAt: firebase.fieldValue.serverTimestamp(),
-        question: escapeCode(event.question),
-      });
-    }
-  };
+  const onCreateQuestion = useCallback(
+    (event, authUser) => {
+      createQuestion(authUser, event, firebase, match);
+    },
+    [firebase, match]
+  );
 
-  const onEditQuestion = (event) => {
-    if (!match.params.collection) {
-      return;
-    }
-    firebase
-      .doc("courses/" + match.params.collection + "/questions", event.uid)
-      .update({
-        ...event,
-        id: Number(event.id),
-        editedAt: firebase.fieldValue.serverTimestamp(),
-        question: escapeCode(event.question),
-      });
-  };
+  const onEditQuestion = useCallback(
+    (event) => {
+      editQuestion(event, firebase, match);
+    },
+    [firebase, match]
+  );
 
-  const onRemoveQuestion = (uid) => {
-    firebase
-      .doc("courses/" + match.params.collection + "/questions", uid)
-      .delete();
-  };
+  const onRemoveQuestion = useCallback(
+    (id) => {
+      removeQuestion(id, firebase, match);
+    },
+    [firebase, match]
+  );
 
-  const handleRowClick = (id) => {
-    history.push(
-      ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
-    );
-  };
+  const handleRowClick = useCallback(
+    (id) => {
+      rowClick(id, history, match);
+    },
+    [history, match]
+  );
 
-  const escapeCode = (code) => {
-    return JSON.stringify(code, null, 2);
-  };
+  if (isLoading || !questions) {
+    return <MoSpinner isLoading={isLoading} />;
+  }
 
   return (
     <AuthUserContext.Consumer>
       {(authUser) => (
-        <>
-          {isLoading && <MoSpinner isLoading={isLoading} />}
-
-          {questions && (
-            <QuestionsTable
-              questions={questions}
-              onEditQuestion={onEditQuestion}
-              onRemoveQuestion={onRemoveQuestion}
-              onCreateQuestion={(event) => onCreateQuestion(event, authUser)}
-              handleRowClick={handleRowClick}
-            />
-          )}
-        </>
+        <QuestionsTable
+          questions={questions}
+          onEditQuestion={(event) => onEditQuestion(event)}
+          onRemoveQuestion={(id) => onRemoveQuestion(id)}
+          onCreateQuestion={(event) => onCreateQuestion(event, authUser)}
+          handleRowClick={(id) => handleRowClick(id)}
+        />
       )}
     </AuthUserContext.Consumer>
   );
