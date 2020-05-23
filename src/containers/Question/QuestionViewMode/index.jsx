@@ -22,6 +22,8 @@ import withAuthentication from "components/shared/Session/withAuthentication";
 import MoHelmet from "components/library/MoHelmet";
 import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
+import createStyles from "@material-ui/core/styles/createStyles";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 const MoConfetti = lazy(() => import("components/library/MoConfetti"));
@@ -33,6 +35,20 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 	const [snackbarProps, setSnackbarProps] = useState(null);
 	const [matchPercent, setMatchPercent] = useState();
 
+	const useStyles = makeStyles((theme) =>
+		createStyles({
+			buttonArea: {
+				textAlign: "left",
+				width: "100%",
+				"&:hover": {
+					background: theme.grey.superLight,
+					cursor: "text",
+				},
+			},
+		})
+	);
+
+	const classes = useStyles();
 	const triggerNextQuestion = useCallback(() => {
 		const id = Number(question.id) + 1;
 		/* Clear questions */
@@ -137,19 +153,19 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				path={match.url}
 			/>
 			<MoConfetti isActive={isCorrect} />
-				<ButtonBase
-					onClick={() => handleOnClick()}
-					disabled={!authUser?.roles[ROLES.ADMIN]}
-					style={{ textAlign: "left" }}
-				>
-					<MoPage
-						isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
-						subtitle={question?.label}
-						title={question?.title}
-						isLoading={isLoading}
-						isCard={false}
-					/>
-				</ButtonBase>
+			<ButtonBase
+				className={classes.buttonArea}
+				onClick={() => handleOnClick()}
+				disabled={!authUser?.roles[ROLES.ADMIN]}
+			>
+				<MoPage
+					isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
+					subtitle={question?.label}
+					title={question?.title}
+					isLoading={isLoading}
+					isCard={false}
+				/>
+			</ButtonBase>
 			{question?.content && <Content content={question.content} />}
 			{question && (
 				<CodeEditor
