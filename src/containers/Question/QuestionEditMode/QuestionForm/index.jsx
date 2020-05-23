@@ -31,19 +31,18 @@ const QuestionForm = ({
 		question: "<h1>Hello World</h1>",
 	});
 
-	// const handleChange = (e) => {
-	//   setValue("AntdInput", e.target.value);
-	// }
-
 	const handleOnChange = useCallback(
 		(userAnswer) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
 			setFormData((preState) => ({ ...preState, question: userAnswer }));
 		},
 		[setFormData]
 	);
 
-	const onSubmit = (formData) => {
-		console.log(formData);
+	const onSubmit = (data) => {
+		console.log({...formData, ...data});
 		if (formData.label) {
 			// const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
 			// const payload = {
@@ -83,7 +82,6 @@ const QuestionForm = ({
 						sm={6}
 						md={6}
 						question={question}
-						name="trdt"
 					/>
 				)}
 			</section>
@@ -92,7 +90,6 @@ const QuestionForm = ({
 				<Button type="submit" color="primary">
 					Save
 				</Button>
-				{formData.label}
 			</section>
 		</form>
 	);
