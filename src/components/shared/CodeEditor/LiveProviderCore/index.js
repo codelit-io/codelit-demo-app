@@ -56,6 +56,7 @@ const LiveProviderCore = ({
     })
   );
   const classes = useStyles();
+
   return (
     <LiveProvider code={question.question} language="jsx" noInline={false}>
       <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
@@ -74,7 +75,7 @@ const LiveProviderCore = ({
             >
               <div>
                 <LiveEditor
-                  onChange={handleOnChange}
+                  onChange={(e) => handleOnChange(e)}
                   theme={reactLiveTheme}
                   className={classes.liveEditor}
                 />
