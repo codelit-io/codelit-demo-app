@@ -6,7 +6,7 @@ const bigShadow =
 
 const colors = {
   grey: {
-    superLight: "#e0e3ea",
+    superLight: "#eeeeee",
     light: "#a6a6a6",
     medium: "#424B54",
     mediumDark: "#747474",
@@ -28,6 +28,7 @@ const colors = {
     medium: "#FFFFF2",
   },
   blue: {
+    superLight: "#e0e3ea",
     medium: "#276ef1",
   },
 };
