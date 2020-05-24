@@ -19,7 +19,6 @@ import Content from "./Content";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
 import withAuthentication from "components/shared/Session/withAuthentication";
-import MoHelmet from "components/library/MoHelmet";
 import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
 import createStyles from "@material-ui/core/styles/createStyles";
@@ -64,7 +63,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
 			);
 		}, 600);
-	}, [history, match.params.collection, question]);
+	}, [history, match, question]);
 
 	/* Checks if user code matches Pre made answer */
 	const handleOnChange = useCallback(
@@ -147,11 +146,6 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 
 	return (
 		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-			<MoHelmet
-				title="Moskool - React frontend development learning questions"
-				description="MoSkool - Play Free React learning questions and master all aspects of frontend development without any fees"
-				path={match.url}
-			/>
 			<MoConfetti isActive={isCorrect} />
 			<ButtonBase
 				className={classes.buttonArea}
