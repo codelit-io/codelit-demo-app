@@ -12,7 +12,6 @@ import MoBrowserMockup from "components/library/MoBrowserMockup";
 import MoLinkButton from "components/library/MoLinkButton";
 import MoPageHeader from "components/library/MoPageHeader";
 import MoPageSubtitle from "components/library/MoPageSubtitle";
-import MoHelmet from "components/library/MoHelmet";
 import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -24,10 +23,6 @@ const LandingPage = ({ classes }) => {
   const [isPreview, setIsPreview] = useState(false);
   return (
     <>
-      <MoHelmet
-        title="Moskool - Learn React development for Free"
-        description="MoSkool - Free React learning experience platform, master frontend development without the fees"
-      />
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
