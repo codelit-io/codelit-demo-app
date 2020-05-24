@@ -9,10 +9,9 @@
 
 import React, { useState } from "react";
 
+import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import IconButton from "@material-ui/core/IconButton";
 import PostAddIcon from "@material-ui/icons/PostAdd";
-import Tooltip from "@material-ui/core/Tooltip";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
 
@@ -22,15 +21,14 @@ const MoFormDialog = ({ Component }) => {
   const [isOpenState, setIsOpenState] = useState(false);
   return (
     <>
-      <Tooltip title="Add New Course" arrow>
-        <IconButton
-          aria-label="Add Course"
-          aria-haspopup="true"
-          onClick={() => setIsOpenState(true)}
-        >
-          <PostAddIcon />
-        </IconButton>
-      </Tooltip>
+      <Button
+        aria-label="Add Course"
+        aria-haspopup="true"
+        startIcon={<PostAddIcon />}
+        onClick={() => setIsOpenState(true)}
+      >
+        Add Course
+      </Button>
       <Dialog
         aria-labelledby="form-dialog"
         fullScreen={fullScreen}
