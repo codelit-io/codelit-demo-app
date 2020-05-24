@@ -1,19 +1,21 @@
 import React from "react";
 
 import * as ROLES from "constants/roles";
-
+import * as ROUTES from "constants/routes";
+import AppsIcon from "@material-ui/icons/Apps";
 import { AuthUserContext } from "../Session";
 import AddCourse from "./AddCourse";
 import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 import MoAvatar from "components/library/MoAvatar";
 import MoSkoolLogo from "../../library/MoSkoolLogo";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
-
 const Navigation = ({ classes, firebase, history, match }) => {
   return (
     <header className={classes.root}>
@@ -31,6 +33,17 @@ const Navigation = ({ classes, firebase, history, match }) => {
               lg={6}
               style={{ textAlign: "right" }}
             >
+              <Button
+                color="primary"
+                className={classes.button}
+                aria-label="Courses"
+                aria-haspopup="true"
+                startIcon={<AppsIcon />}
+                component={Link}
+                to={ROUTES.COLLECTIONS.path}
+              >
+                Courses
+              </Button>
               <AuthUserContext.Consumer>
                 {(authUser) => (
                   <>
