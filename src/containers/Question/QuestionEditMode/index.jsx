@@ -84,11 +84,12 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 	return (
 		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
 			<QuestionForm
-				subtitle={question.label}
-				title={question.title}
 				isLoading={isLoading}
-				question={question}
 				isCard={false}
+				title={question.title}
+				setQuestion={(e) => setQuestion(e)}
+				subtitle={question.label}
+				question={question}
 			/>
 			{!isLoading && (
 				<>
