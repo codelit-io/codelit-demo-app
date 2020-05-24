@@ -89,6 +89,9 @@ let theme = createMuiTheme({
   white: colors.white,
   blue: colors.blue,
   typography: {
+    button: {
+      textTransform: "none",
+    },
     fontFamily: fontFamily.RobotoMono,
   },
   fontFamily: fontFamily.RobotoMono,
