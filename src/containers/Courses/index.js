@@ -10,7 +10,6 @@
 import React, { lazy, Suspense } from "react";
 
 import { withAuthentication } from "components/shared/Session";
-import MoHelmet from "components/library/MoHelmet";
 import MoSpinner from "components/library/MoSpinner";
 
 const CoursesCollection = lazy(() => import("./CoursesCollection"));
@@ -23,11 +22,6 @@ const collection = {
 
 const Courses = ({ authUser, firebase, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-    <MoHelmet
-      title="Moskool - React frontend development courses"
-      description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
-      path={match.url}
-    />
     <CoursesCollection
       authUser={authUser}
       collection={collection}

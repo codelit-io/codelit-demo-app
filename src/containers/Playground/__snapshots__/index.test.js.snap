@@ -2,10 +2,6 @@
 
 exports[`Playground Component should match the snapshot 1`] = `
 <React.Fragment>
-  <MoHelmet
-    description="MoSkool - Try out free React development playground, master JavaScript, Html and Css without the fees"
-    title="Moskool - React frontend development playground"
-  />
   <CodeEditor
     handleOnChange={[Function]}
     md={12}

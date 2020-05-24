@@ -16,7 +16,6 @@ import MoPage from "components/library/MoPage";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
 import MoProgressBar from "components/library/MoProgressBar";
-import MoHelmet from "components/library/MoHelmet";
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
@@ -41,11 +40,6 @@ const Course = ({ authUser, firebase, match }) => {
       title={courseDetails?.data?.title}
       isLoading={courseDetails.isLoading || courses.isLoading}
     >
-      <MoHelmet
-        title="Moskool - React frontend development courses"
-        description="MoSkool - Free React frontend development courses to help you master Html, css and JavaScript of React"
-        path={match.url}
-      />
       <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <LessonsList

@@ -19,6 +19,7 @@ const QuestionForm = ({
 	isLoading,
 	question,
 	subtitle,
+	setQuestion,
 	title,
 }) => {
 	const { handleSubmit, register } = useForm();
@@ -37,8 +38,9 @@ const QuestionForm = ({
 				return;
 			}
 			setFormData((preState) => ({ ...preState, question: userAnswer }));
+			setQuestion({ ...question, question: userAnswer });
 		},
-		[setFormData]
+		[setFormData, setQuestion, question]
 	);
 
 	const onSubmit = (data) => {
