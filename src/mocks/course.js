@@ -7,7 +7,8 @@ export const course = () => {
 };
 
 export const courses = {
-  id: "123",
-  question: [],
-  title: "Test Course",
+  data: [
+    { id: "123", question: [], title: "Test Course 1" },
+    { id: "1234", question: [], title: "Test Course 2" },
+  ],
 };
