@@ -9,7 +9,7 @@ import {
   editQuestion,
   removeQuestion,
   rowClick,
-} from "utils/firebase/questionFirebase";
+} from "utils/questionFirebase";
 const Collection = ({ firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
