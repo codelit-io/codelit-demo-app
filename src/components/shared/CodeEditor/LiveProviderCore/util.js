@@ -13,3 +13,13 @@ export const addFocusOnEditor = () => {
     }
   }, 1000);
 };
+
+export const getPreviewElement = () => {
+  let element;
+  try {
+    element = document.querySelector("#MoBrowserMockup > div");
+    console.log(element);
+    console.log(element.textContent);
+  } catch {}
+  return element;
+};
