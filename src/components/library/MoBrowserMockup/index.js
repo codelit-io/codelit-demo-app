@@ -36,7 +36,9 @@ const MoBrowserMockup = ({
       <div className={classes.browserButtons2}>
         <span className={classes.font}>localhost:3000</span>
       </div>
-      <div className={classes.preview}>{children}</div>
+      <div id="MoBrowserMockup" className={classes.preview}>
+        {children}
+      </div>
     </div>
   );
 };
