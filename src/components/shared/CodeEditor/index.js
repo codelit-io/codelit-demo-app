@@ -20,7 +20,7 @@ const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
   }, [question]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container>
       <Suspense>
         <LiveProviderCore
           question={state}
