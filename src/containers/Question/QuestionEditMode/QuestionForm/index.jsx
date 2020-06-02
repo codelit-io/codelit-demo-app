@@ -33,7 +33,7 @@ const QuestionForm = ({
 	});
 
 	const handleOnChange = useCallback(
-		(userAnswer) => {
+		({ userAnswer }) => {
 			if (userAnswer === "{}" || userAnswer === "") {
 				return;
 			}
@@ -44,7 +44,7 @@ const QuestionForm = ({
 	);
 
 	const onSubmit = (data) => {
-		console.log({...formData, ...data});
+		console.log({ ...formData, ...data });
 		if (formData.label) {
 			// const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
 			// const payload = {
