@@ -1,6 +1,6 @@
 const styles = (theme) => ({
   container: {
-    paddingTop: theme.padding.xl,
+    paddingTop: theme.space.xl,
   },
   footerText: {
     textAlign: "right",
