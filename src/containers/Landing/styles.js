@@ -11,14 +11,6 @@ const styles = (theme) => ({
       paddingBottom: theme.space?.md,
     },
   },
-  editorFont: theme.editorFont,
-  emoji: {
-    lineHeight: "1",
-  },
-  heroText: {
-    color: theme.grey?.dark,
-    marginBottom: theme.space?.sm,
-  },
   img: {
     width: "100%",
     [theme.breakpoints.down("sm")]: {
