@@ -13,6 +13,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const LiveProviderCore = ({
   handleOnChange,
+  isMobile,
   md,
   sm,
   matchPercent,
@@ -115,7 +116,9 @@ const LiveProviderCore = ({
         >
           <div>
             <MoBrowserMockup fileType={question.language} isEditor={false}>
-              <LivePreview />
+              {question.question && (
+                <LivePreview className={classes.livePreview} />
+              )}
             </MoBrowserMockup>
           </div>
         </Slide>
