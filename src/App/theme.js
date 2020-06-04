@@ -33,12 +33,13 @@ const colors = {
   },
 };
 
-const padding = {
-  xs: "4px",
-  sm: "12px",
-  md: "36px",
-  lg: "48px",
-  xl: "96px",
+const space = {
+  tiny: "0.1rem",
+  xs: "0.25rem",
+  sm: "0.75rem",
+  md: "2.25rem",
+  lg: "3rem",
+  xl: "6rem",
 };
 
 const fontSize = {
@@ -82,7 +83,7 @@ let theme = createMuiTheme({
     alignItems: "center",
   },
   fontSize: fontSize,
-  padding: padding,
+  space: space,
   grey: colors.grey,
   green: colors.green,
   yellow: colors.yellow,
