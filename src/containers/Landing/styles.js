@@ -1,14 +1,14 @@
 const styles = (theme) => ({
   container: {
-    paddingTop: theme.padding?.xl,
-    paddingBottom: theme.padding?.xl,
+    paddingTop: theme.space?.xl,
+    paddingBottom: theme.space?.xl,
     [theme.breakpoints.down("sm")]: {
-      paddingTop: theme.padding?.lg,
+      paddingTop: theme.space?.lg,
     },
   },
   responsiveGrid: {
     [theme.breakpoints.down("sm")]: {
-      paddingBottom: theme.padding?.md,
+      paddingBottom: theme.space?.md,
     },
   },
   editorFont: theme.editorFont,
@@ -17,7 +17,7 @@ const styles = (theme) => ({
   },
   heroText: {
     color: theme.grey?.dark,
-    marginBottom: theme.padding?.sm,
+    marginBottom: theme.space?.sm,
   },
   img: {
     width: "100%",
