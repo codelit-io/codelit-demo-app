@@ -28,7 +28,7 @@ const App = (props) => (
   <ThemeProvider theme={theme}>
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-        <Container style={{ height: "100%", maxHeight: "100%" }}>
+        <Container maxWidth="lg">
           <Navigation {...props} />
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />
