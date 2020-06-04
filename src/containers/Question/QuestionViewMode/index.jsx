@@ -166,6 +166,8 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
 					question={question}
 					matchPercent={matchPercent}
+					sm={6}
+					md={6}
 				/>
 			)}
 			{snackbarProps && (
