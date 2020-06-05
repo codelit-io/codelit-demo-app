@@ -4,12 +4,9 @@ exports[`LandingPage Component should match the snapshot 1`] = `
 <LandingPage
   classes={
     Object {
-      "checkMark": "LandingPage-checkMark-7",
+      "checkMark": "LandingPage-checkMark-4",
       "container": "LandingPage-container-1",
-      "editorFont": "LandingPage-editorFont-3",
-      "emoji": "LandingPage-emoji-4",
-      "heroText": "LandingPage-heroText-5",
-      "img": "LandingPage-img-6",
+      "img": "LandingPage-img-3",
       "responsiveGrid": "LandingPage-responsiveGrid-2",
     }
   }

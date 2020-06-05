@@ -3,10 +3,12 @@
 exports[`CodeEditor Component should match the snapshot 1`] = `
 <ForwardRef(WithStyles)
   container={true}
-  spacing={4}
+  spacing={2}
 >
   <React.Suspense>
-    <UNDEFINED />
+    <UNDEFINED
+      isMobile={false}
+    />
   </React.Suspense>
 </ForwardRef(WithStyles)>
 `;
