@@ -48,7 +48,7 @@ const styles = (theme) => ({
     color: "#424B54",
     fontSize: "14px",
   },
-  browserButtons2: {
+  browserHeader: {
     display: "block",
     position: "absolute",
     content: "",

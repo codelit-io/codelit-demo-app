@@ -23,7 +23,6 @@ const MoBrowserMockup = ({
 }) => {
   return isEditor ? (
     <div className={classes.browserMockup}>
-      <div className={classes.browserButtons}></div>
       <div className={classes.browserFilename}>
         <span className={classes.font}>{`index.${fileType}`}</span>
       </div>
@@ -33,7 +32,7 @@ const MoBrowserMockup = ({
   ) : (
     <div className={classes.browserMockup}>
       <div className={classes.browserButtons}></div>
-      <div className={classes.browserButtons2}>
+      <div className={classes.browserHeader}>
         <span className={classes.font}>localhost:3000</span>
       </div>
       <div id="MoBrowserMockup" className={classes.preview}>
