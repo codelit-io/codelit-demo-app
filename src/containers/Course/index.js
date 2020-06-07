@@ -8,7 +8,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import CoursePage from "./CoursePage";
+import QuestionsPage from "./QuestionsPage";
 import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
@@ -32,7 +32,7 @@ const Course = ({ authUser, firebase, match }) => {
   }, [authUser, match]);
 
   return (
-    <CoursePage
+    <QuestionsPage
       authUser={authUser}
       courses={courses}
       courseDetails={courseDetails}
