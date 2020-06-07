@@ -4,14 +4,14 @@
  * @prop {Object} collection - Passed from parent with a title and a path of the collection
  * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @returns {<Lessons/>} - returns Lessons component which renders the rest of the components
+ * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
 import React from "react";
-import Lessons from "components/shared/Lessons";
+import CoursePage from "./CoursePage";
 import useCollections from "hooks/useCollections";
 
-const CoursesCollection = ({ authUser, collection, firebase, match }) => {
+const CourseCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
 
   if (!collections) {
@@ -19,11 +19,11 @@ const CoursesCollection = ({ authUser, collection, firebase, match }) => {
   }
 
   return (
-    <Lessons
+    <CoursePage
       authUser={authUser}
       isLoading={collections.isLoading}
       match={match}
-      questions={collections.data}
+      courses={collections.data}
       collectionDetails={{
         title: collection.title,
         isProgressBar: collection.isProgressBar,
@@ -31,4 +31,4 @@ const CoursesCollection = ({ authUser, collection, firebase, match }) => {
     />
   );
 };
-export default CoursesCollection;
+export default CourseCollection;
