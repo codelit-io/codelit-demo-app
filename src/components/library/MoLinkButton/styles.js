@@ -11,12 +11,14 @@ const styles = (theme) => ({
     "&:hover": {
       background: theme.grey?.dark,
     },
-    "&:hover arrow": {
+    "&:hover .arrow": {
       transform: "translateX(5px)",
     },
   },
   icon: {
+    transition: "transform .35s",
     paddingLeft: "4px",
+    paddingTop: "2px",
   },
 });
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import { addFocusOnEditor } from "./util";
+import { addFocusOnEditor, getPreviewElement } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
-import { reactLiveTheme } from "utils/reactLiveTheme";
+import { lightTheme } from "utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
 import Headline from "components/library/MoHeadline";
@@ -13,6 +13,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const LiveProviderCore = ({
   handleOnChange,
+  isMobile,
   md,
   sm,
   matchPercent,
@@ -21,6 +22,11 @@ const LiveProviderCore = ({
   useEffect(() => {
     addFocusOnEditor();
   }, [question]);
+
+  const onChange = (userAnswer) => {
+    const previewElement = getPreviewElement();
+    handleOnChange({ userAnswer, previewElement });
+  };
 
   // TODO finish number of lines for editor
   // Count newlines and pad to match actual line numbers
@@ -75,8 +81,8 @@ const LiveProviderCore = ({
             >
               <div>
                 <LiveEditor
-                  onChange={(e) => handleOnChange(e)}
-                  theme={reactLiveTheme}
+                  onChange={(e) => onChange(e)}
+                  theme={lightTheme}
                   className={classes.liveEditor}
                 />
                 {!question.question && question.answer && (
@@ -110,7 +116,9 @@ const LiveProviderCore = ({
         >
           <div>
             <MoBrowserMockup fileType={question.language} isEditor={false}>
-              <LivePreview />
+              {question.question && (
+                <LivePreview className={classes.livePreview} />
+              )}
             </MoBrowserMockup>
           </div>
         </Slide>

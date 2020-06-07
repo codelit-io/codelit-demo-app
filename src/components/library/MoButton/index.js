@@ -9,10 +9,7 @@ const MoButton = ({ classes, handleButtonClick, text }) => {
   return (
     <Button className={classes.link} onClick={() => handleButtonClick()}>
       {text}
-      <ArrowForwardIcon
-        className="arrow"
-        style={{ fontSize: "1em", paddingLeft: "4px" }}
-      />
+      <ArrowForwardIcon className={`${classes.icon} arrow`} />
     </Button>
   );
 };

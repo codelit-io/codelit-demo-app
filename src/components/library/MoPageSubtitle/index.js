@@ -1,3 +1,14 @@
+/**
+ * Displays subtitles for all pages
+ * @prop {any || Component} children - Passed from parent container and has everything about the logged in user
+ * @prop {Boolean} isAdmin - Admin flag to display extra protected info
+ * @prop {String} subtitle - Text displayed for the subtitle
+ * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @prop {Number} margin - optional -Margin for this component
+ * @prop {String} textAlign - optional - Alignment of text, left, right or center
+ * @prop {Number} width - optional - Width of the subtitle
+ */
+
 import React from "react";
 
 import Box from "@material-ui/core/Box";

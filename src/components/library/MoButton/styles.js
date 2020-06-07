@@ -1,5 +1,6 @@
 const styles = (theme) => ({
   link: {
+    transition: "transform .35s",
     backgroundColor: theme.blue?.medium,
     textDecoration: "none",
     padding: "12px 22px",
@@ -11,11 +12,13 @@ const styles = (theme) => ({
     "&:hover": {
       background: theme.grey?.dark,
     },
-    "&:hover arrow": {
+    "&:hover .arrow": {
       transform: "translateX(5px)",
     },
-    arrow: {
-      fontSize: "1.0rem",
+    icon: {
+      transition: "transform .35s",
+      paddingLeft: "4px",
+      paddingTop: "2px",
     },
   },
 });

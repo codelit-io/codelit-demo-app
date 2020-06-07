@@ -1,11 +1,15 @@
 import React, { lazy, useState, useEffect, Suspense } from "react";
 
 import Grid from "@material-ui/core/Grid";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 const LiveProviderCore = lazy(() => import("./LiveProviderCore"));
 
 const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
   const [state, setState] = useState(question);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     if (question) {
@@ -20,7 +24,7 @@ const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
   }, [question]);
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={2}>
       <Suspense>
         <LiveProviderCore
           question={state}
@@ -28,6 +32,7 @@ const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
           md={md}
           sm={sm}
           matchPercent={matchPercent}
+          isMobile={isMobile}
         />
       </Suspense>
     </Grid>

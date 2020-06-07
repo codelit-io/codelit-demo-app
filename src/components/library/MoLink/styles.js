@@ -8,13 +8,14 @@ const styles = (theme) => ({
     borderRadius: "3px",
     textTransform: "initial",
     fontWeight: "600",
-    "&:hover arrow": {
+    "&:hover .arrow": {
       transform: "translateX(5px)",
     },
-    "&.arrow": {
-      fontSize: "1rem",
-      paddingLeft: "4px",
-    },
+  },
+  icon: {
+    transition: "transform .35s",
+    paddingLeft: "4px",
+    paddingTop: "2px",
   },
 });
 

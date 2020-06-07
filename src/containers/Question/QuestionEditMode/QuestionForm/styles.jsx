@@ -3,11 +3,11 @@ const styles = (theme) => ({
     maxHeight: "100%",
     height: "100%",
     width: "100%",
-    paddingTop: theme.padding?.lg,
-    paddingBottom: theme.padding?.lg,
+    paddingTop: theme.space?.lg,
+    paddingBottom: theme.space?.lg,
     [theme.breakpoints.up(400)]: {
-      paddingTop: theme.padding?.lg,
-      paddingBottom: theme.padding?.lg,
+      paddingTop: theme.space?.lg,
+      paddingBottom: theme.space?.lg,
     },
   },
 });

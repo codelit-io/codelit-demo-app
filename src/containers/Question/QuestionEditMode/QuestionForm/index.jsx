@@ -33,7 +33,7 @@ const QuestionForm = ({
 	});
 
 	const handleOnChange = useCallback(
-		(userAnswer) => {
+		({ userAnswer }) => {
 			if (userAnswer === "{}" || userAnswer === "") {
 				return;
 			}
@@ -44,7 +44,7 @@ const QuestionForm = ({
 	);
 
 	const onSubmit = (data) => {
-		console.log({...formData, ...data});
+		console.log({ ...formData, ...data });
 		if (formData.label) {
 			// const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
 			// const payload = {
@@ -81,8 +81,8 @@ const QuestionForm = ({
 				{question && (
 					<CodeEditor
 						handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-						sm={6}
-						md={6}
+						sm={12}
+						md={12}
 						question={question}
 					/>
 				)}

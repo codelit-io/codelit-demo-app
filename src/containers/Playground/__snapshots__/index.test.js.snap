@@ -4,7 +4,6 @@ exports[`Playground Component should match the snapshot 1`] = `
 <React.Fragment>
   <CodeEditor
     handleOnChange={[Function]}
-    md={12}
     question={
       Object {
         "answer": "<button> I am a Button </button>",
@@ -22,7 +21,6 @@ exports[`Playground Component should match the snapshot 1`] = `
     };",
       }
     }
-    sm={12}
   />
 </React.Fragment>
 `;

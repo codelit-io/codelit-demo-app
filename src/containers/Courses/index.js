@@ -4,7 +4,7 @@
  * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
- * @returns {<CoursesCollection/>} - returns component which then the children fetch the correct data
+ * @returns {<CourseCollection/>} - returns component which then the children fetch the correct data
  */
 
 import React, { lazy, Suspense } from "react";
@@ -12,7 +12,7 @@ import React, { lazy, Suspense } from "react";
 import { withAuthentication } from "components/shared/Session";
 import MoSpinner from "components/library/MoSpinner";
 
-const CoursesCollection = lazy(() => import("./CoursesCollection"));
+const CourseCollection = lazy(() => import("./CourseCollection"));
 
 const collection = {
   path: "courses",
@@ -22,7 +22,7 @@ const collection = {
 
 const Courses = ({ authUser, firebase, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-    <CoursesCollection
+    <CourseCollection
       authUser={authUser}
       collection={collection}
       firebase={firebase}

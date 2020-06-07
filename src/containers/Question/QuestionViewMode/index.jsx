@@ -67,7 +67,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 
 	/* Checks if user code matches Pre made answer */
 	const handleOnChange = useCallback(
-		(userAnswer) => {
+		({ userAnswer }) => {
 			if (userAnswer === "{}" || userAnswer === "") {
 				return;
 			}
@@ -164,10 +164,10 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 			{question && (
 				<CodeEditor
 					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-					sm={6}
-					md={6}
 					question={question}
 					matchPercent={matchPercent}
+					sm={6}
+					md={6}
 				/>
 			)}
 			{snackbarProps && (

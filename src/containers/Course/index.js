@@ -8,14 +8,10 @@
 
 import React, { useEffect, useState } from "react";
 
+import QuestionsPage from "./QuestionsPage";
 import { withAuthentication } from "components/shared/Session";
-import Grid from "@material-ui/core/Grid";
-import LessonsList from "components/shared/Lessons/LessonsList";
-import calculateProgress from "./calculateProgress";
-import MoPage from "components/library/MoPage";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import MoProgressBar from "components/library/MoProgressBar";
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
@@ -36,29 +32,13 @@ const Course = ({ authUser, firebase, match }) => {
   }, [authUser, match]);
 
   return (
-    <MoPage
-      title={courseDetails?.data?.title}
-      isLoading={courseDetails.isLoading || courses.isLoading}
-    >
-      <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <LessonsList
-            authUser={authUser}
-            match={match}
-            points={points}
-            questions={courses.data}
-            url={match?.params?.collection}
-          />
-        </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <MoProgressBar
-            authUser={authUser}
-            points={points}
-            progress={calculateProgress(authUser, points, courses.data?.length)}
-          />
-        </Grid>
-      </Grid>
-    </MoPage>
+    <QuestionsPage
+      authUser={authUser}
+      courses={courses}
+      courseDetails={courseDetails}
+      match={match}
+      points={points}
+    />
   );
 };
 export default withAuthentication(Course);
