@@ -36,7 +36,7 @@ const LandingPage = ({ classes }) => {
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
-          <video autoPlay loop style={{ width: "100%" }}>
+          <video autoPlay muted loop style={{ width: "100%" }}>
             <source
               src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fmoskool_landing.mp4?alt=media&token=c36b719c-99ee-4db2-9fce-da212153b4a5"
               type="video/mp4"
@@ -87,7 +87,7 @@ const LandingPage = ({ classes }) => {
           </ListItem>
         </Grid>
         <Grid item sm={12} md={6} xs={12}>
-          <video autoPlay loop style={{ width: "100%" }}>
+          <video autoPlay muted loop style={{ width: "100%" }}>
             <source
               src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/landing%2Fmoskool_courses.mp4?alt=media&token=36c246b3-8004-4de5-8005-35e3474472bc"
               type="video/mp4"
