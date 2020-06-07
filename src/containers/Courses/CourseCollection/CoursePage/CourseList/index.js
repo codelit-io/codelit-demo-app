@@ -15,50 +15,29 @@ import LessonCard from "components/shared/LessonComponents/LessonCard";
 import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
 
 const CourseList = ({ authUser, match, courses, points }) => {
-  return courses.map((question, index) => {
-    /* Figure out route name based on collection*/
-    const doc = match.params.collection
-      ? match.params.collection
-      : question.doc;
+	return courses.map((course, index) => {
+		/* Configure url route for each item */
+		const configureUrl = course.isDisabled ? "" : `courses/${course.doc}`;
 
-    /* figure out points */
-    const _points = question.doc
-      ? authUser?.reports?.[question?.doc]?.points
-      : points;
-
-    /* isDisabled is configured based on points and question's id */
-    let isDisabled = doc
-      ? _points
-        ? _points < Number(question.id) - 1 && Number(question.id) !== 1
-        : Number(question.id) !== 1
-      : false;
-
-    /* Configure url route for each item */
-    const configureUrl = isDisabled
-      ? ""
-      : match.params.collection
-      ? `${doc}/${question.id}`
-      : `courses/${doc}`;
-
-    return (
-      <React.Fragment key={index}>
-        {question.category && (
-          <>
-            <LessonCategory category={question?.category} index={index} />
-            {authUser?.roles[ROLES.ADMIN] && (
-              <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
-            )}
-          </>
-        )}
-        <LessonCard
-          isDisabled={isDisabled}
-          points={points}
-          item={question}
-          url={configureUrl}
-        />
-      </React.Fragment>
-    );
-  });
+		return (
+			<React.Fragment key={index}>
+				{course.category && (
+					<>
+						<LessonCategory category={course?.category} index={index} />
+						{authUser?.roles[ROLES.ADMIN] && (
+							<NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
+						)}
+					</>
+				)}
+				<LessonCard
+					isDisabled={course.isDisabled}
+					points={points}
+					item={course}
+					url={configureUrl}
+				/>
+			</React.Fragment>
+		);
+	});
 };
 
 export default CourseList;
