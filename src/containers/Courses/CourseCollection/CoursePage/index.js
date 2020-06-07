@@ -8,7 +8,7 @@
  * @prop {requestCallback} calculateProgress - callback function to calculate progress, pass it authUser, points, and length of questions in the course
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import CourseList from "./CourseList";
@@ -17,50 +17,50 @@ import MoProgressBar from "components/library/MoProgressBar";
 import MoPageSubtitle from "components/library/MoPageSubtitle";
 
 const CoursePage = ({
-  authUser,
-  collectionDetails,
-  isLoading,
-  match,
-  courses,
-  calculateProgress,
+	authUser,
+	collectionDetails,
+	isLoading,
+	match,
+	courses,
+	calculateProgress,
 }) => {
-  const [points, setPoints] = useState(0);
-  useEffect(() => {
-    let points = authUser?.reports?.[match.params.collection]?.points;
-    if (points) {
-      setPoints(points);
-    }
-  }, [authUser, match]);
+	const [points] = useState(0);
 
-  return (
-    <MoPage title={collectionDetails?.title} isLoading={isLoading}>
-      {courses && (
-        <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            <CourseList
-              points={points}
-              courses={courses}
-              authUser={authUser}
-              match={match}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            <MoPageSubtitle margin="0px 0 36px" width="100%">
-              Your Progress
-            </MoPageSubtitle>
+	return (
+		<MoPage title={collectionDetails?.title} isLoading={isLoading}>
+			{courses && (
+				<Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
+					<Grid item xs={12} sm={12} md={6} lg={6}>
+						<CourseList
+							points={points}
+							courses={courses}
+							authUser={authUser}
+							match={match}
+						/>
+					</Grid>
+					<Grid item xs={12} sm={12} md={6} lg={6}>
+						{collectionDetails.isProgressBar && (
+							<>
+								<MoPageSubtitle margin="0px 0 36px" width="100%">
+									Your Progress
+								</MoPageSubtitle>
 
-            {collectionDetails.isProgressBar && (
-              <MoProgressBar
-                authUser={authUser}
-                points={points}
-                progress={calculateProgress(authUser, points, courses?.length)}
-              />
-            )}
-          </Grid>
-        </Grid>
-      )}
-    </MoPage>
-  );
+								<MoProgressBar
+									authUser={authUser}
+									points={points}
+									progress={calculateProgress(
+										authUser,
+										points,
+										courses?.length
+									)}
+								/>
+							</>
+						)}
+					</Grid>
+				</Grid>
+			)}
+		</MoPage>
+	);
 };
 
 export default CoursePage;
