@@ -24,14 +24,8 @@ exports[`Should render MoButton 1`] = `
   >
     <svg
       aria-hidden="true"
-      className="MuiSvgIcon-root arrow"
+      className="MuiSvgIcon-root undefined arrow"
       focusable="false"
-      style={
-        Object {
-          "fontSize": "1em",
-          "paddingLeft": "4px",
-        }
-      }
       viewBox="0 0 24 24"
     >
       <path
