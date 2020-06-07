@@ -18,6 +18,8 @@ export const getPreviewElement = () => {
   let element;
   try {
     element = document.querySelector("#MoBrowserMockup > div");
-  } catch {}
+  } catch {
+    console.log('getPreviewElement not available')
+  }
   return element;
 };
