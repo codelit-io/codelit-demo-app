@@ -40,9 +40,16 @@ const CollectionTable = ({
           onChange={(e) => props.onChange(e.target.value)}
         >
           <MenuItem value={0.1}>100%</MenuItem>
+          <MenuItem value={0.99}>99%</MenuItem>
+          <MenuItem value={0.98}>98%</MenuItem>
+          <MenuItem value={0.97}>97%</MenuItem>
           <MenuItem value={0.96}>96%</MenuItem>
-          <MenuItem value={0.92}>94%</MenuItem>
+          <MenuItem value={0.95}>95%</MenuItem>
+          <MenuItem value={0.94}>94%</MenuItem>
+          <MenuItem value={0.93}>93%</MenuItem>
           <MenuItem value={0.92}>92%</MenuItem>
+          <MenuItem value={0.91}>91%</MenuItem>
+          <MenuItem value={0.9}>90%</MenuItem>
         </Select>
       ),
     },
