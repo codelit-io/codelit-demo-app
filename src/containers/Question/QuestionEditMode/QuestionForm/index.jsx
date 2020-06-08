@@ -81,8 +81,8 @@ const QuestionForm = ({
 				{question && (
 					<CodeEditor
 						handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-						sm={12}
-						md={12}
+						sm={6}
+						md={6}
 						question={question}
 					/>
 				)}
