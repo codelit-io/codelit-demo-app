@@ -15,7 +15,7 @@ import * as ROLES from "constants/roles";
 import awardPlayerPoints from "./awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import Content from "./Content";
+import MoContent from "components/library/MoContent";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
 import withAuthentication from "components/shared/Session/withAuthentication";
@@ -154,13 +154,14 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 			>
 				<MoPage
 					isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
-					subtitle={question?.label}
 					title={question?.title}
+					subtitle={question?.label}
+					hint={question?.subtitle}
 					isLoading={isLoading}
 					isCard={false}
 				/>
 			</ButtonBase>
-			{question?.content && <Content content={question.content} />}
+			{question?.content && <MoContent content={question.content} />}
 			{question && (
 				<CodeEditor
 					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
