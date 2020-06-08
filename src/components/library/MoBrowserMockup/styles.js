@@ -9,10 +9,10 @@ const styles = (theme) => ({
       fontSize: "14px",
       outline: "none",
     },
-    padding: "1.25rem",
+    padding: theme.space.sm2,
   },
   preview: {
-    padding: "1.25rem",
+    padding: theme.space.sm2,
     margin: "0 auto",
     display: "flex",
   },
