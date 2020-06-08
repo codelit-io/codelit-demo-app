@@ -37,7 +37,11 @@ const space = {
   tiny: "0.1rem",
   xs: "0.25rem",
   sm: "0.75rem",
-  md: "2.25rem",
+  sm1: "1rem",
+  sm2: "1.25rem",
+  md: "1.5rem",
+  md1: "2rem",
+  md2: "2.25rem",
   lg: "3rem",
   xl: "6rem",
 };
