@@ -5,7 +5,7 @@ import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import { lightTheme } from "utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
 import Slide from "@material-ui/core/Slide";
-import Headline from "components/library/MoHeadline";
+// import Headline from "components/library/MoHeadline";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
 import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
@@ -128,9 +128,11 @@ const LiveProviderCore = ({
           <LiveError />
         </Grid>
       )}
+      {/* 
+      TODO Add Headline effect
       <Grid item md={12} sm={12} xs={12}>
         <Headline isCorrect={question && question.isCorrect} />
-      </Grid>
+      </Grid> */}
     </LiveProvider>
   );
 };

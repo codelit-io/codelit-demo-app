@@ -19,7 +19,7 @@ export const createQuestion = (authUser, event, firebase, match) => {
  * editQuestion(event, firebase, match)
  */
 export const editQuestion = (event, firebase, match) => {
-  console.log(event);
+  console.log(event.question);
   if (!match.params.collection) {
     return;
   }
@@ -29,7 +29,7 @@ export const editQuestion = (event, firebase, match) => {
       ...event,
       id: Number(event.id),
       editedAt: firebase.fieldValue.serverTimestamp(),
-      question: escapeCode(event.question),
+      question: event.question ? escapeCode(event.question) : "",
     });
 };
 
@@ -52,5 +52,8 @@ export const rowClick = (id, history, match) => {
 };
 
 export const escapeCode = (code) => {
+  if (!code) {
+    return;
+  }
   return JSON.stringify(code, null, 2);
 };

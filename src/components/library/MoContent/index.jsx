@@ -8,7 +8,7 @@ import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grow from "@material-ui/core/Grow";
 
-const Content = ({ classes, content }) => (
+const MoContent = ({ classes, content }) => (
   <Grid container spacing={4}>
     <Grid item md={12}>
       <Grow timeout={{ enter: 800, exit: 800 }} in={content && true}>
@@ -22,4 +22,4 @@ const Content = ({ classes, content }) => (
   </Grid>
 );
 
-export default withStyles(styles)(Content);
+export default withStyles(styles)(MoContent);
