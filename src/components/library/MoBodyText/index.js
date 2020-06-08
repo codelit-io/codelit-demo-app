@@ -6,24 +6,24 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
 
 const MoBodyText = ({ subtitle, children }) => {
-	const useStyles = makeStyles((theme) =>
-		createStyles({
-			text: {
-				paddingLeft: theme.space.sm,
-				color: theme.grey.light,
-			},
-		})
-	);
+  const useStyles = makeStyles((theme) =>
+    createStyles({
+      text: {
+        paddingLeft: theme.space.sm,
+        color: theme.grey.light,
+      },
+    })
+  );
 
-	const classes = useStyles();
-	return (
-		<Fade timeout={{ enter: 800 }} in={(subtitle || children) && true}>
-			<Typography variant="body1" className={classes.text}>
-				{subtitle}
-				{children}
-			</Typography>
-		</Fade>
-	);
+  const classes = useStyles();
+  return (
+    <Fade timeout={{ enter: 800 }} in={(subtitle || children) && true}>
+      <Typography variant="body1" className={classes.text}>
+        {subtitle}
+        {children}
+      </Typography>
+    </Fade>
+  );
 };
 
 export default MoBodyText;
