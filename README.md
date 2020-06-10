@@ -2,7 +2,6 @@
 [![CircleCI](https://circleci.com/gh/moskool/moskool-react-app.svg?style=svg&circle-token=25e17fbacf3e095631aba484af8169e19df89031)](https://moskool.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mo-sharif/MoSkool&amp;utm_campaign=Badge_Grade)
 
-[![Mo Skool Demo](demos/moskool_demo.gif)](https://moskool.com)
 
 # Mo Skool
 
