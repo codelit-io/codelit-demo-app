@@ -14,31 +14,33 @@ import QuestionList from "./QuestionList";
 import calculateProgress from "./calculateProgress";
 import MoPage from "components/library/MoPage";
 import MoProgressBar from "components/library/MoProgressBar";
+import Footer from "components/shared/Footer";
 
 const QuestionsPage = ({ authUser, courses, courseDetails, match, points }) => (
-  <MoPage
-    title={courseDetails?.data?.title}
-    isLoading={courseDetails.isLoading || courses.isLoading}
-  >
-    <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
-        <QuestionList
-          authUser={authUser}
-          match={match}
-          points={points}
-          questions={courses.data}
-          url={match?.params?.collection}
-        />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
-        <MoProgressBar
-          authUser={authUser}
-          points={points}
-          progress={calculateProgress(authUser, points, courses.data?.length)}
-        />
-      </Grid>
-    </Grid>
-  </MoPage>
+	<MoPage
+		title={courseDetails?.data?.title}
+		isLoading={courseDetails.isLoading || courses.isLoading}
+	>
+		<Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
+			<Grid item xs={12} sm={12} md={6} lg={6}>
+				<QuestionList
+					authUser={authUser}
+					match={match}
+					points={points}
+					questions={courses.data}
+					url={match?.params?.collection}
+				/>
+			</Grid>
+			<Grid item xs={12} sm={12} md={6} lg={6}>
+				<MoProgressBar
+					authUser={authUser}
+					points={points}
+					progress={calculateProgress(authUser, points, courses.data?.length)}
+				/>
+			</Grid>
+		</Grid>
+		<Footer />
+	</MoPage>
 );
 
 export default QuestionsPage;
