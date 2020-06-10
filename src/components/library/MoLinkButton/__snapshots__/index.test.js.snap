@@ -25,7 +25,7 @@ exports[`Should render MoLinkButton 1`] = `
   >
      
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className="MuiSvgIcon-root MoLinkButton-icon-2 arrow"
       focusable="false"
       viewBox="0 0 24 24"

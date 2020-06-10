@@ -23,7 +23,7 @@ exports[`Should render MoButton 1`] = `
     className="MuiButton-label"
   >
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className="MuiSvgIcon-root undefined arrow"
       focusable="false"
       viewBox="0 0 24 24"
