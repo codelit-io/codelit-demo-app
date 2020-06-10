@@ -83,7 +83,7 @@ src/
                 CollectionTable
                     ... An interactive table to add delete edit and manage questions that show up to the user
             Home
-                ... Crazy page that loads Messages component (Feature request)
+                ... Feature page that loads Messages component (Feature request)
             Landing
                 ... Landing page you see when first visiting moskool.com
             Playground
