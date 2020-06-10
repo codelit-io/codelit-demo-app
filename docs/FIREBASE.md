@@ -78,8 +78,7 @@ import { AuthUserContext } from "../Session";
   }, [firebase, collectionName]);
 ```
 
-- Better yet, create shared firebase queries by creating custom React Hooks or HOC wit them
-- Using custom hooks
+- Example Usage
 
 ```
 <!-- useCollections is a custom hook that calls firebase and returns a list of questions  -->
