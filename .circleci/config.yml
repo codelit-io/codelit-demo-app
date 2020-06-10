@@ -36,7 +36,6 @@ jobs:
           name: Lint
           command: |
             yarn lint
-      - snyk/scan
       - run:
           name: Deploy
           command: |
@@ -44,5 +43,3 @@ jobs:
               yarn run firebase use tool-builder
               yarn run firebase deploy --token=$FIREBASE_TOKEN
             fi
-orbs:
-  snyk: snyk/snyk@0.0.10
