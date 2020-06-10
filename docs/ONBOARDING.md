@@ -43,7 +43,7 @@ Container (data fetch)> PageComponent (layout & logic) > ChildComponents (dummy 
 
 ### Components
 
-1. **Library** Components specific to MoSkool and they are all dumb components
+1. **Library** Components specific to MoSkool UI Elements and they are all dumb components
 
 2. **Shared** Components that share logic and functionality with the rest of the components and containers
 
@@ -175,4 +175,9 @@ export default withStyles(styles)(MyComponent);
 
 
 ## ✨Firebase ✨
+ Coming Soon
+
+
+
+## Higher Order Components ✨
  Coming Soon
