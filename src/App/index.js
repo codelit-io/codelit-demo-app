@@ -1,12 +1,12 @@
 /**
  * App
- * 
+ *
  * Entry component to the app and does the following
- * 
- *  - lazy loads pages/containers 
+ *
+ *  - lazy loads pages/containers
  *  - Handles routing for app
  *  - Provides the app with Material-UI theme instance
- *  - Renders App navigation   
+ *  - Renders App navigation
  *  - Suspense and loading
  */
 import React, { Suspense, lazy } from "react";
