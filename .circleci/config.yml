@@ -36,14 +36,7 @@ jobs:
           name: Lint
           command: |
             yarn lint
-      - snyk/scan:
-          docker-image-name: '$IMAGE_NAME:latest'
-          fail-on-issues: false
-          monitor-on-build: true
-          project: '${moskool-react-app}/${master}-container'
-          severity-threshold: high
-          target-file: Dockerfile
-          token-variable: SNYK_TOKEN
+      - snyk/scan
       - run:
           name: Deploy
           command: |
