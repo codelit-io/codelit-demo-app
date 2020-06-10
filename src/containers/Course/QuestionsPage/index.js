@@ -14,6 +14,7 @@ import QuestionList from "./QuestionList";
 import calculateProgress from "./calculateProgress";
 import MoPage from "components/library/MoPage";
 import MoProgressBar from "components/library/MoProgressBar";
+import Footer from "components/shared/Footer";
 
 const QuestionsPage = ({ authUser, courses, courseDetails, match, points }) => (
   <MoPage
@@ -38,6 +39,7 @@ const QuestionsPage = ({ authUser, courses, courseDetails, match, points }) => (
         />
       </Grid>
     </Grid>
+    <Footer />
   </MoPage>
 );
 
