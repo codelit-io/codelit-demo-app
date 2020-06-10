@@ -10,8 +10,9 @@
 
 import React, { useState } from "react";
 
-import Grid from "@material-ui/core/Grid";
 import CourseList from "./CourseList";
+import Footer from "components/shared/Footer";
+import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoProgressBar from "components/library/MoProgressBar";
 import MoPageSubtitle from "components/library/MoPageSubtitle";
@@ -59,6 +60,7 @@ const CoursePage = ({
           </Grid>
         </Grid>
       )}
+      <Footer />
     </MoPage>
   );
 };
