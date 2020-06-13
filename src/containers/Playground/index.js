@@ -15,39 +15,39 @@ import React, { useState } from "react";
 import CodeEditor from "components/shared/CodeEditor";
 
 const Playground = () => {
-	const initialState = {
-		answer: "<button> I am a Button </button>",
-		language: "jsx",
-		element: "button",
-		id: "0",
-		isCorrect: false,
-		question: `() => {
+  const initialState = {
+    answer: "<button> I am a Button </button>",
+    language: "jsx",
+    element: "button",
+    id: "0",
+    isCorrect: false,
+    question: `() => {
       return (
         <section>
           <h1>I love React 💙</h1>
         </section>
       );
     };`,
-		isPlayground: true,
-	};
+    isPlayground: true,
+  };
 
-	const [question, setQuestion] = useState(initialState);
+  const [question, setQuestion] = useState(initialState);
 
-	const handleOnChange = ({ userAnswer }) => {
-		if (userAnswer === "{}" || userAnswer === "") {
-			return;
-		}
-		setQuestion({ ...question, question: userAnswer });
-	};
+  const handleOnChange = ({ userAnswer }) => {
+    if (userAnswer === "{}" || userAnswer === "") {
+      return;
+    }
+    setQuestion({ ...question, question: userAnswer });
+  };
 
-	return (
-		<>
-			<CodeEditor
-				handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-				question={question}
-			/>
-		</>
-	);
+  return (
+    <>
+      <CodeEditor
+        handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+        question={question}
+      />
+    </>
+  );
 };
 
 export default Playground;
