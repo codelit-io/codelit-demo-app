@@ -1,11 +1,11 @@
 /**
  * Displays the grid for the lessons containing question cards and progress for the course
- * @prop {Object} authUser - Passed from parent container and has everything about the logged in user
- * @prop {Object} collectionDetails - Passes information about the course/collection such as title and other flags
- * @prop {Boolean} isLoading - Loading flag passed from parent container
- * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @prop {Array} courses - List of courses passed down from parent container
- * @prop {requestCallback} calculateProgress - callback function to calculate progress, pass it authUser, points, and length of questions in the course
+ * @param {Object} authUser - Passed from parent container and has everything about the logged in user
+ * @param {Object} collectionDetails - Passes information about the course/collection such as title and other flags
+ * @param {Boolean} isLoading - Loading flag passed from parent container
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Array} courses - List of courses passed down from parent container
+ * @param {requestCallback} calculateProgress - callback function to calculate progress, pass it authUser, points, and length of questions in the course
  */
 
 import React, { useState } from "react";
