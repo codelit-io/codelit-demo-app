@@ -1,7 +1,11 @@
 /**
+ * NewCourseDialog
+ * 
  * Add course form uses react-hook-form and Material Dialog elements
  * This form shows up in dialogs and it creates new Course
- *
+ * 
+ * @param {Object} authUser - Holds details about the current user
+ * @param {Class} firebase - Firebase class provides access to authUser and db
  * @return {<form></form>}
  */
 
@@ -20,7 +24,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { FormControl, FormLabel, RadioGroup, Radio } from "@material-ui/core";
 
-const NewCourseDialog = ({ authUser, firebase, history }) => {
+const NewCourseDialog = ({ authUser, firebase }) => {
 	/* TODO: add watch and error
 	 * const { watch, errors } = useForm();
 	 */
@@ -36,6 +40,7 @@ const NewCourseDialog = ({ authUser, firebase, history }) => {
 	const Form = ({ handleDialogState }) => {
 		const onSubmit = (formData) => {
 			if (formData.title) {
+				// Create doc based on title name, doc is lowercase without spaces
 				const doc = formData?.title.replace(/\s+/g, "-").toLowerCase();
 				const payload = {
 					...formData,
@@ -44,8 +49,12 @@ const NewCourseDialog = ({ authUser, firebase, history }) => {
 					userId: authUser.uid,
 					createdAt: firebase.fieldValue.serverTimestamp(),
 				};
+
+				// Create courses in db with doc, then set the payload
 				firebase.collection("courses").doc(doc).set(payload, { merge: true });
 
+				// Add a questions array to the collection created above add a placeholder entry
+				// TODO: figure a more efficient way to do this with one firebase query
 				firebase
 					.collection("courses")
 					.doc(doc)
@@ -53,6 +62,7 @@ const NewCourseDialog = ({ authUser, firebase, history }) => {
 					.doc()
 					.set({ id: 1 });
 
+				// Set Dialog state back to false to close the Dialog
 				handleDialogState(false);
 			}
 		};
