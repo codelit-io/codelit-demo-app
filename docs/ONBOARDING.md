@@ -148,8 +148,6 @@ export default withStyles(styles)(MyComponent);
 
 ```
 
-
-
 ## ✨Material-UI Typography ✨
 
 ```
@@ -158,8 +156,6 @@ export default withStyles(styles)(MyComponent);
 </Typography>
 
 ```
-
-
 
 ## ✨Material-UI Animation ✨
 
@@ -172,16 +168,18 @@ export default withStyles(styles)(MyComponent);
 
 ```
 
-
 ## Feature Component Example ✨
- See `ExampleFeature` as an example component template, it contains parent container and child component  
 
-
+See `ExampleFeature` as an example component template, it contains parent container and child component
 
 ## ✨Firebase ✨
- Coming Soon
 
+Coming Soon
 
+## ✨Higher Order Components ✨
 
-## Higher Order Components ✨
- Coming Soon
+Coming Soon
+
+## 💥Important links 💥
+
+[React Styleguidist](https://react-styleguidist.js.org/docs/documenting/)
