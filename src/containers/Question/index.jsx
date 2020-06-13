@@ -1,3 +1,17 @@
+/**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Question routing component 🚕
+ *
+ * This component is responsible for routing between question view
+ * the first route is a view only mode, where users can answer the question
+ * the second route is edit mode, where users can edit and save question details - only authors and admins can do this
+ *
+ * @returns - routes to components
+ *
+ * */
+
 import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
