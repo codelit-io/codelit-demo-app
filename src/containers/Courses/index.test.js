@@ -1,6 +1,6 @@
 import React from "react";
 
-import Courses from "./index.js";
+import Courses from "./index.jsx";
 import ShallowRenderer from "react-test-renderer/shallow";
 
 const renderer = new ShallowRenderer();

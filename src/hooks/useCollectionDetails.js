@@ -2,7 +2,7 @@
  * Custom Hook to get more details about a collection in firebase
  * @param {String} collectionName - Name or path of collection
  * @param {String} doc - Name of doc which should match the route
- * @param {Object} firebase - Firebase class provides access to authUser and db
+ * @param {Class} firebase - Firebase class provides access to authUser and db
  * @returns {isLoading: boolean, isError: Object, collectionDetails: Object} - returns loading boolean, error Object and collectionDetails
  */
 

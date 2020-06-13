@@ -1,10 +1,10 @@
 /**
  * Course page contains layout styling for the page, progress status, and a list of questions
- * @prop {Object} authUser - Passed from parent container and has everything about the logged in user
- * @prop {Array} courses - List of courses passed to this component from the db
- * @prop {Object} courseDetails - Contains details about the course we are looking at, this is queried from the db
- * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @prop {Number} points - Number of points the user has for this course
+ * @param {Object} authUser - Passed from parent container and has everything about the logged in user
+ * @param {Array} courses - List of courses passed to this component from the db
+ * @param {Object} courseDetails - Contains details about the course we are looking at, this is queried from the db
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Number} points - Number of points the user has for this course
  */
 
 import React from "react";

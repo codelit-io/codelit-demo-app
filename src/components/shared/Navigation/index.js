@@ -1,10 +1,21 @@
+/**
+ * Navigation Component
+ *
+ * Navigation bar for the hole app
+ *
+ * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
+ * @param {Class} firebase - Firebase class provides access to authUser and db
+ * @param {Class} history - Firebase class provides access to authUser and db
+ * @return {<form></form>}
+ */
+
 import React from "react";
 
 import * as ROLES from "constants/roles";
 import * as ROUTES from "constants/routes";
 import AppsIcon from "@material-ui/icons/Apps";
 import { AuthUserContext } from "../Session";
-import AddCourse from "./AddCourse";
+import NewCourseDialog from "./NewCourseDialog";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
@@ -16,7 +27,8 @@ import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
-const Navigation = ({ classes, firebase, history, match }) => {
+
+const Navigation = ({ classes, firebase, history }) => {
   return (
     <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
@@ -47,14 +59,11 @@ const Navigation = ({ classes, firebase, history, match }) => {
               <AuthUserContext.Consumer>
                 {(authUser) => (
                   <>
-                    {authUser &&
-                      authUser.roles &&
-                      !!authUser.roles[ROLES.ADMIN] && (
-                        <AddCourse
+                    {history.location.pathname === ROUTES.COLLECTIONS.path &&
+                      !!authUser?.roles[ROLES?.ADMIN] && (
+                        <NewCourseDialog
                           authUser={authUser}
                           firebase={firebase}
-                          history={history}
-                          match={match}
                         />
                       )}
                     <MoAvatar authUser={authUser} firebase={firebase} />

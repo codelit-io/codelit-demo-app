@@ -173,6 +173,10 @@ export default withStyles(styles)(MyComponent);
 ```
 
 
+## Feature Component Example ✨
+ See `ExampleFeature` as an example component template, it contains parent container and child component  
+
+
 
 ## ✨Firebase ✨
  Coming Soon

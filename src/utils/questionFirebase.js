@@ -4,22 +4,22 @@ import * as ROUTES from "constants/routes";
  * createQuestion(authUser, event, firebase, match)
  */
 export const createQuestion = (authUser, event, firebase, match) => {
-  if (event?.label) {
-    firebase.createQuestionById(match.params.collection, {
-      ...event,
-      id: Number(event.id),
-      userId: authUser.uid,
-      createdAt: firebase.fieldValue.serverTimestamp(),
-      question: escapeCode(event.question),
-    });
+  if (!event?.label) {
+    return;
   }
+  firebase.createQuestionById(match.params.collection, {
+    ...event,
+    id: Number(event.id),
+    userId: authUser.uid,
+    createdAt: firebase.fieldValue.serverTimestamp(),
+    question: event?.question ? escapeCode(event.question) : "",
+  });
 };
 
 /* Edit Question
  * editQuestion(event, firebase, match)
  */
 export const editQuestion = (event, firebase, match) => {
-  console.log(event.question);
   if (!match.params.collection) {
     return;
   }
@@ -29,7 +29,7 @@ export const editQuestion = (event, firebase, match) => {
       ...event,
       id: Number(event.id),
       editedAt: firebase.fieldValue.serverTimestamp(),
-      question: event.question ? escapeCode(event.question) : "",
+      question: event?.question ? escapeCode(event.question) : "",
     });
 };
 

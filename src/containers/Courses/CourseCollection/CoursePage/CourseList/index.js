@@ -1,9 +1,9 @@
 /**
  * Loops over lsit of courses and renders courses with category title
- * @prop {Object} authUser - Passed from parent container and has everything about the logged in user
- * @prop {Array} courses - List of courses passed to this component from the db
- * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @prop {Number} points - Number of points the user has for this course
+ * @param {Object} authUser - Passed from parent container and has everything about the logged in user
+ * @param {Array} courses - List of courses passed to this component from the db
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Number} points - Number of points the user has for this course
  */
 
 import React from "react";

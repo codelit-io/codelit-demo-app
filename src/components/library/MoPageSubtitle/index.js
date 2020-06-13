@@ -1,12 +1,12 @@
 /**
  * Displays subtitles for all pages
- * @prop {any || Component} children - Passed from parent container and has everything about the logged in user
- * @prop {Boolean} isAdmin - Admin flag to display extra protected info
- * @prop {String} subtitle - Text displayed for the subtitle
- * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @prop {Number} margin - optional -Margin for this component
- * @prop {String} textAlign - optional - Alignment of text, left, right or center
- * @prop {Number} width - optional - Width of the subtitle
+ * @param {any || Component} children - Passed from parent container and has everything about the logged in user
+ * @param {Boolean} isAdmin - Admin flag to display extra protected info
+ * @param {String} subtitle - Text displayed for the subtitle
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Number} margin - optional -Margin for this component
+ * @param {String} textAlign - optional - Alignment of text, left, right or center
+ * @param {Number} width - optional - Width of the subtitle
  */
 
 import React from "react";
