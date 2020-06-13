@@ -22,12 +22,12 @@ const MoFormDialog = ({ Component }) => {
   return (
     <>
       <Button
-        aria-label="Add Course"
+        aria-label="New Course"
         aria-haspopup="true"
         startIcon={<PostAddIcon />}
         onClick={() => setIsOpenState(true)}
       >
-        Add Course
+        New Course
       </Button>
       <Dialog
         aria-labelledby="form-dialog"
