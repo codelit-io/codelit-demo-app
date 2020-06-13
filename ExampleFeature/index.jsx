@@ -15,15 +15,11 @@
  *
  * */
 
-import { Courses } from "./model";
+/* Most used React built-in hooks */
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 
-const ExampleFeature = () => {
-
-    const posts: Courses = {
-        title: "name",
-        author: "namee"
-    };
-    console.log(posts)
+const ExampleFeature = ({ authUser, classes, firebase, history, match }) => {
+	//TODO: Finish the example
 };
 
 export default ExampleFeature;
