@@ -1,7 +1,7 @@
 /**
  * A Container that fetches firebase data using hooks and renders cards of questions
- * @prop {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @prop {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  */
