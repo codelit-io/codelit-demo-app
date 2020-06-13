@@ -1,3 +1,14 @@
+/**
+ * Navigation Component
+ *
+ * Navigation bar for the hole app
+ *
+ * @param {Object} classes - Class names that has styling details for elements - used with Material-UI  
+ * @param {Class} firebase - Firebase class provides access to authUser and db
+ * @param {Class} history - Firebase class provides access to authUser and db
+ * @return {<form></form>}
+ */
+
 import React from "react";
 
 import * as ROLES from "constants/roles";
@@ -16,6 +27,7 @@ import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
+
 const Navigation = ({ classes, firebase, history }) => {
 	return (
 		<header className={classes.root}>
@@ -52,7 +64,6 @@ const Navigation = ({ classes, firebase, history }) => {
 												<NewCourseDialog
 													authUser={authUser}
 													firebase={firebase}
-													history={history}
 												/>
 											)}
 										<MoAvatar authUser={authUser} firebase={firebase} />
