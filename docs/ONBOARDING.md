@@ -16,6 +16,19 @@ Write test code if possible, make sure to run testing locally. Since most compon
 
 Follow this [naming convention](https://www.conventionalcommits.org/en/v1.0.0/) to write your commits, commit as much as possible
 
+### Possible Commit Types
+
+- `chore`: Change build process, tooling or dependencies.
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- `feat`: Adds a new feature.
+- `fix`: Solves a bug.
+- `docs`: Adds or alters documentation.
+- `style`: Improves formatting, white-space.
+- `refactor`: Rewrites code without feature, performance or bug changes.
+- `perf`: Improves performance.
+- `test`: Adds or modifies tests.
+- `revert`: Changes that reverting other changes
+
 ### Lint
 
 Run `yarn lintAndFix` after commits to lint your code, without it build could fail
