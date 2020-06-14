@@ -15,29 +15,30 @@ import LessonCard from "components/shared/LessonComponents/LessonCard";
 import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
 
 const CourseList = ({ authUser, match, courses, points }) => {
-  return courses.map((course, index) => {
-    /* Configure url route for each item */
-    const configureUrl = course.isDisabled ? "" : `courses/${course.doc}`;
+	return courses.map((course, index) => {
+		/* Configure url route for each item */
+		const configureUrl = course.isDisabled ? "" : `courses/${course.doc}`;
 
-    return (
-      <React.Fragment key={index}>
-        {course.category && (
-          <>
-            <LessonCategory category={course?.category} index={index} />
-            {authUser?.roles[ROLES.ADMIN] && (
-              <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
-            )}
-          </>
-        )}
-        <LessonCard
-          isDisabled={course.isDisabled}
-          points={points}
-          item={course}
-          url={configureUrl}
-        />
-      </React.Fragment>
-    );
-  });
+		return (
+			<React.Fragment key={index}>
+				{course.category && (
+					<>
+						<LessonCategory category={course?.category} index={index} />
+						{/* TODO: figure a better way to read admin roles */}
+						{authUser && authUser.roles && authUser.roles[ROLES.ADMIN] && (
+							<NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
+						)}
+					</>
+				)}
+				<LessonCard
+					isDisabled={course.isDisabled}
+					points={points}
+					item={course}
+					url={configureUrl}
+				/>
+			</React.Fragment>
+		);
+	});
 };
 
 export default CourseList;

@@ -33,7 +33,6 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [snackbarProps, setSnackbarProps] = useState(null);
 	const [matchPercent, setMatchPercent] = useState();
-
 	const useStyles = makeStyles((theme) =>
 		createStyles({
 			buttonArea: {
@@ -108,7 +107,7 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 	);
 	/* Handler to send user to editMode page */
 	const handleOnClick = useCallback(() => {
-		if (authUser.roles[ROLES.ADMIN]) {
+		if (authUser && authUser.roles[ROLES.ADMIN]) {
 			history.push(`${question.id}/isEditMode`);
 		}
 	}, [authUser, history, question]);
@@ -150,10 +149,12 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 			<ButtonBase
 				className={classes.buttonArea}
 				onClick={() => handleOnClick()}
-				disabled={!authUser?.roles[ROLES.ADMIN]}
+				disabled={authUser && authUser.roles && !authUser.roles[ROLES.ADMIN]}
 			>
 				<MoPage
-					isAdmin={!!authUser?.roles[ROLES.ADMIN] && true}
+					isAdmin={
+						authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && true
+					}
 					title={question?.title}
 					subtitle={question?.label}
 					hint={question?.subtitle}
