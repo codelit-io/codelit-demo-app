@@ -24,7 +24,8 @@ const CourseList = ({ authUser, match, courses, points }) => {
         {course.category && (
           <>
             <LessonCategory category={course?.category} index={index} />
-            {authUser?.roles[ROLES.ADMIN] && (
+            {/* TODO: figure a better way to read admin roles */}
+            {authUser && authUser.roles && authUser.roles[ROLES.ADMIN] && (
               <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
             )}
           </>

@@ -1,3 +1,5 @@
+/* TODO: Update me to a functional component and add comments */
+
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import { compose } from "recompose";

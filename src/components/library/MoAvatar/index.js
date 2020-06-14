@@ -93,7 +93,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
               </ListItemIcon>
               <ListItemText primary={ROUTES.COLLECTIONS.title} />
             </MenuItem>
-            {authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
+            {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
               <>
                 <MenuItem
                   to={ROUTES.ADMIN.path}

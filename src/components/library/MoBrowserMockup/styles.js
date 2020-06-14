@@ -21,7 +21,7 @@ const styles = (theme) => ({
     minHeight: "60px",
     borderTop: "2em solid rgba(230, 230, 230, 0.7)",
     position: "relative",
-    borderRadius: "3px 3px 0 0",
+    borderRadius: theme.space.xs,
     boxShadow: theme.bigShadow,
   },
   browserButtons: {

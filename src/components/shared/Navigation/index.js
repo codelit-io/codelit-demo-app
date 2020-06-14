@@ -60,7 +60,9 @@ const Navigation = ({ classes, firebase, history }) => {
                 {(authUser) => (
                   <>
                     {history.location.pathname === ROUTES.COLLECTIONS.path &&
-                      !!authUser?.roles[ROLES?.ADMIN] && (
+                      authUser &&
+                      authUser.roles &&
+                      !!authUser.roles[ROLES?.ADMIN] && (
                         <NewCourseDialog
                           authUser={authUser}
                           firebase={firebase}

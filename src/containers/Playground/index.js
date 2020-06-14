@@ -1,3 +1,15 @@
+/**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Playground Component 🚕
+ *
+ * This page is accessed from the landing page and it renders the CodeEditor
+ * Playground can be used to play around with code and preview code live
+ * @returns {<CodeEditor />}
+ *
+ * */
+
 import React, { useState } from "react";
 
 import CodeEditor from "components/shared/CodeEditor";

@@ -1,3 +1,5 @@
+/* TODO: Add comments */
+
 import React from "react";
 import { compose } from "recompose";
 

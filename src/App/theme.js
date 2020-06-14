@@ -2,7 +2,7 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
 const bigShadow =
-  "0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12)";
+  "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)";
 
 const colors = {
   grey: {
@@ -70,6 +70,7 @@ let theme = createMuiTheme({
     "&:hover .desc": {
       color: "white",
     },
+    borderRadius: space.xs,
     transition:
       "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
     transform: "translateY(0)",

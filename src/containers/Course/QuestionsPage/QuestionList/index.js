@@ -34,7 +34,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
         {question.category && (
           <>
             <LessonCategory category={question?.category} index={index} />
-            {authUser?.roles[ROLES.ADMIN] && (
+            {authUser && authUser.roles && authUser.roles[ROLES.ADMIN] && (
               <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
             )}
           </>

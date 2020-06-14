@@ -1,9 +1,28 @@
 /**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Collection Details 💁‍♂️
+ *
  * Custom Hook to get more details about a collection in firebase
+ *
  * @param {String} collectionName - Name or path of collection
  * @param {String} doc - Name of doc which should match the route
  * @param {Class} firebase - Firebase class provides access to authUser and db
  * @returns {isLoading: boolean, isError: Object, collectionDetails: Object} - returns loading boolean, error Object and collectionDetails
+ *
+ * @example
+ *
+ * Example Usage
+ *
+ * ```
+ * const courseDetails = useCollectionDetails(
+ *  "COLLECTION_NAME",
+ *  "DOC_NAME",
+ *   firebase
+ * );
+ * ```
+ * @see See [React custom hooks](https://reactjs.org/docs/hooks-custom.html)
  */
 
 import { useEffect, useState } from "react";
