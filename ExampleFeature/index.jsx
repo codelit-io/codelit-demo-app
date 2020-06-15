@@ -21,15 +21,26 @@
  * */
 
 // Most used React built-in hooks
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, {
+	lazy,
+	Suspense,
+	useCallback,
+	useEffect,
+	useState,
+	useMemo,
+} from "react";
 
-import ExampleChild from "./ExampleChild";
+// used to retry imports if they fail
+import { retry } from "utils/retryLazyImport";
 /*
  * withAuthentication - higher order component
  * Provides your component with necessary props: authUser, firebase, history, match
  * Wraps component and used at the end of the file with export statement
  */
 import { withAuthentication } from "components/shared/Session";
+
+// lazy load imports and retry if they fail
+const ExampleChild = lazy(() => retry(() => import("./ExampleChild")));
 
 const ExampleFeature = ({ authUser, firebase, history, match }) => {
 	/*
@@ -94,7 +105,15 @@ const ExampleFeature = ({ authUser, firebase, history, match }) => {
 			};
 		})();
 	}, [firebase]);
-	//TODO: Finish the example
+
+	// If loading don't bother rendering the child component
+	if (isLoading) {
+		return (
+			<Suspense
+				fallback={<MoSpinner isLoading={true} color="primary" />}
+			></Suspense>
+		);
+	}
 
 	// render the component needs to be displayed to the UI
 	return <ExampleChild isLoading={isLoading} users={users} />;
