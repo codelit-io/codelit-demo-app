@@ -14,30 +14,30 @@ import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoBrowserMockup = ({
-	classes,
-	children,
-	fileType,
-	isEditor,
-	matchPercent,
+  classes,
+  children,
+  fileType,
+  isEditor,
+  matchPercent,
 }) => {
-	return isEditor ? (
-		<div className={classes.browserMockup}>
-			<div className={classes.browserFilename}>
-				<span className={classes.font}>{`index.${fileType}`}</span>
-			</div>
-			<div className={classes.editor}>{children}</div>
-		</div>
-	) : (
-		<div className={classes.browserMockup}>
-			<div className={classes.browserButtons}></div>
-			<div className={classes.browserHeader}>
-				<span className={classes.font}>localhost:3000</span>
-			</div>
-			<div id="MoBrowserMockup" className={classes.preview}>
-				{children}
-			</div>
-		</div>
-	);
+  return isEditor ? (
+    <div className={classes.browserMockup}>
+      <div className={classes.browserFilename}>
+        <span className={classes.font}>{`index.${fileType}`}</span>
+      </div>
+      <div className={classes.editor}>{children}</div>
+    </div>
+  ) : (
+    <div className={classes.browserMockup}>
+      <div className={classes.browserButtons}></div>
+      <div className={classes.browserHeader}>
+        <span className={classes.font}>localhost:3000</span>
+      </div>
+      <div id="MoBrowserMockup" className={classes.preview}>
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default withStyles(styles)(MoBrowserMockup);
