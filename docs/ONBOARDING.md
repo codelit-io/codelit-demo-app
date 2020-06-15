@@ -181,9 +181,9 @@ export default withStyles(styles)(MyComponent);
 
 ```
 
-## Feature Component Example ✨
+## 🙋‍♀️Feature Component Example 🙋‍♀️
 
-See `ExampleFeature` as an example component template, it contains parent container and child component
+See `ExampleFeature` as an example component template, it contains parent container and child component and everything you need to master this coe base
 
 ## ✨Firebase ✨
 
