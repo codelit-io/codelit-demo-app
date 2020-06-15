@@ -5,7 +5,7 @@
  * @visibleName Courses Container 🎒
  *
  * A Container contains a list of courses created by MoSkool and a list of courses created by the community
- * 
+ *
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
@@ -17,8 +17,11 @@ import React, { lazy, Suspense } from "react";
 
 import { withAuthentication } from "components/shared/Session";
 import MoSpinner from "components/library/MoSpinner";
+import { retry } from "utils/retryLazyImports";
 
-const CourseCollection = lazy(() => import("./CourseCollection/index"));
+const CourseCollection = lazy(() =>
+	retry(() => import("./CourseCollection/index"))
+);
 const collection = {
 	path: "courses",
 	title: "Your Courses",

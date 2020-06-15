@@ -16,12 +16,13 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
+import { retry } from "utils/retryLazyImports";
 
 const QuestionViewMode = lazy(() =>
-	import("containers/Question/QuestionViewMode")
+	retry(() => import("containers/Question/QuestionViewMode"))
 );
 const QuestionEditMode = lazy(() =>
-	import("containers/Question/QuestionEditMode")
+	retry(() => import("containers/Question/QuestionEditMode"))
 );
 
 const Question = () => (

@@ -23,9 +23,14 @@ import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { retry } from "utils/retryLazyImports";
 
-const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
-const MoConfetti = lazy(() => import("components/library/MoConfetti"));
+const CodeEditor = lazy(() =>
+	retry(() => import("components/shared/CodeEditor"))
+);
+const MoConfetti = lazy(() =>
+	retry(() => import("components/library/MoConfetti"))
+);
 
 const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
