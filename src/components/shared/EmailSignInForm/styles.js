@@ -23,6 +23,7 @@ const styles = (theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(),
+    marginBottom: theme.spacing(4),
   },
   submit: {
     marginTop: theme.spacing(3),

@@ -10,6 +10,7 @@ import MoTitle from "components/library/MoTitle";
 import PropTypes from "prop-types";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import SignInLink from "../SignInLink";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
@@ -84,6 +85,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
               </FormHelperText>
             )}
           </form>
+          <SignInLink />
         </div>
       </main>
     </div>

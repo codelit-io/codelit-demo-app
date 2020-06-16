@@ -72,7 +72,7 @@ const PasswordForgetFormBase = ({ firebase, classes }) => {
 };
 
 const PasswordForgetLink = () => (
-  <p style={{ marginTop: "40px" }}>
+  <p>
     <Link to={ROUTES.PASSWORD_FORGET.path}>Forgot Password?</Link>
   </p>
 );
