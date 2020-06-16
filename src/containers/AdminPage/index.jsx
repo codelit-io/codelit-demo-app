@@ -29,6 +29,7 @@ import useCollections from "hooks/useCollections";
 import {
 	withAuthorization,
 	withEmailVerification,
+	withAuthentication,
 } from "components/shared/Session";
 
 const AdminNav = lazy(() => import("./AdminNav"));
@@ -64,5 +65,6 @@ const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
 	withEmailVerification,
+	withAuthentication,
 	withAuthorization(condition)
 )(AdminPage);

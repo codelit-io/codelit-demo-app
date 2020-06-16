@@ -11,10 +11,8 @@
 
 import React from "react";
 
-import * as ROLES from "constants/roles";
 import * as ROUTES from "constants/routes";
 import AppsIcon from "@material-ui/icons/Apps";
-import { AuthUserContext } from "../Session";
 import NewCourseDialog from "./NewCourseDialog";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -25,10 +23,14 @@ import MoAvatar from "components/library/MoAvatar";
 import MoSkoolLogo from "../../library/MoSkoolLogo";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import useUserRole from "hooks/useAuthUserRole";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../Session";
 
-const Navigation = ({ classes, firebase, history }) => {
+const Navigation = ({ authUser, classes, firebase, history }) => {
+  const userRole = useUserRole(authUser);
+
   return (
     <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
@@ -56,22 +58,13 @@ const Navigation = ({ classes, firebase, history }) => {
               >
                 Courses
               </Button>
-              <AuthUserContext.Consumer>
-                {(authUser) => (
-                  <>
-                    {history.location.pathname === ROUTES.COLLECTIONS.path &&
-                      authUser &&
-                      authUser.roles &&
-                      !!authUser.roles[ROLES?.ADMIN] && (
-                        <NewCourseDialog
-                          authUser={authUser}
-                          firebase={firebase}
-                        />
-                      )}
-                    <MoAvatar authUser={authUser} firebase={firebase} />
-                  </>
-                )}
-              </AuthUserContext.Consumer>
+              <>
+                {history.location.pathname === ROUTES.COLLECTIONS.path &&
+                  userRole.isAdmin && (
+                    <NewCourseDialog authUser={authUser} firebase={firebase} />
+                  )}
+                <MoAvatar authUser={authUser} firebase={firebase} />
+              </>
             </Grid>
           </Grid>
         </Toolbar>
@@ -80,4 +73,8 @@ const Navigation = ({ classes, firebase, history }) => {
   );
 };
 
-export default compose(withStyles(styles), withRouter)(Navigation);
+export default compose(
+  withStyles(styles),
+  withAuthentication,
+  withRouter
+)(Navigation);
