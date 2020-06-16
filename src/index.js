@@ -6,10 +6,10 @@ import * as serviceWorker from "./serviceWorker";
 import Firebase, { FirebaseContext } from "./components/shared/Firebase";
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-  </FirebaseContext.Provider>,
-  document.getElementById("root")
+	<FirebaseContext.Provider value={new Firebase()}>
+		<App />
+	</FirebaseContext.Provider>,
+	document.getElementById("root")
 );
 
 serviceWorker.unregister();
