@@ -18,24 +18,23 @@ import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
 import { retry } from "utils/retryLazyImports";
 
-const QuestionViewMode = lazy(() =>
-	retry(() => import("containers/Question/QuestionViewMode"))
+const QuestionView = lazy(() =>
+	retry(() => import("containers/Question/QuestionView"))
 );
-const QuestionEditMode = lazy(() =>
-	retry(() => import("containers/Question/QuestionEditMode"))
+const QuestionEdit = lazy(() =>
+	retry(() => import("containers/Question/QuestionEdit"))
 );
-
 const Question = () => (
 	<Switch>
 		<Route
 			exact
 			path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-			component={QuestionViewMode}
+			component={QuestionView}
 		/>
 		<Route
 			exact
 			path={ROUTES.COLLECTIONS.path + "/:collection/:questionId/isEditMode"}
-			component={QuestionEditMode}
+			component={QuestionEdit}
 		/>
 	</Switch>
 );

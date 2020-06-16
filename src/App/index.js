@@ -23,7 +23,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
 import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { withAuthentication } from "components/shared/Session";
 import { retry } from "utils/retryLazyImports";
 
 const Navigation = lazy(() =>
@@ -47,12 +46,12 @@ const Question = lazy(() => retry(() => import("containers/Question")));
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
-const App = (props) => (
+const App = () => (
   <ThemeProvider theme={theme}>
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
         <Container maxWidth="lg">
-          <Navigation {...props} />
+          <Navigation />
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
@@ -91,4 +90,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-export default withAuthentication(App);
+export default App;

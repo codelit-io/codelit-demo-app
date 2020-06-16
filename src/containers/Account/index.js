@@ -10,6 +10,7 @@ import {
   AuthUserContext,
   withAuthorization,
   withEmailVerification,
+  withAuthentication,
 } from "components/shared/Session";
 import { withFirebase } from "components/shared/Firebase";
 import PasswordForgetForm from "components/shared/PasswordForgot";
@@ -232,5 +233,6 @@ const condition = (authUser) => !!authUser;
 
 export default compose(
   withEmailVerification,
+  withAuthentication,
   withAuthorization(condition)
 )(AccountPage);

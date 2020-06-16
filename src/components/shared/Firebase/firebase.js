@@ -34,7 +34,6 @@ class Firebase {
   }
 
   /* Auth API */
-
   createUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -45,7 +44,10 @@ class Firebase {
 
   signInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
 
-  signOut = () => this.auth.signOut();
+  signOut = () => {
+    this.auth.signOut();
+    localStorage.removeItem("authUser");
+  };
 
   passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
 

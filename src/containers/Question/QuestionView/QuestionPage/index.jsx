@@ -9,16 +9,14 @@
 
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
-import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
-import awardPlayerPoints from "./awardPlayerPoints";
+import awardPlayerPoints from "../awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import MoContent from "components/library/MoContent";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
-import withAuthentication from "components/shared/Session/withAuthentication";
 import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
 import createStyles from "@material-ui/core/styles/createStyles";
@@ -32,12 +30,20 @@ const MoConfetti = lazy(() =>
 	retry(() => import("components/library/MoConfetti"))
 );
 
-const QuestionViewMode = ({ authUser, firebase, history, match }) => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [question, setQuestion] = useState(null);
+const QuestionPage = ({
+	authUser,
+	firebase,
+	handleOnClick,
+	handleNavigation,
+	isLoading,
+	data,
+	match,
+}) => {
+	const [question, setQuestion] = useState(data);
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [snackbarProps, setSnackbarProps] = useState(null);
 	const [matchPercent, setMatchPercent] = useState();
+
 	const useStyles = makeStyles((theme) =>
 		createStyles({
 			buttonArea: {
@@ -51,6 +57,10 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 		})
 	);
 
+	useEffect(() => {
+		setQuestion(data);
+	}, [data]);
+
 	const classes = useStyles();
 	const triggerNextQuestion = useCallback(() => {
 		const id = Number(question.id) + 1;
@@ -61,13 +71,8 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 		setMatchPercent();
 
 		setIsCorrect(false);
-		/* A delay before navigating to a new page */
-		setTimeout(() => {
-			history.push(
-				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
-			);
-		}, 600);
-	}, [history, match, question]);
+		handleNavigation(id);
+	}, [handleNavigation, question]);
 
 	/* Checks if user code matches Pre made answer */
 	const handleOnChange = useCallback(
@@ -111,44 +116,6 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 		},
 		[authUser, firebase, match, question]
 	);
-	/* Handler to send user to editMode page */
-	const handleOnClick = useCallback(() => {
-		if (authUser && authUser.roles[ROLES.ADMIN]) {
-			history.push(`${question.id}/isEditMode`);
-		}
-	}, [authUser, history, question]);
-
-	useEffect(() => {
-		const id = match.params.questionId;
-		setIsLoading(true);
-		const unsubscribe = firebase
-			.getCollectionById(
-				"courses/" + match.params.collection + "/questions",
-				id
-			)
-			.onSnapshot((snapshot) => {
-				if (snapshot.size) {
-					let question = [];
-					snapshot.forEach((doc) =>
-						question.push({ ...doc.data(), uid: doc.id })
-					);
-					setQuestion(question[0]);
-				} else {
-					setQuestion({
-						label: "You have finished all questions ✅",
-						question: "<h1>Nice Job 🎉</h1>",
-						language: "html",
-					});
-				}
-				setIsLoading(false);
-			});
-
-		return () => {
-			unsubscribe();
-			setSnackbarProps(null);
-		};
-	}, [firebase, match]);
-
 	return (
 		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
 			<MoConfetti isActive={isCorrect} />
@@ -189,4 +156,4 @@ const QuestionViewMode = ({ authUser, firebase, history, match }) => {
 		</Suspense>
 	);
 };
-export default withAuthentication(QuestionViewMode);
+export default QuestionPage;
