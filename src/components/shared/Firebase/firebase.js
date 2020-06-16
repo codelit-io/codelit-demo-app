@@ -6,140 +6,140 @@ import "firebase/firestore";
 /*  Api keys and configs  */
 
 const config = {
-	apiKey: process.env.REACT_APP_API_KEY,
-	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-	databaseURL: process.env.REACT_APP_DATABASE_URL,
-	projectId: process.env.REACT_APP_PROJECT_ID,
-	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
 
 class Firebase {
-	constructor() {
-		app.initializeApp(config);
+  constructor() {
+    app.initializeApp(config);
 
-		this.auth = app.auth();
-		this.db = app.database();
-		this.firestore = app.firestore();
+    this.auth = app.auth();
+    this.db = app.database();
+    this.firestore = app.firestore();
 
-		/* Helper */
+    /* Helper */
 
-		this.serverValue = app.database.ServerValue;
-		this.fieldValue = app.firestore.FieldValue;
+    this.serverValue = app.database.ServerValue;
+    this.fieldValue = app.firestore.FieldValue;
 
-		this.emailAuthProvider = app.auth.EmailAuthProvider;
+    this.emailAuthProvider = app.auth.EmailAuthProvider;
 
-		this.googleProvider = new app.auth.GoogleAuthProvider();
-		this.facebookProvider = new app.auth.FacebookAuthProvider();
-	}
+    this.googleProvider = new app.auth.GoogleAuthProvider();
+    this.facebookProvider = new app.auth.FacebookAuthProvider();
+  }
 
-	/* Auth API */
-	createUserWithEmailAndPassword = (email, password) =>
-		this.auth.createUserWithEmailAndPassword(email, password);
+  /* Auth API */
+  createUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
 
-	signInWithEmailAndPassword = (email, password) =>
-		this.auth.signInWithEmailAndPassword(email, password);
+  signInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
 
-	signInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+  signInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
-	signInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
+  signInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
 
-	signOut = () => {
-		this.auth.signOut();
-		localStorage.removeItem("authUser");
-	};
+  signOut = () => {
+    this.auth.signOut();
+    localStorage.removeItem("authUser");
+  };
 
-	passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
+  passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
 
-	passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
+  passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
-	sendEmailVerification = () =>
-		this.auth.currentUser.sendEmailVerification({
-			url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
-		});
+  sendEmailVerification = () =>
+    this.auth.currentUser.sendEmailVerification({
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+    });
 
-	/* User API */
+  /* User API */
 
-	user = (uid) => this.firestore.doc(`users/${uid}`);
+  user = (uid) => this.firestore.doc(`users/${uid}`);
 
-	currentUser = (user) => {
-		if (!user) {
-			return;
-		}
-		const uid = user.uid;
-		return this.firestore.doc(`users/${uid}`);
-	};
+  currentUser = (user) => {
+    if (!user) {
+      return;
+    }
+    const uid = user.uid;
+    return this.firestore.doc(`users/${uid}`);
+  };
 
-	users = () => this.firestore.collection("users");
+  users = () => this.firestore.collection("users");
 
-	/* Questions API */
+  /* Questions API */
 
-	question = (id) => this.firestore.collection("questions").doc(id);
+  question = (id) => this.firestore.collection("questions").doc(id);
 
-	questions = () => this.firestore.collection("questions");
+  questions = () => this.firestore.collection("questions");
 
-	/* Get Any collection or Doc  */
+  /* Get Any collection or Doc  */
 
-	collection = (collectionPath) => this.firestore.collection(collectionPath);
+  collection = (collectionPath) => this.firestore.collection(collectionPath);
 
-	doc = (collectionPath, id) =>
-		this.firestore.collection(collectionPath).doc(id);
+  doc = (collectionPath, id) =>
+    this.firestore.collection(collectionPath).doc(id);
 
-	getCollectionById = (collectionPath, id) =>
-		this.firestore.collection(collectionPath).where("id", "==", Number(id));
+  getCollectionById = (collectionPath, id) =>
+    this.firestore.collection(collectionPath).where("id", "==", Number(id));
 
-	createQuestionById = (collectionPath, question) => {
-		const uid = this.createId(collectionPath);
-		this.firestore
-			.collection("courses")
-			.doc(collectionPath)
-			.collection("questions")
-			.doc(uid)
-			.set({ ...question, uid: uid });
-	};
+  createQuestionById = (collectionPath, question) => {
+    const uid = this.createId(collectionPath);
+    this.firestore
+      .collection("courses")
+      .doc(collectionPath)
+      .collection("questions")
+      .doc(uid)
+      .set({ ...question, uid: uid });
+  };
 
-	/* Helper  */
+  /* Helper  */
 
-	createId = (collectionPath) =>
-		this.firestore.collection(collectionPath).doc().id;
+  createId = (collectionPath) =>
+    this.firestore.collection(collectionPath).doc().id;
 
-	// *** Merge Auth and DB User API *** //
+  // *** Merge Auth and DB User API *** //
 
-	onAuthUserListener = (next, fallback) =>
-		this.auth.onAuthStateChanged((authUser) => {
-			if (authUser) {
-				this.user(authUser.uid)
-					.get()
-					.then((snapshot) => {
-						const dbUser = snapshot.data();
+  onAuthUserListener = (next, fallback) =>
+    this.auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        this.user(authUser.uid)
+          .get()
+          .then((snapshot) => {
+            const dbUser = snapshot.data();
 
-						// default empty roles
-						if (dbUser && !dbUser.roles) {
-							dbUser.roles = {};
-						}
+            // default empty roles
+            if (dbUser && !dbUser.roles) {
+              dbUser.roles = {};
+            }
 
-						// merge auth and db user
-						authUser = {
-							uid: authUser.uid,
-							email: authUser.email,
-							emailVerified: authUser.emailVerified,
-							providerData: authUser.providerData,
-							reports: authUser.reports,
-							photoURL: authUser.photoURL || "",
-							...dbUser,
-						};
+            // merge auth and db user
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              emailVerified: authUser.emailVerified,
+              providerData: authUser.providerData,
+              reports: authUser.reports,
+              photoURL: authUser.photoURL || "",
+              ...dbUser,
+            };
 
-						next(authUser);
-					});
-			} else {
-				fallback();
-			}
-		});
+            next(authUser);
+          });
+      } else {
+        fallback();
+      }
+    });
 
-	// *** Message API ***
+  // *** Message API ***
 
-	message = (uid) => this.firestore.doc(`messages/${uid}`);
+  message = (uid) => this.firestore.doc(`messages/${uid}`);
 
-	messages = () => this.firestore.collection("messages");
+  messages = () => this.firestore.collection("messages");
 }
 export default Firebase;

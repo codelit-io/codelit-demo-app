@@ -13,41 +13,41 @@
 import { useEffect, useState } from "react";
 
 const useQuestion = ({ firebase, questionId, questionPath }) => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
-	const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [data, setData] = useState();
 
-	useEffect(() => {
-		(async () => {
-			setIsLoading(true);
-			const unsubscribe = await firebase
-				.getCollectionById(questionPath, questionId)
-				.onSnapshot(
-					(snapshot) => {
-						if (snapshot.size) {
-							let question = [];
-							snapshot.forEach((doc) =>
-								question.push({ ...doc.data(), uid: doc.id })
-							);
-							setData(question[0]);
-						} else {
-							setData({
-								label: "You have finished all questions ✅",
-								question: "<h1>Nice Job 🎉</h1>",
-								language: "html",
-							});
-						}
-						setIsLoading(false);
-					},
-					(error) => setIsError(error.message)
-				);
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const unsubscribe = await firebase
+        .getCollectionById(questionPath, questionId)
+        .onSnapshot(
+          (snapshot) => {
+            if (snapshot.size) {
+              let question = [];
+              snapshot.forEach((doc) =>
+                question.push({ ...doc.data(), uid: doc.id })
+              );
+              setData(question[0]);
+            } else {
+              setData({
+                label: "You have finished all questions ✅",
+                question: "<h1>Nice Job 🎉</h1>",
+                language: "html",
+              });
+            }
+            setIsLoading(false);
+          },
+          (error) => setIsError(error.message)
+        );
 
-			return () => {
-				unsubscribe();
-			};
-		})();
-	}, [firebase, questionId, questionPath]);
+      return () => {
+        unsubscribe();
+      };
+    })();
+  }, [firebase, questionId, questionPath]);
 
-	return { isLoading, isError, data };
+  return { isLoading, isError, data };
 };
 export default useQuestion;
