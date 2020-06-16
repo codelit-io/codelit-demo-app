@@ -14,10 +14,10 @@ import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/library/MoSnackBar";
 import MoSpinner from "components/library/MoSpinner";
-import QuestionForm from "containers/Question/QuestionEditMode/QuestionForm";
+import QuestionForm from "containers/Question/QuestionEdit/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 
-const QuestionEditMode = ({ authUser, firebase, history, match }) => {
+const QuestionEdit = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [question, setQuestion] = useState({});
 	const [isCorrect, setIsCorrect] = useState(false);
@@ -109,4 +109,4 @@ const QuestionEditMode = ({ authUser, firebase, history, match }) => {
 
 const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
-export default withAuthorization(condition)(QuestionEditMode);
+export default withAuthorization(condition)(QuestionEdit);
