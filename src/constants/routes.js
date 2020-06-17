@@ -52,3 +52,9 @@ export const IS_EDIT_MODE = {
   path: "new/isEditMode",
   title: "Add a new course",
 };
+
+export const SUBMIT_ISSUE_GITHUB = {
+  path:
+    "https://github.com/mo-sharif/mo-skool/issues/new?title=Title%20of%20issue%20or%20suggestion%20&assignee=mo-sharif&body=**Type%20of%20issue**%20-%20[%20]%20Bug%20-%20[%20]%20Feature%20**Description**%20A%20brief%20description%20of%20the%20issue%20or%20feature%20**Steps%20to%20repro**%201.%20step%201%202.%20step%202%203.%20step%203",
+  title: "Submit an Issue",
+};
