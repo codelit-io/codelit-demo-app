@@ -57,6 +57,8 @@ const fontSize = {
 const fontFamily = {
   RobotoMono: "Roboto Mono",
   MonoSpace: "monospace",
+  OpenSans: "Open Sans",
+  BreeSerif: "Bree Serif",
 };
 
 let theme = createMuiTheme({
@@ -98,9 +100,9 @@ let theme = createMuiTheme({
     button: {
       textTransform: "none",
     },
-    fontFamily: fontFamily.RobotoMono,
+    fontFamily: fontFamily.BreeSerif,
   },
-  fontFamily: fontFamily.RobotoMono,
+  fontFamily: fontFamily.BreeSerif,
   palette: {
     primary: {
       main: colors.blue["medium"],
