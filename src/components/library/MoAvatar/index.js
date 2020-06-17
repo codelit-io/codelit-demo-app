@@ -20,6 +20,7 @@ import SignInWithGoogle from "components/shared/SocialSignIn/SignInWithGoogle";
 import SportsMotorsportsIcon from "@material-ui/icons/SportsMotorsports";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Tooltip from "@material-ui/core/Tooltip";
+import FeedbackIcon from "@material-ui/icons/Feedback";
 
 const MoAvatar = ({ authUser, classes, firebase }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -92,6 +93,16 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
                 <AppsIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText primary={ROUTES.COLLECTIONS.title} />
+            </MenuItem>
+            <MenuItem
+              to={ROUTES.SUBMIT_ISSUE_GITHUB.path}
+              component={Link}
+              onClick={handleClose}
+            >
+              <ListItemIcon>
+                <FeedbackIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary={ROUTES.SUBMIT_ISSUE_GITHUB.title} />
             </MenuItem>
             {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
               <>
