@@ -27,8 +27,9 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
 
 	/* Handler to send user to editMode page */
 	const handleOnClick = useCallback(() => {
-		if (data?.question && userRole.isAdmin) {
-			history.push(`${data.question.id}/isEditMode`);
+		/* TODO: Fix  me */
+		if (userRole.isAdmin) {
+			// history.push(`${data.id}/isEditMode`);
 		}
 	}, [userRole, history, data]);
 

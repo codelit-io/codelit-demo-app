@@ -55,6 +55,6 @@ export const IS_EDIT_MODE = {
 
 export const SUBMIT_ISSUE_GITHUB = {
   path:
-    "https://github.com/mo-sharif/mo-skool/issues/new?title=Title%20of%20issue%20or%20suggestion%20&assignee=mo-sharif&body=**Type%20of%20issue**%20\r\n\r\n-%20[%20]%20Bug%20\r\n-%20[%20]%20Feature%20\r\n\r\n**Description**%20\r\n\r\nA%20brief%20description%20of%20the%20issue%20or%20feature%20\r\n\r\n**Steps%20to%20repro**%20\r\n\r\n1.%20step%201%20\r\n\r\n2.%20step%202%20\r\n\r\n3.%20step%203",
+    "https://github.com/mo-sharif/mo-skool/issues/new?title=Title%20of%20issue%20or%20suggestion%20&assignee=mo-sharif&body=Brief%20description%20of%20the%20issue%20and%20repro%20steps",
   title: "Submit an Issue",
 };
