@@ -40,7 +40,11 @@ const LandingPage = ({ classes }) => {
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
-          <img src={Landing1} className={classes.img} />
+          <img
+            alt="Learning MoSkool React Courses"
+            src={Landing1}
+            className={classes.img}
+          />
         </Grid>
       </Grid>
 
@@ -85,7 +89,11 @@ const LandingPage = ({ classes }) => {
           </ListItem>
         </Grid>
         <Grid item sm={12} md={6} xs={12}>
-          <img src={Landing2} className={classes.img} />
+          <img
+            alt="Learn all about React"
+            src={Landing2}
+            className={classes.img}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={4} className={classes.container}>
