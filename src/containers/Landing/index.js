@@ -21,96 +21,99 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 
 const LandingPage = ({ classes }) => {
-  return (
-    <>
-      <Grid container spacing={4} className={classes.container}>
-        <Grid item sm={12} md={6} xs={12}>
-          <Fade in={true} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
-            <div className={classes.responsiveGrid}>
-              <MoPageHeader>Master React without the fees</MoPageHeader>
-              <MoPageSubtitle margin="36px 0 36px">
-                Introducing a Modern learning experience for everyone
-              </MoPageSubtitle>
-              <MoLinkButton
-                text="Get started"
-                href={ROUTES.EASY_COLLECTIONS.path}
-              />
-            </div>
-          </Fade>
-        </Grid>
+	return (
+		<>
+			<Grid container spacing={4} className={classes.container}>
+				<Grid item sm={12} md={6} xs={12}>
+					<Fade in={true} mountOnEnter timeout={{ enter: 400 }} unmountOnExit>
+						<div className={classes.responsiveGrid}>
+							<MoPageHeader>Learn React one step at a time</MoPageHeader>
+							<MoPageSubtitle margin="36px 0 36px">
+								Study any React topic, anytime. Explore front-end development
+								free courses
+							</MoPageSubtitle>
+							<MoLinkButton
+								text="Get started"
+								href={ROUTES.EASY_COLLECTIONS.path}
+							/>
+						</div>
+					</Fade>
+				</Grid>
 
-        <Grid item sm={12} md={6} xs={12}>
-          <img
-            alt="Learning MoSkool React Courses"
-            src={Landing1}
-            className={classes.img}
-          />
-        </Grid>
-      </Grid>
+				<Grid item sm={12} md={6} xs={12}>
+					<img
+						alt="Learning MoSkool React Courses"
+						src={Landing1}
+						className={classes.img}
+					/>
+				</Grid>
+			</Grid>
 
-      <Grid container spacing={4} className={classes.container}>
-        <Grid item sm={12} md={6} xs={12}>
-          <MoPageHeader>Learn all about React</MoPageHeader>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <ListItemText primary="Basic HTML and usage in React" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <ListItemText primary="Styling components and elements in React" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <ListItemText primary="JavaScript functionality in React" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <ListItemText primary="React Hooks, Context API, and Redux" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <ListItemText primary="Best UI/UX practices" />
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar className={classes.checkMark}>
-              <CheckIcon />
-            </ListItemAvatar>
-            <MoLink text="View All Courses" href={ROUTES.COLLECTIONS.path} />
-          </ListItem>
-        </Grid>
-        <Grid item sm={12} md={6} xs={12}>
-          <img
-            alt="Learn all about React"
-            src={Landing2}
-            className={classes.img}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={4} className={classes.container}>
-        <Grid item sm={12} md={6} xs={12}>
-          <MoPageHeader>Try the playground</MoPageHeader>
-          <MoPageSubtitle margin="36px 0 36px">
-            Write code in JSX and watch it render your code magically.
-          </MoPageSubtitle>
-          <MoLinkButton
-            text="Try the playground"
-            href={ROUTES.PLAYGROUND.path}
-          />
-        </Grid>
-      </Grid>
-      <Footer />
-    </>
-  );
+			<Grid container spacing={4} className={classes.container}>
+				<Fade in={true} mountOnEnter timeout={{ enter: 2400 }} unmountOnExit>
+					<Grid item sm={12} md={6} xs={12}>
+						<MoPageHeader>Learn all about React</MoPageHeader>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<ListItemText primary="Basic HTML and usage in React" />
+						</ListItem>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<ListItemText primary="Styling components and elements in React" />
+						</ListItem>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<ListItemText primary="JavaScript functionality in React" />
+						</ListItem>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<ListItemText primary="React Hooks, Context API, and Redux" />
+						</ListItem>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<ListItemText primary="Best UI/UX practices" />
+						</ListItem>
+						<ListItem>
+							<ListItemAvatar className={classes.checkMark}>
+								<CheckIcon />
+							</ListItemAvatar>
+							<MoLink text="View All Courses" href={ROUTES.COLLECTIONS.path} />
+						</ListItem>
+					</Grid>
+				</Fade>
+				<Grid item sm={12} md={6} xs={12}>
+					<img
+						alt="Learn all about React"
+						src={Landing2}
+						className={classes.img}
+					/>
+				</Grid>
+			</Grid>
+			<Grid container spacing={4} className={classes.container}>
+				<Grid item sm={12} md={6} xs={12}>
+					<MoPageHeader>Try the playground</MoPageHeader>
+					<MoPageSubtitle margin="36px 0 36px">
+						Write code in JSX and watch it render your code magically.
+					</MoPageSubtitle>
+					<MoLinkButton
+						text="Try the playground"
+						href={ROUTES.PLAYGROUND.path}
+					/>
+				</Grid>
+			</Grid>
+			<Footer />
+		</>
+	);
 };
 
 export default withStyles(styles)(LandingPage);
