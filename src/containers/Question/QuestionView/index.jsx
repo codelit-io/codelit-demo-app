@@ -29,7 +29,7 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
 	const handleOnClick = useCallback(() => {
 		/* TODO: Fix  me */
 		if (userRole.isAdmin) {
-			// history.push(`${data.id}/isEditMode`);
+			history.push(`${data.id}/isEditMode`);
 		}
 	}, [userRole, history, data]);
 
