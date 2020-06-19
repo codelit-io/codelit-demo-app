@@ -42,18 +42,6 @@
       "pre-push": "yarn lintAndFix"
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "error"
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -71,16 +59,17 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^26.0.0",
     "cross-env": "^7.0.2",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.9",
+    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint src/*.js --fix-dry-run"
     ]
   }
 }
