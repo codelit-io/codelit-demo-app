@@ -16,6 +16,8 @@ import MoSnackbar from "components/library/MoSnackBar";
 import MoSpinner from "components/library/MoSpinner";
 import QuestionForm from "containers/Question/QuestionEdit/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
+import { compose } from "recompose";
+import { withAuthentication } from "components/shared/Session";
 
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -109,4 +111,7 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 
 const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
-export default withAuthorization(condition)(QuestionEdit);
+export default compose(
+	withAuthentication,
+	withAuthorization(condition)
+)(QuestionEdit);
