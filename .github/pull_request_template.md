@@ -14,5 +14,6 @@ Description of PR that completes issue here...
 - [ ] Automated tests
 - [ ] Looks good on large screens
 - [ ] Looks good on mobile
+- [x] @mo-sharif for visibility
 
 Closes [TICKET-14](https://linktoticket.com/ticket-number-14)
