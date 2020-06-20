@@ -46,6 +46,6 @@ describe("the useQuestion hook", () => {
       useQuestion({ firebase, questionId, questionPath })
     );
     waitForNextUpdate();
-    expect(result.current).toMatchObject({ mockReturn: "hi" });
+    expect(result.current).toMatchObject(mockReturn);
   });
 });
