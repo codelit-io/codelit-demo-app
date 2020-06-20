@@ -13,7 +13,6 @@ const mockUseEffect = () => {
 };
 
 beforeAll(() => {
-  mockUseEffect();
   // Clear all instances and calls to constructor and all methods:
   Firebase.mockImplementation(() => {
     return {
@@ -33,10 +32,14 @@ useEffect = jest.spyOn(React, "useEffect");
 
 describe("the useQuestion hook", () => {
   it("should grab data from firebase db", () => {
+    beforeAll(() => {
+      mockUseEffect();
+    });
     // mock.instances is available with automatic mocks:
     const firebase = new Firebase();
     const questionId = 1;
     const questionPath = "course";
+
     /* TODO return correct data */
     const mockReturn = { isLoading: true, isError: false, data: undefined };
     const { result, waitForNextUpdate } = renderHook(() =>
@@ -44,6 +47,5 @@ describe("the useQuestion hook", () => {
     );
     waitForNextUpdate();
     expect(result.current).toMatchObject(mockReturn);
-    console.log(result.current);
   });
 });
