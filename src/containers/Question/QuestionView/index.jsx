@@ -12,7 +12,7 @@ import React, { useCallback, useState } from "react";
 import * as ROUTES from "constants/routes";
 import withAuthentication from "components/shared/Session/withAuthentication";
 
-import useUserRole from "hooks/useAuthUserRole";
+import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 
@@ -52,12 +52,13 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
 	return (
 		<QuestionPage
 			authUser={authUser}
+			data={data}
 			firebase={firebase}
-			isLoading={isLoading}
 			handleOnClick={() => handleOnClick()}
 			handleNavigation={(id) => handleNavigation(id)}
+			isLoading={isLoading}
 			match={match}
-			data={data}
+			userRole={userRole}
 		/>
 	);
 };

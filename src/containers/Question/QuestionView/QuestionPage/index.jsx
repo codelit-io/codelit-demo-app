@@ -1,15 +1,14 @@
 /**
  * Single Question is code editor, code preview and error console. This container fetches a single question
+ * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
- * @withAuthentication - HOC provides firebase and match props
+ * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
+ * @param {Object} userRole - User role  object returns an objet of roles with a boolean  flag to indicate if the user has the role or not
  * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
  */
 
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
-
-import * as ROLES from "constants/roles";
 
 import awardPlayerPoints from "../awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -36,6 +35,7 @@ const QuestionPage = ({
 	handleOnClick,
 	handleNavigation,
 	isLoading,
+	userRole,
 	data,
 	match,
 }) => {
@@ -122,12 +122,10 @@ const QuestionPage = ({
 			<ButtonBase
 				className={classes.buttonArea}
 				onClick={() => handleOnClick()}
-				disabled={authUser && authUser.roles && !authUser.roles[ROLES.ADMIN]}
+				disabled={!userRole.isAdmin}
 			>
 				<MoPage
-					isAdmin={
-						authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && true
-					}
+					isAdmin={userRole.isAdmin}
 					title={question?.title}
 					subtitle={question?.label}
 					hint={question?.subtitle}

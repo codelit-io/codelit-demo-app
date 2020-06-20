@@ -23,7 +23,7 @@ import MoAvatar from "components/library/MoAvatar";
 import MoSkoolLogo from "../../library/MoSkoolLogo";
 import styles from "./styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import useUserRole from "hooks/useAuthUserRole";
+import useUserRole from "hooks/useUserRole";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
 import { withAuthentication } from "../Session";
