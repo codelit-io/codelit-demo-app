@@ -1,17 +1,19 @@
 import React from "react";
 
 import { renderHook } from "@testing-library/react-hooks";
-import useQuestion from ".";
 import Firebase from "components/shared/Firebase";
+import useQuestion from ".";
+
 jest.mock("components/shared/Firebase"); // SoundPlayer is now a mock constructor
 
 let useEffect;
 
 const mockUseEffect = () => {
-  useEffect.mockImplementationOnce((f) => f());
+  useEffect.mockImplementationOnce(f => f());
 };
 
 beforeAll(() => {
+  mockUseEffect();
   // Clear all instances and calls to constructor and all methods:
   Firebase.mockImplementation(() => {
     return {
@@ -19,9 +21,9 @@ beforeAll(() => {
         return {
           onSnapshot: () => {
             "";
-          },
+          }
         };
-      },
+      }
     };
   });
 });
@@ -30,9 +32,6 @@ beforeAll(() => {
 useEffect = jest.spyOn(React, "useEffect");
 
 describe("the useQuestion hook", () => {
-  beforeAll(() => {
-    mockUseEffect();
-  });
   it("should grab data from firebase db", () => {
     // mock.instances is available with automatic mocks:
     const firebase = new Firebase();

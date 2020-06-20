@@ -11,12 +11,12 @@
 
 import React from "react";
 
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import MoHint from "components/library/MoHint";
+import styles from "./styles";
 import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
 import MoPageSubtitle from "../MoPageSubtitle";
-import MoHint from "components/library/MoHint";
 
 const MoPage = ({
   classes,
@@ -25,7 +25,7 @@ const MoPage = ({
   isAdmin,
   isLoading,
   subtitle,
-  title,
+  title
 }) => {
   if (isLoading) {
     return <MoSpinner isLoading={isLoading} color="primary" />;

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const MoProgressBar = ({ authUser, points, progress }) => (
   <Fade
     direction="left"
-    in={true}
+    in
     mountOnEnter
     timeout={{ enter: 800, exit: 400 }}
     unmountOnExit

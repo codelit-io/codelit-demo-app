@@ -6,12 +6,12 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
 
 const MoBodyText = ({ subtitle, children }) => {
-  const useStyles = makeStyles((theme) =>
+  const useStyles = makeStyles(theme =>
     createStyles({
       text: {
         paddingLeft: theme.space.sm,
-        color: theme.grey.light,
-      },
+        color: theme.grey.light
+      }
     })
   );
 

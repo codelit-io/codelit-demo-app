@@ -30,7 +30,7 @@ const AdminNav = ({ courses, history }) => {
           <BottomNavigationAction
             key={i}
             label={course.title}
-            value={ROUTES.ADMIN_COLLECTIONS.path + "/" + course.doc}
+            value={`${ROUTES.ADMIN_COLLECTIONS.path}/${course.doc}`}
             icon={<AddIcon />}
           />
         ))}

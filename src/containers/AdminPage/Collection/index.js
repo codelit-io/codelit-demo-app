@@ -8,7 +8,7 @@ import {
   createQuestion,
   editQuestion,
   removeQuestion,
-  rowClick,
+  rowClick
 } from "utils/questionFirebase";
 const Collection = ({ firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,10 +22,10 @@ const Collection = ({ firebase, history, match }) => {
       .doc(match.params.collection)
       .collection("questions")
       .orderBy("id")
-      .onSnapshot((snapshot) => {
+      .onSnapshot(snapshot => {
         if (snapshot.size) {
           let questions = [];
-          snapshot.forEach((doc) => {
+          snapshot.forEach(doc => {
             let data = { ...doc.data() };
             let question;
             try {
@@ -37,7 +37,7 @@ const Collection = ({ firebase, history, match }) => {
             questions.push({
               ...doc.data(),
               uid: doc.id,
-              question,
+              question
             });
           });
           setQuestions(questions);
@@ -58,21 +58,21 @@ const Collection = ({ firebase, history, match }) => {
   );
 
   const onEditQuestion = useCallback(
-    (event) => {
+    event => {
       editQuestion(event, firebase, match);
     },
     [firebase, match]
   );
 
   const onRemoveQuestion = useCallback(
-    (id) => {
+    id => {
       removeQuestion(id, firebase, match);
     },
     [firebase, match]
   );
 
   const handleRowClick = useCallback(
-    (id) => {
+    id => {
       rowClick(id, history, match);
     },
     [history, match]
@@ -84,13 +84,13 @@ const Collection = ({ firebase, history, match }) => {
 
   return (
     <AuthUserContext.Consumer>
-      {(authUser) => (
+      {authUser => (
         <QuestionsTable
           questions={questions}
-          onEditQuestion={(event) => onEditQuestion(event)}
-          onRemoveQuestion={(id) => onRemoveQuestion(id)}
-          onCreateQuestion={(event) => onCreateQuestion(event, authUser)}
-          handleRowClick={(id) => handleRowClick(id)}
+          onEditQuestion={event => onEditQuestion(event)}
+          onRemoveQuestion={id => onRemoveQuestion(id)}
+          onCreateQuestion={event => onCreateQuestion(event, authUser)}
+          handleRowClick={id => handleRowClick(id)}
         />
       )}
     </AuthUserContext.Consumer>

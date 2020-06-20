@@ -10,15 +10,15 @@
 
 import React from "react";
 
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoBrowserMockup = ({
   classes,
   children,
   fileType,
   isEditor,
-  matchPercent,
+  matchPercent
 }) => {
   return isEditor ? (
     <div className={classes.browserMockup}>
@@ -29,7 +29,7 @@ const MoBrowserMockup = ({
     </div>
   ) : (
     <div className={classes.browserMockup}>
-      <div className={classes.browserButtons}></div>
+      <div className={classes.browserButtons} />
       <div className={classes.browserHeader}>
         <span className={classes.font}>localhost:3000</span>
       </div>

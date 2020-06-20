@@ -23,10 +23,10 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
       const unsubscribe = await firebase
         .getCollectionById(questionPath, questionId)
         .onSnapshot(
-          (snapshot) => {
+          snapshot => {
             if (snapshot.size) {
-              let question = [];
-              snapshot.forEach((doc) =>
+              const question = [];
+              snapshot.forEach(doc =>
                 question.push({ ...doc.data(), uid: doc.id })
               );
               setData(question[0]);
@@ -34,12 +34,12 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
               setData({
                 label: "You have finished all questions ✅",
                 question: "<h1>Nice Job 🎉</h1>",
-                language: "html",
+                language: "html"
               });
             }
             setIsLoading(false);
           },
-          (error) => setIsError(error.message)
+          error => setIsError(error.message)
         );
 
       return () => {

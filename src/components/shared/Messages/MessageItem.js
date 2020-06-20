@@ -5,18 +5,18 @@ import Button from "@material-ui/core/Button";
 const MessageItem = ({ authUser, message, onEditMessage, onRemoveMessage }) => {
   const [state, setState] = useState({
     editMode: false,
-    editText: "",
+    editText: ""
   });
 
   const onToggleEditMode = () => {
     setState({
       editMode: !state.editMode,
-      editText: message.text,
+      editText: message.text
     });
   };
 
-  const onChangeEditText = (event) => {
-    setState((prevState) => {
+  const onChangeEditText = event => {
+    setState(prevState => {
       return { ...prevState, editText: event.target.value };
     });
   };
@@ -33,7 +33,7 @@ const MessageItem = ({ authUser, message, onEditMessage, onRemoveMessage }) => {
         <input
           type="text"
           value={state.editText}
-          onChange={(e) => onChangeEditText(e)}
+          onChange={e => onChangeEditText(e)}
         />
       ) : (
         <span>

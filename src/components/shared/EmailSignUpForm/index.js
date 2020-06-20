@@ -8,8 +8,8 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MoTitle from "components/library/MoTitle";
 import PropTypes from "prop-types";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 import SignInLink from "../SignInLink";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
@@ -18,7 +18,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
       <main className={classes.main}>
         <CssBaseline />
         <div className={classes.paper}>
-          <MoTitle text="Sign up" fade={true} margin="36px 0 36px" />
+          <MoTitle text="Sign up" fade margin="36px 0 36px" />
           <form className={classes.form} onSubmit={onSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Name</InputLabel>
@@ -78,8 +78,8 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
                 className={classes.error}
                 id="component-error-text"
                 margin="dense"
-                error={true}
-                focused={true}
+                error
+                focused
               >
                 {error.message}
               </FormHelperText>
@@ -93,7 +93,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
 };
 
 EmailSignUpForm.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(EmailSignUpForm);

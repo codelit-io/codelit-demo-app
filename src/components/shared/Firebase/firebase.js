@@ -11,7 +11,7 @@ const config = {
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
 class Firebase {
@@ -49,20 +49,20 @@ class Firebase {
     localStorage.removeItem("authUser");
   };
 
-  passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
+  passwordReset = email => this.auth.sendPasswordResetEmail(email);
 
-  passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
+  passwordUpdate = password => this.auth.currentUser.updatePassword(password);
 
   sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
   /* User API */
 
-  user = (uid) => this.firestore.doc(`users/${uid}`);
+  user = uid => this.firestore.doc(`users/${uid}`);
 
-  currentUser = (user) => {
+  currentUser = user => {
     if (!user) {
       return;
     }
@@ -74,13 +74,13 @@ class Firebase {
 
   /* Questions API */
 
-  question = (id) => this.firestore.collection("questions").doc(id);
+  question = id => this.firestore.collection("questions").doc(id);
 
   questions = () => this.firestore.collection("questions");
 
   /* Get Any collection or Doc  */
 
-  collection = (collectionPath) => this.firestore.collection(collectionPath);
+  collection = collectionPath => this.firestore.collection(collectionPath);
 
   doc = (collectionPath, id) =>
     this.firestore.collection(collectionPath).doc(id);
@@ -100,17 +100,17 @@ class Firebase {
 
   /* Helper  */
 
-  createId = (collectionPath) =>
+  createId = collectionPath =>
     this.firestore.collection(collectionPath).doc().id;
 
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged((authUser) => {
+    this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
         this.user(authUser.uid)
           .get()
-          .then((snapshot) => {
+          .then(snapshot => {
             const dbUser = snapshot.data();
 
             // default empty roles
@@ -126,7 +126,7 @@ class Firebase {
               providerData: authUser.providerData,
               reports: authUser.reports,
               photoURL: authUser.photoURL || "",
-              ...dbUser,
+              ...dbUser
             };
 
             next(authUser);
@@ -138,7 +138,7 @@ class Firebase {
 
   // *** Message API ***
 
-  message = (uid) => this.firestore.doc(`messages/${uid}`);
+  message = uid => this.firestore.doc(`messages/${uid}`);
 
   messages = () => this.firestore.collection("messages");
 }

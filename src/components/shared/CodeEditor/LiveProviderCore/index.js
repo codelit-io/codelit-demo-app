@@ -18,13 +18,13 @@ const LiveProviderCore = ({
   md,
   sm,
   matchPercent,
-  question,
+  question
 }) => {
   useEffect(() => {
     addFocusOnEditor();
   }, [question]);
 
-  const onChange = (userAnswer) => {
+  const onChange = userAnswer => {
     const previewElement = getPreviewElement();
     handleOnChange({ userAnswer, previewElement });
   };
@@ -35,7 +35,7 @@ const LiveProviderCore = ({
   // Create content with all line numbers and newline them
   const lineNos = [...Array(lines).keys()].slice(1).join("\\00000a");
 
-  const useStyles = makeStyles((theme) =>
+  const useStyles = makeStyles(theme =>
     createStyles({
       hint: {
         ...theme.editorFont,
@@ -43,7 +43,7 @@ const LiveProviderCore = ({
         top: "1.25rem",
         position: "absolute",
         zIndex: "-1",
-        padding: "0.625rem",
+        padding: "0.625rem"
       },
       liveEditor: {
         overflow: "visible !important",
@@ -57,9 +57,9 @@ const LiveProviderCore = ({
           whiteSpace: "pre",
           textAlign: "right",
           opacity: 1,
-          top: 0,
-        },
-      },
+          top: 0
+        }
+      }
     })
   );
   const classes = useStyles();
@@ -82,7 +82,7 @@ const LiveProviderCore = ({
             >
               <div>
                 <LiveEditor
-                  onChange={(e) => onChange(e)}
+                  onChange={e => onChange(e)}
                   theme={lightTheme}
                   className={classes.liveEditor}
                 />
@@ -95,7 +95,7 @@ const LiveProviderCore = ({
                       cursor={{
                         show: true,
                         blink: false,
-                        hideWhenDone: true,
+                        hideWhenDone: true
                       }}
                     >
                       {question.answer}

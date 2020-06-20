@@ -8,8 +8,8 @@
  */
 
 import React from "react";
-import CoursePage from "./CoursePage";
 import useCollections from "hooks/useCollections";
+import CoursePage from "./CoursePage";
 
 const CourseCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
@@ -26,7 +26,7 @@ const CourseCollection = ({ authUser, collection, firebase, match }) => {
       courses={collections.data}
       collectionDetails={{
         title: collection.title,
-        isProgressBar: collection.isProgressBar,
+        isProgressBar: collection.isProgressBar
       }}
     />
   );

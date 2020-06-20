@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const styles = theme => ({
   main: {
     width: "auto",
     display: "block", // Fix IE 11 issue.
@@ -7,8 +7,8 @@ const styles = (theme) => ({
     [theme.breakpoints.up(400 + theme.spacing(6))]: {
       width: 400,
       marginLeft: "auto",
-      marginRight: "auto",
-    },
+      marginRight: "auto"
+    }
   },
   card: theme.card,
   paper: {
@@ -16,10 +16,8 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(
-      3
-    )}px`,
-  },
+    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`
+  }
 });
 
 export default styles;

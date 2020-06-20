@@ -12,6 +12,6 @@ export const question = () => {
             </section>
           );
         };`,
-    isPlayground: true,
+    isPlayground: true
   };
 };

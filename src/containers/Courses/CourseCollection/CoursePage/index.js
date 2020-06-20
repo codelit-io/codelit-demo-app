@@ -23,7 +23,7 @@ const CoursePage = ({
   isLoading,
   match,
   courses,
-  calculateProgress,
+  calculateProgress
 }) => {
   const [points] = useState(0);
 

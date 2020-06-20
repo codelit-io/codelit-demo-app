@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Grow from "@material-ui/core/Grow";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
-    display: "flex",
-  },
+    display: "flex"
+  }
 }));
 
 const MoHeadline = ({ isCorrect }) => {
@@ -13,7 +13,7 @@ const MoHeadline = ({ isCorrect }) => {
   const [isVisible, setIsVisible] = useState(isCorrect);
 
   const handleChange = () => {
-    setIsVisible((prev) => !prev);
+    setIsVisible(prev => !prev);
   };
 
   return (

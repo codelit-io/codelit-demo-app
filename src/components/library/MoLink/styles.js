@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const styles = theme => ({
   link: {
     fontFamily: theme.fontFamily,
     textDecoration: "none",
@@ -9,14 +9,14 @@ const styles = (theme) => ({
     textTransform: "initial",
     fontWeight: "600",
     "&:hover .arrow": {
-      transform: "translateX(5px)",
-    },
+      transform: "translateX(5px)"
+    }
   },
   icon: {
     transition: "transform .35s",
     paddingLeft: "4px",
-    paddingTop: "2px",
-  },
+    paddingTop: "2px"
+  }
 });
 
 export default styles;

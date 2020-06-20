@@ -6,13 +6,13 @@ import { compose } from "recompose";
 import {
   withAuthorization,
   withEmailVerification,
-  withAuthentication,
+  withAuthentication
 } from "components/shared/Session";
 import Messages from "components/shared/Messages";
 
 const HomePage = () => <Messages />;
 
-const condition = (authUser) => !!authUser;
+const condition = authUser => !!authUser;
 
 export default compose(
   withEmailVerification,

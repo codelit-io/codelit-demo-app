@@ -9,26 +9,26 @@ const MoPageSubtitleEdit = ({
   name,
   textAlign,
   width,
-  register,
+  register
 }) => {
   const styles = {
     text: {
       color: "#383c40",
       verticalAlign: "middle",
       textDecoration: "none",
-      textAlign: textAlign ? textAlign : "",
-      margin: margin ? margin : "",
+      textAlign: textAlign || "",
+      margin: margin || "",
       width: "100%",
       border: "none",
-      outline: "none",
+      outline: "none"
     },
     container: {
-      width: width ? width : "",
-    },
+      width: width || ""
+    }
   };
 
   return (
-    <Fade in={true} timeout={{ enter: 800 }}>
+    <Fade in timeout={{ enter: 800 }}>
       <div style={styles.container}>
         <input
           className="MuiTypography-h4"
