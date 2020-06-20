@@ -7,28 +7,28 @@ import PropTypes from "prop-types";
 import { withFirebase } from "components/shared/Firebase";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = (theme) => ({
+const styles = theme => ({
   button: {
     width: "100%",
     textAlign: "center",
     textTransform: "initial",
     justifyContent: "end",
-    paddingLeft: "1em",
-  },
+    paddingLeft: "1em"
+  }
 });
 
 const SignInWithGoogleBase = ({ firebase, classes }) => {
   const [error, setError] = useState({ error: null });
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     firebase
       .signInWithGoogle()
-      .then((socialAuthUser) => {
+      .then(socialAuthUser => {
         // Create a user in Firebase Realtime Database
         return firebase.user(socialAuthUser.user.uid).set(
           {
             username: socialAuthUser.user.displayName,
             email: socialAuthUser.user.email,
-            roles: {},
+            roles: {}
           },
           { merge: true }
         );
@@ -36,7 +36,7 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
       .then(() => {
         setError(null);
       })
-      .catch((error) => setError(error));
+      .catch(error => setError(error));
     event.preventDefault();
   };
 
@@ -57,7 +57,7 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
 };
 
 SignInWithGoogleBase.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 const SignInWithGoogle = compose(

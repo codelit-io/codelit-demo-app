@@ -28,7 +28,7 @@ const Playground = () => {
         </section>
       );
     };`,
-    isPlayground: true,
+    isPlayground: true
   };
 
   const [question, setQuestion] = useState(initialState);
@@ -43,7 +43,7 @@ const Playground = () => {
   return (
     <>
       <CodeEditor
-        handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+        handleOnChange={userAnswer => handleOnChange(userAnswer)}
         question={question}
       />
     </>

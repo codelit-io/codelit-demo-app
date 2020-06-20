@@ -14,26 +14,26 @@ const colors = {
     medium: "#424B54",
     mediumDark: "#747474",
     dark: "#383c40",
-    darkest: "#2b2b2b",
+    darkest: "#2b2b2b"
   },
   green: {
     light: "#41D3BD",
     medium: "#99bb33",
     dark: "#157A6E",
-    darkest: "",
+    darkest: ""
   },
   yellow: {
     light: "#F5D547",
     dark: "",
-    darkest: "",
+    darkest: ""
   },
   white: {
-    medium: "#FFFFF2",
+    medium: "#FFFFF2"
   },
   blue: {
     superLight: "#e0e3ea",
-    medium: "#276ef1",
-  },
+    medium: "#276ef1"
+  }
 };
 
 const space = {
@@ -46,7 +46,7 @@ const space = {
   md1: "2rem",
   md2: "2.25rem",
   lg: "3rem",
-  xl: "6rem",
+  xl: "6rem"
 };
 
 const fontSize = {
@@ -54,45 +54,45 @@ const fontSize = {
   sm: "1.5rem",
   md: "2rem",
   lg: "3rem",
-  xl: "4rem",
+  xl: "4rem"
 };
 
 const fontFamily = {
   RobotoMono: "Roboto Mono",
   MonoSpace: "monospace",
   OpenSans: "Open Sans",
-  BreeSerif: "Bree Serif",
+  BreeSerif: "Bree Serif"
 };
 
 let theme = createMuiTheme({
-  bigShadow: bigShadow,
+  bigShadow,
   card: {
     boxShadow: bigShadow,
     "&:hover": {
       transform: "translateY(-5px)",
-      backgroundColor: "#FFF",
+      backgroundColor: "#FFF"
     },
     "&:hover .desc": {
-      color: "white",
+      color: "white"
     },
     borderRadius: space.xs,
     transition:
       "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-    transform: "translateY(0)",
+    transform: "translateY(0)"
   },
   container: {
-    width: "calc(100vw - 28.799999999999997rem)",
+    width: "calc(100vw - 28.799999999999997rem)"
   },
   editorFont: {
     fontFamily: fontFamily.MonoSpace,
     fontSize: "16px",
-    color: "rgb(77, 77, 76)",
+    color: "rgb(77, 77, 76)"
   },
   flexAlignCenter: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
-  fontSize: fontSize,
+  fontSize,
   space,
   grey: colors.grey,
   green: colors.green,
@@ -101,23 +101,23 @@ let theme = createMuiTheme({
   blue: colors.blue,
   typography: {
     button: {
-      textTransform: "none",
+      textTransform: "none"
     },
-    fontFamily: fontFamily.BreeSerif,
+    fontFamily: fontFamily.BreeSerif
   },
   fontFamily: fontFamily.BreeSerif,
   palette: {
     primary: {
-      main: colors.primary,
+      main: colors.primary
     },
     secondary: {
-      main: colors.secondary,
-    },
-  },
+      main: colors.secondary
+    }
+  }
 });
 
 const fontOptions = {
-  breakpoints: ["sm", "md", "lg", "xl"],
+  breakpoints: ["sm", "md", "lg", "xl"]
 };
 
 theme = responsiveFontSizes(theme, fontOptions);

@@ -16,16 +16,16 @@ import MoLinkButton from "components/library/MoLinkButton";
 import MoLink from "components/library/MoLink";
 import MoPageHeader from "components/library/MoPageHeader";
 import MoPageSubtitle from "components/library/MoPageSubtitle";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
+import styles from "./styles";
 
 const LandingPage = ({ classes }) => {
   return (
     <>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
-          <Fade in={true} mountOnEnter timeout={{ enter: 400 }} unmountOnExit>
+          <Fade in mountOnEnter timeout={{ enter: 400 }} unmountOnExit>
             <div className={classes.responsiveGrid}>
               <MoPageHeader>Learn React one step at a time</MoPageHeader>
               <MoPageSubtitle margin="36px 0 36px">
@@ -50,7 +50,7 @@ const LandingPage = ({ classes }) => {
       </Grid>
 
       <Grid container spacing={4} className={classes.container}>
-        <Fade in={true} mountOnEnter timeout={{ enter: 2400 }} unmountOnExit>
+        <Fade in mountOnEnter timeout={{ enter: 2400 }} unmountOnExit>
           <Grid item sm={12} md={6} xs={12}>
             <MoPageHeader>Learn all about React</MoPageHeader>
             <ListItem>

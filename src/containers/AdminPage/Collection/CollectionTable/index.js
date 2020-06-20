@@ -8,7 +8,7 @@ const CollectionTable = ({
   questions,
   onEditQuestion,
   onRemoveQuestion,
-  onCreateQuestion,
+  onCreateQuestion
   // handleRowClick,
 }) => {
   const [state, setState] = useState(questions);
@@ -17,27 +17,27 @@ const CollectionTable = ({
     {
       title: "Label",
       field: "label",
-      editComponent: (props) => <MoTextarea {...props} />,
+      editComponent: props => <MoTextarea {...props} />
     },
     {
       title: "Question",
       field: "question",
-      editComponent: (props) => <MoTextarea {...props} />,
+      editComponent: props => <MoTextarea {...props} />
     },
     {
       title: "Answer",
       field: "answer",
-      editComponent: (props) => <MoTextarea {...props} />,
+      editComponent: props => <MoTextarea {...props} />
     },
     { title: "Title", field: "title" },
     { title: "Subtitle", field: "subtitle" },
     {
       title: "Match %",
       field: "matchPercent",
-      editComponent: (props) => (
+      editComponent: props => (
         <Select
           value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
+          onChange={e => props.onChange(e.target.value)}
         >
           <MenuItem value={1}>100%</MenuItem>
           <MenuItem value={0.99}>99%</MenuItem>
@@ -51,15 +51,15 @@ const CollectionTable = ({
           <MenuItem value={0.91}>91%</MenuItem>
           <MenuItem value={0.9}>90%</MenuItem>
         </Select>
-      ),
+      )
     },
     { title: "Language", field: "language" },
     { title: "Category", field: "category" },
     {
       title: "Content",
       field: "content",
-      editComponent: (props) => <MoTextarea {...props} />,
-    },
+      editComponent: props => <MoTextarea {...props} />
+    }
   ]);
 
   return (
@@ -74,39 +74,39 @@ const CollectionTable = ({
         data={state}
         style={{ backgroundColor: "none", boxShadow: "none" }}
         editable={{
-          EditField: (props) => <textarea></textarea>,
-          onRowAdd: (newData) =>
-            new Promise((resolve) => {
+          EditField: props => <textarea />,
+          onRowAdd: newData =>
+            new Promise(resolve => {
               resolve();
-              setState((prevState) => {
-                let data = [...prevState];
+              setState(prevState => {
+                const data = [...prevState];
                 data.push(newData);
                 onCreateQuestion(newData);
                 return data;
               });
             }),
           onRowUpdate: (newData, oldData) =>
-            new Promise((resolve) => {
+            new Promise(resolve => {
               resolve();
               if (oldData) {
-                setState((prevState) => {
-                  let data = [...prevState];
+                setState(prevState => {
+                  const data = [...prevState];
                   data[data.indexOf(oldData)] = newData;
                   onEditQuestion(newData);
                   return data;
                 });
               }
             }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve) => {
+          onRowDelete: oldData =>
+            new Promise(resolve => {
               resolve();
-              setState((prevState) => {
-                let data = [...prevState];
+              setState(prevState => {
+                const data = [...prevState];
                 data.splice(data.indexOf(oldData), 1);
                 onRemoveQuestion(oldData.uid);
                 return data;
               });
-            }),
+            })
         }}
       />
     )

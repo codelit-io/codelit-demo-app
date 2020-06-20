@@ -1,8 +1,8 @@
 import React from "react";
 
 import Fade from "@material-ui/core/Fade";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoPageHeaderEdit = ({ children, classes, title, register, name }) => {
   return (

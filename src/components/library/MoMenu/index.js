@@ -7,15 +7,15 @@ import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import styles from "./styles";
 import Slide from "@material-ui/core/Slide";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Tooltip from "@material-ui/core/Tooltip";
+import styles from "./styles";
 
 const MoMenu = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -39,7 +39,7 @@ const MoMenu = ({ authUser, classes }) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center",
+          horizontal: "center"
         }}
         elevation={2}
         getContentAnchorEl={null}
@@ -49,7 +49,7 @@ const MoMenu = ({ authUser, classes }) => {
         onClose={handleClose}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center",
+          horizontal: "center"
         }}
         TransitionComponent={Slide}
       >

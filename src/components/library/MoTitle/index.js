@@ -10,12 +10,12 @@ const MoTitle = ({ text, fade, margin, textAlign, width }) => {
       color: "#383c40",
       verticalAlign: "middle",
       textDecoration: "none",
-      textAlign: textAlign ? textAlign : "",
-      margin: margin ? margin : "",
+      textAlign: textAlign || "",
+      margin: margin || ""
     },
     container: {
-      width: width ? width : "",
-    },
+      width: width || ""
+    }
   };
 
   return (

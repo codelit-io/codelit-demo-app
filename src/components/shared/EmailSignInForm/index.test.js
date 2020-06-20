@@ -1,7 +1,7 @@
 import React from "react";
 
-import EmailSignInForm from "./index.js";
 import ShallowRenderer from "react-test-renderer/shallow";
+import EmailSignInForm from "./index.js";
 
 const renderer = new ShallowRenderer();
 

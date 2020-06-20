@@ -86,7 +86,7 @@ const App = () => (
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
-    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459",
+    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
   });
 }
 

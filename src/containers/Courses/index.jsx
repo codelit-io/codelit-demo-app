@@ -20,23 +20,23 @@ import MoSpinner from "components/library/MoSpinner";
 import { retry } from "utils/retryLazyImports";
 
 const CourseCollection = lazy(() =>
-	retry(() => import("./CourseCollection/index"))
+  retry(() => import("./CourseCollection/index"))
 );
 const collection = {
-	path: "courses",
-	title: "Your Courses",
-	isProgressBar: false,
+  path: "courses",
+  title: "Your Courses",
+  isProgressBar: false
 };
 
 const Courses = ({ authUser, firebase, match }) => (
-	<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-		<CourseCollection
-			authUser={authUser}
-			collection={collection}
-			firebase={firebase}
-			match={match}
-		/>
-	</Suspense>
+  <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+    <CourseCollection
+      authUser={authUser}
+      collection={collection}
+      firebase={firebase}
+      match={match}
+    />
+  </Suspense>
 );
 
 export default withAuthentication(Courses);

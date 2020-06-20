@@ -2,9 +2,9 @@ import React from "react";
 
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
-import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoPageHeader = ({ classes, isAdmin, title, children }) => {
   return (

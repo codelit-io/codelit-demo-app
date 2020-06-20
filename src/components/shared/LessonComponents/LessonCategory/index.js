@@ -5,10 +5,10 @@ import MoTitle from "components/library/MoTitle";
 const LessonCategory = ({ category, index }) => (
   <MoTitle
     text={category}
-    fade={true}
+    fade
     margin={index === 0 ? "0px 0 12px" : "62px 0 12px"}
     width="100%"
-  ></MoTitle>
+  />
 );
 
 export default LessonCategory;

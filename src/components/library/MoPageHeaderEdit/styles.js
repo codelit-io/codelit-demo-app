@@ -1,12 +1,12 @@
-const styles = (theme) => ({
+const styles = theme => ({
   title: {
     color: theme.grey?.medium,
     textDecoration: "none",
     marginBottom: theme.space?.md,
     width: "100%",
     border: "none",
-    outline: "none",
-  },
+    outline: "none"
+  }
 });
 
 export default styles;

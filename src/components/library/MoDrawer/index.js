@@ -5,18 +5,18 @@ import MenuIcon from "@material-ui/icons/Menu";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
-const styles = (theme) => ({
+const styles = theme => ({
   menuButton: {
-    marginRight: theme.spacing(2),
-  },
+    marginRight: theme.spacing(2)
+  }
 });
 
-const MoDrawer = (classes) => {
+const MoDrawer = classes => {
   const [state, setState] = useState({
-    isDrawerOpen: false,
+    isDrawerOpen: false
   });
 
-  const toggleDrawer = (isDrawerOpen) => {
+  const toggleDrawer = isDrawerOpen => {
     setState({ ...state, isDrawerOpen });
   };
 
@@ -37,7 +37,7 @@ const MoDrawer = (classes) => {
         onOpen={() => toggleDrawer(true)}
       >
         <AuthUserContext.Consumer>
-          {(authUser) =>
+          {authUser =>
             authUser ? (
               <div
                 onClick={() => toggleDrawer(false)}

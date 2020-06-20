@@ -1,17 +1,17 @@
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
 
-    paddingBottom: theme.space?.lg,
+    paddingBottom: theme.space?.lg
   },
   alignCenter: theme.flexAlignCenter,
   toolbar: {
-    padding: "0",
+    padding: "0"
   },
   appBar: {
     boxShadow: "none",
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });
 
 export default styles;

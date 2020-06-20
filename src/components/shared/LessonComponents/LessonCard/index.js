@@ -2,8 +2,8 @@ import React from "react";
 
 import MoCard from "components/library/MoCard";
 import { withStyles } from "@material-ui/core";
-import styles from "./styles";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
+import styles from "./styles";
 
 const LessonCard = ({ classes, isDisabled, item, points, url }) => (
   <div className={classes.padding}>
@@ -13,7 +13,7 @@ const LessonCard = ({ classes, isDisabled, item, points, url }) => (
       item={item}
       url={url}
       IconComponent={SportsEsportsIcon}
-    ></MoCard>
+    />
   </div>
 );
 

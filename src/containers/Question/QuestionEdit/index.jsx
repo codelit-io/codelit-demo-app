@@ -16,97 +16,97 @@ import MoSnackbar from "components/library/MoSnackBar";
 import MoSpinner from "components/library/MoSpinner";
 import QuestionForm from "containers/Question/QuestionEdit/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
+import { compose } from "recompose";
+import { withAuthentication } from "components/shared/Session";
 
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [question, setQuestion] = useState({});
-	const [isCorrect, setIsCorrect] = useState(false);
-	const [snackbarProps, setSnackbarProps] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [question, setQuestion] = useState({});
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [snackbarProps, setSnackbarProps] = useState(null);
 
-	const triggerNextQuestion = useCallback(() => {
-		const id = Number(question.id) + 1;
-		/* Clear questions */
-		setQuestion({});
+  const triggerNextQuestion = useCallback(() => {
+    const id = Number(question.id) + 1;
+    /* Clear questions */
+    setQuestion({});
 
-		setIsCorrect(false);
-		/* A delay before navigating to a new page */
-		setTimeout(() => {
-			history.push(
-				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
-			);
-		}, 600);
-	}, [history, match.params.collection, question.id]);
+    setIsCorrect(false);
+    /* A delay before navigating to a new page */
+    setTimeout(() => {
+      history.push(
+        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
+      );
+    }, 600);
+  }, [history, match.params.collection, question.id]);
 
-	/* Checks if user code matches Pre made answer */
-	// const handleOnChange = useCallback({
+  /* Checks if user code matches Pre made answer */
+  // const handleOnChange = useCallback({
 
-	// },[authUser, firebase, match, question]);
+  // },[authUser, firebase, match, question]);
 
-	useEffect(() => {
-		const id = match.params.questionId;
-		setIsLoading(true);
-		const unsubscribe = firebase
-			.getCollectionById(
-				"courses/" + match.params.collection + "/questions",
-				id
-			)
-			.onSnapshot((snapshot) => {
-				if (snapshot.size) {
-					let question = [];
-					snapshot.forEach((doc) =>
-						question.push({ ...doc.data(), uid: doc.id })
-					);
-					setQuestion(question[0]);
-				} else {
-					if (id === "new") {
-						setQuestion({
-							title: "Title goes here",
-							label: "Subtitle goes here",
-							question: "<h1>Question goes here</h1>",
-							answer: "<h1>Answer goes here🎉</h1>",
-							language: "html",
-						});
-					}
-				}
-				setIsLoading(false);
-			});
+  useEffect(() => {
+    const id = match.params.questionId;
+    setIsLoading(true);
+    const unsubscribe = firebase
+      .getCollectionById(`courses/${match.params.collection}/questions`, id)
+      .onSnapshot(snapshot => {
+        if (snapshot.size) {
+          const question = [];
+          snapshot.forEach(doc =>
+            question.push({ ...doc.data(), uid: doc.id })
+          );
+          setQuestion(question[0]);
+        } else if (id === "new") {
+          setQuestion({
+            title: "Title goes here",
+            label: "Subtitle goes here",
+            question: "<h1>Question goes here</h1>",
+            answer: "<h1>Answer goes here🎉</h1>",
+            language: "html"
+          });
+        }
+        setIsLoading(false);
+      });
 
-		return () => {
-			unsubscribe();
-			setSnackbarProps(null);
-		};
-	}, [firebase, match]);
+    return () => {
+      unsubscribe();
+      setSnackbarProps(null);
+    };
+  }, [firebase, match]);
 
-	if (!match.params) {
-		return;
-	}
+  if (!match.params) {
+    return;
+  }
 
-	return (
-		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-			<QuestionForm
-				isLoading={isLoading}
-				isCard={false}
-				title={question.title}
-				setQuestion={(e) => setQuestion(e)}
-				subtitle={question.label}
-				question={question}
-			/>
-			{!isLoading && (
-				<>
-					{snackbarProps && (
-						<MoSnackbar
-							isActive={isCorrect}
-							authUser={authUser}
-							snackbarProps={snackbarProps}
-							triggerNextQuestion={() => triggerNextQuestion()}
-						/>
-					)}
-				</>
-			)}
-		</Suspense>
-	);
+  return (
+    <Suspense fallback={<MoSpinner isLoading color="primary" />}>
+      <QuestionForm
+        isLoading={isLoading}
+        isCard={false}
+        title={question.title}
+        setQuestion={e => setQuestion(e)}
+        subtitle={question.label}
+        question={question}
+      />
+      {!isLoading && (
+        <>
+          {snackbarProps && (
+            <MoSnackbar
+              isActive={isCorrect}
+              authUser={authUser}
+              snackbarProps={snackbarProps}
+              triggerNextQuestion={() => triggerNextQuestion()}
+            />
+          )}
+        </>
+      )}
+    </Suspense>
+  );
 };
 
-const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
-export default withAuthorization(condition)(QuestionEdit);
+export default compose(
+  withAuthentication,
+  withAuthorization(condition)
+)(QuestionEdit);

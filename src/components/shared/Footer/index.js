@@ -5,17 +5,12 @@ import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import MailIcon from "@material-ui/icons/Mail";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import styles from "./styles";
 
 const Footer = ({ classes }) => (
-  <Fade
-    in={true}
-    timeout={{ enter: 1200, exit: 1200 }}
-    mountOnEnter
-    unmountOnExit
-  >
+  <Fade in timeout={{ enter: 1200, exit: 1200 }} mountOnEnter unmountOnExit>
     <Grid container spacing={4} className={classes.container}>
       <Grid item md={6}>
         <Button

@@ -8,13 +8,13 @@ import { withFirebase } from "components/shared/Firebase";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = (theme) => ({
+const styles = theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    margin: theme.spacing(1),
-  },
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
   isAdmin: false,
-  error: null,
+  error: null
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
@@ -36,11 +36,11 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   on your personal account page.
 `;
 
-const SignUpFormBase = (props) => {
+const SignUpFormBase = props => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { username, email, passwordOne, passwordTwo, error, isAdmin } = state;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     const roles = {};
 
     if (isAdmin) {
@@ -49,13 +49,13 @@ const SignUpFormBase = (props) => {
 
     props.firebase
       .createUserWithEmailAndPassword(email, passwordOne)
-      .then((authUser) => {
+      .then(authUser => {
         // Create a user in your Firebase realtime database
         return props.firebase.user(authUser.user.uid).set(
           {
             username,
             email,
-            roles,
+            roles
           },
           { merge: true }
         );
@@ -67,7 +67,7 @@ const SignUpFormBase = (props) => {
         setState({ ...INITIAL_STATE });
         props.history.goBack();
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
           error.message = ERROR_MSG_ACCOUNT_EXISTS;
         }
@@ -77,7 +77,7 @@ const SignUpFormBase = (props) => {
     event.preventDefault();
   };
 
-  const onChange = (event) => {
+  const onChange = event => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 
