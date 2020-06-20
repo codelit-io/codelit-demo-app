@@ -29,10 +29,6 @@ jobs:
           command: |
             yarn build
       - run:
-          name: Test
-          command: |
-            yarn ci-test
-      - run:
           name: Deploy
           command: |
             if [ "$CIRCLE_BRANCH" = "release" ]; then
