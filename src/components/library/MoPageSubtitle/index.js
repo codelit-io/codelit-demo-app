@@ -42,7 +42,7 @@ const MoPageSubtitle = ({
   };
 
   return (
-    <Fade in timeout={{ enter: 200 }}>
+    <Fade in timeout={{ enter: 200, exit: 800 }}>
       <Typography variant="h4" style={styles.container}>
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {text} {children}
