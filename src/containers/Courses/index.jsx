@@ -11,6 +11,9 @@
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
  * @returns {<CourseCollection/>} - returns component which then the children fetch the correct data
+ *
+ * @see Link [Courses Page](https://moskool.com/courses)
+ *
  */
 
 import React, { lazy, Suspense } from "react";
@@ -20,23 +23,23 @@ import MoSpinner from "components/library/MoSpinner";
 import { retry } from "utils/retryLazyImports";
 
 const CourseCollection = lazy(() =>
-  retry(() => import("./CourseCollection/index"))
+	retry(() => import("./CourseCollection/index"))
 );
 const collection = {
-  path: "courses",
-  title: "Your Courses",
-  isProgressBar: false
+	path: "courses",
+	title: "Your Courses",
+	isProgressBar: false,
 };
 
 const Courses = ({ authUser, firebase, match }) => (
-  <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-    <CourseCollection
-      authUser={authUser}
-      collection={collection}
-      firebase={firebase}
-      match={match}
-    />
-  </Suspense>
+	<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+		<CourseCollection
+			authUser={authUser}
+			collection={collection}
+			firebase={firebase}
+			match={match}
+		/>
+	</Suspense>
 );
 
 export default withAuthentication(Courses);

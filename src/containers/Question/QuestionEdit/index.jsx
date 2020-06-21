@@ -1,10 +1,19 @@
 /**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Question Edit Mode Component ⁉️
+ *
  * Single Question is code editor, code preview and error console. This container fetches a single question
+ * This is the edit mode of the question, where edits can happen and only admins can access this for now
+ *
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
  * @returns {<QuestionForm/>} - returns CodeEditor component which renders the rest of the components
+ *
+ * @see Link [Example Question Page in Edit Mode](https://moskool.com/courses/mo-easy/1/isEditMode)
  */
 
 import React, { useCallback, useEffect, useState, Suspense } from "react";
