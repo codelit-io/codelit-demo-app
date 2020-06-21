@@ -28,7 +28,7 @@
 import { useEffect, useState } from "react";
 
 const useCollectionDetails = (collectionName, doc, firebase) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState({});
   useEffect(() => {
@@ -40,10 +40,10 @@ const useCollectionDetails = (collectionName, doc, firebase) => {
         .collection(collectionName)
         .where("doc", "==", doc)
         .onSnapshot(
-          (snapshot) => {
+          snapshot => {
             if (snapshot.size) {
-              let data = [];
-              snapshot.forEach((doc) =>
+              const data = [];
+              snapshot.forEach(doc =>
                 data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data[0]);
@@ -54,7 +54,7 @@ const useCollectionDetails = (collectionName, doc, firebase) => {
             }
             /* Unsubscribe from firebase on unmount */
           },
-          (error) => setIsError(error.message)
+          error => setIsError(error.message)
         );
 
       return () => getCollectionDetails();

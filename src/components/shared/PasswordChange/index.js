@@ -6,19 +6,19 @@ import Input from "@material-ui/core/Input";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withFirebase } from "../Firebase";
 
-const styles = (theme) => ({
+const styles = theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    margin: theme.spacing(1),
-  },
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
-  error: null,
+  error: null
 };
 
 const PasswordChangeForm = ({ firebase, classes }) => {
@@ -26,19 +26,19 @@ const PasswordChangeForm = ({ firebase, classes }) => {
   const { passwordOne, passwordTwo, error } = state;
   const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
-  const onSubmit = (event) => {
+  const onSubmit = event => {
     firebase
       .passwordUpdate(passwordOne)
       .then(() => {
         setState({ ...INITIAL_STATE });
       })
-      .catch((error) => {
+      .catch(error => {
         setState({ error });
       });
     event.preventDefault();
   };
 
-  const onChange = (event) => {
+  const onChange = event => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 

@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
-import useUserRole from ".";
 import { authUser, userRole } from "mocks/user";
+import useUserRole from ".";
 
 describe("the useUserRole hook", () => {
   it("should return user roles", () => {

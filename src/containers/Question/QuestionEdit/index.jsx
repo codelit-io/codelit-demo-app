@@ -4,7 +4,7 @@
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
- * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
+ * @returns {<QuestionForm/>} - returns CodeEditor component which renders the rest of the components
  */
 
 import React, { useCallback, useEffect, useState, Suspense } from "react";
@@ -34,7 +34,7 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 		/* A delay before navigating to a new page */
 		setTimeout(() => {
 			history.push(
-				ROUTES.COLLECTIONS.path + "/" + match.params.collection + "/" + id
+				`${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
 			);
 		}, 600);
 	}, [history, match.params.collection, question.id]);
@@ -48,27 +48,22 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 		const id = match.params.questionId;
 		setIsLoading(true);
 		const unsubscribe = firebase
-			.getCollectionById(
-				"courses/" + match.params.collection + "/questions",
-				id
-			)
+			.getCollectionById(`courses/${match.params.collection}/questions`, id)
 			.onSnapshot((snapshot) => {
 				if (snapshot.size) {
-					let question = [];
+					const question = [];
 					snapshot.forEach((doc) =>
 						question.push({ ...doc.data(), uid: doc.id })
 					);
 					setQuestion(question[0]);
-				} else {
-					if (id === "new") {
-						setQuestion({
-							title: "Title goes here",
-							label: "Subtitle goes here",
-							question: "<h1>Question goes here</h1>",
-							answer: "<h1>Answer goes here🎉</h1>",
-							language: "html",
-						});
-					}
+				} else if (id === "new") {
+					setQuestion({
+						title: "Title goes here",
+						label: "Subtitle goes here",
+						question: "<h1>Question goes here</h1>",
+						answer: "<h1>Answer goes here🎉</h1>",
+						language: "html",
+					});
 				}
 				setIsLoading(false);
 			});
@@ -84,14 +79,15 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 	}
 
 	return (
-		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+		<Suspense fallback={<MoSpinner isLoading color="primary" />}>
 			<QuestionForm
 				isLoading={isLoading}
 				isCard={false}
 				title={question.title}
-				setQuestion={(e) => setQuestion(e)}
-				subtitle={question.label}
+				label={question.label}
 				question={question}
+				setQuestion={(e) => setQuestion(e)}
+				subtitle={question.subtitle}
 			/>
 			{!isLoading && (
 				<>

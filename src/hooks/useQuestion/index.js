@@ -13,7 +13,7 @@
 import { useEffect, useState } from "react";
 
 const useQuestion = ({ firebase, questionId, questionPath }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState();
 
@@ -23,23 +23,31 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
       const unsubscribe = await firebase
         .getCollectionById(questionPath, questionId)
         .onSnapshot(
-          (snapshot) => {
+          snapshot => {
             if (snapshot.size) {
-              let question = [];
-              snapshot.forEach((doc) =>
+              const question = [];
+              snapshot.forEach(doc =>
                 question.push({ ...doc.data(), uid: doc.id })
               );
-              setData(question[0]);
+              question.map(data => {
+                try {
+                  /* Questions can contain special JSON characters that needs to be parsed */
+                  const parseQuestion = JSON.parse(data.question);
+                  return setData({ ...data, question: parseQuestion });
+                } catch {
+                  return setData(data);
+                }
+              });
             } else {
               setData({
                 label: "You have finished all questions ✅",
                 question: "<h1>Nice Job 🎉</h1>",
-                language: "html",
+                language: "html"
               });
             }
             setIsLoading(false);
           },
-          (error) => setIsError(error.message)
+          error => setIsError(error.message)
         );
 
       return () => {

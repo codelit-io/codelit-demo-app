@@ -9,6 +9,7 @@
  *
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
+ * @param {Object} children - Pass child components that are being wrapped by this component
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc

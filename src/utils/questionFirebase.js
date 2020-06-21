@@ -22,7 +22,7 @@ export const createQuestion = (authUser, event, firebase, match) => {
     id: Number(event.id),
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
-    question: event?.question ? escapeCode(event.question) : "",
+    question: event?.question ? escapeCode(event.question) : ""
   });
 };
 
@@ -39,7 +39,7 @@ export const editQuestion = (event, firebase, match) => {
       ...event,
       id: Number(event.id),
       editedAt: firebase.fieldValue.serverTimestamp(),
-      question: event?.question ? escapeCode(event.question) : "",
+      question: event?.question ? escapeCode(event.question) : ""
     });
 };
 
@@ -61,7 +61,7 @@ export const rowClick = (id, history, match) => {
   );
 };
 
-export const escapeCode = (code) => {
+export const escapeCode = code => {
   if (!code) {
     return;
   }

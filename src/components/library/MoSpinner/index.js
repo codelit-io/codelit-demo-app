@@ -1,7 +1,7 @@
 import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoSpinner = ({ isLoading, color, classes }) => {
   return (

@@ -10,16 +10,16 @@ const MoTitle = ({ text, fade, margin, textAlign, width }) => {
       color: "#383c40",
       verticalAlign: "middle",
       textDecoration: "none",
-      textAlign: textAlign ? textAlign : "",
-      margin: margin ? margin : "",
+      textAlign: textAlign || "",
+      margin: margin || ""
     },
     container: {
-      width: width ? width : "",
-    },
+      width: width || ""
+    }
   };
 
   return (
-    <Fade in={fade} timeout={{ enter: 800 }}>
+    <Fade in={text && true} timeout={{ enter: 200 }}>
       <Typography variant="h4" style={styles.container}>
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {text}

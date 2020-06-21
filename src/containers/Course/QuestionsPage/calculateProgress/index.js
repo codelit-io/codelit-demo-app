@@ -3,7 +3,7 @@ const calculateProgress = (authUser, points, itemsCount) => {
     return false;
   }
   return itemsCount && points
-    ? Math.round((points / itemsCount) * 100) + "% Complete"
+    ? `${Math.round((points / itemsCount) * 100)}% Complete`
     : "0% Complete";
 };
 

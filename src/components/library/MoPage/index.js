@@ -11,29 +11,17 @@
 
 import React from "react";
 
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoPageHeader from "../MoPageHeader";
-import MoSpinner from "../MoSpinner";
-import MoPageSubtitle from "../MoPageSubtitle";
 import MoHint from "components/library/MoHint";
+import styles from "./styles";
+import MoPageHeader from "../MoPageHeader";
+import MoPageSubtitle from "../MoPageSubtitle";
 
-const MoPage = ({
-  classes,
-  children,
-  hint,
-  isAdmin,
-  isLoading,
-  subtitle,
-  title,
-}) => {
-  if (isLoading) {
-    return <MoSpinner isLoading={isLoading} color="primary" />;
-  }
+const MoPage = ({ classes, children, hint, isAdmin, subtitle, title }) => {
   return (
     <section className={classes.section}>
-      <MoPageHeader title={title} isAdmin={isAdmin} />
-      <MoPageSubtitle subtitle={subtitle} isAdmin={isAdmin} />
+      <MoPageHeader text={title} isAdmin={isAdmin} />
+      <MoPageSubtitle text={subtitle} isAdmin={isAdmin} />
       <MoHint text={hint} />
       {children}
     </section>

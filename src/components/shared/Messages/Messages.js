@@ -17,7 +17,7 @@ class Messages extends Component {
       text: "",
       isLoading: false,
       messages: [],
-      limit: 15,
+      limit: 15
     };
   }
 
@@ -32,15 +32,15 @@ class Messages extends Component {
       .messages()
       .orderBy("createdAt", "desc")
       .limit(this.state.limit)
-      .onSnapshot((snapshot) => {
+      .onSnapshot(snapshot => {
         if (snapshot.size) {
           let messages = [];
-          snapshot.forEach((doc) =>
+          snapshot.forEach(doc =>
             messages.push({ ...doc.data(), uid: doc.id })
           );
           this.setState({
             messages: messages.reverse(),
-            isLoading: false,
+            isLoading: false
           });
         } else {
           this.setState({ messages: null, isLoading: false });
@@ -52,7 +52,7 @@ class Messages extends Component {
     this.unsubscribe();
   }
 
-  onChangeText = (event) => {
+  onChangeText = event => {
     this.setState({ text: event.target.value });
   };
 
@@ -61,7 +61,7 @@ class Messages extends Component {
       this.props.firebase.messages().add({
         text: this.state.text,
         userId: authUser.uid,
-        createdAt: this.props.firebase.fieldValue.serverTimestamp(),
+        createdAt: this.props.firebase.fieldValue.serverTimestamp()
       });
 
       this.setState({ text: "" });
@@ -75,17 +75,17 @@ class Messages extends Component {
     this.props.firebase.message(message.uid).update({
       ...messageSnapshot,
       text,
-      editedAt: this.props.firebase.fieldValue.serverTimestamp(),
+      editedAt: this.props.firebase.fieldValue.serverTimestamp()
     });
   };
 
-  onRemoveMessage = (uid) => {
+  onRemoveMessage = uid => {
     this.props.firebase.message(uid).delete();
   };
 
   onNextPage = () => {
     this.setState(
-      (state) => ({ limit: state.limit + 15 }),
+      state => ({ limit: state.limit + 15 }),
       this.onListenForMessages
     );
   };
@@ -95,7 +95,7 @@ class Messages extends Component {
 
     return (
       <AuthUserContext.Consumer>
-        {(authUser) => (
+        {authUser => (
           <MoPage isLoading={isLoading} title="New Feature Requests">
             <Grid container spacing={4}>
               <Grid item md={6} sm={12} xs={12}>
@@ -119,7 +119,7 @@ class Messages extends Component {
               <Grid item md={6} sm={12} xs={12}>
                 <MoPage title="Post a request" isLoading={isLoading}>
                   <form
-                    onSubmit={(event) => this.onCreateMessage(event, authUser)}
+                    onSubmit={event => this.onCreateMessage(event, authUser)}
                   >
                     <Grid container spacing={6}>
                       <Grid item md={6} sm={12}>

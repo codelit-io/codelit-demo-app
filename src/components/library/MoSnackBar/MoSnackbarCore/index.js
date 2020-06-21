@@ -5,26 +5,26 @@ import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import MoTitle from "components/library/MoTitle";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoButton from "components/library/MoButton";
+import styles from "./styles";
 
 const MoSnackbarCore = ({
   isActive,
   handleClick,
   snackbarProps,
   authUser,
-  classes,
+  classes
 }) => {
   const [state, setState] = React.useState({
-    isActive: isActive,
-    Transition: Slide,
+    isActive,
+    Transition: Slide
   });
 
   const handleButtonClick = () => {
     setState({
       isActive: false,
-      Transition: Slide,
+      Transition: Slide
     });
     handleClick();
   };
@@ -33,7 +33,7 @@ const MoSnackbarCore = ({
     setState({
       ...state,
       Transition: Slide,
-      isActive: false,
+      isActive: false
     });
   };
 
@@ -49,7 +49,7 @@ const MoSnackbarCore = ({
             <CheckCircleIcon className={classes.checkIcon} />
             <MoTitle
               text={snackbarProps && snackbarProps.title}
-              fade={true}
+              fade
               margin="0 36px 0 0"
             />
           </div>
@@ -61,7 +61,7 @@ const MoSnackbarCore = ({
             {snackbarProps && snackbarProps.buttonIcon}
           </MoButton>
         }
-      ></SnackbarContent>
+      />
     </Snackbar>
   );
 };

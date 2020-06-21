@@ -12,6 +12,8 @@ All work is done in feature branches, branched from master and after a verified 
 
 Write test code if possible, make sure to run testing locally. Since most components use snapshot testing, run `yarn test` and click `u` to update snapshots if needed.
 
+Test run automatically before every push
+
 ### Commits
 
 Follow this [naming convention](https://www.conventionalcommits.org/en/v1.0.0/) to write your commits, commit as much as possible
@@ -29,9 +31,11 @@ Follow this [naming convention](https://www.conventionalcommits.org/en/v1.0.0/) 
 - `test`: Adds or modifies tests.
 - `revert`: Changes that reverting other changes
 
-### Lint
+### Lint & Format
 
-Run `yarn lintAndFix` after commits to lint your code, without it build could fail
+Run `yarn lint` after commits to lint your code, without it build could fail
+
+ESlint and Prettier both run automatically with each commit
 
 ### PR
 
@@ -48,6 +52,8 @@ Merge PR to Release branch to trigger a release, then CircleCi will deploy the c
 1. **Containers** are pages and represent features in the app. Each container can have components specific to it and can not be shared with other components
 
 2. **Data Flow** generally its a good idea to initiate a call to the db and while waiting of the data start rendering the UI. This can be done by making the parent container fetch data from firebase using a React hook. Child components will most likely be rendering the layout of page. Example `Course` container
+
+3. **Page Layout** holds layout styling and renders rest of components for the page
 
 ```
 Container (data fetch)> PageComponent (layout & logic) > ChildComponents (dummy components)

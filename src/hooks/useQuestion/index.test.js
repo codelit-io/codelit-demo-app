@@ -1,14 +1,15 @@
 import React from "react";
 
 import { renderHook } from "@testing-library/react-hooks";
-import useQuestion from ".";
 import Firebase from "components/shared/Firebase";
+import useQuestion from ".";
+
 jest.mock("components/shared/Firebase"); // SoundPlayer is now a mock constructor
 
 let useEffect;
 
 const mockUseEffect = () => {
-  useEffect.mockImplementationOnce((f) => f());
+  useEffect.mockImplementationOnce(f => f());
 };
 
 beforeAll(() => {
@@ -19,9 +20,9 @@ beforeAll(() => {
         return {
           onSnapshot: () => {
             "";
-          },
+          }
         };
-      },
+      }
     };
   });
 });
@@ -30,14 +31,15 @@ beforeAll(() => {
 useEffect = jest.spyOn(React, "useEffect");
 
 describe("the useQuestion hook", () => {
-  beforeAll(() => {
-    mockUseEffect();
-  });
   it("should grab data from firebase db", () => {
+    beforeAll(() => {
+      mockUseEffect();
+    });
     // mock.instances is available with automatic mocks:
     const firebase = new Firebase();
     const questionId = 1;
     const questionPath = "course";
+
     /* TODO return correct data */
     const mockReturn = { isLoading: true, isError: false, data: undefined };
     const { result, waitForNextUpdate } = renderHook(() =>
@@ -45,6 +47,5 @@ describe("the useQuestion hook", () => {
     );
     waitForNextUpdate();
     expect(result.current).toMatchObject(mockReturn);
-    console.log(result.current);
   });
 });

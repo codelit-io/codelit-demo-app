@@ -1,17 +1,17 @@
 import React from "react";
 
 import Fade from "@material-ui/core/Fade";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
-const MoPageHeaderEdit = ({ children, classes, title, register, name }) => {
+const MoPageHeaderEdit = ({ children, classes, text, register, name }) => {
   return (
-    <Fade in={(title || children) && true} timeout={{ enter: 800 }}>
+    <Fade in={(text || children) && true} timeout={{ enter: 200 }}>
       <input
         ref={register}
-        className={`${classes.title} MuiTypography-h2`}
-        placeholder={title || children}
-        defaultValue={title || children}
+        className={`${classes.text} MuiTypography-h2`}
+        placeholder={text || children}
+        defaultValue={text || children}
         name={name}
       />
     </Fade>

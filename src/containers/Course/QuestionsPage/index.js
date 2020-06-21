@@ -9,37 +9,49 @@
 
 import React from "react";
 
+import calculateProgress from "./calculateProgress";
+import Fade from "@material-ui/core/Fade";
+import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import QuestionList from "./QuestionList";
-import calculateProgress from "./calculateProgress";
 import MoPage from "components/library/MoPage";
 import MoProgressBar from "components/library/MoProgressBar";
-import Footer from "components/shared/Footer";
+import { course } from "mocks/course";
 
-const QuestionsPage = ({ authUser, courses, courseDetails, match, points }) => (
-  <MoPage
-    title={courseDetails?.data?.title}
-    isLoading={courseDetails.isLoading || courses.isLoading}
-  >
+const QuestionsPage = ({
+  authUser,
+  courses,
+  courseDetails,
+  isLoading,
+  match,
+  points
+}) => (
+  <MoPage title={courseDetails?.data?.title}>
     <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
-        <QuestionList
-          authUser={authUser}
-          match={match}
-          points={points}
-          questions={courses.data}
-          url={match?.params?.collection}
-        />
-      </Grid>
-      <Grid item xs={12} sm={12} md={6} lg={6}>
-        <MoProgressBar
-          authUser={authUser}
-          points={points}
-          progress={calculateProgress(authUser, points, courses.data?.length)}
-        />
-      </Grid>
+      <Fade in={!isLoading && true} timeout={{ enter: 800 }}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <QuestionList
+            authUser={authUser}
+            isLoading={isLoading}
+            match={match}
+            points={points}
+            questions={courses.data}
+            url={match?.params?.collection}
+          />
+        </Grid>
+      </Fade>
+      <Fade in={!isLoading} timeout={{ enter: 2400 }}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <MoProgressBar
+            authUser={authUser}
+            isDisplayed={courses.length > 0 && true}
+            points={points}
+            progress={calculateProgress(authUser, points, courses.data?.length)}
+          />
+        </Grid>
+      </Fade>
     </Grid>
-    <Footer />
+    <Footer isDisplayed={course.length > 0 && true} />
   </MoPage>
 );
 

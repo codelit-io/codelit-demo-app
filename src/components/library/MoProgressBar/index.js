@@ -7,12 +7,11 @@ import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
 
-const MoProgressBar = ({ authUser, points, progress }) => (
+const MoProgressBar = ({ authUser, isDisplayed, points, progress }) => (
   <Fade
-    direction="left"
-    in={true}
-    mountOnEnter
+    in={isDisplayed}
     timeout={{ enter: 800, exit: 400 }}
+    mountOnEnter
     unmountOnExit
   >
     <ButtonGroup

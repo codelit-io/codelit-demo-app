@@ -10,6 +10,7 @@ import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
 import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
+import MoHintEdit from "components/library/MoHintEdit";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -17,6 +18,7 @@ const QuestionForm = ({
 	classes,
 	children,
 	isLoading,
+	label,
 	question,
 	subtitle,
 	setQuestion,
@@ -32,12 +34,23 @@ const QuestionForm = ({
 		question: "<h1>Hello World</h1>",
 	});
 
-	const handleOnChange = useCallback(
+	const handleQuestionChange = useCallback(
 		({ userAnswer }) => {
 			if (userAnswer === "{}" || userAnswer === "") {
 				return;
 			}
 			setFormData((preState) => ({ ...preState, question: userAnswer }));
+			setQuestion({ ...question, question: userAnswer });
+		},
+		[setFormData, setQuestion, question]
+	);
+
+	const handleAnswerChange = useCallback(
+		({ userAnswer }) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
+			setFormData((preState) => ({ ...preState, answer: userAnswer }));
 			setQuestion({ ...question, question: userAnswer });
 		},
 		[setFormData, setQuestion, question]
@@ -67,23 +80,38 @@ const QuestionForm = ({
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<section className={classes.section}>
 				{title && (
-					<MoPageHeaderEdit title={title} register={register} name="label" />
+					<MoPageHeaderEdit text={title} register={register} name="label" />
 				)}
-				{subtitle && (
-					<MoPageSubtitleEdit
-						subtitle={subtitle}
-						register={register}
-						name="desc"
+				{label && (
+					<MoPageSubtitleEdit text={label} register={register} name="desc" />
+				)}
+				{MoHintEdit && (
+					<MoHintEdit text={subtitle} register={register} name="desc" />
+				)}
+			</section>
+			<section>
+				{question && (
+					<CodeEditor
+						codeAnswer={question?.answer}
+						codeLanguage={question?.language}
+						codeQuestion={question?.question}
+						isPlayground={question?.isPlayground}
+						handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
+						sm={6}
+						md={6}
 					/>
 				)}
 			</section>
 			<section>
 				{question && (
 					<CodeEditor
-						handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+						codeAnswer={question?.answer}
+						codeLanguage={question?.language}
+						codeQuestion={question?.question}
+						isPlayground={question?.isPlayground}
+						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
 						sm={6}
 						md={6}
-						question={question}
 					/>
 				)}
 			</section>

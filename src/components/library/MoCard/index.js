@@ -3,9 +3,9 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import LockIcon from "@material-ui/icons/Lock";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
+import styles from "./styles";
 
 const MoCard = ({ item, IconComponent, isDisabled, classes, url }) => (
   <Link to={url} className={isDisabled ? classes.disableLink : classes.link}>

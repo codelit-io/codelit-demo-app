@@ -8,18 +8,19 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import styles from "./styles";
 import SignUpLink from "components/shared/SignUpLink";
-import { PasswordForgetLink } from "../PasswordForgot";
 import PropTypes from "prop-types";
 import MoTitle from "components/library/MoTitle";
+import { PasswordForgetLink } from "../PasswordForgot";
+import styles from "./styles";
+
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
     <div className={classes.card}>
       <main className={classes.main}>
         <CssBaseline />
         <div className={classes.paper}>
-          <MoTitle text="Sign in" fade={true} margin="36px 0 36px" />
+          <MoTitle text="Sign in" fade margin="36px 0 36px" />
           <form className={classes.form} onSubmit={onSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -61,8 +62,8 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
                 className={classes.error}
                 id="component-error-text"
                 margin="dense"
-                error={true}
-                focused={true}
+                error
+                focused
               >
                 {error.message}
               </FormHelperText>
@@ -77,7 +78,7 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
 };
 
 EmailSignInForm.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(EmailSignInForm);

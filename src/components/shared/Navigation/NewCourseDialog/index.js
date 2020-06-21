@@ -34,11 +34,11 @@ const NewCourseDialog = ({ authUser, firebase }) => {
     title: "Master React Course",
     desc:
       "A series of questions to learn advanced courses in react such as React hooks and Context API",
-    id: 0,
+    id: 0
   });
 
   const Form = ({ handleDialogState }) => {
-    const onSubmit = (formData) => {
+    const onSubmit = formData => {
       if (formData.title) {
         // Create doc based on title name, doc is lowercase without spaces
         const doc = formData?.title.replace(/\s+/g, "-").toLowerCase();
@@ -47,11 +47,14 @@ const NewCourseDialog = ({ authUser, firebase }) => {
           doc,
           id: 0,
           userId: authUser.uid,
-          createdAt: firebase.fieldValue.serverTimestamp(),
+          createdAt: firebase.fieldValue.serverTimestamp()
         };
 
         // Create courses in db with doc, then set the payload
-        firebase.collection("courses").doc(doc).set(payload, { merge: true });
+        firebase
+          .collection("courses")
+          .doc(doc)
+          .set(payload, { merge: true });
 
         // Add a questions array to the collection created above add a placeholder entry
         // TODO: figure a more efficient way to do this with one firebase query

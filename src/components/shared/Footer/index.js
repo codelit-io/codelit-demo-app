@@ -5,13 +5,13 @@ import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import MailIcon from "@material-ui/icons/Mail";
-import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import styles from "./styles";
 
-const Footer = ({ classes }) => (
+const Footer = ({ classes, isDisplayed }) => (
   <Fade
-    in={true}
+    in={isDisplayed}
     timeout={{ enter: 1200, exit: 1200 }}
     mountOnEnter
     unmountOnExit

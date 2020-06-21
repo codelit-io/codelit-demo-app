@@ -20,6 +20,8 @@ import MoSpinner from "components/library/MoSpinner";
 import stringSimilarity from "string-similarity";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 import { retry } from "utils/retryLazyImports";
 
 const CodeEditor = lazy(() =>
@@ -34,7 +36,6 @@ const QuestionPage = ({
 	firebase,
 	handleOnClick,
 	handleNavigation,
-	isLoading,
 	userRole,
 	data,
 	match,
@@ -43,6 +44,9 @@ const QuestionPage = ({
 	const [isCorrect, setIsCorrect] = useState(false);
 	const [snackbarProps, setSnackbarProps] = useState(null);
 	const [matchPercent, setMatchPercent] = useState();
+
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const useStyles = makeStyles((theme) =>
 		createStyles({
@@ -66,7 +70,6 @@ const QuestionPage = ({
 		const id = Number(question.id) + 1;
 		/* Clear questions */
 		setQuestion({});
-
 		/* Clear matchPercent */
 		setMatchPercent();
 
@@ -129,20 +132,21 @@ const QuestionPage = ({
 					title={question?.title}
 					subtitle={question?.label}
 					hint={question?.subtitle}
-					isLoading={isLoading}
 					isCard={false}
 				/>
 			</ButtonBase>
 			{question?.content && <MoContent content={question.content} />}
-			{question && (
-				<CodeEditor
-					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-					question={question}
-					matchPercent={matchPercent}
-					sm={6}
-					md={6}
-				/>
-			)}
+			<CodeEditor
+				codeAnswer={question?.answer}
+				codeLanguage={question?.language}
+				codeQuestion={question?.question}
+				handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+				isPlayground={question?.isPlayground}
+				isMobile={isMobile}
+				matchPercent={matchPercent}
+				sm={6}
+				md={6}
+			/>
 			{snackbarProps && (
 				<MoSnackbar
 					isActive={isCorrect}

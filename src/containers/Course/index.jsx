@@ -42,6 +42,7 @@ const Course = ({ authUser, firebase, match }) => {
 			authUser={authUser}
 			courses={courses}
 			courseDetails={courseDetails}
+			hasData={courses.data.length && true}
 			match={match}
 			points={points}
 		/>

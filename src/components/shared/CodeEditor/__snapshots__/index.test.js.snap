@@ -5,10 +5,177 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
   container={true}
   spacing={2}
 >
-  <React.Suspense>
-    <UNDEFINED
-      isMobile={false}
-    />
-  </React.Suspense>
+  <LiveProvider
+    code=""
+    disabled={false}
+    language="jsx"
+    noInline={false}
+  >
+    <ForwardRef(WithStyles)
+      item={true}
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+      xs={12}
+    >
+      <ForwardRef(Fade)
+        mountOnEnter={true}
+        timeout={
+          Object {
+            "enter": 800,
+            "exit": 200,
+          }
+        }
+        unmountOnExit={true}
+      >
+        <div>
+          <ForwardRef(WithStyles)
+            isEditor={true}
+          >
+            <div>
+              <LiveEditor
+                className="makeStyles-liveEditor-2"
+                onChange={[Function]}
+                theme={
+                  Object {
+                    "plain": Object {
+                      "color": "#4D4D4C",
+                    },
+                    "styles": Array [
+                      Object {
+                        "style": Object {
+                          "color": "hsl(30, 20%, 50%)",
+                        },
+                        "types": Array [
+                          "prolog",
+                          "comment",
+                          "doctype",
+                          "cdata",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "#C82829",
+                        },
+                        "types": Array [
+                          "property",
+                          "tag",
+                          "boolean",
+                          "number",
+                          "constant",
+                          "symbol",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "#C82829",
+                        },
+                        "types": Array [
+                          "attr-name",
+                          "string",
+                          "char",
+                          "builtin",
+                          "insterted",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "#718C00",
+                        },
+                        "types": Array [
+                          "operator",
+                          "entity",
+                          "url",
+                          "string",
+                          "variable",
+                          "language-css",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "rgb(255, 85, 85)",
+                        },
+                        "types": Array [
+                          "deleted",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "fontStyle": "italic",
+                        },
+                        "types": Array [
+                          "italic",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "fontWeight": "bold",
+                        },
+                        "types": Array [
+                          "important",
+                          "bold",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "#e90",
+                        },
+                        "types": Array [
+                          "regex",
+                          "important",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "color": "#718C00",
+                        },
+                        "types": Array [
+                          "atrule",
+                          "attr-value",
+                          "keyword",
+                        ],
+                      },
+                      Object {
+                        "style": Object {
+                          "opacity": "0.7",
+                        },
+                        "types": Array [
+                          "punctuation",
+                          "symbol",
+                        ],
+                      },
+                    ],
+                  }
+                }
+              />
+            </div>
+          </ForwardRef(WithStyles)>
+        </div>
+      </ForwardRef(Fade)>
+    </ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      item={true}
+      xs={12}
+    >
+      <ForwardRef(Fade)
+        mountOnEnter={true}
+        timeout={
+          Object {
+            "enter": 800,
+            "exit": 200,
+          }
+        }
+        unmountOnExit={true}
+      >
+        <div>
+          <ForwardRef(WithStyles)
+            isEditor={false}
+          />
+        </div>
+      </ForwardRef(Fade)>
+    </ForwardRef(WithStyles)>
+  </LiveProvider>
 </ForwardRef(WithStyles)>
 `;
