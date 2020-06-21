@@ -9,13 +9,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import styles from "./styles";
 
-const Footer = ({ classes, isDisplayed }) => (
-  <Fade
-    in={isDisplayed}
-    timeout={{ enter: 1200, exit: 1200 }}
-    mountOnEnter
-    unmountOnExit
-  >
+const Footer = ({ classes }) => (
+  <Fade in timeout={{ enter: 1200, exit: 1200 }} mountOnEnter unmountOnExit>
     <Grid container spacing={4} className={classes.container}>
       <Grid item md={6}>
         <Button
