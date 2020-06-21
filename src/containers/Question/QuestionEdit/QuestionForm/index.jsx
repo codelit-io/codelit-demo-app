@@ -92,20 +92,26 @@ const QuestionForm = ({
 			<section>
 				{question && (
 					<CodeEditor
+						codeAnswer={question?.answer}
+						codeLanguage={question?.language}
+						codeQuestion={question?.question}
+						isPlayground={question?.isPlayground}
 						handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
 						sm={6}
 						md={6}
-						question={question}
 					/>
 				)}
 			</section>
 			<section>
 				{question && (
 					<CodeEditor
+						codeAnswer={question?.answer}
+						codeLanguage={question?.language}
+						codeQuestion={question?.question}
+						isPlayground={question?.isPlayground}
 						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
 						sm={6}
 						md={6}
-						question={question}
 					/>
 				)}
 			</section>
