@@ -10,6 +10,9 @@
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
  * @returns - returns a lesson list on the left column and course tracking info on the right column
+ *
+ * @see Link [Course Page](https://moskool.com/courses/mo-easy)
+ *
  */
 
 import React, { useEffect, useState } from "react";
@@ -43,6 +46,7 @@ const Course = ({ authUser, firebase, match }) => {
 			courses={courses}
 			courseDetails={courseDetails}
 			hasData={courses.data.length && true}
+			isLoading={courses.isLoading}
 			match={match}
 			points={points}
 		/>

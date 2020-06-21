@@ -1,10 +1,20 @@
 /**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Question View Mode Component ⁉️
+ *
  * This container fetches question data and user roles. Then it renders the questions page
+ * View mode is only for viewing and answering questions, no edits are allowed.
+ *
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
  * @withAuthentication - HOC provides firebase and match props
  * @returns {<QuestionPage/>} - returns CodeEditor component which renders the rest of the components
+ *
+ * @see Link [Example Question Page in View Mode](https://moskool.com/courses/mo-easy/1)
+ *
  */
 
 import React, { useCallback, useState } from "react";

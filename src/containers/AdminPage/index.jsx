@@ -13,6 +13,9 @@
  * @withAuthorization - HOC wraps around components and prevents render based on a condition - firebase and match props - EXAMPLE USAGE: withAuthorization(condition)(Component)
  * @withEmailVerification - HOC provides email verification stuff
  * @returns - returns a lesson list on the left column and course tracking info on the right column
+ *
+ * @see Link [Admin Page](https://moskool.com/admin)
+ *
  */
 
 import React, { Suspense, lazy } from "react";
@@ -27,44 +30,44 @@ import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import useCollections from "hooks/useCollections";
 import {
-  withAuthorization,
-  withEmailVerification,
-  withAuthentication
+	withAuthorization,
+	withEmailVerification,
+	withAuthentication,
 } from "components/shared/Session";
 
 const AdminNav = lazy(() => import("./AdminNav"));
 const Collection = lazy(() => import("./Collection"));
 
 const AdminPage = ({ firebase, history }) => {
-  const courses = useCollections("courses", firebase);
-  return (
-    <MoPage title="Admin" isLoading={false}>
-      <AdminNav courses={courses} history={history} />
-      <Suspense
-        fallback={<MoSpinner isLoading={true} color="primary" />}
-      ></Suspense>
-      <Switch>
-        <Route
-          exact
-          path={ROUTES.ADMIN_COLLECTIONS.path + "/:collection"}
-          component={Collection}
-        />
-        <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
-        <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
-        <Route
-          exact
-          path={ROUTES.ADMIN_USERS.path + "/:id"}
-          component={UserItem}
-        />
-      </Switch>
-    </MoPage>
-  );
+	const courses = useCollections("courses", firebase);
+	return (
+		<MoPage title="Admin" isLoading={false}>
+			<AdminNav courses={courses} history={history} />
+			<Suspense
+				fallback={<MoSpinner isLoading={true} color="primary" />}
+			></Suspense>
+			<Switch>
+				<Route
+					exact
+					path={ROUTES.ADMIN_COLLECTIONS.path + "/:collection"}
+					component={Collection}
+				/>
+				<Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
+				<Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
+				<Route
+					exact
+					path={ROUTES.ADMIN_USERS.path + "/:id"}
+					component={UserItem}
+				/>
+			</Switch>
+		</MoPage>
+	);
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
-  withEmailVerification,
-  withAuthentication,
-  withAuthorization(condition)
+	withEmailVerification,
+	withAuthentication,
+	withAuthorization(condition)
 )(AdminPage);

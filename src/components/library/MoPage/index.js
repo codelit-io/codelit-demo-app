@@ -16,8 +16,20 @@ import MoHint from "components/library/MoHint";
 import styles from "./styles";
 import MoPageHeader from "../MoPageHeader";
 import MoPageSubtitle from "../MoPageSubtitle";
+import MoSpinner from "../MoSpinner";
 
-const MoPage = ({ classes, children, hint, isAdmin, subtitle, title }) => {
+const MoPage = ({
+  classes,
+  children,
+  hint,
+  isLoading,
+  isAdmin,
+  subtitle,
+  title
+}) => {
+  if (isLoading) {
+    return <MoSpinner isLoading={isLoading} />;
+  }
   return (
     <section className={classes.section}>
       <MoPageHeader text={title} isAdmin={isAdmin} />

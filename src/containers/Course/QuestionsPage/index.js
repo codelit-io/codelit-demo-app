@@ -16,7 +16,6 @@ import Grid from "@material-ui/core/Grid";
 import QuestionList from "./QuestionList";
 import MoPage from "components/library/MoPage";
 import MoProgressBar from "components/library/MoProgressBar";
-import { course } from "mocks/course";
 
 const QuestionsPage = ({
   authUser,
@@ -26,13 +25,12 @@ const QuestionsPage = ({
   match,
   points
 }) => (
-  <MoPage title={courseDetails?.data?.title}>
+  <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
     <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
       <Fade in={!isLoading && true} timeout={{ enter: 800 }}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <QuestionList
             authUser={authUser}
-            isLoading={isLoading}
             match={match}
             points={points}
             questions={courses.data}
@@ -44,14 +42,13 @@ const QuestionsPage = ({
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <MoProgressBar
             authUser={authUser}
-            isDisplayed={courses.length > 0 && true}
             points={points}
             progress={calculateProgress(authUser, points, courses.data?.length)}
           />
         </Grid>
       </Fade>
     </Grid>
-    <Footer isDisplayed={course.length > 0 && true} />
+    <Footer />
   </MoPage>
 );
 
