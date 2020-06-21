@@ -28,44 +28,41 @@ const CoursePage = ({
 }) => {
   const [points] = useState(0);
   return (
-    <MoPage title={collectionDetails?.title}>
-      {courses && (
-        <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-          <Fade in={!isLoading && true} timeout={{ enter: 800 }}>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <CourseList
-                authUser={authUser}
-                courses={courses}
-                match={match}
-                points={points}
-              />
-            </Grid>
-          </Fade>
-          <Fade in={!isLoading} timeout={{ enter: 2400 }}>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              {collectionDetails.isProgressBar && (
-                <>
-                  <MoPageSubtitle margin="0px 0 36px" width="100%">
-                    Your Progress
-                  </MoPageSubtitle>
+    <MoPage title={collectionDetails?.title} isLoading={isLoading}>
+      <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
+        <Fade in={!isLoading && true} timeout={{ enter: 800 }}>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <CourseList
+              authUser={authUser}
+              courses={courses}
+              match={match}
+              points={points}
+            />
+          </Grid>
+        </Fade>
+        <Fade in={!isLoading} timeout={{ enter: 2400 }}>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            {collectionDetails.isProgressBar && (
+              <>
+                <MoPageSubtitle margin="0px 0 36px" width="100%">
+                  Your Progress
+                </MoPageSubtitle>
 
-                  <MoProgressBar
-                    authUser={authUser}
-                    isDisplayed={courses.length > 0 && true}
-                    points={points}
-                    progress={calculateProgress(
-                      authUser,
-                      points,
-                      courses?.length
-                    )}
-                  />
-                </>
-              )}
-            </Grid>
-          </Fade>
-        </Grid>
-      )}
-      <Footer isDisplayed={courses.length > 0 && true} />
+                <MoProgressBar
+                  authUser={authUser}
+                  points={points}
+                  progress={calculateProgress(
+                    authUser,
+                    points,
+                    courses?.length
+                  )}
+                />
+              </>
+            )}
+          </Grid>
+        </Fade>
+      </Grid>
+      <Footer />
     </MoPage>
   );
 };
