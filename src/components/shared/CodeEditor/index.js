@@ -29,11 +29,14 @@ const CodeEditor = ({ handleOnChange, md, sm, matchPercent, question }) => {
     <Grid container spacing={2}>
       <Suspense>
         <LiveProviderCore
-          question={state}
+          codeAnswer={state.answer}
+          codeLanguage={state.language}
+          codeQuestion={state.question}
           handleOnChange={handleOnChange}
           md={md}
           sm={sm}
           matchPercent={matchPercent}
+          isPlayground={state.isPlayground}
           isMobile={isMobile}
         />
       </Suspense>

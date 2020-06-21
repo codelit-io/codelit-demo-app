@@ -10,91 +10,113 @@ import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
 import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
+import MoHintEdit from "components/library/MoHintEdit";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
 const QuestionForm = ({
-  classes,
-  children,
-  isLoading,
-  question,
-  subtitle,
-  setQuestion,
-  title
+	classes,
+	children,
+	isLoading,
+	label,
+	question,
+	subtitle,
+	setQuestion,
+	title,
 }) => {
-  const { handleSubmit, register } = useForm();
+	const { handleSubmit, register } = useForm();
 
-  const [formData, setFormData] = useState({
-    label: "Master React Course",
-    desc:
-      "A series of questions to learn advanced courses in react such as React hooks and Context API",
-    id: "0",
-    question: "<h1>Hello World</h1>"
-  });
+	const [formData, setFormData] = useState({
+		label: "Master React Course",
+		desc:
+			"A series of questions to learn advanced courses in react such as React hooks and Context API",
+		id: "0",
+		question: "<h1>Hello World</h1>",
+	});
 
-  const handleOnChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
-      setFormData(preState => ({ ...preState, question: userAnswer }));
-      setQuestion({ ...question, question: userAnswer });
-    },
-    [setFormData, setQuestion, question]
-  );
+	const handleQuestionChange = useCallback(
+		({ userAnswer }) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
+			setFormData((preState) => ({ ...preState, question: userAnswer }));
+			setQuestion({ ...question, question: userAnswer });
+		},
+		[setFormData, setQuestion, question]
+	);
 
-  const onSubmit = data => {
-    console.log({ ...formData, ...data });
-    if (formData.label) {
-      // const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
-      // const payload = {
-      //   ...formData,
-      //   id,
-      //   userId: authUser.uid,
-      //   createdAt: firebase.fieldValue.serverTimestamp(),
-      // };
-      // firebase.collection("courses").doc(id).set(payload, { merge: true });
-      // handleDialogState(false);
-      // history.push(`/courses/${id}`);
-    }
-  };
+	const handleAnswerChange = useCallback(
+		({ userAnswer }) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
+			setFormData((preState) => ({ ...preState, answer: userAnswer }));
+			setQuestion({ ...question, question: userAnswer });
+		},
+		[setFormData, setQuestion, question]
+	);
 
-  if (isLoading) {
-    return <MoSpinner isLoading={isLoading} color="primary" />;
-  }
+	const onSubmit = (data) => {
+		console.log({ ...formData, ...data });
+		if (formData.label) {
+			// const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
+			// const payload = {
+			//   ...formData,
+			//   id,
+			//   userId: authUser.uid,
+			//   createdAt: firebase.fieldValue.serverTimestamp(),
+			// };
+			// firebase.collection("courses").doc(id).set(payload, { merge: true });
+			// handleDialogState(false);
+			// history.push(`/courses/${id}`);
+		}
+	};
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <section className={classes.section}>
-        {title && (
-          <MoPageHeaderEdit title={title} register={register} name="label" />
-        )}
-        {subtitle && (
-          <MoPageSubtitleEdit
-            subtitle={subtitle}
-            register={register}
-            name="desc"
-          />
-        )}
-      </section>
-      <section>
-        {question && (
-          <CodeEditor
-            handleOnChange={userAnswer => handleOnChange(userAnswer)}
-            sm={6}
-            md={6}
-            question={question}
-          />
-        )}
-      </section>
-      <section>{children}</section>
-      <section>
-        <Button type="submit" color="primary">
-          Save
-        </Button>
-      </section>
-    </form>
-  );
+	if (isLoading) {
+		return <MoSpinner isLoading={isLoading} color="primary" />;
+	}
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<section className={classes.section}>
+				{title && (
+					<MoPageHeaderEdit text={title} register={register} name="label" />
+				)}
+				{label && (
+					<MoPageSubtitleEdit text={label} register={register} name="desc" />
+				)}
+				{MoHintEdit && (
+					<MoHintEdit text={subtitle} register={register} name="desc" />
+				)}
+			</section>
+			<section>
+				{question && (
+					<CodeEditor
+						handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
+						sm={6}
+						md={6}
+						question={question}
+					/>
+				)}
+			</section>
+			<section>
+				{question && (
+					<CodeEditor
+						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
+						sm={6}
+						md={6}
+						question={question}
+					/>
+				)}
+			</section>
+			<section>{children}</section>
+			<section>
+				<Button type="submit" color="primary">
+					Save
+				</Button>
+			</section>
+		</form>
+	);
 };
 
 export default compose(withRouter, withStyles(styles))(QuestionForm);

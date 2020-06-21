@@ -6,15 +6,15 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 
-const MoPageHeader = ({ classes, isAdmin, title, children }) => {
+const MoPageHeader = ({ classes, isAdmin, text, children }) => {
   return (
-    <Fade in={(title || children) && true} timeout={{ enter: 800 }}>
+    <Fade in={(text || children) && true} timeout={{ enter: 800 }}>
       <Typography variant="h2">
         <Box
           fontWeight="fontWeightLight"
-          className={`${classes.title} ${isAdmin && classes.titleHover}`}
+          className={`${classes.text} ${isAdmin && classes.textHover}`}
         >
-          {title} {children}
+          {text} {children}
         </Box>
       </Typography>
     </Fade>

@@ -1,5 +1,5 @@
 const styles = theme => ({
-  title: {
+  text: {
     color: theme.grey?.medium,
     textDecoration: "none",
     marginBottom: theme.space?.md,

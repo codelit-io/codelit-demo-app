@@ -32,8 +32,8 @@ const MoPage = ({
   }
   return (
     <section className={classes.section}>
-      <MoPageHeader title={title} isAdmin={isAdmin} />
-      <MoPageSubtitle subtitle={subtitle} isAdmin={isAdmin} />
+      <MoPageHeader text={title} isAdmin={isAdmin} />
+      <MoPageSubtitle text={subtitle} isAdmin={isAdmin} />
       <MoHint text={hint} />
       {children}
     </section>

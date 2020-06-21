@@ -1,4 +1,14 @@
-/* TODO: Add comments */
+/**
+ *
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Landing Page 🥇
+ *
+ *
+ * Main page in the app
+ *
+ */
 
 import React from "react";
 
@@ -25,7 +35,12 @@ const LandingPage = ({ classes }) => {
     <>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
-          <Fade in mountOnEnter timeout={{ enter: 400 }} unmountOnExit>
+          <Fade
+            in={Landing1 && true}
+            mountOnEnter
+            timeout={{ enter: 400 }}
+            unmountOnExit
+          >
             <div className={classes.responsiveGrid}>
               <MoPageHeader>Learn React one step at a time</MoPageHeader>
               <MoPageSubtitle margin="36px 0 36px">
@@ -41,16 +56,28 @@ const LandingPage = ({ classes }) => {
         </Grid>
 
         <Grid item sm={12} md={6} xs={12}>
-          <img
-            alt="Learning MoSkool React Courses"
-            src={Landing1}
-            className={classes.img}
-          />
+          <Fade
+            in={Landing1 && true}
+            mountOnEnter
+            timeout={{ enter: 400 }}
+            unmountOnExit
+          >
+            <img
+              alt="Learning MoSkool React Courses"
+              src={Landing1}
+              className={classes.img}
+            />
+          </Fade>
         </Grid>
       </Grid>
 
       <Grid container spacing={4} className={classes.container}>
-        <Fade in mountOnEnter timeout={{ enter: 2400 }} unmountOnExit>
+        <Fade
+          in={Landing2 && true}
+          mountOnEnter
+          timeout={{ enter: 2400 }}
+          unmountOnExit
+        >
           <Grid item sm={12} md={6} xs={12}>
             <MoPageHeader>Learn all about React</MoPageHeader>
             <ListItem>
@@ -91,13 +118,20 @@ const LandingPage = ({ classes }) => {
             </ListItem>
           </Grid>
         </Fade>
-        <Grid item sm={12} md={6} xs={12}>
-          <img
-            alt="Learn all about React"
-            src={Landing2}
-            className={classes.img}
-          />
-        </Grid>
+        <Fade
+          in={Landing1 && true}
+          mountOnEnter
+          timeout={{ enter: 400 }}
+          unmountOnExit
+        >
+          <Grid item sm={12} md={6} xs={12}>
+            <img
+              alt="Learn all about React"
+              src={Landing2}
+              className={classes.img}
+            />
+          </Grid>
+        </Fade>
       </Grid>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>

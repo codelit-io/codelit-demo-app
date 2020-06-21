@@ -13,16 +13,19 @@ import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const LiveProviderCore = ({
+  codeAnswer,
+  codeLanguage,
+  codeQuestion,
   handleOnChange,
   isMobile,
+  isPlayground,
   md,
-  sm,
   matchPercent,
-  question
+  sm
 }) => {
   useEffect(() => {
     addFocusOnEditor();
-  }, [question]);
+  }, [codeQuestion]);
 
   const onChange = userAnswer => {
     const previewElement = getPreviewElement();
@@ -31,7 +34,7 @@ const LiveProviderCore = ({
 
   // TODO finish number of lines for editor
   // Count newlines and pad to match actual line numbers
-  const lines = (question?.question?.match(/\n/g) || []).length + 2;
+  const lines = (codeQuestion?.match(/\n/g) || []).length + 2;
   // Create content with all line numbers and newline them
   const lineNos = [...Array(lines).keys()].slice(1).join("\\00000a");
 
@@ -65,18 +68,18 @@ const LiveProviderCore = ({
   const classes = useStyles();
 
   return (
-    <LiveProvider code={question.question} language="jsx" noInline={false}>
+    <LiveProvider code={codeQuestion} language="jsx" noInline={false}>
       <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
         <Slide
           direction="right"
-          in={question.answer && true}
+          in={codeAnswer && true}
           mountOnEnter
           timeout={{ enter: 400, exit: 400 }}
           unmountOnExit
         >
           <div>
             <MoBrowserMockup
-              fileType={question.language}
+              fileType={codeLanguage}
               matchPercent={matchPercent}
               isEditor={true}
             >
@@ -86,7 +89,7 @@ const LiveProviderCore = ({
                   theme={lightTheme}
                   className={classes.liveEditor}
                 />
-                {!question.question && question.answer && (
+                {!codeQuestion && codeAnswer && (
                   <div className={classes.hint}>
                     <Typist
                       avgTypingDelay={60}
@@ -98,7 +101,7 @@ const LiveProviderCore = ({
                         hideWhenDone: true
                       }}
                     >
-                      {question.answer}
+                      {codeAnswer}
                     </Typist>
                   </div>
                 )}
@@ -111,21 +114,19 @@ const LiveProviderCore = ({
       <Grid item md={md} sm={sm} xs={12}>
         <Slide
           direction="left"
-          in={(question.isPlayground && true) || (question.answer && true)}
+          in={(isPlayground && true) || (codeAnswer && true)}
           mountOnEnter
           timeout={{ enter: 400, exit: 400 }}
           unmountOnExit
         >
           <div>
-            <MoBrowserMockup fileType={question.language} isEditor={false}>
-              {question.question && (
-                <LivePreview className={classes.livePreview} />
-              )}
+            <MoBrowserMockup fileType={codeLanguage} isEditor={false}>
+              {codeQuestion && <LivePreview className={classes.livePreview} />}
             </MoBrowserMockup>
           </div>
         </Slide>
       </Grid>
-      {question.isPlayground && (
+      {isPlayground && (
         <Grid item md={12} sm={12} xs={12}>
           <LiveError />
         </Grid>

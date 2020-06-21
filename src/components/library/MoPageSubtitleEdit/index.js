@@ -4,7 +4,7 @@ import Fade from "@material-ui/core/Fade";
 
 const MoPageSubtitleEdit = ({
   children,
-  subtitle,
+  text,
   margin,
   name,
   textAlign,
@@ -33,8 +33,8 @@ const MoPageSubtitleEdit = ({
         <input
           className="MuiTypography-h4"
           name={name}
-          placeholder={subtitle || children}
-          defaultValue={subtitle || children}
+          placeholder={text || children}
+          defaultValue={text || children}
           ref={register}
           style={styles.text}
         />
