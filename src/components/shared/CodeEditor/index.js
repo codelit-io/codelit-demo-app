@@ -77,7 +77,7 @@ const CodeEditorPage = ({
         <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
           <Fade
             in={codeAnswer && true}
-            timeout={{ enter: 800 }}
+            timeout={{ enter: 800, exit: 200 }}
             mountOnEnter
             unmountOnExit
           >
@@ -118,7 +118,7 @@ const CodeEditorPage = ({
         <Grid item md={md} sm={sm} xs={12}>
           <Fade
             in={(isPlayground && true) || (codeAnswer && true)}
-            timeout={{ enter: 800 }}
+            timeout={{ enter: 800, exit: 200 }}
             mountOnEnter
             unmountOnExit
           >

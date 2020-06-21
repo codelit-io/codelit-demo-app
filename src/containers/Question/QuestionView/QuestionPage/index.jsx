@@ -36,7 +36,6 @@ const QuestionPage = ({
 	firebase,
 	handleOnClick,
 	handleNavigation,
-	isLoading,
 	userRole,
 	data,
 	match,
@@ -63,13 +62,7 @@ const QuestionPage = ({
 	);
 
 	useEffect(() => {
-		try {
-			/* Questions can contain special JSON characters that needs to be parsed */
-			const parseQuestion = JSON.parse(data.question);
-			setQuestion({ ...data, question: parseQuestion });
-		} catch {
-			setQuestion(data);
-		}
+		setQuestion(data);
 	}, [data]);
 
 	const classes = useStyles();
@@ -77,7 +70,6 @@ const QuestionPage = ({
 		const id = Number(question.id) + 1;
 		/* Clear questions */
 		setQuestion({});
-
 		/* Clear matchPercent */
 		setMatchPercent();
 
@@ -145,11 +137,11 @@ const QuestionPage = ({
 			</ButtonBase>
 			{question?.content && <MoContent content={question.content} />}
 			<CodeEditor
-				codeAnswer={question.answer}
-				codeLanguage={question.language}
-				codeQuestion={question.question}
+				codeAnswer={question?.answer}
+				codeLanguage={question?.language}
+				codeQuestion={question?.question}
 				handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
-				isPlayground={question.isPlayground}
+				isPlayground={question?.isPlayground}
 				isMobile={isMobile}
 				matchPercent={matchPercent}
 				sm={6}

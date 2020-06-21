@@ -29,7 +29,15 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
               snapshot.forEach(doc =>
                 question.push({ ...doc.data(), uid: doc.id })
               );
-              setData(question[0]);
+              question.map(data => {
+                try {
+                  /* Questions can contain special JSON characters that needs to be parsed */
+                  const parseQuestion = JSON.parse(data.question);
+                  return setData({ ...data, question: parseQuestion });
+                } catch {
+                  return setData(data);
+                }
+              });
             } else {
               setData({
                 label: "You have finished all questions ✅",
