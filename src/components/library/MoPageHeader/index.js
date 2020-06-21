@@ -8,7 +8,7 @@ import styles from "./styles";
 
 const MoPageHeader = ({ classes, isAdmin, text, children }) => {
   return (
-    <Fade in={(text || children) && true} timeout={{ enter: 800 }}>
+    <Fade in={(text || children) && true} timeout={{ enter: 200 }}>
       <Typography variant="h2">
         <Box
           fontWeight="fontWeightLight"

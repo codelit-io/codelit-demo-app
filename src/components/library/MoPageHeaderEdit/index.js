@@ -6,7 +6,7 @@ import styles from "./styles";
 
 const MoPageHeaderEdit = ({ children, classes, text, register, name }) => {
   return (
-    <Fade in={(text || children) && true} timeout={{ enter: 800 }}>
+    <Fade in={(text || children) && true} timeout={{ enter: 200 }}>
       <input
         ref={register}
         className={`${classes.text} MuiTypography-h2`}
