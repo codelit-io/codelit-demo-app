@@ -14,7 +14,7 @@ import LessonCategory from "components/shared/LessonComponents/LessonCategory";
 import LessonCard from "components/shared/LessonComponents/LessonCard";
 import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
 
-const CourseList = ({ authUser, match, courses, points }) => {
+const CourseList = ({ authUser, courses, match, points }) => {
   return courses.map((course, index) => {
     /* Configure url route for each item */
     const configureUrl = course.isDisabled ? "" : `courses/${course.doc}`;

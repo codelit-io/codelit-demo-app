@@ -38,7 +38,7 @@ const LandingPage = ({ classes }) => {
           <Fade
             in={Landing1 && true}
             mountOnEnter
-            timeout={{ enter: 400 }}
+            timeout={{ enter: 200 }}
             unmountOnExit
           >
             <div className={classes.responsiveGrid}>
@@ -59,7 +59,7 @@ const LandingPage = ({ classes }) => {
           <Fade
             in={Landing1 && true}
             mountOnEnter
-            timeout={{ enter: 400 }}
+            timeout={{ enter: 1200 }}
             unmountOnExit
           >
             <img
