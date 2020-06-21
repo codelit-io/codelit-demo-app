@@ -51,6 +51,7 @@ const LiveProviderCore = ({
       liveEditor: {
         overflow: "visible !important",
         "&:before": {
+          color: theme.grey.light,
           left: "-1.75rem",
           fontFamily: "Inconsolata, monospace",
           paddingTop: "0.6rem",
