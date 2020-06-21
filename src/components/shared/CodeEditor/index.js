@@ -1,3 +1,30 @@
+/**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Coed Editor 🚀
+ *
+ * Uses react-live and provides a panel for writing code and another one for rendering the code
+ * It also provides an error console to debug code
+ *
+ * This editor can handle JSX or React class based components
+ *
+ * @see Demo [usage demo](https://react-live.netlify.app/)
+ *
+ * @param {String} codeAnswer - Expected answer for the question
+ * @param {String} codeLanguage - Language of code, html or jsx
+ * @param {String} codeQuestion - Optional - Question in a form of a code or could behave as a starting point
+ * @param {CallableFunction} handleOnChange - Handles changes to code as viewers type in code
+ * @param {Boolean} isMobile - Detects if we are on a mobile device
+ * @param {Boolean} isPlayground - Currently used to display the error console
+ * @param {Number} md - Grid styling when viewing on a medium size device
+ * @param {Number} matchPercent - Used to fill in the progress bar, how close is the code to the correct state
+ * @param {Number} sm - Grid styling when viewing on a small size device
+ * @returns {<LiveProvider/>} - returns the parent wrapper for react-live
+ *
+ * @see See [react-live](https://github.com/FormidableLabs/react-live)
+ * */
+
 import React, { useEffect } from "react";
 
 import { addFocusOnEditor, getPreviewElement } from "./util";
