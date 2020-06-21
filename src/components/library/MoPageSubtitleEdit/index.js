@@ -28,7 +28,7 @@ const MoPageSubtitleEdit = ({
   };
 
   return (
-    <Fade in timeout={{ enter: 800 }}>
+    <Fade in timeout={{ enter: 200 }}>
       <div style={styles.container}>
         <input
           className="MuiTypography-h4"

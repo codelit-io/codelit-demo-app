@@ -19,7 +19,7 @@ const MoTitle = ({ text, fade, margin, textAlign, width }) => {
   };
 
   return (
-    <Fade in={fade} timeout={{ enter: 800 }}>
+    <Fade in={text && true} timeout={{ enter: 200 }}>
       <Typography variant="h4" style={styles.container}>
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {text}
