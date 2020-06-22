@@ -3,7 +3,6 @@ import { ReactComponent as Confetti } from "assets/confetti.svg";
 import Grow from "@material-ui/core/Grow";
 
 const MoConfetti = ({ isActive }) => {
-  console.log(isActive);
   const [state, setState] = useState({ isDisplayed: isActive });
 
   useEffect(() => {
