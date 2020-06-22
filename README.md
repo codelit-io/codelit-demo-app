@@ -1,20 +1,21 @@
-
 [![CircleCI](https://circleci.com/gh/moskool/moskool-react-app.svg?style=svg&circle-token=25e17fbacf3e095631aba484af8169e19df89031)](https://moskool.com)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mo-sharif/MoSkool&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=mo-sharif/MoSkool&utm_campaign=Badge_Grade)
 
+# Goal & Mission
 
+Mo Skool's primary goal is to provide a free and new learning experience to master Front-end development without paying any fees. Mo Skool main features:
 
-# Mo Skool
+- High teach React and JSX Playground
+- Community driven Front-end courses
+- Easy to use Admin and Authoring tools
+- Progress tracking and custom learning plans
+- Social learning and collect points to unlock new courses
 
-Mo Skool is a frontend learning platform, offering fun and straightforward path to mastering frontend React development.
-
-Although this project is still under _heavy development_, my vision for the end product is crystal clear. I see this as an excellent opportunity to add value to our community and help others enjoyably grow into frontend development.
+To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
 ## [OnBoard & Getting started 🚀](docs/ONBOARDING.md)
 
-## What Can I learn?
-
-### Front-End
+## What kind of courses?
 
 - HTML
 - JavaScript
@@ -24,7 +25,7 @@ Although this project is still under _heavy development_, my vision for the end 
 
 # Current Tech
 
-The app has a React frontend and paired with a Firebase cloud backend
+User Interface is powered by a React frontend, paired with a Firebase serverless backend
 
 # Getting Started
 
@@ -56,7 +57,7 @@ DEV Dependencies:
 
 # Mind Map
 
-Old! Mind Map :) https://www.mindmeister.com/1454606428/pages-containers
+[Architecture and components mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
 # Tech details
 
