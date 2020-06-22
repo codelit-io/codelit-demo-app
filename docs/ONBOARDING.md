@@ -1,3 +1,10 @@
+## ⏳ Time Line ⏳
+
+- **30 Days** Learn all about the codebase and product
+- **3 Months** Add and Upgrade features
+- **6 Months** contribute to the future of the product
+- **1 Year** Onboard new Devs
+
 ## ✨ Work Flow Steps ✨
 
 ### Clone repo
