@@ -98,6 +98,7 @@ const QuestionForm = ({
 							codeAnswer={"Write Question Here"}
 							codeLanguage={question?.language}
 							codeQuestion={question?.question}
+							isEditMode={true}
 							isPlayground={question?.isPlayground}
 							handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
 							sm={6}
@@ -113,6 +114,7 @@ const QuestionForm = ({
 						codeAnswer={"Answer"}
 						codeLanguage={question?.language}
 						codeQuestion={question?.answer}
+						isEditMode={true}
 						isPlayground={question?.isPlayground}
 						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
 						sm={6}
