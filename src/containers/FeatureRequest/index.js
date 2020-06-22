@@ -1,4 +1,4 @@
-/* TODO: Add comments */
+/* TODO: Ignore this component and add comments */
 
 import React from "react";
 import { compose } from "recompose";
@@ -10,7 +10,7 @@ import {
 } from "components/shared/Session";
 import Messages from "components/shared/Messages";
 
-const HomePage = () => <Messages />;
+const FeatureRequest = () => <Messages />;
 
 const condition = authUser => !!authUser;
 
@@ -18,4 +18,4 @@ export default compose(
   withEmailVerification,
   withAuthentication,
   withAuthorization(condition)
-)(HomePage);
+)(FeatureRequest);
