@@ -13,7 +13,12 @@ const MoConfetti = ({ isActive }) => {
   }, [isActive]);
 
   return (
-    <Grow in={state.isDisplayed} timeout={{ enter: 300, exit: 300 }}>
+    <Grow
+      in={state.isDisplayed}
+      timeout={{ enter: 300, exit: 300 }}
+      mountOnEnter
+      unmountOnExit
+    >
       <Confetti />
     </Grow>
   );
