@@ -42,6 +42,7 @@ const MoSnackbarCore = ({
       open={isActive}
       onClose={handleClose}
       TransitionComponent={state.Transition}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
       <SnackbarContent
         message={

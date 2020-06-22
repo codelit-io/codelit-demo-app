@@ -1,26 +1,22 @@
-import React, { lazy, Suspense } from "react";
-import { retry } from "utils/retryLazyImports";
-
-const Confetti = lazy(() => retry(() => import("react-dom-confetti")));
-
-const config = {
-  angle: 260,
-  spread: 285,
-  startVelocity: 30,
-  elementCount: "102",
-  duration: "1000",
-  width: "12px",
-  height: "12px",
-  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
-};
+import React, { useState, useEffect } from "react";
+import { ReactComponent as Confetti } from "assets/confetti.svg";
+import Grow from "@material-ui/core/Grow";
 
 const MoConfetti = ({ isActive }) => {
+  console.log(isActive);
+  const [state, setState] = useState({ isDisplayed: isActive });
+
+  useEffect(() => {
+    setState({ isDisplayed: isActive });
+    setTimeout(() => {
+      setState({ isDisplayed: false });
+    }, 3000);
+  }, [isActive]);
+
   return (
-    <div style={{ position: "absolute", top: "0", left: "50%" }}>
-      <Suspense>
-        <Confetti active={isActive} config={config} />
-      </Suspense>
-    </div>
+    <Grow in={state.isDisplayed} timeout={{ enter: 300, exit: 300 }}>
+      <Confetti />
+    </Grow>
   );
 };
 
