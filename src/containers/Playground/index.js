@@ -43,8 +43,14 @@ const Playground = () => {
   return (
     <>
       <CodeEditor
+        codeAnswer={"Write Question Here"}
+        codeLanguage={question?.language}
+        codeQuestion={question?.question}
+        isEditMode={true}
+        isPlayground={true}
         handleOnChange={userAnswer => handleOnChange(userAnswer)}
-        question={question}
+        sm={12}
+        md={12}
       />
     </>
   );

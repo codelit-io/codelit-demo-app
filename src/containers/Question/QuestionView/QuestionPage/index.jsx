@@ -141,6 +141,7 @@ const QuestionPage = ({
 				codeLanguage={question?.language}
 				codeQuestion={question?.question}
 				handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+				isEditMode={false}
 				isPlayground={question?.isPlayground}
 				isMobile={isMobile}
 				matchPercent={matchPercent}

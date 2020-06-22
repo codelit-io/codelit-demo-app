@@ -46,13 +46,16 @@ const CodeEditorPage = ({
   handleOnChange,
   isMobile,
   isPlayground,
+  isEditMode,
   md,
   matchPercent,
   sm
 }) => {
   useEffect(() => {
-    addFocusOnEditor();
-  }, [codeQuestion]);
+    if (!isEditMode) {
+      addFocusOnEditor();
+    }
+  }, [isEditMode, codeQuestion]);
 
   const onChange = userAnswer => {
     const previewElement = getPreviewElement();

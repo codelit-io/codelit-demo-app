@@ -11,6 +11,7 @@ import MoSpinner from "components/library/MoSpinner";
 import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
+import { section } from "@material-ui/core";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -51,7 +52,7 @@ const QuestionForm = ({
 				return;
 			}
 			setFormData((preState) => ({ ...preState, answer: userAnswer }));
-			setQuestion({ ...question, question: userAnswer });
+			setQuestion({ ...question, answer: userAnswer });
 		},
 		[setFormData, setQuestion, question]
 	);
@@ -80,34 +81,40 @@ const QuestionForm = ({
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<section className={classes.section}>
 				{title && (
-					<MoPageHeaderEdit text={title} register={register} name="label" />
+					<MoPageHeaderEdit text={title} register={register} name="title" />
 				)}
 				{label && (
-					<MoPageSubtitleEdit text={label} register={register} name="desc" />
+					<MoPageSubtitleEdit text={label} register={register} name="label" />
 				)}
 				{MoHintEdit && (
-					<MoHintEdit text={subtitle} register={register} name="desc" />
+					<MoHintEdit text={subtitle} register={register} name="subtitle" />
 				)}
 			</section>
-			<section>
-				{question && (
-					<CodeEditor
-						codeAnswer={question?.answer}
-						codeLanguage={question?.language}
-						codeQuestion={question?.question}
-						isPlayground={question?.isPlayground}
-						handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
-						sm={6}
-						md={6}
-					/>
-				)}
+			<section className={classes.bodySection}>
+				<>
+					<MoPageSubtitleEdit text={"Question"} />
+					{question && (
+						<CodeEditor
+							codeAnswer={"Write Question Here"}
+							codeLanguage={question?.language}
+							codeQuestion={question?.question}
+							isEditMode={true}
+							isPlayground={question?.isPlayground}
+							handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
+							sm={6}
+							md={6}
+						/>
+					)}
+				</>
 			</section>
-			<section>
+			<section className={classes.bodySection}>
+				<MoPageSubtitleEdit text={"Answer"} />
 				{question && (
 					<CodeEditor
-						codeAnswer={question?.answer}
+						codeAnswer={"Answer"}
 						codeLanguage={question?.language}
-						codeQuestion={question?.question}
+						codeQuestion={question?.answer}
+						isEditMode={true}
 						isPlayground={question?.isPlayground}
 						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
 						sm={6}
