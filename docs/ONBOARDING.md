@@ -188,7 +188,7 @@ export default withStyles(styles)(MyComponent);
 1. Fade, Grow, Zoom, and Slide. Returns children when `in` prop is true
 
 ```
-<Fade timeout={{ enter: 800, exit: 800 }} in={true}>
+<Fade timeout={{ enter: 800, exit: 800 }} in={true} mountOnEnter unmountOnExit>
     ...
 </Fade>
 
