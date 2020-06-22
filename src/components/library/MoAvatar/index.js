@@ -116,14 +116,14 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
                   <ListItemText primary={ROUTES.ADMIN.title} />
                 </MenuItem>
                 <MenuItem
-                  to={ROUTES.HOME.path}
+                  to={ROUTES.FEATURE_REQUEST.path}
                   component={Link}
                   onClick={handleClose}
                 >
                   <ListItemIcon>
                     <TrendingUpIcon fontSize="small" />
                   </ListItemIcon>
-                  <ListItemText primary={ROUTES.HOME.title} />
+                  <ListItemText primary={ROUTES.FEATURE_REQUEST.title} />
                 </MenuItem>
               </>
             )}

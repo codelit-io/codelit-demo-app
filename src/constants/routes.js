@@ -20,7 +20,7 @@ export const ADMIN_COLLECTIONS_PRO = {
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
 
-export const HOME = { path: "/home", title: "Feature Request" };
+export const FEATURE_REQUEST = { path: "/home", title: "Feature Request" };
 export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"
