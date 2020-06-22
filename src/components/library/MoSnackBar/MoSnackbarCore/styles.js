@@ -5,7 +5,7 @@ const styles = theme => ({
   snackbarContent: {
     backgroundColor: "white",
     color: "black",
-    padding: "2em",
+    padding: theme.space.md,
     boxShadow: theme.bigShadow
   },
   message: {
