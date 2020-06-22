@@ -3,24 +3,20 @@
 exports[`Playground Component should match the snapshot 1`] = `
 <React.Fragment>
   <CodeEditorPage
-    handleOnChange={[Function]}
-    question={
-      Object {
-        "answer": "<button> I am a Button </button>",
-        "element": "button",
-        "id": "0",
-        "isCorrect": false,
-        "isPlayground": true,
-        "language": "jsx",
-        "question": "() => {
+    codeAnswer="Write Question Here"
+    codeLanguage="jsx"
+    codeQuestion="() => {
       return (
         <section>
           <h1>I love React 💙</h1>
         </section>
       );
-    };",
-      }
-    }
+    };"
+    handleOnChange={[Function]}
+    isEditMode={true}
+    isPlayground={true}
+    md={12}
+    sm={12}
   />
 </React.Fragment>
 `;
