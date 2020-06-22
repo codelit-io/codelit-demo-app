@@ -33,7 +33,9 @@ const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const Container = lazy(() =>
   retry(() => import("@material-ui/core/Container"))
 );
-const Home = lazy(() => retry(() => import("containers/Home")));
+const FeatureRequest = lazy(() =>
+  retry(() => import("containers/FeatureRequest"))
+);
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
 const PasswordForgot = lazy(() =>
@@ -55,7 +57,10 @@ const App = () => (
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
-            <Route path={ROUTES.HOME.path} component={Home} />
+            <Route
+              path={ROUTES.FEATURE_REQUEST.path}
+              component={FeatureRequest}
+            />
             <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
             <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
