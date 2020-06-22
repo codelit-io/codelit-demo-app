@@ -34,7 +34,7 @@ Deadline March 2021
 
 To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
-## [👉 Ready to Ship it?  Onboarding 📦 ](docs/ONBOARDING.md)
+## [👉 Ready to Ship it? Onboarding 📦 ](docs/ONBOARDING.md)
 
 ## What kind of courses?
 
@@ -63,7 +63,6 @@ User Interface is powered by a React frontend, paired with a Firebase serverless
 - @sentry/browser for monitoring prod for console errors
 - firebase
 - [material-table](https://material-table.com/#/), an admin tool for adding questions
-- [react-dom-confetti](https://www.npmjs.com/package/react-dom-confetti): confetti effect
 - [react-live](https://github.com/FormidableLabs/react-live): code editor + live preview + error debugger
 - [react-typist](https://github.com/jstejada/react-typist): typist effect seen throughout
 - [react-hook-form](https://react-hook-form.com/get-started): Helps you create forms easily
