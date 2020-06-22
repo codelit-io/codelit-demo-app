@@ -9,17 +9,22 @@ import Grow from "@material-ui/core/Grow";
 import styles from "./styles";
 
 const MoContent = ({ classes, content }) => (
-  <Grid container spacing={4}>
-    <Grid item md={12}>
-      <Grow timeout={{ enter: 800, exit: 800 }} in={content && true}>
-        <Card className={classes.card}>
-          <Typography variant="h6" gutterBottom className={classes.content}>
-            <Box fontWeight="fontWeightLight">{content}</Box>
-          </Typography>
-        </Card>
-      </Grow>
-    </Grid>
-  </Grid>
+	<Grid container spacing={4}>
+		<Grid item md={12}>
+			<Grow
+				in={content && true}
+				mountOnEnter
+				timeout={{ enter: 800, exit: 800 }}
+				unmountOnExit
+			>
+				<Card className={classes.card}>
+					<Typography variant="h6" gutterBottom className={classes.content}>
+						<Box fontWeight="fontWeightLight">{content}</Box>
+					</Typography>
+				</Card>
+			</Grow>
+		</Grid>
+	</Grid>
 );
 
 export default withStyles(styles)(MoContent);

@@ -23,6 +23,8 @@ const MoHeadline = ({ isCorrect }) => {
         in={isVisible}
         style={{ transformOrigin: "0 0 0" }}
         {...(isVisible ? { timeout: 1000 } : {})}
+        mountOnEnter
+        unmountOnExit
       >
         <h1>Level 1</h1>
       </Grow>
