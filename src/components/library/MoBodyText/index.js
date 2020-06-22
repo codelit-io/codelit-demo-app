@@ -17,7 +17,12 @@ const MoBodyText = ({ subtitle, children }) => {
 
   const classes = useStyles();
   return (
-    <Fade timeout={{ enter: 800 }} in={(subtitle || children) && true}>
+    <Fade
+      timeout={{ enter: 800 }}
+      mountOnEnter
+      in={(subtitle || children) && true}
+      unmountOnExit
+    >
       <Typography variant="body1" className={classes.text}>
         {subtitle}
         {children}

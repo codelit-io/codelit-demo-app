@@ -10,7 +10,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import styles from "./styles";
 
 const Footer = ({ classes }) => (
-  <Fade in timeout={{ enter: 1200, exit: 1200 }} mountOnEnter unmountOnExit>
+  <Fade in mountOnEnter timeout={{ enter: 1200, exit: 1200 }} unmountOnExit>
     <Grid container spacing={4} className={classes.container}>
       <Grid item md={6}>
         <Button

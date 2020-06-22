@@ -27,7 +27,12 @@ const QuestionsPage = ({
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
     <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
-      <Fade in={!isLoading && true} timeout={{ enter: 800 }}>
+      <Fade
+        in={!isLoading && true}
+        mountOnEnter
+        timeout={{ enter: 800 }}
+        unmountOnExit
+      >
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <QuestionList
             authUser={authUser}
@@ -38,7 +43,12 @@ const QuestionsPage = ({
           />
         </Grid>
       </Fade>
-      <Fade in={!isLoading} timeout={{ enter: 2400 }}>
+      <Fade
+        in={!isLoading}
+        mountOnEnter
+        timeout={{ enter: 2400 }}
+        unmountOnExit
+      >
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <MoProgressBar
             authUser={authUser}

@@ -8,7 +8,7 @@ import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
 
 const MoProgressBar = ({ authUser, points, progress }) => (
-  <Fade in timeout={{ enter: 800, exit: 400 }} mountOnEnter unmountOnExit>
+  <Fade in mountOnEnter timeout={{ enter: 800, exit: 400 }} unmountOnExit>
     <ButtonGroup
       aria-label="Points and progress"
       variant="text"

@@ -42,7 +42,7 @@ const MoPageSubtitle = ({
   };
 
   return (
-    <Fade in timeout={{ enter: 200, exit: 800 }}>
+    <Fade in mountOnEnter timeout={{ enter: 200, exit: 800 }} unmountOnExit>
       <Typography variant="h4" style={styles.container}>
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {text} {children}

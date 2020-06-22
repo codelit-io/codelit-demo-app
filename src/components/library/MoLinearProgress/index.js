@@ -8,7 +8,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
  */
 
 const MoLinearProgress = ({ percent }) => (
-  <Fade in timeout={{ enter: 800 }}>
+  <Fade in mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
     <LinearProgress
       variant="buffer"
       value={percent}

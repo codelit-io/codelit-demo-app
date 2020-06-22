@@ -4,7 +4,7 @@
  * @version 1.0.0
  * @visibleName Hint Component
  *
- * Editable text field, used with react-hook-form to pass form data to parent 
+ * Editable text field, used with react-hook-form to pass form data to parent
  * Used in QuestionForm Component as a hint for questions
  *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
@@ -22,7 +22,12 @@ import Fade from "@material-ui/core/Fade";
 import styles from "./styles";
 
 const MoHintEdit = ({ classes, children, text, register, name }) => (
-	<Fade timeout={{ enter: 800, exit: 800 }} in={text && true}>
+	<Fade
+		timeout={{ enter: 800, exit: 800 }}
+		mountOnEnter
+		in={text && true}
+		unmountOnExit
+	>
 		<div className={classes.container}>
 			<input
 				ref={register}

@@ -11,7 +11,12 @@ const AdminNav = ({ courses, history }) => {
   const [value, setValue] = useState(history.location.pathname);
 
   return (
-    <Fade in={courses.data.length > 1} timeout={{ enter: 800 }}>
+    <Fade
+      in={courses.data.length > 1}
+      mountOnEnter
+      timeout={{ enter: 800 }}
+      unmountOnExit
+    >
       <BottomNavigation
         value={value}
         style={{ height: "72px" }}

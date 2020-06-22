@@ -9,13 +9,13 @@ const MoConfetti = ({ isActive }) => {
     setState({ isDisplayed: isActive });
     setTimeout(() => {
       setState({ isDisplayed: false });
-    }, 3000);
+    }, 4000);
   }, [isActive]);
 
   return (
     <Grow
       in={state.isDisplayed}
-      timeout={{ enter: 300, exit: 300 }}
+      timeout={{ enter: 400, exit: 400 }}
       mountOnEnter
       unmountOnExit
     >

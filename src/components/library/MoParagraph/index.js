@@ -20,7 +20,7 @@ const MoParagraph = ({ text, fade, textAlign, margin, width }) => {
     }
   };
   return (
-    <Fade in={fade} timeout={{ enter: 800 }}>
+    <Fade in={fade} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
       <Typography variant="subtitle1">
         <Box fontWeight="fontWeightLight" style={styles.text}>
           {text}
