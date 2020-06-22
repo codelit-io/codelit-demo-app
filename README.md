@@ -54,6 +54,8 @@ DEV Dependencies:
 - [react-test-renderer](https://reactjs.org/docs/test-renderer.html): used for testing along side Jest
 - husky for pre-push and comments
 - commitizen for commits
+- Prettier code formatting
+- ESlint code linter
 
 # Mind Map
 
