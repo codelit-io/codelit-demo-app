@@ -5,9 +5,6 @@ const styles = theme => ({
     paddingBottom: theme.space?.lg
   },
   alignCenter: theme.flexAlignCenter,
-  toolbar: {
-    padding: "0"
-  },
   appBar: {
     boxShadow: "none",
     backgroundColor: "transparent"
