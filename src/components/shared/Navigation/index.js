@@ -9,24 +9,24 @@
  * @return {<form></form>}
  */
 
-import React from "react";
+import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
-import AppsIcon from "@material-ui/icons/Apps";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
-import Grid from "@material-ui/core/Grid";
 import { Link, withRouter } from "react-router-dom";
-import MoAvatar from "components/library/MoAvatar";
-import Toolbar from "@material-ui/core/Toolbar";
-import useUserRole from "hooks/useUserRole";
-import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
-import MoSkoolLogo from "../../library/MoSkoolLogo";
-
-import NewCourseDialog from "./NewCourseDialog";
+import withStyles from "@material-ui/core/styles/withStyles";
 import { withAuthentication } from "../Session";
+import useUserRole from "hooks/useUserRole";
+import AppBar from "@material-ui/core/AppBar";
+
+const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
+const Button = lazy(() => import("@material-ui/core/Button"));
+const Grid = lazy(() => import("@material-ui/core/Grid"));
+const MoAvatar = lazy(() => import("components/library/MoAvatar"));
+const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
+const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
+const NewCourseDialog = lazy(() => import("./NewCourseDialog"));
 
 const Navigation = ({ authUser, classes, firebase, history }) => {
   const userRole = useUserRole(authUser);
@@ -34,7 +34,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
   return (
     <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar disableGutters={true}>
           <Grid container className={classes.alignCenter}>
             <Grid item xs={6} sm={6} md={6} lg={6}>
               <MoSkoolLogo />

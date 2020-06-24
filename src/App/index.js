@@ -3,10 +3,10 @@
  *
  * @author MoSkool
  * @version 1.0.0
- * @visibleName App Component 🥇
+ * @visibleName App Component 🥈
  *
  *
- * Entry component to the app and does the following
+ * App component handles the following:
  *
  *  - lazy loads pages/containers
  *  - Handles routing for app
