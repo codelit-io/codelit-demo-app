@@ -19,7 +19,8 @@ class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
-    this.db = app.database();
+    // Db is not in use but available if needed
+    // this.db = app.database();
     this.firestore = app.firestore();
 
     /* Helper */
