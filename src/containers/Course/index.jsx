@@ -15,12 +15,13 @@
  *
  */
 
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 
-import QuestionsPage from "./QuestionsPage";
 import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
+
+const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Course = ({ authUser, firebase, match }) => {
 	const courseDetails = useCollectionDetails(
