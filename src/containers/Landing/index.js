@@ -44,8 +44,8 @@ const LandingPage = ({ classes }) => {
             <div className={classes.responsiveGrid}>
               <MoPageHeader>Learn React one step at a time</MoPageHeader>
               <MoPageSubtitle margin="36px 0 36px">
-                Study any React topic, anytime. Explore front-end development
-                free courses
+                Study any React topic, anytime. Explore free front-end
+                development courses
               </MoPageSubtitle>
               <MoLinkButton
                 text="Get started"
