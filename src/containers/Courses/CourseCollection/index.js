@@ -7,9 +7,10 @@
  * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
-import React from "react";
+import React, { lazy } from "react";
 import useCollections from "hooks/useCollections";
-import CoursePage from "./CoursePage";
+
+const CoursePage = lazy(() => import("./CoursePage"));
 
 const CourseCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
