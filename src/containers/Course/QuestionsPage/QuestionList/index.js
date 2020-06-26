@@ -13,6 +13,7 @@ import * as ROUTES from "constants/routes";
 import LessonCategory from "components/shared/LessonComponents/LessonCategory";
 import LessonCard from "components/shared/LessonComponents/LessonCard";
 import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
+import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
   return questions.map((question, index) => {
@@ -43,6 +44,8 @@ const QuestionList = ({ authUser, match, questions, points }) => {
           isDisabled={isDisabled}
           points={points}
           item={question}
+          IconComponent={SportsEsportsIcon}
+          index={index + 1}
           url={configureUrl}
         />
       </React.Fragment>
