@@ -17,7 +17,6 @@ const CourseCollection = ({ authUser, collection, firebase, match }) => {
   if (!collections || !collections?.data.length) {
     return null;
   }
-  console.log(collections);
   return (
     <CoursePage
       authUser={authUser}

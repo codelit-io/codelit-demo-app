@@ -29,21 +29,14 @@ const CoursePage = ({
   const [points] = useState(0);
   return (
     <MoPage title={collectionDetails?.title} isLoading={isLoading}>
-      <Grid container spacing={4} style={{ flexFlow: "wrap-reverse" }}>
+      <Grid container spacing={4}>
         <Fade
           in={!isLoading && true}
           mountOnEnter
           timeout={{ enter: 800 }}
           unmountOnExit
         >
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            <CourseList
-              authUser={authUser}
-              courses={courses}
-              match={match}
-              points={points}
-            />
-          </Grid>
+          <CourseList courses={courses} points={points} />
         </Fade>
         <Fade
           in={!isLoading}
