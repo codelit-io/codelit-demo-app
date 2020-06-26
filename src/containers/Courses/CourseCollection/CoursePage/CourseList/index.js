@@ -8,35 +8,34 @@
 
 import React from "react";
 
-import * as ROLES from "constants/roles";
-import * as ROUTES from "constants/routes";
-import LessonCategory from "components/shared/LessonComponents/LessonCategory";
 import LessonCard from "components/shared/LessonComponents/LessonCard";
-import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
+import Grid from "@material-ui/core/Grid";
+import { ReactComponent as Js } from "assets/js.svg";
+import { ReactComponent as Html } from "assets/html.svg";
+import { ReactComponent as ReactJsx } from "assets/react-jsx.svg";
+import { ReactComponent as ReactStyle } from "assets/react-style.svg";
 
-const CourseList = ({ authUser, courses, match, points }) => {
+const CourseList = ({ courses, points }) => {
+  const types = {
+    js: () => <Js />,
+    html: () => <Html />,
+    reactJsx: () => <ReactJsx />,
+    reactStyle: () => <ReactStyle />
+  };
+
   return courses.map((course, index) => {
     /* Configure url route for each item */
     const configureUrl = course.isDisabled ? "" : `courses/${course.doc}`;
-
     return (
-      <React.Fragment key={index}>
-        {course.category && (
-          <>
-            <LessonCategory category={course?.category} index={index} />
-            {/* TODO: figure a better way to read admin roles */}
-            {authUser && authUser.roles && authUser.roles[ROLES.ADMIN] && (
-              <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
-            )}
-          </>
-        )}
+      <Grid item xs={12} sm={12} md={6} lg={6} key={index}>
         <LessonCard
           isDisabled={course.isDisabled}
           points={points}
           item={course}
           url={configureUrl}
+          IconComponent={types[course.type]}
         />
-      </React.Fragment>
+      </Grid>
     );
   });
 };
