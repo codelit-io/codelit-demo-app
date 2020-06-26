@@ -39,7 +39,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
                 }
               });
             } else {
-              setData({
+              return setData({
                 label: "You have finished all questions ✅",
                 question: "<h1>Nice Job 🎉</h1>",
                 language: "html"

@@ -209,3 +209,4 @@ Coming Soon
 ## 💥Important links 💥
 
 [React Styleguidist](https://react-styleguidist.js.org/docs/documenting/)
+[React Best Practices](https://towardsdatascience.com/react-best-practices-804def6d5215)

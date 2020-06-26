@@ -14,9 +14,8 @@ const CoursePage = lazy(() => import("./CoursePage"));
 
 const CourseCollection = ({ authUser, collection, firebase, match }) => {
   const collections = useCollections(collection.path, firebase);
-
-  if (!collections) {
-    return;
+  if (!collections || !collections?.data.length) {
+    return null;
   }
   return (
     <CoursePage

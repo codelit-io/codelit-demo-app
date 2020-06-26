@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playground Component should match the snapshot 1`] = `
+<Switch>
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_ctor": [Function],
+        "_result": null,
+        "_status": -1,
+      }
+    }
+    exact={true}
+    path="/courses/:collection/:questionId"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_ctor": [Function],
+        "_result": null,
+        "_status": -1,
+      }
+    }
+    exact={true}
+    path="/courses/:collection/:questionId/isEditMode"
+  />
+</Switch>
+`;

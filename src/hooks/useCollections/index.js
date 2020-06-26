@@ -14,7 +14,6 @@ const useCollections = (collectionPath, firebase) => {
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
