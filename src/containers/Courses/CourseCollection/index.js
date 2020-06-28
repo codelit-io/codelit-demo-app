@@ -17,12 +17,10 @@ const CourseCollection = ({ authUser, collection, firebase, match }) => {
   if (!collections || !collections?.data.length) {
     return null;
   }
-  console.log(collections);
   return (
     <CoursePage
       authUser={authUser}
       isLoading={collections.isLoading}
-      match={match}
       courses={collections.data}
       collectionDetails={{
         title: collection.title,

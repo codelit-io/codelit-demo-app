@@ -14,7 +14,7 @@ import Fade from "@material-ui/core/Fade";
 import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
-import MoProgressBar from "components/library/MoProgressBar";
+import MoPointsGroup from "components/library/MoPointsGroup";
 import MoPageSubtitle from "components/library/MoPageSubtitle";
 
 const CoursePage = ({
@@ -35,6 +35,7 @@ const CoursePage = ({
           unmountOnExit
         >
           <CourseList
+            authUser={authUser}
             courses={courses}
             collectionPath={"courses"}
             points={points}
@@ -53,7 +54,7 @@ const CoursePage = ({
                   Your Progress
                 </MoPageSubtitle>
 
-                <MoProgressBar
+                <MoPointsGroup
                   authUser={authUser}
                   points={points}
                   progress={calculateProgress(
