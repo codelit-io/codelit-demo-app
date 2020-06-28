@@ -15,7 +15,7 @@ import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import QuestionList from "./QuestionList";
 import MoPage from "components/library/MoPage";
-import MoProgressBar from "components/library/MoProgressBar";
+import MoPointsGroup from "components/library/MoPointsGroup";
 
 const QuestionsPage = ({
   authUser,
@@ -29,7 +29,7 @@ const QuestionsPage = ({
     <Grid container spacing={4} alignItems="center">
       <Fade in={!isLoading} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <MoProgressBar
+          <MoPointsGroup
             authUser={authUser}
             points={points}
             progress={calculateProgress(authUser, points, courses.data?.length)}

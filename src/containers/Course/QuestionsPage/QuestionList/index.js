@@ -12,9 +12,10 @@ import LessonCard from "components/shared/LessonComponents/LessonCard";
 import Grid from "@material-ui/core/Grid";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
+  const doc = match.params.collection;
+
   return questions.map((question, index) => {
     /* Figure out route name based on collection*/
-    const doc = match.params.collection;
 
     /* isDisabled is configured based on points and question's id */
     let isDisabled = doc
