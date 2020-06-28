@@ -3,7 +3,11 @@ export const ACCOUNT = { path: "/account", title: "Your account" };
 export const ADMIN = { path: "/admin", title: "Admin Page" };
 export const ADMIN_DETAILS = { path: "/admin/:id", title: "Admin Details" };
 export const ADMIN_COLLECTIONS = {
-  path: "/admin/collections",
+  path: "/admin",
+  title: "Collections"
+};
+export const ADMIN_COLLECTIONS_COURSES = {
+  path: "/admin/courses",
   title: "Collections"
 };
 export const ADMIN_COLLECTIONS_EASY = {
