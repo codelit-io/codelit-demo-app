@@ -28,28 +28,44 @@ import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
-import useCollections from "hooks/useCollections";
 import {
 	withAuthorization,
 	withEmailVerification,
 	withAuthentication,
 } from "components/shared/Session";
+import MoTabs from "./MoTabs";
 
-const AdminNav = lazy(() => import("./AdminNav"));
 const Collection = lazy(() => import("./Collection"));
+const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
-const AdminPage = ({ firebase, history }) => {
-	const courses = useCollections("courses", firebase);
+const tabItems = [
+	{ name: "Users", path: "users" },
+	{ name: "Courses", path: "courses" },
+];
+
+const AdminPage = ({ history }) => {
+	const handleTabChange = (path) => {
+		history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
+	};
+
 	return (
 		<MoPage title="Admin" isLoading={false}>
-			<AdminNav courses={courses} history={history} />
+			<MoTabs
+				handleTabChange={(path) => handleTabChange(path)}
+				tabItems={tabItems}
+			></MoTabs>
 			<Suspense
 				fallback={<MoSpinner isLoading={true} color="primary" />}
 			></Suspense>
 			<Switch>
 				<Route
 					exact
-					path={ROUTES.ADMIN_COLLECTIONS.path + "/:collection"}
+					path={ROUTES.ADMIN_COLLECTIONS_COURSES.path}
+					component={AdminCourses}
+				/>
+				<Route
+					exact
+					path={ROUTES.ADMIN_COLLECTIONS_COURSES.path + "/:collection"}
 					component={Collection}
 				/>
 				<Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
