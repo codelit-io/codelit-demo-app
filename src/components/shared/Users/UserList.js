@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import MoSpinner from "components/library/MoSpinner";
-import { withFirebase } from "components/shared/Firebase";
+
 import * as ROUTES from "constants/routes";
+import { withFirebase } from "components/shared/Firebase";
+import Grid from "@material-ui/core/Grid";
+import MoSpinner from "components/library/MoSpinner";
+import MoCard from "components/library/MoCard";
 
 class UserList extends Component {
   constructor(props) {
@@ -37,36 +37,30 @@ class UserList extends Component {
   render() {
     const { users, isLoading } = this.state;
 
+    if (isLoading) {
+      return <MoSpinner isLoading={true} color="primary" />;
+    }
+
     return (
-      <div>
-        {isLoading && <MoSpinner isLoading={isLoading} />}
-        <List>
-          {users.map(user => (
-            <Link
-              key={user.uid}
-              variant="body2"
-              to={{
+      <Grid container spacing={4} alignItems="center">
+        {users.map((user, index) => (
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <MoCard
+              isDisabled={false}
+              item={{
+                title: user.username,
+                subtitle: user.email,
+                content: user.uid
+              }}
+              index={index}
+              url={{
                 pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
                 state: { user }
               }}
-            >
-              <ListItem>
-                <span>
-                  <strong>ID:</strong> {user.uid}
-                </span>
-                <br />
-                <span>
-                  <strong>Email:</strong> {user.email}
-                </span>
-                <br />
-                <span>
-                  <strong>Username:</strong> {user.username}
-                </span>
-              </ListItem>
-            </Link>
-          ))}
-        </List>
-      </div>
+            />
+          </Grid>
+        ))}
+      </Grid>
     );
   }
 }
