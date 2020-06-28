@@ -8,12 +8,8 @@
 
 import React from "react";
 
-import * as ROLES from "constants/roles";
-import * as ROUTES from "constants/routes";
-import LessonCategory from "components/shared/LessonComponents/LessonCategory";
 import LessonCard from "components/shared/LessonComponents/LessonCard";
-import NewLessonCard from "components/shared/LessonComponents/NewLessonCard";
-import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
+import Grid from "@material-ui/core/Grid";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
   return questions.map((question, index) => {
@@ -31,24 +27,15 @@ const QuestionList = ({ authUser, match, questions, points }) => {
     const configureUrl = isDisabled ? "" : `${doc}/${question.id}`;
 
     return (
-      <React.Fragment key={index}>
-        {question.category && (
-          <>
-            <LessonCategory category={question?.category} index={index} />
-            {authUser && authUser.roles && authUser.roles[ROLES.ADMIN] && (
-              <NewLessonCard url={`${match.url}/${ROUTES.IS_EDIT_MODE.path}`} />
-            )}
-          </>
-        )}
+      <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
         <LessonCard
           isDisabled={isDisabled}
           points={points}
           item={question}
-          IconComponent={SportsEsportsIcon}
           index={index + 1}
           url={configureUrl}
         />
-      </React.Fragment>
+      </Grid>
     );
   });
 };
