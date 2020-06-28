@@ -164,10 +164,10 @@ export default withStyles(styles)(MyComponent);
 // Container and spacing between elements
 <Grid container spacing={4}>
     // Each item in grid based on 12 grid
-     <Grid item xm={2} sm={2} md={2} lg={2}>
+     <Grid item xs={2} sm={2} md={2} lg={2}>
         ...
     </Grid>
-     <Grid item xm={2} sm={2} md={2} lg={2}>
+     <Grid item xs={2} sm={2} md={2} lg={2}>
         ...
     </Grid>
 </Grid>

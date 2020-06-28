@@ -1,5 +1,5 @@
 const styles = theme => ({
-  card: theme.card,
+  card: { ...theme.card, textAlign: "center" },
   disableCard: {
     backgroundColor: "#f2f2f2"
   },

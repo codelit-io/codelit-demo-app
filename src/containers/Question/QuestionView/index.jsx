@@ -27,50 +27,50 @@ import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 
 const QuestionView = ({ authUser, firebase, history, match }) => {
-	const { data, isLoading } = useQuestion({
-		firebase,
-		questionId: match.params.questionId,
-		questionPath: `courses/${match.params.collection}/questions`,
-	});
+  const { data, isLoading } = useQuestion({
+    firebase,
+    questionId: match.params.questionId,
+    questionPath: `courses/${match.params.collection}/questions`
+  });
 
-	const [userRole] = useState(useUserRole(authUser));
+  const [userRole] = useState(useUserRole(authUser));
 
-	/* Handler to send user to editMode page */
-	const handleOnClick = useCallback(() => {
-		/* TODO: Fix  me */
-		if (userRole.isAdmin) {
-			history.push(`${data.id}/isEditMode`);
-		}
-	}, [userRole, history, data]);
+  /* Handler to send user to editMode page */
+  const handleOnClick = useCallback(() => {
+    /* TODO: Fix  me */
+    if (userRole.isAdmin) {
+      history.push(`${data.id}/isEditMode`);
+    }
+  }, [userRole, history, data]);
 
-	const handleNavigation = useCallback(
-		(id) => {
-			/* A delay before navigating to a new page */
-			setTimeout(() => {
-				history.push(
-					`${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-				);
-			}, 600);
-		},
-		[history, match]
-	);
+  const handleNavigation = useCallback(
+    id => {
+      /* A delay before navigating to a new page */
+      setTimeout(() => {
+        history.push(
+          `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
+        );
+      }, 600);
+    },
+    [history, match]
+  );
 
-	if (!data) {
-		return null;
-	}
+  if (!data) {
+    return null;
+  }
 
-	return (
-		<QuestionPage
-			authUser={authUser}
-			data={data}
-			firebase={firebase}
-			handleOnClick={() => handleOnClick()}
-			handleNavigation={(id) => handleNavigation(id)}
-			isLoading={isLoading}
-			match={match}
-			userRole={userRole}
-		/>
-	);
+  return (
+    <QuestionPage
+      authUser={authUser}
+      data={data}
+      firebase={firebase}
+      handleOnClick={() => handleOnClick()}
+      handleNavigation={id => handleNavigation(id)}
+      isLoading={isLoading}
+      match={match}
+      userRole={userRole}
+    />
+  );
 };
 
 export default withAuthentication(QuestionView);

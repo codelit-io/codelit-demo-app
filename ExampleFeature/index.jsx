@@ -31,6 +31,8 @@ import React, {
 	useMemo,
 } from "react";
 
+import PropTypes from "prop-types";
+
 // used to retry imports if they fail
 import { retry } from "utils/retryLazyImport";
 /*
@@ -118,6 +120,13 @@ const ExampleFeature = ({ authUser, firebase, history, match }) => {
 
 	// render the component needs to be displayed to the UI
 	return <ExampleChild isLoading={isLoading} users={users} />;
+};
+
+ExampleFeature.propTypes = {
+	authUser: PropTypes.object.isRequired,
+	firebase: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
+	match: PropTypes.object.isRequired,
 };
 
 export default withAuthentication(ExampleFeature);

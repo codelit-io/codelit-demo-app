@@ -99,7 +99,7 @@ const NewCourseDialog = ({ authUser, firebase }) => {
                 placeholder={formData.desc}
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid item md={6}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Difficulty</FormLabel>
                 <RadioGroup aria-label="difficulty" name="difficulty">
@@ -120,6 +120,37 @@ const NewCourseDialog = ({ authUser, firebase }) => {
                     value="hard"
                     control={<Radio />}
                     label="Hard"
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Type</FormLabel>
+                <RadioGroup aria-label="type" name="type">
+                  <FormControlLabel
+                    inputRef={register}
+                    value="html"
+                    control={<Radio />}
+                    label="Html"
+                  />
+                  <FormControlLabel
+                    inputRef={register}
+                    value="js"
+                    control={<Radio />}
+                    label="JavaScript"
+                  />
+                  <FormControlLabel
+                    inputRef={register}
+                    value="reactJsx"
+                    control={<Radio />}
+                    label="React"
+                  />
+                  <FormControlLabel
+                    inputRef={register}
+                    value="reactStyle"
+                    control={<Radio />}
+                    label="CSS in JS"
                   />
                 </RadioGroup>
               </FormControl>

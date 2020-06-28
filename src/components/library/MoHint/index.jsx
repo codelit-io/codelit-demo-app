@@ -21,20 +21,20 @@ import Fade from "@material-ui/core/Fade";
 import styles from "./styles";
 
 const MoHint = ({ classes, children, text }) => (
-	<Fade
-		timeout={{ enter: 400, exit: 1200 }}
-		mountOnEnter
-		in={text && true}
-		unmountOnExit
-	>
-		<div className={classes.container}>
-			<Typography variant="h6" className={classes.text}>
-				<Box fontWeight="fontWeightLight" color="primary">
-					{text || children}
-				</Box>
-			</Typography>
-		</div>
-	</Fade>
+  <Fade
+    timeout={{ enter: 400, exit: 1200 }}
+    mountOnEnter
+    in={text && true}
+    unmountOnExit
+  >
+    <div className={classes.container}>
+      <Typography variant="h6" className={classes.text}>
+        <Box fontWeight="fontWeightLight" color="primary">
+          {text || children}
+        </Box>
+      </Typography>
+    </div>
+  </Fade>
 );
 
 export default withStyles(styles)(MoHint);

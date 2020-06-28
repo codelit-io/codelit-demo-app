@@ -21,7 +21,6 @@ const CourseCollection = ({ authUser, collection, firebase, match }) => {
     <CoursePage
       authUser={authUser}
       isLoading={collections.isLoading}
-      match={match}
       courses={collections.data}
       collectionDetails={{
         title: collection.title,
