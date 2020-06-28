@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const MoCard = ({ item, index, IconComponent, isDisabled, classes, url }) => (
   <Link to={url} className={isDisabled ? classes.disableLink : classes.link}>
@@ -42,5 +43,13 @@ const MoCard = ({ item, index, IconComponent, isDisabled, classes, url }) => (
     </div>
   </Link>
 );
+
+MoCard.propTypes = {
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number,
+  IconComponent: PropTypes.elementType,
+  isDisabled: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired
+};
 
 export default withStyles(styles)(MoCard);
