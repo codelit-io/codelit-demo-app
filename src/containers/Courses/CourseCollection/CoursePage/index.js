@@ -3,7 +3,6 @@
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} collectionDetails - Passes information about the course/collection such as title and other flags
  * @param {Boolean} isLoading - Loading flag passed from parent container
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Array} courses - List of courses passed down from parent container
  * @param {requestCallback} calculateProgress - callback function to calculate progress, pass it authUser, points, and length of questions in the course
  */
@@ -22,21 +21,24 @@ const CoursePage = ({
   authUser,
   collectionDetails,
   isLoading,
-  match,
   courses,
   calculateProgress
 }) => {
   const [points] = useState(0);
   return (
     <MoPage title={collectionDetails?.title} isLoading={isLoading}>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} alignItems="center">
         <Fade
           in={!isLoading && true}
           mountOnEnter
           timeout={{ enter: 800 }}
           unmountOnExit
         >
-          <CourseList courses={courses} points={points} />
+          <CourseList
+            courses={courses}
+            collectionPath={"courses"}
+            points={points}
+          />
         </Fade>
         <Fade
           in={!isLoading}
