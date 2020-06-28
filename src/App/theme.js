@@ -75,7 +75,7 @@ let theme = createMuiTheme({
     "&:hover .desc": {
       color: "white"
     },
-    borderRadius: space.xs,
+    borderRadius: space.sm,
     transition:
       "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
     transform: "translateY(0)"
