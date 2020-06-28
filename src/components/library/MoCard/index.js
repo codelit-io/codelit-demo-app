@@ -14,7 +14,7 @@ const MoCard = ({ item, index, IconComponent, isDisabled, classes, url }) => (
         <Grid
           item
           className={classes.cardContent}
-          xs={2}
+          xs={12}
           sm={12}
           md={12}
           lg={12}
