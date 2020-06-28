@@ -10,22 +10,32 @@ const MoCard = ({ item, index, IconComponent, isDisabled, classes, url }) => (
   <Link to={url} className={isDisabled ? classes.disableLink : classes.link}>
     <div className={`${classes.card} ${isDisabled && classes.disableCard}`}>
       <Grid container spacing={4} className={classes.content}>
-        <Grid item className={classes.cardContent} xm={2} sm={2} md={2} lg={2}>
+        <Grid
+          item
+          className={classes.cardContent}
+          xs={2}
+          sm={12}
+          md={12}
+          lg={12}
+        >
           {IconComponent && <IconComponent className={classes.heroIcon} />}
         </Grid>
         <Grid
           item
           className={classes.cardContent}
-          xm={10}
-          sm={10}
-          md={10}
-          lg={10}
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
         >
           <Typography gutterBottom variant="h5" component="h2">
             {item.title ? item.title || item.topic || item.label : "No Name"}
           </Typography>
           <Typography className={classes.editorFont} component="p" gutterBottom>
             {(item.subtitle && item.subtitle) || item.desc || item.language}
+          </Typography>
+          <Typography className={classes.editorFont} component="p" gutterBottom>
+            {item.content}
           </Typography>
         </Grid>
       </Grid>
