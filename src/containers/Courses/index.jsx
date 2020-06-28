@@ -24,29 +24,29 @@ import { retry } from "utils/retryLazyImports";
 import PropTypes from "prop-types";
 
 const CourseCollection = lazy(() =>
-	retry(() => import("./CourseCollection/index"))
+  retry(() => import("./CourseCollection/index"))
 );
 const collection = {
-	path: "courses",
-	title: "Your Courses",
-	isProgressBar: false,
+  path: "courses",
+  title: "Your Courses",
+  isProgressBar: false
 };
 
 const Courses = ({ authUser, firebase, match }) => (
-	<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-		<CourseCollection
-			authUser={authUser}
-			collection={collection}
-			firebase={firebase}
-			match={match}
-		/>
-	</Suspense>
+  <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+    <CourseCollection
+      authUser={authUser}
+      collection={collection}
+      firebase={firebase}
+      match={match}
+    />
+  </Suspense>
 );
 
 Courses.propTypes = {
-	authUser: PropTypes.object.isRequired,
-	firebase: PropTypes.object.isRequired,
-	match: PropTypes.object.isRequired,
+  authUser: PropTypes.object.isRequired,
+  firebase: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default withAuthentication(Courses);
