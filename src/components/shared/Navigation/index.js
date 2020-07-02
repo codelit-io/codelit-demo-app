@@ -36,15 +36,15 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar disableGutters={true}>
           <Grid container className={classes.alignCenter}>
-            <Grid item xs={6} sm={6} md={6} lg={6}>
+            <Grid item xs={3} sm={3} md={3} lg={3}>
               <MoSkoolLogo />
             </Grid>
             <Grid
               item
-              xs={6}
-              sm={6}
-              md={6}
-              lg={6}
+              xs={9}
+              sm={9}
+              md={9}
+              lg={9}
               style={{ textAlign: "right" }}
             >
               <Button
