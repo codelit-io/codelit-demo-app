@@ -16,6 +16,7 @@
  * @withAuthorization - HOC wraps around components and prevents render based on a condition - firebase and match props - EXAMPLE USAGE: withAuthorization(condition)(Component)
  * @withAuthentication - HOC if user is authenticated, hoc will provide firebase and match props - EXAMPLE USAGE: withAuthentication(Component)
  * @withEmailVerification - HOC provides email verification stuff
+ * @withStyle - HOC provides classes object to component for styling
  * @returns {<ExampleChild/>} - returns component which then the children fetch the correct data
  *
  * @see See [React hoc](https://reactjs.org/docs/higher-order-components.html)
