@@ -7,13 +7,13 @@
 
 import React from "react";
 
-import LessonCard from "components/shared/LessonComponents/LessonCard";
-import Grid from "@material-ui/core/Grid";
-
 import { ReactComponent as Js } from "assets/js.svg";
 import { ReactComponent as Html } from "assets/html.svg";
 import { ReactComponent as ReactJsx } from "assets/react-jsx.svg";
 import { ReactComponent as ReactStyle } from "assets/react-style.svg";
+
+import Grid from "@material-ui/core/Grid";
+import MoCard from "components/library/MoCard";
 
 const types = {
   js: () => <Js />,
@@ -30,7 +30,7 @@ const CourseList = ({ authUser, courses, collectionPath, points }) => {
       : `${collectionPath}/${course.doc}`;
     return (
       <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
-        <LessonCard
+        <MoCard
           isDisabled={course.isDisabled}
           points={points}
           item={course}
