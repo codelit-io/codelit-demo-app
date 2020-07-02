@@ -107,35 +107,40 @@ class Firebase {
   // *** Merge Auth and DB User API *** //
 
   onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.user(authUser.uid)
-          .get()
-          .then(snapshot => {
-            const dbUser = snapshot.data();
+    this.auth.onAuthStateChanged(
+      authUser => {
+        if (authUser) {
+          this.user(authUser.uid)
+            .get()
+            .then(snapshot => {
+              const dbUser = snapshot.data();
 
-            // default empty roles
-            if (dbUser && !dbUser.roles) {
-              dbUser.roles = {};
-            }
+              // default empty roles
+              if (dbUser && !dbUser.roles) {
+                dbUser.roles = {};
+              }
 
-            // merge auth and db user
-            authUser = {
-              uid: authUser.uid,
-              email: authUser.email,
-              emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              reports: authUser.reports,
-              photoURL: authUser.photoURL || "",
-              ...dbUser
-            };
+              // merge auth and db user
+              authUser = {
+                uid: authUser.uid,
+                email: authUser.email,
+                emailVerified: authUser.emailVerified,
+                providerData: authUser.providerData,
+                reports: authUser.reports,
+                photoURL: authUser.photoURL || "",
+                ...dbUser
+              };
 
-            next(authUser);
-          });
-      } else {
-        fallback();
+              next(authUser);
+            });
+        } else {
+          fallback();
+        }
+      },
+      e => {
+        console.log(e);
       }
-    });
+    );
 
   // *** Message API ***
 
