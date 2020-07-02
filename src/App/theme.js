@@ -78,7 +78,8 @@ let theme = createMuiTheme({
     borderRadius: space.sm,
     transition:
       "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-    transform: "translateY(0)"
+    transform: "translateY(0)",
+    background: "white"
   },
   container: {
     width: "calc(100vw - 28.799999999999997rem)"
