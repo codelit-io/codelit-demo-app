@@ -1,5 +1,10 @@
 const styles = theme => ({
-  card: { ...theme.card, textAlign: "center" },
+  card: {
+    ...theme.card,
+    textAlign: "center",
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
+  },
   disableCard: {
     backgroundColor: "#f2f2f2"
   },

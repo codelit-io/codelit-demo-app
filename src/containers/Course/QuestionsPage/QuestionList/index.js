@@ -8,12 +8,11 @@
 
 import React from "react";
 
-import LessonCard from "components/shared/LessonComponents/LessonCard";
+import MoCard from "components/library/MoCard";
 import Grid from "@material-ui/core/Grid";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
   const doc = match.params.collection;
-
   return questions.map((question, index) => {
     /* Figure out route name based on collection*/
 
@@ -29,7 +28,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
 
     return (
       <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
-        <LessonCard
+        <MoCard
           isDisabled={isDisabled}
           points={points}
           item={question}

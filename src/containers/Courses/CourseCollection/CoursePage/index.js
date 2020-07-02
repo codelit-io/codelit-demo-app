@@ -44,7 +44,7 @@ const CoursePage = ({
         <Fade
           in={!isLoading}
           mountOnEnter
-          timeout={{ enter: 2400 }}
+          timeout={{ enter: 1200 }}
           unmountOnExit
         >
           <Grid item xs={12} sm={12} md={6} lg={6}>

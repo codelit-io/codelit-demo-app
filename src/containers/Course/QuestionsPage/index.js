@@ -27,7 +27,12 @@ const QuestionsPage = ({
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
     <Grid container spacing={4} alignItems="center">
-      <Fade in={!isLoading} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
+      <Fade
+        in={!isLoading}
+        mountOnEnter
+        timeout={{ enter: 1200 }}
+        unmountOnExit
+      >
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <MoPointsGroup
             authUser={authUser}
@@ -36,12 +41,7 @@ const QuestionsPage = ({
           />
         </Grid>
       </Fade>
-      <Fade
-        in={!isLoading}
-        mountOnEnter
-        timeout={{ enter: 2400 }}
-        unmountOnExit
-      >
+      <Fade in={!isLoading} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
         <QuestionList
           authUser={authUser}
           match={match}

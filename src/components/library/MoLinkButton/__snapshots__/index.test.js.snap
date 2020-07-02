@@ -1,39 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render MoLinkButton 1`] = `
-<a
-  aria-disabled={false}
-  className="MuiButtonBase-root MuiButton-root MuiButton-text MoLinkButton-link-1"
-  href="/"
-  onBlur={[Function]}
-  onClick={[Function]}
-  onDragLeave={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseDown={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  onTouchEnd={[Function]}
-  onTouchMove={[Function]}
-  onTouchStart={[Function]}
-  role="button"
-  tabIndex={0}
->
-  <span
-    className="MuiButton-label"
-  >
-     
-    <svg
-      aria-hidden={true}
-      className="MuiSvgIcon-root MoLinkButton-icon-2 arrow"
-      focusable="false"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-      />
-    </svg>
-  </span>
-</a>
+exports[`MoLinkButton Component should match the snapshot 1`] = `
+<MoLinkButton
+  classes={
+    Object {
+      "icon": "MoLinkButton-icon-2",
+      "link": "MoLinkButton-link-1",
+    }
+  }
+/>
 `;

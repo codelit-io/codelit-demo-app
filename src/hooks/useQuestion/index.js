@@ -30,13 +30,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
                 question.push({ ...doc.data(), uid: doc.id })
               );
               question.map(data => {
-                try {
-                  /* Questions can contain special JSON characters that needs to be parsed */
-                  const parseQuestion = JSON.parse(data.question);
-                  return setData({ ...data, question: parseQuestion });
-                } catch {
-                  return setData(data);
-                }
+                return setData(data);
               });
             } else {
               return setData({
@@ -50,9 +44,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
           error => setIsError(error.message)
         );
 
-      return () => {
-        unsubscribe();
-      };
+      return () => unsubscribe();
     })();
   }, [firebase, questionId, questionPath]);
 

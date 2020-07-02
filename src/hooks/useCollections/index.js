@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { collections } from "mocks/course";
 
 const useCollections = (collectionPath, firebase) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,9 @@ const useCollections = (collectionPath, firebase) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
+      // if (localStorage.getItem('useCollections')) {
+      //   return;
+      // }
       const getCollections = await firebase
         .collection(collectionPath)
         .orderBy("id")
@@ -30,7 +34,9 @@ const useCollections = (collectionPath, firebase) => {
               setData(data);
               setIsLoading(false);
             } else {
-              // setData(null);
+              localStorage.setItem(collectionPath, collections[collectionPath]);
+
+              setData(collections[collectionPath]);
               setIsLoading(false);
             }
             /* Unsubscribe from firebase on unmount */

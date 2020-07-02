@@ -41,6 +41,10 @@ const Course = ({ authUser, firebase, match }) => {
     setPoints(authUser?.reports?.[match.params.collection]?.points);
   }, [authUser, match]);
 
+  if (!courses.data || !courseDetails.data) {
+    return null;
+  }
+
   return (
     <QuestionsPage
       authUser={authUser}

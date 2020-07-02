@@ -62,7 +62,11 @@ const QuestionPage = ({
   );
 
   useEffect(() => {
-    setQuestion(data);
+    try {
+      setQuestion({ ...data, question: JSON.parse(data.question) });
+    } catch {
+      setQuestion(data);
+    }
   }, [data]);
 
   const classes = useStyles();
@@ -119,6 +123,7 @@ const QuestionPage = ({
     },
     [authUser, firebase, match, question]
   );
+
   return (
     <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
       <MoConfetti isActive={isCorrect} />

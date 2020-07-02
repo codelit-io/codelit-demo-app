@@ -6,7 +6,7 @@ const styles = theme => ({
     padding: "12px 22px",
     color: theme.white?.medium,
     fontSize: "1.1rem",
-    borderRadius: "3px",
+    borderRadius: theme.space?.xs,
     textTransform: "initial",
     fontWeight: "600",
     "&:hover": {

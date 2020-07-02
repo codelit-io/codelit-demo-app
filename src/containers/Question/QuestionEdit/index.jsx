@@ -41,11 +41,13 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 
     setIsCorrect(false);
     /* A delay before navigating to a new page */
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       history.push(
         `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
       );
     }, 600);
+
+    return () => clearTimeout(timer);
   }, [history, match.params.collection, question.id]);
 
   /* Checks if user code matches Pre made answer */
