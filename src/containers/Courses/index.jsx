@@ -44,7 +44,7 @@ const Courses = ({ authUser, firebase, match }) => (
 );
 
 Courses.propTypes = {
-  authUser: PropTypes.object.isRequired,
+  authUser: PropTypes.object,
   firebase: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
