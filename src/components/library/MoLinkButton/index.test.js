@@ -1,16 +1,13 @@
 import React from "react";
 
-import { BrowserRouter as Router } from "react-router-dom";
-import renderer from "react-test-renderer";
-import MoLinkButton from "./index";
+import ShallowRenderer from "react-test-renderer/shallow";
+import MoLinkButton from "./index.js";
 
-it("Should render MoLinkButton", () => {
-  const tree = renderer
-    .create(
-      <Router>
-        <MoLinkButton />
-      </Router>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+const renderer = new ShallowRenderer();
+
+describe("MoLinkButton Component", () => {
+  test("should match the snapshot", () => {
+    renderer.render(<MoLinkButton />);
+    expect(renderer.getRenderOutput()).toMatchSnapshot();
+  });
 });
