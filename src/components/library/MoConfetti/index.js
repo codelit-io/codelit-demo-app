@@ -7,9 +7,11 @@ const MoConfetti = ({ isActive }) => {
 
   useEffect(() => {
     setState({ isDisplayed: isActive });
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setState({ isDisplayed: false });
     }, 4000);
+
+    return () => clearTimeout(timer);
   }, [isActive]);
 
   return (
