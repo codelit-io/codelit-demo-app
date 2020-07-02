@@ -101,6 +101,7 @@ let theme = createMuiTheme({
   blue: colors.blue,
   typography: {
     button: {
+      borderRadius: space.sm,
       textTransform: "none"
     },
     fontFamily: fontFamily.BreeSerif
