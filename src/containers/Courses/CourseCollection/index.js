@@ -9,6 +9,7 @@
 
 import React, { lazy } from "react";
 import useCollections from "hooks/useCollections";
+import calculateProgress from "containers/Course/QuestionsPage/calculateProgress";
 
 const CoursePage = lazy(() => import("./CoursePage"));
 
@@ -21,6 +22,7 @@ const CourseCollection = ({ authUser, collection, firebase, match }) => {
     <CoursePage
       authUser={authUser}
       isLoading={collections.isLoading}
+      calculateProgress={calculateProgress}
       courses={collections.data}
       collectionDetails={{
         title: collection.title,

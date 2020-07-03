@@ -15,7 +15,6 @@ import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
-import MoPageSubtitle from "components/library/MoPageSubtitle";
 
 const CoursePage = ({
   authUser,
@@ -29,9 +28,9 @@ const CoursePage = ({
     <MoPage title={collectionDetails?.title} isLoading={isLoading}>
       <Grid container spacing={4} alignItems="center">
         <Fade
-          in={!isLoading && true}
+          in={!isLoading}
           mountOnEnter
-          timeout={{ enter: 800 }}
+          timeout={{ enter: 1200 }}
           unmountOnExit
         >
           <CourseList
@@ -40,32 +39,6 @@ const CoursePage = ({
             collectionPath={"courses"}
             points={points}
           />
-        </Fade>
-        <Fade
-          in={!isLoading}
-          mountOnEnter
-          timeout={{ enter: 1200 }}
-          unmountOnExit
-        >
-          <Grid item xs={12} sm={12} md={6} lg={6}>
-            {collectionDetails.isProgressBar && (
-              <>
-                <MoPageSubtitle margin="0px 0 36px" width="100%">
-                  Your Progress
-                </MoPageSubtitle>
-
-                <MoPointsGroup
-                  authUser={authUser}
-                  points={points}
-                  progress={calculateProgress(
-                    authUser,
-                    points,
-                    courses?.length
-                  )}
-                />
-              </>
-            )}
-          </Grid>
         </Fade>
       </Grid>
       <Footer />
