@@ -44,15 +44,12 @@ class UserList extends Component {
     return (
       <Grid container spacing={4} alignItems="center">
         {users.map((user, index) => (
-          <Grid item xs={12} sm={12} md={4} lg={4}>
+          <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
             <MoCard
               isDisabled={false}
-              item={{
-                title: user.username,
-                subtitle: user.email,
-                content: user.uid
-              }}
-              index={index}
+              title={user.username}
+              subtitle={user.email}
+              content={user.uid}
               url={{
                 pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
                 state: { user }

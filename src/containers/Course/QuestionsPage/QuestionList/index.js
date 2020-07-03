@@ -31,7 +31,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
         <MoCard
           isDisabled={isDisabled}
           points={points}
-          item={question}
+          title={question.title}
           index={index + 1}
           url={configureUrl}
         />
