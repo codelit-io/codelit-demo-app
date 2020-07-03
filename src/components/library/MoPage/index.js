@@ -6,7 +6,6 @@
  * @param {Boolean} isLoading - loading or not
  * @param {String} title - Title for the page
  * @param {String} subtitle - Subtitle for the page
- * @return {<Dialog></Dialog>}
  */
 
 import React from "react";
@@ -15,8 +14,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import MoHint from "components/library/MoHint";
 import styles from "./styles";
 import MoPageHeader from "../MoPageHeader";
-import MoPageSubtitle from "../MoPageSubtitle";
 import MoSpinner from "../MoSpinner";
+import MoPageContent from "../MoPageContent";
 
 const MoPage = ({
   classes,
@@ -33,7 +32,7 @@ const MoPage = ({
   return (
     <section className={classes.section}>
       <MoPageHeader text={title} isAdmin={isAdmin} />
-      <MoPageSubtitle text={subtitle} isAdmin={isAdmin} />
+      <MoPageContent text={subtitle} />
       <MoHint text={hint} />
       {children}
     </section>
