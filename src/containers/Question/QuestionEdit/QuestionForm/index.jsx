@@ -8,10 +8,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
 import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
-import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
-import { section } from "@material-ui/core";
+import MoPageContent from "components/library/MoPageContent";
+import MoPageContentEdit from "components/library/MoPageContentEdit";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -78,58 +78,58 @@ const QuestionForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <section className={classes.section}>
-        {title && (
-          <MoPageHeaderEdit text={title} register={register} name="title" />
-        )}
-        {label && (
-          <MoPageSubtitleEdit text={label} register={register} name="label" />
-        )}
-        {MoHintEdit && (
-          <MoHintEdit text={subtitle} register={register} name="subtitle" />
-        )}
-      </section>
-      <section className={classes.bodySection}>
-        <>
-          <MoPageSubtitleEdit text={"Question"} />
-          {question && (
-            <CodeEditor
-              codeAnswer={"Write Question Here"}
-              codeLanguage={question?.language}
-              codeQuestion={question?.question}
-              isEditMode={true}
-              isPlayground={question?.isPlayground}
-              handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          )}
-        </>
-      </section>
-      <section className={classes.bodySection}>
-        <MoPageSubtitleEdit text={"Answer"} />
-        {question && (
-          <CodeEditor
-            codeAnswer={"Answer"}
-            codeLanguage={question?.language}
-            codeQuestion={question?.answer}
-            isEditMode={true}
-            isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
-            sm={6}
-            md={6}
-          />
-        )}
-      </section>
-      <section>{children}</section>
-      <section>
-        <Button type="submit" color="primary">
-          Save
-        </Button>
-      </section>
-    </form>
-  );
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<section className={classes.section}>
+				{title && (
+					<MoPageHeaderEdit text={title} register={register} name="title" />
+				)}
+				{label && (
+					<MoPageContentEdit text={label} register={register} name="label" />
+				)}
+				{MoHintEdit && (
+					<MoHintEdit text={subtitle} register={register} name="subtitle" />
+				)}
+			</section>
+			<section className={classes.bodySection}>
+				<>
+					<MoPageContent text={"Question"} />
+					{question && (
+						<CodeEditor
+							codeAnswer={"Write Question Here"}
+							codeLanguage={question?.language}
+							codeQuestion={question?.question}
+							isEditMode={true}
+							isPlayground={question?.isPlayground}
+							handleOnChange={(userAnswer) => handleQuestionChange(userAnswer)}
+							sm={6}
+							md={6}
+						/>
+					)}
+				</>
+			</section>
+			<section className={classes.bodySection}>
+				<MoPageContent text={"Answer"} />
+				{question && (
+					<CodeEditor
+						codeAnswer={"Answer"}
+						codeLanguage={question?.language}
+						codeQuestion={question?.answer}
+						isEditMode={true}
+						isPlayground={question?.isPlayground}
+						handleOnChange={(userAnswer) => handleAnswerChange(userAnswer)}
+						sm={6}
+						md={6}
+					/>
+				)}
+			</section>
+			<section>{children}</section>
+			<section>
+				<Button type="submit" color="primary">
+					Save
+				</Button>
+			</section>
+		</form>
+	);
 };
 
 export default compose(withRouter, withStyles(styles))(QuestionForm);
