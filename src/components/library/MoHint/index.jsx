@@ -24,7 +24,7 @@ const MoHint = ({ classes, children, text }) => (
   <Fade
     timeout={{ enter: 400, exit: 1200 }}
     mountOnEnter
-    in={text && true}
+    in={true}
     unmountOnExit
   >
     <div className={classes.container}>
