@@ -13,7 +13,7 @@ import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 import awardPlayerPoints from "../awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import MoContent from "components/library/MoContent";
+import MoPageContent from "components/library/MoPageContent";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
@@ -140,7 +140,7 @@ const QuestionPage = ({
           isCard={false}
         />
       </ButtonBase>
-      {question?.content && <MoContent content={question.content} />}
+      {question?.content && <MoPageContent content={question.content} />}
       <CodeEditor
         codeAnswer={question?.answer}
         codeLanguage={question?.language}

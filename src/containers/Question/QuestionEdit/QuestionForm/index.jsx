@@ -8,10 +8,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
 import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
-import MoPageSubtitleEdit from "components/library/MoPageSubtitleEdit";
 import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
-import { section } from "@material-ui/core";
+import MoPageContent from "components/library/MoPageContent";
+import MoPageContentEdit from "components/library/MoPageContentEdit";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -84,7 +84,7 @@ const QuestionForm = ({
           <MoPageHeaderEdit text={title} register={register} name="title" />
         )}
         {label && (
-          <MoPageSubtitleEdit text={label} register={register} name="label" />
+          <MoPageContentEdit text={label} register={register} name="label" />
         )}
         {MoHintEdit && (
           <MoHintEdit text={subtitle} register={register} name="subtitle" />
@@ -92,7 +92,7 @@ const QuestionForm = ({
       </section>
       <section className={classes.bodySection}>
         <>
-          <MoPageSubtitleEdit text={"Question"} />
+          <MoPageContent text={"Question"} />
           {question && (
             <CodeEditor
               codeAnswer={"Write Question Here"}
@@ -108,7 +108,7 @@ const QuestionForm = ({
         </>
       </section>
       <section className={classes.bodySection}>
-        <MoPageSubtitleEdit text={"Answer"} />
+        <MoPageContent text={"Answer"} />
         {question && (
           <CodeEditor
             codeAnswer={"Answer"}

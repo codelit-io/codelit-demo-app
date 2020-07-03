@@ -19,7 +19,7 @@ const MoPointsGroup = ({ authUser, points, progress }) => (
       {!authUser && (
         <Button to={ROUTES.SIGN_UP.path} component={Link}>
           Sign up to track your progress
-          <CheckCircleIcon style={{ marginLeft: "10px" }} />
+          <CheckCircleIcon color="secondary" style={{ marginLeft: "10px" }} />
         </Button>
       )}
     </ButtonGroup>

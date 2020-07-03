@@ -28,15 +28,13 @@ const MoHintEdit = ({ classes, children, text, register, name }) => (
     in={text && true}
     unmountOnExit
   >
-    <div className={classes.container}>
-      <input
-        ref={register}
-        className={`${classes.text} MuiTypography-h6`}
-        placeholder={text || children}
-        defaultValue={text || children}
-        name={name}
-      />
-    </div>
+    <input
+      ref={register}
+      className={`${classes.text} MuiTypography-h6`}
+      placeholder={text || children}
+      defaultValue={text || children}
+      name={name}
+    />
   </Fade>
 );
 

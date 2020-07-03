@@ -1,7 +1,7 @@
 const styles = theme => ({
   text: {
-    ...theme.editorFont,
-    color: theme.palette.primary.main,
+    color: theme.grey?.medium,
+    fontFamily: theme.openSans,
     textDecoration: "none",
     marginBottom: theme.space?.md,
     width: "100%",

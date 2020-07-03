@@ -13,38 +13,20 @@ import React from "react";
 
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
+import styles from "./styles";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-const MoPageSubtitle = ({
-  children,
-  isAdmin,
-  text,
-  margin,
-  textAlign,
-  width
-}) => {
-  const styles = {
-    text: {
-      color: "#383c40",
-      verticalAlign: "middle",
-      textAlign: textAlign || "",
-      margin: margin || "",
-      "&:hover": {
-        textDecoration: isAdmin ? "underline" : "none"
-      }
-    },
-    container: {
-      width: width || "",
-      "&:hover": {
-        textDecoration: isAdmin ? "underline" : "none"
-      }
-    }
-  };
-
+const MoPageSubtitle = ({ children, classes, text }) => {
   return (
-    <Fade in mountOnEnter timeout={{ enter: 200, exit: 800 }} unmountOnExit>
-      <Typography variant="h4" style={styles.container}>
-        <Box fontWeight="fontWeightLight" style={styles.text}>
+    <Fade
+      in={(text || children) && true}
+      mountOnEnter
+      timeout={{ enter: 200, exit: 800 }}
+      unmountOnExit
+    >
+      <Typography variant="h4">
+        <Box fontWeight="fontWeightLight" className={classes.text}>
           {text} {children}
         </Box>
       </Typography>
@@ -52,4 +34,4 @@ const MoPageSubtitle = ({
   );
 };
 
-export default MoPageSubtitle;
+export default withStyles(styles)(MoPageSubtitle);

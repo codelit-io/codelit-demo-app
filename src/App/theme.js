@@ -58,7 +58,6 @@ const fontSize = {
 };
 
 const fontFamily = {
-  RobotoMono: "Roboto Mono",
   MonoSpace: "monospace",
   OpenSans: "Open Sans",
   BreeSerif: "Bree Serif"
@@ -107,7 +106,7 @@ let theme = createMuiTheme({
     },
     fontFamily: fontFamily.BreeSerif
   },
-  fontFamily: fontFamily.BreeSerif,
+  openSans: fontFamily.OpenSans,
   palette: {
     primary: {
       main: colors.primary
