@@ -14,7 +14,6 @@ import Fade from "@material-ui/core/Fade";
 import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
-import MoPointsGroup from "components/library/MoPointsGroup";
 
 const CoursePage = ({
   authUser,
