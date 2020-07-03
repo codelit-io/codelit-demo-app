@@ -18,20 +18,20 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoPageSubtitle = ({ children, classes, text }) => {
-  return (
-    <Fade
-      in={(text || children) && true}
-      mountOnEnter
-      timeout={{ enter: 200, exit: 800 }}
-      unmountOnExit
-    >
-      <Typography variant="h4">
-        <Box fontWeight="fontWeightLight" className={classes.text}>
-          {text} {children}
-        </Box>
-      </Typography>
-    </Fade>
-  );
+	return (
+		<Fade
+			in={(text || children) && true}
+			mountOnEnter
+			timeout={{ enter: 200, exit: 800 }}
+			unmountOnExit
+		>
+			<Typography variant="h4" className={classes.text}>
+				<Box fontWeight="fontWeightLight">
+					{text} {children}
+				</Box>
+			</Typography>
+		</Fade>
+	);
 };
 
 export default withStyles(styles)(MoPageSubtitle);
