@@ -18,16 +18,13 @@
 import React from "react";
 
 import withStyles from "@material-ui/core/styles/withStyles";
-import Fade from "@material-ui/core/Fade";
 import styles from "./styles";
 
-const MoHintEdit = ({ classes, children, text, register, name }) => (
-  <Fade
-    timeout={{ enter: 800, exit: 800 }}
-    mountOnEnter
-    in={text && true}
-    unmountOnExit
-  >
+const MoHintEdit = ({ classes, children, text, register, name }) => {
+  if (!text && !children) {
+    return null;
+  }
+  return (
     <input
       ref={register}
       className={`${classes.text} MuiTypography-h6`}
@@ -35,7 +32,7 @@ const MoHintEdit = ({ classes, children, text, register, name }) => (
       defaultValue={text || children}
       name={name}
     />
-  </Fade>
-);
+  );
+};
 
 export default withStyles(styles)(MoHintEdit);

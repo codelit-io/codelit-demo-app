@@ -17,22 +17,19 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Fade from "@material-ui/core/Fade";
 import styles from "./styles";
 
-const MoHint = ({ classes, children, text }) => (
-  <Fade
-    timeout={{ enter: 400, exit: 1200 }}
-    mountOnEnter
-    in={(text || children) && true}
-    unmountOnExit
-  >
+const MoHint = ({ classes, children, text }) => {
+  if (!text && !children) {
+    return null;
+  }
+  return (
     <Typography variant="h6" className={classes.text}>
       <Box fontWeight="fontWeightLight" color="primary">
         {text || children}
       </Box>
     </Typography>
-  </Fade>
-);
+  );
+};
 
 export default withStyles(styles)(MoHint);

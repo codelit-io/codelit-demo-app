@@ -106,13 +106,18 @@ let theme = createMuiTheme({
     },
     fontFamily: fontFamily.BreeSerif
   },
+  breeSerif: fontFamily.BreeSerif,
   openSans: fontFamily.OpenSans,
   palette: {
     primary: {
-      main: colors.primary
+      main: colors.primary,
+      light: colors.secondary
     },
     secondary: {
       main: colors.secondary
+    },
+    tertiary: {
+      main: colors.tertiary
     }
   }
 });

@@ -1,4 +1,4 @@
-import React, { lazy, useState } from "react";
+import React, { lazy, useState, useEffect } from "react";
 
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -10,8 +10,9 @@ import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
 import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
-import MoPageContent from "components/library/MoPageContent";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
+import MoTypography from "components/library/MoTypography";
+import { updateQuestion } from "utils/questionFirebase";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -20,20 +21,19 @@ const QuestionForm = ({
   children,
   isLoading,
   label,
+  firebase,
+  match,
   question,
   subtitle,
   setQuestion,
   title
 }) => {
   const { handleSubmit, register } = useForm();
+  const [formData, setFormData] = useState({});
 
-  const [formData, setFormData] = useState({
-    label: "Master React Course",
-    desc:
-      "A series of questions to learn advanced courses in react such as React hooks and Context API",
-    id: "0",
-    question: "<h1>Hello World</h1>"
-  });
+  useEffect(() => {
+    setFormData(question);
+  }, [question]);
 
   const handleQuestionChange = useCallback(
     ({ userAnswer }) => {
@@ -43,7 +43,7 @@ const QuestionForm = ({
       setFormData(preState => ({ ...preState, question: userAnswer }));
       setQuestion({ ...question, question: userAnswer });
     },
-    [setFormData, setQuestion, question]
+    [setQuestion, question]
   );
 
   const handleAnswerChange = useCallback(
@@ -54,12 +54,15 @@ const QuestionForm = ({
       setFormData(preState => ({ ...preState, answer: userAnswer }));
       setQuestion({ ...question, answer: userAnswer });
     },
-    [setFormData, setQuestion, question]
+    [setQuestion, question]
   );
 
-  const onSubmit = data => {
-    console.log({ ...formData, ...data });
-    if (formData.label) {
+  const onSubmit = useCallback(
+    event => {
+      // console.log({ ...formData, ...event });
+      updateQuestion({ ...formData, ...event }, firebase, match);
+
+      // if (formData.label) {
       // const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
       // const payload = {
       //   ...formData,
@@ -70,8 +73,10 @@ const QuestionForm = ({
       // firebase.collection("courses").doc(id).set(payload, { merge: true });
       // handleDialogState(false);
       // history.push(`/courses/${id}`);
-    }
-  };
+      // }
+    },
+    [formData, firebase, match]
+  );
 
   if (isLoading) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
@@ -86,29 +91,41 @@ const QuestionForm = ({
         {label && (
           <MoPageContentEdit text={label} register={register} name="label" />
         )}
-        {MoHintEdit && (
+        {subtitle && (
           <MoHintEdit text={subtitle} register={register} name="subtitle" />
         )}
       </section>
-      <section className={classes.bodySection}>
-        <>
-          <MoPageContent text={"Question"} />
-          {question && (
-            <CodeEditor
-              codeAnswer={"Write Question Here"}
-              codeLanguage={question?.language}
-              codeQuestion={question?.question}
-              isEditMode={true}
-              isPlayground={question?.isPlayground}
-              handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          )}
-        </>
+      <section className={classes.section}>
+        <MoTypography
+          color="grey"
+          font="breeSerif"
+          marginBottom="sm"
+          variant="h6"
+        >
+          Question
+        </MoTypography>
+        {question && (
+          <CodeEditor
+            codeAnswer={"Write Question Here"}
+            codeLanguage={question?.language}
+            codeQuestion={question?.question}
+            isEditMode={true}
+            isPlayground={question?.isPlayground}
+            handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
+            sm={6}
+            md={6}
+          />
+        )}
       </section>
-      <section className={classes.bodySection}>
-        <MoPageContent text={"Answer"} />
+      <section className={classes.section}>
+        <MoTypography
+          color="grey"
+          font="breeSerif"
+          marginBottom="sm"
+          variant="h6"
+        >
+          Answer
+        </MoTypography>
         {question && (
           <CodeEditor
             codeAnswer={"Answer"}
@@ -122,8 +139,8 @@ const QuestionForm = ({
           />
         )}
       </section>
-      <section>{children}</section>
-      <section>
+      {children && <section className={classes.section}>{children}</section>}
+      <section className={classes.section}>
         <Button type="submit" color="primary">
           Save
         </Button>

@@ -9,9 +9,6 @@ const styles = theme => ({
       paddingTop: theme.space?.lg,
       paddingBottom: theme.space?.lg
     }
-  },
-  bodySection: {
-    paddingBottom: theme.space?.lg
   }
 });
 

@@ -13,7 +13,6 @@ import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 import awardPlayerPoints from "../awardPlayerPoints";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import MoPageContent from "components/library/MoPageContent";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
@@ -23,6 +22,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
 import { retry } from "utils/retryLazyImports";
+import MoTypography from "components/library/MoTypography";
 
 const CodeEditor = lazy(() =>
   retry(() => import("components/shared/CodeEditor"))
@@ -57,7 +57,8 @@ const QuestionPage = ({
           background: theme.grey.superLight,
           cursor: "text"
         }
-      }
+      },
+      section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
     })
   );
 
@@ -140,19 +141,29 @@ const QuestionPage = ({
           isCard={false}
         />
       </ButtonBase>
-      {question?.content && <MoPageContent content={question.content} />}
-      <CodeEditor
-        codeAnswer={question?.answer}
-        codeLanguage={question?.language}
-        codeQuestion={question?.question}
-        handleOnChange={userAnswer => handleOnChange(userAnswer)}
-        isEditMode={false}
-        isPlayground={question?.isPlayground}
-        isMobile={isMobile}
-        matchPercent={matchPercent}
-        sm={6}
-        md={6}
-      />
+      {question?.content && (
+        <MoTypography
+          color="greyDark"
+          font="breeSerif"
+          marginBottom="md"
+          text={question.content}
+          variant="body1"
+        ></MoTypography>
+      )}
+      <section className={classes.section}>
+        <CodeEditor
+          codeAnswer={question?.answer}
+          codeLanguage={question?.language}
+          codeQuestion={question?.question}
+          handleOnChange={userAnswer => handleOnChange(userAnswer)}
+          isEditMode={false}
+          isPlayground={question?.isPlayground}
+          isMobile={isMobile}
+          matchPercent={matchPercent}
+          sm={6}
+          md={6}
+        />
+      </section>
       {snackbarProps && (
         <MoSnackbar
           isActive={isCorrect}

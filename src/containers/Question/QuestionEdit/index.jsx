@@ -30,12 +30,12 @@ import { withAuthentication } from "components/shared/Session";
 
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [question, setQuestion] = useState({});
+  const [question, setQuestion] = useState();
   const [isCorrect, setIsCorrect] = useState(false);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
   const triggerNextQuestion = useCallback(() => {
-    const id = Number(question.id) + 1;
+    const id = Number(question?.id) + 1;
     /* Clear questions */
     setQuestion({});
 
@@ -48,7 +48,7 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
     }, 600);
 
     return () => clearTimeout(timer);
-  }, [history, match.params.collection, question.id]);
+  }, [history, match.params.collection, question]);
 
   /* Checks if user code matches Pre made answer */
   // const handleOnChange = useCallback({
@@ -66,7 +66,15 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
           snapshot.forEach(doc =>
             question.push({ ...doc.data(), uid: doc.id })
           );
-          setQuestion(question[0]);
+          try {
+            /* Questions can contain special JSON characters that needs to be parsed */
+            setQuestion({
+              ...question[0],
+              question: JSON.parse(question[0].question)
+            });
+          } catch {
+            setQuestion(question[0]);
+          }
         } else if (id === "new") {
           setQuestion({
             title: "Title goes here",
@@ -85,7 +93,7 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
     };
   }, [firebase, match]);
 
-  if (!match.params) {
+  if (!match.params && !question) {
     return;
   }
 
@@ -94,11 +102,13 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
       <QuestionForm
         isLoading={isLoading}
         isCard={false}
-        title={question.title}
-        label={question.label}
+        firebase={firebase}
+        title={question?.title}
+        label={question?.label}
+        match={match}
         question={question}
         setQuestion={e => setQuestion(e)}
-        subtitle={question.subtitle}
+        subtitle={question?.subtitle}
       />
       {!isLoading && (
         <>

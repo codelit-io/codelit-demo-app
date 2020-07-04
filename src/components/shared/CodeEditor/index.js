@@ -108,7 +108,7 @@ const CodeEditorPage = ({
           <Fade
             in={codeAnswer && true}
             mountOnEnter
-            timeout={{ enter: 800, exit: 200 }}
+            timeout={{ enter: 800 }}
             unmountOnExit
           >
             <div>
@@ -149,7 +149,7 @@ const CodeEditorPage = ({
           <Fade
             in={(isPlayground && true) || (codeAnswer && true)}
             mountOnEnter
-            timeout={{ enter: 800, exit: 200 }}
+            timeout={{ enter: 800 }}
             unmountOnExit
           >
             <div>

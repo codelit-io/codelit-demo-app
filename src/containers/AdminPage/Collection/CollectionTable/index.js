@@ -6,7 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 const CollectionTable = ({
   questions,
-  onEditQuestion,
+  onUpdateQuestion,
   onRemoveQuestion,
   onCreateQuestion
   // handleRowClick,
@@ -92,7 +92,7 @@ const CollectionTable = ({
                 setState(prevState => {
                   const data = [...prevState];
                   data[data.indexOf(oldData)] = newData;
-                  onEditQuestion(newData);
+                  onUpdateQuestion(newData);
                   return data;
                 });
               }

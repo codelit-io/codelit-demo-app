@@ -1,7 +1,7 @@
 import React from "react";
 
 import ShallowRenderer from "react-test-renderer/shallow";
-import MoPage from "./index.js";
+import MoPage from "./index.jsx";
 
 const renderer = new ShallowRenderer();
 

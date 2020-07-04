@@ -6,7 +6,7 @@ import { withFirebase } from "components/shared/Firebase";
 import QuestionsTable from "./CollectionTable";
 import {
   createQuestion,
-  editQuestion,
+  updateQuestion,
   removeQuestion,
   rowClick
 } from "utils/questionFirebase";
@@ -57,9 +57,9 @@ const Collection = ({ firebase, history, match }) => {
     [firebase, match]
   );
 
-  const onEditQuestion = useCallback(
+  const onUpdateQuestion = useCallback(
     event => {
-      editQuestion(event, firebase, match);
+      updateQuestion(event, firebase, match);
     },
     [firebase, match]
   );
@@ -87,7 +87,7 @@ const Collection = ({ firebase, history, match }) => {
       {authUser => (
         <QuestionsTable
           questions={questions}
-          onEditQuestion={event => onEditQuestion(event)}
+          onUpdateQuestion={event => onUpdateQuestion(event)}
           onRemoveQuestion={id => onRemoveQuestion(id)}
           onCreateQuestion={event => onCreateQuestion(event, authUser)}
           handleRowClick={id => handleRowClick(id)}
