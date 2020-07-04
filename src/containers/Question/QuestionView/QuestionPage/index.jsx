@@ -79,6 +79,7 @@ const QuestionPage = ({
     setMatchPercent();
 
     setIsCorrect(false);
+    setSnackbarProps({ isActive: false });
     handleNavigation(id);
   }, [handleNavigation, question]);
 
@@ -114,9 +115,10 @@ const QuestionPage = ({
         );
         setIsCorrect(true);
         setSnackbarProps({
-          title: "Hooray!",
           buttonText: "Keep Going",
-          buttonIcon: <ArrowForwardIcon />
+          buttonIcon: <ArrowForwardIcon />,
+          isActive: true,
+          title: "Hooray!"
         });
       } else {
         setQuestion({ ...question, question: userAnswer });
@@ -166,10 +168,9 @@ const QuestionPage = ({
       </section>
       {snackbarProps && (
         <MoSnackbar
-          isActive={isCorrect}
           authUser={authUser}
           snackbarProps={snackbarProps}
-          triggerNextQuestion={() => triggerNextQuestion()}
+          handleClick={() => triggerNextQuestion()}
         />
       )}
     </Suspense>

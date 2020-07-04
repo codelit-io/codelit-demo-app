@@ -18,7 +18,6 @@
 
 import React, { useCallback, useEffect, useState, Suspense } from "react";
 
-import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/library/MoSnackBar";
@@ -31,29 +30,11 @@ import { withAuthentication } from "components/shared/Session";
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState();
-  const [isCorrect, setIsCorrect] = useState(false);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const triggerNextQuestion = useCallback(() => {
-    const id = Number(question?.id) + 1;
-    /* Clear questions */
-    setQuestion({});
-
-    setIsCorrect(false);
-    /* A delay before navigating to a new page */
-    const timer = setTimeout(() => {
-      history.push(
-        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-      );
-    }, 600);
-
-    return () => clearTimeout(timer);
-  }, [history, match.params.collection, question]);
-
-  /* Checks if user code matches Pre made answer */
-  // const handleOnChange = useCallback({
-
-  // },[authUser, firebase, match, question]);
+  const viewQuestion = useCallback(() => {
+    history.goBack();
+  }, [history]);
 
   useEffect(() => {
     const id = match.params.questionId;
@@ -109,15 +90,16 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
         question={question}
         setQuestion={e => setQuestion(e)}
         subtitle={question?.subtitle}
+        setSnackbarProps={snackbarProps => setSnackbarProps(snackbarProps)}
+        viewQuestion={() => viewQuestion()}
       />
       {!isLoading && (
         <>
           {snackbarProps && (
             <MoSnackbar
-              isActive={isCorrect}
               authUser={authUser}
               snackbarProps={snackbarProps}
-              triggerNextQuestion={() => triggerNextQuestion()}
+              handleClick={() => viewQuestion()}
             />
           )}
         </>

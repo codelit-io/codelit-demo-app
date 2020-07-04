@@ -26,7 +26,9 @@ const QuestionForm = ({
   question,
   subtitle,
   setQuestion,
-  title
+  setSnackbarProps,
+  title,
+  viewQuestion
 }) => {
   const { handleSubmit, register } = useForm();
   const [formData, setFormData] = useState({});
@@ -59,8 +61,13 @@ const QuestionForm = ({
 
   const onSubmit = useCallback(
     event => {
-      // console.log({ ...formData, ...event });
       updateQuestion({ ...formData, ...event }, firebase, match);
+      setSnackbarProps({
+        autoHideDuration: 2000,
+        buttonText: "View Question",
+        isActive: true,
+        title: "Saved"
+      });
 
       // if (formData.label) {
       // const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
@@ -75,7 +82,7 @@ const QuestionForm = ({
       // history.push(`/courses/${id}`);
       // }
     },
-    [formData, firebase, match]
+    [formData, firebase, setSnackbarProps, match]
   );
 
   if (isLoading) {
@@ -141,7 +148,16 @@ const QuestionForm = ({
       </section>
       {children && <section className={classes.section}>{children}</section>}
       <section className={classes.section}>
-        <Button type="submit" color="primary">
+        <Button type="button" color="default">
+          Back to Question
+        </Button>
+        <Button
+          onKeyPress={e => {
+            e.key === "Enter" && e.preventDefault();
+          }}
+          type="submit"
+          color="primary"
+        >
           Save
         </Button>
       </section>
