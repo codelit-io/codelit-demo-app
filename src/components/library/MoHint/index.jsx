@@ -20,16 +20,16 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 
 const MoHint = ({ classes, children, text }) => {
-	if (!text && !children) {
-		return null;
-	}
-	return (
-		<Typography variant="h6" className={classes.text}>
-			<Box fontWeight="fontWeightLight" color="primary">
-				{text || children}
-			</Box>
-		</Typography>
-	);
+  if (!text && !children) {
+    return null;
+  }
+  return (
+    <Typography variant="h6" className={classes.text}>
+      <Box fontWeight="fontWeightLight" color="primary">
+        {text || children}
+      </Box>
+    </Typography>
+  );
 };
 
 export default withStyles(styles)(MoHint);

@@ -27,82 +27,82 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
 
 const MoTypography = ({
-	children,
-	color,
-	font,
-	marginBottom,
-	text,
-	variant
+  children,
+  color,
+  font,
+  marginBottom,
+  text,
+  variant
 }) => {
-	const useStyles = makeStyles((theme) =>
-		createStyles({
-			breeSerif: {
-				fontFamily: theme.breeSerif
-			},
-			openSans: {
-				fontFamily: theme.openSans
-			},
-			greyLight: {
-				color: theme.grey.light
-			},
-			grey: {
-				color: theme.grey.medium
-			},
-			greyDark: {
-				color: theme.grey.dark
-			},
-			xs: {
-				marginBottom: theme.space?.xs
-			},
-			sm: {
-				marginBottom: theme.space?.sm
-			},
-			md: {
-				marginBottom: theme.space?.md
-			},
-			lg: {
-				marginBottom: theme.space?.lg
-			}
-		})
-	);
+  const useStyles = makeStyles(theme =>
+    createStyles({
+      breeSerif: {
+        fontFamily: theme.breeSerif
+      },
+      openSans: {
+        fontFamily: theme.openSans
+      },
+      greyLight: {
+        color: theme.grey.light
+      },
+      grey: {
+        color: theme.grey.medium
+      },
+      greyDark: {
+        color: theme.grey.dark
+      },
+      xs: {
+        marginBottom: theme.space?.xs
+      },
+      sm: {
+        marginBottom: theme.space?.sm
+      },
+      md: {
+        marginBottom: theme.space?.md
+      },
+      lg: {
+        marginBottom: theme.space?.lg
+      }
+    })
+  );
 
-	const classes = useStyles();
+  const classes = useStyles();
 
-	if (!text && !children) {
-		return null;
-	}
+  if (!text && !children) {
+    return null;
+  }
 
-	return (
-		<Typography
-			className={`${classes[marginBottom]} ${classes[font]} ${classes[color]}`}
-			variant={variant}
-		>
-			{text}
-			{children}
-		</Typography>
-	);
+  return (
+    <Typography
+      className={`${classes[marginBottom]} ${classes[font]} ${classes[color]}`}
+      variant={variant}
+    >
+      {text}
+      {children}
+    </Typography>
+  );
 };
 
 MoTypography.propTypes = {
-	color: PropTypes.oneOf(["greyLight", "grey", "greyDark"]).isRequired,
-	font: PropTypes.oneOf(["breeSerif", "openSans"]),
-	marginBottom: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
-	text: PropTypes.string,
-	variant: PropTypes.oneOf([
-		"h1",
-		"h2",
-		"h3",
-		"h4",
-		"h5",
-		"h6",
-		"subtitle1",
-		"subtitle2",
-		"body1",
-		"body2",
-		"button",
-		"caption",
-		"overline"
-	]).isRequired
+  color: PropTypes.oneOf(["greyLight", "grey", "greyDark"]).isRequired,
+  font: PropTypes.oneOf(["breeSerif", "openSans"]),
+  marginBottom: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
+  text: PropTypes.string,
+  variant: PropTypes.oneOf([
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "subtitle1",
+    "subtitle2",
+    "body1",
+    "body2",
+    "button",
+    "caption",
+    "overline"
+  ]).isRequired
 };
 
 export default MoTypography;

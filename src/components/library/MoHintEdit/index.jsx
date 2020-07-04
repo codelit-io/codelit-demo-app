@@ -23,18 +23,18 @@ import styles from "./styles";
 const MoHintEdit = ({ classes, children, text, register, name }) => {
   console.log(text);
   console.log(children);
-	if (!text && !children) {
-		return null;
-	}
-	return (
-		<input
-			ref={register}
-			className={`${classes.text} MuiTypography-h6`}
-			placeholder={text || children}
-			defaultValue={text || children}
-			name={name}
-		/>
-	);
+  if (!text && !children) {
+    return null;
+  }
+  return (
+    <input
+      ref={register}
+      className={`${classes.text} MuiTypography-h6`}
+      placeholder={text || children}
+      defaultValue={text || children}
+      name={name}
+    />
+  );
 };
 
 export default withStyles(styles)(MoHintEdit);
