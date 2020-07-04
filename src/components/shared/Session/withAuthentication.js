@@ -22,7 +22,9 @@ const withAuthentication = Component => {
         }
       );
 
-      return () => listener();
+      return () => {
+        listener();
+      };
     }, [firebase]);
 
     return (
