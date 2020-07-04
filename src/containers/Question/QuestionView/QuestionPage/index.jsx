@@ -126,53 +126,53 @@ const QuestionPage = ({
   );
 
   return (
-    <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-      <MoConfetti isActive={isCorrect} />
-      <ButtonBase
-        className={classes.buttonArea}
-        onClick={() => handleOnClick()}
-        disabled={!userRole.isAdmin}
-      >
-        <MoPage
-          isAdmin={userRole.isAdmin}
-          title={question?.title}
-          subtitle={question?.label}
-          hint={question?.subtitle}
-          isCard={false}
-        />
-      </ButtonBase>
-      {question?.content && (
-        <MoTypography
-          color="greyDark"
-          font="breeSerif"
-          marginBottom="md"
-          text={question.content}
-          variant="body1"
-        ></MoTypography>
-      )}
-      <section className={classes.section}>
-        <CodeEditor
-          codeAnswer={question?.answer}
-          codeLanguage={question?.language}
-          codeQuestion={question?.question}
-          handleOnChange={userAnswer => handleOnChange(userAnswer)}
-          isEditMode={false}
-          isPlayground={question?.isPlayground}
-          isMobile={isMobile}
-          matchPercent={matchPercent}
-          sm={6}
-          md={6}
-        />
-      </section>
-      {snackbarProps && (
-        <MoSnackbar
-          isActive={isCorrect}
-          authUser={authUser}
-          snackbarProps={snackbarProps}
-          triggerNextQuestion={() => triggerNextQuestion()}
-        />
-      )}
-    </Suspense>
-  );
+		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+			<MoConfetti isActive={isCorrect} />
+			<ButtonBase
+				className={classes.buttonArea}
+				onClick={() => handleOnClick()}
+				disabled={!userRole.isAdmin}
+			>
+				<MoPage
+					isAdmin={userRole.isAdmin}
+					title={question?.title}
+					subtitle={question?.label}
+					hint={question?.subtitle}
+					isCard={false}
+				/>
+			</ButtonBase>
+			{question?.content && (
+				<MoTypography
+					color="greyDark"
+					font="breeSerif"
+					marginBottom="md"
+					text={question.content}
+					variant="body1"
+				></MoTypography>
+			)}
+			<section className={classes.section}>
+				<CodeEditor
+					codeAnswer={question?.answer}
+					codeLanguage={question?.language}
+					codeQuestion={question?.question}
+					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+					isEditMode={false}
+					isPlayground={question?.isPlayground}
+					isMobile={isMobile}
+					matchPercent={matchPercent}
+					sm={6}
+					md={6}
+				/>
+			</section>
+			{snackbarProps && (
+				<MoSnackbar
+					isActive={isCorrect}
+					authUser={authUser}
+					snackbarProps={snackbarProps}
+					handleClick={() => triggerNextQuestion()}
+				/>
+			)}
+		</Suspense>
+	);
 };
 export default QuestionPage;

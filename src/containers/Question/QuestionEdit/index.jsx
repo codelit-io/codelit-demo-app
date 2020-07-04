@@ -98,32 +98,32 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <Suspense fallback={<MoSpinner isLoading color="primary" />}>
-      <QuestionForm
-        isLoading={isLoading}
-        isCard={false}
-        firebase={firebase}
-        title={question?.title}
-        label={question?.label}
-        match={match}
-        question={question}
-        setQuestion={e => setQuestion(e)}
-        subtitle={question?.subtitle}
-      />
-      {!isLoading && (
-        <>
-          {snackbarProps && (
-            <MoSnackbar
-              isActive={isCorrect}
-              authUser={authUser}
-              snackbarProps={snackbarProps}
-              triggerNextQuestion={() => triggerNextQuestion()}
-            />
-          )}
-        </>
-      )}
-    </Suspense>
-  );
+		<Suspense fallback={<MoSpinner isLoading color="primary" />}>
+			<QuestionForm
+				isLoading={isLoading}
+				isCard={false}
+				firebase={firebase}
+				title={question?.title}
+				label={question?.label}
+				match={match}
+				question={question}
+				setQuestion={(e) => setQuestion(e)}
+				subtitle={question?.subtitle}
+			/>
+			{!isLoading && (
+				<>
+					{snackbarProps && (
+						<MoSnackbar
+							isActive={isCorrect}
+							authUser={authUser}
+							snackbarProps={snackbarProps}
+							handleClick={() => triggerNextQuestion()}
+						/>
+					)}
+				</>
+			)}
+		</Suspense>
+	);
 };
 
 const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
