@@ -59,8 +59,8 @@ const LandingPage = ({ classes }) => {
                 development courses
               </MoTypography>
               <MoLinkButton
-                text="Get started"
-                href={ROUTES.EASY_COLLECTIONS.path}
+                text="View Courses"
+                href={ROUTES.COLLECTIONS.path}
               />
             </div>
           </Fade>
