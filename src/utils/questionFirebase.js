@@ -27,14 +27,15 @@ export const createQuestion = (authUser, event, firebase, match) => {
 };
 
 /* Edit Question
- * editQuestion(event, firebase, match)
+ * updateQuestion(event, firebase, match)
  */
-export const editQuestion = (event, firebase, match) => {
+export const updateQuestion = (event, firebase, match) => {
   if (!match.params.collection) {
     return;
   }
+
   firebase
-    .doc("courses/" + match.params.collection + "/questions", event.uid)
+    .doc("courses/" + match.params.collection + "/questions", String(event.uid))
     .update({
       ...event,
       id: Number(event.id),
