@@ -1,3 +1,23 @@
+/**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Typography component
+ *
+ * Handles all types of typography such as Heading and Paragraph elements
+ * Can be customized with different fonts, color and margin
+ *
+ * @param {Object} children - Pass child components that are being wrapped by this component
+ * @param {String} color - Font color one of "greyLight", "grey", "greyDark"
+ * @param {String} font - Font family one of "breeSerif", "openSans"
+ * @param {String} marginBottom - Bottom margin one of "xs", "sm", "md", "lg"
+ * @param {String} text - text displayed in typography component
+ * @param {String} variant - Material UI component variant, see propTypes at the bottom of component
+ * @returns {<Typography/>} - returns Material UI Typography
+ *
+ * @see See [Material Typography](https://material-ui.com/components/typography/)
+ * */
+
 import React from "react";
 
 import PropTypes from "prop-types";
