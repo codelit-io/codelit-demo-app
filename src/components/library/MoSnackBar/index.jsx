@@ -25,6 +25,7 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import MoTitle from "components/library/MoTitle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoButton from "components/library/MoButton";
+import propTypes from "prop-types";
 import styles from "./styles";
 
 const MoSnackBar = ({
@@ -85,4 +86,15 @@ const MoSnackBar = ({
 	);
 };
 
+MoSnackBar.propTypes = {
+	authUser: propTypes.object,
+	classes: propTypes.object,
+	handleClick: propTypes.func.isRequired,
+	isActive: propTypes.bool.isRequired,
+	snackbarProps: propTypes.shape({
+		title: propTypes.string,
+		buttonText: propTypes.string,
+		buttonIcon: propTypes.object
+	}).isRequired
+};
 export default withStyles(styles)(MoSnackBar);
