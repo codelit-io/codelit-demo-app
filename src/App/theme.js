@@ -7,7 +7,7 @@ const bigShadow =
 const colors = {
   primary: "#3399bb",
   secondary: "#99bb33",
-  tertiary: "#3399bb",
+  tertiary: "#424B54",
   grey: {
     superLight: "#eeeeee",
     light: "#a6a6a6",
