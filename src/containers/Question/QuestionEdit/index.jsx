@@ -18,7 +18,6 @@
 
 import React, { useCallback, useEffect, useState, Suspense } from "react";
 
-import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/library/MoSnackBar";
@@ -29,75 +28,57 @@ import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [question, setQuestion] = useState();
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [snackbarProps, setSnackbarProps] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [question, setQuestion] = useState();
+	const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const triggerNextQuestion = useCallback(() => {
-    const id = Number(question?.id) + 1;
-    /* Clear questions */
-    setQuestion({});
+	const viewQuestion = useCallback(() => {
+		history.goBack();
+	}, [history]);
 
-    setIsCorrect(false);
-    /* A delay before navigating to a new page */
-    const timer = setTimeout(() => {
-      history.push(
-        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-      );
-    }, 600);
+	useEffect(() => {
+		const id = match.params.questionId;
+		setIsLoading(true);
+		const unsubscribe = firebase
+			.getCollectionById(`courses/${match.params.collection}/questions`, id)
+			.onSnapshot((snapshot) => {
+				if (snapshot.size) {
+					const question = [];
+					snapshot.forEach((doc) =>
+						question.push({ ...doc.data(), uid: doc.id })
+					);
+					try {
+						/* Questions can contain special JSON characters that needs to be parsed */
+						setQuestion({
+							...question[0],
+							question: JSON.parse(question[0].question)
+						});
+					} catch {
+						setQuestion(question[0]);
+					}
+				} else if (id === "new") {
+					setQuestion({
+						title: "Title goes here",
+						label: "Subtitle goes here",
+						question: "<h1>Question goes here</h1>",
+						answer: "<h1>Answer goes here🎉</h1>",
+						language: "html"
+					});
+				}
+				setIsLoading(false);
+			});
 
-    return () => clearTimeout(timer);
-  }, [history, match.params.collection, question]);
+		return () => {
+			unsubscribe();
+			setSnackbarProps(null);
+		};
+	}, [firebase, match]);
 
-  /* Checks if user code matches Pre made answer */
-  // const handleOnChange = useCallback({
+	if (!match.params && !question) {
+		return;
+	}
 
-  // },[authUser, firebase, match, question]);
-
-  useEffect(() => {
-    const id = match.params.questionId;
-    setIsLoading(true);
-    const unsubscribe = firebase
-      .getCollectionById(`courses/${match.params.collection}/questions`, id)
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          const question = [];
-          snapshot.forEach(doc =>
-            question.push({ ...doc.data(), uid: doc.id })
-          );
-          try {
-            /* Questions can contain special JSON characters that needs to be parsed */
-            setQuestion({
-              ...question[0],
-              question: JSON.parse(question[0].question)
-            });
-          } catch {
-            setQuestion(question[0]);
-          }
-        } else if (id === "new") {
-          setQuestion({
-            title: "Title goes here",
-            label: "Subtitle goes here",
-            question: "<h1>Question goes here</h1>",
-            answer: "<h1>Answer goes here🎉</h1>",
-            language: "html"
-          });
-        }
-        setIsLoading(false);
-      });
-
-    return () => {
-      unsubscribe();
-      setSnackbarProps(null);
-    };
-  }, [firebase, match]);
-
-  if (!match.params && !question) {
-    return;
-  }
-
-  return (
+	return (
 		<Suspense fallback={<MoSpinner isLoading color="primary" />}>
 			<QuestionForm
 				isLoading={isLoading}
@@ -109,15 +90,16 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 				question={question}
 				setQuestion={(e) => setQuestion(e)}
 				subtitle={question?.subtitle}
+				setSnackbarProps={(snackbarProps) => setSnackbarProps(snackbarProps)}
+				viewQuestion={() => viewQuestion()}
 			/>
 			{!isLoading && (
 				<>
 					{snackbarProps && (
 						<MoSnackbar
-							isActive={isCorrect}
 							authUser={authUser}
 							snackbarProps={snackbarProps}
-							handleClick={() => triggerNextQuestion()}
+							handleClick={() => viewQuestion()}
 						/>
 					)}
 				</>
@@ -126,9 +108,9 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
 	);
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
-  withAuthentication,
-  withAuthorization(condition)
+	withAuthentication,
+	withAuthorization(condition)
 )(QuestionEdit);
