@@ -29,106 +29,106 @@ import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 
 const QuestionEdit = ({ authUser, firebase, history, match }) => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [question, setQuestion] = useState();
-	const [isCorrect, setIsCorrect] = useState(false);
-	const [snackbarProps, setSnackbarProps] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [question, setQuestion] = useState();
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [snackbarProps, setSnackbarProps] = useState(null);
 
-	const triggerNextQuestion = useCallback(() => {
-		const id = Number(question?.id) + 1;
-		/* Clear questions */
-		setQuestion({});
+  const triggerNextQuestion = useCallback(() => {
+    const id = Number(question?.id) + 1;
+    /* Clear questions */
+    setQuestion({});
 
-		setIsCorrect(false);
-		/* A delay before navigating to a new page */
-		const timer = setTimeout(() => {
-			history.push(
-				`${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-			);
-		}, 600);
+    setIsCorrect(false);
+    /* A delay before navigating to a new page */
+    const timer = setTimeout(() => {
+      history.push(
+        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
+      );
+    }, 600);
 
-		return () => clearTimeout(timer);
-	}, [history, match.params.collection, question]);
+    return () => clearTimeout(timer);
+  }, [history, match.params.collection, question]);
 
-	/* Checks if user code matches Pre made answer */
-	// const handleOnChange = useCallback({
+  /* Checks if user code matches Pre made answer */
+  // const handleOnChange = useCallback({
 
-	// },[authUser, firebase, match, question]);
+  // },[authUser, firebase, match, question]);
 
-	useEffect(() => {
-		const id = match.params.questionId;
-		setIsLoading(true);
-		const unsubscribe = firebase
-			.getCollectionById(`courses/${match.params.collection}/questions`, id)
-			.onSnapshot((snapshot) => {
-				if (snapshot.size) {
-					const question = [];
-					snapshot.forEach((doc) =>
-						question.push({ ...doc.data(), uid: doc.id })
-					);
-					try {
-						/* Questions can contain special JSON characters that needs to be parsed */
-						setQuestion({
-							...question[0],
-							question: JSON.parse(question[0].question)
-						});
-					} catch {
-						setQuestion(question[0]);
-					}
-				} else if (id === "new") {
-					setQuestion({
-						title: "Title goes here",
-						label: "Subtitle goes here",
-						question: "<h1>Question goes here</h1>",
-						answer: "<h1>Answer goes here🎉</h1>",
-						language: "html"
-					});
-				}
-				setIsLoading(false);
-			});
+  useEffect(() => {
+    const id = match.params.questionId;
+    setIsLoading(true);
+    const unsubscribe = firebase
+      .getCollectionById(`courses/${match.params.collection}/questions`, id)
+      .onSnapshot(snapshot => {
+        if (snapshot.size) {
+          const question = [];
+          snapshot.forEach(doc =>
+            question.push({ ...doc.data(), uid: doc.id })
+          );
+          try {
+            /* Questions can contain special JSON characters that needs to be parsed */
+            setQuestion({
+              ...question[0],
+              question: JSON.parse(question[0].question)
+            });
+          } catch {
+            setQuestion(question[0]);
+          }
+        } else if (id === "new") {
+          setQuestion({
+            title: "Title goes here",
+            label: "Subtitle goes here",
+            question: "<h1>Question goes here</h1>",
+            answer: "<h1>Answer goes here🎉</h1>",
+            language: "html"
+          });
+        }
+        setIsLoading(false);
+      });
 
-		return () => {
-			unsubscribe();
-			setSnackbarProps(null);
-		};
-	}, [firebase, match]);
+    return () => {
+      unsubscribe();
+      setSnackbarProps(null);
+    };
+  }, [firebase, match]);
 
-	if (!match.params && !question) {
-		return;
-	}
+  if (!match.params && !question) {
+    return;
+  }
 
-	return (
-		<Suspense fallback={<MoSpinner isLoading color="primary" />}>
-			<QuestionForm
-				isLoading={isLoading}
-				isCard={false}
-				firebase={firebase}
-				title={question?.title}
-				label={question?.label}
-				match={match}
-				question={question}
-				setQuestion={(e) => setQuestion(e)}
-				subtitle={question?.subtitle}
-			/>
-			{!isLoading && (
-				<>
-					{snackbarProps && (
-						<MoSnackbar
-							isActive={isCorrect}
-							authUser={authUser}
-							snackbarProps={snackbarProps}
-							triggerNextQuestion={() => triggerNextQuestion()}
-						/>
-					)}
-				</>
-			)}
-		</Suspense>
-	);
+  return (
+    <Suspense fallback={<MoSpinner isLoading color="primary" />}>
+      <QuestionForm
+        isLoading={isLoading}
+        isCard={false}
+        firebase={firebase}
+        title={question?.title}
+        label={question?.label}
+        match={match}
+        question={question}
+        setQuestion={e => setQuestion(e)}
+        subtitle={question?.subtitle}
+      />
+      {!isLoading && (
+        <>
+          {snackbarProps && (
+            <MoSnackbar
+              isActive={isCorrect}
+              authUser={authUser}
+              snackbarProps={snackbarProps}
+              triggerNextQuestion={() => triggerNextQuestion()}
+            />
+          )}
+        </>
+      )}
+    </Suspense>
+  );
 };
 
-const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
-	withAuthentication,
-	withAuthorization(condition)
+  withAuthentication,
+  withAuthorization(condition)
 )(QuestionEdit);
