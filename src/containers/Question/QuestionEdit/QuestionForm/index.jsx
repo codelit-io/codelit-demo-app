@@ -58,8 +58,8 @@ const QuestionForm = ({
 	);
 
 	const onSubmit = useCallback(
-    (event) => {
-      // console.log({ ...formData, ...event });
+		(event) => {
+			// console.log({ ...formData, ...event });
 			updateQuestion({ ...formData, ...event }, firebase, match);
 
 			// if (formData.label) {
@@ -95,7 +95,7 @@ const QuestionForm = ({
 					<MoHintEdit text={subtitle} register={register} name="subtitle" />
 				)}
 			</section>
-			<section className={classes.bodySection}>
+			<section className={classes.section}>
 				<MoTypography
 					color="grey"
 					font="breeSerif"
@@ -117,7 +117,7 @@ const QuestionForm = ({
 					/>
 				)}
 			</section>
-			<section className={classes.bodySection}>
+			<section className={classes.section}>
 				<MoTypography
 					color="grey"
 					font="breeSerif"
@@ -139,8 +139,8 @@ const QuestionForm = ({
 					/>
 				)}
 			</section>
-			<section>{children}</section>
-			<section>
+			{children && <section className={classes.section}>{children}</section>}
+			<section className={classes.section}>
 				<Button type="submit" color="primary">
 					Save
 				</Button>

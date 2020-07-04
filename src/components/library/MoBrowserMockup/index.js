@@ -17,7 +17,7 @@ const MoBrowserMockup = ({ classes, children, fileType, isEditor }) => {
   return isEditor ? (
     <div className={classes.browserMockup}>
       <div className={classes.browserFilename}>
-        <span className={classes.font}>{`index.${fileType}`}</span>
+        <span className={classes.font}>{fileType}</span>
       </div>
       <div className={classes.editor}>{children}</div>
     </div>
