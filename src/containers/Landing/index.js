@@ -24,11 +24,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import MoLinkButton from "components/library/MoLinkButton";
 import MoLink from "components/library/MoLink";
-import MoPageHeader from "components/library/MoPageHeader";
-import MoPageSubtitle from "components/library/MoPageSubtitle";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 import styles from "./styles";
+import MoTypography from "components/library/MoTypography";
 
 const LandingPage = ({ classes }) => {
   return (
@@ -42,11 +41,23 @@ const LandingPage = ({ classes }) => {
             unmountOnExit
           >
             <div className={classes.responsiveGrid}>
-              <MoPageHeader>Learn React one step at a time</MoPageHeader>
-              <MoPageSubtitle margin="36px 0 36px">
+              <MoTypography
+                color="greyDark"
+                font="breeSerif"
+                marginBottom="md"
+                variant="h2"
+              >
+                Learn React one step at a time
+              </MoTypography>
+              <MoTypography
+                color="grey"
+                font="openSans"
+                marginBottom="md"
+                variant="h4"
+              >
                 Study any React topic, anytime. Explore free front-end
                 development courses
-              </MoPageSubtitle>
+              </MoTypography>
               <MoLinkButton
                 text="Get started"
                 href={ROUTES.EASY_COLLECTIONS.path}
@@ -79,7 +90,14 @@ const LandingPage = ({ classes }) => {
           unmountOnExit
         >
           <Grid item sm={12} md={6} xs={12}>
-            <MoPageHeader>Learn all about React</MoPageHeader>
+            <MoTypography
+              color="greyDark"
+              font="breeSerif"
+              marginBottom="md"
+              variant="h2"
+            >
+              Learn all about React
+            </MoTypography>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
@@ -135,10 +153,22 @@ const LandingPage = ({ classes }) => {
       </Grid>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
-          <MoPageHeader>Try the playground</MoPageHeader>
-          <MoPageSubtitle margin="36px 0 36px">
+          <MoTypography
+            color="greyDark"
+            font="breeSerif"
+            marginBottom="md"
+            variant="h2"
+          >
+            Try the playground
+          </MoTypography>
+          <MoTypography
+            color="grey"
+            font="openSans"
+            marginBottom="md"
+            variant="h4"
+          >
             Write code in JSX and watch it render your code magically.
-          </MoPageSubtitle>
+          </MoTypography>
           <MoLinkButton
             text="Try the playground"
             href={ROUTES.PLAYGROUND.path}

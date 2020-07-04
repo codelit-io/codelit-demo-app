@@ -13,30 +13,33 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoHint from "components/library/MoHint";
 import styles from "./styles";
-import MoPageHeader from "../MoPageHeader";
 import MoSpinner from "../MoSpinner";
-import MoPageContent from "../MoPageContent";
+import MoTypography from "../MoTypography";
 
-const MoPage = ({
-  classes,
-  children,
-  hint,
-  isLoading,
-  isAdmin,
-  subtitle,
-  title
-}) => {
-  if (isLoading) {
-    return <MoSpinner isLoading={isLoading} />;
-  }
-  return (
-    <section className={classes.section}>
-      <MoPageHeader text={title} isAdmin={isAdmin} />
-      <MoPageContent text={subtitle} />
-      <MoHint text={hint} />
-      {children}
-    </section>
-  );
+const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
+	if (isLoading) {
+		return <MoSpinner isLoading={isLoading} />;
+	}
+	return (
+		<section className={classes.section}>
+			<MoTypography
+				color="greyDark"
+				font="breeSerif"
+				marginBottom="md"
+				text={title}
+				variant="h2"
+			></MoTypography>
+			<MoTypography
+				color="greyDark"
+				font="openSans"
+				marginBottom="md"
+				text={subtitle}
+				variant="h6"
+			></MoTypography>
+			<MoHint text={hint} />
+			{children}
+		</section>
+	);
 };
 
 export default withStyles(styles)(MoPage);
