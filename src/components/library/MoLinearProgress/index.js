@@ -1,6 +1,6 @@
-import React from "react";
-import Fade from "@material-ui/core/Fade";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import React from 'react';
+import Fade from '@material-ui/core/Fade';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 /**
  *

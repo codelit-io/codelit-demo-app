@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 const style = {
   textarea: {
-    boxSizing: "border-box",
-    border: "none",
-    borderRadius: "3px",
-    lineHeight: "24px",
-    overflow: "auto",
-    height: "auto",
-    padding: "8px",
-    boxShadow: "0px 4px 10px -8px black"
-  }
+    boxSizing: 'border-box',
+    border: 'none',
+    borderRadius: '3px',
+    lineHeight: '24px',
+    overflow: 'auto',
+    height: 'auto',
+    padding: '8px',
+    boxShadow: '0px 4px 10px -8px black',
+  },
 };
 const MoTextarea = props => {
   return (

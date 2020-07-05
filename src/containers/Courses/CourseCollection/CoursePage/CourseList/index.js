@@ -5,28 +5,28 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React from "react";
+import React from 'react';
 
-import { ReactComponent as Js } from "assets/js.svg";
-import { ReactComponent as Html } from "assets/html.svg";
-import { ReactComponent as ReactJsx } from "assets/react-jsx.svg";
-import { ReactComponent as ReactStyle } from "assets/react-style.svg";
+import { ReactComponent as Js } from 'assets/js.svg';
+import { ReactComponent as Html } from 'assets/html.svg';
+import { ReactComponent as ReactJsx } from 'assets/react-jsx.svg';
+import { ReactComponent as ReactStyle } from 'assets/react-style.svg';
 
-import Grid from "@material-ui/core/Grid";
-import MoCard from "components/library/MoCard";
+import Grid from '@material-ui/core/Grid';
+import MoCard from 'components/library/MoCard';
 
 const types = {
   js: () => <Js />,
   html: () => <Html />,
   reactJsx: () => <ReactJsx />,
-  reactStyle: () => <ReactStyle />
+  reactStyle: () => <ReactStyle />,
 };
 
 const CourseList = ({ authUser, courses, collectionPath, points }) => {
   return courses.map((course, index) => {
     /* Configure url route for each item */
     const configureUrl = course.isDisabled
-      ? ""
+      ? ''
       : `${collectionPath}/${course.doc}`;
     return (
       <Grid item xs={12} sm={12} md={4} lg={4} key={index}>

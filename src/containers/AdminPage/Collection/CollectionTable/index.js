@@ -1,44 +1,43 @@
-import React, { useState } from "react";
-import MaterialTable from "material-table";
-import MoTextarea from "components/library/MoTextarea";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import React, { useState } from 'react';
+import MaterialTable from 'material-table';
+import MoTextarea from 'components/library/MoTextarea';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const CollectionTable = ({
   questions,
   onUpdateQuestion,
   onRemoveQuestion,
-  onCreateQuestion
+  onCreateQuestion,
   // handleRowClick,
 }) => {
   const [state, setState] = useState(questions);
   const [columns] = useState([
-    { title: "Id", field: "id", type: "numeric" },
+    { title: 'Id', field: 'id', type: 'numeric' },
     {
-      title: "Label",
-      field: "label",
-      editComponent: props => <MoTextarea {...props} />
+      title: 'Label',
+      field: 'label',
+      editComponent: props => <MoTextarea {...props} />,
     },
     {
-      title: "Question",
-      field: "question",
-      editComponent: props => <MoTextarea {...props} />
+      title: 'Question',
+      field: 'question',
+      editComponent: props => <MoTextarea {...props} />,
     },
     {
-      title: "Answer",
-      field: "answer",
-      editComponent: props => <MoTextarea {...props} />
+      title: 'Answer',
+      field: 'answer',
+      editComponent: props => <MoTextarea {...props} />,
     },
-    { title: "Title", field: "title" },
-    { title: "Subtitle", field: "subtitle" },
+    { title: 'Title', field: 'title' },
+    { title: 'Subtitle', field: 'subtitle' },
     {
-      title: "Match %",
-      field: "matchPercent",
+      title: 'Match %',
+      field: 'matchPercent',
       editComponent: props => (
         <Select
           value={props.value}
-          onChange={e => props.onChange(e.target.value)}
-        >
+          onChange={e => props.onChange(e.target.value)}>
           <MenuItem value={1}>100%</MenuItem>
           <MenuItem value={0.99}>99%</MenuItem>
           <MenuItem value={0.98}>98%</MenuItem>
@@ -51,15 +50,15 @@ const CollectionTable = ({
           <MenuItem value={0.91}>91%</MenuItem>
           <MenuItem value={0.9}>90%</MenuItem>
         </Select>
-      )
+      ),
     },
-    { title: "Language", field: "language" },
-    { title: "Category", field: "category" },
+    { title: 'Language', field: 'language' },
+    { title: 'Category', field: 'category' },
     {
-      title: "Content",
-      field: "content",
-      editComponent: props => <MoTextarea {...props} />
-    }
+      title: 'Content',
+      field: 'content',
+      editComponent: props => <MoTextarea {...props} />,
+    },
   ]);
 
   return (
@@ -72,7 +71,7 @@ const CollectionTable = ({
         title="Questions"
         columns={columns}
         data={state}
-        style={{ backgroundColor: "none", boxShadow: "none" }}
+        style={{ backgroundColor: 'none', boxShadow: 'none' }}
         editable={{
           EditField: props => <textarea />,
           onRowAdd: newData =>
@@ -106,7 +105,7 @@ const CollectionTable = ({
                 onRemoveQuestion(oldData.uid);
                 return data;
               });
-            })
+            }),
         }}
       />
     )

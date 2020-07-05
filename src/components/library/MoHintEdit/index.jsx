@@ -15,10 +15,10 @@
  *
  *
  * */
-import React from "react";
+import React from 'react';
 
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles";
+import withStyles from '@material-ui/core/styles/withStyles';
+import styles from './styles';
 
 const MoHintEdit = ({ classes, children, text, register, name }) => {
   if (!text && !children) {

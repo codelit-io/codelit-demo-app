@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "@material-ui/core/Button";
-import { compose } from "recompose";
-import facebook from "assets/facebook.svg";
-import PropTypes from "prop-types";
-import { withFirebase } from "components/shared/Firebase";
-import withStyles from "@material-ui/core/styles/withStyles";
+import Button from '@material-ui/core/Button';
+import { compose } from 'recompose';
+import facebook from 'assets/facebook.svg';
+import PropTypes from 'prop-types';
+import { withFirebase } from 'components/shared/Firebase';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   button: {
-    width: "100%",
-    textAlign: "center",
-    textTransform: "initial",
-    justifyContent: "end",
-    paddingLeft: "1em"
+    width: '100%',
+    textAlign: 'center',
+    textTransform: 'initial',
+    justifyContent: 'end',
+    paddingLeft: '1em',
   },
   form: {
-    marginTop: theme.spacing(4)
-  }
+    marginTop: theme.spacing(4),
+  },
 });
 
 const SignInWithFacebookBase = ({ firebase, history, classes }) => {
@@ -30,10 +30,10 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         .set(
           {
             username: socialAuthUser.additionalUserInfo.profile.name,
-            email: socialAuthUser.additionalUserInfo.profile.email || "none",
-            roles: {}
+            email: socialAuthUser.additionalUserInfo.profile.email || 'none',
+            roles: {},
           },
-          { merge: true }
+          { merge: true },
         )
         .then(() => {
           setError(null);
@@ -49,8 +49,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         aria-label="Login with Facebook"
         className={classes.button}
         startIcon={<img src={facebook} alt="facebook logo" />}
-        type="submit"
-      >
+        type="submit">
         Sign in with Facebook
       </Button>
 
@@ -60,12 +59,12 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 };
 
 SignInWithFacebookBase.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const SignInWithFacebook = compose(
   withStyles(styles),
-  withFirebase
+  withFirebase,
 )(SignInWithFacebookBase);
 
 export default SignInWithFacebook;

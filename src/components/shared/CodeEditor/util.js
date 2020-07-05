@@ -6,10 +6,10 @@ export const addFocusOnEditor = () => {
   setTimeout(() => {
     try {
       document
-        .querySelector(".npm__react-simple-code-editor__textarea")
+        .querySelector('.npm__react-simple-code-editor__textarea')
         .focus();
     } catch {
-      console.log("Focus on editor failed");
+      console.log('Focus on editor failed');
     }
   }, 1000);
 };
@@ -17,9 +17,9 @@ export const addFocusOnEditor = () => {
 export const getPreviewElement = () => {
   let element;
   try {
-    element = document.querySelector("#MoBrowserMockup > div");
+    element = document.querySelector('#MoBrowserMockup > div');
   } catch {
-    console.log("getPreviewElement not available");
+    console.log('getPreviewElement not available');
   }
   return element;
 };

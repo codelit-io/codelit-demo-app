@@ -15,22 +15,22 @@
  * @see See [Material IU Snackbar](https://material-ui.com/components/snackbars/#snackbar)
  * */
 
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Slide from "@material-ui/core/Slide";
-import Snackbar from "@material-ui/core/Snackbar";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import MoTitle from "components/library/MoTitle";
-import withStyles from "@material-ui/core/styles/withStyles";
-import MoButton from "components/library/MoButton";
-import propTypes from "prop-types";
-import styles from "./styles";
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import Slide from '@material-ui/core/Slide';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import MoTitle from 'components/library/MoTitle';
+import withStyles from '@material-ui/core/styles/withStyles';
+import MoButton from 'components/library/MoButton';
+import propTypes from 'prop-types';
+import styles from './styles';
 
 const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
   const [state, setState] = React.useState({
     isActive: snackbarProps.isActive,
-    Transition: Slide
+    Transition: Slide,
   });
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
   const handleButtonClick = () => {
     setState({
       isActive: false,
-      Transition: Slide
+      Transition: Slide,
     });
     handleClick();
   };
@@ -49,7 +49,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
     setState({
       ...state,
       Transition: Slide,
-      isActive: false
+      isActive: false,
     });
   };
 
@@ -59,8 +59,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
       open={state.isActive}
       onClose={handleClose}
       TransitionComponent={state.Transition}
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-    >
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
       <SnackbarContent
         message={
           <div className={classes.message}>
@@ -72,8 +71,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
         action={
           <MoButton
             handleButtonClick={() => handleButtonClick()}
-            text={snackbarProps.buttonText}
-          >
+            text={snackbarProps.buttonText}>
             {snackbarProps.buttonText}
             {snackbarProps.buttonIcon}
           </MoButton>
@@ -92,7 +90,7 @@ MoSnackBar.propTypes = {
     buttonText: propTypes.string,
     buttonIcon: propTypes.object,
     isActive: propTypes.bool.isRequired,
-    title: propTypes.string
-  }).isRequired
+    title: propTypes.string,
+  }).isRequired,
 };
 export default withStyles(styles)(MoSnackBar);

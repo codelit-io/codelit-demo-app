@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Fade from "@material-ui/core/Fade";
+import Fade from '@material-ui/core/Fade';
 
 const MoPageSubtitleEdit = ({
   children,
@@ -9,22 +9,22 @@ const MoPageSubtitleEdit = ({
   name,
   textAlign,
   width,
-  register
+  register,
 }) => {
   const styles = {
     text: {
-      color: "#383c40",
-      verticalAlign: "middle",
-      textDecoration: "none",
-      textAlign: textAlign || "",
-      margin: margin || "",
-      width: "100%",
-      border: "none",
-      outline: "none"
+      color: '#383c40',
+      verticalAlign: 'middle',
+      textDecoration: 'none',
+      textAlign: textAlign || '',
+      margin: margin || '',
+      width: '100%',
+      border: 'none',
+      outline: 'none',
     },
     container: {
-      width: width || ""
-    }
+      width: width || '',
+    },
   };
 
   return (

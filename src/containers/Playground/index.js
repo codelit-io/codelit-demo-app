@@ -10,16 +10,16 @@
  *
  * */
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import CodeEditor from "components/shared/CodeEditor";
+import CodeEditor from 'components/shared/CodeEditor';
 
 const Playground = () => {
   const initialState = {
-    answer: "<button> I am a Button </button>",
-    language: "jsx",
-    element: "button",
-    id: "0",
+    answer: '<button> I am a Button </button>',
+    language: 'jsx',
+    element: 'button',
+    id: '0',
     isCorrect: false,
     question: `() => {
       return (
@@ -28,13 +28,13 @@ const Playground = () => {
         </section>
       );
     };`,
-    isPlayground: true
+    isPlayground: true,
   };
 
   const [question, setQuestion] = useState(initialState);
 
   const handleOnChange = ({ userAnswer }) => {
-    if (userAnswer === "{}" || userAnswer === "") {
+    if (userAnswer === '{}' || userAnswer === '') {
       return;
     }
     setQuestion({ ...question, question: userAnswer });
@@ -43,7 +43,7 @@ const Playground = () => {
   return (
     <>
       <CodeEditor
-        codeAnswer={"Write Question Here"}
+        codeAnswer={'Write Question Here'}
         codeLanguage={question?.language}
         codeQuestion={question?.question}
         isEditMode={true}

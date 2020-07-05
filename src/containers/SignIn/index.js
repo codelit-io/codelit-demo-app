@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import * as ROUTES from "constants/routes";
-import { withAuthentication } from "components/shared/Session";
-import Grid from "@material-ui/core/Grid";
-import MoPage from "components/library/MoPage";
-import SocialSignIn from "components/shared/SocialSignIn";
-import SignInForm from "./SignInForm";
-import MoLink from "components/library/MoLink";
+import * as ROUTES from 'constants/routes';
+import { withAuthentication } from 'components/shared/Session';
+import Grid from '@material-ui/core/Grid';
+import MoPage from 'components/library/MoPage';
+import SocialSignIn from 'components/shared/SocialSignIn';
+import SignInForm from './SignInForm';
+import MoLink from 'components/library/MoLink';
 
 const SignInPage = ({ authUser }) => (
   <MoPage
     img=""
-    title={authUser ? "You are logged in 👍" : "Welcome Back 🤩"}
-    isLoading={false}
-  >
+    title={authUser ? 'You are logged in 👍' : 'Welcome Back 🤩'}
+    isLoading={false}>
     <Grid container spacing={3}>
       {authUser ? (
         <Grid item sm={12} md={12}>

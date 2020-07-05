@@ -20,14 +20,14 @@
  * @see See [React hoc](https://reactjs.org/docs/higher-order-components.html)
  * */
 
-import React from "react";
+import React from 'react';
 
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Grid from "@material-ui/core/Grid";
-import styles from "./styles";
-import PropTypes from "prop-types";
+import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Grid from '@material-ui/core/Grid';
+import styles from './styles';
+import PropTypes from 'prop-types';
 
 const MoCard = ({
   classes,
@@ -38,7 +38,7 @@ const MoCard = ({
   points,
   subtitle,
   title,
-  url
+  url,
 }) => (
   <Link to={url} className={isDisabled ? classes.disableLink : classes.link}>
     <div className={`${classes.card} ${isDisabled && classes.disableCard}`}>
@@ -50,8 +50,7 @@ const MoCard = ({
             xs={12}
             sm={12}
             md={12}
-            lg={12}
-          >
+            lg={12}>
             <IconComponent className={classes.heroIcon} />
           </Grid>
         )}
@@ -62,8 +61,7 @@ const MoCard = ({
             xs={12}
             sm={12}
             md={12}
-            lg={12}
-          >
+            lg={12}>
             <Typography className={classes.index} variant="h2" component="h1">
               {index}
             </Typography>
@@ -75,10 +73,9 @@ const MoCard = ({
           xs={12}
           sm={12}
           md={12}
-          lg={12}
-        >
+          lg={12}>
           <Typography gutterBottom variant="h5" component="h2">
-            {title ? title : "Empty Title"}
+            {title ? title : 'Empty Title'}
           </Typography>
           <Typography className={classes.subtitle} component="h6" gutterBottom>
             {subtitle}
@@ -99,7 +96,7 @@ MoCard.propTypes = {
   IconComponent: PropTypes.elementType,
   isDisabled: PropTypes.bool.isRequired,
   points: PropTypes.number,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(MoCard);

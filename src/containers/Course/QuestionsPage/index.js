@@ -7,15 +7,15 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React from "react";
+import React from 'react';
 
-import calculateProgress from "./calculateProgress";
-import Fade from "@material-ui/core/Fade";
-import Footer from "components/shared/Footer";
-import Grid from "@material-ui/core/Grid";
-import QuestionList from "./QuestionList";
-import MoPage from "components/library/MoPage";
-import MoPointsGroup from "components/library/MoPointsGroup";
+import calculateProgress from './calculateProgress';
+import Fade from '@material-ui/core/Fade';
+import Footer from 'components/shared/Footer';
+import Grid from '@material-ui/core/Grid';
+import QuestionList from './QuestionList';
+import MoPage from 'components/library/MoPage';
+import MoPointsGroup from 'components/library/MoPointsGroup';
 
 const QuestionsPage = ({
   authUser,
@@ -23,7 +23,7 @@ const QuestionsPage = ({
   courseDetails,
   isLoading,
   match,
-  points
+  points,
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
     <Grid container spacing={4} alignItems="center">

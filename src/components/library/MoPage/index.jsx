@@ -8,13 +8,13 @@
  * @param {String} subtitle - Subtitle for the page
  */
 
-import React from "react";
+import React from 'react';
 
-import withStyles from "@material-ui/core/styles/withStyles";
-import MoHint from "components/library/MoHint";
-import styles from "./styles";
-import MoSpinner from "../MoSpinner";
-import MoTypography from "../MoTypography";
+import withStyles from '@material-ui/core/styles/withStyles';
+import MoHint from 'components/library/MoHint';
+import styles from './styles';
+import MoSpinner from '../MoSpinner';
+import MoTypography from '../MoTypography';
 
 const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
   if (isLoading) {
@@ -27,15 +27,13 @@ const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
         font="breeSerif"
         marginBottom="md"
         text={title}
-        variant="h2"
-      ></MoTypography>
+        variant="h2"></MoTypography>
       <MoTypography
         color="greyDark"
         font="openSans"
         marginBottom="md"
         text={subtitle}
-        variant="h6"
-      ></MoTypography>
+        variant="h6"></MoTypography>
       <MoHint text={hint} />
       {children}
     </section>

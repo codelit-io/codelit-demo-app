@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { compose } from "recompose";
-import EmailSignInForm from "components/shared/EmailSignInForm";
+import { compose } from 'recompose';
+import EmailSignInForm from 'components/shared/EmailSignInForm';
 
-import { withFirebase } from "components/shared/Firebase";
-import { withRouter } from "react-router-dom";
+import { withFirebase } from 'components/shared/Firebase';
+import { withRouter } from 'react-router-dom';
 
 const INITIAL_STATE = {
-  email: "",
-  password: "",
-  error: null
+  email: '',
+  password: '',
+  error: null,
 };
 
 const SignInFormBase = ({ firebase, history }) => {
@@ -37,7 +37,7 @@ const SignInFormBase = ({ firebase, history }) => {
   return (
     <EmailSignInForm
       onSubmit={handleSubmit}
-      isInvalid={password === "" || email === ""}
+      isInvalid={password === '' || email === ''}
       onChange={onChange}
       error={error}
     />

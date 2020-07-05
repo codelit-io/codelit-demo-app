@@ -20,7 +20,7 @@
  * @see See [React custom hooks](https://reactjs.org/docs/hooks-custom.html)
  * */
 
-import * as ROLES from "constants/roles";
+import * as ROLES from 'constants/roles';
 
 const useUserRole = authUser => {
   if (!authUser) {
@@ -30,7 +30,7 @@ const useUserRole = authUser => {
   return {
     isAdmin: !!(authUser.roles && authUser.roles[ROLES.ADMIN]),
     isAuthor: !!(authUser.roles && authUser.roles[ROLES.AUTHOR]),
-    isStudent: !!(authUser.roles && authUser.roles[ROLES.STUDENT])
+    isStudent: !!(authUser.roles && authUser.roles[ROLES.STUDENT]),
   };
 };
 

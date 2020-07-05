@@ -6,10 +6,10 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React from "react";
+import React from 'react';
 
-import MoCard from "components/library/MoCard";
-import Grid from "@material-ui/core/Grid";
+import MoCard from 'components/library/MoCard';
+import Grid from '@material-ui/core/Grid';
 
 const QuestionList = ({ authUser, match, questions, points }) => {
   const doc = match.params.collection;
@@ -24,7 +24,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
       : false;
 
     /* Configure url route for each item */
-    const configureUrl = isDisabled ? "" : `${doc}/${question.id}`;
+    const configureUrl = isDisabled ? '' : `${doc}/${question.id}`;
 
     return (
       <Grid item xs={12} sm={12} md={4} lg={4} key={index}>

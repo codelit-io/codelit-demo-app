@@ -12,12 +12,12 @@
  *
  *
  * */
-import React from "react";
+import React from 'react';
 
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles";
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
+import styles from './styles';
 
 const MoHint = ({ classes, children, text }) => {
   if (!text && !children) {

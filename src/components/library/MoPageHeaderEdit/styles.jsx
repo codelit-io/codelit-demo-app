@@ -1,12 +1,12 @@
 const styles = theme => ({
   text: {
     color: theme.grey?.medium,
-    textDecoration: "none",
+    textDecoration: 'none',
     marginBottom: theme.space?.md,
-    width: "100%",
-    border: "none",
-    outline: "none"
-  }
+    width: '100%',
+    border: 'none',
+    outline: 'none',
+  },
 });
 
 export default styles;

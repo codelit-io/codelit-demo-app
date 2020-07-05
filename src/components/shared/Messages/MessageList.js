@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import List from "@material-ui/core/List";
+import List from '@material-ui/core/List';
 
-import MessageItem from "./MessageItem";
+import MessageItem from './MessageItem';
 
 const MessageList = ({
   authUser,
   messages,
   onEditMessage,
-  onRemoveMessage
+  onRemoveMessage,
 }) => (
   <List>
     {messages.map(message => (

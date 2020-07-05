@@ -8,7 +8,7 @@ const awardPlayerPoints = (authUser, firebase, questionId, collection) => {
     /* TODO move me */
 
     if (authUser.reports?.[collection]) {
-      const userPoints = authUser.reports[collection]["points"];
+      const userPoints = authUser.reports[collection]['points'];
       const points =
         nextLevelReqPoints > userPoints ? nextLevelReqPoints : userPoints;
 
@@ -24,7 +24,7 @@ const awardPlayerPoints = (authUser, firebase, questionId, collection) => {
         .set({ reports: { [collection]: { points: 1 } } }, { merge: true });
     }
   } else {
-    console.log("User not signed up");
+    console.log('User not signed up');
   }
 };
 

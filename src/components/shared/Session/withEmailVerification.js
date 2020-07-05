@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import AuthUserContext from "./context";
-import { withFirebase } from "../Firebase";
-import Button from "@material-ui/core/Button";
+import AuthUserContext from './context';
+import { withFirebase } from '../Firebase';
+import Button from '@material-ui/core/Button';
 
 const needsEmailVerification = authUser =>
   authUser &&
   !authUser.emailVerified &&
   authUser.providerData
     .map(provider => provider.providerId)
-    .includes("password");
+    .includes('password');
 
 const withEmailVerification = Component => {
   class WithEmailVerification extends React.Component {
@@ -48,8 +48,7 @@ const withEmailVerification = Component => {
                   variant="contained"
                   color="primary"
                   onClick={this.onSendEmailVerification}
-                  disabled={this.state.isSent}
-                >
+                  disabled={this.state.isSent}>
                   Send confirmation Email
                 </Button>
               </div>

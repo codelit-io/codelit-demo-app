@@ -9,20 +9,20 @@
  * @return {<form></form>}
  */
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "@material-ui/core/Button";
-import { useForm } from "react-hook-form";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Grid from "@material-ui/core/Grid";
-import MoFormDialog from "components/library/MoFormDialog";
-import TextField from "@material-ui/core/TextField";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { FormControl, FormLabel, RadioGroup, Radio } from "@material-ui/core";
+import Button from '@material-ui/core/Button';
+import { useForm } from 'react-hook-form';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Grid from '@material-ui/core/Grid';
+import MoFormDialog from 'components/library/MoFormDialog';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { FormControl, FormLabel, RadioGroup, Radio } from '@material-ui/core';
 
 const NewCourseDialog = ({ authUser, firebase }) => {
   /* TODO: add watch and error
@@ -31,37 +31,37 @@ const NewCourseDialog = ({ authUser, firebase }) => {
   const { register, handleSubmit } = useForm();
 
   const [formData] = useState({
-    title: "Master React Course",
+    title: 'Master React Course',
     desc:
-      "A series of questions to learn advanced courses in react such as React hooks and Context API",
-    id: 0
+      'A series of questions to learn advanced courses in react such as React hooks and Context API',
+    id: 0,
   });
 
   const Form = ({ handleDialogState }) => {
     const onSubmit = formData => {
       if (formData.title) {
         // Create doc based on title name, doc is lowercase without spaces
-        const doc = formData?.title.replace(/\s+/g, "-").toLowerCase();
+        const doc = formData?.title.replace(/\s+/g, '-').toLowerCase();
         const payload = {
           ...formData,
           doc,
           id: 0,
           userId: authUser.uid,
-          createdAt: firebase.fieldValue.serverTimestamp()
+          createdAt: firebase.fieldValue.serverTimestamp(),
         };
 
         // Create courses in db with doc, then set the payload
         firebase
-          .collection("courses")
+          .collection('courses')
           .doc(doc)
           .set(payload, { merge: true });
 
         // Add a questions array to the collection created above add a placeholder entry
         // TODO: figure a more efficient way to do this with one firebase query
         firebase
-          .collection("courses")
+          .collection('courses')
           .doc(doc)
-          .collection("questions")
+          .collection('questions')
           .doc()
           .set({ id: 1 });
 

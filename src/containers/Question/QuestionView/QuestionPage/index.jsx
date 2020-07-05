@@ -8,27 +8,27 @@
  * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
  */
 
-import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
+import React, { lazy, useCallback, useEffect, useState, Suspense } from 'react';
 
-import awardPlayerPoints from "../awardPlayerPoints";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import MoSnackbar from "components/library/MoSnackBar";
-import MoPage from "components/library/MoPage";
-import MoSpinner from "components/library/MoSpinner";
-import stringSimilarity from "string-similarity";
-import createStyles from "@material-ui/core/styles/createStyles";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import useTheme from "@material-ui/core/styles/useTheme";
-import { retry } from "utils/retryLazyImports";
-import MoTypography from "components/library/MoTypography";
+import awardPlayerPoints from '../awardPlayerPoints';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import MoSnackbar from 'components/library/MoSnackBar';
+import MoPage from 'components/library/MoPage';
+import MoSpinner from 'components/library/MoSpinner';
+import stringSimilarity from 'string-similarity';
+import createStyles from '@material-ui/core/styles/createStyles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useTheme from '@material-ui/core/styles/useTheme';
+import { retry } from 'utils/retryLazyImports';
+import MoTypography from 'components/library/MoTypography';
 
 const CodeEditor = lazy(() =>
-  retry(() => import("components/shared/CodeEditor"))
+  retry(() => import('components/shared/CodeEditor')),
 );
 const MoConfetti = lazy(() =>
-  retry(() => import("components/library/MoConfetti"))
+  retry(() => import('components/library/MoConfetti')),
 );
 
 const QuestionPage = ({
@@ -38,7 +38,7 @@ const QuestionPage = ({
   handleNavigation,
   userRole,
   data,
-  match
+  match,
 }) => {
   const [question, setQuestion] = useState(data);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -46,20 +46,20 @@ const QuestionPage = ({
   const [matchPercent, setMatchPercent] = useState();
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const useStyles = makeStyles(theme =>
     createStyles({
       buttonArea: {
-        textAlign: "left",
-        width: "100%",
-        "&:hover": {
+        textAlign: 'left',
+        width: '100%',
+        '&:hover': {
           background: theme.grey.superLight,
-          cursor: "text"
-        }
+          cursor: 'text',
+        },
       },
-      section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
-    })
+      section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl },
+    }),
   );
 
   useEffect(() => {
@@ -86,15 +86,15 @@ const QuestionPage = ({
   /* Checks if user code matches Pre made answer */
   const handleOnChange = useCallback(
     ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
+      if (userAnswer === '{}' || userAnswer === '') {
         return;
       }
 
-      const userAnswerTrimmed = userAnswer.replace(/\s/g, "");
-      const correctAnswerTrimmed = question.answer.replace(/\s/g, "");
+      const userAnswerTrimmed = userAnswer.replace(/\s/g, '');
+      const correctAnswerTrimmed = question.answer.replace(/\s/g, '');
       const cosineSimilarityMatchPercent = stringSimilarity.compareTwoStrings(
         userAnswerTrimmed,
-        correctAnswerTrimmed
+        correctAnswerTrimmed,
       );
       setMatchPercent(cosineSimilarityMatchPercent * 100 || 10);
       if (
@@ -111,20 +111,20 @@ const QuestionPage = ({
           authUser,
           firebase,
           question.id,
-          match.params.collection
+          match.params.collection,
         );
         setIsCorrect(true);
         setSnackbarProps({
-          buttonText: "Keep Going",
+          buttonText: 'Keep Going',
           buttonIcon: <ArrowForwardIcon />,
           isActive: true,
-          title: "Hooray!"
+          title: 'Hooray!',
         });
       } else {
         setQuestion({ ...question, question: userAnswer });
       }
     },
-    [authUser, firebase, match, question]
+    [authUser, firebase, match, question],
   );
 
   return (
@@ -133,8 +133,7 @@ const QuestionPage = ({
       <ButtonBase
         className={classes.buttonArea}
         onClick={() => handleOnClick()}
-        disabled={!userRole.isAdmin}
-      >
+        disabled={!userRole.isAdmin}>
         <MoPage
           isAdmin={userRole.isAdmin}
           title={question?.title}
@@ -149,8 +148,7 @@ const QuestionPage = ({
           font="breeSerif"
           marginBottom="md"
           text={question.content}
-          variant="body1"
-        ></MoTypography>
+          variant="body1"></MoTypography>
       )}
       <section className={classes.section}>
         <CodeEditor

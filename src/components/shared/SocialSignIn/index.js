@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import withStyles from "@material-ui/core/styles/withStyles";
-import PropTypes from "prop-types";
-import MoTitle from "components/library/MoTitle";
-import styles from "./styles";
-import SignInWithFacebook from "./SignInWithFacebook";
-import SignInWithGoogle from "./SignInWithGoogle";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import withStyles from '@material-ui/core/styles/withStyles';
+import PropTypes from 'prop-types';
+import MoTitle from 'components/library/MoTitle';
+import styles from './styles';
+import SignInWithFacebook from './SignInWithFacebook';
+import SignInWithGoogle from './SignInWithGoogle';
 
 const SocialSignIn = ({ classes }) => {
   return (
@@ -24,7 +24,7 @@ const SocialSignIn = ({ classes }) => {
 };
 
 SocialSignIn.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(SocialSignIn);

@@ -9,24 +9,24 @@
  * @return {<form></form>}
  */
 
-import React, { lazy } from "react";
+import React, { lazy } from 'react';
 
-import * as ROUTES from "constants/routes";
-import { compose } from "recompose";
-import { Link, withRouter } from "react-router-dom";
-import styles from "./styles";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { withAuthentication } from "../Session";
-import useUserRole from "hooks/useUserRole";
-import AppBar from "@material-ui/core/AppBar";
+import * as ROUTES from 'constants/routes';
+import { compose } from 'recompose';
+import { Link, withRouter } from 'react-router-dom';
+import styles from './styles';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { withAuthentication } from '../Session';
+import useUserRole from 'hooks/useUserRole';
+import AppBar from '@material-ui/core/AppBar';
 
-const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
-const Button = lazy(() => import("@material-ui/core/Button"));
-const Grid = lazy(() => import("@material-ui/core/Grid"));
-const MoAvatar = lazy(() => import("components/library/MoAvatar"));
-const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
-const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
-const NewCourseDialog = lazy(() => import("./NewCourseDialog"));
+const AppsIcon = lazy(() => import('@material-ui/icons/Apps'));
+const Button = lazy(() => import('@material-ui/core/Button'));
+const Grid = lazy(() => import('@material-ui/core/Grid'));
+const MoAvatar = lazy(() => import('components/library/MoAvatar'));
+const Toolbar = lazy(() => import('@material-ui/core/Toolbar'));
+const MoSkoolLogo = lazy(() => import('components/library/MoSkoolLogo'));
+const NewCourseDialog = lazy(() => import('./NewCourseDialog'));
 
 const Navigation = ({ authUser, classes, firebase, history }) => {
   const userRole = useUserRole(authUser);
@@ -45,8 +45,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
               sm={9}
               md={9}
               lg={9}
-              style={{ textAlign: "right" }}
-            >
+              style={{ textAlign: 'right' }}>
               <Button
                 color="primary"
                 className={classes.button}
@@ -54,8 +53,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
                 aria-haspopup="true"
                 startIcon={<AppsIcon />}
                 component={Link}
-                to={ROUTES.COLLECTIONS.path}
-              >
+                to={ROUTES.COLLECTIONS.path}>
                 Courses
               </Button>
               <>
@@ -76,5 +74,5 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
 export default compose(
   withStyles(styles),
   withAuthentication,
-  withRouter
+  withRouter,
 )(Navigation);

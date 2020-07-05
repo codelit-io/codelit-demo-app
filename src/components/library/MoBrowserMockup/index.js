@@ -8,10 +8,10 @@
  * @return {<Dialog></Dialog>}
  */
 
-import React from "react";
+import React from 'react';
 
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles";
+import withStyles from '@material-ui/core/styles/withStyles';
+import styles from './styles';
 
 const MoBrowserMockup = ({ classes, children, fileType, isEditor }) => {
   return isEditor ? (
