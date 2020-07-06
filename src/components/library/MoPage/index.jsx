@@ -11,13 +11,12 @@
 import React from "react";
 
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoHint from "components/library/MoHint";
 import styles from "./styles";
 import MoSpinner from "../MoSpinner";
 import MoTypography from "../MoTypography";
 import { Fade } from "@material-ui/core";
 
-const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
+const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
 	if (isLoading) {
 		return <MoSpinner isLoading={isLoading} />;
 	}
@@ -43,7 +42,6 @@ const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
 					text={subtitle}
 					variant="h6"
 				></MoTypography>
-				<MoHint text={hint} />
 				{children}
 			</section>
 		</Fade>
