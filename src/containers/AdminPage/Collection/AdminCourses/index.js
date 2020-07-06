@@ -9,7 +9,7 @@ const AdminCourses = ({ firebase }) => {
 
   return (
     <Grid container spacing={4} alignItems="center">
-      <CourseList courses={courses.data} collectionPath={"courses"} />
+      <CourseList courses={courses.data} collectionPath={"admin/courses"} />
     </Grid>
   );
 };

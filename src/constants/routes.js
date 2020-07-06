@@ -6,9 +6,9 @@ export const ADMIN_COLLECTIONS = {
   path: "/admin",
   title: "Collections"
 };
-export const ADMIN_COLLECTIONS_COURSES = {
+export const ADMIN_COURSES = {
   path: "/admin/courses",
-  title: "Collections"
+  title: "Courses"
 };
 export const ADMIN_COLLECTIONS_EASY = {
   path: "/admin/collections/mo-easy",

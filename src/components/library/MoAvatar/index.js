@@ -106,7 +106,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
             {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
               <>
                 <MenuItem
-                  to={ROUTES.ADMIN.path}
+                  to={ROUTES.ADMIN_COURSES.path}
                   component={Link}
                   onClick={handleClose}
                 >
