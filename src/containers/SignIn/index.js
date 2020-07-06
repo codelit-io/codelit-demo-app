@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import SocialSignIn from "components/shared/SocialSignIn";
 import SignInForm from "./SignInForm";
-import MoLinkButton from "components/library/MoLinkButton";
+import MoButton from "components/library/MoButton";
 
 const SignInPage = ({ authUser }) => (
   <MoPage
@@ -16,7 +16,7 @@ const SignInPage = ({ authUser }) => (
     <Grid container spacing={3}>
       {authUser ? (
         <Grid item sm={12} md={12}>
-          <MoLinkButton
+          <MoButton
             isArrowIcon={true}
             color="primary"
             variant="text"

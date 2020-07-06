@@ -23,7 +23,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import MoTitle from "components/library/MoTitle";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoLinkButton from "components/library/MoLinkButton";
+import MoButton from "components/library/MoButton";
 import propTypes from "prop-types";
 import styles from "./styles";
 
@@ -70,7 +70,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
 				}
 				className={classes.snackbarContent}
 				action={
-					<MoLinkButton
+					<MoButton
 						isArrowIcon={true}
 						color="primary"
 						variant="contained"

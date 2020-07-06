@@ -22,7 +22,7 @@ import Landing2 from "assets/landing2.png";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import MoLinkButton from "components/library/MoLinkButton";
+import MoButton from "components/library/MoButton";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 import styles from "./styles";
@@ -57,7 +57,7 @@ const LandingPage = ({ classes }) => {
                 Study any React topic, anytime. Explore free front-end
                 development courses
               </MoTypography>
-              <MoLinkButton
+              <MoButton
                 isArrowIcon={true}
                 color="primary"
                 variant="contained"
@@ -132,7 +132,7 @@ const LandingPage = ({ classes }) => {
               <ListItemText primary="Best UI/UX practices" />
             </ListItem>
             <ListItem>
-              <MoLinkButton
+              <MoButton
                 isArrowIcon={true}
                 color="primary"
                 variant="text"
@@ -176,7 +176,7 @@ const LandingPage = ({ classes }) => {
           >
             Write code in JSX and watch it render your code magically.
           </MoTypography>
-          <MoLinkButton
+          <MoButton
             isArrowIcon={true}
             color="primary"
             variant="contained"

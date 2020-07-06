@@ -7,7 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
-const MoLinkButton = ({
+const MoButton = ({
   classes,
   children,
   handleButtonClick,
@@ -43,7 +43,7 @@ const MoLinkButton = ({
   );
 };
 
-MoLinkButton.propTypes = {
+MoButton.propTypes = {
   classes: PropTypes.object,
   children: PropTypes.any,
   handleButtonClick: PropTypes.func,
@@ -55,4 +55,4 @@ MoLinkButton.propTypes = {
   variant: PropTypes.oneOf(["contained", "outlined", "text", null])
 };
 
-export default withStyles(styles)(MoLinkButton);
+export default withStyles(styles)(MoButton);
