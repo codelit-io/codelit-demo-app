@@ -89,7 +89,7 @@ const LandingPage = ({ classes }) => {
         <Fade
           in={Landing2 && true}
           mountOnEnter
-          timeout={{ enter: 2400 }}
+          timeout={{ enter: 1200 }}
           unmountOnExit
         >
           <Grid item sm={12} md={6} xs={12}>

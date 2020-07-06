@@ -21,7 +21,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Slide from "@material-ui/core/Slide";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
-import MoTitle from "components/library/MoTitle";
+import MoTypography from "components/library/MoTypography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoButton from "components/library/MoButton";
 import propTypes from "prop-types";
@@ -65,7 +65,13 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
 				message={
 					<div className={classes.message}>
 						<CheckCircleIcon className={classes.checkIcon} />
-						<MoTitle text={snackbarProps.title} fade margin="0 36px 0 0" />
+						<MoTypography
+							color="greyDark"
+							font="breeSerif"
+							variant="h3"
+						>
+							{snackbarProps.title}
+						</MoTypography>
 					</div>
 				}
 				className={classes.snackbarContent}
@@ -73,7 +79,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
 					<MoButton
 						isArrowIcon={true}
 						color="primary"
-						variant="contained"
+						variant="text"
 						size="large"
 						handleButtonClick={() => handleButtonClick()}
 						text={snackbarProps.buttonText}
