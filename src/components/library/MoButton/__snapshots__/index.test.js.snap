@@ -6,6 +6,7 @@ exports[`MoButton Component should match the snapshot 1`] = `
     Object {
       "button": "MoButton-button-1",
       "icon": "MoButton-icon-2",
+      "noShadow": "MoButton-noShadow-3",
     }
   }
 />
