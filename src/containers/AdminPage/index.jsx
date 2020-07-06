@@ -29,9 +29,9 @@ import MoSpinner from "components/library/MoSpinner";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import {
-	withAuthorization,
-	withEmailVerification,
-	withAuthentication
+  withAuthorization,
+  withEmailVerification,
+  withAuthentication
 } from "components/shared/Session";
 import MoTabs from "./MoTabs";
 
@@ -39,51 +39,51 @@ const Collection = lazy(() => import("./Collection"));
 const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
 const tabItems = [
-	{ name: "Courses", path: "courses" },
-	{ name: "Users", path: "users" }
+  { name: "Courses", path: "courses" },
+  { name: "Users", path: "users" }
 ];
 
 const AdminPage = ({ history }) => {
-	const handleTabChange = (path) => {
-		history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
-	};
+  const handleTabChange = path => {
+    history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
+  };
 
-	return (
-		<MoPage title="Admin" isLoading={false}>
-			<MoTabs
-				handleTabChange={(path) => handleTabChange(path)}
-				tabItems={tabItems}
-			></MoTabs>
-			<Suspense
-				fallback={<MoSpinner isLoading={true} color="primary" />}
-			></Suspense>
-			<Switch>
-				<Route
-					exact
-					path={ROUTES.ADMIN_COURSES.path}
-					component={AdminCourses}
-				/>
-				<Route
-					exact
-					path={ROUTES.ADMIN_COURSES.path + "/:collection"}
-					component={Collection}
-				/>
-				<Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
-				<Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
-				<Route
-					exact
-					path={ROUTES.ADMIN_USERS.path + "/:id"}
-					component={UserItem}
-				/>
-			</Switch>
-		</MoPage>
-	);
+  return (
+    <MoPage title="Admin" isLoading={false}>
+      <MoTabs
+        handleTabChange={path => handleTabChange(path)}
+        tabItems={tabItems}
+      ></MoTabs>
+      <Suspense
+        fallback={<MoSpinner isLoading={true} color="primary" />}
+      ></Suspense>
+      <Switch>
+        <Route
+          exact
+          path={ROUTES.ADMIN_COURSES.path}
+          component={AdminCourses}
+        />
+        <Route
+          exact
+          path={ROUTES.ADMIN_COURSES.path + "/:collection"}
+          component={Collection}
+        />
+        <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
+        <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
+        <Route
+          exact
+          path={ROUTES.ADMIN_USERS.path + "/:id"}
+          component={UserItem}
+        />
+      </Switch>
+    </MoPage>
+  );
 };
 
-const condition = (authUser) => authUser && !!authUser.roles[ROLES.ADMIN];
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 
 export default compose(
-	withEmailVerification,
-	withAuthentication,
-	withAuthorization(condition)
+  withEmailVerification,
+  withAuthentication,
+  withAuthorization(condition)
 )(AdminPage);
