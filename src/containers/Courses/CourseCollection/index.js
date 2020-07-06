@@ -7,19 +7,25 @@
  * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
-import React, { lazy } from 'react';
-import useCollections from 'hooks/useCollections';
-import calculateProgress from 'containers/Course/QuestionsPage/calculateProgress';
+import React, { lazy } from "react";
+import useCollections from "hooks/useCollections";
+import calculateProgress from "containers/Course/QuestionsPage/calculateProgress";
 
-const CoursePage = lazy(() => import('./CoursePage'));
+const CoursePage = lazy(() => import("./CoursePage"));
 
-const CourseCollection = ({ authUser, collection, history, firebase, match }) => {
+const CourseCollection = ({
+  authUser,
+  collection,
+  history,
+  firebase,
+  match
+}) => {
   const collections = useCollections(
     {
       collectionPath: collection.path,
       locationHash: history.location.hash
     },
-    firebase,
+    firebase
   );
 
   if (!collections || !collections?.data.length) {
@@ -33,7 +39,7 @@ const CourseCollection = ({ authUser, collection, history, firebase, match }) =>
       courses={collections.data}
       collectionDetails={{
         title: collection.title,
-        isProgressBar: collection.isProgressBar,
+        isProgressBar: collection.isProgressBar
       }}
     />
   );

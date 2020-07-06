@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Button from '@material-ui/core/Button';
-import { compose } from 'recompose';
-import google from 'assets/google.svg';
-import PropTypes from 'prop-types';
-import { withFirebase } from 'components/shared/Firebase';
-import withStyles from '@material-ui/core/styles/withStyles';
+import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import google from "assets/google.svg";
+import PropTypes from "prop-types";
+import { withFirebase } from "components/shared/Firebase";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   button: {
-    width: '100%',
-    textAlign: 'center',
-    textTransform: 'initial',
-    justifyContent: 'end',
-    paddingLeft: '1em',
-  },
+    width: "100%",
+    textAlign: "center",
+    textTransform: "initial",
+    justifyContent: "end",
+    paddingLeft: "1em"
+  }
 });
 
 const SignInWithGoogleBase = ({ firebase, classes }) => {
@@ -28,9 +28,9 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
           {
             username: socialAuthUser.user.displayName,
             email: socialAuthUser.user.email,
-            roles: {},
+            roles: {}
           },
-          { merge: true },
+          { merge: true }
         );
       })
       .then(() => {
@@ -46,7 +46,8 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
         aria-label="Login with Google"
         className={classes.button}
         startIcon={<img src={google} alt="google logo" />}
-        type="submit">
+        type="submit"
+      >
         Sign in with Google
       </Button>
 
@@ -56,12 +57,12 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
 };
 
 SignInWithGoogleBase.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 const SignInWithGoogle = compose(
   withStyles(styles),
-  withFirebase,
+  withFirebase
 )(SignInWithGoogleBase);
 
 export default SignInWithGoogle;

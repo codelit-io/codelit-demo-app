@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Grow from '@material-ui/core/Grow';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+import Grow from "@material-ui/core/Grow";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: 'flex',
-  },
+    display: "flex"
+  }
 }));
 
 const MoHeadline = ({ isCorrect }) => {
@@ -21,10 +21,11 @@ const MoHeadline = ({ isCorrect }) => {
       <Grow
         onChange={handleChange}
         in={isVisible}
-        style={{ transformOrigin: '0 0 0' }}
+        style={{ transformOrigin: "0 0 0" }}
         {...(isVisible ? { timeout: 1000 } : {})}
         mountOnEnter
-        unmountOnExit>
+        unmountOnExit
+      >
         <h1>Level 1</h1>
       </Grow>
     </div>

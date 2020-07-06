@@ -15,24 +15,24 @@
  *
  */
 
-import React, { lazy, useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from "react";
 
-import { withAuthentication } from 'components/shared/Session';
-import useCollectionDetails from 'hooks/useCollectionDetails';
-import useCollections from 'hooks/useCollections';
+import { withAuthentication } from "components/shared/Session";
+import useCollectionDetails from "hooks/useCollectionDetails";
+import useCollections from "hooks/useCollections";
 
-const QuestionsPage = lazy(() => import('./QuestionsPage'));
+const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
-    { collectionPath: 'courses' },
+    { collectionPath: "courses" },
     match.params.collection,
-    firebase,
+    firebase
   );
 
   const courses = useCollections(
-    { collectionPath: 'courses/' + match.params.collection + '/questions' },
-    firebase,
+    { collectionPath: "courses/" + match.params.collection + "/questions" },
+    firebase
   );
 
   const [points, setPoints] = useState(0);

@@ -9,7 +9,7 @@
  * @returns {isLoading: boolean, isError: Object, data: Strings[]} - returns loading boolean, error Object and an Array of questions
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useCollection = (firebase, payload) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +22,7 @@ const useCollection = (firebase, payload) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
-      const createCollection = await firebase.createCollection('Test', payload);
+      const createCollection = await firebase.createCollection("Test", payload);
       // (data) => {setData(data)},
       // (error) => setIsError(error.message)
       return () => {

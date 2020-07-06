@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Fade from '@material-ui/core/Fade';
-import withStyles from '@material-ui/core/styles/withStyles';
-import styles from './styles';
+import Fade from "@material-ui/core/Fade";
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoPageContentEdit = ({ classes, children, text, name, register }) => {
   return (
@@ -10,7 +10,8 @@ const MoPageContentEdit = ({ classes, children, text, name, register }) => {
       in={(text || children) && true}
       mountOnEnter
       timeout={{ enter: 200 }}
-      unmountOnExit>
+      unmountOnExit
+    >
       <input
         className={`${classes.text} MuiTypography-h6`}
         name={name}

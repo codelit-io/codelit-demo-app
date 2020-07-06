@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Button from '@material-ui/core/Button';
-import { compose } from 'recompose';
-import Input from '@material-ui/core/Input';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { withFirebase } from '../Firebase';
+import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import Input from "@material-ui/core/Input";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { withFirebase } from "../Firebase";
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    margin: theme.spacing(1),
-  },
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
-  passwordOne: '',
-  passwordTwo: '',
-  error: null,
+  passwordOne: "",
+  passwordTwo: "",
+  error: null
 };
 
 const PasswordChangeForm = ({ firebase, classes }) => {
   const [state, setState] = useState({ ...INITIAL_STATE });
   const { passwordOne, passwordTwo, error } = state;
-  const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
+  const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
   const onSubmit = event => {
     firebase

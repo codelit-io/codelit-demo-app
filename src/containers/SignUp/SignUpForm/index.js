@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import * as ROLES from 'constants/roles';
+import * as ROLES from "constants/roles";
 
-import { compose } from 'recompose';
-import EmailSignUpForm from 'components/shared/EmailSignUpForm';
-import { withFirebase } from 'components/shared/Firebase';
-import { withRouter } from 'react-router-dom';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { compose } from "recompose";
+import EmailSignUpForm from "components/shared/EmailSignUpForm";
+import { withFirebase } from "components/shared/Firebase";
+import { withRouter } from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    margin: theme.spacing(1),
-  },
+    margin: theme.spacing(1)
+  }
 });
 
 const INITIAL_STATE = {
-  username: '',
-  email: '',
-  passwordOne: '',
-  passwordTwo: '',
+  username: "",
+  email: "",
+  passwordOne: "",
+  passwordTwo: "",
   isAdmin: false,
-  error: null,
+  error: null
 };
 
-const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
+const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 
 const ERROR_MSG_ACCOUNT_EXISTS = `
   An account with this E-Mail address already exists.
@@ -55,9 +55,9 @@ const SignUpFormBase = props => {
           {
             username,
             email,
-            roles,
+            roles
           },
-          { merge: true },
+          { merge: true }
         );
       })
       .then(() => {
@@ -86,9 +86,9 @@ const SignUpFormBase = props => {
       onSubmit={handleSubmit}
       isInvalid={
         passwordOne !== passwordTwo ||
-        passwordOne === '' ||
-        email === '' ||
-        username === ''
+        passwordOne === "" ||
+        email === "" ||
+        username === ""
       }
       onChange={onChange}
       error={error}
@@ -99,7 +99,7 @@ const SignUpFormBase = props => {
 const SignUpForm = compose(
   withStyles(styles),
   withRouter,
-  withFirebase,
+  withFirebase
 )(SignUpFormBase);
 
 export default SignUpForm;

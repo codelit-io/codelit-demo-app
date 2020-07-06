@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
-import { AuthUserContext } from 'components/shared/Session';
-import MoSpinner from 'components/library/MoSpinner';
-import { withFirebase } from 'components/shared/Firebase';
-import QuestionsTable from './CollectionTable';
+import { AuthUserContext } from "components/shared/Session";
+import MoSpinner from "components/library/MoSpinner";
+import { withFirebase } from "components/shared/Firebase";
+import QuestionsTable from "./CollectionTable";
 import {
   createQuestion,
   updateQuestion,
   removeQuestion,
-  rowClick,
-} from 'utils/questionFirebase';
+  rowClick
+} from "utils/questionFirebase";
 const Collection = ({ firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
@@ -18,10 +18,10 @@ const Collection = ({ firebase, history, match }) => {
     setIsLoading(true);
     setQuestions(null);
     const getQuestions = firebase
-      .collection('courses')
+      .collection("courses")
       .doc(match.params.collection)
-      .collection('questions')
-      .orderBy('id')
+      .collection("questions")
+      .orderBy("id")
       .onSnapshot(snapshot => {
         if (snapshot.size) {
           let questions = [];
@@ -37,7 +37,7 @@ const Collection = ({ firebase, history, match }) => {
             questions.push({
               ...doc.data(),
               uid: doc.id,
-              question,
+              question
             });
           });
           setQuestions(questions);
@@ -54,28 +54,28 @@ const Collection = ({ firebase, history, match }) => {
     (event, authUser) => {
       createQuestion(authUser, event, firebase, match);
     },
-    [firebase, match],
+    [firebase, match]
   );
 
   const onUpdateQuestion = useCallback(
     event => {
       updateQuestion(event, firebase, match);
     },
-    [firebase, match],
+    [firebase, match]
   );
 
   const onRemoveQuestion = useCallback(
     id => {
       removeQuestion(id, firebase, match);
     },
-    [firebase, match],
+    [firebase, match]
   );
 
   const handleRowClick = useCallback(
     id => {
       rowClick(id, history, match);
     },
-    [history, match],
+    [history, match]
   );
 
   if (isLoading || !questions) {

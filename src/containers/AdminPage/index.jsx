@@ -18,29 +18,29 @@
  *
  */
 
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from "react";
 
-import * as ROLES from 'constants/roles';
-import * as ROUTES from 'constants/routes';
-import { compose } from 'recompose';
-import { Switch, Route } from 'react-router-dom';
-import MoPage from 'components/library/MoPage';
-import MoSpinner from 'components/library/MoSpinner';
-import { UserList } from 'components/shared/Users';
-import { UserItem } from 'components/shared/Users';
+import * as ROLES from "constants/roles";
+import * as ROUTES from "constants/routes";
+import { compose } from "recompose";
+import { Switch, Route } from "react-router-dom";
+import MoPage from "components/library/MoPage";
+import MoSpinner from "components/library/MoSpinner";
+import { UserList } from "components/shared/Users";
+import { UserItem } from "components/shared/Users";
 import {
   withAuthorization,
   withEmailVerification,
-  withAuthentication,
-} from 'components/shared/Session';
-import MoTabs from './MoTabs';
+  withAuthentication
+} from "components/shared/Session";
+import MoTabs from "./MoTabs";
 
-const Collection = lazy(() => import('./Collection'));
-const AdminCourses = lazy(() => import('./Collection/AdminCourses'));
+const Collection = lazy(() => import("./Collection"));
+const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
 const tabItems = [
-  { name: 'Users', path: 'users' },
-  { name: 'Courses', path: 'courses' },
+  { name: "Users", path: "users" },
+  { name: "Courses", path: "courses" }
 ];
 
 const AdminPage = ({ history }) => {
@@ -52,9 +52,11 @@ const AdminPage = ({ history }) => {
     <MoPage title="Admin" isLoading={false}>
       <MoTabs
         handleTabChange={path => handleTabChange(path)}
-        tabItems={tabItems}></MoTabs>
+        tabItems={tabItems}
+      ></MoTabs>
       <Suspense
-        fallback={<MoSpinner isLoading={true} color="primary" />}></Suspense>
+        fallback={<MoSpinner isLoading={true} color="primary" />}
+      ></Suspense>
       <Switch>
         <Route
           exact
@@ -63,14 +65,14 @@ const AdminPage = ({ history }) => {
         />
         <Route
           exact
-          path={ROUTES.ADMIN_COLLECTIONS_COURSES.path + '/:collection'}
+          path={ROUTES.ADMIN_COLLECTIONS_COURSES.path + "/:collection"}
           component={Collection}
         />
         <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
         <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
         <Route
           exact
-          path={ROUTES.ADMIN_USERS.path + '/:id'}
+          path={ROUTES.ADMIN_USERS.path + "/:id"}
           component={UserItem}
         />
       </Switch>
@@ -83,5 +85,5 @@ const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 export default compose(
   withEmailVerification,
   withAuthentication,
-  withAuthorization(condition),
+  withAuthorization(condition)
 )(AdminPage);

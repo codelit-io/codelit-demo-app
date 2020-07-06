@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
-import { withFirebase } from '../Firebase';
+import { withFirebase } from "../Firebase";
 
 class UserItem extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class UserItem extends Component {
     this.state = {
       isLoading: false,
       user: null,
-      ...props.location.state,
+      ...props.location.state
     };
   }
 
@@ -26,7 +26,7 @@ class UserItem extends Component {
       .onSnapshot(snapshot => {
         this.setState({
           user: snapshot.data(),
-          isLoading: false,
+          isLoading: false
         });
       });
   }

@@ -1,20 +1,20 @@
-import React, { lazy, useState, useEffect } from 'react';
+import React, { lazy, useState, useEffect } from "react";
 
-import Button from '@material-ui/core/Button';
-import { useForm } from 'react-hook-form';
-import styles from './styles';
-import { withRouter } from 'react-router-dom';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { compose } from 'recompose';
-import MoPageHeaderEdit from 'components/library/MoPageHeaderEdit';
-import MoSpinner from 'components/library/MoSpinner';
-import { useCallback } from 'react';
-import MoHintEdit from 'components/library/MoHintEdit';
-import MoPageContentEdit from 'components/library/MoPageContentEdit';
-import MoTypography from 'components/library/MoTypography';
-import { updateQuestion } from 'utils/questionFirebase';
+import Button from "@material-ui/core/Button";
+import { useForm } from "react-hook-form";
+import styles from "./styles";
+import { withRouter } from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { compose } from "recompose";
+import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
+import MoSpinner from "components/library/MoSpinner";
+import { useCallback } from "react";
+import MoHintEdit from "components/library/MoHintEdit";
+import MoPageContentEdit from "components/library/MoPageContentEdit";
+import MoTypography from "components/library/MoTypography";
+import { updateQuestion } from "utils/questionFirebase";
 
-const CodeEditor = lazy(() => import('components/shared/CodeEditor'));
+const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
 const QuestionForm = ({
   classes,
@@ -28,7 +28,7 @@ const QuestionForm = ({
   setQuestion,
   setSnackbarProps,
   title,
-  viewQuestion,
+  viewQuestion
 }) => {
   const { handleSubmit, register } = useForm();
   const [formData, setFormData] = useState({});
@@ -39,24 +39,24 @@ const QuestionForm = ({
 
   const handleQuestionChange = useCallback(
     ({ userAnswer }) => {
-      if (userAnswer === '{}' || userAnswer === '') {
+      if (userAnswer === "{}" || userAnswer === "") {
         return;
       }
       setFormData(preState => ({ ...preState, question: userAnswer }));
       setQuestion({ ...question, question: userAnswer });
     },
-    [setQuestion, question],
+    [setQuestion, question]
   );
 
   const handleAnswerChange = useCallback(
     ({ userAnswer }) => {
-      if (userAnswer === '{}' || userAnswer === '') {
+      if (userAnswer === "{}" || userAnswer === "") {
         return;
       }
       setFormData(preState => ({ ...preState, answer: userAnswer }));
       setQuestion({ ...question, answer: userAnswer });
     },
-    [setQuestion, question],
+    [setQuestion, question]
   );
 
   const onSubmit = useCallback(
@@ -64,9 +64,9 @@ const QuestionForm = ({
       updateQuestion({ ...formData, ...event }, firebase, match);
       setSnackbarProps({
         autoHideDuration: 2000,
-        buttonText: 'View Question',
+        buttonText: "View Question",
         isActive: true,
-        title: 'Saved',
+        title: "Saved"
       });
 
       // if (formData.label) {
@@ -82,7 +82,7 @@ const QuestionForm = ({
       // history.push(`/courses/${id}`);
       // }
     },
-    [formData, firebase, setSnackbarProps, match],
+    [formData, firebase, setSnackbarProps, match]
   );
 
   if (isLoading) {
@@ -107,12 +107,13 @@ const QuestionForm = ({
           color="grey"
           font="breeSerif"
           marginBottom="sm"
-          variant="h6">
+          variant="h6"
+        >
           Question
         </MoTypography>
         {question && (
           <CodeEditor
-            codeAnswer={'Write Question Here'}
+            codeAnswer={"Write Question Here"}
             codeLanguage={question?.language}
             codeQuestion={question?.question}
             isEditMode={true}
@@ -128,12 +129,13 @@ const QuestionForm = ({
           color="grey"
           font="breeSerif"
           marginBottom="sm"
-          variant="h6">
+          variant="h6"
+        >
           Answer
         </MoTypography>
         {question && (
           <CodeEditor
-            codeAnswer={'Answer'}
+            codeAnswer={"Answer"}
             codeLanguage={question?.language}
             codeQuestion={question?.answer}
             isEditMode={true}
@@ -151,10 +153,11 @@ const QuestionForm = ({
         </Button>
         <Button
           onKeyPress={e => {
-            e.key === 'Enter' && e.preventDefault();
+            e.key === "Enter" && e.preventDefault();
           }}
           type="submit"
-          color="primary">
+          color="primary"
+        >
           Save
         </Button>
       </section>

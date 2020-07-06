@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Box from '@material-ui/core/Box';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Typography from "@material-ui/core/Typography";
+import PropTypes from "prop-types";
 
 const MoProgressCircular = ({ value }) => {
   return (
@@ -17,18 +17,20 @@ const MoProgressCircular = ({ value }) => {
         position="absolute"
         display="flex"
         alignItems="center"
-        justifyContent="center">
+        justifyContent="center"
+      >
         <Typography
           variant="caption"
           component="div"
-          color="textSecondary">{`${Math.round(value)}%`}</Typography>
+          color="textSecondary"
+        >{`${Math.round(value)}%`}</Typography>
       </Box>
     </Box>
   );
 };
 
 MoProgressCircular.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 export default MoProgressCircular;

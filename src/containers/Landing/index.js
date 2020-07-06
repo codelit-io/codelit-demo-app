@@ -136,7 +136,7 @@ const LandingPage = ({ classes }) => {
                 variant="text"
                 size="large"
                 text="JavaScript functionality in React"
-                href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
+                href={ROUTES.COLLECTIONS.path + "/#js"}
               />
             </ListItem>
             <ListItem>

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import ShallowRenderer from 'react-test-renderer/shallow';
-import MoPage from './index.jsx';
+import ShallowRenderer from "react-test-renderer/shallow";
+import MoPage from "./index.jsx";
 
 const renderer = new ShallowRenderer();
 
-describe('MoPage Component', () => {
-  test('should match the snapshot', () => {
+describe("MoPage Component", () => {
+  test("should match the snapshot", () => {
     renderer.render(<MoPage />);
     expect(renderer.getRenderOutput()).toMatchSnapshot();
   });

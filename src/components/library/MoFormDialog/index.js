@@ -7,17 +7,17 @@
  * @return {<Dialog></Dialog>}
  */
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import PostAddIcon from '@material-ui/icons/PostAdd';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import useTheme from '@material-ui/core/styles/useTheme';
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 const MoFormDialog = ({ Component }) => {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [isOpenState, setIsOpenState] = useState(false);
   return (
     <>
@@ -25,14 +25,16 @@ const MoFormDialog = ({ Component }) => {
         aria-label="New Course"
         aria-haspopup="true"
         startIcon={<PostAddIcon />}
-        onClick={() => setIsOpenState(true)}>
+        onClick={() => setIsOpenState(true)}
+      >
         New Course
       </Button>
       <Dialog
         aria-labelledby="form-dialog"
         fullScreen={fullScreen}
         open={isOpenState}
-        onClose={() => setIsOpenState(false)}>
+        onClose={() => setIsOpenState(false)}
+      >
         {Component && (
           <Component handleDialogState={isOpen => setIsOpenState(isOpen)} />
         )}

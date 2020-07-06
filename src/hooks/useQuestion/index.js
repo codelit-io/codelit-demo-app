@@ -10,7 +10,7 @@
  * @returns {isLoading: boolean, isError: Object, data: Strings[]} - returns loading boolean, error Object and an Array of questions
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useQuestion = ({ firebase, questionId, questionPath }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,21 +27,21 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
             if (snapshot.size) {
               const question = [];
               snapshot.forEach(doc =>
-                question.push({ ...doc.data(), uid: doc.id }),
+                question.push({ ...doc.data(), uid: doc.id })
               );
               question.map(data => {
                 return setData(data);
               });
             } else {
               return setData({
-                label: 'You have finished all questions ✅',
-                title: 'Nice Job 🎉',
-                language: 'html',
+                label: "You have finished all questions ✅",
+                title: "Nice Job 🎉",
+                language: "html"
               });
             }
             setIsLoading(false);
           },
-          error => setIsError(error.message),
+          error => setIsError(error.message)
         );
 
       return () => unsubscribe();

@@ -14,39 +14,39 @@
  *  - Renders App navigation
  *  - Suspense and loading
  */
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from "react";
 
-import * as ROUTES from 'constants/routes';
-import * as Sentry from '@sentry/browser';
+import * as ROUTES from "constants/routes";
+import * as Sentry from "@sentry/browser";
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MoSpinner from 'components/library/MoSpinner';
-import theme from './theme';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { retry } from 'utils/retryLazyImports';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MoSpinner from "components/library/MoSpinner";
+import theme from "./theme";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { retry } from "utils/retryLazyImports";
 
 const Navigation = lazy(() =>
-  retry(() => import('components/shared/Navigation')),
+  retry(() => import("components/shared/Navigation"))
 );
-const Account = lazy(() => retry(() => import('containers/Account')));
-const AdminPage = lazy(() => retry(() => import('containers/AdminPage')));
+const Account = lazy(() => retry(() => import("containers/Account")));
+const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const Container = lazy(() =>
-  retry(() => import('@material-ui/core/Container')),
+  retry(() => import("@material-ui/core/Container"))
 );
 const FeatureRequest = lazy(() =>
-  retry(() => import('containers/FeatureRequest')),
+  retry(() => import("containers/FeatureRequest"))
 );
-const LandingPage = lazy(() => retry(() => import('containers/Landing')));
-const NotFound = lazy(() => retry(() => import('components/shared/NotFound')));
+const LandingPage = lazy(() => retry(() => import("containers/Landing")));
+const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
 const PasswordForgot = lazy(() =>
-  retry(() => import('components/shared/PasswordForgot')),
+  retry(() => import("components/shared/PasswordForgot"))
 );
-const Playground = lazy(() => retry(() => import('containers/Playground')));
-const Course = lazy(() => retry(() => import('containers/Course')));
-const Courses = lazy(() => retry(() => import('containers/Courses')));
-const Question = lazy(() => retry(() => import('containers/Question')));
-const SignUp = lazy(() => retry(() => import('containers/SignUp')));
-const SignIn = lazy(() => retry(() => import('containers/SignIn')));
+const Playground = lazy(() => retry(() => import("containers/Playground")));
+const Course = lazy(() => retry(() => import("containers/Course")));
+const Courses = lazy(() => retry(() => import("containers/Courses")));
+const Question = lazy(() => retry(() => import("containers/Question")));
+const SignUp = lazy(() => retry(() => import("containers/SignUp")));
+const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -74,11 +74,11 @@ const App = () => (
             <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
             <Route
               exact
-              path={ROUTES.COLLECTIONS.path + '/:collection'}
+              path={ROUTES.COLLECTIONS.path + "/:collection"}
               component={Course}
             />
             <Route
-              path={ROUTES.COLLECTIONS.path + '/:collection/:questionId'}
+              path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
               component={Question}
             />
             <Route component={NotFound} />
@@ -89,9 +89,9 @@ const App = () => (
   </ThemeProvider>
 );
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   Sentry.init({
-    dsn: 'https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459',
+    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
   });
 }
 

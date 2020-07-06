@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import { AuthUserContext } from 'components/shared/Session/';
-import MessageList from './MessageList';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PostAddIcon from '@material-ui/icons/PostAdd';
-import { withFirebase } from '../Firebase';
-import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import MoPage from 'components/library/MoPage';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import { AuthUserContext } from "components/shared/Session/";
+import MessageList from "./MessageList";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import { withFirebase } from "../Firebase";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import MoPage from "components/library/MoPage";
 
 class Messages extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      text: '',
+      text: "",
       isLoading: false,
       messages: [],
-      limit: 15,
+      limit: 15
     };
   }
 
@@ -30,17 +30,17 @@ class Messages extends Component {
 
     this.unsubscribe = this.props.firebase
       .messages()
-      .orderBy('createdAt', 'desc')
+      .orderBy("createdAt", "desc")
       .limit(this.state.limit)
       .onSnapshot(snapshot => {
         if (snapshot.size) {
           let messages = [];
           snapshot.forEach(doc =>
-            messages.push({ ...doc.data(), uid: doc.id }),
+            messages.push({ ...doc.data(), uid: doc.id })
           );
           this.setState({
             messages: messages.reverse(),
-            isLoading: false,
+            isLoading: false
           });
         } else {
           this.setState({ messages: null, isLoading: false });
@@ -61,10 +61,10 @@ class Messages extends Component {
       this.props.firebase.messages().add({
         text: this.state.text,
         userId: authUser.uid,
-        createdAt: this.props.firebase.fieldValue.serverTimestamp(),
+        createdAt: this.props.firebase.fieldValue.serverTimestamp()
       });
 
-      this.setState({ text: '' });
+      this.setState({ text: "" });
     }
     event.preventDefault();
   };
@@ -75,7 +75,7 @@ class Messages extends Component {
     this.props.firebase.message(message.uid).update({
       ...messageSnapshot,
       text,
-      editedAt: this.props.firebase.fieldValue.serverTimestamp(),
+      editedAt: this.props.firebase.fieldValue.serverTimestamp()
     });
   };
 
@@ -86,7 +86,7 @@ class Messages extends Component {
   onNextPage = () => {
     this.setState(
       state => ({ limit: state.limit + 15 }),
-      this.onListenForMessages,
+      this.onListenForMessages
     );
   };
 
@@ -119,7 +119,8 @@ class Messages extends Component {
               <Grid item md={6} sm={12} xs={12}>
                 <MoPage title="Post a request" isLoading={isLoading}>
                   <form
-                    onSubmit={event => this.onCreateMessage(event, authUser)}>
+                    onSubmit={event => this.onCreateMessage(event, authUser)}
+                  >
                     <Grid container spacing={6}>
                       <Grid item md={6} sm={12}>
                         <Input
@@ -133,7 +134,8 @@ class Messages extends Component {
                         <Button
                           variant="contained"
                           color="primary"
-                          type="submit">
+                          type="submit"
+                        >
                           Post your request <PostAddIcon />
                         </Button>
                       </Grid>

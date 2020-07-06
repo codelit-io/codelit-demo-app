@@ -6,8 +6,8 @@
  * @returns {isLoading: boolean, isError: Object, data: Strings[]} - returns loading boolean, error Object and an Array of questions
  */
 
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const useCollections = ({ collectionPath, locationHash }, firebase) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,17 +19,19 @@ const useCollections = ({ collectionPath, locationHash }, firebase) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description
             */
-      const whereOptions = (locationHash) ? ['type', '==', locationHash.substring(1)] : ['id', '>', 0];
+      const whereOptions = locationHash
+        ? ["type", "==", locationHash.substring(1)]
+        : ["id", ">", 0];
       const getCollections = firebase
         .collection(collectionPath)
         .where(...whereOptions)
-        .orderBy('id')
+        .orderBy("id")
         .onSnapshot(
           snapshot => {
             if (snapshot.size) {
               const data = [];
               snapshot.forEach(doc =>
-                data.push({ ...doc.data(), uid: doc.id }),
+                data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data);
               setIsLoading(false);
@@ -38,7 +40,7 @@ const useCollections = ({ collectionPath, locationHash }, firebase) => {
             }
             /* Unsubscribe from firebase on unmount */
           },
-          error => setIsError(error.message),
+          error => setIsError(error.message)
         );
       return () => {
         getCollections();
@@ -51,12 +53,12 @@ const useCollections = ({ collectionPath, locationHash }, firebase) => {
 
 useCollections.propTypes = {
   collectionProps: PropTypes.shape({
-    type: PropTypes.arrayOf(['html', 'js', 'reactStyle', 'reactJsx'])
+    type: PropTypes.arrayOf(["html", "js", "reactStyle", "reactJsx"])
       .isRequired,
     collectionPath: PropTypes.string.isRequired,
-    whereProps: PropTypes.arrayOf(['html', 'js', 'reactStyle', 'reactJsx'])
+    whereProps: PropTypes.arrayOf(["html", "js", "reactStyle", "reactJsx"])
       .isRequired,
     locationHash: PropTypes.string
-  }),
+  })
 };
 export default useCollections;

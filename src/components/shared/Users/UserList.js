@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import * as ROUTES from 'constants/routes';
-import { withFirebase } from 'components/shared/Firebase';
-import Grid from '@material-ui/core/Grid';
-import MoSpinner from 'components/library/MoSpinner';
-import MoCard from 'components/library/MoCard';
+import * as ROUTES from "constants/routes";
+import { withFirebase } from "components/shared/Firebase";
+import Grid from "@material-ui/core/Grid";
+import MoSpinner from "components/library/MoSpinner";
+import MoCard from "components/library/MoCard";
 
 class UserList extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class UserList extends Component {
 
     this.state = {
       isLoading: false,
-      users: [],
+      users: []
     };
   }
 
@@ -25,7 +25,7 @@ class UserList extends Component {
 
       this.setState({
         users,
-        isLoading: false,
+        isLoading: false
       });
     });
   }
@@ -52,7 +52,7 @@ class UserList extends Component {
               content={user.uid}
               url={{
                 pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
-                state: { user },
+                state: { user }
               }}
             />
           </Grid>

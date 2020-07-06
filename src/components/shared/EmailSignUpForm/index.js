@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MoTitle from 'components/library/MoTitle';
-import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
-import styles from './styles';
-import SignInLink from '../SignInLink';
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import MoTitle from "components/library/MoTitle";
+import PropTypes from "prop-types";
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
+import SignInLink from "../SignInLink";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
@@ -69,7 +69,8 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              disabled={isInvalid}>
+              disabled={isInvalid}
+            >
               Sign Up
             </Button>
             {error && (
@@ -78,7 +79,8 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
                 id="component-error-text"
                 margin="dense"
                 error
-                focused>
+                focused
+              >
                 {error.message}
               </FormHelperText>
             )}
@@ -91,7 +93,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
 };
 
 EmailSignUpForm.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(EmailSignUpForm);

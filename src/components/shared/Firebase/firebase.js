@@ -1,7 +1,7 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-import 'firebase/firestore';
+import app from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
+import "firebase/firestore";
 
 /*  Api keys and configs  */
 
@@ -11,7 +11,7 @@ const config = {
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
 class Firebase {
@@ -47,7 +47,7 @@ class Firebase {
 
   signOut = () => {
     this.auth.signOut();
-    localStorage.removeItem('authUser');
+    localStorage.removeItem("authUser");
   };
 
   passwordReset = email => this.auth.sendPasswordResetEmail(email);
@@ -56,7 +56,7 @@ class Firebase {
 
   sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
   /* User API */
@@ -71,13 +71,13 @@ class Firebase {
     return this.firestore.doc(`users/${uid}`);
   };
 
-  users = () => this.firestore.collection('users');
+  users = () => this.firestore.collection("users");
 
   /* Questions API */
 
-  question = id => this.firestore.collection('questions').doc(id);
+  question = id => this.firestore.collection("questions").doc(id);
 
-  questions = () => this.firestore.collection('questions');
+  questions = () => this.firestore.collection("questions");
 
   /* Get Any collection or Doc  */
 
@@ -87,14 +87,14 @@ class Firebase {
     this.firestore.collection(collectionPath).doc(id);
 
   getCollectionById = (collectionPath, id) =>
-    this.firestore.collection(collectionPath).where('id', '==', Number(id));
+    this.firestore.collection(collectionPath).where("id", "==", Number(id));
 
   createQuestionById = (collectionPath, question) => {
     const uid = this.createId(collectionPath);
     this.firestore
-      .collection('courses')
+      .collection("courses")
       .doc(collectionPath)
-      .collection('questions')
+      .collection("questions")
       .doc(uid)
       .set({ ...question, uid: uid });
   };
@@ -127,8 +127,8 @@ class Firebase {
                 emailVerified: authUser.emailVerified,
                 providerData: authUser.providerData,
                 reports: authUser.reports,
-                photoURL: authUser.photoURL || '',
-                ...dbUser,
+                photoURL: authUser.photoURL || "",
+                ...dbUser
               };
 
               next(authUser);
@@ -139,13 +139,13 @@ class Firebase {
       },
       e => {
         console.log(e);
-      },
+      }
     );
 
   // *** Message API ***
 
   message = uid => this.firestore.doc(`messages/${uid}`);
 
-  messages = () => this.firestore.collection('messages');
+  messages = () => this.firestore.collection("messages");
 }
 export default Firebase;

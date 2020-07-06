@@ -17,35 +17,35 @@ import MoTypography from "../MoTypography";
 import { Fade } from "@material-ui/core";
 
 const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
-	if (isLoading) {
-		return <MoSpinner isLoading={isLoading} />;
-	}
-	return (
-		<Fade
-			in={!isLoading}
-			mountOnEnter
-			timeout={{ enter: 400, exit: 400 }}
-			unmountOnExit
-		>
-			<section className={classes.section}>
-				<MoTypography
-					color="greyDark"
-					font="breeSerif"
-					marginBottom="md"
-					text={title}
-					variant="h2"
-				></MoTypography>
-				<MoTypography
-					color="greyDark"
-					font="openSans"
-					marginBottom="md"
-					text={subtitle}
-					variant="h6"
-				></MoTypography>
-				{children}
-			</section>
-		</Fade>
-	);
+  if (isLoading) {
+    return <MoSpinner isLoading={isLoading} />;
+  }
+  return (
+    <Fade
+      in={!isLoading}
+      mountOnEnter
+      timeout={{ enter: 400, exit: 400 }}
+      unmountOnExit
+    >
+      <section className={classes.section}>
+        <MoTypography
+          color="greyDark"
+          font="breeSerif"
+          marginBottom="md"
+          text={title}
+          variant="h2"
+        ></MoTypography>
+        <MoTypography
+          color="greyDark"
+          font="openSans"
+          marginBottom="md"
+          text={subtitle}
+          variant="h6"
+        ></MoTypography>
+        {children}
+      </section>
+    </Fade>
+  );
 };
 
 export default withStyles(styles)(MoPage);

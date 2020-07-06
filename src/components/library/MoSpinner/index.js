@@ -14,10 +14,10 @@
  * @see See [Material-UI progress](https://material-ui.com/components/progress/#progress)
  * */
 
-import React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import withStyles from '@material-ui/core/styles/withStyles';
-import styles from './styles';
+import React from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from "./styles";
 
 const MoSpinner = ({ isLoading, color, classes }) => {
   return (

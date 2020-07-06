@@ -16,20 +16,20 @@
  *
  */
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 
-import { withAuthentication } from 'components/shared/Session';
-import MoSpinner from 'components/library/MoSpinner';
-import { retry } from 'utils/retryLazyImports';
-import PropTypes from 'prop-types';
+import { withAuthentication } from "components/shared/Session";
+import MoSpinner from "components/library/MoSpinner";
+import { retry } from "utils/retryLazyImports";
+import PropTypes from "prop-types";
 
 const CourseCollection = lazy(() =>
-  retry(() => import('./CourseCollection/index')),
+  retry(() => import("./CourseCollection/index"))
 );
 const collection = {
-  path: 'courses',
-  title: 'Your Courses',
-  isProgressBar: false,
+  path: "courses",
+  title: "Your Courses",
+  isProgressBar: false
 };
 
 const Courses = ({ authUser, firebase, match, history }) => (
@@ -47,7 +47,7 @@ const Courses = ({ authUser, firebase, match, history }) => (
 Courses.propTypes = {
   authUser: PropTypes.object,
   firebase: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default withAuthentication(Courses);

@@ -25,7 +25,7 @@
  * @see See [React custom hooks](https://reactjs.org/docs/hooks-custom.html)
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,13 +38,13 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
             the collection or questions Such as name and description */
       const getCollectionDetails = await firebase
         .collection(collectionPath)
-        .where('doc', '==', doc)
+        .where("doc", "==", doc)
         .onSnapshot(
           snapshot => {
             if (snapshot.size) {
               const data = [];
               snapshot.forEach(doc =>
-                data.push({ ...doc.data(), uid: doc.id }),
+                data.push({ ...doc.data(), uid: doc.id })
               );
               setData(data[0]);
               setIsLoading(false);
@@ -54,7 +54,7 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
             }
             /* Unsubscribe from firebase on unmount */
           },
-          error => setIsError(error.message),
+          error => setIsError(error.message)
         );
 
       return () => getCollectionDetails();

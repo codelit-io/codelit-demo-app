@@ -17,20 +17,20 @@
  *
  */
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 
-import * as ROUTES from 'constants/routes';
-import withAuthentication from 'components/shared/Session/withAuthentication';
+import * as ROUTES from "constants/routes";
+import withAuthentication from "components/shared/Session/withAuthentication";
 
-import useUserRole from 'hooks/useUserRole';
-import useQuestion from 'hooks/useQuestion';
-import QuestionPage from './QuestionPage';
+import useUserRole from "hooks/useUserRole";
+import useQuestion from "hooks/useQuestion";
+import QuestionPage from "./QuestionPage";
 
 const QuestionView = ({ authUser, firebase, history, match }) => {
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,
-    questionPath: `courses/${match.params.collection}/questions`,
+    questionPath: `courses/${match.params.collection}/questions`
   });
 
   const [userRole] = useState(useUserRole(authUser));
@@ -48,11 +48,11 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
       /* A delay before navigating to a new page */
       setTimeout(() => {
         history.push(
-          `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`,
+          `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
         );
       }, 600);
     },
-    [history, match],
+    [history, match]
   );
 
   if (!data) {
