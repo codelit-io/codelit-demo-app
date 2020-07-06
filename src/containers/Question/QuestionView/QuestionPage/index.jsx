@@ -11,7 +11,6 @@
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
 import awardPlayerPoints from "../awardPlayerPoints";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
@@ -116,7 +115,6 @@ const QuestionPage = ({
 				setIsCorrect(true);
 				setSnackbarProps({
 					buttonText: "Keep Going",
-					buttonIcon: <ArrowForwardIcon />,
 					isActive: true,
 					title: "Hooray!"
 				});

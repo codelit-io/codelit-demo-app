@@ -4,7 +4,7 @@ import * as ROUTES from "constants/routes";
 import { withAuthentication } from "components/shared/Session";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
-import MoLink from "components/library/MoLink";
+import MoLinkButton from "components/library/MoLinkButton";
 import SocialSignIn from "components/shared/SocialSignIn";
 import SignUpForm from "./SignUpForm";
 
@@ -16,7 +16,14 @@ const SignUpPage = ({ authUser }) => (
     <Grid container spacing={3}>
       {authUser ? (
         <Grid item sm={12} md={12}>
-          <MoLink text="View All Courses" href={ROUTES.COLLECTIONS.path} />
+          <MoLinkButton
+            isArrowIcon={true}
+            color="primary"
+            variant="text"
+            size="large"
+            text="View All Courses"
+            href={ROUTES.COLLECTIONS.path}
+          />
         </Grid>
       ) : (
         <>
