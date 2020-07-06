@@ -30,7 +30,7 @@ const MoButton = ({
       onClick={e => handleOnCLick(e)}
       component={Link}
       to={hrefProp}
-      className={classes.button}
+      className={`${classes.button} ${variant === "text" && classes.noShadow}`}
       color={"primary"}
       size={size}
       variant={variant}
