@@ -20,7 +20,6 @@ import Grid from "@material-ui/core/Grid";
 import Landing1 from "assets/landing1.png";
 import Landing2 from "assets/landing2.png";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import MoButton from "components/library/MoButton";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -85,14 +84,19 @@ const LandingPage = ({ classes }) => {
         </Grid>
       </Grid>
 
-      <Grid container spacing={4} className={classes.container}>
+      <Grid
+        container
+        spacing={4}
+        className={classes.container}
+        alignItems="center"
+      >
         <Fade
           in={Landing2 && true}
           mountOnEnter
           timeout={{ enter: 1200 }}
           unmountOnExit
         >
-          <Grid item sm={12} md={6} xs={12}>
+          <Grid item sm={12} md={6} xs={12} alignItems="center">
             <MoTypography
               color="greyDark"
               font="breeSerif"
@@ -105,35 +109,60 @@ const LandingPage = ({ classes }) => {
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="Basic HTML and usage in React" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar className={classes.checkMark}>
-                <CheckIcon />
-              </ListItemAvatar>
-              <ListItemText primary="Styling components and elements in React" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar className={classes.checkMark}>
-                <CheckIcon />
-              </ListItemAvatar>
-              <ListItemText primary="JavaScript functionality in React" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar className={classes.checkMark}>
-                <CheckIcon />
-              </ListItemAvatar>
-              <ListItemText primary="React Hooks, Context API, and Redux" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar className={classes.checkMark}>
-                <CheckIcon />
-              </ListItemAvatar>
-              <ListItemText primary="Best UI/UX practices" />
-            </ListItem>
-            <ListItem>
               <MoButton
-                isArrowIcon={true}
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="Basic HTML and usage in React"
+                href={ROUTES.COLLECTIONS.path + "/#html"}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar className={classes.checkMark}>
+                <CheckIcon />
+              </ListItemAvatar>
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="Styling components and elements in React"
+                href={ROUTES.COLLECTIONS.path + "/#reactStyle"}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar className={classes.checkMark}>
+                <CheckIcon />
+              </ListItemAvatar>
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="JavaScript functionality in React"
+                href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar className={classes.checkMark}>
+                <CheckIcon />
+              </ListItemAvatar>
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="React Hooks, Context API, and Redux"
+                href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar className={classes.checkMark}>
+                <CheckIcon />
+              </ListItemAvatar>
+              <MoButton
+                isArrowIcon={false}
                 color="primary"
                 variant="text"
                 size="large"
