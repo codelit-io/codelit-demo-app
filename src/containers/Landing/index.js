@@ -91,7 +91,7 @@ const LandingPage = ({ classes }) => {
           timeout={{ enter: 1200 }}
           unmountOnExit
         >
-          <Grid item sm={12} md={6} xs={12} alignItems="center">
+          <Grid item sm={12} md={6} xs={12}>
             <MoTypography
               color="greyDark"
               font="breeSerif"
