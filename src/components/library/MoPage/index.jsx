@@ -8,36 +8,46 @@
  * @param {String} subtitle - Subtitle for the page
  */
 
-import React from 'react';
+import React from "react";
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import MoHint from 'components/library/MoHint';
-import styles from './styles';
-import MoSpinner from '../MoSpinner';
-import MoTypography from '../MoTypography';
+import withStyles from "@material-ui/core/styles/withStyles";
+import MoHint from "components/library/MoHint";
+import styles from "./styles";
+import MoSpinner from "../MoSpinner";
+import MoTypography from "../MoTypography";
+import { Fade } from "@material-ui/core";
 
 const MoPage = ({ classes, children, hint, isLoading, subtitle, title }) => {
-  if (isLoading) {
-    return <MoSpinner isLoading={isLoading} />;
-  }
-  return (
-    <section className={classes.section}>
-      <MoTypography
-        color="greyDark"
-        font="breeSerif"
-        marginBottom="md"
-        text={title}
-        variant="h2"></MoTypography>
-      <MoTypography
-        color="greyDark"
-        font="openSans"
-        marginBottom="md"
-        text={subtitle}
-        variant="h6"></MoTypography>
-      <MoHint text={hint} />
-      {children}
-    </section>
-  );
+	if (isLoading) {
+		return <MoSpinner isLoading={isLoading} />;
+	}
+	return (
+		<Fade
+			in={!isLoading}
+			mountOnEnter
+			timeout={{ enter: 400, exit: 400 }}
+			unmountOnExit
+		>
+			<section className={classes.section}>
+				<MoTypography
+					color="greyDark"
+					font="breeSerif"
+					marginBottom="md"
+					text={title}
+					variant="h2"
+				></MoTypography>
+				<MoTypography
+					color="greyDark"
+					font="openSans"
+					marginBottom="md"
+					text={subtitle}
+					variant="h6"
+				></MoTypography>
+				<MoHint text={hint} />
+				{children}
+			</section>
+		</Fade>
+	);
 };
 
 export default withStyles(styles)(MoPage);

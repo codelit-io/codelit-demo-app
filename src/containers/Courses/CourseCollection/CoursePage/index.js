@@ -7,37 +7,30 @@
  * @param {requestCallback} calculateProgress - callback function to calculate progress, pass it authUser, points, and length of questions in the course
  */
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import CourseList from './CourseList';
-import Fade from '@material-ui/core/Fade';
-import Footer from 'components/shared/Footer';
-import Grid from '@material-ui/core/Grid';
-import MoPage from 'components/library/MoPage';
+import CourseList from "./CourseList";
+import Footer from "components/shared/Footer";
+import Grid from "@material-ui/core/Grid";
+import MoPage from "components/library/MoPage";
 
 const CoursePage = ({
   authUser,
   collectionDetails,
   isLoading,
   courses,
-  calculateProgress,
+  calculateProgress
 }) => {
   const [points] = useState(0);
   return (
     <MoPage title={collectionDetails?.title} isLoading={isLoading}>
       <Grid container spacing={4} alignItems="center">
-        <Fade
-          in={!isLoading}
-          mountOnEnter
-          timeout={{ enter: 1200 }}
-          unmountOnExit>
-          <CourseList
-            authUser={authUser}
-            courses={courses}
-            collectionPath={'courses'}
-            points={points}
-          />
-        </Fade>
+        <CourseList
+          authUser={authUser}
+          courses={courses}
+          collectionPath={"courses"}
+          points={points}
+        />
       </Grid>
       <Footer />
     </MoPage>

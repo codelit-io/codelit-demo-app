@@ -1,46 +1,46 @@
 /* TODO: Update me to a functional component and add comments */
 
-import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import { compose } from 'recompose';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
+import { compose } from "recompose";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 
 import {
   AuthUserContext,
   withAuthorization,
   withEmailVerification,
-  withAuthentication,
-} from 'components/shared/Session';
-import { withFirebase } from 'components/shared/Firebase';
-import PasswordForgetForm from 'components/shared/PasswordForgot';
-import PasswordChangeForm from 'components/shared/PasswordChange';
-import MoPage from 'components/library/MoPage';
-import Typography from '@material-ui/core/Typography';
+  withAuthentication
+} from "components/shared/Session";
+import { withFirebase } from "components/shared/Firebase";
+import PasswordForgetForm from "components/shared/PasswordForgot";
+import PasswordChangeForm from "components/shared/PasswordChange";
+import MoPage from "components/library/MoPage";
+import Typography from "@material-ui/core/Typography";
 
 const SIGN_IN_METHODS = [
   {
-    id: 'password',
-    provider: null,
+    id: "password",
+    provider: null
   },
   {
-    id: 'google.com',
-    provider: 'googleProvider',
+    id: "google.com",
+    provider: "googleProvider"
   },
   {
-    id: 'facebook.com',
-    provider: 'facebookProvider',
+    id: "facebook.com",
+    provider: "facebookProvider"
   },
   {
-    id: 'twitter.com',
-    provider: 'twitterProvider',
-  },
+    id: "twitter.com",
+    provider: "twitterProvider"
+  }
 ];
 
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <MoPage img="" title="Your Account" isLoading={false}>
+      <MoPage title="Your Account" isLoading={false}>
         <Typography variant="h6" noWrap>
           Email: {authUser.email}
         </Typography>
@@ -61,7 +61,7 @@ class LoginManagementBase extends Component {
 
     this.state = {
       activeSignInMethods: [],
-      error: null,
+      error: null
     };
   }
 
@@ -73,7 +73,7 @@ class LoginManagementBase extends Component {
     this.props.firebase.auth
       .fetchSignInMethodsForEmail(this.props.authUser.email)
       .then(activeSignInMethods =>
-        this.setState({ activeSignInMethods, error: null }),
+        this.setState({ activeSignInMethods, error: null })
       )
       .catch(error => this.setState({ error }));
   };
@@ -88,7 +88,7 @@ class LoginManagementBase extends Component {
   onDefaultLoginLink = password => {
     const credential = this.props.firebase.emailAuthProvider.credential(
       this.props.authUser.email,
-      password,
+      password
     );
 
     this.props.firebase.auth.currentUser
@@ -116,7 +116,7 @@ class LoginManagementBase extends Component {
 
             return (
               <ListItem key={signInMethod.id}>
-                {signInMethod.id === 'password' ? (
+                {signInMethod.id === "password" ? (
                   <DefaultLoginToggle
                     onlyOneLeft={onlyOneLeft}
                     isEnabled={isEnabled}
@@ -148,21 +148,23 @@ const SocialLoginToggle = ({
   isEnabled,
   signInMethod,
   onLink,
-  onUnlink,
+  onUnlink
 }) =>
   isEnabled ? (
     <Button
       color="primary"
       type="button"
       onClick={() => onUnlink(signInMethod.id)}
-      disabled={onlyOneLeft}>
+      disabled={onlyOneLeft}
+    >
       Deactivate {signInMethod.id}
     </Button>
   ) : (
     <Button
       color="primary"
       type="button"
-      onClick={() => onLink(signInMethod.provider)}>
+      onClick={() => onLink(signInMethod.provider)}
+    >
       Link {signInMethod.id}
     </Button>
   );
@@ -171,14 +173,14 @@ class DefaultLoginToggle extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { passwordOne: '', passwordTwo: '' };
+    this.state = { passwordOne: "", passwordTwo: "" };
   }
 
   onSubmit = event => {
     event.preventDefault();
 
     this.props.onLink(this.state.passwordOne);
-    this.setState({ passwordOne: '', passwordTwo: '' });
+    this.setState({ passwordOne: "", passwordTwo: "" });
   };
 
   onChange = event => {
@@ -190,13 +192,14 @@ class DefaultLoginToggle extends Component {
 
     const { passwordOne, passwordTwo } = this.state;
 
-    const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return isEnabled ? (
       <Button
         type="button"
         onClick={() => onUnlink(signInMethod.id)}
-        disabled={onlyOneLeft}>
+        disabled={onlyOneLeft}
+      >
         Deactivate {signInMethod.id}
       </Button>
     ) : (
@@ -231,5 +234,5 @@ const condition = authUser => !!authUser;
 export default compose(
   withEmailVerification,
   withAuthentication,
-  withAuthorization(condition),
+  withAuthorization(condition)
 )(AccountPage);
