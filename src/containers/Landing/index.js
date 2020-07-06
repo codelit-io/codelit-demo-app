@@ -84,12 +84,7 @@ const LandingPage = ({ classes }) => {
         </Grid>
       </Grid>
 
-      <Grid
-        container
-        spacing={4}
-        className={classes.container}
-        alignItems="center"
-      >
+      <Grid container spacing={4} className={classes.container}>
         <Fade
           in={Landing2 && true}
           mountOnEnter
