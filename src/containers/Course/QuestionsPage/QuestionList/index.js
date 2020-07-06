@@ -10,6 +10,7 @@ import React from "react";
 
 import MoCard from "components/library/MoCard";
 import Grid from "@material-ui/core/Grid";
+import MoTypography from "components/library/MoTypography";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
   const doc = match.params.collection;
@@ -25,17 +26,29 @@ const QuestionList = ({ authUser, match, questions, points }) => {
 
     /* Configure url route for each item */
     const configureUrl = isDisabled ? "" : `${doc}/${question.id}`;
-
     return (
-      <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
-        <MoCard
-          isDisabled={isDisabled}
-          points={points}
-          title={question.title}
-          index={index + 1}
-          url={configureUrl}
-        />
-      </Grid>
+      <React.Fragment key={index}>
+        {question.category && (
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <MoTypography
+              color="greyDark"
+              font="breeSerif"
+              marginTop={index > 1 ? "md" : null}
+              text={question.category}
+              variant="h6"
+            ></MoTypography>
+          </Grid>
+        )}
+        <Grid item xs={12} sm={12} md={4} lg={4}>
+          <MoCard
+            isDisabled={isDisabled}
+            points={points}
+            title={question.title}
+            index={index + 1}
+            url={configureUrl}
+          />
+        </Grid>
+      </React.Fragment>
     );
   });
 };

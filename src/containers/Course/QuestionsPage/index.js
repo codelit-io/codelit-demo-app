@@ -10,7 +10,6 @@
 import React from "react";
 
 import calculateProgress from "./calculateProgress";
-import Fade from "@material-ui/core/Fade";
 import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import QuestionList from "./QuestionList";
@@ -27,24 +26,21 @@ const QuestionsPage = ({
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
     <Grid container spacing={4} alignItems="center">
-      <Fade in={!isLoading} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <MoPointsGroup
-            authUser={authUser}
-            points={points}
-            progress={calculateProgress(authUser, points, courses.data?.length)}
-          />
-        </Grid>
-      </Fade>
-      <Fade in={!isLoading} mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
-        <QuestionList
+      <Grid item xs={12} sm={12} md={12} lg={12}>
+        <MoPointsGroup
           authUser={authUser}
-          match={match}
           points={points}
-          questions={courses.data}
-          url={match?.params?.collection}
+          progress={calculateProgress(authUser, points, courses.data?.length)}
         />
-      </Fade>
+      </Grid>
+
+      <QuestionList
+        authUser={authUser}
+        match={match}
+        points={points}
+        questions={courses.data}
+        url={match?.params?.collection}
+      />
     </Grid>
     <Footer />
   </MoPage>

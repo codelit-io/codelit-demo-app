@@ -62,7 +62,7 @@ const styles = theme => ({
     fontSize: "14px",
     padding: "2px 2px 2px 8px"
   },
-  font: theme.typography
+  font: { fontFamily: theme.breeSerif }
 });
 
 export default styles;

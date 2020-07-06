@@ -11,6 +11,7 @@
  * @param {String} color - Font color one of "greyLight", "grey", "greyDark"
  * @param {String} font - Font family one of "breeSerif", "openSans"
  * @param {String} marginBottom - Bottom margin one of "xs", "sm", "md", "lg"
+ * @param {String} marginTop - Top margin one of "xs", "sm", "md", "lg"
  * @param {String} text - text displayed in typography component
  * @param {String} variant - Material UI component variant, see propTypes at the bottom of component
  * @returns {<Typography/>} - returns Material UI Typography
@@ -31,6 +32,7 @@ const MoTypography = ({
   color,
   font,
   marginBottom,
+  marginTop,
   text,
   variant
 }) => {
@@ -51,17 +53,9 @@ const MoTypography = ({
       greyDark: {
         color: theme.grey.dark
       },
-      xs: {
-        marginBottom: theme.space?.xs
-      },
-      sm: {
-        marginBottom: theme.space?.sm
-      },
-      md: {
-        marginBottom: theme.space?.md
-      },
-      lg: {
-        marginBottom: theme.space?.lg
+      margin: {
+        marginBottom: theme.space[marginBottom],
+        marginTop: theme.space[marginTop]
       }
     })
   );
@@ -74,7 +68,7 @@ const MoTypography = ({
 
   return (
     <Typography
-      className={`${classes[marginBottom]} ${classes[font]} ${classes[color]}`}
+      className={`${classes.margin} ${classes[font]} ${classes[color]}`}
       variant={variant}
     >
       {text}
@@ -87,6 +81,7 @@ MoTypography.propTypes = {
   color: PropTypes.oneOf(["greyLight", "grey", "greyDark"]).isRequired,
   font: PropTypes.oneOf(["breeSerif", "openSans"]),
   marginBottom: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
+  marginTop: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
   text: PropTypes.string,
   variant: PropTypes.oneOf([
     "h1",

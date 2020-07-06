@@ -13,8 +13,21 @@ import calculateProgress from "containers/Course/QuestionsPage/calculateProgress
 
 const CoursePage = lazy(() => import("./CoursePage"));
 
-const CourseCollection = ({ authUser, collection, firebase, match }) => {
-  const collections = useCollections(collection.path, firebase);
+const CourseCollection = ({
+  authUser,
+  collection,
+  history,
+  firebase,
+  match
+}) => {
+  const collections = useCollections(
+    {
+      collectionPath: collection.path,
+      locationHash: history.location.hash
+    },
+    firebase
+  );
+
   if (!collections || !collections?.data.length) {
     return null;
   }

@@ -40,7 +40,7 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <MoPage img="" title="Your Account" isLoading={false}>
+      <MoPage title="Your Account" isLoading={false}>
         <Typography variant="h6" noWrap>
           Email: {authUser.email}
         </Typography>

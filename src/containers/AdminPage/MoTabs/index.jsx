@@ -53,12 +53,11 @@ const useStyles = makeStyles(theme => ({
 
 const MoTabs = ({ tabItems, handleTabChange }) => {
   const classes = useStyles();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} color="default" position="static">

@@ -112,11 +112,7 @@ const CodeEditorPage = ({
             unmountOnExit
           >
             <div>
-              <MoBrowserMockup
-                fileType={codeLanguage}
-                matchPercent={matchPercent}
-                isEditor={true}
-              >
+              <MoBrowserMockup matchPercent={matchPercent} isEditor={true}>
                 <div>
                   <LiveEditor
                     onChange={e => onChange(e)}
@@ -153,7 +149,7 @@ const CodeEditorPage = ({
             unmountOnExit
           >
             <div>
-              <MoBrowserMockup fileType={codeLanguage} isEditor={false}>
+              <MoBrowserMockup isEditor={false}>
                 {codeAnswer && <LivePreview className={classes.livePreview} />}
               </MoBrowserMockup>
             </div>

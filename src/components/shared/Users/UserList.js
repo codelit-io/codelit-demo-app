@@ -50,10 +50,7 @@ class UserList extends Component {
               title={user.username}
               subtitle={user.email}
               content={user.uid}
-              url={{
-                pathname: `${ROUTES.ADMIN_USERS.path}/${user.uid}`,
-                state: { user }
-              }}
+              url={`${ROUTES.ADMIN_USERS.path}/${user.uid}`}
             />
           </Grid>
         ))}

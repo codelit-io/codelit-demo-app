@@ -21,6 +21,7 @@
  * */
 
 import React from "react";
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
@@ -40,7 +41,12 @@ const MoCard = ({
   title,
   url
 }) => (
-  <Link to={url} className={isDisabled ? classes.disableLink : classes.link}>
+  <ButtonBase
+    component={Link}
+    to={url}
+    disabled={isDisabled}
+    className={classes.link}
+  >
     <div className={`${classes.card} ${isDisabled && classes.disableCard}`}>
       <Grid container spacing={4}>
         {IconComponent && (
@@ -89,7 +95,7 @@ const MoCard = ({
         </Grid>
       </Grid>
     </div>
-  </Link>
+  </ButtonBase>
 );
 
 MoCard.propTypes = {

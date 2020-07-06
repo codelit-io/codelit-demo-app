@@ -27,7 +27,7 @@ const CourseList = ({ authUser, courses, collectionPath, points }) => {
     /* Configure url route for each item */
     const configureUrl = course.isDisabled
       ? ""
-      : `${collectionPath}/${course.doc}`;
+      : `/${collectionPath}/${course.doc}`;
     return (
       <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
         <MoCard

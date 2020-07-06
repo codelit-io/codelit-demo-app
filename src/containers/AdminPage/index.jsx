@@ -39,8 +39,8 @@ const Collection = lazy(() => import("./Collection"));
 const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
 const tabItems = [
-  { name: "Users", path: "users" },
-  { name: "Courses", path: "courses" }
+  { name: "Courses", path: "courses" },
+  { name: "Users", path: "users" }
 ];
 
 const AdminPage = ({ history }) => {
@@ -60,12 +60,12 @@ const AdminPage = ({ history }) => {
       <Switch>
         <Route
           exact
-          path={ROUTES.ADMIN_COLLECTIONS_COURSES.path}
+          path={ROUTES.ADMIN_COURSES.path}
           component={AdminCourses}
         />
         <Route
           exact
-          path={ROUTES.ADMIN_COLLECTIONS_COURSES.path + "/:collection"}
+          path={ROUTES.ADMIN_COURSES.path + "/:collection"}
           component={Collection}
         />
         <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />

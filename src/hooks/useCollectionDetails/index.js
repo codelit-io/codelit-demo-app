@@ -27,7 +27,7 @@
 
 import { useEffect, useState } from "react";
 
-const useCollectionDetails = (collectionName, doc, firebase) => {
+const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState({});
@@ -37,7 +37,7 @@ const useCollectionDetails = (collectionName, doc, firebase) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description */
       const getCollectionDetails = await firebase
-        .collection(collectionName)
+        .collection(collectionPath)
         .where("doc", "==", doc)
         .onSnapshot(
           snapshot => {
@@ -59,7 +59,7 @@ const useCollectionDetails = (collectionName, doc, firebase) => {
 
       return () => getCollectionDetails();
     })();
-  }, [firebase, collectionName, doc]);
+  }, [firebase, collectionPath, doc]);
 
   return { isLoading, isError, data };
 };

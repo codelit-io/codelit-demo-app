@@ -4,6 +4,8 @@ import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 const bigShadow =
   "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)";
 
+const smallShadow = "";
+
 const colors = {
   primary: "#3399bb",
   secondary: "#99bb33",
@@ -64,6 +66,7 @@ const fontFamily = {
 };
 
 let theme = createMuiTheme({
+  smallShadow,
   bigShadow,
   card: {
     boxShadow: bigShadow,

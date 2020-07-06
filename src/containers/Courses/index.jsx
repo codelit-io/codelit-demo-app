@@ -32,11 +32,12 @@ const collection = {
   isProgressBar: false
 };
 
-const Courses = ({ authUser, firebase, match }) => (
+const Courses = ({ authUser, firebase, match, history }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
     <CourseCollection
       authUser={authUser}
       collection={collection}
+      history={history}
       firebase={firebase}
       match={match}
     />

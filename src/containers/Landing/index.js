@@ -20,10 +20,8 @@ import Grid from "@material-ui/core/Grid";
 import Landing1 from "assets/landing1.png";
 import Landing2 from "assets/landing2.png";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import MoLinkButton from "components/library/MoLinkButton";
-import MoLink from "components/library/MoLink";
+import MoButton from "components/library/MoButton";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 import styles from "./styles";
@@ -58,7 +56,11 @@ const LandingPage = ({ classes }) => {
                 Study any React topic, anytime. Explore free front-end
                 development courses
               </MoTypography>
-              <MoLinkButton
+              <MoButton
+                isArrowIcon={true}
+                color="primary"
+                variant="contained"
+                size="large"
                 text="View Courses"
                 href={ROUTES.COLLECTIONS.path}
               />
@@ -86,7 +88,7 @@ const LandingPage = ({ classes }) => {
         <Fade
           in={Landing2 && true}
           mountOnEnter
-          timeout={{ enter: 2400 }}
+          timeout={{ enter: 1200 }}
           unmountOnExit
         >
           <Grid item sm={12} md={6} xs={12}>
@@ -102,37 +104,66 @@ const LandingPage = ({ classes }) => {
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="Basic HTML and usage in React" />
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="Basic HTML and usage in React"
+                href={ROUTES.COLLECTIONS.path + "/#html"}
+              />
             </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="Styling components and elements in React" />
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="Styling components and elements in React"
+                href={ROUTES.COLLECTIONS.path + "/#reactStyle"}
+              />
             </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="JavaScript functionality in React" />
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="JavaScript functionality in React"
+                href={ROUTES.COLLECTIONS.path + "/#js"}
+              />
             </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="React Hooks, Context API, and Redux" />
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="React Hooks, Context API, and Redux"
+                href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
+              />
             </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
               </ListItemAvatar>
-              <ListItemText primary="Best UI/UX practices" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar className={classes.checkMark}>
-                <CheckIcon />
-              </ListItemAvatar>
-              <MoLink text="View All Courses" href={ROUTES.COLLECTIONS.path} />
+              <MoButton
+                isArrowIcon={false}
+                color="primary"
+                variant="text"
+                size="large"
+                text="View All Courses"
+                href={ROUTES.COLLECTIONS.path}
+              />
             </ListItem>
           </Grid>
         </Fade>
@@ -169,8 +200,12 @@ const LandingPage = ({ classes }) => {
           >
             Write code in JSX and watch it render your code magically.
           </MoTypography>
-          <MoLinkButton
-            text="Try the playground"
+          <MoButton
+            isArrowIcon={true}
+            color="primary"
+            variant="contained"
+            size="large"
+            text="Try our playground"
             href={ROUTES.PLAYGROUND.path}
           />
         </Grid>

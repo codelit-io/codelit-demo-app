@@ -25,13 +25,13 @@ const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Course = ({ authUser, firebase, match }) => {
   const courseDetails = useCollectionDetails(
-    "courses",
+    { collectionPath: "courses" },
     match.params.collection,
     firebase
   );
 
   const courses = useCollections(
-    "courses/" + match.params.collection + "/questions",
+    { collectionPath: "courses/" + match.params.collection + "/questions" },
     firebase
   );
 
