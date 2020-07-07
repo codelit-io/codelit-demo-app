@@ -47,6 +47,7 @@ const CodeEditor = ({
   isMobile,
   isPlayground,
   isEditMode,
+  isHintTypist,
   md,
   matchPercent,
   sm
@@ -119,12 +120,12 @@ const CodeEditor = ({
                     theme={lightTheme}
                     className={classes.liveEditor}
                   />
-                  {!codeQuestion && codeAnswer && (
+                  {isHintTypist && !codeQuestion && codeAnswer && (
                     <div className={classes.hint}>
                       <Typist
                         avgTypingDelay={60}
                         stdTypingDelay={30}
-                        startDelay={800}
+                        startDelay={200}
                         cursor={{
                           show: true,
                           blink: false,
