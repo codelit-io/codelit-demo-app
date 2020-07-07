@@ -24,153 +24,152 @@ import { retry } from "utils/retryLazyImports";
 import MoTypography from "components/library/MoTypography";
 
 const CodeEditor = lazy(() =>
-  retry(() => import("components/shared/CodeEditor"))
+	retry(() => import("components/shared/CodeEditor"))
 );
+
 const MoConfetti = lazy(() =>
-  retry(() => import("components/library/MoConfetti"))
+	retry(() => import("components/library/MoConfetti"))
 );
 
 const QuestionPage = ({
-  authUser,
-  firebase,
-  handleOnClick,
-  handleNavigation,
-  userRole,
-  data,
-  match
+	authUser,
+	firebase,
+	handleOnClick,
+	handleNavigation,
+	userRole,
+	data,
+	match
 }) => {
-  const [question, setQuestion] = useState(data);
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [snackbarProps, setSnackbarProps] = useState(null);
-  const [matchPercent, setMatchPercent] = useState();
+	const [question, setQuestion] = useState(data);
+	const [isCorrect, setIsCorrect] = useState(false);
+	const [snackbarProps, setSnackbarProps] = useState(null);
+	const [matchPercent, setMatchPercent] = useState();
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const useStyles = makeStyles(theme =>
-    createStyles({
-      buttonArea: {
-        textAlign: "left",
-        width: "100%",
-        "&:hover": {
-          background: theme.grey.superLight,
-          cursor: "text"
-        }
-      },
-      section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
-    })
-  );
+	const useStyles = makeStyles((theme) =>
+		createStyles({
+			buttonArea: {
+				textAlign: "left",
+				width: "100%",
+				"&:hover": {
+					background: theme.grey.superLight,
+					cursor: "text"
+				}
+			},
+			// section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
+			section: { paddingBottom: theme.space?.xl }
+		})
+	);
 
-  useEffect(() => {
-    try {
-      setQuestion({ ...data, question: JSON.parse(data.question) });
-    } catch {
-      setQuestion(data);
-    }
-  }, [data]);
+	useEffect(() => {
+		try {
+			setQuestion({ ...data, question: JSON.parse(data.question) });
+		} catch {
+			setQuestion(data);
+		}
+	}, [data]);
 
-  const classes = useStyles();
-  const triggerNextQuestion = useCallback(() => {
-    const id = Number(question.id) + 1;
-    /* Clear questions */
-    setQuestion({});
-    /* Clear matchPercent */
-    setMatchPercent();
+	const classes = useStyles();
+	const triggerNextQuestion = useCallback(() => {
+		const id = Number(question.id) + 1;
+		/* Clear questions */
+		setQuestion({});
+		/* Clear matchPercent */
+		setMatchPercent();
 
-    setIsCorrect(false);
-    setSnackbarProps({ isActive: false });
-    handleNavigation(id);
-  }, [handleNavigation, question]);
+		setIsCorrect(false);
+		setSnackbarProps({ isActive: false });
+		handleNavigation(id);
+	}, [handleNavigation, question]);
 
-  /* Checks if user code matches Pre made answer */
-  const handleOnChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
+	/* Checks if user code matches Pre made answer */
+	const handleOnChange = useCallback(
+		({ userAnswer }) => {
+			if (userAnswer === "{}" || userAnswer === "") {
+				return;
+			}
 
-      const userAnswerTrimmed = userAnswer.replace(/\s/g, "");
-      const correctAnswerTrimmed = question.answer.replace(/\s/g, "");
-      const cosineSimilarityMatchPercent = stringSimilarity.compareTwoStrings(
-        userAnswerTrimmed,
-        correctAnswerTrimmed
-      );
-      setMatchPercent(cosineSimilarityMatchPercent * 100 || 10);
-      if (
-        // if user answer equals the stored answer in db
-        userAnswerTrimmed === correctAnswerTrimmed ||
-        // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
-        cosineSimilarityMatchPercent * 100 >=
-          (question?.matchPercent * 100 || 100)
-      ) {
-        setQuestion({ ...question, isCorrect: true, question: userAnswer });
-        /* Awards users a point based on level completion */
+			const userAnswerTrimmed = userAnswer.replace(/\s/g, "");
+			const correctAnswerTrimmed = question.answer.replace(/\s/g, "");
+			const cosineSimilarityMatchPercent = stringSimilarity.compareTwoStrings(
+				userAnswerTrimmed,
+				correctAnswerTrimmed
+			);
+			setMatchPercent(cosineSimilarityMatchPercent * 100 || 10);
+			if (
+				// if user answer equals the stored answer in db
+				userAnswerTrimmed === correctAnswerTrimmed ||
+				// or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
+				cosineSimilarityMatchPercent * 100 >=
+					(question?.matchPercent * 100 || 100)
+			) {
+				setQuestion({ ...question, isCorrect: true, question: userAnswer });
+				/* Awards users a point based on level completion */
 
-        awardPlayerPoints(
-          authUser,
-          firebase,
-          question.id,
-          match.params.collection
-        );
-        setIsCorrect(true);
-        setSnackbarProps({
-          buttonText: "Keep Going",
-          isActive: true,
-          title: "Hooray!"
-        });
-      } else {
-        setQuestion({ ...question, question: userAnswer });
-      }
-    },
-    [authUser, firebase, match, question]
-  );
+				awardPlayerPoints(
+					authUser,
+					firebase,
+					question.id,
+					match.params.collection
+				);
+				setIsCorrect(true);
+				setSnackbarProps({
+					buttonText: "Keep Going",
+					isActive: true,
+					title: "Hooray!",
+					onClick: () => triggerNextQuestion()
+				});
+			} else {
+				setQuestion({ ...question, question: userAnswer });
+			}
+		},
+		[authUser, firebase, match, triggerNextQuestion, question]
+	);
 
-  return (
-    <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-      <MoConfetti isActive={isCorrect} />
-      <ButtonBase
-        className={classes.buttonArea}
-        onClick={() => handleOnClick()}
-        disabled={!userRole.isAdmin}
-      >
-        <MoPage
-          isAdmin={userRole.isAdmin}
-          title={question?.title}
-          subtitle={question?.label}
-          isCard={false}
-        />
-      </ButtonBase>
-      {question?.content && (
-        <MoTypography
-          color="greyDark"
-          font="breeSerif"
-          marginBottom="md"
-          text={question.content}
-          variant="body1"
-        ></MoTypography>
-      )}
-      <section className={classes.section}>
-        <CodeEditor
-          codeAnswer={question?.answer}
-          codeLanguage={question?.language}
-          codeQuestion={question?.question}
-          handleOnChange={userAnswer => handleOnChange(userAnswer)}
-          isEditMode={false}
-          isPlayground={question?.isPlayground}
-          isMobile={isMobile}
-          matchPercent={matchPercent}
-          sm={6}
-          md={6}
-        />
-      </section>
-      {snackbarProps && (
-        <MoSnackbar
-          authUser={authUser}
-          snackbarProps={snackbarProps}
-          handleClick={() => triggerNextQuestion()}
-        />
-      )}
-    </Suspense>
-  );
+	return (
+		<Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+			<MoConfetti isActive={isCorrect} />
+			<ButtonBase
+				className={classes.buttonArea}
+				onClick={() => handleOnClick()}
+				disabled={!userRole.isAdmin}
+			>
+				<MoPage
+					isAdmin={userRole.isAdmin}
+					title={question?.title}
+					subtitle={question?.label}
+					isCard={false}
+				/>
+			</ButtonBase>
+			{question?.content && (
+				<MoTypography
+					color="greyDark"
+					font="breeSerif"
+					marginBottom="md"
+					text={question.content}
+					variant="body1"
+				></MoTypography>
+			)}
+			<section className={classes.section}>
+				<CodeEditor
+					codeAnswer={question?.answer}
+					codeLanguage={question?.language}
+					codeQuestion={question?.question}
+					handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
+					isEditMode={false}
+					isPlayground={question?.isPlayground}
+					isMobile={isMobile}
+					matchPercent={matchPercent}
+					sm={6}
+					md={6}
+				/>
+			</section>
+			{snackbarProps && (
+				<MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
+			)}
+		</Suspense>
+	);
 };
 export default QuestionPage;
