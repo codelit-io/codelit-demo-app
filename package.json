@@ -28,7 +28,8 @@
 		"ci-test": "cross-env CI=true react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"lint": "eslint './src/**/*.{js,jsx}' --fix",
-		"format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
+		"format": "prettier --write 'src/**/*.{js,jsx,css,scss}'",
+		"pre-commit": "eslint './src/**/*.{js,jsx}' --fix && prettier --write 'src/**/*.{js,jsx,css,scss}' && cross-env CI=true react-scripts test --env=jsdom"
 	},
 	"config": {
 		"commitizen": {
