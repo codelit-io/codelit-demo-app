@@ -39,7 +39,7 @@ import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const CodeEditorPage = ({
+const CodeEditor = ({
   codeAnswer,
   codeLanguage,
   codeQuestion,
@@ -170,4 +170,4 @@ const CodeEditorPage = ({
   );
 };
 
-export default CodeEditorPage;
+export default CodeEditor;

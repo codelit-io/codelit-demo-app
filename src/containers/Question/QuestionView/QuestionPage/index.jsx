@@ -26,6 +26,7 @@ import MoTypography from "components/library/MoTypography";
 const CodeEditor = lazy(() =>
   retry(() => import("components/shared/CodeEditor"))
 );
+
 const MoConfetti = lazy(() =>
   retry(() => import("components/library/MoConfetti"))
 );
@@ -57,7 +58,8 @@ const QuestionPage = ({
           cursor: "text"
         }
       },
-      section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
+      // section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
+      section: { paddingBottom: theme.space?.xl }
     })
   );
 
@@ -116,13 +118,14 @@ const QuestionPage = ({
         setSnackbarProps({
           buttonText: "Keep Going",
           isActive: true,
-          title: "Hooray!"
+          title: "Hooray!",
+          onClick: () => triggerNextQuestion()
         });
       } else {
         setQuestion({ ...question, question: userAnswer });
       }
     },
-    [authUser, firebase, match, question]
+    [authUser, firebase, match, triggerNextQuestion, question]
   );
 
   return (
@@ -164,11 +167,7 @@ const QuestionPage = ({
         />
       </section>
       {snackbarProps && (
-        <MoSnackbar
-          authUser={authUser}
-          snackbarProps={snackbarProps}
-          handleClick={() => triggerNextQuestion()}
-        />
+        <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
       )}
     </Suspense>
   );

@@ -19,7 +19,7 @@ const styles = theme => ({
 
   browserMockup: {
     paddingLeft: "1.75rem",
-    minHeight: "60px",
+    minHeight: "80px",
     borderTop: "2em solid rgba(230, 230, 230, 0.7)",
     position: "relative",
     borderRadius: theme.space.xs,
@@ -34,8 +34,8 @@ const styles = theme => ({
     width: "0.5em",
     height: "0.5em",
     borderRadius: "50%",
-    backgroundColor: "#f44",
-    boxShadow: "0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5"
+    backgroundColor: "#dcdcdc",
+    boxShadow: "0 0 0 2px #dcdcdc, 1.5em 0 0 2px #dcdcdc, 3em 0 0 2px #dcdcdc"
   },
   browserFilename: {
     display: "block",

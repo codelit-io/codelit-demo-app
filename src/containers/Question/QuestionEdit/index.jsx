@@ -98,8 +98,8 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
           {snackbarProps && (
             <MoSnackbar
               authUser={authUser}
-              snackbarProps={snackbarProps}
               handleClick={() => viewQuestion()}
+              snackbarProps={snackbarProps}
             />
           )}
         </>

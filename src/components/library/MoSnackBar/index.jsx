@@ -8,9 +8,30 @@
  *
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
- * @param {CallableFunction} handleClick - Callback function when clicking the snackbar button
  * @param {Object} snackbarProps - Contains snackbar title and button text. eg {isActive: boolean, buttonText: string, title: string}
  * @withStyle - HOC provides classes object to component for styling
+ *
+ * Example usage
+ *
+ *    const snackbarProps = {
+ *      // Triggers the snackbar
+ *	    isActive: true,
+ *      // Left side Icon component
+ *	    IconComponent: <Icons.FlareIcon />,
+ *      // Snackbar title
+ *	    title: "Need a hint?",
+ *      // Text button
+ *	    buttonText: "Yes!",
+ *      // A callback function after the click
+ *	    onClick: (e) => {
+ *	    console.log(e);
+ *    }
+ *  }
+ *
+ *  <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
+ *
+ *
+ *
  *
  * @see See [Material IU Snackbar](https://material-ui.com/components/snackbars/#snackbar)
  * */
@@ -24,25 +45,34 @@ import SnackbarContent from "@material-ui/core/SnackbarContent";
 import MoTypography from "components/library/MoTypography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MoButton from "components/library/MoButton";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import styles from "./styles";
 
-const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
+const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
+  const {
+    autoHideDuration,
+    buttonText,
+    IconComponent,
+    isActive,
+    title,
+    onClick
+  } = snackbarProps;
+
   const [state, setState] = React.useState({
-    isActive: snackbarProps.isActive,
+    isActive,
     Transition: Slide
   });
 
   useEffect(() => {
-    setState({ isActive: snackbarProps?.isActive });
-  }, [snackbarProps]);
+    setState({ isActive });
+  }, [isActive]);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = e => {
     setState({
       isActive: false,
       Transition: Slide
     });
-    handleClick();
+    onClick && onClick(e);
   };
 
   const handleClose = () => {
@@ -55,7 +85,7 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
 
   return (
     <Snackbar
-      autoHideDuration={snackbarProps.autoHideDuration}
+      autoHideDuration={autoHideDuration}
       open={state.isActive}
       onClose={handleClose}
       TransitionComponent={state.Transition}
@@ -64,9 +94,13 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
       <SnackbarContent
         message={
           <div className={classes.message}>
-            <CheckCircleIcon className={classes.checkIcon} />
+            {IconComponent ? (
+              <IconComponent className={classes.checkIcon} />
+            ) : (
+              <CheckCircleIcon className={classes.checkIcon} />
+            )}
             <MoTypography color="greyDark" font="breeSerif" variant="h3">
-              {snackbarProps.title}
+              {title}
             </MoTypography>
           </div>
         }
@@ -77,8 +111,8 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
             color="primary"
             variant="text"
             size="large"
-            handleButtonClick={() => handleButtonClick()}
-            text={snackbarProps.buttonText}
+            handleButtonClick={e => handleButtonClick(e)}
+            text={buttonText}
           />
         }
       />
@@ -87,15 +121,15 @@ const MoSnackBar = ({ authUser, classes, handleClick, snackbarProps }) => {
 };
 
 MoSnackBar.propTypes = {
-  authUser: propTypes.object,
-  classes: propTypes.object,
-  handleClick: propTypes.func.isRequired,
-  snackbarProps: propTypes.shape({
-    autoHideDuration: propTypes.oneOf([1000, 2000, 3000, 4000, 5000, null]),
-    buttonText: propTypes.string,
-    buttonIcon: propTypes.oneOf([propTypes.bool, null]),
-    isActive: propTypes.bool.isRequired,
-    title: propTypes.string
+  authUser: PropTypes.object,
+  classes: PropTypes.object,
+  snackbarProps: PropTypes.shape({
+    autoHideDuration: PropTypes.oneOf([1000, 2000, 3000, 4000, 5000, null]),
+    buttonText: PropTypes.string,
+    IconComponent: PropTypes.func,
+    isActive: PropTypes.bool.isRequired,
+    onClick: PropTypes.func,
+    title: PropTypes.string
   }).isRequired
 };
 export default withStyles(styles)(MoSnackBar);
