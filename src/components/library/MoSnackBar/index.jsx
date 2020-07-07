@@ -49,87 +49,87 @@ import PropTypes from "prop-types";
 import styles from "./styles";
 
 const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
-	const {
-		autoHideDuration,
-		buttonText,
-		IconComponent,
-		isActive,
-		title,
-		onClick
-	} = snackbarProps;
+  const {
+    autoHideDuration,
+    buttonText,
+    IconComponent,
+    isActive,
+    title,
+    onClick
+  } = snackbarProps;
 
-	const [state, setState] = React.useState({
-		isActive,
-		Transition: Slide
-	});
+  const [state, setState] = React.useState({
+    isActive,
+    Transition: Slide
+  });
 
-	useEffect(() => {
-		setState({ isActive });
-	}, [isActive]);
+  useEffect(() => {
+    setState({ isActive });
+  }, [isActive]);
 
-	const handleButtonClick = (e) => {
-		setState({
-			isActive: false,
-			Transition: Slide
-		});
-		onClick && onClick(e);
-	};
+  const handleButtonClick = e => {
+    setState({
+      isActive: false,
+      Transition: Slide
+    });
+    onClick && onClick(e);
+  };
 
-	const handleClose = () => {
-		setState({
-			...state,
-			Transition: Slide,
-			isActive: false
-		});
-	};
+  const handleClose = () => {
+    setState({
+      ...state,
+      Transition: Slide,
+      isActive: false
+    });
+  };
 
-	return (
-		<Snackbar
-			autoHideDuration={autoHideDuration}
-			open={state.isActive}
-			onClose={handleClose}
-			TransitionComponent={state.Transition}
-			anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-		>
-			<SnackbarContent
-				message={
-					<div className={classes.message}>
-						{IconComponent ? (
-							<IconComponent className={classes.checkIcon} />
-						) : (
-							<CheckCircleIcon className={classes.checkIcon} />
-						)}
-						<MoTypography color="greyDark" font="breeSerif" variant="h3">
-							{title}
-						</MoTypography>
-					</div>
-				}
-				className={classes.snackbarContent}
-				action={
-					<MoButton
-						isArrowIcon={true}
-						color="primary"
-						variant="text"
-						size="large"
-						handleButtonClick={(e) => handleButtonClick(e)}
-						text={buttonText}
-					/>
-				}
-			/>
-		</Snackbar>
-	);
+  return (
+    <Snackbar
+      autoHideDuration={autoHideDuration}
+      open={state.isActive}
+      onClose={handleClose}
+      TransitionComponent={state.Transition}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <SnackbarContent
+        message={
+          <div className={classes.message}>
+            {IconComponent ? (
+              <IconComponent className={classes.checkIcon} />
+            ) : (
+              <CheckCircleIcon className={classes.checkIcon} />
+            )}
+            <MoTypography color="greyDark" font="breeSerif" variant="h3">
+              {title}
+            </MoTypography>
+          </div>
+        }
+        className={classes.snackbarContent}
+        action={
+          <MoButton
+            isArrowIcon={true}
+            color="primary"
+            variant="text"
+            size="large"
+            handleButtonClick={e => handleButtonClick(e)}
+            text={buttonText}
+          />
+        }
+      />
+    </Snackbar>
+  );
 };
 
 MoSnackBar.propTypes = {
-	authUser: PropTypes.object,
-	classes: PropTypes.object,
-	snackbarProps: PropTypes.shape({
-		autoHideDuration: PropTypes.oneOf([1000, 2000, 3000, 4000, 5000, null]),
-		buttonText: PropTypes.string,
-		IconComponent: PropTypes.func,
-		isActive: PropTypes.bool.isRequired,
-		onClick: PropTypes.func,
-		title: PropTypes.string
-	}).isRequired
+  authUser: PropTypes.object,
+  classes: PropTypes.object,
+  snackbarProps: PropTypes.shape({
+    autoHideDuration: PropTypes.oneOf([1000, 2000, 3000, 4000, 5000, null]),
+    buttonText: PropTypes.string,
+    IconComponent: PropTypes.func,
+    isActive: PropTypes.bool.isRequired,
+    onClick: PropTypes.func,
+    title: PropTypes.string
+  }).isRequired
 };
 export default withStyles(styles)(MoSnackBar);
