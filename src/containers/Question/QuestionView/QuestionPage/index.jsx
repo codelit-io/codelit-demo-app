@@ -172,7 +172,7 @@ const QuestionPage = ({
 					md={6}
 				/>
 			</section>
-			{question?.answer && (
+			{question?.answer && !question?.question && (
 				<section className={classes.section}>
 					<Grid container>
 						<Grid item md={6}>
