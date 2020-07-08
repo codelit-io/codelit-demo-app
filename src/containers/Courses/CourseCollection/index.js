@@ -10,16 +10,13 @@
 import React, { lazy } from "react";
 import useCollections from "hooks/useCollections";
 import calculateProgress from "containers/Course/QuestionsPage/calculateProgress";
+import useAuthentication from "components/shared/Session/useAuthentication";
 
 const CoursePage = lazy(() => import("./CoursePage"));
+const CourseCollection = ({ collection, history, firebase, match }) => {
+  // Get authUser object
+  const { authUser } = useAuthentication(firebase);
 
-const CourseCollection = ({
-  authUser,
-  collection,
-  history,
-  firebase,
-  match
-}) => {
   const collections = useCollections(
     {
       collectionPath: collection.path,
@@ -31,6 +28,7 @@ const CourseCollection = ({
   if (!collections || !collections?.data.length) {
     return null;
   }
+
   return (
     <CoursePage
       authUser={authUser}
@@ -44,4 +42,5 @@ const CourseCollection = ({
     />
   );
 };
+
 export default CourseCollection;
