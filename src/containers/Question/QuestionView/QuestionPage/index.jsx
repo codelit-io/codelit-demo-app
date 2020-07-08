@@ -11,20 +11,23 @@
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
 import awardPlayerPoints from "../awardPlayerPoints";
+import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import createStyles from "@material-ui/core/styles/createStyles";
+import Grid from "@material-ui/core/Grid";
+import HelpIcon from "@material-ui/icons/Help";
+import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import stringSimilarity from "string-similarity";
+import { retry } from "utils/retryLazyImports";
+import MoTypography from "components/library/MoTypography";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
-import stringSimilarity from "string-similarity";
-import createStyles from "@material-ui/core/styles/createStyles";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
-import { retry } from "utils/retryLazyImports";
-import MoTypography from "components/library/MoTypography";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import HelpIcon from "@material-ui/icons/Help";
 
 const CodeEditor = lazy(() =>
   retry(() => import("components/shared/CodeEditor"))
@@ -54,6 +57,7 @@ const QuestionPage = ({
 
   const useStyles = makeStyles(theme =>
     createStyles({
+      textAlignRight: { textAlign: "right" },
       button: { color: theme.grey.medium },
       buttonArea: {
         textAlign: "left",
@@ -188,6 +192,17 @@ const QuestionPage = ({
                 Need a hint?
               </Button>
             </Grid>
+            <Grid item md={6}>
+              <ButtonGroup
+                variant="text"
+                color="default"
+                aria-label="text primary button group"
+              >
+                <Button startIcon={<KeyboardArrowLeftIcon />} />
+                <Button>{question?.length}</Button>
+                <Button startIcon={<KeyboardArrowRightIcon />} />
+              </ButtonGroup>
+            </Grid>
           </Grid>
         </section>
       )}
@@ -198,3 +213,4 @@ const QuestionPage = ({
   );
 };
 export default QuestionPage;
+

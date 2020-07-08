@@ -1,10 +1,22 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
-const bigShadow =
-  "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)";
-
-const smallShadow = "";
+const fontSize = {
+  xs: "1rem",
+  sm: "1.5rem",
+  md: "2rem",
+  lg: "3rem",
+  xl: "4rem"
+};
+const fontFamily = {
+  MonoSpace: "monospace",
+  OpenSans: "Open Sans",
+  BreeSerif: "Bree Serif"
+};
+const shadow = {
+  lg:
+    "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)"
+};
 
 const colors = {
   primary: "#3399bb",
@@ -51,50 +63,50 @@ const space = {
   xl: "6rem"
 };
 
-const fontSize = {
-  xs: "1rem",
-  sm: "1.5rem",
-  md: "2rem",
-  lg: "3rem",
-  xl: "4rem"
+const card = {
+  boxShadow: shadow.lg,
+  "&:hover": {
+    transform: "translateY(-5px)",
+    backgroundColor: "#FFF"
+  },
+  "&:hover .desc": {
+    color: "white"
+  },
+  borderRadius: space.sm,
+  transition:
+    "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
+  transform: "translateY(0)",
+  background: "white"
 };
 
-const fontFamily = {
-  MonoSpace: "monospace",
-  OpenSans: "Open Sans",
-  BreeSerif: "Bree Serif"
+const editorFont = {
+  fontFamily: fontFamily.MonoSpace,
+  fontSize: "16px",
+  color: "rgb(77, 77, 76)"
+};
+
+const typography = {
+  button: {
+    borderRadius: space.sm,
+    textTransform: "none"
+  },
+  fontFamily: fontFamily.BreeSerif
+};
+
+const palette = {
+  primary: {
+    main: colors.primary,
+    light: colors.secondary
+  },
+  secondary: {
+    main: colors.secondary
+  }
 };
 
 let theme = createMuiTheme({
-  smallShadow,
-  bigShadow,
-  card: {
-    boxShadow: bigShadow,
-    "&:hover": {
-      transform: "translateY(-5px)",
-      backgroundColor: "#FFF"
-    },
-    "&:hover .desc": {
-      color: "white"
-    },
-    borderRadius: space.sm,
-    transition:
-      "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-    transform: "translateY(0)",
-    background: "white"
-  },
-  container: {
-    width: "calc(100vw - 28.799999999999997rem)"
-  },
-  editorFont: {
-    fontFamily: fontFamily.MonoSpace,
-    fontSize: "16px",
-    color: "rgb(77, 77, 76)"
-  },
-  flexAlignCenter: {
-    display: "flex",
-    alignItems: "center"
-  },
+  card,
+  editorFont,
+  shadow,
   fontSize,
   space,
   grey: colors.grey,
@@ -102,27 +114,10 @@ let theme = createMuiTheme({
   yellow: colors.yellow,
   white: colors.white,
   blue: colors.blue,
-  typography: {
-    button: {
-      borderRadius: space.sm,
-      textTransform: "none"
-    },
-    fontFamily: fontFamily.BreeSerif
-  },
   breeSerif: fontFamily.BreeSerif,
   openSans: fontFamily.OpenSans,
-  palette: {
-    primary: {
-      main: colors.primary,
-      light: colors.secondary
-    },
-    secondary: {
-      main: colors.secondary
-    },
-    tertiary: {
-      main: colors.tertiary
-    }
-  }
+  typography,
+  palette
 });
 
 const fontOptions = {
