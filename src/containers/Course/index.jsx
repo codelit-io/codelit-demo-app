@@ -17,23 +17,27 @@
 
 import React, { lazy, useEffect, useState } from "react";
 
-import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
+import { withFirebase } from "components/shared/Firebase";
+import useAuthentication from "components/shared/Session/useAuthentication";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
-const Course = ({ authUser, firebase, match }) => {
+const Course = ({ firebase, match }) => {
   const courseDetails = useCollectionDetails(
     { collectionPath: "courses" },
     match.params.collection,
     firebase
   );
 
+  const { authUser } = useAuthentication(firebase);
+
   const courses = useCollections(
     { collectionPath: "courses/" + match.params.collection + "/questions" },
     firebase
   );
+  console.log(courses.data)
 
   const [points, setPoints] = useState(0);
 
@@ -57,4 +61,4 @@ const Course = ({ authUser, firebase, match }) => {
     />
   );
 };
-export default withAuthentication(Course);
+export default withFirebase(Course);

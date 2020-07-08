@@ -13,12 +13,9 @@ import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import createStyles from "@material-ui/core/styles/createStyles";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
-import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import stringSimilarity from "string-similarity";
 import { retry } from "utils/retryLazyImports";
@@ -28,6 +25,7 @@ import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
+import QuestionPageNav from "./QuestionPageNav";
 
 const CodeEditor = lazy(() =>
   retry(() => import("components/shared/CodeEditor"))
@@ -58,7 +56,8 @@ const QuestionPage = ({
   const useStyles = makeStyles(theme =>
     createStyles({
       textAlignRight: { textAlign: "right" },
-      button: { color: theme.grey.medium },
+      grey: { color: theme.grey.medium },
+      lightGrey: { color: theme.grey.light },
       buttonArea: {
         textAlign: "left",
         width: "100%",
@@ -112,7 +111,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-          (question?.matchPercent * 100 || 100)
+        (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -176,12 +175,12 @@ const QuestionPage = ({
           md={6}
         />
       </section>
-      {question?.answer && !question?.question && (
-        <section className={classes.section}>
-          <Grid container>
-            <Grid item md={6}>
+      <section className={classes.section}>
+        <Grid container>
+          <Grid item xs={6} sm={6} md={6}>
+            {question?.answer && !question?.question && (
               <Button
-                className={classes.button}
+                className={classes.grey}
                 aria-label="Need a hint?"
                 aria-haspopup="true"
                 startIcon={<HelpIcon />}
@@ -191,21 +190,13 @@ const QuestionPage = ({
               >
                 Need a hint?
               </Button>
-            </Grid>
-            <Grid item md={6}>
-              <ButtonGroup
-                variant="text"
-                color="default"
-                aria-label="text primary button group"
-              >
-                <Button startIcon={<KeyboardArrowLeftIcon />} />
-                <Button>{question?.length}</Button>
-                <Button startIcon={<KeyboardArrowRightIcon />} />
-              </ButtonGroup>
-            </Grid>
+            )}
           </Grid>
-        </section>
-      )}
+          <Grid item xs={6} sm={6} md={6} className={classes.textAlignRight}>
+            <QuestionPageNav leftArrowClick={() => triggerNextQuestion()} rightArrowClick={() => triggerNextQuestion()} question={question} />
+          </Grid>
+        </Grid>
+      </section>
       {snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
       )}
