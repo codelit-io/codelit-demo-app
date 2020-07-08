@@ -12,7 +12,7 @@ const styles = theme => ({
     overflow: "visible"
   },
   menu: {
-    boxShadow: theme.bigShadow
+    boxShadow: theme.shadow.lg
   }
 });
 
