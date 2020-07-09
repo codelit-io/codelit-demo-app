@@ -27,7 +27,6 @@ import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 
 const QuestionView = ({ authUser, firebase, history, match }) => {
-
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,

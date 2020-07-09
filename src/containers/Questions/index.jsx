@@ -24,7 +24,7 @@ import { withAuthentication } from "components/shared/Session";
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ authUser, firebase, match }) => {
-  const collectionPath = "courses/" + match.params.collection + "/questions"
+  const collectionPath = "courses/" + match.params.collection + "/questions";
 
   const courseDetails = useCollectionDetails(
     { collectionPath: "courses" },
@@ -32,10 +32,7 @@ const Questions = ({ authUser, firebase, match }) => {
     firebase
   );
 
-  const courses = useCollections(
-    { collectionPath },
-    firebase,
-  );
+  const courses = useCollections({ collectionPath }, firebase);
 
   const [points, setPoints] = useState(0);
 

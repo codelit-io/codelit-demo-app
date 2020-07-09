@@ -16,26 +16,15 @@ import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import useCollections from "hooks/useCollections";
 
-
-const CoursesPage = ({
-  authUser,
-  collection,
-  history,
-  firebase,
-}) => {
-
+const CoursesPage = ({ authUser, collection, history, firebase }) => {
   const collectionDetails = {
     title: collection.title,
     isProgressBar: collection.isProgressBar,
     collectionPath: collection.path,
     locationHash: history.location.hash
-  }
+  };
 
-  const courses = useCollections(
-    collectionDetails,
-    firebase
-  );
-
+  const courses = useCollections(collectionDetails, firebase);
 
   if (!courses || !courses?.data?.length) {
     return null;

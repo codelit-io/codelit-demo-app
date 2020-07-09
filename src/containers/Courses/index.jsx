@@ -23,16 +23,14 @@ import { retry } from "utils/retryLazyImports";
 import PropTypes from "prop-types";
 import { withFirebase } from "components/shared/Firebase";
 
-const CoursesPage = lazy(() =>
-  retry(() => import("./CoursesPage"))
-);
+const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
   path: "courses",
   title: "Your Courses",
   isProgressBar: false
 };
 
-const Courses = ({ firebase, history, match }) =>
+const Courses = ({ firebase, history, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
     <CoursesPage
       collection={collection}
@@ -41,6 +39,7 @@ const Courses = ({ firebase, history, match }) =>
       match={match}
     />
   </Suspense>
+);
 
 Courses.propTypes = {
   firebase: PropTypes.object.isRequired,
