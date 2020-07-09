@@ -10,7 +10,7 @@
 import React from "react";
 
 import { withAuthentication } from "components/shared/Session";
-import CoursesList from "./components/CoursesList";
+import CoursesList from "./CoursesList";
 import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";

@@ -32,12 +32,14 @@ const QuestionPageNav = ({ prevClick, nextClick, question }) => {
   return (
     <ButtonGroup variant="text" aria-label="text primary button group">
       <Button
+        disabled={question.id === 1}
         className={classes.leftArrow}
         startIcon={<KeyboardArrowLeftIcon />}
         onClick={() => prevClick()}
       />
-      <Button>{question.id}</Button>
+      <Button disabled>{question.id}</Button>
       <Button
+        disabled={!question.isCorrect}
         className={classes.rightArrow}
         startIcon={<KeyboardArrowRightIcon />}
         onClick={() => nextClick()}
