@@ -10,7 +10,7 @@
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withFirebase - HOC provides firebase instance to access db and back-end
- * @returns {<CourseCollection/>} - returns component which then the children fetch the correct data
+ * @returns {<CoursesOrg/>} - returns component which then the children fetch the correct data
  *
  * @see Link [Courses Page](https://moskool.com/courses)
  *
@@ -23,8 +23,8 @@ import { retry } from "utils/retryLazyImports";
 import PropTypes from "prop-types";
 import { withFirebase } from "components/shared/Firebase";
 
-const CourseCollection = lazy(() =>
-  retry(() => import("./CourseCollection/index"))
+const CoursesPage = lazy(() =>
+  retry(() => import("./CoursesPage"))
 );
 const collection = {
   path: "courses",
@@ -34,7 +34,7 @@ const collection = {
 
 const Courses = ({ firebase, history, match }) =>
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-    <CourseCollection
+    <CoursesPage
       collection={collection}
       history={history}
       firebase={firebase}

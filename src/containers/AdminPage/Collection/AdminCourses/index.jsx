@@ -1,15 +1,16 @@
 import React from "react";
-import CourseList from "containers/Courses/CourseCollection/CoursePage/CourseList";
 import useCollections from "hooks/useCollections";
 import { withAuthentication } from "components/shared/Session";
 import { Grid } from "@material-ui/core";
+
+import CoursesList from "containers/Courses/CoursesPage/components/CoursesList";
 
 const AdminCourses = ({ firebase }) => {
   const courses = useCollections({ collectionPath: "courses" }, firebase);
 
   return (
     <Grid container spacing={4} alignItems="center">
-      <CourseList courses={courses.data} collectionPath={"admin/courses"} />
+      <CoursesList courses={courses.data} collectionPath={"admin/courses"} />
     </Grid>
   );
 };

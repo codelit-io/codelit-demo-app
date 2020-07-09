@@ -7,44 +7,53 @@
  * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
-import React, { lazy } from "react";
+import React from "react";
 
 import { withAuthentication } from "components/shared/Session";
-import calculateProgress from "containers/Course/QuestionsPage/calculateProgress";
+import CoursesList from "./components/CoursesList";
+import Footer from "components/shared/Footer";
+import Grid from "@material-ui/core/Grid";
+import MoPage from "components/library/MoPage";
 import useCollections from "hooks/useCollections";
 
-const CoursePage = lazy(() => import("./CoursePage"));
-const CourseCollection = ({
+
+const CoursesPage = ({
   authUser,
   collection,
   history,
   firebase,
-  match
 }) => {
-  const collections = useCollections(
-    {
-      collectionPath: collection.path,
-      locationHash: history.location.hash
-    },
+
+  const collectionDetails = {
+    title: collection.title,
+    isProgressBar: collection.isProgressBar,
+    collectionPath: collection.path,
+    locationHash: history.location.hash
+  }
+
+  const courses = useCollections(
+    collectionDetails,
     firebase
   );
 
-  if (!collections || !collections?.data.length) {
+
+  if (!courses || !courses?.data?.length) {
     return null;
   }
 
   return (
-    <CoursePage
-      authUser={authUser}
-      isLoading={collections.isLoading}
-      calculateProgress={calculateProgress}
-      courses={collections.data}
-      collectionDetails={{
-        title: collection.title,
-        isProgressBar: collection.isProgressBar
-      }}
-    />
+    <MoPage title={collectionDetails?.title}>
+      <Grid container spacing={4} alignItems="center">
+        <CoursesList
+          authUser={authUser}
+          courses={courses.data}
+          collectionPath={"courses"}
+          points={0}
+        />
+      </Grid>
+      <Footer />
+    </MoPage>
   );
 };
 
-export default withAuthentication(CourseCollection);
+export default withAuthentication(CoursesPage);

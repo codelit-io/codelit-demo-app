@@ -23,7 +23,7 @@ const types = {
   reactStyle: () => <ReactStyle />
 };
 
-const CourseList = ({ authUser, courses, collectionPath, points }) => {
+const CoursesList = ({ authUser, courses, collectionPath, points }) => {
   return courses.map((course, index) => {
     /* Configure url route for each item */
     const configureUrl = course.isDisabled
@@ -46,4 +46,4 @@ const CourseList = ({ authUser, courses, collectionPath, points }) => {
   });
 };
 
-export default CourseList;
+export default CoursesList;

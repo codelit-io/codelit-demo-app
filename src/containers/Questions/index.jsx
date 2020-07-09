@@ -2,7 +2,7 @@
  *
  * @author MoSkool
  * @version 1.0.0
- * @visibleName Course Container 🎒
+ * @visibleName Questions Container 🎒
  *
  * A Container that fetches firebase data using hooks and renders cards of questions
  *
@@ -11,7 +11,7 @@
  * @withAuthentication - HOC provides firebase and match props
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  *
- * @see Link [Course Page](https://moskool.com/courses/mo-easy)
+ * @see Link [Questions Page](https://moskool.com/courses/mo-easy)
  *
  */
 
@@ -23,7 +23,7 @@ import { withAuthentication } from "components/shared/Session";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
-const Course = ({ authUser, firebase, match }) => {
+const Questions = ({ authUser, firebase, match }) => {
   const collectionPath = "courses/" + match.params.collection + "/questions"
 
   const courseDetails = useCollectionDetails(
@@ -58,4 +58,4 @@ const Course = ({ authUser, firebase, match }) => {
     />
   );
 };
-export default withAuthentication(Course);
+export default withAuthentication(Questions);
