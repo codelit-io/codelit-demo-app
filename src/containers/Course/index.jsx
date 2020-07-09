@@ -19,25 +19,23 @@ import React, { lazy, useEffect, useState } from "react";
 
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import { withFirebase } from "components/shared/Firebase";
-import useAuthentication from "components/shared/Session/useAuthentication";
+import { withAuthentication } from "components/shared/Session";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
-const Course = ({ firebase, match }) => {
+const Course = ({ authUser, firebase, match }) => {
+  const collectionPath = "courses/" + match.params.collection + "/questions"
+
   const courseDetails = useCollectionDetails(
     { collectionPath: "courses" },
     match.params.collection,
     firebase
   );
 
-  const { authUser } = useAuthentication(firebase);
-
   const courses = useCollections(
-    { collectionPath: "courses/" + match.params.collection + "/questions" },
-    firebase
+    { collectionPath },
+    firebase,
   );
-  console.log(courses.data)
 
   const [points, setPoints] = useState(0);
 
@@ -45,20 +43,19 @@ const Course = ({ firebase, match }) => {
     setPoints(authUser?.reports?.[match.params.collection]?.points);
   }, [authUser, match]);
 
-  if (!courses.data || !courseDetails.data) {
+  if (!courses?.data || !courseDetails.data) {
     return null;
   }
-
   return (
     <QuestionsPage
       authUser={authUser}
       courses={courses}
       courseDetails={courseDetails}
       hasData={courses.data.length && true}
-      isLoading={courses.isLoading}
+      isLoading={courses.isLoading && false}
       match={match}
       points={points}
     />
   );
 };
-export default withFirebase(Course);
+export default withAuthentication(Course);

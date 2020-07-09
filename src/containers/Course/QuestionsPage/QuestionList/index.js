@@ -10,6 +10,7 @@ import React from "react";
 
 import MoCard from "components/library/MoCard";
 import Grid from "@material-ui/core/Grid";
+import Grow from "@material-ui/core/Grow";
 import MoTypography from "components/library/MoTypography";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
@@ -30,24 +31,38 @@ const QuestionList = ({ authUser, match, questions, points }) => {
       <React.Fragment key={index}>
         {question.category && (
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <MoTypography
-              color="greyDark"
-              font="breeSerif"
-              marginTop={index > 1 ? "md" : null}
-              text={question.category}
-              variant="h6"
-            ></MoTypography>
+            <Grow
+              in={question.category && true}
+              mountOnEnter
+              timeout={{ enter: 200 }}
+              unmountOnExit
+            >
+              <MoTypography
+                color="greyDark"
+                font="breeSerif"
+                marginTop={index > 1 ? "md" : null}
+                text={question.category}
+                variant="h6"
+              ></MoTypography>
+            </Grow>
           </Grid>
         )}
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <MoCard
-            isDisabled={isDisabled}
-            points={points}
-            title={question.title}
-            index={index + 1}
-            url={configureUrl}
-          />
-        </Grid>
+        <Grow
+          in={question && true}
+          mountOnEnter
+          timeout={{ enter: 200 }}
+          unmountOnExit
+        >
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <MoCard
+              isDisabled={isDisabled}
+              points={points}
+              title={question.title}
+              index={index + 1}
+              url={configureUrl}
+            />
+          </Grid>
+        </Grow>
       </React.Fragment>
     );
   });

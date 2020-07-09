@@ -27,6 +27,7 @@ import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 
 const QuestionView = ({ authUser, firebase, history, match }) => {
+
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,
@@ -45,12 +46,9 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
 
   const handleNavigation = useCallback(
     id => {
-      /* A delay before navigating to a new page */
-      setTimeout(() => {
-        history.push(
-          `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-        );
-      }, 600);
+      history.push(
+        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
+      );
     },
     [history, match]
   );

@@ -8,15 +8,19 @@
  */
 
 import React, { lazy } from "react";
-import useCollections from "hooks/useCollections";
+
+import { withAuthentication } from "components/shared/Session";
 import calculateProgress from "containers/Course/QuestionsPage/calculateProgress";
-import useAuthentication from "components/shared/Session/useAuthentication";
+import useCollections from "hooks/useCollections";
 
 const CoursePage = lazy(() => import("./CoursePage"));
-const CourseCollection = ({ collection, history, firebase, match }) => {
-  // Get authUser object
-  const { authUser } = useAuthentication(firebase);
-
+const CourseCollection = ({
+  authUser,
+  collection,
+  history,
+  firebase,
+  match
+}) => {
   const collections = useCollections(
     {
       collectionPath: collection.path,
@@ -43,4 +47,4 @@ const CourseCollection = ({ collection, history, firebase, match }) => {
   );
 };
 
-export default CourseCollection;
+export default withAuthentication(CourseCollection);
