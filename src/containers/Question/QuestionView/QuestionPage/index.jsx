@@ -185,7 +185,7 @@ const QuestionPage = ({
         <Grid container>
           <Grid item xs={6} sm={6} md={6}>
             <Button
-              disabled={question.question && true}
+              disabled={question.question ? true : false}
               className={!question.question ? classes.grey : classes.lightGrey}
               aria-label="Need a hint?"
               aria-haspopup="true"
