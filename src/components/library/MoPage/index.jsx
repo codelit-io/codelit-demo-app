@@ -24,7 +24,7 @@ const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
     <Fade
       in={!isLoading}
       mountOnEnter
-      timeout={{ enter: 400, exit: 400 }}
+      timeout={{ enter: 200, exit: 200 }}
       unmountOnExit
     >
       <section className={classes.section}>
