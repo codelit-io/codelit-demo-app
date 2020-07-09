@@ -14,6 +14,7 @@ import { ReactComponent as ReactStyle } from "assets/react-style.svg";
 
 import Grid from "@material-ui/core/Grid";
 import MoCard from "components/library/MoCard";
+import { Grow } from "@material-ui/core";
 
 const types = {
   js: () => <Js />,
@@ -29,16 +30,18 @@ const CourseList = ({ authUser, courses, collectionPath, points }) => {
       ? ""
       : `/${collectionPath}/${course.doc}`;
     return (
-      <Grid item xs={12} sm={12} md={4} lg={4} key={index}>
-        <MoCard
-          isDisabled={course.isDisabled}
-          points={points}
-          title={course.title}
-          subtitle={course.subtitle}
-          url={configureUrl}
-          IconComponent={types[course.type]}
-        />
-      </Grid>
+      <Grow in={course && true} key={index}>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
+          <MoCard
+            isDisabled={course.isDisabled}
+            points={points}
+            title={course.title}
+            subtitle={course.subtitle}
+            url={configureUrl}
+            IconComponent={types[course.type]}
+          />
+        </Grid>
+      </Grow>
     );
   });
 };
