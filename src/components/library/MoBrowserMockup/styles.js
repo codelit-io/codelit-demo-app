@@ -23,7 +23,7 @@ const styles = theme => ({
     borderTop: "2em solid rgba(230, 230, 230, 0.7)",
     position: "relative",
     borderRadius: theme.space.xs,
-    boxShadow: theme.bigShadow
+    boxShadow: theme.shadow.lg
   },
   browserButtons: {
     display: "block",

@@ -42,7 +42,7 @@ const PasswordForgot = lazy(() =>
   retry(() => import("components/shared/PasswordForgot"))
 );
 const Playground = lazy(() => retry(() => import("containers/Playground")));
-const Course = lazy(() => retry(() => import("containers/Course")));
+const Questions = lazy(() => retry(() => import("containers/Questions")));
 const Courses = lazy(() => retry(() => import("containers/Courses")));
 const Question = lazy(() => retry(() => import("containers/Question")));
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
@@ -75,7 +75,7 @@ const App = () => (
             <Route
               exact
               path={ROUTES.COLLECTIONS.path + "/:collection"}
-              component={Course}
+              component={Questions}
             />
             <Route
               path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}

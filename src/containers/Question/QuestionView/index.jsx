@@ -45,12 +45,9 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
 
   const handleNavigation = useCallback(
     id => {
-      /* A delay before navigating to a new page */
-      setTimeout(() => {
-        history.push(
-          `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
-        );
-      }, 600);
+      history.push(
+        `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
+      );
     },
     [history, match]
   );

@@ -20,11 +20,11 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
       }
       xs={12}
     >
-      <ForwardRef(Fade)
+      <ForwardRef(Grow)
         mountOnEnter={true}
         timeout={
           Object {
-            "enter": 800,
+            "enter": 200,
           }
         }
         unmountOnExit={true}
@@ -152,17 +152,17 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
             </div>
           </ForwardRef(WithStyles)>
         </div>
-      </ForwardRef(Fade)>
+      </ForwardRef(Grow)>
     </ForwardRef(WithStyles)>
     <ForwardRef(WithStyles)
       item={true}
       xs={12}
     >
-      <ForwardRef(Fade)
+      <ForwardRef(Grow)
         mountOnEnter={true}
         timeout={
           Object {
-            "enter": 800,
+            "enter": 200,
           }
         }
         unmountOnExit={true}
@@ -172,7 +172,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
             isEditor={false}
           />
         </div>
-      </ForwardRef(Fade)>
+      </ForwardRef(Grow)>
     </ForwardRef(WithStyles)>
   </LiveProvider>
 </ForwardRef(WithStyles)>

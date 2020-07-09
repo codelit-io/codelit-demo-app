@@ -4,7 +4,6 @@ const styles = theme => ({
 
     paddingBottom: theme.space?.lg
   },
-  alignCenter: theme.flexAlignCenter,
   appBar: {
     boxShadow: "none",
     backgroundColor: "transparent"

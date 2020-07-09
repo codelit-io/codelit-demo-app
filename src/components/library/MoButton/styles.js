@@ -1,6 +1,6 @@
 const styles = theme => ({
   button: {
-    boxShadow: theme.bigShadow,
+    boxShadow: theme.shadow?.lg,
     borderRadius: theme.space?.xs,
     "&:hover .arrow": {
       transform: "translateX(5px)"

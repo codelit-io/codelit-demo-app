@@ -6,7 +6,7 @@ const styles = theme => ({
     backgroundColor: "white",
     color: "black",
     padding: theme.space.md,
-    boxShadow: theme.bigShadow
+    boxShadow: theme.shadow.lg
   },
   message: {
     display: "flex",

@@ -5,7 +5,7 @@
  * @visibleName Course Card
  *
  * Used to display each course as a card in the list of courses
- * Used in CourseList
+ * Used in CoursesList
  *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {String} content - text content shows under subtitle

@@ -9,8 +9,8 @@
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @withAuthentication - HOC provides firebase and match props
- * @returns {<CourseCollection/>} - returns component which then the children fetch the correct data
+ * @withFirebase - HOC provides firebase instance to access db and back-end
+ * @returns {<CoursesOrg/>} - returns component which then the children fetch the correct data
  *
  * @see Link [Courses Page](https://moskool.com/courses)
  *
@@ -18,24 +18,21 @@
 
 import React, { lazy, Suspense } from "react";
 
-import { withAuthentication } from "components/shared/Session";
 import MoSpinner from "components/library/MoSpinner";
 import { retry } from "utils/retryLazyImports";
 import PropTypes from "prop-types";
+import { withFirebase } from "components/shared/Firebase";
 
-const CourseCollection = lazy(() =>
-  retry(() => import("./CourseCollection/index"))
-);
+const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
   path: "courses",
   title: "Your Courses",
   isProgressBar: false
 };
 
-const Courses = ({ authUser, firebase, match, history }) => (
+const Courses = ({ firebase, history, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-    <CourseCollection
-      authUser={authUser}
+    <CoursesPage
       collection={collection}
       history={history}
       firebase={firebase}
@@ -45,9 +42,8 @@ const Courses = ({ authUser, firebase, match, history }) => (
 );
 
 Courses.propTypes = {
-  authUser: PropTypes.object,
   firebase: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication(Courses);
+export default withFirebase(Courses);

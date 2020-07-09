@@ -41,7 +41,7 @@ describe("the useQuestion hook", () => {
     const questionPath = "course";
 
     /* TODO return correct data */
-    const mockReturn = { isLoading: true, isError: false, data: undefined };
+    const mockReturn = { isLoading: true, isError: false, data: [] };
     const { result, waitForNextUpdate } = renderHook(() =>
       useQuestion({ firebase, questionId, questionPath })
     );

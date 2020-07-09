@@ -10,45 +10,57 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const useCollections = ({ collectionPath, locationHash }, firebase) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState([]);
+  const [state, setState] = useState({
+    data: [],
+    isLoading: true,
+    isError: false
+  });
 
   useEffect(() => {
-    (async () => {
-      /* Make a firebase query to get details about 
-            the collection or questions Such as name and description
-            */
-      const whereOptions = locationHash
-        ? ["type", "==", locationHash.substring(1)]
-        : ["id", ">", 0];
-      const getCollections = firebase
-        .collection(collectionPath)
-        .where(...whereOptions)
-        .orderBy("id")
-        .onSnapshot(
-          snapshot => {
-            if (snapshot.size) {
-              const data = [];
-              snapshot.forEach(doc =>
-                data.push({ ...doc.data(), uid: doc.id })
-              );
-              setData(data);
-              setIsLoading(false);
-            } else {
-              setIsLoading(false);
-            }
-            /* Unsubscribe from firebase on unmount */
-          },
-          error => setIsError(error.message)
-        );
-      return () => {
-        getCollections();
-      };
-    })();
-  }, [collectionPath, locationHash, firebase]);
+    /* Make a firebase query to get details about 
+          the collection or questions Such as name and description
+          */
+    const whereOptions = locationHash
+      ? ["type", "==", locationHash.substring(1)]
+      : ["id", ">", 0];
 
-  return { isLoading, isError, data };
+    const getCollections = firebase
+      .collection(collectionPath)
+      .where(...whereOptions)
+      .orderBy("id")
+      .onSnapshot(
+        snapshot => {
+          if (snapshot.size) {
+            const data = [];
+            snapshot.forEach(doc => data.push({ ...doc.data(), uid: doc.id }));
+            setState({
+              data,
+              isLoading: false,
+              isError: false
+            });
+          } else {
+            setState({
+              data: [],
+              isLoading: false,
+              isError: false
+            });
+          }
+          /* Unsubscribe from firebase on unmount */
+        },
+        () =>
+          setState({
+            data: [],
+            isLoading: false,
+            isError: false
+          })
+      );
+
+    return () => {
+      getCollections();
+    };
+  }, [collectionPath, firebase, locationHash]);
+
+  return { ...state };
 };
 
 useCollections.propTypes = {

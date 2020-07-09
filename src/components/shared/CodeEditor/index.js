@@ -31,7 +31,7 @@ import { addFocusOnEditor, getPreviewElement } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import { lightTheme } from "utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
-import Fade from "@material-ui/core/Fade";
+import Grow from "@material-ui/core/Grow";
 // import Headline from "components/library/MoHeadline";
 import MoLinearProgress from "components/library/MoLinearProgress";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
@@ -106,10 +106,10 @@ const CodeEditor = ({
         noInline={false}
       >
         <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
-          <Fade
+          <Grow
             in={codeAnswer && true}
             mountOnEnter
-            timeout={{ enter: 800 }}
+            timeout={{ enter: 200 }}
             unmountOnExit
           >
             <div>
@@ -140,13 +140,13 @@ const CodeEditor = ({
               </MoBrowserMockup>
               {matchPercent && <MoLinearProgress percent={matchPercent} />}
             </div>
-          </Fade>
+          </Grow>
         </Grid>
         <Grid item md={md} sm={sm} xs={12}>
-          <Fade
+          <Grow
             in={(isPlayground && true) || (codeAnswer && true)}
             mountOnEnter
-            timeout={{ enter: 800 }}
+            timeout={{ enter: 200 }}
             unmountOnExit
           >
             <div>
@@ -154,7 +154,7 @@ const CodeEditor = ({
                 {codeAnswer && <LivePreview className={classes.livePreview} />}
               </MoBrowserMockup>
             </div>
-          </Fade>
+          </Grow>
         </Grid>
         {isPlayground && (
           <Grid item md={12} sm={12} xs={12}>
