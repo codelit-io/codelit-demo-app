@@ -13,40 +13,37 @@ import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const QuestionPageNav = ({ leftArrowClick, rightArrowClick, question
-}) => {
+const QuestionPageNav = ({ prevClick, nextClick, question }) => {
+  const useStyles = makeStyles(theme =>
+    createStyles({
+      leftArrow: {
+        color: question.id === 1 ? theme.grey.superLight : theme.grey.medium
+      },
+      rightArrow: { color: theme.grey.medium }
+    })
+  );
 
+  const classes = useStyles();
 
-    const useStyles = makeStyles(theme =>
-        createStyles({
-            leftArrow: { color: question.id === 1 ? theme.grey.superLight : theme.grey.medium },
-            rightArrow: { color: theme.grey.medium },
-        })
-    );
+  if (!question.id) {
+    return null;
+  }
 
-    const classes = useStyles();
-
-    if (!question.id) {
-        return null;
-    }
-
-    return (
-        <ButtonGroup
-            variant="text"
-            aria-label="text primary button group"
-        >
-            <Button
-                className={classes.leftArrow}
-                startIcon={<KeyboardArrowLeftIcon />}
-                onClick={() => rightArrowClick()} />
-            <Button>{question.id}</Button>
-            <Button
-                className={classes.rightArrow}
-                startIcon={<KeyboardArrowRightIcon />}
-                onClick={() => leftArrowClick()} />
-        </ButtonGroup>
-    )
+  return (
+    <ButtonGroup variant="text" aria-label="text primary button group">
+      <Button
+        className={classes.leftArrow}
+        startIcon={<KeyboardArrowLeftIcon />}
+        onClick={() => prevClick()}
+      />
+      <Button>{question.id}</Button>
+      <Button
+        className={classes.rightArrow}
+        startIcon={<KeyboardArrowRightIcon />}
+        onClick={() => nextClick()}
+      />
+    </ButtonGroup>
+  );
 };
 
 export default QuestionPageNav;
-

@@ -82,9 +82,15 @@ const QuestionPage = ({
   const classes = useStyles();
   const triggerNextQuestion = useCallback(() => {
     const id = Number(question.id) + 1;
-    /* Clear questions */
-    setQuestion({});
-    /* Clear matchPercent */
+    setMatchPercent();
+
+    setIsCorrect(false);
+    setSnackbarProps({ isActive: false });
+    handleNavigation(id);
+  }, [handleNavigation, question]);
+
+  const triggerPrevQuestion = useCallback(() => {
+    const id = Number(question.id) - 1;
     setMatchPercent();
 
     setIsCorrect(false);
@@ -178,22 +184,25 @@ const QuestionPage = ({
       <section className={classes.section}>
         <Grid container>
           <Grid item xs={6} sm={6} md={6}>
-            {question?.answer && !question?.question && (
-              <Button
-                className={classes.grey}
-                aria-label="Need a hint?"
-                aria-haspopup="true"
-                startIcon={<HelpIcon />}
-                onClick={() => {
-                  setIsHintTypist(true);
-                }}
-              >
-                Need a hint?
+            <Button
+              disabled={question.question && true}
+              className={!question.question ? classes.grey : classes.lightGrey}
+              aria-label="Need a hint?"
+              aria-haspopup="true"
+              startIcon={<HelpIcon />}
+              onClick={() => {
+                setIsHintTypist(true);
+              }}
+            >
+              Need a hint?
               </Button>
-            )}
           </Grid>
           <Grid item xs={6} sm={6} md={6} className={classes.textAlignRight}>
-            <QuestionPageNav leftArrowClick={() => triggerNextQuestion()} rightArrowClick={() => triggerNextQuestion()} question={question} />
+            <QuestionPageNav
+              prevClick={() => triggerPrevQuestion()}
+              nextClick={() => triggerNextQuestion()}
+              question={question}
+            />
           </Grid>
         </Grid>
       </section>
@@ -204,4 +213,3 @@ const QuestionPage = ({
   );
 };
 export default QuestionPage;
-
