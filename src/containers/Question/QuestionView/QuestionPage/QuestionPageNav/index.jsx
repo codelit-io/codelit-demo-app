@@ -1,5 +1,14 @@
 /**
- * Single Question is code editor, code preview and error console. This container fetches a single question
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName Question Page Nav
+ *
+ * 
+ * Navigation for a single question UI. Navigate between questions
+ * 
+ * @param {CallableFunction} prevClick - Previous click callback
+ * @param {CallableFunction} nextClick - Next click callback
  * @param {Object} question - Question object
  */
 
