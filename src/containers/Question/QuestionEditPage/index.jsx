@@ -22,20 +22,37 @@ import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/library/MoSnackBar";
 import MoSpinner from "components/library/MoSpinner";
-import QuestionForm from "containers/Question/QuestionEdit/QuestionForm";
+import QuestionForm from "containers/Question/QuestionEditPage/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
+import { updateQuestion } from "utils/questionFirebase";
 
-const QuestionEdit = ({ authUser, firebase, history, match }) => {
+const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState();
   const [snackbarProps, setSnackbarProps] = useState(null);
 
   const viewQuestion = useCallback(() => {
-    history.goBack();
-  }, [history]);
+    history.push(
+      `/courses/${match.params.collection}/${match.params.questionId}`
+    );
+  }, [history, match]);
 
+  const onSubmit = useCallback(
+    (event, formData) => {
+      updateQuestion({ ...formData, ...event }, firebase, match);
+      setSnackbarProps({
+        autoHideDuration: 2000,
+        buttonText: "View Question",
+        isActive: true,
+        title: "Saved"
+      });
+    },
+    [firebase, setSnackbarProps, match]
+  );
+
+  /* TODO: Move to custom hook */
   useEffect(() => {
     const id = match.params.questionId;
     setIsLoading(true);
@@ -83,26 +100,16 @@ const QuestionEdit = ({ authUser, firebase, history, match }) => {
       <QuestionForm
         isLoading={isLoading}
         isCard={false}
-        firebase={firebase}
         title={question?.title}
         label={question?.label}
-        match={match}
         question={question}
         setQuestion={e => setQuestion(e)}
         subtitle={question?.subtitle}
-        setSnackbarProps={snackbarProps => setSnackbarProps(snackbarProps)}
         viewQuestion={() => viewQuestion()}
+        onSubmit={(event, formData) => onSubmit(event, formData)}
       />
-      {!isLoading && (
-        <>
-          {snackbarProps && (
-            <MoSnackbar
-              authUser={authUser}
-              handleClick={() => viewQuestion()}
-              snackbarProps={snackbarProps}
-            />
-          )}
-        </>
+      {!isLoading && snackbarProps && (
+        <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
       )}
     </Suspense>
   );
@@ -113,4 +120,4 @@ const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
 export default compose(
   withAuthentication,
   withAuthorization(condition)
-)(QuestionEdit);
+)(QuestionEditPage);

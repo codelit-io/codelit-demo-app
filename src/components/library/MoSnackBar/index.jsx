@@ -14,6 +14,8 @@
  * Example usage
  *
  *    const snackbarProps = {
+ *      // auto hide duration
+ *      autoHideDuration: 2000
  *      // Triggers the snackbar
  *	    isActive: true,
  *      // Left side Icon component
@@ -39,7 +41,7 @@
 import React, { useEffect } from "react";
 
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Slide from "@material-ui/core/Slide";
+import Grow from "@material-ui/core/Grow";
 import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import MoTypography from "components/library/MoTypography";
@@ -60,7 +62,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
 
   const [state, setState] = React.useState({
     isActive,
-    Transition: Slide
+    Transition: Grow
   });
 
   useEffect(() => {
@@ -70,7 +72,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
   const handleButtonClick = e => {
     setState({
       isActive: false,
-      Transition: Slide
+      Transition: Grow
     });
     onClick && onClick(e);
   };
@@ -78,16 +80,18 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
   const handleClose = () => {
     setState({
       ...state,
-      Transition: Slide,
+      Transition: Grow,
       isActive: false
     });
   };
 
   return (
     <Snackbar
-      autoHideDuration={autoHideDuration}
       open={state.isActive}
-      onClose={handleClose}
+      resumeHideDuration={autoHideDuration}
+      autoHideDuration={autoHideDuration}
+      transitionDuration={{ enter: 400, exit: 400 }}
+      onClose={() => handleClose()}
       TransitionComponent={state.Transition}
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
