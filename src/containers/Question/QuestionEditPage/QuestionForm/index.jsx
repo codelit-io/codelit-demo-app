@@ -12,7 +12,6 @@ import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
 import MoTypography from "components/library/MoTypography";
-import { updateQuestion } from "utils/questionFirebase";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -21,14 +20,12 @@ const QuestionForm = ({
   children,
   isLoading,
   label,
-  firebase,
-  match,
   question,
   subtitle,
   setQuestion,
-  setSnackbarProps,
   title,
-  viewQuestion
+  viewQuestion,
+  onSubmit
 }) => {
   const { handleSubmit, register } = useForm();
   const [formData, setFormData] = useState({});
@@ -59,33 +56,7 @@ const QuestionForm = ({
     [setQuestion, question]
   );
 
-  const onSubmit = useCallback(
-    event => {
-      updateQuestion({ ...formData, ...event }, firebase, match);
-      setSnackbarProps({
-        autoHideDuration: 2000,
-        buttonText: "View Question",
-        isActive: true,
-        title: "Saved"
-      });
-
-      // if (formData.label) {
-      // const id = formData?.label.replace(/\s+/g, "-").toLowerCase();
-      // const payload = {
-      //   ...formData,
-      //   id,
-      //   userId: authUser.uid,
-      //   createdAt: firebase.fieldValue.serverTimestamp(),
-      // };
-      // firebase.collection("courses").doc(id).set(payload, { merge: true });
-      // handleDialogState(false);
-      // history.push(`/courses/${id}`);
-      // }
-    },
-    [formData, firebase, setSnackbarProps, match]
-  );
-
-  if (isLoading) {
+  if (isLoading && formData) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
 
@@ -148,7 +119,7 @@ const QuestionForm = ({
       </section>
       {children && <section className={classes.section}>{children}</section>}
       <section className={classes.section}>
-        <Button type="button" color="default">
+        <Button type="button" color="default" onClick={() => viewQuestion()}>
           Back to Question
         </Button>
         <Button
