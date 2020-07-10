@@ -93,16 +93,12 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         setSnackbarProps={snackbarProps => setSnackbarProps(snackbarProps)}
         viewQuestion={() => viewQuestion()}
       />
-      {!isLoading && (
-        <>
-          {snackbarProps && (
-            <MoSnackbar
-              authUser={authUser}
-              handleClick={() => viewQuestion()}
-              snackbarProps={snackbarProps}
-            />
-          )}
-        </>
+      {!isLoading && snackbarProps && (
+        <MoSnackbar
+          authUser={authUser}
+          handleClick={() => viewQuestion()}
+          snackbarProps={snackbarProps}
+        />
       )}
     </Suspense>
   );
