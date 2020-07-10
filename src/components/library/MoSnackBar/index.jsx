@@ -101,8 +101,8 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
             {IconComponent ? (
               <IconComponent className={classes.checkIcon} />
             ) : (
-                <CheckCircleIcon className={classes.checkIcon} />
-              )}
+              <CheckCircleIcon className={classes.checkIcon} />
+            )}
             <MoTypography color="greyDark" font="breeSerif" variant="h3">
               {title}
             </MoTypography>

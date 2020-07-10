@@ -62,7 +62,6 @@ const QuestionForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-
       <section className={classes.section}>
         {title && (
           <MoPageHeaderEdit text={title} register={register} name="title" />
@@ -77,14 +76,14 @@ const QuestionForm = ({
 
       {question && (
         <section className={classes.section}>
-          < MoTypography
+          <MoTypography
             color="grey"
             font="breeSerif"
             marginBottom="sm"
             variant="h6"
           >
             Question
-            </ MoTypography>
+          </MoTypography>
           <CodeEditor
             codeAnswer={"Write Question Here"}
             codeLanguage={question?.language}
@@ -107,7 +106,7 @@ const QuestionForm = ({
             variant="h6"
           >
             Answer
-        </MoTypography>
+          </MoTypography>
           <CodeEditor
             codeAnswer={"Answer"}
             codeLanguage={question?.language}
@@ -126,7 +125,7 @@ const QuestionForm = ({
         <section className={classes.section}>
           <Button type="button" color="default" onClick={() => viewQuestion()}>
             Back to Question
-        </Button>
+          </Button>
           <Button
             onKeyPress={e => {
               e.key === "Enter" && e.preventDefault();
@@ -135,10 +134,10 @@ const QuestionForm = ({
             color="primary"
           >
             Save
-        </Button>
+          </Button>
         </section>
       )}
-    </form >
+    </form>
   );
 };
 

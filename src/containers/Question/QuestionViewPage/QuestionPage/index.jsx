@@ -82,30 +82,35 @@ const QuestionPage = ({
 
   const classes = useStyles();
 
-  /** 
-   * Triggers the next question by cleaning state for the question, 
+  /**
+   * Triggers the next question by cleaning state for the question,
    * hide snackbar and handle navigation
    * @param {string} type - next or prev to get correct question id
-   * 
-  */
-  const triggerQuestion = useCallback((type) => {
-    const id = {
-      next: Number(question.id) + 1,
-      prev: Number(question.id) - 1
-    }
-    setMatchPercent();
-    setQuestion({ question: "<pre style={{color:'#bdbdbd'}}>No code to preview</pre>" });
-    setIsCorrect(false);
-    setSnackbarProps({ isActive: false });
-    handleNavigation(id[type]);
-  }, [handleNavigation, question]);
+   *
+   */
+  const triggerQuestion = useCallback(
+    type => {
+      const id = {
+        next: Number(question.id) + 1,
+        prev: Number(question.id) - 1
+      };
+      setMatchPercent();
+      setQuestion({
+        question: "<pre style={{color:'#bdbdbd'}}>No code to preview</pre>"
+      });
+      setIsCorrect(false);
+      setSnackbarProps({ isActive: false });
+      handleNavigation(id[type]);
+    },
+    [handleNavigation, question]
+  );
 
   /**
    * Checks if user code matches Pre made answer,
    * then sets the state data, award player, and handle snackbar
    * @param {string} userAnswer - changes when user writes a new answer in the code editor
    *
-  */
+   */
   const handleOnChange = useCallback(
     ({ userAnswer }) => {
       if (userAnswer === "{}" || userAnswer === "") {
@@ -124,7 +129,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-        (question?.matchPercent * 100 || 100)
+          (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -196,7 +201,9 @@ const QuestionPage = ({
             {question.answer && (
               <Button
                 disabled={question.question ? true : false}
-                className={!question.question ? classes.grey : classes.lightGrey}
+                className={
+                  !question.question ? classes.grey : classes.lightGrey
+                }
                 aria-label="Need a hint?"
                 aria-haspopup="true"
                 startIcon={<HelpIcon />}
