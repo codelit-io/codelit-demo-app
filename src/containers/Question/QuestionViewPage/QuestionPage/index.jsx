@@ -66,13 +66,14 @@ const QuestionPage = ({
           cursor: "text"
         }
       },
-      // section: { paddingTop: theme.space?.lg, paddingBottom: theme.space?.xl }
       section: { paddingBottom: theme.space?.xl }
     })
   );
 
   useEffect(() => {
     try {
+      /* Set state when component is mounted and parse the question
+      since the question passed with special formatting that needs to be applied*/
       setQuestion({ ...data, question: JSON.parse(data.question) });
     } catch {
       setQuestion(data);
@@ -80,25 +81,31 @@ const QuestionPage = ({
   }, [data]);
 
   const classes = useStyles();
-  const triggerNextQuestion = useCallback(() => {
-    const id = Number(question.id) + 1;
-    setMatchPercent();
 
+  /** 
+   * Triggers the next question by cleaning state for the question, 
+   * hide snackbar and handle navigation
+   * @param {string} type - next or prev to get correct question id
+   * 
+  */
+  const triggerQuestion = useCallback((type) => {
+    const id = {
+      next: Number(question.id) + 1,
+      prev: Number(question.id) - 1
+    }
+    setMatchPercent();
+    setQuestion({ question: "<pre style={{color:'#bdbdbd'}}>No code to preview</pre>" });
     setIsCorrect(false);
     setSnackbarProps({ isActive: false });
-    handleNavigation(id);
+    handleNavigation(id[type]);
   }, [handleNavigation, question]);
 
-  const triggerPrevQuestion = useCallback(() => {
-    const id = Number(question.id) - 1;
-    setMatchPercent();
-
-    setIsCorrect(false);
-    setSnackbarProps({ isActive: false });
-    handleNavigation(id);
-  }, [handleNavigation, question]);
-
-  /* Checks if user code matches Pre made answer */
+  /**
+   * Checks if user code matches Pre made answer,
+   * then sets the state data, award player, and handle snackbar
+   * @param {string} userAnswer - changes when user writes a new answer in the code editor
+   *
+  */
   const handleOnChange = useCallback(
     ({ userAnswer }) => {
       if (userAnswer === "{}" || userAnswer === "") {
@@ -130,17 +137,17 @@ const QuestionPage = ({
         );
         setIsCorrect(true);
         setSnackbarProps({
-          autoHideDuration: 3000,
+          autoHideDuration: 4000,
           buttonText: "Keep Going",
           isActive: true,
           title: "Hooray!",
-          onClick: () => triggerNextQuestion()
+          onClick: () => triggerQuestion("next")
         });
       } else {
         setQuestion({ ...question, question: userAnswer });
       }
     },
-    [authUser, firebase, match, triggerNextQuestion, question]
+    [authUser, firebase, match, triggerQuestion, question]
   );
 
   return (
@@ -185,23 +192,26 @@ const QuestionPage = ({
       <section className={classes.section}>
         <Grid container>
           <Grid item xs={6} sm={6} md={6}>
-            <Button
-              disabled={question.question ? true : false}
-              className={!question.question ? classes.grey : classes.lightGrey}
-              aria-label="Need a hint?"
-              aria-haspopup="true"
-              startIcon={<HelpIcon />}
-              onClick={() => {
-                setIsHintTypist(true);
-              }}
-            >
-              Need a hint?
-            </Button>
+            {/* Render if answer is aviable */}
+            {question.answer && (
+              <Button
+                disabled={question.question ? true : false}
+                className={!question.question ? classes.grey : classes.lightGrey}
+                aria-label="Need a hint?"
+                aria-haspopup="true"
+                startIcon={<HelpIcon />}
+                onClick={() => {
+                  setIsHintTypist(true);
+                }}
+              >
+                Need a hint?
+              </Button>
+            )}
           </Grid>
           <Grid item xs={6} sm={6} md={6} className={classes.textAlignRight}>
             <QuestionPageNav
-              prevClick={() => triggerPrevQuestion()}
-              nextClick={() => triggerNextQuestion()}
+              prevClick={() => triggerQuestion("prev")}
+              nextClick={() => triggerQuestion("next")}
               question={question}
             />
           </Grid>
