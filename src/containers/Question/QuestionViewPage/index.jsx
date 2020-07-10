@@ -26,7 +26,7 @@ import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 
-const QuestionView = ({ authUser, firebase, history, match }) => {
+const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,
@@ -70,4 +70,4 @@ const QuestionView = ({ authUser, firebase, history, match }) => {
   );
 };
 
-export default withAuthentication(QuestionView);
+export default withAuthentication(QuestionViewPage);
