@@ -46,7 +46,7 @@ const QuestionPage = ({
 }) => {
   const [question, setQuestion] = useState(data);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [snackbarProps, setSnackbarProps] = useState(null);
+  const [snackbarProps, setSnackbarProps] = useState({ isActive: false });
   const [matchPercent, setMatchPercent] = useState();
   const [isHintTypist, setIsHintTypist] = useState(false);
 
@@ -117,7 +117,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-          (question?.matchPercent * 100 || 100)
+        (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -130,6 +130,7 @@ const QuestionPage = ({
         );
         setIsCorrect(true);
         setSnackbarProps({
+          autoHideDuration: 3000,
           buttonText: "Keep Going",
           isActive: true,
           title: "Hooray!",
@@ -206,9 +207,7 @@ const QuestionPage = ({
           </Grid>
         </Grid>
       </section>
-      {snackbarProps && (
-        <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
-      )}
+      <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
     </Suspense>
   );
 };
