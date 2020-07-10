@@ -63,15 +63,9 @@ const QuestionForm = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <section className={classes.section}>
-        {title && (
-          <MoPageHeaderEdit text={title} register={register} name="title" />
-        )}
-        {label && (
-          <MoPageContentEdit text={label} register={register} name="label" />
-        )}
-        {subtitle && (
-          <MoHintEdit text={subtitle} register={register} name="subtitle" />
-        )}
+        <MoPageHeaderEdit text={title} register={register} name="title" placeholder={"Html Paragraph"} />
+        <MoPageContentEdit text={label} register={register} name="label" placeholder={"Create a paragraph open tag in html"} />
+        <MoHintEdit text={subtitle} register={register} name="subtitle" placeholder={"<p>"} />
       </section>
 
       {question && (

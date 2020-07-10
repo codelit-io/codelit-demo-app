@@ -32,8 +32,7 @@ const NewCourseDialog = ({ authUser, firebase }) => {
 
   const [formData] = useState({
     title: "Master React Course",
-    desc:
-      "A series of questions to learn advanced courses in react such as React hooks and Context API",
+    desc: "Learn React best practices",
     id: 0
   });
 

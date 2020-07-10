@@ -1,7 +1,5 @@
 import React from "react";
 
-import Fade from "@material-ui/core/Fade";
-
 const MoPageSubtitleEdit = ({
   children,
   text,
@@ -28,18 +26,16 @@ const MoPageSubtitleEdit = ({
   };
 
   return (
-    <Fade in mountOnEnter timeout={{ enter: 200 }} unmountOnExit>
-      <div style={styles.container}>
-        <input
-          className="MuiTypography-h4"
-          name={name}
-          placeholder={text || children}
-          defaultValue={text || children}
-          ref={register}
-          style={styles.text}
-        />
-      </div>
-    </Fade>
+    <div style={styles.container}>
+      <input
+        className="MuiTypography-h4"
+        name={name}
+        placeholder={text || children}
+        defaultValue={text || children}
+        ref={register}
+        style={styles.text}
+      />
+    </div>
   );
 };
 
