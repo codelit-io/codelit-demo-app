@@ -62,6 +62,7 @@ const QuestionForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+
       <section className={classes.section}>
         {title && (
           <MoPageHeaderEdit text={title} register={register} name="title" />
@@ -73,16 +74,17 @@ const QuestionForm = ({
           <MoHintEdit text={subtitle} register={register} name="subtitle" />
         )}
       </section>
-      <section className={classes.section}>
-        <MoTypography
-          color="grey"
-          font="breeSerif"
-          marginBottom="sm"
-          variant="h6"
-        >
-          Question
-        </MoTypography>
-        {question && (
+
+      {question && (
+        <section className={classes.section}>
+          < MoTypography
+            color="grey"
+            font="breeSerif"
+            marginBottom="sm"
+            variant="h6"
+          >
+            Question
+            </ MoTypography>
           <CodeEditor
             codeAnswer={"Write Question Here"}
             codeLanguage={question?.language}
@@ -93,18 +95,19 @@ const QuestionForm = ({
             sm={6}
             md={6}
           />
-        )}
-      </section>
-      <section className={classes.section}>
-        <MoTypography
-          color="grey"
-          font="breeSerif"
-          marginBottom="sm"
-          variant="h6"
-        >
-          Answer
+        </section>
+      )}
+
+      {question && (
+        <section className={classes.section}>
+          <MoTypography
+            color="grey"
+            font="breeSerif"
+            marginBottom="sm"
+            variant="h6"
+          >
+            Answer
         </MoTypography>
-        {question && (
           <CodeEditor
             codeAnswer={"Answer"}
             codeLanguage={question?.language}
@@ -115,24 +118,27 @@ const QuestionForm = ({
             sm={6}
             md={6}
           />
-        )}
-      </section>
+        </section>
+      )}
+
       {children && <section className={classes.section}>{children}</section>}
-      <section className={classes.section}>
-        <Button type="button" color="default" onClick={() => viewQuestion()}>
-          Back to Question
+      {question && (
+        <section className={classes.section}>
+          <Button type="button" color="default" onClick={() => viewQuestion()}>
+            Back to Question
         </Button>
-        <Button
-          onKeyPress={e => {
-            e.key === "Enter" && e.preventDefault();
-          }}
-          type="submit"
-          color="primary"
-        >
-          Save
+          <Button
+            onKeyPress={e => {
+              e.key === "Enter" && e.preventDefault();
+            }}
+            type="submit"
+            color="primary"
+          >
+            Save
         </Button>
-      </section>
-    </form>
+        </section>
+      )}
+    </form >
   );
 };
 
