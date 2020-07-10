@@ -14,6 +14,8 @@
  * Example usage
  *
  *    const snackbarProps = {
+ *      // auto hide duration
+ *      autoHideDuration: 2000
  *      // Triggers the snackbar
  *	    isActive: true,
  *      // Left side Icon component
