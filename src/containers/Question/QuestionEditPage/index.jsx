@@ -50,6 +50,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     [firebase, setSnackbarProps, match]
   );
 
+  /* TODO: Move to custom hook */
   useEffect(() => {
     const id = match.params.questionId;
     setIsLoading(true);
