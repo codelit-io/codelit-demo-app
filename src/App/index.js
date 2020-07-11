@@ -17,8 +17,6 @@
 import React, { Suspense, lazy } from "react";
 
 import * as ROUTES from "constants/routes";
-import * as Sentry from "@sentry/browser";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
 import theme from "./theme";
@@ -88,11 +86,5 @@ const App = () => (
     </Router>
   </ThemeProvider>
 );
-
-if (process.env.NODE_ENV === "production") {
-  Sentry.init({
-    dsn: "https://2cb4b0fa634941a69b5bdd868a07a024@sentry.io/1878459"
-  });
-}
 
 export default App;
