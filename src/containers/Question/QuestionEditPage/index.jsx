@@ -44,13 +44,11 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
       updateQuestion(event, firebase, match);
       setSnackbarProps({
         autoHideDuration: 2000,
-        buttonText: "View Question",
         isActive: true,
         title: "Saved",
-        onclick: () => navToQuestionViewPage()
       });
     },
-    [firebase, setSnackbarProps, match, navToQuestionViewPage]
+    [firebase, setSnackbarProps, match]
   );
 
   /* TODO: Move to custom hook */

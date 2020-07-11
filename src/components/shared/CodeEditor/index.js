@@ -15,6 +15,7 @@
  * @param {String} codeLanguage - Language of code, html or jsx
  * @param {String} codeQuestion - Optional - Question in a form of a code or could behave as a starting point
  * @param {CallableFunction} handleOnChange - Handles changes to code as viewers type in code
+ * @param {Boolean} isConsole - Enables the error console
  * @param {Boolean} isMobile - Detects if we are on a mobile device
  * @param {Boolean} isPlayground - Currently used to display the error console
  * @param {Number} md - Grid styling when viewing on a medium size device
@@ -44,7 +45,9 @@ const CodeEditor = ({
   codeLanguage,
   codeQuestion,
   handleOnChange,
+  isConsole,
   isMobile,
+  noInline,
   isPlayground,
   isEditMode,
   isHintTypist,
@@ -103,7 +106,7 @@ const CodeEditor = ({
       <LiveProvider
         code={codeQuestion}
         language={codeLanguage || "jsx"}
-        noInline={false}
+        noInline={noInline || false}
       >
         <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
           <Grow
@@ -156,7 +159,7 @@ const CodeEditor = ({
             </div>
           </Grow>
         </Grid>
-        {isPlayground && (
+        {isConsole && (
           <Grid item md={12} sm={12} xs={12}>
             <LiveError />
           </Grid>

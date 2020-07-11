@@ -1,4 +1,4 @@
-import React, { lazy, useState, useEffect, useMemo } from "react";
+import React, { lazy, useState, useEffect } from "react";
 
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -56,12 +56,6 @@ const QuestionForm = ({
     [setQuestion, question]
   );
 
-  const codeEditorData = useMemo(() => [
-    { codeQuestion: question?.question, title: "Question", isPlayground: question?.isPlayground, callBack: (userAnswer) => handleAnswerChange(userAnswer) },
-    { codeQuestion: question?.answer, title: "Answer", isPlayground: question?.isPlayground, callBack: (userAnswer) => handleQuestionChange(userAnswer) },
-  ], [question, handleAnswerChange, handleQuestionChange]);
-
-
   if (isLoading && formData) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
@@ -74,30 +68,6 @@ const QuestionForm = ({
         <MoHintEdit text={subtitle} register={register} name="subtitle" placeholder={"<p>"} />
       </section>
       {
-        question && codeEditorData.map((item, index) => (
-          <section className={classes.section} key={index}>
-            <MoTypography
-              color="grey"
-              font="breeSerif"
-              marginBottom="sm"
-              variant="h6"
-            >
-              {item.title}
-          </MoTypography>
-            <CodeEditor
-              codeAnswer={"Write Question Here"}
-              codeLanguage={item.language}
-              codeQuestion={item.codeQuestion}
-              isEditMode={true}
-              isPlayground={item?.isPlayground}
-              handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          </section>
-        ))
-      }
-      {/* {
         question && (
           <section className={classes.section}>
             <MoTypography
@@ -112,7 +82,9 @@ const QuestionForm = ({
               codeAnswer={"Write Question Here"}
               codeLanguage={question?.language}
               codeQuestion={question?.question}
+              isConsole={true}
               isEditMode={true}
+              noInline={false}
               isPlayground={question?.isPlayground}
               handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
               sm={6}
@@ -120,9 +92,8 @@ const QuestionForm = ({
             />
           </section>
         )
-      } */}
-
-      {/* {
+      }
+      {
         question && (
           <section className={classes.section}>
             <MoTypography
@@ -137,7 +108,9 @@ const QuestionForm = ({
               codeAnswer={"Answer"}
               codeLanguage={question?.language}
               codeQuestion={question?.answer}
+              isConsole={true}
               isEditMode={true}
+              noInline={false}
               isPlayground={question?.isPlayground}
               handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
               sm={6}
@@ -145,7 +118,7 @@ const QuestionForm = ({
             />
           </section>
         )
-      } */}
+      }
 
       {children && <section className={classes.section}>{children}</section>}
       {
