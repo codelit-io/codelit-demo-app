@@ -197,7 +197,7 @@ const QuestionPage = ({
       <section className={classes.section}>
         <Grid container>
           <Grid item xs={6} sm={6} md={6}>
-            {/* Render if answer is aviable */}
+            {/* Render if answer is available */}
             {question.answer && (
               <Button
                 disabled={question.question ? true : false}
