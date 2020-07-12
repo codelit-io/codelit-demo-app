@@ -42,7 +42,7 @@ To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.
 - [HOC](docs/HOC.md)
 - [Material UI](docs/MATERIAL.md)
 - [React Hooks](docs/REACT_HOOKS.md)
-- [Store / State Management](docs/STORE.md)
+- [Store / State Management](docs/STATE_MANAGEMENT.md)
 - [Styling](docs/STYLING.md)
 - [Testing](docs/TESTING.md)
 
