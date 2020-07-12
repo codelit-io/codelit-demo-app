@@ -100,6 +100,7 @@ const CodeEditor = ({
       }
     })
   );
+
   const classes = useStyles();
   return (
     <Grid container spacing={2}>
