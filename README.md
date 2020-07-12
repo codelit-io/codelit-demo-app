@@ -34,7 +34,17 @@ Deadline March 2021
 
 To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
-## [👉 Ready to Ship it? Onboarding 📦 ](docs/ONBOARDING.md)
+## 👉 Ready to Ship it? 📦 
+
+- [OnBoarding 🚀](docs/ONBOARDING.md)
+- [File Architecture](docs/ARCHITECTURE.md)
+- [Firebase](docs/FIREBASE.md)
+- [HOC](docs/HOC.md)
+- [Material UI](docs/MATERIAL.md)
+- [React Hooks](docs/REACT_HOOKS.md)
+- [Store / State Management](docs/STORE.md)
+- [Styling](docs/STYLING.md)
+- [Testing](docs/TESTING.md)
 
 ## What kind of courses?
 
@@ -80,15 +90,3 @@ DEV Dependencies:
 # Mind Map
 
 [Architecture and components mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
-
-# Tech details
-
-- [OnBoarding 🚀](docs/ONBOARDING.md)
-- [File Architecture](docs/ARCHITECTURE.md)
-- [Firebase](docs/FIREBASE.md)
-- [HOC](docs/HOC.md)
-- [Material UI](docs/MATERIAL.md)
-- [React Hooks](docs/REACT_HOOKS.md)
-- [Store / State Management](docs/STORE.md)
-- [Styling](docs/STYLING.md)
-- [Testing](docs/TESTING.md)

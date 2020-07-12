@@ -1,6 +1,6 @@
 # Firebase
 
-- Cloud backend for everything our frontend app needs. All this functionality exists in Firebase class in `firebase.js`
+- Cloud backend for everything Mo Skools needs. All this functionality exists in Firebase class in `shared/Firebase/firebase.js`
 
 ## Authentication
 
@@ -10,9 +10,20 @@
 
 ### Code Snippets
 
-- Using `authUser` in your components
-- `AuthUserContext` Context API
+**withAuthentication** Using HOC and pass `authUser` prop to component
 
+```
+import { withAuthentication } from "components/shared/Session";
+
+const ComponentName = ({ authUser }) => {
+  ...
+}
+
+withAuthentication(ComponentName)
+
+```
+
+**AuthUserContext** Using Context API
 ```
 import { AuthUserContext } from "../Session";
 

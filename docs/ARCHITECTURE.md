@@ -36,6 +36,7 @@ It's up to you to structure components files, the following is current conventio
 
 ```
 ComponentName/
+    actions.js
     index.jsx
     index.test.js
     styles.jsx
