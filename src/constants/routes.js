@@ -1,6 +1,5 @@
 /*  Pages */
 export const ACCOUNT = { path: "/account", title: "Your account" };
-export const FEATURE_REQUEST = { path: "/home", title: "Feature Request" };
 export const SIGN_IN = { path: "/signin", title: "Email Sign in" };
 export const SIGN_UP = { path: "/signup", title: "Email Sign up" };
 export const PASSWORD_FORGET = { path: "/pw-forget", title: "Forgot Password" };

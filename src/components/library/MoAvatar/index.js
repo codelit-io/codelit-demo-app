@@ -18,7 +18,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import SignInWithFacebook from "components/shared/SocialSignIn/SignInWithFacebook";
 import SignInWithGoogle from "components/shared/SocialSignIn/SignInWithGoogle";
 import SportsMotorsportsIcon from "@material-ui/icons/SportsMotorsports";
-import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Tooltip from "@material-ui/core/Tooltip";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 
@@ -104,28 +103,16 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
               <ListItemText primary={ROUTES.SUBMIT_ISSUE_GITHUB.title} />
             </MenuItem>
             {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
-              <>
-                <MenuItem
-                  to={ROUTES.ADMIN_COURSES.path}
-                  component={Link}
-                  onClick={handleClose}
-                >
-                  <ListItemIcon>
-                    <SportsMotorsportsIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText primary={ROUTES.ADMIN.title} />
-                </MenuItem>
-                <MenuItem
-                  to={ROUTES.FEATURE_REQUEST.path}
-                  component={Link}
-                  onClick={handleClose}
-                >
-                  <ListItemIcon>
-                    <TrendingUpIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText primary={ROUTES.FEATURE_REQUEST.title} />
-                </MenuItem>
-              </>
+              <MenuItem
+                to={ROUTES.ADMIN_COURSES.path}
+                component={Link}
+                onClick={handleClose}
+              >
+                <ListItemIcon>
+                  <SportsMotorsportsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary={ROUTES.ADMIN.title} />
+              </MenuItem>
             )}
             <MenuItem
               button
