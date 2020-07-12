@@ -76,6 +76,7 @@ User Interface is powered by a React frontend, paired with a Firebase serverless
 - [react-live](https://github.com/FormidableLabs/react-live): code editor + live preview + error debugger
 - [react-typist](https://github.com/jstejada/react-typist): typist effect seen throughout
 - [react-hook-form](https://react-hook-form.com/get-started): Helps you create forms easily
+- [use-global-hook](https://www.npmjs.com/package/use-global-hook): Easy state management using hooks
 - [string-similarity](https://www.npmjs.com/package/string-similarity): Compare two strings and get a matching percentage between the strings
 - [recompose](https://github.com/acdlite/recompose): used to compose a wrappedComponent with multiple HOCs
 
