@@ -1,4 +1,4 @@
-# Older State management tools
+# Current State management tools
 
 Using context api for all firebase stuff and they are provided to most pages
 
@@ -7,7 +7,7 @@ Using context api for all firebase stuff and they are provided to most pages
 * history: browser history api
 * firebase: all firebase stuff
 
-# State management using Hooks
+# New State management using Hooks
 
 ## Component
 In your component you can select and set data for global state
