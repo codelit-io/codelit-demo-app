@@ -54,7 +54,6 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   /* TODO: Move to custom hook */
   useEffect(() => {
     const id = match.params.questionId;
-    setIsLoading(true);
     const unsubscribe = firebase
       .getCollectionById(`courses/${match.params.collection}/questions`, id)
       .onSnapshot(snapshot => {

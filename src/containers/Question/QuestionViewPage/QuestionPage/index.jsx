@@ -133,7 +133,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-          (question?.matchPercent * 100 || 100)
+        (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -159,7 +159,7 @@ const QuestionPage = ({
     [authUser, firebase, match, triggerQuestion, question]
   );
 
-  if (isLoading && data) {
+  if (isLoading && !data) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
 
@@ -204,49 +204,51 @@ const QuestionPage = ({
           md={6}
         />
       </section>
-      <section className={classes.section}>
-        {/* TODO: move the follow to another component e.g. CodeEditorBottomNav */}
-        <Grid container>
-          <Grid item xs={4} sm={3} md={3}>
-            {/* Render if answer is available */}
-            <Button
-              disabled={question.question ? true : false}
-              className={!question.question ? classes.grey : classes.lightGrey}
-              aria-label="Need a hint?"
-              aria-haspopup="true"
-              startIcon={<HelpIcon />}
-              onClick={() => {
-                setIsHintTypist(true);
-              }}
-            >
-              Need a hint?
+      {question.id &&
+        < section className={classes.section}>
+          {/* TODO: move the follow to another component e.g. CodeEditorBottomNav */}
+          <Grid container>
+            <Grid item xs={4} sm={3} md={3}>
+              {/* Render if answer is available */}
+              <Button
+                disabled={question.question ? true : false}
+                className={!question.question ? classes.grey : classes.lightGrey}
+                aria-label="Need a hint?"
+                aria-haspopup="true"
+                startIcon={<HelpIcon />}
+                onClick={() => {
+                  setIsHintTypist(true);
+                }}
+              >
+                Need a hint?
             </Button>
-          </Grid>
-          <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
-            <Button
-              className={classes.grey}
-              aria-label="Show error console"
-              aria-haspopup="true"
-              startIcon={<CodeIcon />}
-              onClick={() => {
-                setIsConsole(true);
-              }}
-            >
-              Console
+            </Grid>
+            <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
+              <Button
+                className={classes.grey}
+                aria-label="Show error console"
+                aria-haspopup="true"
+                startIcon={<CodeIcon />}
+                onClick={() => {
+                  setIsConsole(true);
+                }}
+              >
+                Console
             </Button>
+            </Grid>
+            <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
+              <QuestionPageNav
+                isAdmin={userRole.isAdmin}
+                prevClick={() => triggerQuestion("prev")}
+                nextClick={() => triggerQuestion("next")}
+                question={question}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
-            <QuestionPageNav
-              isAdmin={userRole.isAdmin}
-              prevClick={() => triggerQuestion("prev")}
-              nextClick={() => triggerQuestion("next")}
-              question={question}
-            />
-          </Grid>
-        </Grid>
-      </section>
+        </section>
+      }
       <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
-    </Suspense>
+    </Suspense >
   );
 };
 export default QuestionPage;
