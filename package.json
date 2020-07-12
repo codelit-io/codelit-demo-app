@@ -41,7 +41,7 @@
 		"hooks": {
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
 			"pre-commit": "lint-staged",
-			"pre-push": "cross-env CI=true react-scripts test --env=jsdom"
+			"pre-push": "yarn post-commit"
 		}
 	},
 	"browserslist": {

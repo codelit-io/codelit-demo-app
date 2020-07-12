@@ -3,7 +3,14 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 
-const MoPageContentEdit = ({ classes, children, text, name, placeholder, register }) => {
+const MoPageContentEdit = ({
+  classes,
+  children,
+  text,
+  name,
+  placeholder,
+  register
+}) => {
   return (
     <input
       className={`${classes.text} MuiTypography-h6`}

@@ -14,7 +14,7 @@ import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import createStyles from "@material-ui/core/styles/createStyles";
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from "@material-ui/icons/Code";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -99,7 +99,8 @@ const QuestionPage = ({
       };
       setMatchPercent();
       setQuestion({
-        question: "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>"
+        question:
+          "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>"
       });
       setIsCorrect(false);
       setSnackbarProps({ isActive: false });
@@ -132,7 +133,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-        (question?.matchPercent * 100 || 100)
+          (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -210,9 +211,7 @@ const QuestionPage = ({
             {/* Render if answer is available */}
             <Button
               disabled={question.question ? true : false}
-              className={
-                !question.question ? classes.grey : classes.lightGrey
-              }
+              className={!question.question ? classes.grey : classes.lightGrey}
               aria-label="Need a hint?"
               aria-haspopup="true"
               startIcon={<HelpIcon />}
@@ -221,7 +220,7 @@ const QuestionPage = ({
               }}
             >
               Need a hint?
-              </Button>
+            </Button>
           </Grid>
           <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
             <Button
@@ -234,7 +233,7 @@ const QuestionPage = ({
               }}
             >
               Console
-              </Button>
+            </Button>
           </Grid>
           <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
             <QuestionPageNav

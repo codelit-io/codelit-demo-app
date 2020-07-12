@@ -31,9 +31,9 @@ const QuestionPageNav = ({ prevClick, isAdmin, nextClick, question }) => {
       rightArrow: { color: theme.grey.medium }
     })
   );
-  
+
   let isDisabled = !question.isCorrect;
-  isDisabled = isAdmin ? false : true
+  isDisabled = isAdmin ? false : true;
 
   const classes = useStyles();
 

@@ -101,8 +101,8 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
             {IconComponent ? (
               <IconComponent className={classes.checkIcon} />
             ) : (
-                <CheckCircleIcon className={classes.checkIcon} />
-              )}
+              <CheckCircleIcon className={classes.checkIcon} />
+            )}
             <MoTypography color="greyDark" font="breeSerif" variant="h3">
               {title}
             </MoTypography>
@@ -110,15 +110,16 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
         }
         className={classes.snackbarContent}
         action={
-          buttonText &&
-          <MoButton
-            isArrowIcon={true}
-            color="primary"
-            variant="text"
-            size="large"
-            handleButtonClick={e => handleButtonClick(e)}
-            text={buttonText}
-          />
+          buttonText && (
+            <MoButton
+              isArrowIcon={true}
+              color="primary"
+              variant="text"
+              size="large"
+              handleButtonClick={e => handleButtonClick(e)}
+              text={buttonText}
+            />
+          )
         }
       />
     </Snackbar>

@@ -40,12 +40,12 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   }, [history, match]);
 
   const onSubmit = useCallback(
-    (event) => {
+    event => {
       updateQuestion(event, firebase, match);
       setSnackbarProps({
         autoHideDuration: 2000,
         isActive: true,
-        title: "Saved",
+        title: "Saved"
       });
     },
     [firebase, setSnackbarProps, match]
@@ -105,7 +105,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         setQuestion={e => setQuestion(e)}
         subtitle={question?.subtitle}
         navToQuestionViewPage={() => navToQuestionViewPage()}
-        onSubmit={(event) => onSubmit(event)}
+        onSubmit={event => onSubmit(event)}
       />
       {!isLoading && snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
