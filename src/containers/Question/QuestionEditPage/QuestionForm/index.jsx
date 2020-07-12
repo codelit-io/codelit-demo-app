@@ -1,4 +1,4 @@
-import React, { lazy, useState, useEffect, useMemo } from "react";
+import React, { lazy, useState, useEffect } from "react";
 
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -56,117 +56,103 @@ const QuestionForm = ({
     [setQuestion, question]
   );
 
-  const codeEditorData = useMemo(() => [
-    { codeQuestion: question?.question, title: "Question", isPlayground: question?.isPlayground, callBack: (userAnswer) => handleAnswerChange(userAnswer) },
-    { codeQuestion: question?.answer, title: "Answer", isPlayground: question?.isPlayground, callBack: (userAnswer) => handleQuestionChange(userAnswer) },
-  ], [question, handleAnswerChange, handleQuestionChange]);
-
-
   if (isLoading && formData) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
 
   return (
-    <form onSubmit={handleSubmit((e) => onSubmit({ ...question, ...e }))}>
+    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
       <section className={classes.section}>
-        <MoPageHeaderEdit text={title} register={register} name="title" placeholder={"Html Paragraph"} />
-        <MoPageContentEdit text={label} register={register} name="label" placeholder={"Create a paragraph open tag in html"} />
-        <MoHintEdit text={subtitle} register={register} name="subtitle" placeholder={"<p>"} />
+        <MoPageHeaderEdit
+          text={title}
+          register={register}
+          name="title"
+          placeholder={"Html Paragraph"}
+        />
+        <MoPageContentEdit
+          text={label}
+          register={register}
+          name="label"
+          placeholder={"Create a paragraph open tag in html"}
+        />
+        <MoHintEdit
+          text={subtitle}
+          register={register}
+          name="subtitle"
+          placeholder={"<p>"}
+        />
       </section>
-      {
-        question && codeEditorData.map((item, index) => (
-          <section className={classes.section} key={index}>
-            <MoTypography
-              color="grey"
-              font="breeSerif"
-              marginBottom="sm"
-              variant="h6"
-            >
-              {item.title}
+      {question && (
+        <section className={classes.section}>
+          <MoTypography
+            color="grey"
+            font="breeSerif"
+            marginBottom="sm"
+            variant="h6"
+          >
+            Question
           </MoTypography>
-            <CodeEditor
-              codeAnswer={"Write Question Here"}
-              codeLanguage={item.language}
-              codeQuestion={item.codeQuestion}
-              isEditMode={true}
-              isPlayground={item?.isPlayground}
-              handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          </section>
-        ))
-      }
-      {/* {
-        question && (
-          <section className={classes.section}>
-            <MoTypography
-              color="grey"
-              font="breeSerif"
-              marginBottom="sm"
-              variant="h6"
-            >
-              Question
+          <CodeEditor
+            codeAnswer={"Write Question Here"}
+            codeLanguage={question?.language}
+            codeQuestion={question?.question}
+            isConsole={true}
+            isEditMode={true}
+            noInline={false}
+            isPlayground={question?.isPlayground}
+            handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
+            sm={6}
+            md={6}
+          />
+        </section>
+      )}
+      {question && (
+        <section className={classes.section}>
+          <MoTypography
+            color="grey"
+            font="breeSerif"
+            marginBottom="sm"
+            variant="h6"
+          >
+            Answer
           </MoTypography>
-            <CodeEditor
-              codeAnswer={"Write Question Here"}
-              codeLanguage={question?.language}
-              codeQuestion={question?.question}
-              isEditMode={true}
-              isPlayground={question?.isPlayground}
-              handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          </section>
-        )
-      } */}
-
-      {/* {
-        question && (
-          <section className={classes.section}>
-            <MoTypography
-              color="grey"
-              font="breeSerif"
-              marginBottom="sm"
-              variant="h6"
-            >
-              Answer
-          </MoTypography>
-            <CodeEditor
-              codeAnswer={"Answer"}
-              codeLanguage={question?.language}
-              codeQuestion={question?.answer}
-              isEditMode={true}
-              isPlayground={question?.isPlayground}
-              handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
-              sm={6}
-              md={6}
-            />
-          </section>
-        )
-      } */}
+          <CodeEditor
+            codeAnswer={"Answer"}
+            codeLanguage={question?.language}
+            codeQuestion={question?.answer}
+            isConsole={true}
+            isEditMode={true}
+            noInline={false}
+            isPlayground={question?.isPlayground}
+            handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
+            sm={6}
+            md={6}
+          />
+        </section>
+      )}
 
       {children && <section className={classes.section}>{children}</section>}
-      {
-        question && (
-          <section className={classes.section}>
-            <Button type="button" color="default" onClick={() => navToQuestionViewPage()}>
-              Back to Question
+      {question && (
+        <section className={classes.section}>
+          <Button
+            type="button"
+            color="default"
+            onClick={() => navToQuestionViewPage()}
+          >
+            Back to Question
           </Button>
-            <Button
-              onKeyPress={e => {
-                e.key === "Enter" && e.preventDefault();
-              }}
-              type="submit"
-              color="primary"
-            >
-              Save
+          <Button
+            onKeyPress={e => {
+              e.key === "Enter" && e.preventDefault();
+            }}
+            type="submit"
+            color="primary"
+          >
+            Save
           </Button>
-          </section>
-        )
-      }
-    </form >
+        </section>
+      )}
+    </form>
   );
 };
 

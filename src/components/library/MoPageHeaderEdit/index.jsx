@@ -3,7 +3,14 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 
-const MoPageHeaderEdit = ({ children, classes, text, register, name, placeholder }) => {
+const MoPageHeaderEdit = ({
+  children,
+  classes,
+  text,
+  register,
+  name,
+  placeholder
+}) => {
   return (
     <input
       ref={register}

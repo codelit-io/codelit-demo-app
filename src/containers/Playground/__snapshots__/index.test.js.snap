@@ -13,6 +13,7 @@ exports[`Playground Component should match the snapshot 1`] = `
       );
     };"
     handleOnChange={[Function]}
+    isConsole={true}
     isEditMode={true}
     isPlayground={true}
     md={12}

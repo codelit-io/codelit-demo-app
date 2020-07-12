@@ -22,7 +22,7 @@ import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const QuestionPageNav = ({ prevClick, nextClick, question }) => {
+const QuestionPageNav = ({ prevClick, isAdmin, nextClick, question }) => {
   const useStyles = makeStyles(theme =>
     createStyles({
       leftArrow: {
@@ -32,12 +32,14 @@ const QuestionPageNav = ({ prevClick, nextClick, question }) => {
     })
   );
 
+  let isDisabled = !question.isCorrect;
+  isDisabled = isAdmin ? false : true;
+
   const classes = useStyles();
 
   if (!question.id) {
     return null;
   }
-
   return (
     <ButtonGroup variant="text" aria-label="text primary button group">
       <Button
@@ -48,7 +50,7 @@ const QuestionPageNav = ({ prevClick, nextClick, question }) => {
       />
       <Button disabled>{question.id}</Button>
       <Button
-        disabled={!question.isCorrect}
+        disabled={isDisabled}
         className={classes.rightArrow}
         startIcon={<KeyboardArrowRightIcon />}
         onClick={() => nextClick()}

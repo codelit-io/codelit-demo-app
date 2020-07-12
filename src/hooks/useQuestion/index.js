@@ -30,7 +30,8 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
                 question.push({ ...doc.data(), uid: doc.id })
               );
               question.map(data => {
-                return setData(data);
+                setData(data);
+                return data;
               });
             } else {
               return setData({
