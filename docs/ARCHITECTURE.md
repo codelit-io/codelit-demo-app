@@ -9,7 +9,7 @@ Containers are that main component in MoSkool and they represent pages that are 
 
 A container can contain page layout component and other components only specific to this container.
 
-***Courses page***
+***Example Container: Courses page***
 
 ```
 Courses/
@@ -47,5 +47,20 @@ Components/
     YourComponentName.jsx
     OtherStuff.jsx
 ```
+
+## Constants
+Static constants go here, such as roles and routes
+
+## Hooks
+Shared hooks are stored here and they are prefixed with `pre`
+
+## Mocks
+Mock data live here, these are helpful for united testing, dummy data and mock api response.
+
+## Store
+State management using global hook
+
+## Utils
+Shared helper functions
 
 
