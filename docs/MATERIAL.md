@@ -1,16 +1,12 @@
 # Material UI
 
-- Material UI is a total UI kit with many awesome features
-- Biggest alternative to Material-UI is Chakra UI
+Material UI is a total UI kit with many awesome features
 
-**Pros:**
-* Easy and convenient
-* withStyles HOC provides styles to components
-* Global theme
-* default theme (breakpoints, spacing...)
-* Dark mode ready
-* Responsive + accessible
+## Top Features 
 
-**Cons:**
-* Pig heavy weight
-* Hard to customize
+- Theme
+- Responsive
+- Grid
+- Typography
+- Transitions
+- UI Components (Buttons, tables, nav...)

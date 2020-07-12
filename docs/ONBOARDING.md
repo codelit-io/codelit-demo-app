@@ -40,7 +40,7 @@ Follow this [naming convention](https://www.conventionalcommits.org/en/v1.0.0/) 
 
 ### Lint & Format
 
-Run `yarn lint` after commits to lint your code, without it build could fail
+Run `yarn post-commit` after commits to lint, format and test your code, without the push will fail
 
 ESlint and Prettier both run automatically with each commit
 
@@ -58,7 +58,7 @@ Merge PR to Release branch to trigger a release, then CircleCi will deploy the c
 
 1. **Containers** are pages and represent features in the app. Each container can have components specific to it and can not be shared with other components
 
-2. **Data Flow** generally its a good idea to initiate a call to the db and while waiting of the data start rendering the UI. This can be done by making the parent container fetch data from firebase using a React hook. Child components will most likely be rendering the layout of page. Example `Course` container
+2. **Data Flow** generally its a good idea to initiate an async call to the db and while waiting of the data start rendering the UI. This can be done by making the parent container fetch data from firebase using a React hook. Child components will most likely be rendering the layout of page. Example `Course` container
 
 3. **Page Layout** holds layout styling and renders rest of components for the page
 
