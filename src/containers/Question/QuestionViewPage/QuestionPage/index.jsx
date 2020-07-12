@@ -14,6 +14,7 @@ import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import createStyles from "@material-ui/core/styles/createStyles";
+import CodeIcon from "@material-ui/icons/Code";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -40,15 +41,17 @@ const QuestionPage = ({
   firebase,
   handleOnClick,
   handleNavigation,
+  isLoading,
   userRole,
   data,
   match
 }) => {
   const [question, setQuestion] = useState(data);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isConsole, setIsConsole] = useState(false);
+  const [isHintTypist, setIsHintTypist] = useState(false);
   const [snackbarProps, setSnackbarProps] = useState({ isActive: false });
   const [matchPercent, setMatchPercent] = useState();
-  const [isHintTypist, setIsHintTypist] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -96,7 +99,8 @@ const QuestionPage = ({
       };
       setMatchPercent();
       setQuestion({
-        question: "<pre style={{color:'#bdbdbd'}}>No code to preview</pre>"
+        question:
+          "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>"
       });
       setIsCorrect(false);
       setSnackbarProps({ isActive: false });
@@ -155,6 +159,10 @@ const QuestionPage = ({
     [authUser, firebase, match, triggerQuestion, question]
   );
 
+  if (isLoading && data) {
+    return <MoSpinner isLoading={isLoading} color="primary" />;
+  }
+
   return (
     <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
       <MoConfetti isActive={isCorrect} />
@@ -185,9 +193,11 @@ const QuestionPage = ({
           codeLanguage={question?.language}
           codeQuestion={question?.question}
           handleOnChange={userAnswer => handleOnChange(userAnswer)}
-          isEditMode={false}
+          isEditMode={true}
+          isConsole={isConsole}
           isPlayground={question?.isPlayground}
           isMobile={isMobile}
+          noInline={false}
           matchPercent={matchPercent}
           isHintTypist={isHintTypist}
           sm={6}
@@ -195,28 +205,39 @@ const QuestionPage = ({
         />
       </section>
       <section className={classes.section}>
+        {/* TODO: move the follow to another component e.g. CodeEditorBottomNav */}
         <Grid container>
-          <Grid item xs={6} sm={6} md={6}>
-            {/* Render if answer is aviable */}
-            {question.answer && (
-              <Button
-                disabled={question.question ? true : false}
-                className={
-                  !question.question ? classes.grey : classes.lightGrey
-                }
-                aria-label="Need a hint?"
-                aria-haspopup="true"
-                startIcon={<HelpIcon />}
-                onClick={() => {
-                  setIsHintTypist(true);
-                }}
-              >
-                Need a hint?
-              </Button>
-            )}
+          <Grid item xs={4} sm={3} md={3}>
+            {/* Render if answer is available */}
+            <Button
+              disabled={question.question ? true : false}
+              className={!question.question ? classes.grey : classes.lightGrey}
+              aria-label="Need a hint?"
+              aria-haspopup="true"
+              startIcon={<HelpIcon />}
+              onClick={() => {
+                setIsHintTypist(true);
+              }}
+            >
+              Need a hint?
+            </Button>
           </Grid>
-          <Grid item xs={6} sm={6} md={6} className={classes.textAlignRight}>
+          <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
+            <Button
+              className={classes.grey}
+              aria-label="Show error console"
+              aria-haspopup="true"
+              startIcon={<CodeIcon />}
+              onClick={() => {
+                setIsConsole(true);
+              }}
+            >
+              Console
+            </Button>
+          </Grid>
+          <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
             <QuestionPageNav
+              isAdmin={userRole.isAdmin}
               prevClick={() => triggerQuestion("prev")}
               nextClick={() => triggerQuestion("next")}
               question={question}

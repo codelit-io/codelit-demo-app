@@ -20,7 +20,14 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 
-const MoHintEdit = ({ classes, children, text, register, name }) => {
+const MoHintEdit = ({
+  classes,
+  children,
+  text,
+  register,
+  name,
+  placeholder
+}) => {
   if (!text && !children) {
     return null;
   }
@@ -28,7 +35,7 @@ const MoHintEdit = ({ classes, children, text, register, name }) => {
     <input
       ref={register}
       className={`${classes.text} MuiTypography-h6`}
-      placeholder={text || children}
+      placeholder={text || children || placeholder}
       defaultValue={text || children}
       name={name}
     />

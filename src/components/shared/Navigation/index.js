@@ -30,7 +30,6 @@ const NewCourseDialog = lazy(() => import("./NewCourseDialog"));
 
 const Navigation = ({ authUser, classes, firebase, history }) => {
   const userRole = useUserRole(authUser);
-
   return (
     <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
@@ -59,7 +58,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
                 Courses
               </Button>
               <>
-                {history.location.pathname === ROUTES.COLLECTIONS.path &&
+                {history.location.pathname === ROUTES.ADMIN_COURSES.path &&
                   userRole.isAdmin && (
                     <NewCourseDialog authUser={authUser} firebase={firebase} />
                   )}

@@ -24,7 +24,7 @@ const QuestionForm = ({
   subtitle,
   setQuestion,
   title,
-  viewQuestion,
+  navToQuestionViewPage,
   onSubmit
 }) => {
   const { handleSubmit, register } = useForm();
@@ -61,19 +61,27 @@ const QuestionForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
       <section className={classes.section}>
-        {title && (
-          <MoPageHeaderEdit text={title} register={register} name="title" />
-        )}
-        {label && (
-          <MoPageContentEdit text={label} register={register} name="label" />
-        )}
-        {subtitle && (
-          <MoHintEdit text={subtitle} register={register} name="subtitle" />
-        )}
+        <MoPageHeaderEdit
+          text={title}
+          register={register}
+          name="title"
+          placeholder={"Html Paragraph"}
+        />
+        <MoPageContentEdit
+          text={label}
+          register={register}
+          name="label"
+          placeholder={"Create a paragraph open tag in html"}
+        />
+        <MoHintEdit
+          text={subtitle}
+          register={register}
+          name="subtitle"
+          placeholder={"<p>"}
+        />
       </section>
-
       {question && (
         <section className={classes.section}>
           <MoTypography
@@ -88,7 +96,9 @@ const QuestionForm = ({
             codeAnswer={"Write Question Here"}
             codeLanguage={question?.language}
             codeQuestion={question?.question}
+            isConsole={true}
             isEditMode={true}
+            noInline={false}
             isPlayground={question?.isPlayground}
             handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
             sm={6}
@@ -96,7 +106,6 @@ const QuestionForm = ({
           />
         </section>
       )}
-
       {question && (
         <section className={classes.section}>
           <MoTypography
@@ -111,7 +120,9 @@ const QuestionForm = ({
             codeAnswer={"Answer"}
             codeLanguage={question?.language}
             codeQuestion={question?.answer}
+            isConsole={true}
             isEditMode={true}
+            noInline={false}
             isPlayground={question?.isPlayground}
             handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
             sm={6}
@@ -123,7 +134,11 @@ const QuestionForm = ({
       {children && <section className={classes.section}>{children}</section>}
       {question && (
         <section className={classes.section}>
-          <Button type="button" color="default" onClick={() => viewQuestion()}>
+          <Button
+            type="button"
+            color="default"
+            onClick={() => navToQuestionViewPage()}
+          >
             Back to Question
           </Button>
           <Button

@@ -47,6 +47,7 @@ const Playground = () => {
         codeLanguage={question?.language}
         codeQuestion={question?.question}
         isEditMode={true}
+        isConsole={true}
         isPlayground={true}
         handleOnChange={userAnswer => handleOnChange(userAnswer)}
         sm={12}

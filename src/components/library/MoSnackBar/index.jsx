@@ -110,14 +110,16 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
         }
         className={classes.snackbarContent}
         action={
-          <MoButton
-            isArrowIcon={true}
-            color="primary"
-            variant="text"
-            size="large"
-            handleButtonClick={e => handleButtonClick(e)}
-            text={buttonText}
-          />
+          buttonText && (
+            <MoButton
+              isArrowIcon={true}
+              color="primary"
+              variant="text"
+              size="large"
+              handleButtonClick={e => handleButtonClick(e)}
+              text={buttonText}
+            />
+          )
         }
       />
     </Snackbar>

@@ -33,18 +33,17 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [question, setQuestion] = useState();
   const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const viewQuestion = useCallback(() => {
+  const navToQuestionViewPage = useCallback(() => {
     history.push(
       `/courses/${match.params.collection}/${match.params.questionId}`
     );
   }, [history, match]);
 
   const onSubmit = useCallback(
-    (event, formData) => {
-      updateQuestion({ ...formData, ...event }, firebase, match);
+    event => {
+      updateQuestion(event, firebase, match);
       setSnackbarProps({
         autoHideDuration: 2000,
-        buttonText: "View Question",
         isActive: true,
         title: "Saved"
       });
@@ -105,8 +104,8 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         question={question}
         setQuestion={e => setQuestion(e)}
         subtitle={question?.subtitle}
-        viewQuestion={() => viewQuestion()}
-        onSubmit={(event, formData) => onSubmit(event, formData)}
+        navToQuestionViewPage={() => navToQuestionViewPage()}
+        onSubmit={event => onSubmit(event)}
       />
       {!isLoading && snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
