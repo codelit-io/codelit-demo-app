@@ -190,7 +190,7 @@ const LandingPage = ({ classes }) => {
             marginBottom="md"
             variant="h2"
           >
-            Try the playground
+            {LANDING_PAGE.TRY_THE_PLAYGROUND}
           </MoTypography>
           <MoTypography
             color="grey"

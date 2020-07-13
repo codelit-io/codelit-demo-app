@@ -30,3 +30,15 @@ export const LANDING_PAGE = {
   PLAYGROUND_SUBTITLE:
     "Write code in JSX and watch it render your code magically."
 };
+
+export const SIGN_IN = {
+  PAGE_TITLE: "You are logged in 👍",
+  PAGE_LOGGED_IN_TITLE: "Welcome Back 🤩",
+  VIEW_ALL_COURSES: "View All Courses"
+};
+
+export const SIGN_UP = {
+  PAGE_TITLE: "You are signed up 👍",
+  PAGE_LOGGED_IN_TITLE: "Sign up to get started 😎",
+  VIEW_ALL_COURSES: "View All Courses"
+};

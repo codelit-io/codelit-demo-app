@@ -24,7 +24,6 @@ import { COURSES } from "constants/i18n";
 import MoSpinner from "components/library/MoSpinner";
 import PropTypes from "prop-types";
 
-
 const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
   path: "courses",
