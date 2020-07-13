@@ -4,16 +4,13 @@ Description of PR that completes issue here...
 
 - Description of changes
 
-## Screenshots
-
-(prefer animated gif)
 
 ## Checklist
 
+- [ ] Run `post-commit` locally?
 - [ ] Requires dependency update?
 - [ ] Automated tests
+- [ ] Follow accessibility guidelines
 - [ ] Looks good on large screens
 - [ ] Looks good on mobile
 - [ ] Ping @mo-sharif for visibility
-
-Closes [TICKET-14](https://linktoticket.com/ticket-number-14)
