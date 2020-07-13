@@ -1,4 +1,4 @@
-import React, { lazy, useState, useEffect } from "react";
+import React, { lazy } from "react";
 
 import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
@@ -28,38 +28,20 @@ const QuestionForm = ({
   onSubmit
 }) => {
   const { handleSubmit, register } = useForm();
-  const [formData, setFormData] = useState({});
 
-  useEffect(() => {
-    setFormData(question);
-  }, [question]);
-
-  const handleQuestionChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
-      setFormData(preState => ({ ...preState, question: userAnswer }));
-      setQuestion({ ...question, question: userAnswer });
-    },
+  const handleChange = useCallback(({ userAnswer, key }) => {
+    if (userAnswer === "{}" || userAnswer === "") {
+      return;
+    }
+    setQuestion({ ...question, [key]: userAnswer });
+  },
     [setQuestion, question]
   );
 
-  const handleAnswerChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
-      setFormData(preState => ({ ...preState, answer: userAnswer }));
-      setQuestion({ ...question, answer: userAnswer });
-    },
-    [setQuestion, question]
-  );
-
-  if (isLoading && formData) {
+  console.log(question)
+  if (isLoading || !question) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
-
   return (
     <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
       <section className={classes.section}>
@@ -100,7 +82,7 @@ const QuestionForm = ({
             isEditMode={true}
             noInline={false}
             isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
+            handleOnChange={userAnswer => handleChange(userAnswer, "question")}
             sm={6}
             md={6}
           />
@@ -124,7 +106,7 @@ const QuestionForm = ({
             isEditMode={true}
             noInline={false}
             isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
+            handleOnChange={userAnswer => handleChange(userAnswer, "answer")}
             sm={6}
             md={6}
           />
