@@ -79,7 +79,7 @@ const QuestionForm = ({
         <CodeEditor
           codeAnswer={"Write Question Here"}
           codeLanguage={question?.language}
-          codeQuestion={question?.question || {}}
+          codeQuestion={question?.question}
           isConsole={true}
           isEditMode={true}
           noInline={false}

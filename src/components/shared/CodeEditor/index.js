@@ -68,7 +68,7 @@ const CodeEditor = ({
 
   // TODO finish number of lines for editor
   // Count newlines and pad to match actual line numbers
-  const lines = (codeQuestion?.match(/\n/g) || []).length + 2;
+  const lines = ((codeQuestion && codeQuestion.match(/\n/g)) || []).length + 2;
   // Create content with all line numbers and newline them
   const lineNos = [...Array(lines).keys()].slice(1).join("\\00000a");
 
