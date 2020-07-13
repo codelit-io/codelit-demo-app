@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import { ACCOUNT } from "constants/i18n";
 
 import {
   AuthUserContext,
@@ -40,7 +41,7 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <MoPage title="Your Account" isLoading={false}>
+      <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
         <Typography variant="h6" noWrap>
           Email: {authUser.email}
         </Typography>
@@ -209,14 +210,14 @@ class DefaultLoginToggle extends Component {
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="New Password"
+          placeholder={ACCOUNT.NEW_PASSWORD}
         />
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm New Password"
+          placeholder={ACCOUNT.CONFIRM_NEW_PASSWORD}
         />
 
         <Button disabled={isInvalid} type="submit">

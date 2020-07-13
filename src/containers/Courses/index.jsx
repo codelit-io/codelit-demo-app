@@ -18,15 +18,17 @@
 
 import React, { lazy, Suspense } from "react";
 
-import MoSpinner from "components/library/MoSpinner";
 import { retry } from "utils/retryLazyImports";
-import PropTypes from "prop-types";
 import { withFirebase } from "components/shared/Firebase";
+import { COURSES } from "constants/i18n";
+import MoSpinner from "components/library/MoSpinner";
+import PropTypes from "prop-types";
+
 
 const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
   path: "courses",
-  title: "Your Courses",
+  title: COURSES.PAGE_TITLE,
   isProgressBar: false
 };
 

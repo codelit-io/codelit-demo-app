@@ -14,6 +14,7 @@ import React from "react";
 
 import * as ROUTES from "constants/routes";
 
+import { LANDING_PAGE } from "constants/i18n";
 import CheckIcon from "@material-ui/icons/Check";
 import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
@@ -45,7 +46,7 @@ const LandingPage = ({ classes }) => {
                 marginBottom="md"
                 variant="h2"
               >
-                Learn React one step at a time
+                {LANDING_PAGE.HERO_TITLE}
               </MoTypography>
               <MoTypography
                 color="grey"
@@ -53,15 +54,14 @@ const LandingPage = ({ classes }) => {
                 marginBottom="md"
                 variant="h4"
               >
-                Study any React topic, anytime. Explore free front-end
-                development courses
+                {LANDING_PAGE.HERO_SUBTITLE}
               </MoTypography>
               <MoButton
                 isArrowIcon={true}
                 color="primary"
                 variant="contained"
                 size="large"
-                text="View Courses"
+                text={LANDING_PAGE.VIEW_COURSES}
                 href={ROUTES.COLLECTIONS.path}
               />
             </div>
@@ -76,7 +76,7 @@ const LandingPage = ({ classes }) => {
             unmountOnExit
           >
             <img
-              alt="Learning MoSkool React Courses"
+              alt={LANDING_PAGE.LEARN_COURSES}
               src={Landing1}
               className={classes.img}
             />
@@ -109,7 +109,7 @@ const LandingPage = ({ classes }) => {
                 color="primary"
                 variant="text"
                 size="large"
-                text="Basic HTML and usage in React"
+                text={LANDING_PAGE.HTML}
                 href={ROUTES.COLLECTIONS.path + "/#html"}
               />
             </ListItem>
@@ -122,7 +122,7 @@ const LandingPage = ({ classes }) => {
                 color="primary"
                 variant="text"
                 size="large"
-                text="Styling components and elements in React"
+                text={LANDING_PAGE.STYLING}
                 href={ROUTES.COLLECTIONS.path + "/#reactStyle"}
               />
             </ListItem>
@@ -135,7 +135,7 @@ const LandingPage = ({ classes }) => {
                 color="primary"
                 variant="text"
                 size="large"
-                text="JavaScript functionality in React"
+                text={LANDING_PAGE.JS}
                 href={ROUTES.COLLECTIONS.path + "/#js"}
               />
             </ListItem>
@@ -148,7 +148,7 @@ const LandingPage = ({ classes }) => {
                 color="primary"
                 variant="text"
                 size="large"
-                text="React Hooks, Context API, and Redux"
+                text={LANDING_PAGE.ADVANCED}
                 href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
               />
             </ListItem>
@@ -161,7 +161,7 @@ const LandingPage = ({ classes }) => {
                 color="primary"
                 variant="text"
                 size="large"
-                text="View All Courses"
+                text={LANDING_PAGE.VIEW_ALL_COURSES}
                 href={ROUTES.COLLECTIONS.path}
               />
             </ListItem>
@@ -175,7 +175,7 @@ const LandingPage = ({ classes }) => {
         >
           <Grid item sm={12} md={6} xs={12}>
             <img
-              alt="Learn all about React"
+              alt={LANDING_PAGE.LEARN_ALL_ABOUT_REACT}
               src={Landing2}
               className={classes.img}
             />
@@ -198,14 +198,14 @@ const LandingPage = ({ classes }) => {
             marginBottom="md"
             variant="h4"
           >
-            Write code in JSX and watch it render your code magically.
+            {LANDING_PAGE.PLAYGROUND_SUBTITLE}
           </MoTypography>
           <MoButton
             isArrowIcon={true}
             color="primary"
             variant="contained"
             size="large"
-            text="Try our playground"
+            text={LANDING_PAGE.TRY_THE_PLAYGROUND}
             href={ROUTES.PLAYGROUND.path}
           />
         </Grid>
