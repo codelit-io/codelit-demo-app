@@ -62,7 +62,11 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
                   userRole.isAdmin && (
                     <NewCourseDialog authUser={authUser} firebase={firebase} />
                   )}
-                <MoAvatar authUser={authUser} firebase={firebase} />
+                <MoAvatar
+                  authUser={authUser}
+                  isAdmin={userRole.isAdmin}
+                  firebase={firebase}
+                />
               </>
             </Grid>
           </Grid>

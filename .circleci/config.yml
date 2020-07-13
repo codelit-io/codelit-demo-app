@@ -25,10 +25,6 @@ jobs:
           paths:
             - ~/.cache/yarn/v1
       - run:
-          name: Health Check
-          command: |
-            yarn post-commit
-      - run:
           name: Build
           command: |
             yarn build
