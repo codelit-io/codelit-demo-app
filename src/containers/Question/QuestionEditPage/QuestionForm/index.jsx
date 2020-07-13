@@ -1,17 +1,17 @@
 import React, { lazy } from "react";
 
-import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
-import styles from "./styles";
 import { withRouter } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
+import { useCallback } from "react";
+import Button from "@material-ui/core/Button";
 import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
-import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
 import MoTypography from "components/library/MoTypography";
+import styles from "./styles";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
