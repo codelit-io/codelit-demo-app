@@ -29,21 +29,22 @@ const QuestionForm = ({
 }) => {
   const { handleSubmit, register } = useForm();
 
-  const handleChange = useCallback(({ userAnswer, key }) => {
-    if (userAnswer === "{}" || userAnswer === "") {
+  const handleChange = useCallback((code) => {
+    const userAnswer = { ...Object.values(code) };
+    if (userAnswer[0] === "{}" || userAnswer[0] === "") {
       return;
     }
-    setQuestion({ ...question, [key]: userAnswer });
+    setQuestion({ ...question, ...code });
   },
     [setQuestion, question]
   );
 
-  console.log(question)
   if (isLoading || !question) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
+
   return (
-    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
+    <form onSubmit={handleSubmit(e => onSubmit({ ...e, ...question }))}>
       <section className={classes.section}>
         <MoPageHeaderEdit
           text={title}
@@ -64,30 +65,30 @@ const QuestionForm = ({
           placeholder={"<p>"}
         />
       </section>
-      {question && (
-        <section className={classes.section}>
-          <MoTypography
-            color="grey"
-            font="breeSerif"
-            marginBottom="sm"
-            variant="h6"
-          >
-            Question
+      {/* {question && ( */}
+      <section className={classes.section}>
+        <MoTypography
+          color="grey"
+          font="breeSerif"
+          marginBottom="sm"
+          variant="h6"
+        >
+          Question
           </MoTypography>
-          <CodeEditor
-            codeAnswer={"Write Question Here"}
-            codeLanguage={question?.language}
-            codeQuestion={question?.question}
-            isConsole={true}
-            isEditMode={true}
-            noInline={false}
-            isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleChange(userAnswer, "question")}
-            sm={6}
-            md={6}
-          />
-        </section>
-      )}
+        <CodeEditor
+          codeAnswer={"Write Question Here"}
+          codeLanguage={question?.language}
+          codeQuestion={question?.question || {}}
+          isConsole={true}
+          isEditMode={true}
+          noInline={false}
+          isPlayground={question?.isPlayground}
+          handleOnChange={code => handleChange({ question: code.userAnswer })}
+          sm={6}
+          md={6}
+        />
+      </section>
+      {/* )} */}
       {question && (
         <section className={classes.section}>
           <MoTypography
@@ -106,7 +107,7 @@ const QuestionForm = ({
             isEditMode={true}
             noInline={false}
             isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleChange(userAnswer, "answer")}
+            handleOnChange={code => handleChange({ answer: code.userAnswer })}
             sm={6}
             md={6}
           />
