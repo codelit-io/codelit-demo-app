@@ -19,7 +19,7 @@ const styles = theme => ({
     fontSize: theme.fontSize.xl,
     color: theme.blue.superLight
   },
-  index: { color: theme.palette.primary.main },
+  index: { color: theme.palette.primary.main }
 });
 
 export default styles;

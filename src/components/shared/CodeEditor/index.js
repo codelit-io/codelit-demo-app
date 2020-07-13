@@ -124,7 +124,7 @@ const CodeEditor = ({
                     theme={lightTheme}
                     className={classes.liveEditor}
                   />
-                  {isHintTypist && !codeQuestion && codeAnswer && (
+                  {isHintTypist && (
                     <div className={classes.hint}>
                       <Typist
                         avgTypingDelay={60}

@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import createStyles from "@material-ui/core/styles/createStyles";
 import CodeIcon from "@material-ui/icons/Code";
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from "@material-ui/icons/Edit";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -64,16 +64,18 @@ const QuestionPage = ({
       lightGrey: { color: theme.grey.light },
       fixedIcon: {
         opacity: 0,
-        position: "absolute", right: theme.space.md, top: theme.space.md
+        position: "absolute",
+        right: theme.space.md,
+        top: theme.space.md
       },
       buttonArea: {
         textAlign: "left",
         width: "100%",
         "&:hover": {
           background: theme.grey.superLight,
-          cursor: "text",
+          cursor: "text"
         },
-        '&:hover $fixedIcon': {
+        "&:hover $fixedIcon": {
           opacity: 1
         }
       },
