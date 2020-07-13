@@ -29,13 +29,14 @@ const QuestionForm = ({
 }) => {
   const { handleSubmit, register } = useForm();
 
-  const handleChange = useCallback((code) => {
-    const userAnswer = { ...Object.values(code) };
-    if (userAnswer[0] === "{}" || userAnswer[0] === "") {
-      return;
-    }
-    setQuestion({ ...question, ...code });
-  },
+  const handleChange = useCallback(
+    code => {
+      const userAnswer = { ...Object.values(code) };
+      if (userAnswer[0] === "{}" || userAnswer[0] === "") {
+        return;
+      }
+      setQuestion({ ...question, ...code });
+    },
     [setQuestion, question]
   );
 
@@ -74,7 +75,7 @@ const QuestionForm = ({
           variant="h6"
         >
           Question
-          </MoTypography>
+        </MoTypography>
         <CodeEditor
           codeAnswer={"Write Question Here"}
           codeLanguage={question?.language}
