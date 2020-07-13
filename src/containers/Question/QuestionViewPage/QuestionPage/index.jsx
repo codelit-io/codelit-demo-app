@@ -15,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import createStyles from "@material-ui/core/styles/createStyles";
 import CodeIcon from "@material-ui/icons/Code";
+import EditIcon from '@material-ui/icons/Edit';
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -61,12 +62,19 @@ const QuestionPage = ({
       textAlignRight: { textAlign: "right" },
       grey: { color: theme.grey.medium },
       lightGrey: { color: theme.grey.light },
+      fixedIcon: {
+        opacity: 0,
+        position: "absolute", right: theme.space.md, top: theme.space.md
+      },
       buttonArea: {
         textAlign: "left",
         width: "100%",
         "&:hover": {
           background: theme.grey.superLight,
-          cursor: "text"
+          cursor: "text",
+        },
+        '&:hover $fixedIcon': {
+          opacity: 1
         }
       },
       section: { paddingBottom: theme.space?.xl }
@@ -133,7 +141,7 @@ const QuestionPage = ({
         userAnswerTrimmed === correctAnswerTrimmed ||
         // or if user answer is greater than or equal 98% based on jaroWrinker string matching algorithm
         cosineSimilarityMatchPercent * 100 >=
-          (question?.matchPercent * 100 || 100)
+        (question?.matchPercent * 100 || 100)
       ) {
         setQuestion({ ...question, isCorrect: true, question: userAnswer });
         /* Awards users a point based on level completion */
@@ -177,6 +185,7 @@ const QuestionPage = ({
           subtitle={question?.label}
           isCard={false}
         />
+        <EditIcon color="primary" className={classes.fixedIcon} />
       </ButtonBase>
       {question?.content && (
         <MoTypography
