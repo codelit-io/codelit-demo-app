@@ -39,9 +39,9 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   const handleOnClick = useCallback(() => {
     /* TODO: Fix  me */
     if (userRole.isAdmin) {
-      history.push(`${data.id}/isEditMode`);
+      history.push(`${match.params.questionId}/isEditMode`);
     }
-  }, [userRole, history, data]);
+  }, [userRole, history, match]);
 
   const handleNavigation = useCallback(
     id => {
