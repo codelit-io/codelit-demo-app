@@ -1,7 +1,7 @@
 /**
  *
  *
- * @author MoSkool
+ * @author Mo Skool
  * @version 1.0.0
  * @visibleName App Component 🥈
  *
