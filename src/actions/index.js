@@ -21,3 +21,11 @@ export const addToCourses = (store, data) => {
   };
   store.setState({ courses });
 };
+
+export const addToThemeOptions = (store, data) => {
+  const themeOptions = {
+    ...store.state.themeOptions,
+    ...data
+  };
+  store.setState({ themeOptions });
+};
