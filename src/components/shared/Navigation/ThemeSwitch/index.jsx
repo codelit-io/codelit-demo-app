@@ -20,37 +20,37 @@ import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import useGlobal from "store";
 
 const ThemeSwitch = () => {
-    // Global State
-    const [themeOptions, addToThemeOptions] = useGlobal(
-        state => state.themeOptions,
-        actions => actions.addToThemeOptions
-    );
-    // set dark mode option in local storage and cache this function with useCallback
-    const cacheIsDarkMode = useCallback(() => {
-        localStorage.setItem("isDarkMode", JSON.parse(!themeOptions.isDarkMode));
-    }, [themeOptions.isDarkMode]);
+  // Global State
+  const [themeOptions, addToThemeOptions] = useGlobal(
+    state => state.themeOptions,
+    actions => actions.addToThemeOptions
+  );
+  // set dark mode option in local storage and cache this function with useCallback
+  const cacheIsDarkMode = useCallback(() => {
+    localStorage.setItem("isDarkMode", JSON.parse(!themeOptions.isDarkMode));
+  }, [themeOptions.isDarkMode]);
 
-    // Theme change handler
-    const handleThemeModeChange = () => {
-        // debugger
-        cacheIsDarkMode();
-        addToThemeOptions({ isDarkMode: !themeOptions.isDarkMode });
-    };
+  // Theme change handler
+  const handleThemeModeChange = () => {
+    // debugger
+    cacheIsDarkMode();
+    addToThemeOptions({ isDarkMode: !themeOptions.isDarkMode });
+  };
 
-    // Flip between icon components for each mode
-    const SwitchIcon = () =>
-        themeOptions.isDarkMode ? <NightsStayIcon /> : <WbSunnyIcon />;
+  // Flip between icon components for each mode
+  const SwitchIcon = () =>
+    themeOptions.isDarkMode ? <NightsStayIcon /> : <WbSunnyIcon />;
 
-    return (
-        <IconButton
-            color="primary"
-            aria-label="Switch theme mode"
-            aria-haspopup="true"
-            onClick={() => handleThemeModeChange()}
-        >
-            <SwitchIcon />
-        </IconButton>
-    );
+  return (
+    <IconButton
+      color="primary"
+      aria-label="Switch theme mode"
+      aria-haspopup="true"
+      onClick={() => handleThemeModeChange()}
+    >
+      <SwitchIcon />
+    </IconButton>
+  );
 };
 
 export default ThemeSwitch;
