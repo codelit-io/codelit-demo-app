@@ -19,6 +19,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { withAuthentication } from "../Session";
 import useUserRole from "hooks/useUserRole";
 import AppBar from "@material-ui/core/AppBar";
+import ThemeSwitch from "./ThemeSwitch";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
@@ -62,6 +63,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
                   userRole.isAdmin && (
                     <NewCourseDialog authUser={authUser} firebase={firebase} />
                   )}
+                <ThemeSwitch />
                 <MoAvatar
                   authUser={authUser}
                   isAdmin={userRole.isAdmin}
