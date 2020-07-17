@@ -47,8 +47,6 @@ const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 const App = () => {
   // Global state for theme options
   const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
-  console.log(isDarkMode);
-  console.log(Boolean(isDarkMode) ? "dark" : "light");
   // Merge the old theme with new when theme options change and memoize the object
   const themeType = useMemo(() => {
     return {
