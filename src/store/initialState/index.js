@@ -1,4 +1,6 @@
-const isDarkMode = JSON.parse(localStorage.getItem("isDarkMode")) || false;
+import { getCache } from "utils/localCache";
+
+const isDarkMode = getCache({ key: "isDarkMode" }) || false;
 
 export const initialState = {
   authUser: null,

@@ -14,6 +14,7 @@
 
 import React, { useCallback } from "react";
 
+import { setCache } from "utils/localCache";
 import IconButton from "@material-ui/core/IconButton";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
@@ -27,7 +28,7 @@ const ThemeSwitch = () => {
   );
   // set dark mode option in local storage and cache this function with useCallback
   const cacheIsDarkMode = useCallback(() => {
-    localStorage.setItem("isDarkMode", JSON.parse(!themeOptions.isDarkMode));
+    setCache({ key: "isDarkMode", value: !themeOptions.isDarkMode });
   }, [themeOptions.isDarkMode]);
 
   // Theme change handler
