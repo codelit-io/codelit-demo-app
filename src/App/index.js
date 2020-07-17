@@ -14,14 +14,15 @@
  *  - Renders App navigation
  *  - Suspense and loading
  */
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useMemo } from "react";
 
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
+import { retry } from "utils/retryLazyImports";
 import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { retry } from "utils/retryLazyImports";
+import useGlobal from "store";
 
 const Navigation = lazy(() =>
   retry(() => import("components/shared/Navigation"))
@@ -43,41 +44,55 @@ const Question = lazy(() => retry(() => import("containers/Question")));
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <Router>
-      <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-        <Container maxWidth="lg">
-          <Navigation />
-          <Switch>
-            <Route path={ROUTES.ADMIN.path} component={AdminPage} />
-            <Route path={ROUTES.ACCOUNT.path} component={Account} />
-            <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
-            <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
+const App = () => {
+  // Global state for theme options
+  const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
+  console.log(isDarkMode);
+  console.log(Boolean(isDarkMode) ? "dark" : "light");
+  // Merge the old theme with new when theme options change and memoize the object
+  const themeType = useMemo(() => {
+    return {
+      ...theme,
+      palette: { ...theme.palette, type: isDarkMode ? "dark" : "light" }
+    };
+  }, [isDarkMode]);
 
-            <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
-            <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-            <Route
-              path={ROUTES.PASSWORD_FORGET.path}
-              component={PasswordForgot}
-            />
-            <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-            <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
-            <Route
-              exact
-              path={ROUTES.COLLECTIONS.path + "/:collection"}
-              component={Questions}
-            />
-            <Route
-              path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-              component={Question}
-            />
-            <Route component={NotFound} />
-          </Switch>
-        </Container>
-      </Suspense>
-    </Router>
-  </ThemeProvider>
-);
+  return (
+    <ThemeProvider theme={themeType}>
+      <Router>
+        <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+          <Container maxWidth="lg">
+            <Navigation />
+            <Switch>
+              <Route path={ROUTES.ADMIN.path} component={AdminPage} />
+              <Route path={ROUTES.ACCOUNT.path} component={Account} />
+              <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
+              <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
+
+              <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
+              <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
+              <Route
+                path={ROUTES.PASSWORD_FORGET.path}
+                component={PasswordForgot}
+              />
+              <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
+              <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
+              <Route
+                exact
+                path={ROUTES.COLLECTIONS.path + "/:collection"}
+                component={Questions}
+              />
+              <Route
+                path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
+                component={Question}
+              />
+              <Route component={NotFound} />
+            </Switch>
+          </Container>
+        </Suspense>
+      </Router>
+    </ThemeProvider>
+  );
+};
 
 export default App;
