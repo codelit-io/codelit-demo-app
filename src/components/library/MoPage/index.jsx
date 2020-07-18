@@ -29,14 +29,12 @@ const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
     >
       <section className={classes.section}>
         <MoTypography
-          color="greyDark"
           font="breeSerif"
           marginBottom="md"
           text={title}
           variant="h2"
         ></MoTypography>
         <MoTypography
-          color="greyDark"
           font="openSans"
           marginBottom="md"
           text={subtitle}

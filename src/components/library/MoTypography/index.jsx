@@ -8,7 +8,6 @@
  * Can be customized with different fonts, color and margin
  *
  * @param {Object} children - Pass child components that are being wrapped by this component
- * @param {String} color - Font color one of "greyLight", "grey", "greyDark"
  * @param {String} font - Font family one of "breeSerif", "openSans"
  * @param {String} marginBottom - Bottom margin one of "xs", "sm", "md", "lg"
  * @param {String} marginTop - Top margin one of "xs", "sm", "md", "lg"
@@ -29,7 +28,6 @@ import createStyles from "@material-ui/core/styles/createStyles";
 
 const MoTypography = ({
   children,
-  color,
   font,
   marginBottom,
   marginTop,
@@ -43,15 +41,6 @@ const MoTypography = ({
       },
       openSans: {
         fontFamily: theme.openSans
-      },
-      greyLight: {
-        color: theme.grey.light
-      },
-      grey: {
-        color: theme.grey.medium
-      },
-      greyDark: {
-        color: theme.grey.dark
       },
       margin: {
         marginBottom: theme.space[marginBottom],
@@ -68,7 +57,7 @@ const MoTypography = ({
 
   return (
     <Typography
-      className={`${classes.margin} ${classes[font]} ${classes[color]}`}
+      className={`${classes.margin} ${classes[font]}`}
       variant={variant}
     >
       {text}
@@ -78,7 +67,6 @@ const MoTypography = ({
 };
 
 MoTypography.propTypes = {
-  color: PropTypes.oneOf(["greyLight", "grey", "greyDark"]).isRequired,
   font: PropTypes.oneOf(["breeSerif", "openSans"]),
   marginBottom: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
   marginTop: PropTypes.oneOf(["xs", "sm", "md", "lg"]),

@@ -12,25 +12,26 @@ import React from "react";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
-
+import Paper from "@material-ui/core/Paper";
+import { BROWSER_MOCKUP } from "constants/i18n";
+import MoTypography from "../MoTypography";
 const MoBrowserMockup = ({ classes, children, isEditor }) => {
   return isEditor ? (
-    <div className={classes.browserMockup}>
-      <div className={classes.browserFilename}>
-        <span className={classes.font}>Code Editor</span>
-      </div>
+    <Paper className={classes.browserMockup}>
+      <MoTypography variant="caption">
+        {BROWSER_MOCKUP.CODE_EDITOR}
+      </MoTypography>
       <div className={classes.editor}>{children}</div>
-    </div>
+    </Paper>
   ) : (
-    <div className={classes.browserMockup}>
-      <div className={classes.browserButtons} />
-      <div className={classes.browserHeader}>
-        <span className={classes.font}>Code Preview</span>
-      </div>
+    <Paper className={classes.browserMockup}>
+      <MoTypography variant="caption">
+        {BROWSER_MOCKUP.CODE_PREVIEW}
+      </MoTypography>
       <div id="MoBrowserMockup" className={classes.preview}>
         {children}
       </div>
-    </div>
+    </Paper>
   );
 };
 

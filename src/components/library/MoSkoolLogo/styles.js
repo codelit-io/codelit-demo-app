@@ -1,6 +1,6 @@
 export const styles = theme => ({
   logo: {
-    color: theme.grey.medium,
+    fontSize: theme.fontSize.xs,
     textDecoration: "none"
   }
 });

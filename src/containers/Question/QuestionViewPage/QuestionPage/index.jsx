@@ -191,7 +191,6 @@ const QuestionPage = ({
       </ButtonBase>
       {question?.content && (
         <MoTypography
-          color="greyDark"
           font="breeSerif"
           marginBottom="md"
           text={question.content}

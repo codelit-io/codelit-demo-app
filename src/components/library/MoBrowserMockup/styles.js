@@ -18,51 +18,12 @@ const styles = theme => ({
   },
 
   browserMockup: {
-    paddingLeft: "1.75rem",
-    minHeight: "80px",
-    borderTop: "2em solid rgba(230, 230, 230, 0.7)",
+    padding: "1.75rem",
+    minHeight: "10rem",
     position: "relative",
     borderRadius: theme.space.xs,
     boxShadow: theme.shadow.lg
-  },
-  browserButtons: {
-    display: "block",
-    position: "absolute",
-    content: "",
-    top: "-1.25em",
-    left: "1em",
-    width: "0.5em",
-    height: "0.5em",
-    borderRadius: "50%",
-    backgroundColor: "#dcdcdc",
-    boxShadow: "0 0 0 2px #dcdcdc, 1.5em 0 0 2px #dcdcdc, 3em 0 0 2px #dcdcdc"
-  },
-  browserFilename: {
-    display: "block",
-    position: "absolute",
-    textAlign: "center",
-    top: "-1.8em",
-    left: "0em",
-    width: "100%",
-    height: "1.2em",
-    borderRadius: "2px",
-    color: "#424B54",
-    fontSize: "14px"
-  },
-  browserHeader: {
-    display: "block",
-    position: "absolute",
-    content: "",
-    top: "-1.88em",
-    left: "6.5em",
-    width: "calc(100% - 7.8em)",
-    height: "1.2em",
-    borderRadius: "2px",
-    backgroundColor: "white",
-    fontSize: "14px",
-    padding: "2px 2px 2px 8px"
-  },
-  font: { fontFamily: theme.breeSerif }
+  }
 });
 
 export default styles;

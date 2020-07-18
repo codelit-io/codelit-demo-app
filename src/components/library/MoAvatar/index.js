@@ -4,7 +4,7 @@ import * as ROUTES from "constants/routes";
 import AppsIcon from "@material-ui/icons/Apps";
 import Avatar from "@material-ui/core/Avatar";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -34,7 +34,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
   return (
     <>
       <Tooltip title="Menu" arrow>
-        <Button
+        <IconButton
           aria-controls="avatar-menu"
           aria-haspopup="true"
           className={classes.avatarButton}
@@ -48,7 +48,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
             aria-controls="avatar-menu"
             aria-haspopup="true"
           />
-        </Button>
+        </IconButton>
       </Tooltip>
       <Menu
         anchorEl={anchorEl}

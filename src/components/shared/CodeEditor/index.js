@@ -86,7 +86,7 @@ const CodeEditor = ({
         overflow: "visible !important",
         "&:before": {
           color: theme.grey?.light,
-          left: "-1.75rem",
+          left: "-2rem",
           fontFamily: "Inconsolata, monospace",
           paddingTop: "0.6rem",
           content: `"${lineNos}"`,
