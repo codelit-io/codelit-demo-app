@@ -96,13 +96,14 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
       <SnackbarContent
+        role="alert"
         message={
           <div className={classes.message}>
             {IconComponent ? (
               <IconComponent className={classes.checkIcon} />
             ) : (
-              <CheckCircleIcon className={classes.checkIcon} />
-            )}
+                <CheckCircleIcon className={classes.checkIcon} />
+              )}
             <MoTypography font="breeSerif" variant="h3">
               {title}
             </MoTypography>
