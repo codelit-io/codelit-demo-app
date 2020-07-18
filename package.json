@@ -30,7 +30,7 @@
 		"eject": "react-scripts eject",
 		"lint": "eslint './src/**/*.{js,jsx}' --fix",
 		"format": "prettier --write 'src/**/*.{js,jsx,css,scss}'",
-		"pre-push": "cross-env CI=true react-scripts test --env=jsdom && git add . && git commit -m 'chore: lint & format ✅'"
+		"pre-push": "cross-env CI=true react-scripts test --env=jsdom && git add && git commit -m 'chore: lint & format ✅'"
 	},
 	"config": {
 		"commitizen": {
@@ -40,7 +40,7 @@
 	"husky": {
 		"hooks": {
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-			"pre-commit": "lint-staged",
+			"pre-commit": "lint-staged --allow-empty ",
 			"pre-push": "yarn pre-push"
 		}
 	},
@@ -73,7 +73,8 @@
 		"react-test-renderer": "^16.13.1"
 	},
 	"lint-staged": {
-		"src/**/*.{js,jsx,css,scss}": [
+		"*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
+		"src/**/*.{js,jsx}": [
 			"eslint --fix",
 			"prettier-eslint --write",
 			"git add"
