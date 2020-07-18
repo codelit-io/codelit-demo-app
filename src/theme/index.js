@@ -1,3 +1,21 @@
+/**
+ *
+ * @author MoSkool
+ * @version 1.0.0
+ * @visibleName theme  🎠
+ *
+ * Using MUI theming, this contains objects with styling, crete the theme and return a theme with dark mode in mind
+ *
+ * USAGE EXAMPLE
+ *
+ * theme = getTheme( {isDarkMode: true} )
+ *
+ * @param {boolean} isDarkMode - Toggles dark or light mode palette for MUI
+ * @returns {theme} - returns theme objects that is passed to a MUI ThemeProvider
+ *
+ * @see See [MUI theming](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme)
+ * */
+
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 
@@ -66,8 +84,8 @@ const space = {
 const card = {
   boxShadow: shadow.lg,
   "&:hover": {
-    transform: "translateY(-5px)",
-    backgroundColor: "#FFF"
+    transform: "translateY(-5px)"
+    // backgroundColor: "#FFF"
   },
   "&:hover .desc": {
     color: "white"
@@ -75,8 +93,8 @@ const card = {
   borderRadius: space.sm,
   transition:
     "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-  transform: "translateY(0)",
-  background: "white"
+  transform: "translateY(0)"
+  // background: "white"
 };
 
 const editorFont = {
@@ -93,37 +111,46 @@ const typography = {
   fontFamily: fontFamily.BreeSerif
 };
 
-const palette = {
-  primary: {
-    main: colors.primary,
-    light: colors.secondary
-  },
-  secondary: {
-    main: colors.secondary
-  }
+const getTheme = ({ isDarkMode }) => {
+  let theme;
+  const palette = {
+    primary: {
+      main: colors.primary,
+      light: colors.secondary,
+      dark: "red"
+    },
+    secondary: {
+      main: colors.secondary,
+      light: colors.secondary,
+      dark: colors.secondary
+    },
+    type: isDarkMode ? "dark" : "light"
+  };
+
+  const fontOptions = {
+    breakpoints: ["sm", "md", "lg", "xl"]
+  };
+
+  theme = createMuiTheme({
+    card,
+    editorFont,
+    shadow,
+    fontSize,
+    space,
+    grey: colors.grey,
+    green: colors.green,
+    yellow: colors.yellow,
+    white: colors.white,
+    blue: colors.blue,
+    breeSerif: fontFamily.BreeSerif,
+    openSans: fontFamily.OpenSans,
+    typography,
+    palette
+  });
+
+  theme = responsiveFontSizes(theme, fontOptions);
+
+  return theme;
 };
 
-let theme = createMuiTheme({
-  card,
-  editorFont,
-  shadow,
-  fontSize,
-  space,
-  grey: colors.grey,
-  green: colors.green,
-  yellow: colors.yellow,
-  white: colors.white,
-  blue: colors.blue,
-  breeSerif: fontFamily.BreeSerif,
-  openSans: fontFamily.OpenSans,
-  typography,
-  palette
-});
-
-const fontOptions = {
-  breakpoints: ["sm", "md", "lg", "xl"]
-};
-
-theme = responsiveFontSizes(theme, fontOptions);
-
-export default theme;
+export default getTheme;

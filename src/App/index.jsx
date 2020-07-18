@@ -14,15 +14,12 @@
  *  - Renders App navigation
  *  - Suspense and loading
  */
-import React, { Suspense, lazy, useMemo } from "react";
+import React, { Suspense, lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
 import { retry } from "utils/retryLazyImports";
-import theme from "./theme";
-import { ThemeProvider } from "@material-ui/core/styles";
-import useGlobal from "store";
 
 const Navigation = lazy(() =>
   retry(() => import("components/shared/Navigation"))
@@ -31,6 +28,9 @@ const Account = lazy(() => retry(() => import("containers/Account")));
 const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const Container = lazy(() =>
   retry(() => import("@material-ui/core/Container"))
+);
+const Paper = lazy(() =>
+  retry(() => import("@material-ui/core/Paper"))
 );
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
@@ -45,20 +45,11 @@ const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
 const App = () => {
-  // Global state for theme options
-  const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
-  // Merge the old theme with new when theme options change and memoize the object
-  const themeType = useMemo(() => {
-    return {
-      ...theme,
-      palette: { ...theme.palette, type: isDarkMode ? "dark" : "light" }
-    };
-  }, [isDarkMode]);
 
   return (
-    <ThemeProvider theme={themeType}>
-      <Router>
-        <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+    <Router>
+      <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+        <Paper elevation={0}>
           <Container maxWidth="lg">
             <Navigation />
             <Switch>
@@ -87,9 +78,9 @@ const App = () => {
               <Route component={NotFound} />
             </Switch>
           </Container>
-        </Suspense>
-      </Router>
-    </ThemeProvider>
+        </Paper>
+      </Suspense>
+    </Router>
   );
 };
 

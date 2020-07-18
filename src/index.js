@@ -19,12 +19,17 @@ import Firebase, { FirebaseContext } from "./components/shared/Firebase";
 import { retry } from "utils/retryLazyImports";
 import MoSpinner from "components/library/MoSpinner";
 
+// Global state for theme options
+
 const App = lazy(() => retry(() => import("./App")));
+const Theme = lazy(() => retry(() => import("App/Theme")));
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-      <App />
+      <Theme>
+        <App />
+      </Theme>
     </Suspense>
   </FirebaseContext.Provider>,
   document.getElementById("root")
