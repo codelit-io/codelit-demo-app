@@ -1,6 +1,7 @@
 import React from "react";
 
 import * as ROUTES from "constants/routes";
+import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
@@ -10,9 +11,13 @@ import { styles } from "./styles";
 const MoSkoolLogo = ({ classes }) => {
   return (
     <Typography variant="h6" noWrap>
-      <Link to={ROUTES.LANDING.path} className={classes.logo}>
+      <Button
+        component={Link}
+        to={ROUTES.LANDING.path}
+        className={classes.logo}
+      >
         <Box fontWeight="fontWeightLight">Mo Skool</Box>
-      </Link>
+      </Button>
     </Typography>
   );
 };

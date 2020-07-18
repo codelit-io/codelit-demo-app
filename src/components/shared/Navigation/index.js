@@ -37,7 +37,7 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
       <AppBar position="static" color="transparent" className={classes.appBar}>
         <Toolbar disableGutters={true}>
           <Container maxWidth="lg">
-            <Grid container>
+            <Grid container alignItems="baseline">
               <Grid item xs={3} sm={3} md={3} lg={3}>
                 <MoSkoolLogo />
               </Grid>
