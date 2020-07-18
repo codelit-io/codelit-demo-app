@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -10,17 +9,20 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import SignUpLink from "components/shared/SignUpLink";
 import PropTypes from "prop-types";
-import MoTitle from "components/library/MoTitle";
 import { PasswordForgetLink } from "../PasswordForgot";
 import styles from "./styles";
+import MoTypography from "components/library/MoTypography";
+import { SIGN_IN } from "constants/i18n";
+import Paper from "@material-ui/core/Paper";
 
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <div className={classes.card}>
+    <Paper className={classes.card}>
       <main className={classes.main}>
-        <CssBaseline />
         <div className={classes.paper}>
-          <MoTitle text="Sign in" fade margin="36px 0 36px" />
+          <MoTypography font="breeSerif" marginBottom="md" variant="h4">
+            {SIGN_IN.CORE}
+          </MoTypography>
           <form className={classes.form} onSubmit={onSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
@@ -73,7 +75,7 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           <SignUpLink />
         </div>
       </main>
-    </div>
+    </Paper>
   );
 };
 

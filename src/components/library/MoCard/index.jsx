@@ -50,18 +50,12 @@ const MoCard = ({
   >
     <Paper className={`${classes.card} ${isDisabled && classes.disableCard}`}>
       <Grid container spacing={4}>
-        {IconComponent && (
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <IconComponent className={classes.heroIcon} />
-          </Grid>
-        )}
-        {index && (
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Typography className={classes.index} variant="h2" component="h1">
-              {index}
-            </Typography>
-          </Grid>
-        )}
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography variant="h2" component="h1" className={classes.heroIcon}>
+            {IconComponent && <IconComponent />}
+            {!IconComponent && index && index}
+          </Typography>
+        </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography gutterBottom variant="h5" component="h2">
             {title ? title : "Empty Title"}

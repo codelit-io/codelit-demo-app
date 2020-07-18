@@ -1,24 +1,26 @@
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import MoTitle from "components/library/MoTitle";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 import SignInLink from "../SignInLink";
+import MoTypography from "components/library/MoTypography";
+import { SIGN_UP } from "constants/i18n";
+import Paper from "@material-ui/core/Paper";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <div className={classes.card}>
+    <Paper className={classes.card}>
       <main className={classes.main}>
-        <CssBaseline />
         <div className={classes.paper}>
-          <MoTitle text="Sign up" fade margin="36px 0 36px" />
+          <MoTypography font="breeSerif" marginBottom="md" variant="h4">
+            {SIGN_UP.CORE}
+          </MoTypography>
           <form className={classes.form} onSubmit={onSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Name</InputLabel>
@@ -88,7 +90,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           <SignInLink />
         </div>
       </main>
-    </div>
+    </Paper>
   );
 };
 

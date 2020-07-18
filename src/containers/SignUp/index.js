@@ -28,7 +28,7 @@ const SignUpPage = ({ authUser }) => (
         </Grid>
       ) : (
         <>
-          <Grid item sm={6} md={6}>
+          <Grid item sm={6} md={6} style={{ width: "100%" }}>
             <SocialSignIn />
           </Grid>
           <Grid item sm={6} md={6}>

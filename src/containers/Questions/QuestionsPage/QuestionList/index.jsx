@@ -11,6 +11,7 @@ import React from "react";
 import MoCard from "components/library/MoCard";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
+import LockIcon from "@material-ui/icons/Lock";
 import MoTypography from "components/library/MoTypography";
 
 const QuestionList = ({ authUser, match, questions, points }) => {
@@ -59,6 +60,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
               title={question.title}
               index={index + 1}
               url={configureUrl}
+              IconComponent={isDisabled ? LockIcon : null}
             />
           </Grid>
         </Grow>
