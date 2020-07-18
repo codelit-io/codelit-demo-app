@@ -42,3 +42,9 @@ export const SIGN_UP = {
   PAGE_LOGGED_IN_TITLE: "Sign up to get started 😎",
   VIEW_ALL_COURSES: "View All Courses"
 };
+
+export const BROWSER_MOCKUP = {
+  CODE_EDITOR: "Code Editor",
+  CODE_PREVIEW: "Code Preview",
+  VIEW_ALL_COURSES: "View All Courses"
+};

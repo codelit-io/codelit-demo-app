@@ -119,6 +119,7 @@ const typography = {
 
 const getTheme = ({ isDarkMode }) => {
   let theme;
+
   const palette = {
     background: {
       default: isDarkMode ? colors.black.medium : colors.white.light,

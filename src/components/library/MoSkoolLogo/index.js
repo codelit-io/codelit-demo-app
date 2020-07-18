@@ -15,6 +15,7 @@ const MoSkoolLogo = ({ classes }) => {
         component={Link}
         to={ROUTES.LANDING.path}
         className={classes.logo}
+        color="primary"
       >
         <Box fontWeight="fontWeightLight">Mo Skool</Box>
       </Button>

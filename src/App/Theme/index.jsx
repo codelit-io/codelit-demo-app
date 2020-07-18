@@ -19,16 +19,16 @@ import getTheme from "../../theme";
 import useGlobal from "store";
 
 const Theme = ({ children }) => {
-  const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
+    const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
 
-  const theme = useMemo(() => getTheme({ isDarkMode }), [isDarkMode]);
+    const theme = useMemo(() => getTheme({ isDarkMode }), [isDarkMode]);
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {children}
+        </ThemeProvider>
+    );
 };
 
 export default React.memo(Theme);
