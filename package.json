@@ -69,6 +69,7 @@
 		"eslint-plugin-jsx-a11y": "^6.3.1",
 		"eslint-plugin-react": "^7.20.3",
 		"husky": "^4.2.5",
+		"imagemin-lint-staged": "^0.4.0",
 		"lint-staged": "^10.2.11",
 		"prettier-eslint-cli": "^5.0.0",
 		"react-test-renderer": "^16.13.1"
@@ -77,6 +78,10 @@
 		"src/**/*.{js,jsx}": [
 			"eslint --fix",
 			"prettier-eslint --write",
+			"git add"
+		],
+		"*.{png,jpeg,jpg,gif,svg}": [
+			"imagemin-lint-staged",
 			"git add"
 		]
 	}
