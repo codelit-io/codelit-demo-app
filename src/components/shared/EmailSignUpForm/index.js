@@ -1,7 +1,6 @@
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Input from "@material-ui/core/Input";
@@ -12,12 +11,12 @@ import styles from "./styles";
 import SignInLink from "../SignInLink";
 import MoTypography from "components/library/MoTypography";
 import { SIGN_UP } from "constants/i18n";
+import Paper from "@material-ui/core/Paper";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <div className={classes.card}>
+    <Paper className={classes.card}>
       <main className={classes.main}>
-        <CssBaseline />
         <div className={classes.paper}>
           <MoTypography font="breeSerif" marginBottom="md" variant="h4">
             {SIGN_UP.CORE}
@@ -91,7 +90,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           <SignInLink />
         </div>
       </main>
-    </div>
+    </Paper>
   );
 };
 

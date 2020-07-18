@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -14,12 +13,12 @@ import { PasswordForgetLink } from "../PasswordForgot";
 import styles from "./styles";
 import MoTypography from "components/library/MoTypography";
 import { SIGN_IN } from "constants/i18n";
+import Paper from "@material-ui/core/Paper";
 
 const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
-    <div className={classes.card}>
+    <Paper className={classes.card}>
       <main className={classes.main}>
-        <CssBaseline />
         <div className={classes.paper}>
           <MoTypography font="breeSerif" marginBottom="md" variant="h4">
             {SIGN_IN.CORE}
@@ -76,7 +75,7 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
           <SignUpLink />
         </div>
       </main>
-    </div>
+    </Paper>
   );
 };
 
