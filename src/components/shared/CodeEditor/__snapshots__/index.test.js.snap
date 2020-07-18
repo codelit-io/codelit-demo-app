@@ -40,7 +40,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                 theme={
                   Object {
                     "plain": Object {
-                      "color": "#e7d2ed",
+                      "color": "#4D4D4C",
                     },
                     "styles": Array [
                       Object {
@@ -56,7 +56,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#f677e1",
+                          "color": "#006080",
                         },
                         "types": Array [
                           "property",
@@ -69,7 +69,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "hsl(75, 70%, 70%)",
+                          "color": "#9c005d",
                         },
                         "types": Array [
                           "attr-name",
@@ -81,7 +81,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "hsl(40, 90%, 70%)",
+                          "color": "#065f00",
                         },
                         "types": Array [
                           "operator",
@@ -128,7 +128,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#f677e1",
+                          "color": "#006080",
                         },
                         "types": Array [
                           "atrule",
@@ -138,6 +138,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
+                          "color": "black",
                           "opacity": "0.7",
                         },
                         "types": Array [
