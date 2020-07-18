@@ -7,16 +7,17 @@ const styles = theme => ({
     width: "100%"
   },
   disableCard: {
-    // backgroundColor: "#f2f2f2"
+    opacity: "0.5"
   },
   link: {
     width: "100%"
   },
   heroIcon: {
-    fontSize: theme.fontSize.xl,
-    color: theme.blue.superLight
-  },
-  index: { color: theme.palette.primary.main }
+    "& svg": {
+      fontSize: theme.fontSize.xl,
+      color: theme.blue.superLight
+    }
+  }
 });
 
 export default styles;

@@ -69,7 +69,7 @@ const colors = {
   },
   black: {
     light: "#1b1b1b",
-    medium: "#010101",
+    medium: "#1c1c1f",
     dark: "#000"
   }
 };
@@ -123,7 +123,7 @@ const getTheme = ({ isDarkMode }) => {
   const palette = {
     background: {
       default: isDarkMode ? colors.black.dark : colors.white.light,
-      paper: isDarkMode ? colors.black.light : colors.white.light
+      paper: isDarkMode ? colors.black.medium : colors.white.light
     },
     primary: {
       main: colors.primary

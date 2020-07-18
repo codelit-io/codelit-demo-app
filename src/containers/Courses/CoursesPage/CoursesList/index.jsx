@@ -13,14 +13,16 @@ import { ReactComponent as ReactJsx } from "assets/react-jsx.svg";
 import { ReactComponent as ReactStyle } from "assets/react-style.svg";
 
 import Grid from "@material-ui/core/Grid";
+import Grow from "@material-ui/core/Grow";
+import LockIcon from "@material-ui/icons/Lock";
 import MoCard from "components/library/MoCard";
-import { Grow } from "@material-ui/core";
 
 const types = {
   js: () => <Js />,
   html: () => <Html />,
   reactJsx: () => <ReactJsx />,
-  reactStyle: () => <ReactStyle />
+  reactStyle: () => <ReactStyle />,
+  disabled: () => <LockIcon />
 };
 
 const CoursesList = ({ authUser, courses, collectionPath, points }) => {
@@ -29,6 +31,11 @@ const CoursesList = ({ authUser, courses, collectionPath, points }) => {
     const configureUrl = course.isDisabled
       ? ""
       : `/${collectionPath}/${course.doc}`;
+
+    const IconComponent = course.isDisabled
+      ? types.disabled
+      : types[course.type];
+
     return (
       <Grow in={course && true} key={index}>
         <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -38,7 +45,7 @@ const CoursesList = ({ authUser, courses, collectionPath, points }) => {
             title={course.title}
             subtitle={course.subtitle}
             url={configureUrl}
-            IconComponent={types[course.type]}
+            IconComponent={IconComponent}
           />
         </Grid>
       </Grow>
