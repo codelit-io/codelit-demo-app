@@ -32,12 +32,15 @@ export const LANDING_PAGE = {
 };
 
 export const SIGN_IN = {
+  CORE: "Sign in",
   PAGE_TITLE: "You are logged in 👍",
   PAGE_LOGGED_IN_TITLE: "Welcome Back 🤩",
   VIEW_ALL_COURSES: "View All Courses"
 };
 
 export const SIGN_UP = {
+  CORE: "Sign up",
+  ONE_CLICK_SIGNUP: "1-click Signup",
   PAGE_TITLE: "You are signed up 👍",
   PAGE_LOGGED_IN_TITLE: "Sign up to get started 😎",
   VIEW_ALL_COURSES: "View All Courses"

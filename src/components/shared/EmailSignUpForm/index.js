@@ -6,11 +6,12 @@ import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import MoTitle from "components/library/MoTitle";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 import SignInLink from "../SignInLink";
+import MoTypography from "components/library/MoTypography";
+import { SIGN_UP } from "constants/i18n";
 
 const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
   return (
@@ -18,7 +19,9 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
       <main className={classes.main}>
         <CssBaseline />
         <div className={classes.paper}>
-          <MoTitle text="Sign up" fade margin="36px 0 36px" />
+          <MoTypography font="breeSerif" marginBottom="md" variant="h4">
+            {SIGN_UP.CORE}
+          </MoTypography>
           <form className={classes.form} onSubmit={onSubmit}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="username">Name</InputLabel>
