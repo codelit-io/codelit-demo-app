@@ -12,8 +12,8 @@ const styles = theme => ({
     padding: theme.space.sm2
   },
   preview: {
-    fontFamily: 'initial',
-    fontSize: 'initial',
+    fontFamily: "initial",
+    fontSize: "initial",
     margin: "0 auto",
     display: "flex"
   },
