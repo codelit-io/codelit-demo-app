@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     hint: {
       ...theme.editorFont,
-      color: "#8e8e8e",
+      // color: "inherit",
       top: "2.25rem",
       position: "absolute",
       zIndex: "-1",
