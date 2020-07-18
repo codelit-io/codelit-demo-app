@@ -96,6 +96,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
       anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
     >
       <SnackbarContent
+        role="alert"
         message={
           <div className={classes.message}>
             {IconComponent ? (

@@ -164,6 +164,7 @@ const LandingPage = ({ classes }) => {
           </Grid>
         </Fade>
       </Grid>
+
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <MoTypography font="breeSerif" marginBottom="md" variant="h2">

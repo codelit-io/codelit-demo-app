@@ -3,8 +3,8 @@ const styles = theme => ({
     textAlign: "center"
   },
   snackbarContent: {
-    backgroundColor: "white",
-    color: "black",
+    // backgroundColor: "white",
+    // color: "black",
     padding: theme.space.md,
     boxShadow: theme.shadow.lg
   },

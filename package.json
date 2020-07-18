@@ -25,12 +25,13 @@
 		"build": "react-scripts build",
 		"deploy": "npm run lint && react-scripts build && firebase deploy --only hosting:tool-builder",
 		"check-updates": "ncu -u",
-		"test": "react-scripts test",
+		"test": "react-scripts test --bail --updateSnapshot",
+		"test:watch": "react-scripts test --bail --updateSnapshot --watch",
 		"ci-test": "cross-env CI=true react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"lint": "eslint './src/**/*.{js,jsx}' --fix",
-		"format": "prettier --write 'src/**/*.{js,jsx,css,scss}'",
-		"post-commit": "eslint './src/**/*.{js,jsx}' --fix && prettier --write 'src/**/*.{js,jsx,css,scss}' && cross-env CI=true react-scripts test --env=jsdom"
+		"prettier": "prettier --write 'src/**/*.{js,jsx,css,scss}'",
+		"pre-push": "cross-env CI=true react-scripts test --env=jsdom"
 	},
 	"config": {
 		"commitizen": {
@@ -41,7 +42,7 @@
 		"hooks": {
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
 			"pre-commit": "lint-staged",
-			"pre-push": "yarn post-commit"
+			"pre-push": "yarn pre-push"
 		}
 	},
 	"browserslist": {
@@ -73,7 +74,7 @@
 		"react-test-renderer": "^16.13.1"
 	},
 	"lint-staged": {
-		"**/*.js": [
+		"src/**/*.{js,jsx}": [
 			"eslint --fix",
 			"prettier-eslint --write",
 			"git add"
