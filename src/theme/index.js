@@ -134,7 +134,12 @@ const getTheme = ({ isDarkMode }) => {
       // light:
       // dark:
     },
-    type: isDarkMode ? "dark" : "light"
+    type: isDarkMode ? "dark" : "light",
+    yinYang: {
+      main: isDarkMode ? colors.white.light : colors.black.medium,
+      dark: isDarkMode ? colors.black.dark : colors.white.light,
+      background: isDarkMode ? colors.black.medium : colors.grey.superLight
+    }
   };
 
   const fontOptions = {

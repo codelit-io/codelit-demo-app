@@ -13,9 +13,9 @@ const styles = theme => ({
     width: "100%"
   },
   heroIcon: {
+    color: theme.blue.superLight,
     "& svg": {
-      fontSize: theme.fontSize.xl,
-      color: theme.blue.superLight
+      fontSize: theme.fontSize.xl
     }
   }
 });
