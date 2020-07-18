@@ -31,7 +31,7 @@ import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
 const LandingPage = ({ classes }) => {
   return (
     <>
-        <Grid container spacing={4} className={classes.container}>
+      <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade
             in={Researching && true}
@@ -55,10 +55,10 @@ const LandingPage = ({ classes }) => {
               />
             </div>
           </Fade>
-         </Grid>
+        </Grid>
 
-         <Grid item sm={12} md={6} xs={12}>
-           <Fade
+        <Grid item sm={12} md={6} xs={12}>
+          <Fade
             in={Researching && true}
             mountOnEnter
             timeout={{ enter: 1200 }}
@@ -95,7 +95,7 @@ const LandingPage = ({ classes }) => {
                 text={LANDING_PAGE.HTML}
                 href={ROUTES.COLLECTIONS.path + "/#html"}
               />
-            </ListItem>
+                  </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
@@ -114,7 +114,7 @@ const LandingPage = ({ classes }) => {
                 <CheckIcon />
               </ListItemAvatar>
               <MoButton
-                isArrowIcon={false}
+                           isArrowIcon={false}
                 color="primary"
                 variant="text"
                 size="large"
@@ -134,13 +134,18 @@ const LandingPage = ({ classes }) => {
                 text={LANDING_PAGE.ADVANCED}
                 href={ROUTES.COLLECTIONS.path + "/#reactJsx"}
               />
-            </ListItem>
+          </ListItem>
             <ListItem>
               <ListItemAvatar className={classes.checkMark}>
                 <CheckIcon />
-              </ListItemAvatar>
-              <MoButton
-                isArrowIcon={false}
+              
+              
+              
+                     </ListItemAvatar>
+                   <MoButton
+                
+                
+                   isArrowIcon={false}
                 color="primary"
                 variant="text"
                 size="large"
