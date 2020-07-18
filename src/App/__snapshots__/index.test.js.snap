@@ -11,150 +11,146 @@ exports[`App Component should match the snapshot 1`] = `
     }
   >
     <UNDEFINED
-      elevation={0}
+      maxWidth="lg"
     >
-      <UNDEFINED
-        maxWidth="lg"
-      >
-        <UNDEFINED />
-        <Switch>
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+      <UNDEFINED />
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/admin"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/admin"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/account"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/account"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            exact={true}
-            path="/"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            exact={true}
-            path="/not_found"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          exact={true}
+          path="/not_found"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/signin"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/signin"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/signup"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/signup"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/pw-forget"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/pw-forget"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/playgound"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/playgound"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            exact={true}
-            path="/courses"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          exact={true}
+          path="/courses"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            exact={true}
-            path="/courses/:collection"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          exact={true}
+          path="/courses/:collection"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-            path="/courses/:collection/:questionId"
-          />
-          <Route
-            component={
-              Object {
-                "$$typeof": Symbol(react.lazy),
-                "_ctor": [Function],
-                "_result": null,
-                "_status": -1,
-              }
+          }
+          path="/courses/:collection/:questionId"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
             }
-          />
-        </Switch>
-      </UNDEFINED>
+          }
+        />
+      </Switch>
     </UNDEFINED>
   </React.Suspense>
 </BrowserRouter>

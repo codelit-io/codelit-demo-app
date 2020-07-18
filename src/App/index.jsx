@@ -29,7 +29,6 @@ const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const Container = lazy(() =>
   retry(() => import("@material-ui/core/Container"))
 );
-const Paper = lazy(() => retry(() => import("@material-ui/core/Paper")));
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
 const PasswordForgot = lazy(() =>
@@ -46,36 +45,34 @@ const App = () => {
   return (
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-        <Paper elevation={0}>
-          <Container maxWidth="lg">
-            <Navigation />
-            <Switch>
-              <Route path={ROUTES.ADMIN.path} component={AdminPage} />
-              <Route path={ROUTES.ACCOUNT.path} component={Account} />
-              <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
-              <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
+        <Container maxWidth="lg">
+          <Navigation />
+          <Switch>
+            <Route path={ROUTES.ADMIN.path} component={AdminPage} />
+            <Route path={ROUTES.ACCOUNT.path} component={Account} />
+            <Route exact path={ROUTES.LANDING.path} component={LandingPage} />
+            <Route exact path={ROUTES.NOT_FOUND.path} component={NotFound} />
 
-              <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
-              <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-              <Route
-                path={ROUTES.PASSWORD_FORGET.path}
-                component={PasswordForgot}
-              />
-              <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-              <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
-              <Route
-                exact
-                path={ROUTES.COLLECTIONS.path + "/:collection"}
-                component={Questions}
-              />
-              <Route
-                path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-                component={Question}
-              />
-              <Route component={NotFound} />
-            </Switch>
-          </Container>
-        </Paper>
+            <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
+            <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
+            <Route
+              path={ROUTES.PASSWORD_FORGET.path}
+              component={PasswordForgot}
+            />
+            <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
+            <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
+            <Route
+              exact
+              path={ROUTES.COLLECTIONS.path + "/:collection"}
+              component={Questions}
+            />
+            <Route
+              path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
+              component={Question}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </Container>
       </Suspense>
     </Router>
   );
