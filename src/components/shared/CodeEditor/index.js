@@ -30,7 +30,6 @@ import React, { useEffect } from "react";
 
 import { addFocusOnEditor, getPreviewElement } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
-import { lightTheme } from "utils/reactLiveTheme";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
 // import Headline from "components/library/MoHeadline";
@@ -39,6 +38,11 @@ import MoBrowserMockup from "components/library/MoBrowserMockup";
 import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import useGlobal from "store";
+
+// Code Editor Themes
+// import lightTheme from "theme/codeEditor/lightTheme";
+import getTheme from "theme/codeEditor/getTheme";
 
 const CodeEditor = ({
   codeAnswer,
@@ -61,12 +65,15 @@ const CodeEditor = ({
     }
   }, [isEditMode, codeQuestion]);
 
+  // Global state for dark mode theme
+  const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
+
   const onChange = userAnswer => {
     const previewElement = getPreviewElement();
     handleOnChange({ userAnswer, previewElement });
   };
 
-  // TODO finish number of lines for editor
+  // TODO move number lines for editor to another component
   // Count newlines and pad to match actual line numbers
   const lines = ((codeQuestion && codeQuestion.match(/\n/g)) || []).length + 2;
   // Create content with all line numbers and newline them
@@ -85,7 +92,6 @@ const CodeEditor = ({
       liveEditor: {
         overflow: "visible !important",
         "&:before": {
-          color: theme.grey?.light,
           left: "-2rem",
           fontFamily: "Inconsolata, monospace",
           paddingTop: "0.6rem",
@@ -100,6 +106,8 @@ const CodeEditor = ({
       }
     })
   );
+
+  const codeEditorTheme = getTheme({ isDarkMode });
 
   const classes = useStyles();
   return (
@@ -121,7 +129,7 @@ const CodeEditor = ({
                 <div>
                   <LiveEditor
                     onChange={e => onChange(e)}
-                    theme={lightTheme}
+                    theme={codeEditorTheme}
                     className={classes.liveEditor}
                   />
                   {isHintTypist && (

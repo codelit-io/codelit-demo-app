@@ -40,7 +40,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                 theme={
                   Object {
                     "plain": Object {
-                      "color": "#4D4D4C",
+                      "color": "#e7d2ed",
                     },
                     "styles": Array [
                       Object {
@@ -56,7 +56,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#C82829",
+                          "color": "#f677e1",
                         },
                         "types": Array [
                           "property",
@@ -69,7 +69,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#C82829",
+                          "color": "hsl(75, 70%, 70%)",
                         },
                         "types": Array [
                           "attr-name",
@@ -81,7 +81,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#718C00",
+                          "color": "hsl(40, 90%, 70%)",
                         },
                         "types": Array [
                           "operator",
@@ -128,7 +128,7 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
                       },
                       Object {
                         "style": Object {
-                          "color": "#718C00",
+                          "color": "#f677e1",
                         },
                         "types": Array [
                           "atrule",
