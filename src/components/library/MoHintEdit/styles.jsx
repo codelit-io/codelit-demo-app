@@ -1,7 +1,8 @@
 const styles = theme => ({
   text: {
     ...theme.editorFont,
-    color: theme.palette.primary.main,
+    color: theme.palette.yinYang.main,
+    backgroundColor: theme.palette.yinYang.background,
     textDecoration: "none",
     marginBottom: theme.space?.md,
     width: "100%",

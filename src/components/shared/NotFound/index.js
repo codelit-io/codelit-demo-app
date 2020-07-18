@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ReactComponent as PageNotFound } from "assets/page_not_found.svg";
 
 const NotFound = () => (
   <div>
-    <img
-      src="https://firebasestorage.googleapis.com/v0/b/tool-builder.appspot.com/o/NotFound%2Fnot-found.jpg?alt=media&token=7817c705-6aea-4362-b8ae-eb0c3dcabd0c"
+    <PageNotFound
       style={{
-        width: "60%",
+        width: "100%",
         display: "block",
         margin: "auto",
         position: "relative"

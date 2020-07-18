@@ -11,7 +11,7 @@ export const addFocusOnEditor = () => {
     } catch {
       console.log("Focus on editor failed");
     }
-  }, 1000);
+  }, 400);
 };
 
 export const getPreviewElement = () => {

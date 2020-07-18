@@ -70,9 +70,10 @@ const QuestionPage = ({
       },
       buttonArea: {
         textAlign: "left",
+        opacity: userRole.isAdmin ? 0.6 : 1,
         width: "100%",
         "&:hover": {
-          background: theme.grey.superLight,
+          opacity: "1",
           cursor: "text"
         },
         "&:hover $fixedIcon": {
@@ -203,7 +204,7 @@ const QuestionPage = ({
           codeLanguage={question?.language}
           codeQuestion={question?.question}
           handleOnChange={userAnswer => handleOnChange(userAnswer)}
-          isEditMode={true}
+          isEditMode={false}
           isConsole={isConsole}
           isPlayground={question?.isPlayground}
           isMobile={isMobile}
@@ -222,9 +223,6 @@ const QuestionPage = ({
               {/* Render if answer is available */}
               <Button
                 disabled={question.question ? true : false}
-                className={
-                  !question.question ? classes.grey : classes.lightGrey
-                }
                 aria-label="Need a hint?"
                 aria-haspopup="true"
                 startIcon={<HelpIcon />}
@@ -237,7 +235,6 @@ const QuestionPage = ({
             </Grid>
             <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
               <Button
-                className={classes.grey}
                 aria-label="Show error console"
                 aria-haspopup="true"
                 startIcon={<CodeIcon />}

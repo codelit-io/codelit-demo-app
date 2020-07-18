@@ -1,6 +1,7 @@
 const styles = theme => ({
   text: {
-    color: theme.grey?.medium,
+    color: theme.palette.yinYang.main,
+    backgroundColor: theme.palette.yinYang.background,
     textDecoration: "none",
     marginBottom: theme.space?.md,
     width: "100%",

@@ -91,7 +91,6 @@ const card = {
   boxShadow: shadow.lg,
   "&:hover": {
     transform: "translateY(-5px)"
-    // backgroundColor: "#FFF"
   },
   "&:hover .desc": {
     color: "white"
@@ -100,13 +99,11 @@ const card = {
   transition:
     "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
   transform: "translateY(0)"
-  // background: "white"
 };
 
 const editorFont = {
   fontFamily: fontFamily.MonoSpace,
-  fontSize: "16px",
-  color: "rgb(77, 77, 76)"
+  fontSize: "16px"
 };
 
 const typography = {
@@ -137,7 +134,13 @@ const getTheme = ({ isDarkMode }) => {
       // light:
       // dark:
     },
-    type: isDarkMode ? "dark" : "light"
+    type: isDarkMode ? "dark" : "light",
+    yinYang: {
+      main: isDarkMode ? colors.white.light : colors.black.medium,
+      light: isDarkMode ? colors.grey.light : colors.grey.dark,
+      dark: isDarkMode ? colors.black.dark : colors.white.light,
+      background: isDarkMode ? colors.black.medium : colors.grey.superLight
+    }
   };
 
   const fontOptions = {

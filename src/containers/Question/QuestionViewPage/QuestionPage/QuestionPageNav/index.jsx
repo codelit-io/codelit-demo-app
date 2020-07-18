@@ -16,26 +16,12 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import createStyles from "@material-ui/core/styles/createStyles";
 
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const QuestionPageNav = ({ prevClick, isAdmin, nextClick, question }) => {
-  const useStyles = makeStyles(theme =>
-    createStyles({
-      leftArrow: {
-        color: question.id === 1 ? theme.grey.superLight : theme.grey.medium
-      },
-      rightArrow: { color: theme.grey.medium }
-    })
-  );
-
-  let isDisabled = !question.isCorrect;
-  isDisabled = isAdmin ? false : true;
-
-  const classes = useStyles();
+  const isDisabled = !question.isCorrect;
 
   if (!question.id) {
     return null;
@@ -44,17 +30,22 @@ const QuestionPageNav = ({ prevClick, isAdmin, nextClick, question }) => {
     <ButtonGroup variant="text" aria-label="text primary button group">
       <Button
         disabled={question.id === 1}
-        className={classes.leftArrow}
         startIcon={<KeyboardArrowLeftIcon />}
         onClick={() => prevClick()}
       />
       <Button disabled>{question.id}</Button>
-      <Button
-        disabled={isDisabled}
-        className={classes.rightArrow}
-        startIcon={<KeyboardArrowRightIcon />}
-        onClick={() => nextClick()}
-      />
+      {isAdmin ? (
+        <Button
+          startIcon={<KeyboardArrowRightIcon />}
+          onClick={() => nextClick()}
+        />
+      ) : (
+        <Button
+          disabled={isDisabled}
+          startIcon={<KeyboardArrowRightIcon />}
+          onClick={() => nextClick()}
+        />
+      )}
     </ButtonGroup>
   );
 };

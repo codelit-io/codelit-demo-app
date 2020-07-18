@@ -66,7 +66,6 @@ const QuestionForm = ({
           placeholder={"<p>"}
         />
       </section>
-      {/* {question && ( */}
       <section className={classes.section}>
         <MoTypography font="breeSerif" marginBottom="sm" variant="h6">
           Question
@@ -84,7 +83,6 @@ const QuestionForm = ({
           md={6}
         />
       </section>
-      {/* )} */}
       {question && (
         <section className={classes.section}>
           <MoTypography font="breeSerif" marginBottom="sm" variant="h6">

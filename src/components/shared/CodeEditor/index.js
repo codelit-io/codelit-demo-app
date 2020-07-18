@@ -26,7 +26,7 @@
  * @see See [react-live](https://github.com/FormidableLabs/react-live)
  * */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { addFocusOnEditor, getPreviewElement } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
@@ -63,7 +63,7 @@ const CodeEditor = ({
     if (!isEditMode) {
       addFocusOnEditor();
     }
-  }, [isEditMode, codeQuestion]);
+  }, [codeQuestion, isEditMode]);
 
   // Global state for dark mode theme
   const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
@@ -84,13 +84,14 @@ const CodeEditor = ({
       hint: {
         ...theme.editorFont,
         color: "#8e8e8e",
-        top: "1.25rem",
+        top: "4.25rem",
         position: "absolute",
-        zIndex: "-1",
+        zIndex: "0",
         padding: "0.625rem"
       },
       liveEditor: {
         overflow: "visible !important",
+        zIndex: "1",
         "&:before": {
           left: "-2rem",
           fontFamily: "Inconsolata, monospace",
@@ -107,7 +108,7 @@ const CodeEditor = ({
     })
   );
 
-  const codeEditorTheme = getTheme({ isDarkMode });
+  const codeEditorTheme = useMemo(() => getTheme({ isDarkMode }), [isDarkMode]);
 
   const classes = useStyles();
   return (
