@@ -69,7 +69,6 @@ const QuestionForm = ({
       {/* {question && ( */}
       <section className={classes.section}>
         <MoTypography
-          color="grey"
           font="breeSerif"
           marginBottom="sm"
           variant="h6"
@@ -93,7 +92,6 @@ const QuestionForm = ({
       {question && (
         <section className={classes.section}>
           <MoTypography
-            color="grey"
             font="breeSerif"
             marginBottom="sm"
             variant="h6"

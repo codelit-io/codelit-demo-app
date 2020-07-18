@@ -38,7 +38,6 @@ const QuestionList = ({ authUser, match, questions, points }) => {
               unmountOnExit
             >
               <MoTypography
-                color="greyDark"
                 font="breeSerif"
                 marginTop={index > 1 ? "md" : null}
                 text={question.category}
