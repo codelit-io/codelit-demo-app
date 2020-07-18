@@ -1,6 +1,7 @@
 const styles = theme => ({
   text: {
-    color: theme.grey?.medium,
+    color: theme.grey?.light,
+    backgroundColor: "transparent",
     fontFamily: theme.openSans,
     textDecoration: "none",
     marginBottom: theme.space?.md,

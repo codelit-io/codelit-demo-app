@@ -14,7 +14,7 @@ const MoPageHeaderEdit = ({
   return (
     <input
       ref={register}
-      className={`${classes.text} MuiTypography-h2`}
+      className={`MuiTypography-h2 ${classes.text}`}
       placeholder={text || children || placeholder}
       defaultValue={text || children}
       name={name}

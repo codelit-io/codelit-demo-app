@@ -223,9 +223,6 @@ const QuestionPage = ({
               {/* Render if answer is available */}
               <Button
                 disabled={question.question ? true : false}
-                // className={
-                //   !question.question ? classes.grey : classes.lightGrey
-                // }
                 aria-label="Need a hint?"
                 aria-haspopup="true"
                 startIcon={<HelpIcon />}
@@ -238,7 +235,6 @@ const QuestionPage = ({
             </Grid>
             <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
               <Button
-                className={classes.grey}
                 aria-label="Show error console"
                 aria-haspopup="true"
                 startIcon={<CodeIcon />}
