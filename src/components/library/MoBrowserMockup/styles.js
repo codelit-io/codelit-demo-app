@@ -18,8 +18,8 @@ const styles = theme => ({
   },
 
   browserMockup: {
-    paddingLeft: "1.75rem",
-    minHeight: "80px",
+    padding: "1.75rem",
+    minHeight: "10rem",
     position: "relative",
     borderRadius: theme.space.xs,
     boxShadow: theme.shadow.lg
