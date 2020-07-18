@@ -27,6 +27,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 import styles from "./styles";
 import MoTypography from "components/library/MoTypography";
+import { ReactComponent as Researching } from "assets/researching.svg";
+import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
 
 const LandingPage = ({ classes }) => {
   return (
@@ -40,25 +42,14 @@ const LandingPage = ({ classes }) => {
             unmountOnExit
           >
             <div className={classes.responsiveGrid}>
-              <MoTypography
-                color="greyDark"
-                font="breeSerif"
-                marginBottom="md"
-                variant="h2"
-              >
+              <MoTypography font="breeSerif" marginBottom="md" variant="h2">
                 {LANDING_PAGE.HERO_TITLE}
               </MoTypography>
-              <MoTypography
-                color="grey"
-                font="openSans"
-                marginBottom="md"
-                variant="h4"
-              >
+              <MoTypography font="openSans" marginBottom="md" variant="h4">
                 {LANDING_PAGE.HERO_SUBTITLE}
               </MoTypography>
               <MoButton
                 isArrowIcon={true}
-                color="primary"
                 variant="contained"
                 size="large"
                 text={LANDING_PAGE.VIEW_COURSES}
@@ -70,15 +61,14 @@ const LandingPage = ({ classes }) => {
 
         <Grid item sm={12} md={6} xs={12}>
           <Fade
-            in={Landing1 && true}
+            in={Researching && true}
             mountOnEnter
             timeout={{ enter: 1200 }}
             unmountOnExit
           >
-            <img
+            <Researching
               alt={LANDING_PAGE.LEARN_COURSES}
-              src={Landing1}
-              className={classes.img}
+              className={classes.svg}
             />
           </Fade>
         </Grid>
@@ -92,12 +82,7 @@ const LandingPage = ({ classes }) => {
           unmountOnExit
         >
           <Grid item sm={12} md={6} xs={12}>
-            <MoTypography
-              color="greyDark"
-              font="breeSerif"
-              marginBottom="md"
-              variant="h2"
-            >
+            <MoTypography font="breeSerif" marginBottom="md" variant="h2">
               Learn all about React
             </MoTypography>
             <ListItem>
@@ -174,30 +159,19 @@ const LandingPage = ({ classes }) => {
           unmountOnExit
         >
           <Grid item sm={12} md={6} xs={12}>
-            <img
+            <SourceCode
               alt={LANDING_PAGE.LEARN_ALL_ABOUT_REACT}
-              src={Landing2}
-              className={classes.img}
+              className={classes.svg}
             />
           </Grid>
         </Fade>
       </Grid>
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
-          <MoTypography
-            color="greyDark"
-            font="breeSerif"
-            marginBottom="md"
-            variant="h2"
-          >
+          <MoTypography font="breeSerif" marginBottom="md" variant="h2">
             {LANDING_PAGE.TRY_THE_PLAYGROUND}
           </MoTypography>
-          <MoTypography
-            color="grey"
-            font="openSans"
-            marginBottom="md"
-            variant="h4"
-          >
+          <MoTypography font="openSans" marginBottom="md" variant="h4">
             {LANDING_PAGE.PLAYGROUND_SUBTITLE}
           </MoTypography>
           <MoButton

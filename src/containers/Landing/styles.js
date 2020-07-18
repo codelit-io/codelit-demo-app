@@ -11,7 +11,7 @@ const styles = theme => ({
       paddingBottom: theme.space?.md
     }
   },
-  img: {
+  svg: {
     width: "100%"
   },
   checkMark: {
