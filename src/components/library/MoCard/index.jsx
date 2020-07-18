@@ -42,59 +42,41 @@ const MoCard = ({
   title,
   url
 }) => (
-    <ButtonBase
-      component={Link}
-      to={url}
-      disabled={isDisabled}
-      className={classes.link}
-    >
-      <Paper className={`${classes.card} ${isDisabled && classes.disableCard}`}>
-        <Grid container spacing={4}>
-          {IconComponent && (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              lg={12}
-            >
-              <IconComponent className={classes.heroIcon} />
-            </Grid>
-          )}
-          {index && (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              lg={12}
-            >
-              <Typography className={classes.index} variant="h2" component="h1">
-                {index}
-              </Typography>
-            </Grid>
-          )}
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
-            <Typography gutterBottom variant="h5" component="h2">
-              {title ? title : "Empty Title"}
-            </Typography>
-            <Typography className={classes.subtitle} component="h6" gutterBottom>
-              {subtitle}
-            </Typography>
-            <Typography className={classes.subtitle} component="p" gutterBottom>
-              {content}
+  <ButtonBase
+    component={Link}
+    to={url}
+    disabled={isDisabled}
+    className={classes.link}
+  >
+    <Paper className={`${classes.card} ${isDisabled && classes.disableCard}`}>
+      <Grid container spacing={4}>
+        {IconComponent && (
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <IconComponent className={classes.heroIcon} />
+          </Grid>
+        )}
+        {index && (
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Typography className={classes.index} variant="h2" component="h1">
+              {index}
             </Typography>
           </Grid>
+        )}
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {title ? title : "Empty Title"}
+          </Typography>
+          <Typography className={classes.subtitle} component="h6" gutterBottom>
+            {subtitle}
+          </Typography>
+          <Typography className={classes.subtitle} component="p" gutterBottom>
+            {content}
+          </Typography>
         </Grid>
-      </Paper>
-    </ButtonBase>
-  );
+      </Grid>
+    </Paper>
+  </ButtonBase>
+);
 
 MoCard.propTypes = {
   title: PropTypes.string,
