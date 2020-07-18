@@ -4,7 +4,7 @@ const styles = theme => ({
     paddingBottom: theme.space?.lg
   },
   appBar: {
-    boxShadow: theme.shadow.lg
+    boxShadow: "none"
   }
 });
 
