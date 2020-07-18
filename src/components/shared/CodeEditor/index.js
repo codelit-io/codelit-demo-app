@@ -33,7 +33,7 @@ import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
 // import Headline from "components/library/MoHeadline";
-import MoLinearProgress from "components/library/MoLinearProgress";
+import MoProgressLinear from "components/library/MoProgressLinear";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
 import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
@@ -150,7 +150,7 @@ const CodeEditor = ({
                   )}
                 </div>
               </MoBrowserMockup>
-              {matchPercent && <MoLinearProgress percent={matchPercent} />}
+              {matchPercent && <MoProgressLinear percent={matchPercent} />}
             </div>
           </Grow>
         </Grid>

@@ -7,7 +7,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
  * @param {number} percent - this will be in the format 0.x
  */
 
-const MoLinearProgress = ({ percent }) => (
+const MoProgressLinear = ({ percent }) => (
   <Fade in mountOnEnter timeout={{ enter: 800 }} unmountOnExit>
     <LinearProgress
       variant="buffer"
@@ -18,4 +18,4 @@ const MoLinearProgress = ({ percent }) => (
   </Fade>
 );
 
-export default MoLinearProgress;
+export default MoProgressLinear;
