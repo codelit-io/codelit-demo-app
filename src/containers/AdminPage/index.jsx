@@ -33,14 +33,15 @@ import {
   withEmailVerification,
   withAuthentication
 } from "components/shared/Session";
+import { ADMIN_PAGE } from "constants/i18n";
 import MoTabs from "./MoTabs";
 
 const Collection = lazy(() => import("./Collection"));
 const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
 const tabItems = [
-  { name: "Courses", path: "courses" },
-  { name: "Users", path: "users" }
+  { name: ADMIN_PAGE.COURSES, path: "courses" },
+  { name: ADMIN_PAGE.USERS, path: "users" }
 ];
 
 const AdminPage = ({ history }) => {
@@ -49,7 +50,7 @@ const AdminPage = ({ history }) => {
   };
 
   return (
-    <MoPage title="Admin" isLoading={false}>
+    <MoPage title={ADMIN_PAGE.PAGE_TITLE} isLoading={false}>
       <MoTabs
         handleTabChange={path => handleTabChange(path)}
         tabItems={tabItems}

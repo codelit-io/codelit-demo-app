@@ -27,6 +27,7 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
@@ -47,42 +48,21 @@ const MoCard = ({
     disabled={isDisabled}
     className={classes.link}
   >
-    <div className={`${classes.card} ${isDisabled && classes.disableCard}`}>
+    <Paper className={`${classes.card} ${isDisabled && classes.disableCard}`}>
       <Grid container spacing={4}>
         {IconComponent && (
-          <Grid
-            item
-            className={classes.cardContent}
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <IconComponent className={classes.heroIcon} />
           </Grid>
         )}
         {index && (
-          <Grid
-            item
-            className={classes.cardContent}
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <Typography className={classes.index} variant="h2" component="h1">
               {index}
             </Typography>
           </Grid>
         )}
-        <Grid
-          item
-          className={classes.cardContent}
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-        >
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography gutterBottom variant="h5" component="h2">
             {title ? title : "Empty Title"}
           </Typography>
@@ -94,7 +74,7 @@ const MoCard = ({
           </Typography>
         </Grid>
       </Grid>
-    </div>
+    </Paper>
   </ButtonBase>
 );
 

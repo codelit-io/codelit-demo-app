@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
 import * as ROUTES from "constants/routes";
-import * as ROLES from "constants/roles";
 import AppsIcon from "@material-ui/icons/Apps";
 import Avatar from "@material-ui/core/Avatar";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -21,7 +20,7 @@ import SportsMotorsportsIcon from "@material-ui/icons/SportsMotorsports";
 import Tooltip from "@material-ui/core/Tooltip";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 
-const MoAvatar = ({ authUser, classes, firebase }) => {
+const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = event => {
@@ -35,7 +34,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
   return (
     <>
       <Tooltip title="Menu" arrow>
-        <Button
+        <IconButton
           aria-controls="avatar-menu"
           aria-haspopup="true"
           className={classes.avatarButton}
@@ -44,13 +43,12 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
           <Avatar
             alt="Me"
             src={authUser && authUser.photoURL}
-            className={`${classes.avatar} ${authUser?.roles?.ADMIN &&
-              classes.adminAvatar}
-            ${authUser?.roles?.AUTHOR && classes.authorAvatar}`}
+            className={`${classes.avatar} ${isAdmin && classes.adminAvatar}
+            ${isAdmin && classes.authorAvatar}`}
             aria-controls="avatar-menu"
             aria-haspopup="true"
           />
-        </Button>
+        </IconButton>
       </Tooltip>
       <Menu
         anchorEl={anchorEl}
@@ -102,7 +100,7 @@ const MoAvatar = ({ authUser, classes, firebase }) => {
               </ListItemIcon>
               <ListItemText primary={ROUTES.SUBMIT_ISSUE_GITHUB.title} />
             </MenuItem>
-            {authUser && authUser.roles && !!authUser.roles[ROLES.ADMIN] && (
+            {isAdmin && (
               <MenuItem
                 to={ROUTES.ADMIN_COURSES.path}
                 component={Link}

@@ -1,6 +1,7 @@
 import React from "react";
 
 import * as ROUTES from "constants/routes";
+import { SIGN_UP } from "constants/i18n";
 import { withAuthentication } from "components/shared/Session";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
@@ -10,7 +11,7 @@ import SignUpForm from "./SignUpForm";
 
 const SignUpPage = ({ authUser }) => (
   <MoPage
-    title={authUser ? "You are signed up 👍" : "Sign up to get started 😎"}
+    title={authUser ? SIGN_UP.PAGE_TITLE : SIGN_UP.PAGE_LOGGED_IN_TITLE}
     isLoading={false}
   >
     <Grid container spacing={3}>
@@ -21,7 +22,7 @@ const SignUpPage = ({ authUser }) => (
             color="primary"
             variant="text"
             size="large"
-            text="View All Courses"
+            text={SIGN_UP.VIEW_ALL_COURSES}
             href={ROUTES.COLLECTIONS.path}
           />
         </Grid>

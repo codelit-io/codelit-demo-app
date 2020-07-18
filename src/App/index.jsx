@@ -1,7 +1,7 @@
 /**
  *
  *
- * @author MoSkool
+ * @author Mo Skool
  * @version 1.0.0
  * @visibleName App Component 🥈
  *
@@ -19,8 +19,6 @@ import React, { Suspense, lazy } from "react";
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
-import theme from "./theme";
-import { ThemeProvider } from "@material-ui/core/styles";
 import { retry } from "utils/retryLazyImports";
 
 const Navigation = lazy(() =>
@@ -43,12 +41,12 @@ const Question = lazy(() => retry(() => import("containers/Question")));
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
-const App = () => (
-  <ThemeProvider theme={theme}>
+const App = () => {
+  return (
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+        <Navigation />
         <Container maxWidth="lg">
-          <Navigation />
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
@@ -77,7 +75,7 @@ const App = () => (
         </Container>
       </Suspense>
     </Router>
-  </ThemeProvider>
-);
+  );
+};
 
 export default App;

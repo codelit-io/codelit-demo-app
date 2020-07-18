@@ -6,8 +6,8 @@ exports[`LandingPage Component should match the snapshot 1`] = `
     Object {
       "checkMark": "LandingPage-checkMark-4",
       "container": "LandingPage-container-1",
-      "img": "LandingPage-img-3",
       "responsiveGrid": "LandingPage-responsiveGrid-2",
+      "svg": "LandingPage-svg-3",
     }
   }
 />

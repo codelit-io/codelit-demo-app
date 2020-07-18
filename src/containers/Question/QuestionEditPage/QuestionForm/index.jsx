@@ -1,17 +1,17 @@
-import React, { lazy, useState, useEffect } from "react";
+import React, { lazy } from "react";
 
-import Button from "@material-ui/core/Button";
 import { useForm } from "react-hook-form";
-import styles from "./styles";
 import { withRouter } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { compose } from "recompose";
+import { useCallback } from "react";
+import Button from "@material-ui/core/Button";
 import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
-import { useCallback } from "react";
 import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
 import MoTypography from "components/library/MoTypography";
+import styles from "./styles";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -28,40 +28,24 @@ const QuestionForm = ({
   onSubmit
 }) => {
   const { handleSubmit, register } = useForm();
-  const [formData, setFormData] = useState({});
 
-  useEffect(() => {
-    setFormData(question);
-  }, [question]);
-
-  const handleQuestionChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
+  const handleChange = useCallback(
+    code => {
+      const userAnswer = { ...Object.values(code) };
+      if (userAnswer[0] === "{}" || userAnswer[0] === "") {
         return;
       }
-      setFormData(preState => ({ ...preState, question: userAnswer }));
-      setQuestion({ ...question, question: userAnswer });
+      setQuestion({ ...question, ...code });
     },
     [setQuestion, question]
   );
 
-  const handleAnswerChange = useCallback(
-    ({ userAnswer }) => {
-      if (userAnswer === "{}" || userAnswer === "") {
-        return;
-      }
-      setFormData(preState => ({ ...preState, answer: userAnswer }));
-      setQuestion({ ...question, answer: userAnswer });
-    },
-    [setQuestion, question]
-  );
-
-  if (isLoading && formData) {
+  if (isLoading || !question) {
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
 
   return (
-    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
+    <form onSubmit={handleSubmit(e => onSubmit({ ...e, ...question }))}>
       <section className={classes.section}>
         <MoPageHeaderEdit
           text={title}
@@ -82,38 +66,28 @@ const QuestionForm = ({
           placeholder={"<p>"}
         />
       </section>
+      {/* {question && ( */}
+      <section className={classes.section}>
+        <MoTypography font="breeSerif" marginBottom="sm" variant="h6">
+          Question
+        </MoTypography>
+        <CodeEditor
+          codeAnswer={"Write Question Here"}
+          codeLanguage={question?.language}
+          codeQuestion={question?.question}
+          isConsole={true}
+          isEditMode={true}
+          noInline={false}
+          isPlayground={question?.isPlayground}
+          handleOnChange={code => handleChange({ question: code.userAnswer })}
+          sm={6}
+          md={6}
+        />
+      </section>
+      {/* )} */}
       {question && (
         <section className={classes.section}>
-          <MoTypography
-            color="grey"
-            font="breeSerif"
-            marginBottom="sm"
-            variant="h6"
-          >
-            Question
-          </MoTypography>
-          <CodeEditor
-            codeAnswer={"Write Question Here"}
-            codeLanguage={question?.language}
-            codeQuestion={question?.question}
-            isConsole={true}
-            isEditMode={true}
-            noInline={false}
-            isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleQuestionChange(userAnswer)}
-            sm={6}
-            md={6}
-          />
-        </section>
-      )}
-      {question && (
-        <section className={classes.section}>
-          <MoTypography
-            color="grey"
-            font="breeSerif"
-            marginBottom="sm"
-            variant="h6"
-          >
+          <MoTypography font="breeSerif" marginBottom="sm" variant="h6">
             Answer
           </MoTypography>
           <CodeEditor
@@ -124,7 +98,7 @@ const QuestionForm = ({
             isEditMode={true}
             noInline={false}
             isPlayground={question?.isPlayground}
-            handleOnChange={userAnswer => handleAnswerChange(userAnswer)}
+            handleOnChange={code => handleChange({ answer: code.userAnswer })}
             sm={6}
             md={6}
           />

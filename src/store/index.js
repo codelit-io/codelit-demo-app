@@ -1,14 +1,8 @@
-/* Initial State goes here */
-
 import React from "react";
-import useGlobalHook from "use-global-hook";
-import * as actions from "../actions";
 
-const initialState = {
-  collections: {},
-  courses: [],
-  authUser: null
-};
+import * as actions from "../actions";
+import { initialState } from "./initialState";
+import useGlobalHook from "use-global-hook";
 
 const useGlobal = useGlobalHook(React, initialState, actions);
 
