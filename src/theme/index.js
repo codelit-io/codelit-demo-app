@@ -137,6 +137,7 @@ const getTheme = ({ isDarkMode }) => {
     type: isDarkMode ? "dark" : "light",
     yinYang: {
       main: isDarkMode ? colors.white.light : colors.black.medium,
+      light: isDarkMode ? colors.grey.light : colors.grey.dark,
       dark: isDarkMode ? colors.black.dark : colors.white.light,
       background: isDarkMode ? colors.black.medium : colors.grey.superLight
     }

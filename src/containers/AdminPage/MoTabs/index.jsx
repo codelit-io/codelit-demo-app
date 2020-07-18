@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper,
-    paddingBottom: theme.space.md
+    marginBottom: theme.space.md
   },
   appBar: { boxShadow: "none", backgroundColor: "transparent" }
 }));
