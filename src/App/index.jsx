@@ -29,9 +29,7 @@ const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const Container = lazy(() =>
   retry(() => import("@material-ui/core/Container"))
 );
-const Paper = lazy(() =>
-  retry(() => import("@material-ui/core/Paper"))
-);
+const Paper = lazy(() => retry(() => import("@material-ui/core/Paper")));
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
 const PasswordForgot = lazy(() =>
@@ -45,7 +43,6 @@ const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
 const App = () => {
-
   return (
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
