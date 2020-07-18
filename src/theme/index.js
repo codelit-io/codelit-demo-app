@@ -115,14 +115,16 @@ const getTheme = ({ isDarkMode }) => {
   let theme;
   const palette = {
     primary: {
-      main: colors.primary,
-      light: colors.secondary,
-      dark: "red"
+      main: colors.primary
+      //TODO: change colors for light/dark
+      //light:
+      //dark:
     },
     secondary: {
-      main: colors.secondary,
-      light: colors.secondary,
-      dark: colors.secondary
+      main: colors.secondary
+      //TODO: change colors for light/dark
+      // light:
+      // dark:
     },
     type: isDarkMode ? "dark" : "light"
   };
