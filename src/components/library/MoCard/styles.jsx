@@ -7,10 +7,7 @@ const styles = theme => ({
     width: "100%"
   },
   disableCard: {
-    backgroundColor: "#f2f2f2"
-  },
-  cardContent: {
-    color: theme.grey.medium
+    // backgroundColor: "#f2f2f2"
   },
   link: {
     width: "100%"
