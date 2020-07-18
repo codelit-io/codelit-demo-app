@@ -60,11 +60,17 @@ const colors = {
     darkest: ""
   },
   white: {
+    light: "#FFF",
     medium: "#FFFFF2"
   },
   blue: {
     superLight: "#e0e3ea",
     medium: "#276ef1"
+  },
+  black: {
+    light: "#0c0c0c",
+    medium: "#010101",
+    dark: "#000"
   }
 };
 
@@ -114,6 +120,10 @@ const typography = {
 const getTheme = ({ isDarkMode }) => {
   let theme;
   const palette = {
+    background: {
+      default: isDarkMode ? colors.black.medium : colors.white.light,
+      paper: isDarkMode ? colors.black.light : colors.white.light
+    },
     primary: {
       main: colors.primary
       //TODO: change colors for light/dark

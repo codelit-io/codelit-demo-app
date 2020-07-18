@@ -18,8 +18,6 @@ import { LANDING_PAGE } from "constants/i18n";
 import CheckIcon from "@material-ui/icons/Check";
 import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
-import Landing1 from "assets/landing1.png";
-import Landing2 from "assets/landing2.png";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import MoButton from "components/library/MoButton";
@@ -36,7 +34,7 @@ const LandingPage = ({ classes }) => {
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade
-            in={Landing1 && true}
+            in={Researching && true}
             mountOnEnter
             timeout={{ enter: 200 }}
             unmountOnExit
@@ -76,7 +74,7 @@ const LandingPage = ({ classes }) => {
 
       <Grid container spacing={4} className={classes.container}>
         <Fade
-          in={Landing2 && true}
+          in={SourceCode && true}
           mountOnEnter
           timeout={{ enter: 1200 }}
           unmountOnExit
@@ -153,7 +151,7 @@ const LandingPage = ({ classes }) => {
           </Grid>
         </Fade>
         <Fade
-          in={Landing1 && true}
+          in={SourceCode && true}
           mountOnEnter
           timeout={{ enter: 400 }}
           unmountOnExit
