@@ -23,6 +23,7 @@ import ThemeSwitch from "./ThemeSwitch";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
+const Container = lazy(() => import("@material-ui/core/Container"));
 const Grid = lazy(() => import("@material-ui/core/Grid"));
 const MoAvatar = lazy(() => import("components/library/MoAvatar"));
 const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
@@ -35,43 +36,48 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
     <header className={classes.root}>
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar disableGutters={true}>
-          <Grid container>
-            <Grid item xs={3} sm={3} md={3} lg={3}>
-              <MoSkoolLogo />
-            </Grid>
-            <Grid
-              item
-              xs={9}
-              sm={9}
-              md={9}
-              lg={9}
-              style={{ textAlign: "right" }}
-            >
-              <Button
-                color="primary"
-                className={classes.button}
-                aria-label="Courses"
-                aria-haspopup="true"
-                startIcon={<AppsIcon />}
-                component={Link}
-                to={ROUTES.COLLECTIONS.path}
+          <Container maxWidth="lg">
+            <Grid container>
+              <Grid item xs={3} sm={3} md={3} lg={3}>
+                <MoSkoolLogo />
+              </Grid>
+              <Grid
+                item
+                xs={9}
+                sm={9}
+                md={9}
+                lg={9}
+                style={{ textAlign: "right" }}
               >
-                Courses
-              </Button>
-              <>
-                {history.location.pathname === ROUTES.ADMIN_COURSES.path &&
-                  userRole.isAdmin && (
-                    <NewCourseDialog authUser={authUser} firebase={firebase} />
-                  )}
-                <ThemeSwitch />
-                <MoAvatar
-                  authUser={authUser}
-                  isAdmin={userRole.isAdmin}
-                  firebase={firebase}
-                />
-              </>
+                <Button
+                  color="primary"
+                  className={classes.button}
+                  aria-label="Courses"
+                  aria-haspopup="true"
+                  startIcon={<AppsIcon />}
+                  component={Link}
+                  to={ROUTES.COLLECTIONS.path}
+                >
+                  Courses
+                </Button>
+                <>
+                  {history.location.pathname === ROUTES.ADMIN_COURSES.path &&
+                    userRole.isAdmin && (
+                      <NewCourseDialog
+                        authUser={authUser}
+                        firebase={firebase}
+                      />
+                    )}
+                  <ThemeSwitch />
+                  <MoAvatar
+                    authUser={authUser}
+                    isAdmin={userRole.isAdmin}
+                    firebase={firebase}
+                  />
+                </>
+              </Grid>
             </Grid>
-          </Grid>
+          </Container>
         </Toolbar>
       </AppBar>
     </header>

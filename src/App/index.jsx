@@ -45,8 +45,8 @@ const App = () => {
   return (
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+        <Navigation />
         <Container maxWidth="lg">
-          <Navigation />
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />
             <Route path={ROUTES.ACCOUNT.path} component={Account} />
