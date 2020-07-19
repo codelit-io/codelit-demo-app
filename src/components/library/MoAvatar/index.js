@@ -37,7 +37,6 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
         <IconButton
           aria-controls="avatar-menu"
           aria-haspopup="true"
-          className={classes.avatarButton}
           onClick={handleClick}
         >
           <Avatar
@@ -47,6 +46,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
             ${isAdmin && classes.authorAvatar}`}
             aria-controls="avatar-menu"
             aria-haspopup="true"
+            size="24"
           />
         </IconButton>
       </Tooltip>
