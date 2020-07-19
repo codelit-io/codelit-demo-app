@@ -41,7 +41,7 @@ const MoMenu = ({ authUser, classes }) => {
           vertical: "bottom",
           horizontal: "center"
         }}
-        elevation={2}
+        elevation={3}
         getContentAnchorEl={null}
         id="collections-menu"
         keepMounted

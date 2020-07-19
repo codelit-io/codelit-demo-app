@@ -10,9 +10,6 @@ const styles = theme => ({
   authorAvatar: {
     border: `2px solid ${theme.green.medium}`,
     overflow: "visible"
-  },
-  menu: {
-    boxShadow: theme.shadow.lg
   }
 });
 

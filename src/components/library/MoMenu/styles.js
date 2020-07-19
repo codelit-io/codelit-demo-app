@@ -6,9 +6,6 @@ const styles = theme => ({
   adminAvatar: {
     border: `2px solid ${theme.palette.primary.main}`,
     overflow: "visible"
-  },
-  menu: {
-    boxShadow: theme.shadow.lg
   }
 });
 

@@ -31,10 +31,12 @@ const fontFamily = {
   OpenSans: "Open Sans",
   BreeSerif: "Bree Serif"
 };
-const shadow = {
-  lg:
-    "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)"
-};
+const shadows = [
+  "",
+  "",
+  "",
+  "0 24px 24px -18px rgba(69, 104, 129, 0.19), 0 9px 45px 0 rgba(114, 119, 160, 0.06)"
+];
 
 const colors = {
   primary: "#3399bb",
@@ -88,7 +90,7 @@ const space = {
 };
 
 const card = {
-  boxShadow: shadow.lg,
+  boxShadow: shadows[3],
   "&:hover": {
     transform: "translateY(-5px)"
   },
@@ -150,7 +152,7 @@ const getTheme = ({ isDarkMode }) => {
   theme = createMuiTheme({
     card,
     editorFont,
-    shadow,
+    shadows,
     fontSize,
     space,
     grey: colors.grey,
