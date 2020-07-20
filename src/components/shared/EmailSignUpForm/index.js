@@ -42,7 +42,7 @@ const EmailSignUpForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
                 autoFocus
                 autoComplete="email"
                 onChange={onChange}
-                placeholder="Mo@MoSkool.web.app"
+                placeholder="me@moskool.com"
               />
             </FormControl>
             <FormControl margin="normal" required fullWidth>

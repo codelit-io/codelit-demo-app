@@ -22,8 +22,7 @@ const styles = theme => ({
     padding: "1.75rem",
     minHeight: "10rem",
     position: "relative",
-    borderRadius: theme.space.xs,
-    boxShadow: theme.shadow.lg
+    borderRadius: theme.space.xs
   }
 });
 

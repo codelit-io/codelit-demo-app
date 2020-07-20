@@ -17,14 +17,14 @@ import { BROWSER_MOCKUP } from "constants/i18n";
 import MoTypography from "../MoTypography";
 const MoBrowserMockup = ({ classes, children, isEditor }) => {
   return isEditor ? (
-    <Paper className={classes.browserMockup}>
+    <Paper className={classes.browserMockup} elevation={3}>
       <MoTypography variant="caption">
         {BROWSER_MOCKUP.CODE_EDITOR}
       </MoTypography>
       <div className={classes.editor}>{children}</div>
     </Paper>
   ) : (
-    <Paper className={classes.browserMockup}>
+    <Paper className={classes.browserMockup} elevation={3}>
       <MoTypography variant="caption">
         {BROWSER_MOCKUP.CODE_PREVIEW}
       </MoTypography>

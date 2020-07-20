@@ -3,10 +3,8 @@ const styles = theme => ({
     textAlign: "center"
   },
   snackbarContent: {
-    // backgroundColor: "white",
-    // color: "black",
     padding: theme.space.md,
-    boxShadow: theme.shadow.lg
+    boxShadow: theme.shadows[3]
   },
   message: {
     display: "flex",

@@ -12,7 +12,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import styles from "./styles";
-import Slide from "@material-ui/core/Slide";
+import Grow from "@material-ui/core/Grow";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SignInWithFacebook from "components/shared/SocialSignIn/SignInWithFacebook";
 import SignInWithGoogle from "components/shared/SocialSignIn/SignInWithGoogle";
@@ -37,7 +37,6 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
         <IconButton
           aria-controls="avatar-menu"
           aria-haspopup="true"
-          className={classes.avatarButton}
           onClick={handleClick}
         >
           <Avatar
@@ -47,6 +46,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
             ${isAdmin && classes.authorAvatar}`}
             aria-controls="avatar-menu"
             aria-haspopup="true"
+            size="24"
           />
         </IconButton>
       </Tooltip>
@@ -56,7 +56,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
           vertical: "bottom",
           horizontal: "center"
         }}
-        elevation={2}
+        elevation={3}
         getContentAnchorEl={null}
         id="avatar-menu"
         keepMounted
@@ -66,7 +66,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
           vertical: "top",
           horizontal: "center"
         }}
-        TransitionComponent={Slide}
+        TransitionComponent={Grow}
       >
         {authUser ? (
           <div>
@@ -150,4 +150,4 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
   );
 };
 
-export default withStyles(styles)(MoAvatar);
+export default withStyles(styles)(React.memo(MoAvatar));

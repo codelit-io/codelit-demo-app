@@ -34,7 +34,12 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
   const userRole = useUserRole(authUser);
   return (
     <header className={classes.root}>
-      <AppBar position="static" color="transparent" className={classes.appBar}>
+      <AppBar
+        position="static"
+        color="transparent"
+        className={classes.appBar}
+        elevation={0}
+      >
         <Toolbar disableGutters={true}>
           <Container maxWidth="lg">
             <Grid container alignItems="baseline">

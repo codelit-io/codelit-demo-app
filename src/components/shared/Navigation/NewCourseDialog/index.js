@@ -23,6 +23,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { FormControl, FormLabel, RadioGroup, Radio } from "@material-ui/core";
+import { questionMock } from "mocks/question";
 
 const NewCourseDialog = ({ authUser, firebase }) => {
   /* TODO: add watch and error
@@ -37,14 +38,22 @@ const NewCourseDialog = ({ authUser, firebase }) => {
   });
 
   const Form = ({ handleDialogState }) => {
+    /* TODO: Move to hooks or utils */
     const onSubmit = formData => {
       if (formData.title) {
+        // Generate random id to post fix each document id
+        const uid = Math.random()
+          .toString(36)
+          .substring(7);
         // Create doc based on title name, doc is lowercase without spaces
         const doc = formData?.title.replace(/\s+/g, "-").toLowerCase();
+        // Final Id for storing
+        const id = `${doc}-${uid}`;
+
         const payload = {
           ...formData,
-          doc,
-          id: 0,
+          doc: id,
+          id: 1,
           userId: authUser.uid,
           createdAt: firebase.fieldValue.serverTimestamp()
         };
@@ -52,17 +61,17 @@ const NewCourseDialog = ({ authUser, firebase }) => {
         // Create courses in db with doc, then set the payload
         firebase
           .collection("courses")
-          .doc(doc)
+          .doc(id)
           .set(payload, { merge: true });
 
         // Add a questions array to the collection created above add a placeholder entry
         // TODO: figure a more efficient way to do this with one firebase query
         firebase
           .collection("courses")
-          .doc(doc)
+          .doc(id)
           .collection("questions")
           .doc()
-          .set({ id: 1 });
+          .set({ ...questionMock });
 
         // Set Dialog state back to false to close the Dialog
         handleDialogState(false);
@@ -160,6 +169,7 @@ const NewCourseDialog = ({ authUser, firebase }) => {
                 inputRef={register}
                 label="Disable a course"
                 name="isDisabled"
+                defaultValue={false}
               />
               <FormHelperText>
                 Disabling a course disables the course from being accessed

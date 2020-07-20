@@ -3,7 +3,7 @@ export const question = () => {
     answer: "<button> I am a Button </button>",
     language: "jsx",
     element: "button",
-    id: "0",
+    id: 0,
     isCorrect: false,
     question: `() => {
           return (
@@ -14,4 +14,13 @@ export const question = () => {
         };`,
     isPlayground: true
   };
+};
+
+export const questionMock = {
+  id: 1,
+  question: "<p>Hello React</p>",
+  answer: "Answer goes here",
+  title: "My first question",
+  subtitle: "My first question",
+  label: "My first question"
 };
