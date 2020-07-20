@@ -13,6 +13,7 @@ export const ADMIN_PAGE = {
 export const COURSES = {
   PAGE_TITLE: "Your Courses",
   ADD_A_COURSES: "Add a course",
+  ADD_A_COURSES_SUBTITLE: "My awesome new course in React",
   REACT_COURSES: "React JS courses"
 };
 

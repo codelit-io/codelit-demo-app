@@ -18,7 +18,7 @@ import MoPointsGroup from "components/library/MoPointsGroup";
 
 const QuestionsPage = ({
   authUser,
-  courses,
+  questions,
   courseDetails,
   isLoading,
   match,
@@ -30,7 +30,7 @@ const QuestionsPage = ({
         <MoPointsGroup
           authUser={authUser}
           points={points}
-          progress={calculateProgress(authUser, points, courses.data?.length)}
+          progress={calculateProgress(authUser, points, questions?.length)}
         />
       </Grid>
 
@@ -38,7 +38,7 @@ const QuestionsPage = ({
         authUser={authUser}
         match={match}
         points={points}
-        questions={courses.data}
+        questions={questions}
         url={match?.params?.collection}
       />
     </Grid>

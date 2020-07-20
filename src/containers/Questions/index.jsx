@@ -17,14 +17,18 @@
 
 import React, { lazy, useEffect, useState } from "react";
 
+import * as ROUTES from "constants/routes";
+import { COURSES, SIGN_UP } from "constants/i18n";
+import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import { withAuthentication } from "components/shared/Session";
+import useUserRole from "hooks/useUserRole";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ authUser, firebase, match }) => {
   const collectionPath = "courses/" + match.params.collection + "/questions";
+  const userRole = useUserRole(authUser);
 
   const courseDetails = useCollectionDetails(
     { collectionPath: "courses" },
@@ -32,7 +36,13 @@ const Questions = ({ authUser, firebase, match }) => {
     firebase
   );
 
-  const courses = useCollections({ collectionPath }, firebase);
+  const questions = useCollections(
+    {
+      collectionPath,
+      data: []
+    },
+    firebase
+  );
 
   const [points, setPoints] = useState(0);
 
@@ -40,16 +50,34 @@ const Questions = ({ authUser, firebase, match }) => {
     setPoints(authUser?.reports?.[match.params.collection]?.points);
   }, [authUser, match]);
 
-  if (!courses?.data || !courseDetails.data) {
+  if (!questions?.data || !courseDetails.data) {
     return null;
   }
+
+  /* TODO: Move to global initial state  */
+  const questionsWithOptions = [
+    userRole.isAdmin
+      ? {
+          type: "new",
+          title: COURSES.ADD_A_COURSES,
+          url: ROUTES.COLLECTIONS_ADD.path
+        }
+      : {
+          type: "signup",
+          title: SIGN_UP.CORE,
+          subtitle: SIGN_UP.SIGN_UP_TO_EARN_REWARDS,
+          url: ROUTES.SIGN_UP.path
+        },
+    ...questions.data
+  ];
+
   return (
     <QuestionsPage
       authUser={authUser}
-      courses={courses}
+      questions={questionsWithOptions}
       courseDetails={courseDetails}
-      hasData={courses.data.length && true}
-      isLoading={courses.isLoading && false}
+      hasData={questionsWithOptions.length && true}
+      isLoading={questions.isLoading && false}
       match={match}
       points={points}
     />

@@ -9,9 +9,9 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const useCollections = ({ collectionPath, locationHash }, firebase) => {
+const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
   const [state, setState] = useState({
-    data: [],
+    data,
     isLoading: true,
     isError: false
   });
@@ -39,10 +39,12 @@ const useCollections = ({ collectionPath, locationHash }, firebase) => {
               isError: false
             });
           } else {
-            setState({
-              data: [],
-              isLoading: false,
-              isError: false
+            setState(prevState => {
+              return {
+                data: prevState.data,
+                isLoading: false,
+                isError: false
+              };
             });
           }
           /* Unsubscribe from firebase on unmount */

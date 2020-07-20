@@ -42,10 +42,11 @@ const CoursesPage = ({ authUser, collection, history, firebase }) => {
   };
 
   const collectionDetails = {
-    title: collection.title,
-    isProgressBar: collection.isProgressBar,
     collectionPath: collection.path,
-    locationHash: history.location.hash
+    data: [],
+    isProgressBar: collection.isProgressBar,
+    locationHash: history.location.hash,
+    title: collection.title
   };
 
   const courses = useCollections(collectionDetails, firebase);
@@ -53,7 +54,7 @@ const CoursesPage = ({ authUser, collection, history, firebase }) => {
   if (!courses || !courses?.data?.length) {
     return null;
   }
-
+  /* TODO: Move to global initial state  */
   const coursesWithOptions = [
     userRole.isAdmin
       ? {
