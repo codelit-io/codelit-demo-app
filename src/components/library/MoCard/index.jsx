@@ -14,6 +14,7 @@
  * @param {Number} points - Number of points for the course
  * @param {String} subtitle - Text displayed under the title
  * @param {String} title - Main text for the card
+ * @param {String} type - Courses type e.g. "new" for Add new content, or "signup" for sign up card
  * @param {String} url - Router link to the course, looks like PATH_TO_COLLECTION/PATH_TO_DOC
  * @withStyle - HOC provides classes object to component for styling
  *
@@ -40,6 +41,7 @@ const MoCard = ({
   points,
   subtitle,
   title,
+  type,
   url
 }) => (
   <ButtonBase
@@ -50,7 +52,8 @@ const MoCard = ({
   >
     <Paper
       elevation={3}
-      className={`${classes.card} ${isDisabled && classes.disableCard}`}
+      className={`${classes.card} ${isDisabled && classes.disableCard} ${type &&
+        classes[type]}`}
     >
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -80,7 +83,7 @@ MoCard.propTypes = {
   subtitle: PropTypes.string,
   content: PropTypes.string,
   IconComponent: PropTypes.elementType,
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
   points: PropTypes.number,
   url: PropTypes.string.isRequired
 };
