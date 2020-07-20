@@ -60,7 +60,12 @@ const MoTabs = ({ tabItems, handleTabChange }) => {
   };
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appBar} color="default" position="static">
+      <AppBar
+        className={classes.appBar}
+        color="default"
+        position="static"
+        elevation={0}
+      >
         <Tabs
           value={value}
           onChange={handleChange}

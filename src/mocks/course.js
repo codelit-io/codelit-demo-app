@@ -7,7 +7,7 @@ export const course = {
 export const collections = {
   courses: [
     {
-      id: "123",
+      id: 0,
       isDisabled: false,
       question: [],
       title: "Html",
@@ -16,7 +16,7 @@ export const collections = {
       doc: "html"
     },
     {
-      id: "1234",
+      id: 1,
       isDisabled: false,
       question: [],
       title: "JavaScript",
@@ -25,7 +25,7 @@ export const collections = {
       doc: "js"
     },
     {
-      id: "12345",
+      id: 2,
       isDisabled: true,
       question: [],
       title: "React",
