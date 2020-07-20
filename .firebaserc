@@ -1,6 +1,8 @@
 {
   "projects": {
-    "default": "tool-builder",
+    "development": "moskool-dev",
+    "default": "moskool-dev",
+    "production": "tool-builder",
     "website": "reactup"
   }
 }
