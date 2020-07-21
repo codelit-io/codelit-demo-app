@@ -32,7 +32,11 @@ const QuestionForm = ({
   const handleChange = useCallback(
     code => {
       const userAnswer = { ...Object.values(code) };
-      if (userAnswer[0] === "{}" || userAnswer[0] === "") {
+      if (
+        userAnswer[0] === "{}" ||
+        userAnswer[0] === "" ||
+        userAnswer[0] === typeof Object
+      ) {
         return;
       }
       setQuestion({ ...question, ...code });
@@ -45,7 +49,7 @@ const QuestionForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(e => onSubmit({ ...e, ...question }))}>
+    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
       <section className={classes.section}>
         <MoPageHeaderEdit
           text={title}

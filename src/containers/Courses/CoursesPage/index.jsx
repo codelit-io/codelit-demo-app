@@ -7,37 +7,33 @@
  * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
-import React from "react";
+import React, { lazy } from "react";
 
-import { withAuthentication } from "components/shared/Session";
-import CoursesList from "./CoursesList";
 import Footer from "components/shared/Footer";
-import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
-import useCollections from "hooks/useCollections";
 
-const CoursesPage = ({ authUser, collection, history, firebase }) => {
-  const collectionDetails = {
-    title: collection.title,
-    isProgressBar: collection.isProgressBar,
-    collectionPath: collection.path,
-    locationHash: history.location.hash
-  };
+import Grid from "@material-ui/core/Grid";
 
-  const courses = useCollections(collectionDetails, firebase);
+const CardList = lazy(() => import("components/shared/CardList"));
 
-  if (!courses || !courses?.data?.length) {
-    return null;
-  }
-
+const CoursesPage = ({
+  authUser,
+  collectionDetails,
+  courses,
+  itemUrl,
+  isAdmin,
+  newItemUrl
+}) => {
   return (
     <MoPage title={collectionDetails?.title}>
       <Grid container spacing={4} alignItems="center">
-        <CoursesList
+        <CardList
           authUser={authUser}
-          courses={courses.data}
-          collectionPath={"courses"}
-          points={0}
+          items={courses.data}
+          isAdmin={isAdmin}
+          itemUrl={doc => itemUrl(doc)}
+          isItemDisabled={() => {}}
+          newItemUrl={newItemUrl}
         />
       </Grid>
       <Footer />
@@ -45,4 +41,4 @@ const CoursesPage = ({ authUser, collection, history, firebase }) => {
   );
 };
 
-export default withAuthentication(CoursesPage);
+export default CoursesPage;

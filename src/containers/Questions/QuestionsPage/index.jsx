@@ -7,21 +7,25 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React from "react";
+import React, { lazy } from "react";
 
 import calculateProgress from "./calculateProgress";
 import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
-import QuestionList from "./QuestionList";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
 
+const CardList = lazy(() => import("components/shared/CardList"));
+
 const QuestionsPage = ({
   authUser,
-  courses,
+  questions,
   courseDetails,
   isLoading,
-  match,
+  isItemDisabled,
+  isAdmin,
+  itemUrl,
+  newItemUrl,
   points
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
@@ -30,16 +34,17 @@ const QuestionsPage = ({
         <MoPointsGroup
           authUser={authUser}
           points={points}
-          progress={calculateProgress(authUser, points, courses.data?.length)}
+          progress={calculateProgress(authUser, points, questions?.length)}
         />
       </Grid>
-
-      <QuestionList
+      <CardList
         authUser={authUser}
-        match={match}
         points={points}
-        questions={courses.data}
-        url={match?.params?.collection}
+        items={questions}
+        isAdmin={isAdmin}
+        isItemDisabled={id => isItemDisabled(id)}
+        itemUrl={id => itemUrl(id)}
+        newItemUrl={newItemUrl}
       />
     </Grid>
     <Footer />

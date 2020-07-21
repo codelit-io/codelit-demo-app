@@ -11,7 +11,10 @@ export const ADMIN_PAGE = {
 };
 
 export const COURSES = {
-  PAGE_TITLE: "Your Courses"
+  PAGE_TITLE: "Your Courses",
+  ADD_A_COURSES: "Add a course",
+  ADD_A_COURSES_SUBTITLE: "My awesome new course in React",
+  REACT_COURSES: "React JS courses"
 };
 
 export const LANDING_PAGE = {
@@ -43,7 +46,8 @@ export const SIGN_UP = {
   ONE_CLICK_SIGNUP: "1-click Signup",
   PAGE_TITLE: "You are signed up 👍",
   PAGE_LOGGED_IN_TITLE: "Sign up to get started 😎",
-  VIEW_ALL_COURSES: "View All Courses"
+  VIEW_ALL_COURSES: "View All Courses",
+  SIGN_UP_TO_EARN_REWARDS: "Save progress & earn points"
 };
 
 export const BROWSER_MOCKUP = {

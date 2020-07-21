@@ -17,6 +17,11 @@ const styles = theme => ({
     "& svg": {
       fontSize: theme.fontSize.xl
     }
+  },
+  new: {
+    border: `${theme.spacing(0.02)}rem dashed ${theme.grey.light}`,
+    opacity: "0.6",
+    boxShadow: "none"
   }
 });
 
