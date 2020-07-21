@@ -33,7 +33,6 @@ const ThemeSwitch = () => {
 
   // Theme change handler
   const handleThemeModeChange = () => {
-    // debugger
     cacheIsDarkMode();
     addToThemeOptions({ isDarkMode: !themeOptions.isDarkMode });
   };
