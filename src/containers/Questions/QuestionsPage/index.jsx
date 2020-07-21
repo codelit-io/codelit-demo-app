@@ -25,6 +25,7 @@ const QuestionsPage = ({
   isItemDisabled,
   isAdmin,
   itemUrl,
+  newItemUrl,
   points
 }) => (
   <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
@@ -43,6 +44,7 @@ const QuestionsPage = ({
         isAdmin={isAdmin}
         isItemDisabled={id => isItemDisabled(id)}
         itemUrl={id => itemUrl(id)}
+        newItemUrl={newItemUrl}
       />
     </Grid>
     <Footer />
