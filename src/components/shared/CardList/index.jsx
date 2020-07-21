@@ -7,6 +7,11 @@
  * Loops over an item list of questions or courses and then renders components with specific logic
  *
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
+ * @param {Boolean} itemUrl - Url or Route for each item
+ * @param {Boolean} isAdmin - Flag if user is an admin
+ * @param {Boolean} isItemDisabled - Flag if item is disabled
+ * @param {Array} items - Items as an array and has all data from db
+ * @param {Boolean} newItemUrl - Url or Route for adding a new item
  *
  * @returns {<MoTypography/>} - returns Typography component a formatted text
  *
@@ -22,20 +27,36 @@ import NewItemCard from "./NewItemCard";
 const CardItem = lazy(() => import("./CardItem"));
 const CategoryItem = lazy(() => import("./CategoryItem"));
 
-const CardList = ({ authUser, itemUrl, isAdmin, isItemDisabled, items }) => {
+const CardList = ({
+  authUser,
+  itemUrl,
+  isAdmin,
+  isItemDisabled,
+  items,
+  newItemUrl
+}) => {
   return items.map((item, index) => {
+    // Detect if item is disabled
     const isDisabled = item.isDisabled
       ? item.isDisabled
       : isItemDisabled(item.id);
-    //Configure url route for each item
+
+    // Configure url route for each item
     const configureUrl = isDisabled ? "" : itemUrl(item.doc || item.id);
+
+    // Icon Component for item types
     const IconComponent = item.isDisabled
       ? itemTypes.disabled
       : itemTypes[item.type];
+
     return (
       <React.Fragment key={index}>
         <CategoryItem index={index} text={item?.category} />
-        <NewItemCard isActive={index < 1 && !!isAdmin} type="new" />
+        <NewItemCard
+          isActive={index < 1 && !!isAdmin}
+          type="new"
+          url={newItemUrl}
+        />
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
           IconComponent={IconComponent}
