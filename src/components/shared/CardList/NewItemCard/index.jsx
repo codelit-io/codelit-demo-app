@@ -26,7 +26,7 @@ import MoCard from "components/library/MoCard";
 
 import { COURSES } from "constants/i18n";
 
-const NewItemCard = ({ isActive, type }) => {
+const NewItemCard = ({ isActive, type, url }) => {
   if (!isActive) {
     return null;
   }
@@ -38,7 +38,7 @@ const NewItemCard = ({ isActive, type }) => {
           isDisabled={false}
           title={COURSES.ADD_A_COURSES}
           type={type}
-          url={ROUTES.COLLECTIONS_ADD.path}
+          url={url + ROUTES.COLLECTIONS_ADD.path}
         />
       </Grid>
     </Grow>
