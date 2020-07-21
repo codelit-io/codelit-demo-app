@@ -17,8 +17,6 @@
 
 import React, { lazy, useEffect, useState } from "react";
 
-import * as ROUTES from "constants/routes";
-import { COURSES, SIGN_UP } from "constants/i18n";
 import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
@@ -27,15 +25,30 @@ import useUserRole from "hooks/useUserRole";
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ authUser, firebase, match }) => {
-  const collectionPath = "courses/" + match.params.collection + "/questions";
   const userRole = useUserRole(authUser);
+  const [points, setPoints] = useState(0);
+  const doc = match.params.collection;
+  const collectionPath = "courses/" + doc + "/questions";
+  const collectionDetailsPath = "courses";
 
+  // Configure url route for each item
+  const itemUrl = id => `${doc}/${id}`;
+  // isItemDisabled is configured based on points and question's id
+  const isItemDisabled = id =>
+    points ? points < Number(id) - 1 : Number(id) !== 1;
+
+  useEffect(() => {
+    setPoints(authUser?.reports?.[doc]?.points);
+  }, [authUser, doc]);
+
+  // Get details about a course/questions
   const courseDetails = useCollectionDetails(
-    { collectionPath: "courses" },
-    match.params.collection,
+    { collectionPath: collectionDetailsPath },
+    doc,
     firebase
   );
 
+  // Get list of questions
   const questions = useCollections(
     {
       collectionPath,
@@ -44,41 +57,21 @@ const Questions = ({ authUser, firebase, match }) => {
     firebase
   );
 
-  const [points, setPoints] = useState(0);
-
-  useEffect(() => {
-    setPoints(authUser?.reports?.[match.params.collection]?.points);
-  }, [authUser, match]);
-
   if (!questions?.data || !courseDetails.data) {
     return null;
   }
 
-  /* TODO: Move to global initial state  */
-  const questionsWithOptions = [
-    userRole.isAdmin
-      ? {
-          type: "new",
-          title: COURSES.ADD_A_COURSES,
-          url: ROUTES.COLLECTIONS_ADD.path
-        }
-      : {
-          type: "signup",
-          title: SIGN_UP.CORE,
-          subtitle: SIGN_UP.SIGN_UP_TO_EARN_REWARDS,
-          url: ROUTES.SIGN_UP.path
-        },
-    ...questions.data
-  ];
-
   return (
     <QuestionsPage
       authUser={authUser}
-      questions={questionsWithOptions}
+      questions={questions.data}
       courseDetails={courseDetails}
-      hasData={questionsWithOptions.length && true}
-      isLoading={questions.isLoading && false}
-      match={match}
+      hasData={questions.data.length && true}
+      isItemDisabled={id => isItemDisabled(id)}
+      isAdmin={userRole.isAdmin}
+      isLoading={questions.data.isLoading && false}
+      itemUrl={id => itemUrl(id)}
+      doc={doc}
       points={points}
     />
   );
