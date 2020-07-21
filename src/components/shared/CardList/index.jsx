@@ -22,27 +22,21 @@ import NewItemCard from "./NewItemCard";
 const CardItem = lazy(() => import("./CardItem"));
 const CategoryItem = lazy(() => import("./CategoryItem"));
 
-const CardList = ({
-  authUser,
-  itemUrl,
-  isAdmin,
-  isItemDisabled,
-  items,
-  points
-}) => {
+const CardList = ({ authUser, itemUrl, isAdmin, isItemDisabled, items }) => {
   return items.map((item, index) => {
-    const isDisabled = isItemDisabled(item.id);
+    const isDisabled = item.isDisabled
+      ? item.isDisabled
+      : isItemDisabled(item.id);
     //Configure url route for each item
-    const configureUrl = isDisabled ? "" : itemUrl(item.id);
-
+    const configureUrl = isDisabled ? "" : itemUrl(item.doc || item.id);
     const IconComponent = item.isDisabled
       ? itemTypes.disabled
       : itemTypes[item.type];
     return (
       <React.Fragment key={index}>
         <CategoryItem index={index} text={item?.category} />
-        <NewItemCard isActive={item.id <= 1 && !!isAdmin} type="new" />
-        <SignUpCard isActive={item.id <= 1 && !authUser} type="signup" />
+        <NewItemCard isActive={index < 1 && !!isAdmin} type="new" />
+        <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
           IconComponent={IconComponent}
           index={index}

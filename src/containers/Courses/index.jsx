@@ -31,6 +31,9 @@ const collection = {
   isProgressBar: false
 };
 
+// Configure url route for each item
+const itemUrl = doc => `/courses/${doc}`;
+
 const Courses = ({ firebase, history, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
     <CoursesPage
@@ -38,6 +41,7 @@ const Courses = ({ firebase, history, match }) => (
       history={history}
       firebase={firebase}
       match={match}
+      itemUrl={doc => itemUrl(doc)}
     />
   </Suspense>
 );
