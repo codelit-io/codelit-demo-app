@@ -47,6 +47,8 @@ const Courses = ({ authUser, firebase, history, match }) => {
 
   const courses = useCollections(collectionDetails, firebase);
 
+  const newItemUrl = `courses/`;
+
   if (!courses || !courses?.data?.length) {
     return null;
   }
@@ -60,6 +62,7 @@ const Courses = ({ authUser, firebase, history, match }) => {
       firebase={firebase}
       match={match}
       itemUrl={doc => itemUrl(doc)}
+      newItemUrl={newItemUrl}
     />
   );
 };
