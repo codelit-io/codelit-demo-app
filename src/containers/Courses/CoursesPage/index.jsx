@@ -9,7 +9,6 @@
 
 import React, { lazy } from "react";
 
-import { withAuthentication } from "components/shared/Session";
 import Footer from "components/shared/Footer";
 import MoPage from "components/library/MoPage";
 import useCollections from "hooks/useCollections";
@@ -52,4 +51,4 @@ const CoursesPage = ({ authUser, collection, history, itemUrl, firebase }) => {
   );
 };
 
-export default withAuthentication(CoursesPage);
+export default CoursesPage;

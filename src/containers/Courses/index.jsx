@@ -19,10 +19,10 @@
 import React, { lazy, Suspense } from "react";
 
 import { retry } from "utils/retryLazyImports";
-import { withFirebase } from "components/shared/Firebase";
 import { COURSES } from "constants/i18n";
 import MoSpinner from "components/library/MoSpinner";
 import PropTypes from "prop-types";
+import { withAuthentication } from "components/shared/Session";
 
 const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
@@ -34,9 +34,10 @@ const collection = {
 // Configure url route for each item
 const itemUrl = doc => `/courses/${doc}`;
 
-const Courses = ({ firebase, history, match }) => (
+const Courses = ({ authUser, firebase, history, match }) => (
   <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
     <CoursesPage
+      authUser={authUser}
       collection={collection}
       history={history}
       firebase={firebase}
@@ -51,4 +52,4 @@ Courses.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default withFirebase(Courses);
+export default withAuthentication(Courses);
