@@ -21,19 +21,17 @@ const withAuthentication = Component => {
           setState({ authUser: null });
         }
       );
-
-      return () => {
-        listener();
-      };
+      return () => listener();
     }, [firebase]);
 
+    console.log(props);
     return (
       <AuthUserContext.Provider value={state.authUser}>
         <Component {...props} authUser={state.authUser} />
       </AuthUserContext.Provider>
     );
   };
-  return withFirebase(WithAuthentication);
+  return withFirebase(React.memo(WithAuthentication));
 };
 
 export default withAuthentication;
