@@ -58,7 +58,7 @@ const QuestionList = ({ authUser, match, questions, points }) => {
               isDisabled={isDisabled}
               points={points}
               title={question.title}
-              index={index + 1}
+              index={index}
               url={configureUrl}
               IconComponent={isDisabled ? LockIcon : null}
             />
