@@ -16,13 +16,14 @@
  *
  */
 
-import React, { lazy, Suspense } from "react";
+import React, { lazy } from "react";
 
-import { retry } from "utils/retryLazyImports";
 import { COURSES } from "constants/i18n";
-import MoSpinner from "components/library/MoSpinner";
-import PropTypes from "prop-types";
+import { retry } from "utils/retryLazyImports";
 import { withAuthentication } from "components/shared/Session";
+import PropTypes from "prop-types";
+import useCollections from "hooks/useCollections";
+import useUserRole from "hooks/useUserRole";
 
 const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
@@ -34,18 +35,34 @@ const collection = {
 // Configure url route for each item
 const itemUrl = doc => `/courses/${doc}`;
 
-const Courses = ({ authUser, firebase, history, match }) => (
-  <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
+const Courses = ({ authUser, firebase, history, match }) => {
+  const collectionDetails = {
+    collectionPath: collection.path,
+    data: [],
+    isProgressBar: collection.isProgressBar,
+    locationHash: history.location.hash,
+    title: collection.title
+  };
+  const userRole = useUserRole(authUser);
+
+  const courses = useCollections(collectionDetails, firebase);
+
+  if (!courses || !courses?.data?.length) {
+    return null;
+  }
+
+  return (
     <CoursesPage
       authUser={authUser}
-      collection={collection}
-      history={history}
+      collectionDetails={collectionDetails}
+      courses={courses}
+      isAdmin={userRole.isAdmin}
       firebase={firebase}
       match={match}
       itemUrl={doc => itemUrl(doc)}
     />
-  </Suspense>
-);
+  );
+};
 
 Courses.propTypes = {
   firebase: PropTypes.object.isRequired,
