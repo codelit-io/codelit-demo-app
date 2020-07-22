@@ -14,6 +14,7 @@ import Footer from "components/shared/Footer";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
+import MoButtonIcon from "components/library/MoButtonIcon";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
@@ -21,34 +22,44 @@ const QuestionsPage = ({
   authUser,
   questions,
   courseDetails,
+  handleOnClick,
   isLoading,
   isItemDisabled,
   isAdmin,
   itemUrl,
   newItemUrl,
   points
-}) => (
-  <MoPage title={courseDetails?.data?.title} isLoading={isLoading}>
-    <Grid container spacing={4} alignItems="center">
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <MoPointsGroup
+}) => {
+  const IconComponent = () => (
+    <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
+  );
+  return (
+    <MoPage
+      title={courseDetails?.data?.title}
+      IconComponent={isAdmin && IconComponent}
+      isLoading={isLoading}
+    >
+      <Grid container spacing={4} alignItems="center">
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <MoPointsGroup
+            authUser={authUser}
+            points={points}
+            progress={calculateProgress(authUser, points, questions?.length)}
+          />
+        </Grid>
+        <CardList
           authUser={authUser}
           points={points}
-          progress={calculateProgress(authUser, points, questions?.length)}
+          items={questions}
+          isAdmin={isAdmin}
+          isItemDisabled={id => isItemDisabled(id)}
+          itemUrl={id => itemUrl(id)}
+          newItemUrl={newItemUrl}
         />
       </Grid>
-      <CardList
-        authUser={authUser}
-        points={points}
-        items={questions}
-        isAdmin={isAdmin}
-        isItemDisabled={id => isItemDisabled(id)}
-        itemUrl={id => itemUrl(id)}
-        newItemUrl={newItemUrl}
-      />
-    </Grid>
-    <Footer />
-  </MoPage>
-);
+      <Footer />
+    </MoPage>
+  );
+};
 
 export default QuestionsPage;

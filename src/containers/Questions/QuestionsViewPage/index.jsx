@@ -15,7 +15,7 @@
  *
  */
 
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy, useEffect, useState, useCallback } from "react";
 
 import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
@@ -24,7 +24,7 @@ import useUserRole from "hooks/useUserRole";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
-const Questions = ({ authUser, firebase, match }) => {
+const Questions = ({ authUser, history, firebase, match }) => {
   const userRole = useUserRole(authUser);
   const [points, setPoints] = useState(0);
   const doc = match.params.collection;
@@ -57,6 +57,13 @@ const Questions = ({ authUser, firebase, match }) => {
     firebase
   );
 
+  /* Handler to send user to editMode page */
+  const handleOnClick = useCallback(() => {
+    if (userRole.isAdmin) {
+      history.push(`${match.params.collection}/isEditMode`);
+    }
+  }, [userRole, history, match]);
+
   if (!questions?.data || !courseDetails.data) {
     return null;
   }
@@ -67,6 +74,7 @@ const Questions = ({ authUser, firebase, match }) => {
       questions={questions.data}
       courseDetails={courseDetails}
       hasData={questions.data.length && true}
+      handleOnClick={e => handleOnClick(e)}
       isItemDisabled={id => isItemDisabled(id)}
       isAdmin={userRole.isAdmin}
       isLoading={questions.data.isLoading && false}

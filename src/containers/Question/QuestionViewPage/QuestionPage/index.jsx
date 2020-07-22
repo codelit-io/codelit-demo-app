@@ -10,17 +10,15 @@
 
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
+import { retry } from "utils/retryLazyImports";
 import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
-import ButtonBase from "@material-ui/core/ButtonBase";
 import createStyles from "@material-ui/core/styles/createStyles";
 import CodeIcon from "@material-ui/icons/Code";
-import EditIcon from "@material-ui/icons/Edit";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import stringSimilarity from "string-similarity";
-import { retry } from "utils/retryLazyImports";
 import MoTypography from "components/library/MoTypography";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoPage from "components/library/MoPage";
@@ -28,6 +26,7 @@ import MoSpinner from "components/library/MoSpinner";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
 import QuestionPageNav from "./QuestionPageNav";
+import MoButtonIcon from "components/library/MoButtonIcon";
 
 const CodeEditor = lazy(() =>
   retry(() => import("components/shared/CodeEditor"))
@@ -174,22 +173,20 @@ const QuestionPage = ({
     return <MoSpinner isLoading={isLoading} color="primary" />;
   }
 
+  const IconComponent = () => (
+    <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
+  );
+
   return (
     <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
       <MoConfetti isActive={isCorrect} />
-      <ButtonBase
-        className={classes.buttonArea}
-        onClick={() => handleOnClick()}
-        disabled={!userRole.isAdmin}
-      >
-        <MoPage
-          isAdmin={userRole.isAdmin}
-          title={question?.title}
-          subtitle={question?.label}
-          isCard={false}
-        />
-        <EditIcon color="primary" className={classes.fixedIcon} />
-      </ButtonBase>
+      <MoPage
+        isAdmin={userRole.isAdmin}
+        title={question?.title}
+        subtitle={question?.label}
+        isCard={false}
+        IconComponent={userRole.isAdmin && IconComponent}
+      />
       {question?.content && (
         <MoTypography
           font="breeSerif"
