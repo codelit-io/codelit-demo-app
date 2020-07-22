@@ -1,7 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Course Component should match the snapshot 1`] = `
-<Context.Consumer>
-  [Function]
-</Context.Consumer>
+<Switch>
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_ctor": [Function],
+        "_result": null,
+        "_status": -1,
+      }
+    }
+    exact={true}
+    path="/courses/:collection"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_ctor": [Function],
+        "_result": null,
+        "_status": -1,
+      }
+    }
+    exact={true}
+    path="/courses/:collection/isEditMode"
+  />
+</Switch>
 `;
