@@ -2,6 +2,7 @@
 
 exports[`App Component should match the snapshot 1`] = `
 <BrowserRouter>
+  <UNDEFINED />
   <React.Suspense
     fallback={
       <ForwardRef(WithStyles)
@@ -10,7 +11,6 @@ exports[`App Component should match the snapshot 1`] = `
       />
     }
   >
-    <UNDEFINED />
     <UNDEFINED
       maxWidth="lg"
     >

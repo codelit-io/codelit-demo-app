@@ -5,6 +5,7 @@ exports[`MoPage Component should match the snapshot 1`] = `
   classes={
     Object {
       "section": "MoPage-section-1",
+      "textAlignRight": "MoPage-textAlignRight-2",
     }
   }
 />

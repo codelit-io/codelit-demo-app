@@ -10,13 +10,20 @@
 
 import React from "react";
 
+import Fade from "@material-ui/core/Fade";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 import MoSpinner from "../MoSpinner";
 import MoTypography from "../MoTypography";
-import { Fade } from "@material-ui/core";
 
-const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
+const MoPage = ({
+  classes,
+  children,
+  IconComponent,
+  isLoading,
+  subtitle,
+  title
+}) => {
   if (isLoading) {
     return <MoSpinner isLoading={isLoading} />;
   }
@@ -33,7 +40,9 @@ const MoPage = ({ classes, children, isLoading, subtitle, title }) => {
           marginBottom="md"
           text={title}
           variant="h2"
-        ></MoTypography>
+        >
+          {IconComponent && <IconComponent />}
+        </MoTypography>
         <MoTypography
           font="openSans"
           marginBottom="md"

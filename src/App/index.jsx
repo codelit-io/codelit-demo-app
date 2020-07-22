@@ -44,8 +44,8 @@ const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 const App = () => {
   return (
     <Router>
+      <Navigation />
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-        <Navigation />
         <Container maxWidth="lg">
           <Switch>
             <Route path={ROUTES.ADMIN.path} component={AdminPage} />

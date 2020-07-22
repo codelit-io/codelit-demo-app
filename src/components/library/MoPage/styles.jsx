@@ -9,7 +9,8 @@ const styles = theme => ({
       paddingTop: theme.space?.lg,
       paddingBottom: theme.space?.lg
     }
-  }
+  },
+  textAlignRight: { textAlign: "right" }
 });
 
 export default styles;
