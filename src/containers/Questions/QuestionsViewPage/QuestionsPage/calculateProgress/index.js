@@ -1,7 +1,4 @@
-const calculateProgress = (authUser, points, itemsCount) => {
-  if (!authUser) {
-    return false;
-  }
+const calculateProgress = (itemsCount, points) => {
   return itemsCount && points
     ? `${Math.round((points / itemsCount) * 100)}% Complete`
     : "0% Complete";

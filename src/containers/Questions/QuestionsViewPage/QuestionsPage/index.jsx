@@ -44,7 +44,7 @@ const QuestionsPage = ({
           <MoPointsGroup
             authUser={authUser}
             points={points}
-            progress={calculateProgress(authUser, points, questions?.length)}
+            progress={calculateProgress(questions?.length, points)}
           />
         </Grid>
         <CardList
