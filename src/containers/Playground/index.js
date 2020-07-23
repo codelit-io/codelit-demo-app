@@ -52,6 +52,7 @@ const Playground = () => {
         handleOnChange={userAnswer => handleOnChange(userAnswer)}
         sm={12}
         md={12}
+        title="JSX Editor"
       />
     </>
   );

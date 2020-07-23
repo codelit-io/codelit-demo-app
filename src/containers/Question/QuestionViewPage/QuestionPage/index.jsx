@@ -10,6 +10,7 @@
 
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
+import { BROWSER_MOCKUP } from "constants/i18n";
 import { retry } from "utils/retryLazyImports";
 import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
@@ -210,6 +211,7 @@ const QuestionPage = ({
           isHintTypist={isHintTypist}
           sm={6}
           md={6}
+          title={BROWSER_MOCKUP.CODE_EDITOR}
         />
       </section>
       {question.id && (

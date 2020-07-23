@@ -9,7 +9,6 @@ import MoPageHeaderEdit from "components/library/MoPageHeaderEdit";
 import MoSpinner from "components/library/MoSpinner";
 import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
-import MoTypography from "components/library/MoTypography";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 
@@ -71,9 +70,6 @@ const QuestionForm = ({
         />
       </section>
       <section className={classes.section}>
-        <MoTypography font="breeSerif" marginBottom="sm" variant="h6">
-          Question
-        </MoTypography>
         <CodeEditor
           codeAnswer={"Write Question Here"}
           codeLanguage={question?.language}
@@ -85,13 +81,11 @@ const QuestionForm = ({
           handleOnChange={code => handleChange({ question: code.userAnswer })}
           sm={6}
           md={6}
+          title="Question Code"
         />
       </section>
       {question && (
         <section className={classes.section}>
-          <MoTypography font="breeSerif" marginBottom="sm" variant="h6">
-            Answer
-          </MoTypography>
           <CodeEditor
             codeAnswer={"Answer"}
             codeLanguage={question?.language}
@@ -103,6 +97,7 @@ const QuestionForm = ({
             handleOnChange={code => handleChange({ answer: code.userAnswer })}
             sm={6}
             md={6}
+            title="Answer Code"
           />
         </section>
       )}
