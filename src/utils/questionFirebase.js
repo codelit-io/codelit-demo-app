@@ -14,7 +14,7 @@ import * as ROUTES from "constants/routes";
  * createQuestion(authUser, event, firebase, match)
  */
 export const createQuestion = (authUser, event, firebase, match) => {
-  if (!event?.label) {
+  if (!event?.title || !event?.title) {
     return;
   }
   firebase.createQuestionById(match.params.collection, {

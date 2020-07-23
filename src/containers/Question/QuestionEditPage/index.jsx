@@ -26,7 +26,7 @@ import QuestionForm from "containers/Question/QuestionEditPage/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
-import { updateQuestion } from "utils/questionFirebase";
+import { createQuestion, updateQuestion } from "utils/questionFirebase";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,14 +41,34 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
 
   const onSubmit = useCallback(
     event => {
-      updateQuestion(event, firebase, match);
+      event.editedAt
+        ? updateQuestion(
+            {
+              ...event,
+              id: match.params.questionId,
+              uid: match.params.collection
+            },
+            firebase,
+            match
+          )
+        : createQuestion(
+            authUser,
+            {
+              ...event,
+              id: match.params.questionId,
+              uid: match.params.collection
+            },
+            firebase,
+            match
+          );
+
       setSnackbarProps({
         autoHideDuration: 2000,
         isActive: true,
         title: "Saved"
       });
     },
-    [firebase, setSnackbarProps, match]
+    [authUser, firebase, setSnackbarProps, match]
   );
 
   /* TODO: Move to custom hook */
@@ -71,7 +91,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
           } catch {
             setQuestion(question[0]);
           }
-        } else if (id === "new") {
+        } else {
           setQuestion({
             title: "Title goes here",
             label: "Subtitle goes here",

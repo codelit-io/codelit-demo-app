@@ -53,4 +53,4 @@ const CardItem = ({
   </Grow>
 );
 
-export default React.memo(CardItem);
+export default CardItem;

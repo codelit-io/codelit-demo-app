@@ -57,7 +57,8 @@ const CodeEditor = ({
   isHintTypist,
   md,
   matchPercent,
-  sm
+  sm,
+  title
 }) => {
   useEffect(() => {
     if (!isEditMode) {
@@ -126,7 +127,11 @@ const CodeEditor = ({
             unmountOnExit
           >
             <div>
-              <MoBrowserMockup matchPercent={matchPercent} isEditor={true}>
+              <MoBrowserMockup
+                title={title}
+                matchPercent={matchPercent}
+                isEditor={true}
+              >
                 <div>
                   <LiveEditor
                     onChange={e => onChange(e)}

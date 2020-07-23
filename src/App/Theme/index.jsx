@@ -31,4 +31,4 @@ const Theme = ({ children }) => {
   );
 };
 
-export default React.memo(Theme);
+export default Theme;

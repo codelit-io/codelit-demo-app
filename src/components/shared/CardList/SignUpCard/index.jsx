@@ -46,4 +46,4 @@ const SignUpCard = ({ isActive, type }) => {
   );
 };
 
-export default React.memo(SignUpCard);
+export default SignUpCard;

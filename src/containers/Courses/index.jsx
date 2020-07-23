@@ -72,4 +72,4 @@ Courses.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication(React.memo(Courses));
+export default withAuthentication(Courses);

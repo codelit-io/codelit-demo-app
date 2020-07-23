@@ -45,4 +45,4 @@ const NewItemCard = ({ isActive, type, url }) => {
   );
 };
 
-export default React.memo(NewItemCard);
+export default NewItemCard;
