@@ -13,7 +13,7 @@ export const LANDING = {
 /* Courses and Collection pages */
 export const COLLECTIONS = { path: "/courses", title: "Your Courses" };
 export const COLLECTIONS_ADD = {
-  path: "add-new-course",
+  path: "0/isEditMode",
   title: "Add New Course"
 };
 export const EASY_COLLECTIONS = {
