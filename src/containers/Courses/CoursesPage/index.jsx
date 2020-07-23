@@ -22,7 +22,7 @@ const CoursesPage = ({
   courses,
   itemUrl,
   isAdmin,
-  newItemUrl
+  newItem
 }) => {
   return (
     <MoPage title={collectionDetails?.title}>
@@ -33,7 +33,7 @@ const CoursesPage = ({
           isAdmin={isAdmin}
           itemUrl={doc => itemUrl(doc)}
           isItemDisabled={() => {}}
-          newItemUrl={newItemUrl}
+          newItem={newItem}
         />
       </Grid>
       <Footer />

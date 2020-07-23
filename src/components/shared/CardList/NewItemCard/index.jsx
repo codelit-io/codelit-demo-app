@@ -14,8 +14,6 @@
 
 import React from "react";
 
-import * as ROUTES from "constants/routes";
-
 // MUI components
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
@@ -26,7 +24,7 @@ import MoCard from "components/library/MoCard";
 
 import { COURSES } from "constants/i18n";
 
-const NewItemCard = ({ isActive, type, url }) => {
+const NewItemCard = ({ isActive, title, type, url }) => {
   if (!isActive) {
     return null;
   }
@@ -36,9 +34,9 @@ const NewItemCard = ({ isActive, type, url }) => {
         <MoCard
           IconComponent={AddCircleOutlineIcon}
           isDisabled={false}
-          title={COURSES.ADD_A_COURSES}
+          title={title || COURSES.ADD_A_COURSES}
           type={type}
-          url={url + ROUTES.COLLECTIONS_ADD.path}
+          url={url}
         />
       </Grid>
     </Grow>

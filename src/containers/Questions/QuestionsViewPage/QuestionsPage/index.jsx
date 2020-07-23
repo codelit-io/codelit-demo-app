@@ -27,7 +27,7 @@ const QuestionsPage = ({
   isItemDisabled,
   isAdmin,
   itemUrl,
-  newItemUrl,
+  newItem,
   points
 }) => {
   const IconComponent = () => (
@@ -54,7 +54,7 @@ const QuestionsPage = ({
           isAdmin={isAdmin}
           isItemDisabled={id => isItemDisabled(id)}
           itemUrl={id => itemUrl(id)}
-          newItemUrl={newItemUrl}
+          newItem={newItem}
         />
       </Grid>
       <Footer />

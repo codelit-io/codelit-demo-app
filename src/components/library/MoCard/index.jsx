@@ -85,7 +85,7 @@ MoCard.propTypes = {
   IconComponent: PropTypes.elementType,
   isDisabled: PropTypes.bool,
   points: PropTypes.number,
-  url: PropTypes.string.isRequired
+  url: PropTypes.any
 };
 
 export default withStyles(styles)(MoCard);

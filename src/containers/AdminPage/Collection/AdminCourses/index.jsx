@@ -15,7 +15,6 @@ const AdminCourses = ({ authUser, firebase }) => {
   }
 
   const itemUrl = doc => `courses/${doc}`;
-  const newItemUrl = `courses/`;
 
   return (
     <Grid container spacing={4} alignItems="center">
@@ -25,7 +24,7 @@ const AdminCourses = ({ authUser, firebase }) => {
         items={courses.data}
         isItemDisabled={() => {}}
         itemUrl={doc => itemUrl(doc)}
-        newItemUrl={newItemUrl}
+        newItem={{ title: "Add nre Couree  ", url: "courses/isEditMode" }}
       />
     </Grid>
   );

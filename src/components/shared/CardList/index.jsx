@@ -33,7 +33,7 @@ const CardList = ({
   isAdmin,
   isItemDisabled,
   items,
-  newItemUrl
+  newItem
 }) => {
   return items.map((item, index) => {
     // Detect if item is disabled
@@ -55,7 +55,8 @@ const CardList = ({
         <NewItemCard
           isActive={index < 1 && !!isAdmin}
           type="new"
-          url={newItemUrl}
+          title={newItem?.title}
+          url={newItem?.url}
         />
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem

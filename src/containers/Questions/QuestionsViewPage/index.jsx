@@ -30,7 +30,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
   const doc = match.params.collection;
   const collectionPath = "courses/" + doc + "/questions";
   const collectionDetailsPath = "courses";
-  const newItemUrl = `${doc}/`;
+  const newItem = { title: "Add a question", url: `${doc}/0/isEditMode` };
   // Configure url route for each item
   const itemUrl = id => `${doc}/${id}`;
   // isItemDisabled is configured based on points and question's id
@@ -80,7 +80,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
       isLoading={questions.data.isLoading && false}
       itemUrl={id => itemUrl(id)}
       doc={doc}
-      newItemUrl={newItemUrl}
+      newItem={newItem}
       points={points}
     />
   );
