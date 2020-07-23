@@ -150,4 +150,4 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
   );
 };
 
-export default withStyles(styles)(React.memo(MoAvatar));
+export default withStyles(styles)(MoAvatar);

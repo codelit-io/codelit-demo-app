@@ -35,4 +35,4 @@ const CategoryItem = ({ index, text }) =>
     </Grow>
   ) : null;
 
-export default React.memo(CategoryItem);
+export default CategoryItem;
