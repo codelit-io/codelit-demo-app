@@ -23,6 +23,10 @@ const styles = theme => ({
     minHeight: "10rem",
     position: "relative",
     borderRadius: theme.space.xs
+  },
+  title: {
+    color: theme.grey.light,
+    pointerEvents: "none"
   }
 });
 
