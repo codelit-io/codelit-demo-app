@@ -49,7 +49,11 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
               setData(data[0]);
               setIsLoading(false);
             } else {
-              setData([]);
+              setData({
+                title: "My new course",
+                category: "#ReactFTW",
+                id: "1"
+              });
               setIsLoading(false);
             }
             /* Unsubscribe from firebase on unmount */
