@@ -26,18 +26,26 @@ const CoursesViewPage = lazy(() =>
 const CoursesEditPage = lazy(() =>
   retry(() => import("containers/Courses/CoursesEditPage"))
 );
+const Questions = lazy(() => retry(() => import("containers/Questions")));
+
+const Question = lazy(() => retry(() => import("containers/Question")));
+
 const Courses = () => (
   <Switch>
-    {/* <Route
-      exact
-      path={ROUTES.COLLECTIONS.path + "/:collection"}
-      component={CoursesViewPage}
-    /> */}
     <Route exact path={ROUTES.COLLECTIONS.path} component={CoursesViewPage} />
     <Route
       exact
       path={ROUTES.COLLECTIONS.path + "/isEditMode"}
       component={CoursesEditPage}
+    />
+    <Route
+      exact
+      path={ROUTES.COLLECTIONS.path + "/:collection"}
+      component={Questions}
+    />
+    <Route
+      path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
+      component={Question}
     />
   </Switch>
 );
