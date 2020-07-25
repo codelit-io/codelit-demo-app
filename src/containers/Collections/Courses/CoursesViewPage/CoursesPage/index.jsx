@@ -29,7 +29,7 @@ const CoursesPage = ({
       <Grid container spacing={4} alignItems="center">
         <CardList
           authUser={authUser}
-          items={courses.data}
+          items={courses}
           isAdmin={isAdmin}
           itemUrl={doc => itemUrl(doc)}
           isItemDisabled={() => {}}

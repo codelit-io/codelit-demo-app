@@ -57,7 +57,7 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
     <CoursesPage
       authUser={authUser}
       collectionDetails={collectionDetails}
-      courses={courses}
+      courses={courses.data}
       isAdmin={userRole.isAdmin}
       firebase={firebase}
       match={match}

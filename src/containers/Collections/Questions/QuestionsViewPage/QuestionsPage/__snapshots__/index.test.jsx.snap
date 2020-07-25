@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionsPage Component should match the snapshot 1`] = `
+<ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles)
+    alignItems="center"
+    container={true}
+    spacing={4}
+  >
+    <ForwardRef(WithStyles)
+      item={true}
+      lg={12}
+      md={12}
+      sm={12}
+      xs={12}
+    >
+      <MoPointsGroup
+        progress="0% Complete"
+      />
+    </ForwardRef(WithStyles)>
+    <UNDEFINED
+      isItemDisabled={[Function]}
+      itemUrl={[Function]}
+    />
+  </ForwardRef(WithStyles)>
+  <ForwardRef(WithStyles) />
+</ForwardRef(WithStyles)>
+`;

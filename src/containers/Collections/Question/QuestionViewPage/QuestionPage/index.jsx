@@ -42,8 +42,8 @@ const QuestionPage = ({
   firebase,
   handleOnClick,
   handleNavigation,
+  isAdmin,
   isLoading,
-  userRole,
   data,
   match
 }) => {
@@ -60,17 +60,17 @@ const QuestionPage = ({
   const useStyles = makeStyles(theme =>
     createStyles({
       textAlignRight: { textAlign: "right" },
-      grey: { color: theme.grey.medium },
-      lightGrey: { color: theme.grey.light },
+      grey: { color: theme.grey?.medium },
+      lightGrey: { color: theme.grey?.light },
       fixedIcon: {
         opacity: 0,
         position: "absolute",
-        right: theme.space.md,
-        top: theme.space.md
+        right: theme.space?.md,
+        top: theme.space?.md
       },
       buttonArea: {
         textAlign: "left",
-        opacity: userRole.isAdmin ? 0.6 : 1,
+        opacity: isAdmin ? 0.6 : 1,
         width: "100%",
         "&:hover": {
           opacity: "1",
@@ -182,11 +182,11 @@ const QuestionPage = ({
     <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
       <MoConfetti isActive={isCorrect} />
       <MoPage
-        isAdmin={userRole.isAdmin}
+        isAdmin={isAdmin}
         title={question?.title}
         subtitle={question?.label}
         isCard={false}
-        IconComponent={userRole.isAdmin && IconComponent}
+        IconComponent={isAdmin && IconComponent}
       />
       {question?.content && (
         <MoTypography
@@ -214,7 +214,7 @@ const QuestionPage = ({
           title={BROWSER_MOCKUP.CODE_EDITOR}
         />
       </section>
-      {question.id && (
+      {question?.id && (
         <section className={classes.section}>
           {/* TODO: move the follow to another component e.g. CodeEditorBottomNav */}
           <Grid container>
@@ -246,10 +246,11 @@ const QuestionPage = ({
             </Grid>
             <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
               <QuestionPageNav
-                isAdmin={userRole.isAdmin}
+                isAdmin={isAdmin}
                 prevClick={() => triggerQuestion("prev")}
                 nextClick={() => triggerQuestion("next")}
-                question={question}
+                isCorrect={question.isCorrect}
+                id={question.id}
               />
             </Grid>
           </Grid>

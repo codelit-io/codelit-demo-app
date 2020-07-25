@@ -9,7 +9,8 @@
  *
  * @param {CallableFunction} prevClick - Previous click callback
  * @param {CallableFunction} nextClick - Next click callback
- * @param {Object} question - Question object
+ * @param {String | Number} id - current question id
+ * @param {Boolean} isCorrect - flag if question was answered correctly
  */
 
 import React from "react";
@@ -20,20 +21,20 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
-const QuestionPageNav = ({ prevClick, isAdmin, nextClick, question }) => {
-  const isDisabled = !question.isCorrect;
+const QuestionPageNav = ({ prevClick, isAdmin, isCorrect, id, nextClick }) => {
+  const isDisabled = !isCorrect;
 
-  if (!question.id) {
+  if (!id) {
     return null;
   }
   return (
     <ButtonGroup variant="text" aria-label="text primary button group">
       <Button
-        disabled={question.id === 1}
+        disabled={id === 1}
         startIcon={<KeyboardArrowLeftIcon />}
         onClick={() => prevClick()}
       />
-      <Button disabled>{question.id}</Button>
+      <Button disabled>{id}</Button>
       {isAdmin ? (
         <Button
           startIcon={<KeyboardArrowRightIcon />}

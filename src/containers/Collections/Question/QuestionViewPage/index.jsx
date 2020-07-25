@@ -33,7 +33,7 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
     questionPath: `courses/${match.params.collection}/questions`
   });
 
-  const [userRole] = useState(useUserRole(authUser));
+  const userRole = useUserRole(authUser);
 
   /* Handler to send user to editMode page */
   const handleOnClick = useCallback(() => {
@@ -65,7 +65,7 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
       handleNavigation={id => handleNavigation(id)}
       isLoading={isLoading}
       match={match}
-      userRole={userRole}
+      isAdmin={userRole.isAdmin}
     />
   );
 };
