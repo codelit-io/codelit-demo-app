@@ -43,7 +43,7 @@ const NewCourseForm = ({ authUser, firebase }) => {
   });
 
   const Form = ({ handleDialogState }) => {
-    /* TODO: Move to hooks or utils */
+    /* TODO: Move to hooks or helpers */
     const onSubmit = formData => {
       if (formData.title) {
         // Generate random id to post fix each document id
