@@ -19,32 +19,68 @@ import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
 import { retry } from "helpers/retryLazyImports";
 
-const Courses = lazy(() =>
-  retry(() => import("containers/Collections/Courses"))
+// Courses Routes
+const CoursesViewPage = lazy(() =>
+  retry(() => import("containers/Collections/Courses/CoursesViewPage"))
+);
+const CoursesEditPage = lazy(() =>
+  retry(() => import("containers/Collections/Courses/CoursesEditPage"))
 );
 
-const Questions = lazy(() =>
-  retry(() => import("containers/Collections/Questions"))
+// Questions Routes
+const QuestionsViewPage = lazy(() =>
+  retry(() => import("containers/Collections/Questions/QuestionsViewPage"))
+);
+const QuestionsEditPage = lazy(() =>
+  retry(() => import("containers/Collections/Questions/QuestionsEditPage"))
 );
 
-const Question = lazy(() =>
-  retry(() => import("containers/Collections/Question"))
+// Question Routes
+const QuestionViewPage = lazy(() =>
+  retry(() => import("containers/Collections/Question/QuestionViewPage"))
+);
+const QuestionEditPage = lazy(() =>
+  retry(() => import("containers/Collections/Question/QuestionEditPage"))
 );
 
 const Collections = () => (
   <Switch>
     {/*  @see Link [Example Courses Page](https://moskool.com/courses) */}
-    <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
+    <Route component={CoursesViewPage} exact path={ROUTES.COLLECTIONS.path} />
+
+    {/*  @see Link [Example Courses Page](https://moskool.com/courses/isEditMode) */}
+    <Route
+      component={CoursesEditPage}
+      exact
+      path={ROUTES.COLLECTIONS.path + "/isEditMode"}
+    />
+
     {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html) */}
     <Route
+      component={QuestionsViewPage}
       exact
       path={ROUTES.COLLECTIONS.path + "/:collection"}
-      component={Questions}
     />
+
+    {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html/isEditMode) */}
+    <Route
+      component={QuestionsEditPage}
+      exact
+      path={ROUTES.COLLECTIONS.path + "/:collection/isEditMode"}
+    />
+
     {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html/1) */}
     <Route
+      component={QuestionViewPage}
+      exact
       path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-      component={Question}
+    />
+
+    {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html/1/isEditMode) */}
+    <Route
+      component={QuestionEditPage}
+      exact
+      path={ROUTES.COLLECTIONS.path + "/:collection/:questionId/isEditMode"}
     />
   </Switch>
 );
