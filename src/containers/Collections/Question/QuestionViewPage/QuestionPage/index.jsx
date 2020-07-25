@@ -11,7 +11,7 @@
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
 import { BROWSER_MOCKUP } from "constants/i18n";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 import awardPlayerPoints from "../awardPlayerPoints";
 import Button from "@material-ui/core/Button";
 import createStyles from "@material-ui/core/styles/createStyles";

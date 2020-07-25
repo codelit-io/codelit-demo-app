@@ -19,12 +19,13 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 import { withAuthentication } from "components/shared/Session";
 import PropTypes from "prop-types";
+import useCollections from "hooks/useCollections";
 import useUserRole from "hooks/useUserRole";
 
-const CoursesForm = lazy(() => retry(() => import("./CoursesForm")));
+const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
 const collection = {
   path: "courses",
   title: COURSES.PAGE_TITLE,
@@ -34,7 +35,7 @@ const collection = {
 // Configure url route for each item
 const itemUrl = doc => `/courses/${doc}`;
 
-const CoursesEditPage = ({ authUser, firebase, history, match }) => {
+const CoursesViewPage = ({ authUser, firebase, history, match }) => {
   const collectionDetails = {
     collectionPath: collection.path,
     data: [],
@@ -44,16 +45,16 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
   };
   const userRole = useUserRole(authUser);
 
-  // Initial dummy data
-  const courses = { isLoading: false, data: [{ id: 1, question: "" }] };
-  const newItem = { title: "Add a question", url: "" };
+  const courses = useCollections(collectionDetails, firebase);
+
+  const newItem = { title: "Add a course", url: "courses/isEditMode" };
 
   if (!courses || !courses?.data?.length) {
     return null;
   }
 
   return (
-    <CoursesForm
+    <CoursesPage
       authUser={authUser}
       collectionDetails={collectionDetails}
       courses={courses}
@@ -66,9 +67,9 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-CoursesEditPage.propTypes = {
+CoursesViewPage.propTypes = {
   firebase: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication(CoursesEditPage);
+export default withAuthentication(CoursesViewPage);

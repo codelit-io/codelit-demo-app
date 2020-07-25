@@ -18,13 +18,13 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 
 const QuestionsViewPage = lazy(() =>
-  retry(() => import("containers/Questions/QuestionsViewPage"))
+  retry(() => import("containers/Collections/Questions/QuestionsViewPage"))
 );
 const QuestionsEditPage = lazy(() =>
-  retry(() => import("containers/Questions/QuestionsEditPage"))
+  retry(() => import("containers/Collections/Questions/QuestionsEditPage"))
 );
 const Questions = () => (
   <Switch>

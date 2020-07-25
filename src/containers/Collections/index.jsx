@@ -18,19 +18,23 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 
 const CoursesViewPage = lazy(() =>
-  retry(() => import("containers/Courses/CoursesViewPage"))
+  retry(() => import("containers/Collections/Courses/CoursesViewPage"))
 );
 const CoursesEditPage = lazy(() =>
-  retry(() => import("containers/Courses/CoursesEditPage"))
+  retry(() => import("containers/Collections/Courses/CoursesEditPage"))
 );
-const Questions = lazy(() => retry(() => import("containers/Questions")));
+const Questions = lazy(() =>
+  retry(() => import("containers/Collections/Questions"))
+);
 
-const Question = lazy(() => retry(() => import("containers/Question")));
+const Question = lazy(() =>
+  retry(() => import("containers/Collections/Question"))
+);
 
-const Courses = () => (
+const Collections = () => (
   <Switch>
     <Route exact path={ROUTES.COLLECTIONS.path} component={CoursesViewPage} />
     <Route
@@ -50,4 +54,4 @@ const Courses = () => (
   </Switch>
 );
 
-export default Courses;
+export default Collections;

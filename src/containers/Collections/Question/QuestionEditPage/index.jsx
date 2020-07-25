@@ -22,11 +22,11 @@ import * as ROLES from "constants/roles";
 
 import MoSnackbar from "components/library/MoSnackBar";
 import MoSpinner from "components/library/MoSpinner";
-import QuestionForm from "containers/Question/QuestionEditPage/QuestionForm";
+import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
-import { createQuestion, updateQuestion } from "utils/questionFirebase";
+import { createQuestion, updateQuestion } from "helpers/questionFirebase";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
