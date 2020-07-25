@@ -28,9 +28,8 @@ const Grid = lazy(() => import("@material-ui/core/Grid"));
 const MoAvatar = lazy(() => import("components/library/MoAvatar"));
 const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
-const NewCourseDialog = lazy(() => import("./NewCourseDialog"));
 
-const Navigation = ({ authUser, classes, firebase, history }) => {
+const Navigation = ({ authUser, classes, firebase }) => {
   const userRole = useUserRole(authUser);
   return (
     <header className={classes.root}>
@@ -66,13 +65,6 @@ const Navigation = ({ authUser, classes, firebase, history }) => {
                   Courses
                 </Button>
                 <>
-                  {history.location.pathname === ROUTES.ADMIN_COURSES.path &&
-                    userRole.isAdmin && (
-                      <NewCourseDialog
-                        authUser={authUser}
-                        firebase={firebase}
-                      />
-                    )}
                   <ThemeSwitch />
                   <MoAvatar
                     authUser={authUser}
