@@ -18,17 +18,15 @@ import React, { Suspense, lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MoSpinner from "components/library/MoSpinner";
 import { retry } from "helpers/retryLazyImports";
+import Container from "@material-ui/core/Container";
+import MoSpinner from "components/library/MoSpinner";
 
 const Navigation = lazy(() =>
   retry(() => import("components/shared/Navigation"))
 );
 const Account = lazy(() => retry(() => import("containers/Account")));
 const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
-const Container = lazy(() =>
-  retry(() => import("@material-ui/core/Container"))
-);
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
 const PasswordForgot = lazy(() =>
