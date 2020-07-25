@@ -16,7 +16,7 @@ import * as serviceWorker from "./serviceWorker";
 import * as Sentry from "@sentry/browser";
 
 import Firebase, { FirebaseContext } from "./components/shared/Firebase";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 import MoSpinner from "components/library/MoSpinner";
 
 // Global state for theme options
