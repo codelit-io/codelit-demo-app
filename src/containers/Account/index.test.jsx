@@ -1,7 +1,7 @@
 import React from "react";
 
 import ShallowRenderer from "react-test-renderer/shallow";
-import Account from "./index.js";
+import Account from "./index.jsx";
 
 const renderer = new ShallowRenderer();
 
