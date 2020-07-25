@@ -35,9 +35,7 @@ const PasswordForgot = lazy(() =>
   retry(() => import("components/shared/PasswordForgot"))
 );
 const Playground = lazy(() => retry(() => import("containers/Playground")));
-const Collections = lazy(() =>
-  retry(() => import("containers/Collections/Collections"))
-);
+const Collections = lazy(() => retry(() => import("containers/Collections")));
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
