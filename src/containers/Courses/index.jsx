@@ -1,75 +1,45 @@
 /**
  *
- * @author MoSkool
+ * @author Mo Skool
  * @version 1.0.0
- * @visibleName Courses Container 🎒
+ * @visibleName Courses routing component 🚕
  *
- * A Container contains a list of courses created by MoSkool and a list of courses created by the community
+ * This component is responsible for routing between questions view and edit pages
+ * the first route is a view only mode, where users can view question cards
+ * the second route is edit mode, where users can edit and save Courses' details - only authors and admins can do this
  *
- * @param {Object} authUser - Passed from parent container and has everything about the logged in user
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @withFirebase - HOC provides firebase instance to access db and back-end
- * @returns {<CoursesOrg/>} - returns component which then the children fetch the correct data
+ * @returns - routes to components
  *
- * @see Link [Courses Page](https://moskool.com/courses)
+ * @see Link [Example Courses View Page](https://moskool.com/courses)
  *
- */
+ * */
 
 import React, { lazy } from "react";
 
-import { COURSES } from "constants/i18n";
+import * as ROUTES from "constants/routes";
+import { Switch, Route } from "react-router-dom";
 import { retry } from "utils/retryLazyImports";
-import { withAuthentication } from "components/shared/Session";
-import PropTypes from "prop-types";
-import useCollections from "hooks/useCollections";
-import useUserRole from "hooks/useUserRole";
 
-const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
-const collection = {
-  path: "courses",
-  title: COURSES.PAGE_TITLE,
-  isProgressBar: false
-};
-
-// Configure url route for each item
-const itemUrl = doc => `/courses/${doc}`;
-
-const Courses = ({ authUser, firebase, history, match }) => {
-  const collectionDetails = {
-    collectionPath: collection.path,
-    data: [],
-    isProgressBar: collection.isProgressBar,
-    locationHash: history.location.hash,
-    title: collection.title
-  };
-  const userRole = useUserRole(authUser);
-
-  const courses = useCollections(collectionDetails, firebase);
-
-  const newItem = { title: "Add a course", url: "courses/isEditMode" };
-
-  if (!courses || !courses?.data?.length) {
-    return null;
-  }
-
-  return (
-    <CoursesPage
-      authUser={authUser}
-      collectionDetails={collectionDetails}
-      courses={courses}
-      isAdmin={userRole.isAdmin}
-      firebase={firebase}
-      match={match}
-      itemUrl={doc => itemUrl(doc)}
-      newItem={newItem}
+const CoursesViewPage = lazy(() =>
+  retry(() => import("containers/Courses/CoursesViewPage"))
+);
+const CoursesEditPage = lazy(() =>
+  retry(() => import("containers/Courses/CoursesEditPage"))
+);
+const Courses = () => (
+  <Switch>
+    {/* <Route
+      exact
+      path={ROUTES.COLLECTIONS.path + "/:collection"}
+      component={CoursesViewPage}
+    /> */}
+    <Route exact path={ROUTES.COLLECTIONS.path} component={CoursesViewPage} />
+    <Route
+      exact
+      path={ROUTES.COLLECTIONS.path + "/isEditMode"}
+      component={CoursesEditPage}
     />
-  );
-};
+  </Switch>
+);
 
-Courses.propTypes = {
-  firebase: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
-};
-
-export default withAuthentication(Courses);
+export default Courses;
