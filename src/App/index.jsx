@@ -19,7 +19,7 @@ import React, { Suspense, lazy } from "react";
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
-import { retry } from "utils/retryLazyImports";
+import { retry } from "helpers/retryLazyImports";
 
 const Navigation = lazy(() =>
   retry(() => import("components/shared/Navigation"))
@@ -35,7 +35,9 @@ const PasswordForgot = lazy(() =>
   retry(() => import("components/shared/PasswordForgot"))
 );
 const Playground = lazy(() => retry(() => import("containers/Playground")));
-const Courses = lazy(() => retry(() => import("containers/Courses")));
+const Collections = lazy(() =>
+  retry(() => import("containers/Collections/Collections"))
+);
 const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
@@ -58,7 +60,7 @@ const App = () => {
               component={PasswordForgot}
             />
             <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
-            <Route path={ROUTES.COLLECTIONS.path} component={Courses} />
+            <Route path={ROUTES.COLLECTIONS.path} component={Collections} />
             <Route component={NotFound} />
           </Switch>
         </Container>

@@ -1,6 +1,44 @@
 {
 	"compilerOptions": {
-		"baseUrl": "src"
+		"baseUrl": "src",
+		"paths": {
+			"actions": [
+				"actions/*"
+			],
+			"App": [
+				"App/*"
+			],
+			"assets": [
+				"assets/*"
+			],
+			"components": [
+				"components/*"
+			],
+			"constants": [
+				"constants/*"
+			],
+			"containers": [
+				"containers/*"
+			],
+			"helpers": [
+				"helpers/*"
+			],
+			"hooks": [
+				"hooks/*"
+			],
+			"mocks": [
+				"mocks/*"
+			],
+			"store": [
+				"store/*"
+			],
+			"theme": [
+				"theme/*"
+			],
+			"utils": [
+				"utils/*"
+			],
+		}
 	},
 	"include": [
 		"src"
