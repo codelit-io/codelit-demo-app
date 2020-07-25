@@ -4,7 +4,9 @@
  * @version 1.0.0
  * @visibleName Collections routing component 🚕
  *
- * Handles routing between Courses, Questions and Question
+ * Handles high level routing between containers Courses, Questions and Question
+ * Then each container will handle child routes and split into edit and view modes
+ *
  * @returns - routes to components
  *
  * @see Link [Example Courses View Page](https://moskool.com/courses)
@@ -31,12 +33,15 @@ const Question = lazy(() =>
 
 const Collections = () => (
   <Switch>
+    {/*  @see Link [Example Courses Page](https://moskool.com/courses) */}
     <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
+    {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html) */}
     <Route
       exact
       path={ROUTES.COLLECTIONS.path + "/:collection"}
       component={Questions}
     />
+    {/*  @see Link [Example Questions Page](https://moskool.com/courses/new-to-html/1) */}
     <Route
       path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
       component={Question}

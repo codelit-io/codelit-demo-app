@@ -2,7 +2,7 @@
  *
  * @author Mo Skool
  * @version 1.0.0
- * @visibleName Question routing component 🚕
+ * @visibleName Questions routing component 🚕
  *
  * This component is responsible for routing between questions view and edit pages
  * the first route is a view only mode, where users can view question cards

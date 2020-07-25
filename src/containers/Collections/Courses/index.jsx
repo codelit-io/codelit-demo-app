@@ -4,7 +4,7 @@
  * @version 1.0.0
  * @visibleName Courses routing component 🚕
  *
- * This component is responsible for routing between questions view and edit pages
+ * This component is responsible for routing between courses view and edit pages
  * the first route is a view only mode, where users can view question cards
  * the second route is edit mode, where users can edit and save Courses' details - only authors and admins can do this
  *
@@ -25,13 +25,6 @@ const CoursesViewPage = lazy(() =>
 );
 const CoursesEditPage = lazy(() =>
   retry(() => import("containers/Collections/Courses/CoursesEditPage"))
-);
-const Questions = lazy(() =>
-  retry(() => import("containers/Collections/Questions"))
-);
-
-const Question = lazy(() =>
-  retry(() => import("containers/Collections/Question"))
 );
 
 const Courses = () => (
