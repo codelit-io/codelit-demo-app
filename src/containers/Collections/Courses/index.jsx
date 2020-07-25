@@ -42,15 +42,6 @@ const Courses = () => (
       path={ROUTES.COLLECTIONS.path + "/isEditMode"}
       component={CoursesEditPage}
     />
-    <Route
-      exact
-      path={ROUTES.COLLECTIONS.path + "/:collection"}
-      component={Questions}
-    />
-    <Route
-      path={ROUTES.COLLECTIONS.path + "/:collection/:questionId"}
-      component={Question}
-    />
   </Switch>
 );
 

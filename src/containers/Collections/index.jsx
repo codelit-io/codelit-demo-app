@@ -2,12 +2,9 @@
  *
  * @author Mo Skool
  * @version 1.0.0
- * @visibleName Courses routing component 🚕
+ * @visibleName Collections routing component 🚕
  *
- * This component is responsible for routing between questions view and edit pages
- * the first route is a view only mode, where users can view question cards
- * the second route is edit mode, where users can edit and save Courses' details - only authors and admins can do this
- *
+ * Handles routing between Courses, Questions and Question
  * @returns - routes to components
  *
  * @see Link [Example Courses View Page](https://moskool.com/courses)
@@ -20,12 +17,10 @@ import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
 import { retry } from "helpers/retryLazyImports";
 
-const CoursesViewPage = lazy(() =>
-  retry(() => import("containers/Collections/Courses/CoursesViewPage"))
+const Courses = lazy(() =>
+  retry(() => import("containers/Collections/Courses"))
 );
-const CoursesEditPage = lazy(() =>
-  retry(() => import("containers/Collections/Courses/CoursesEditPage"))
-);
+
 const Questions = lazy(() =>
   retry(() => import("containers/Collections/Questions"))
 );
@@ -36,12 +31,7 @@ const Question = lazy(() =>
 
 const Collections = () => (
   <Switch>
-    <Route exact path={ROUTES.COLLECTIONS.path} component={CoursesViewPage} />
-    <Route
-      exact
-      path={ROUTES.COLLECTIONS.path + "/isEditMode"}
-      component={CoursesEditPage}
-    />
+    <Route exact path={ROUTES.COLLECTIONS.path} component={Courses} />
     <Route
       exact
       path={ROUTES.COLLECTIONS.path + "/:collection"}
