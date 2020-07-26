@@ -91,7 +91,7 @@ Shared React hooks for fetching data from db
 
 Mock data for testing and data simulation in components
 
-### Utils
+### Helpers
 
 Shared functionality
 

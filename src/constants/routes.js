@@ -11,9 +11,11 @@ export const LANDING = {
 };
 
 /* Courses and Collection pages */
+
+export const COURSES_ADD = { path: "/courses", title: "Add a Courses" };
 export const COLLECTIONS = { path: "/courses", title: "Your Courses" };
 export const COLLECTIONS_ADD = {
-  path: "0/isEditMode",
+  path: "/isEditMode",
   title: "Add New Course"
 };
 export const EASY_COLLECTIONS = {

@@ -10,7 +10,6 @@
 
 import React from "react";
 
-import Fade from "@material-ui/core/Fade";
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles";
 import MoSpinner from "../MoSpinner";
@@ -28,30 +27,23 @@ const MoPage = ({
     return <MoSpinner isLoading={isLoading} />;
   }
   return (
-    <Fade
-      in={!isLoading}
-      mountOnEnter
-      timeout={{ enter: 200, exit: 200 }}
-      unmountOnExit
-    >
-      <section className={classes.section}>
-        <MoTypography
-          font="breeSerif"
-          marginBottom="md"
-          text={title}
-          variant="h2"
-        >
-          {IconComponent && <IconComponent />}
-        </MoTypography>
-        <MoTypography
-          font="openSans"
-          marginBottom="md"
-          text={subtitle}
-          variant="h6"
-        ></MoTypography>
-        {children}
-      </section>
-    </Fade>
+    <section className={classes.section}>
+      <MoTypography
+        font="breeSerif"
+        marginBottom="md"
+        text={title}
+        variant="h2"
+      >
+        {IconComponent && <IconComponent />}
+      </MoTypography>
+      <MoTypography
+        font="openSans"
+        marginBottom="md"
+        text={subtitle}
+        variant="h6"
+      ></MoTypography>
+      {children}
+    </section>
   );
 };
 

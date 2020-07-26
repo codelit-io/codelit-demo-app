@@ -35,7 +35,7 @@ import React, {
 import PropTypes from "prop-types";
 
 // used to retry imports if they fail
-import { retry } from "utils/retryLazyImport";
+import { retry } from "helpers/retryLazyImport";
 /*
  * withAuthentication - higher order component
  * Provides your component with necessary props: authUser, firebase, history, match

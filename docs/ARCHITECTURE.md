@@ -61,7 +61,7 @@ Mock data live here, these are helpful for united testing, dummy data and mock a
 ## Store
 State management using global hook
 
-## Utils
+## Helpers
 Shared helper functions
 
 

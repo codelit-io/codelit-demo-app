@@ -1,4 +1,4 @@
-import { getCache } from "utils/localCache";
+import { getCache } from "helpers/localCache";
 
 const isDarkMode = getCache({ key: "isDarkMode" }) || false;
 

@@ -14,7 +14,7 @@
 
 import React, { useCallback } from "react";
 
-import { setCache } from "utils/localCache";
+import { setCache } from "helpers/localCache";
 import IconButton from "@material-ui/core/IconButton";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";

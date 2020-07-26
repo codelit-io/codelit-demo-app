@@ -11,7 +11,7 @@ exports[`App Component should match the snapshot 1`] = `
       />
     }
   >
-    <UNDEFINED
+    <ForwardRef(WithStyles)
       maxWidth="lg"
     >
       <Switch>
@@ -114,31 +114,7 @@ exports[`App Component should match the snapshot 1`] = `
               "_status": -1,
             }
           }
-          exact={true}
           path="/courses"
-        />
-        <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.lazy),
-              "_ctor": [Function],
-              "_result": null,
-              "_status": -1,
-            }
-          }
-          exact={true}
-          path="/courses/:collection"
-        />
-        <Route
-          component={
-            Object {
-              "$$typeof": Symbol(react.lazy),
-              "_ctor": [Function],
-              "_result": null,
-              "_status": -1,
-            }
-          }
-          path="/courses/:collection/:questionId"
         />
         <Route
           component={
@@ -151,7 +127,7 @@ exports[`App Component should match the snapshot 1`] = `
           }
         />
       </Switch>
-    </UNDEFINED>
+    </ForwardRef(WithStyles)>
   </React.Suspense>
 </BrowserRouter>
 `;
