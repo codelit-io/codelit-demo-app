@@ -42,7 +42,7 @@ const CardItem = ({
       <MoCard
         IconComponent={IconComponent}
         // Add one to offset for the first card from 0 to 1
-        index={index + 1}
+        index={index}
         isDisabled={isDisabled}
         subtitle={subtitle}
         title={title}

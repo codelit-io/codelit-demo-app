@@ -46,8 +46,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         ? updateQuestion(
             {
               ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
+              id: match.params.questionId
             },
             firebase,
             match
@@ -56,8 +55,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
             authUser,
             {
               ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
+              id: match.params.questionId
             },
             firebase,
             match
