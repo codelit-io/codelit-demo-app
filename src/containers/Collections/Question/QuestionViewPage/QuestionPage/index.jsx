@@ -13,11 +13,7 @@ import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 import { BROWSER_MOCKUP } from "constants/i18n";
 import { retry } from "helpers/retryLazyImports";
 import awardPlayerPoints from "../awardPlayerPoints";
-import Button from "@material-ui/core/Button";
 import createStyles from "@material-ui/core/styles/createStyles";
-import CodeIcon from "@material-ui/icons/Code";
-import Grid from "@material-ui/core/Grid";
-import HelpIcon from "@material-ui/icons/Help";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import stringSimilarity from "string-similarity";
 import MoTypography from "components/library/MoTypography";
@@ -26,7 +22,6 @@ import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
-import QuestionPageNav from "./QuestionPageNav";
 import MoButtonIcon from "components/library/MoButtonIcon";
 
 const CodeEditor = lazy(() =>
@@ -36,6 +31,8 @@ const CodeEditor = lazy(() =>
 const MoConfetti = lazy(() =>
   retry(() => import("components/library/MoConfetti"))
 );
+
+const QuestionFooter = lazy(() => import("./QuestionFooter"));
 
 const QuestionPage = ({
   authUser,
@@ -214,48 +211,14 @@ const QuestionPage = ({
           title={BROWSER_MOCKUP.CODE_EDITOR}
         />
       </section>
-      {question?.id && (
-        <section className={classes.section}>
-          {/* TODO: move the follow to another component e.g. CodeEditorBottomNav */}
-          <Grid container>
-            <Grid item xs={4} sm={3} md={3}>
-              {/* Render if answer is available */}
-              <Button
-                disabled={question.question ? true : false}
-                aria-label="Need a hint?"
-                aria-haspopup="true"
-                startIcon={<HelpIcon />}
-                onClick={() => {
-                  setIsHintTypist(true);
-                }}
-              >
-                Need a hint?
-              </Button>
-            </Grid>
-            <Grid item xs={4} sm={3} md={3} className={classes.textAlignRight}>
-              <Button
-                aria-label="Show error console"
-                aria-haspopup="true"
-                startIcon={<CodeIcon />}
-                onClick={() => {
-                  setIsConsole(true);
-                }}
-              >
-                Console
-              </Button>
-            </Grid>
-            <Grid item xs={4} sm={6} md={6} className={classes.textAlignRight}>
-              <QuestionPageNav
-                isAdmin={isAdmin}
-                prevClick={() => triggerQuestion("prev")}
-                nextClick={() => triggerQuestion("next")}
-                isCorrect={question.isCorrect}
-                id={question.id}
-              />
-            </Grid>
-          </Grid>
-        </section>
-      )}
+      <QuestionFooter
+        isAdmin={isAdmin}
+        classes={classes}
+        setIsConsole={e => setIsConsole(e)}
+        setIsHintTypist={e => setIsHintTypist(e)}
+        triggerQuestion={e => triggerQuestion(e)}
+        question={question}
+      />
       <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
     </Suspense>
   );
