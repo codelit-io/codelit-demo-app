@@ -32,7 +32,6 @@ import { addFocusOnEditor, getPreviewElement } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
-// import Headline from "components/library/MoHeadline";
 import MoProgressLinear from "components/library/MoProgressLinear";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
 import Typist from "react-typist";
@@ -41,7 +40,6 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import useGlobal from "store";
 
 // Code Editor Themes
-// import lightTheme from "theme/codeEditor/lightTheme";
 import getTheme from "theme/codeEditor/getTheme";
 
 const CodeEditor = ({
@@ -179,11 +177,6 @@ const CodeEditor = ({
             <LiveError />
           </Grid>
         )}
-        {/* 
-      TODO Add Headline effect
-      <Grid item md={12} sm={12} xs={12}>
-        <Headline isCorrect={question && question.isCorrect} />
-      </Grid> */}
       </LiveProvider>
     </Grid>
   );

@@ -41,14 +41,13 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
 
   const onSubmit = useCallback(
     event => {
-      debugger;
       // editedAt is only available on existing db items nad safe to update
       event.editedAt
         ? updateQuestion(
             {
               ...event,
               id: match.params.questionId,
-              uid: match.params.collection
+              doc: match.params.collection
             },
             firebase,
             match
@@ -58,7 +57,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
             {
               ...event,
               id: match.params.questionId,
-              uid: match.params.collection
+              doc: match.params.collection
             },
             firebase,
             match
