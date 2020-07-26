@@ -1,6 +1,6 @@
 import React from "react";
 
-import { renderHook, cleanup } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react-hooks";
 import Firebase from "components/shared/Firebase";
 import useCollections from ".";
 

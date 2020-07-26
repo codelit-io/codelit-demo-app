@@ -17,7 +17,7 @@
  *
  */
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 
 import * as ROUTES from "constants/routes";
 import withAuthentication from "components/shared/Session/withAuthentication";
