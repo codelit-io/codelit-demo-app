@@ -30,6 +30,21 @@ exports[`QuestionPage Component should match the snapshot 1`] = `
       title="Code Editor"
     />
   </section>
+  <UNDEFINED
+    classes={
+      Object {
+        "buttonArea": "makeStyles-buttonArea-5",
+        "fixedIcon": "makeStyles-fixedIcon-4",
+        "grey": "makeStyles-grey-2",
+        "lightGrey": "makeStyles-lightGrey-3",
+        "section": "makeStyles-section-6",
+        "textAlignRight": "makeStyles-textAlignRight-1",
+      }
+    }
+    setIsConsole={[Function]}
+    setIsHintTypist={[Function]}
+    triggerQuestion={[Function]}
+  />
   <ForwardRef(WithStyles)
     snackbarProps={
       Object {
