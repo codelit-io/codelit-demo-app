@@ -2,17 +2,15 @@
 
 exports[`App Component should match the snapshot 1`] = `
 <BrowserRouter>
-  <UNDEFINED />
-  <React.Suspense
-    fallback={
-      <ForwardRef(WithStyles)
-        color="primary"
-        isLoading={true}
-      />
-    }
-  >
-    <ForwardRef(WithStyles)
-      maxWidth="lg"
+  <ForwardRef(WithStyles)>
+    <UNDEFINED />
+    <React.Suspense
+      fallback={
+        <ForwardRef(WithStyles)
+          color="primary"
+          isLoading={true}
+        />
+      }
     >
       <Switch>
         <Route
@@ -127,7 +125,7 @@ exports[`App Component should match the snapshot 1`] = `
           }
         />
       </Switch>
-    </ForwardRef(WithStyles)>
-  </React.Suspense>
+    </React.Suspense>
+  </ForwardRef(WithStyles)>
 </BrowserRouter>
 `;
