@@ -45,7 +45,7 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
         className={classes.appBar}
         elevation={0}
       >
-        <Toolbar disableGutters={true}>
+        <Toolbar disableGutters={true} variant="dense">
           <Grid container alignItems="center">
             <Grid item xs={6} sm={6} md={6} lg={6}>
               <div className={classes.leftSide}>
