@@ -16,12 +16,13 @@
  * @see Link [Example Question Page in Edit Mode](https://moskool.com/courses/mo-easy/1/isEditMode)
  */
 
-import React, { useCallback, useEffect, useState, Suspense } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import * as ROLES from "constants/roles";
 
+import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
-import MoSpinner from "components/library/MoSpinner";
+import Navigation from "components/shared/Navigation";
 import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
@@ -113,7 +114,8 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <Suspense fallback={<MoSpinner isLoading color="primary" />}>
+    <Container maxWidth="xl">
+      <Navigation />
       <QuestionForm
         isLoading={isLoading}
         isCard={false}
@@ -128,7 +130,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
       {!isLoading && snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
       )}
-    </Suspense>
+    </Container>
   );
 };
 

@@ -25,6 +25,8 @@ import withAuthentication from "components/shared/Session/withAuthentication";
 import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
+import { Container } from "@material-ui/core";
+import Navigation from "components/shared/Navigation";
 
 const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   const { data, isLoading } = useQuestion({
@@ -57,16 +59,19 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <QuestionPage
-      authUser={authUser}
-      data={data}
-      firebase={firebase}
-      handleOnClick={() => handleOnClick()}
-      handleNavigation={id => handleNavigation(id)}
-      isLoading={isLoading}
-      match={match}
-      isAdmin={userRole.isAdmin}
-    />
+    <Container maxWidth="xl">
+      <Navigation />
+      <QuestionPage
+        authUser={authUser}
+        data={data}
+        firebase={firebase}
+        handleOnClick={() => handleOnClick()}
+        handleNavigation={id => handleNavigation(id)}
+        isLoading={isLoading}
+        match={match}
+        isAdmin={userRole.isAdmin}
+      />
+    </Container>
   );
 };
 

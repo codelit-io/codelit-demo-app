@@ -17,10 +17,12 @@
 
 import React, { lazy, useEffect, useState, useCallback } from "react";
 
+import Container from "@material-ui/core/Container";
 import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
 import useUserRole from "hooks/useUserRole";
+import Navigation from "components/shared/Navigation";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
@@ -69,20 +71,23 @@ const Questions = ({ authUser, history, firebase, match }) => {
   }
 
   return (
-    <QuestionsPage
-      authUser={authUser}
-      questions={questions.data}
-      courseDetails={courseDetails}
-      hasData={questions.data.length && true}
-      handleOnClick={e => handleOnClick(e)}
-      isItemDisabled={id => isItemDisabled(id)}
-      isAdmin={userRole.isAdmin}
-      isLoading={questions.data.isLoading && false}
-      itemUrl={id => itemUrl(id)}
-      doc={doc}
-      newItem={newItem}
-      points={points}
-    />
+    <Container maxWidth="lg">
+      <Navigation />
+      <QuestionsPage
+        authUser={authUser}
+        questions={questions.data}
+        courseDetails={courseDetails}
+        hasData={questions.data.length && true}
+        handleOnClick={e => handleOnClick(e)}
+        isItemDisabled={id => isItemDisabled(id)}
+        isAdmin={userRole.isAdmin}
+        isLoading={questions.data.isLoading && false}
+        itemUrl={id => itemUrl(id)}
+        doc={doc}
+        newItem={newItem}
+        points={points}
+      />
+    </Container>
   );
 };
 export default withAuthentication(Questions);

@@ -12,7 +12,9 @@ import React, { lazy } from "react";
 import Footer from "components/shared/Footer";
 import MoPage from "components/library/MoPage";
 
+import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Navigation from "components/shared/Navigation";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
@@ -25,19 +27,22 @@ const CoursesPage = ({
   newItem
 }) => {
   return (
-    <MoPage title={collectionDetails?.title}>
-      <Grid container spacing={4} alignItems="center">
-        <CardList
-          authUser={authUser}
-          items={courses}
-          isAdmin={isAdmin}
-          itemUrl={doc => itemUrl(doc)}
-          isItemDisabled={() => {}}
-          newItem={newItem}
-        />
-      </Grid>
-      <Footer />
-    </MoPage>
+    <Container>
+      <Navigation />
+      <MoPage title={collectionDetails?.title}>
+        <Grid container spacing={4} alignItems="center">
+          <CardList
+            authUser={authUser}
+            items={courses}
+            isAdmin={isAdmin}
+            itemUrl={doc => itemUrl(doc)}
+            isItemDisabled={() => {}}
+            newItem={newItem}
+          />
+        </Grid>
+        <Footer />
+      </MoPage>
+    </Container>
   );
 };
 
