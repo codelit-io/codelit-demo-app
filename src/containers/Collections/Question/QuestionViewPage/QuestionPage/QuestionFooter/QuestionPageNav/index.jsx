@@ -37,13 +37,13 @@ const QuestionPageNav = ({ prevClick, isAdmin, isCorrect, id, nextClick }) => {
       <Button disabled>{id}</Button>
       {isAdmin ? (
         <Button
-          startIcon={<KeyboardArrowRightIcon />}
+          endIcon={<KeyboardArrowRightIcon />}
           onClick={() => nextClick()}
         />
       ) : (
         <Button
           disabled={isDisabled}
-          startIcon={<KeyboardArrowRightIcon />}
+          endIcon={<KeyboardArrowRightIcon />}
           onClick={() => nextClick()}
         />
       )}
