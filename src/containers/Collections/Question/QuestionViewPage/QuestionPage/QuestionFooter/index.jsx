@@ -1,5 +1,6 @@
 import React from "react";
 
+import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import CodeIcon from "@material-ui/icons/Code";
 import Grid from "@material-ui/core/Grid";
@@ -19,44 +20,54 @@ const QuestionFooter = ({
   return (
     <section className={classes.section}>
       <div className={classes.footer}>
-        <Container maxWidth="xl">
-          <Grid container alignItems="center">
-            <Grid item xs={6} sm={6} md={6}>
-              <Tooltip title="Need a hint?" placement="top">
-                <IconButton
-                  aria-label="Need a hint?"
-                  aria-haspopup="true"
-                  disabled={question.question ? true : false}
-                  onClick={() => {
-                    setIsHintTypist(true);
-                  }}
-                >
-                  <HelpIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Show console" placement="top">
-                <IconButton
-                  aria-label="Show console"
-                  aria-haspopup="true"
-                  onClick={() => {
-                    setIsConsole(true);
-                  }}
-                >
-                  <CodeIcon />
-                </IconButton>
-              </Tooltip>
+        <AppBar position="static" color="default" elevation={0}>
+          <Container maxWidth="xl">
+            <Grid container alignItems="center">
+              <Grid item xs={6} sm={6} md={6}>
+                <Tooltip title="Need a hint?" placement="top">
+                  <span>
+                    <IconButton
+                      aria-label="Need a hint?"
+                      aria-haspopup="true"
+                      disabled={question.question ? true : false}
+                      onClick={() => {
+                        setIsHintTypist(true);
+                      }}
+                    >
+                      <HelpIcon />
+                    </IconButton>
+                  </span>
+                </Tooltip>
+                <Tooltip title="Show console" placement="top">
+                  <IconButton
+                    aria-label="Show console"
+                    aria-haspopup="true"
+                    onClick={() => {
+                      setIsConsole(true);
+                    }}
+                  >
+                    <CodeIcon />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={6}
+                md={6}
+                className={classes.textAlignRight}
+              >
+                <QuestionPageNav
+                  isAdmin={isAdmin}
+                  prevClick={() => triggerQuestion("prev")}
+                  nextClick={() => triggerQuestion("next")}
+                  isCorrect={question.isCorrect}
+                  id={question.id}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={6} sm={6} md={6} className={classes.textAlignRight}>
-              <QuestionPageNav
-                isAdmin={isAdmin}
-                prevClick={() => triggerQuestion("prev")}
-                nextClick={() => triggerQuestion("next")}
-                isCorrect={question.isCorrect}
-                id={question.id}
-              />
-            </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        </AppBar>
       </div>
     </section>
   );

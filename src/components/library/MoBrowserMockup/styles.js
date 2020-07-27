@@ -20,7 +20,7 @@ const styles = theme => ({
 
   browserMockup: {
     padding: `${theme.space.sm} ${theme.space.md}`,
-    minHeight: "10rem",
+    minHeight: "8rem",
     position: "relative",
     borderRadius: theme.space.xs
   },

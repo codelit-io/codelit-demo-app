@@ -20,6 +20,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Fade from "@material-ui/core/Fade";
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const QuestionPageNav = ({ prevClick, isAdmin, isCorrect, id, nextClick }) => {
   const isDisabled = !isCorrect;
@@ -30,40 +31,52 @@ const QuestionPageNav = ({ prevClick, isAdmin, isCorrect, id, nextClick }) => {
   return (
     <Fade in>
       <div>
-        <IconButton
-          aria-label="Go to previous question"
-          aria-haspopup="true"
-          disabled={id === 1}
-          onClick={() => prevClick()}
-        >
-          <KeyboardArrowLeftIcon />
-        </IconButton>
-        <IconButton
-          aria-label="current question"
-          aria-haspopup="true"
-          disabled={true}
-          size="small"
-        >
-          {id}
-        </IconButton>
-        {isAdmin ? (
-          <IconButton
-            aria-label="Go to next question"
-            aria-haspopup="true"
-            onClick={() => nextClick()}
-          >
-            <KeyboardArrowRightIcon />
-          </IconButton>
-        ) : (
-          <IconButton
-            aria-label="Go to next question"
-            aria-haspopup="true"
-            disabled={isDisabled}
-            onClick={() => nextClick()}
-          >
-            <KeyboardArrowRightIcon />
-          </IconButton>
-        )}
+        <Tooltip title="Previous question" placement="top">
+          <span>
+            <IconButton
+              aria-label="Previous question"
+              aria-haspopup="true"
+              disabled={id === 1}
+              onClick={() => prevClick()}
+            >
+              <KeyboardArrowLeftIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
+        <Tooltip title="Current question" placement="top">
+          <span>
+            <IconButton
+              aria-label="Current question"
+              aria-haspopup="true"
+              disabled={true}
+              size="small"
+            >
+              {id}
+            </IconButton>
+          </span>
+        </Tooltip>
+        <Tooltip title="Next question" placement="top">
+          <span>
+            {isAdmin ? (
+              <IconButton
+                aria-label="Next question"
+                aria-haspopup="true"
+                onClick={() => nextClick()}
+              >
+                <KeyboardArrowRightIcon />
+              </IconButton>
+            ) : (
+              <IconButton
+                aria-label="Next question"
+                aria-haspopup="true"
+                disabled={isDisabled}
+                onClick={() => nextClick()}
+              >
+                <KeyboardArrowRightIcon />
+              </IconButton>
+            )}
+          </span>
+        </Tooltip>
       </div>
     </Fade>
   );
