@@ -120,9 +120,9 @@ const CodeEditor = ({
         <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
           <Grow
             in={codeAnswer && true}
-            mountOnEnter
-            timeout={{ enter: 200 }}
-            unmountOnExit
+            // mountOnEnter
+            timeout={{ enter: 400 }}
+            // unmountOnExit
           >
             <div>
               <MoBrowserMockup
@@ -161,9 +161,9 @@ const CodeEditor = ({
         <Grid item md={md} sm={sm} xs={12}>
           <Grow
             in={(isPlayground && true) || (codeAnswer && true)}
-            mountOnEnter
-            timeout={{ enter: 200 }}
-            unmountOnExit
+            // mountOnEnter
+            timeout={{ enter: 400 }}
+            // unmountOnExit
           >
             <div>
               <MoBrowserMockup isEditor={false}>
