@@ -25,8 +25,8 @@ const Account = lazy(() => retry(() => import("containers/Account")));
 const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
 const LandingPage = lazy(() => retry(() => import("containers/Landing")));
 const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
-const PasswordForgot = lazy(() =>
-  retry(() => import("components/shared/PasswordForgot"))
+const PasswordReset = lazy(() =>
+  retry(() => import("containers/PasswordReset"))
 );
 const Playground = lazy(() => retry(() => import("containers/Playground")));
 const Collections = lazy(() => retry(() => import("containers/Collections")));
@@ -46,10 +46,7 @@ const App = () => {
 
           <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
           <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-          <Route
-            path={ROUTES.PASSWORD_FORGET.path}
-            component={PasswordForgot}
-          />
+          <Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordReset} />
           <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
           <Route path={ROUTES.COLLECTIONS.path} component={Collections} />
           <Route component={NotFound} />
