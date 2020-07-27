@@ -15,6 +15,8 @@ import React, { lazy } from "react";
 import * as ROUTES from "constants/routes";
 
 import { LANDING_PAGE } from "constants/i18n";
+import { ReactComponent as Researching } from "assets/researching.svg";
+import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
 import CheckIcon from "@material-ui/icons/Check";
 import Container from "@material-ui/core/Container";
 import Fade from "@material-ui/core/Fade";
@@ -26,12 +28,15 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Footer from "components/shared/Footer";
 import styles from "./styles";
 import MoTypography from "components/library/MoTypography";
-import { ReactComponent as Researching } from "assets/researching.svg";
-import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 const Navigation = lazy(() => import("components/shared/Navigation"));
 
 const LandingPage = ({ classes }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Container maxWidth="lg">
       <Navigation />
@@ -61,19 +66,19 @@ const LandingPage = ({ classes }) => {
           </Fade>
         </Grid>
 
-        <Grid item sm={12} md={6} xs={12}>
-          <Fade
-            in={Researching && true}
-            mountOnEnter
-            timeout={{ enter: 1200 }}
-            unmountOnExit
-          >
+        <Fade
+          in={!isMobile && Researching && true}
+          mountOnEnter
+          timeout={{ enter: 1200 }}
+          unmountOnExit
+        >
+          <Grid item sm={12} md={6} xs={12}>
             <Researching
               alt={LANDING_PAGE.LEARN_COURSES}
               className={classes.svg}
             />
-          </Fade>
-        </Grid>
+          </Grid>
+        </Fade>
       </Grid>
 
       <Grid container spacing={4} className={classes.container}>
@@ -155,7 +160,7 @@ const LandingPage = ({ classes }) => {
           </Grid>
         </Fade>
         <Fade
-          in={SourceCode && true}
+          in={!isMobile && SourceCode && true}
           mountOnEnter
           timeout={{ enter: 400 }}
           unmountOnExit
