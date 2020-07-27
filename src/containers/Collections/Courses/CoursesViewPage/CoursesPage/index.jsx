@@ -27,7 +27,7 @@ const CoursesPage = ({
   newItem
 }) => {
   return (
-    <Container>
+    <Container maxWidth="lg">
       <Navigation />
       <MoPage title={collectionDetails?.title}>
         <Grid container spacing={4} alignItems="center">
