@@ -16,18 +16,18 @@
  * @see Link [Example Question Page in Edit Mode](https://moskool.com/courses/mo-easy/1/isEditMode)
  */
 
-import React, { useCallback, useEffect, useState, Suspense } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import * as ROLES from "constants/roles";
 
+import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
-import MoSpinner from "components/library/MoSpinner";
+import Navigation from "components/shared/Navigation";
 import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
 import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/questionFirebase";
-import useGlobal from "store";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,19 +70,6 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     },
     [authUser, firebase, setSnackbarProps, match]
   );
-
-  // Global State
-  // Comma operator to skip first value
-  const [, addToThemeOptions] = useGlobal(
-    state => state.themeOptions,
-    actions => actions.addToThemeOptions
-  );
-
-  // Set Page name in global state
-  useEffect(() => {
-    addToThemeOptions({ containerSize: "xl" });
-    return () => addToThemeOptions({ containerSize: "lg" });
-  }, [addToThemeOptions]);
 
   /* TODO: Move to custom hook */
   useEffect(() => {
@@ -127,7 +114,8 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <Suspense fallback={<MoSpinner isLoading color="primary" />}>
+    <Container maxWidth="xl">
+      <Navigation />
       <QuestionForm
         isLoading={isLoading}
         isCard={false}
@@ -142,7 +130,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
       {!isLoading && snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />
       )}
-    </Suspense>
+    </Container>
   );
 };
 

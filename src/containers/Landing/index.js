@@ -10,12 +10,13 @@
  *
  */
 
-import React from "react";
+import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 
 import { LANDING_PAGE } from "constants/i18n";
 import CheckIcon from "@material-ui/icons/Check";
+import Container from "@material-ui/core/Container";
 import Fade from "@material-ui/core/Fade";
 import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
@@ -28,9 +29,12 @@ import MoTypography from "components/library/MoTypography";
 import { ReactComponent as Researching } from "assets/researching.svg";
 import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
 
+const Navigation = lazy(() => import("components/shared/Navigation"));
+
 const LandingPage = ({ classes }) => {
   return (
-    <>
+    <Container maxWidth="lg">
+      <Navigation />
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade
@@ -184,7 +188,7 @@ const LandingPage = ({ classes }) => {
         </Grid>
       </Grid>
       <Footer />
-    </>
+    </Container>
   );
 };
 

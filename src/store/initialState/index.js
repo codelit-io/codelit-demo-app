@@ -7,7 +7,6 @@ export const initialState = {
   collections: {},
   courses: [],
   themeOptions: {
-    isDarkMode,
-    containerSize: "lg"
+    isDarkMode
   }
 };

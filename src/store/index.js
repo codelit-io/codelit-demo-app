@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as actions from "../actions";
+import * as actions from "actions";
 import { initialState } from "./initialState";
 import useGlobalHook from "use-global-hook";
 

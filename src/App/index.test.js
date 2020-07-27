@@ -9,7 +9,7 @@ import useGlobalHook from "use-global-hook";
 import { renderHook } from "@testing-library/react-hooks";
 
 import { initialState } from "store/initialState";
-import actions from "../actions";
+import actions from "actions";
 
 // Shallow render to test the component without it's children
 const renderer = new ShallowRenderer();

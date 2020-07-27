@@ -10,10 +10,10 @@
 
 import React from "react";
 
-import withStyles from "@material-ui/core/styles/withStyles";
-import styles from "./styles";
 import MoSpinner from "../MoSpinner";
 import MoTypography from "../MoTypography";
+import styles from "./styles";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const MoPage = ({
   classes,
