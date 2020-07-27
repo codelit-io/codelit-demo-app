@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CoursesPage Component should match the snapshot 1`] = `
-<ForwardRef(WithStyles)>
+<ForwardRef(WithStyles)
+  maxWidth="lg"
+>
   <ForwardRef(WithStyles) />
   <ForwardRef(WithStyles)>
     <ForwardRef(WithStyles)

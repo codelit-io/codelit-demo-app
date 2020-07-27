@@ -15,9 +15,9 @@
 
 import React from "react";
 
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import IconButton from "@material-ui/core/IconButton";
 
+import Fade from "@material-ui/core/Fade";
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
@@ -28,26 +28,44 @@ const QuestionPageNav = ({ prevClick, isAdmin, isCorrect, id, nextClick }) => {
     return null;
   }
   return (
-    <ButtonGroup variant="text" aria-label="text primary button group">
-      <Button
-        disabled={id === 1}
-        startIcon={<KeyboardArrowLeftIcon />}
-        onClick={() => prevClick()}
-      />
-      <Button disabled>{id}</Button>
-      {isAdmin ? (
-        <Button
-          endIcon={<KeyboardArrowRightIcon />}
-          onClick={() => nextClick()}
-        />
-      ) : (
-        <Button
-          disabled={isDisabled}
-          endIcon={<KeyboardArrowRightIcon />}
-          onClick={() => nextClick()}
-        />
-      )}
-    </ButtonGroup>
+    <Fade in>
+      <div>
+        <IconButton
+          aria-label="Go to previous question"
+          aria-haspopup="true"
+          disabled={id === 1}
+          onClick={() => prevClick()}
+        >
+          <KeyboardArrowLeftIcon />
+        </IconButton>
+        <IconButton
+          aria-label="current question"
+          aria-haspopup="true"
+          disabled={true}
+          size="small"
+        >
+          {id}
+        </IconButton>
+        {isAdmin ? (
+          <IconButton
+            aria-label="Go to next question"
+            aria-haspopup="true"
+            onClick={() => nextClick()}
+          >
+            <KeyboardArrowRightIcon />
+          </IconButton>
+        ) : (
+          <IconButton
+            aria-label="Go to next question"
+            aria-haspopup="true"
+            disabled={isDisabled}
+            onClick={() => nextClick()}
+          >
+            <KeyboardArrowRightIcon />
+          </IconButton>
+        )}
+      </div>
+    </Fade>
   );
 };
 

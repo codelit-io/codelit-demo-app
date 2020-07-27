@@ -31,11 +31,7 @@ const QuestionForm = ({
   const handleChange = useCallback(
     code => {
       const userAnswer = { ...Object.values(code) };
-      if (
-        userAnswer[0] === "{}" ||
-        userAnswer[0] === "" ||
-        userAnswer[0] === typeof Object
-      ) {
+      if (userAnswer[0] === "{}" || userAnswer[0] === typeof Object) {
         return;
       }
       setQuestion({ ...question, ...code });

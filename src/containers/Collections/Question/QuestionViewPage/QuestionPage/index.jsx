@@ -77,7 +77,14 @@ const QuestionPage = ({
           opacity: 1
         }
       },
-      section: { paddingBottom: theme.space?.xl }
+      section: { paddingBottom: theme.space?.xl },
+      footer: {
+        position: "fixed",
+        bottom: 0,
+        right: 0,
+        width: "100%",
+        background: theme.palette.yinYang.background
+      }
     })
   );
 
@@ -89,6 +96,7 @@ const QuestionPage = ({
     } catch {
       setQuestion(data);
     }
+    setIsHintTypist(false);
   }, [data]);
 
   const classes = useStyles();
