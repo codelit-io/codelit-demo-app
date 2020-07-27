@@ -20,6 +20,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { withAuthentication } from "../Session";
 import useUserRole from "hooks/useUserRole";
 import ThemeSwitch from "./ThemeSwitch";
+import useTheme from "@material-ui/core/styles/useTheme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
@@ -29,8 +31,12 @@ const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
 const AppBar = lazy(() => import("@material-ui/core/AppBar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
 
-const Navigation = ({ authUser, classes, firebase, match }) => {
+const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
   const userRole = useUserRole(authUser);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <header className={classes.root}>
       <AppBar
@@ -40,16 +46,19 @@ const Navigation = ({ authUser, classes, firebase, match }) => {
         elevation={0}
       >
         <Toolbar disableGutters={true}>
-          <Grid container alignItems="baseline">
-            <Grid item xs={3} sm={3} md={3} lg={3}>
-              <MoSkoolLogo />
+          <Grid container alignItems="center">
+            <Grid item xs={6} sm={6} md={6} lg={6}>
+              <div className={classes.leftSide}>
+                <MoSkoolLogo />
+                {Breadcrumbs && !isMobile && <Breadcrumbs />}
+              </div>
             </Grid>
             <Grid
               item
-              xs={9}
-              sm={9}
-              md={9}
-              lg={9}
+              xs={6}
+              sm={6}
+              md={6}
+              lg={6}
               style={{ textAlign: "right" }}
             >
               <Button
@@ -61,7 +70,7 @@ const Navigation = ({ authUser, classes, firebase, match }) => {
                 component={Link}
                 to={ROUTES.COLLECTIONS.path}
               >
-                Courses
+                {!isMobile && "Courses"}
               </Button>
               <>
                 <ThemeSwitch />
