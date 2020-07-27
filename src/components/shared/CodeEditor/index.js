@@ -83,7 +83,7 @@ const CodeEditor = ({
       hint: {
         ...theme.editorFont,
         color: "#8e8e8e",
-        top: "4.25rem",
+        top: "3.25rem",
         position: "absolute",
         zIndex: "0",
         padding: "0.625rem"
