@@ -17,7 +17,7 @@
  *
  */
 
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 
 import * as ROUTES from "constants/routes";
 import withAuthentication from "components/shared/Session/withAuthentication";
@@ -25,7 +25,6 @@ import withAuthentication from "components/shared/Session/withAuthentication";
 import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
-import useGlobal from "store";
 
 const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   const { data, isLoading } = useQuestion({
@@ -35,19 +34,6 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   });
 
   const userRole = useUserRole(authUser);
-
-  // Global State
-  // Comma operator to skip first value
-  const [, addToThemeOptions] = useGlobal(
-    state => state.themeOptions,
-    actions => actions.addToThemeOptions
-  );
-
-  // Set Page name in global state
-  useEffect(() => {
-    addToThemeOptions({ containerSize: "xl" });
-    return () => addToThemeOptions({ containerSize: "lg" });
-  }, [addToThemeOptions]);
 
   /* Handler to send user to editMode page */
   const handleOnClick = useCallback(() => {

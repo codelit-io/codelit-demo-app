@@ -21,7 +21,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { retry } from "helpers/retryLazyImports";
 import Container from "@material-ui/core/Container";
 import MoSpinner from "components/library/MoSpinner";
-import useGlobal from "store";
 
 const Navigation = lazy(() =>
   retry(() => import("components/shared/Navigation"))
@@ -39,13 +38,10 @@ const SignUp = lazy(() => retry(() => import("containers/SignUp")));
 const SignIn = lazy(() => retry(() => import("containers/SignIn")));
 
 const App = () => {
-  // Global State
-  const [containerSize] = useGlobal(state => state.themeOptions.containerSize);
-
   return (
     <Router>
       {/* Page size based on the page */}
-      <Container maxWidth={containerSize}>
+      <Container maxWidth="xl">
         <Navigation />
         <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
           <Switch>
