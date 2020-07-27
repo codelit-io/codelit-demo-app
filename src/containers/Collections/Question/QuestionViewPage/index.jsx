@@ -27,6 +27,7 @@ import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 import { Container } from "@material-ui/core";
 import Navigation from "components/shared/Navigation";
+import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 
 const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   const { data, isLoading } = useQuestion({
@@ -58,9 +59,23 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
     return null;
   }
 
+  const breadcrumbsOptions = [
+    {
+      title: "Back to course",
+      url: `/courses/${match.params.collection}`
+    },
+    {
+      title: data.title
+    }
+  ];
+
   return (
     <Container maxWidth="xl">
-      <Navigation />
+      <Navigation
+        Breadcrumbs={() => (
+          <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
+        )}
+      />
       <QuestionPage
         authUser={authUser}
         data={data}
