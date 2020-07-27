@@ -27,6 +27,7 @@ import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/questionFirebase";
+import useGlobal from "store";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,8 +47,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         ? updateQuestion(
             {
               ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
+              id: match.params.questionId
             },
             firebase,
             match
@@ -56,8 +56,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
             authUser,
             {
               ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
+              id: match.params.questionId
             },
             firebase,
             match
@@ -71,6 +70,19 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     },
     [authUser, firebase, setSnackbarProps, match]
   );
+
+  // Global State
+  // Comma operator to skip first value
+  const [, addToThemeOptions] = useGlobal(
+    state => state.themeOptions,
+    actions => actions.addToThemeOptions
+  );
+
+  // Set Page name in global state
+  useEffect(() => {
+    addToThemeOptions({ containerSize: "xl" });
+    return () => addToThemeOptions({ containerSize: "lg" });
+  }, [addToThemeOptions]);
 
   /* TODO: Move to custom hook */
   useEffect(() => {

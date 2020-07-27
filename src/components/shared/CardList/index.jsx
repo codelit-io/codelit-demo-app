@@ -36,13 +36,13 @@ const CardList = ({
   newItem
 }) => {
   return items.map((item, index) => {
+    const { doc, id } = item;
+
     // Detect if item is disabled
-    const isDisabled = item.isDisabled
-      ? item.isDisabled
-      : isItemDisabled(item.id);
+    const isDisabled = item.isDisabled ? item.isDisabled : isItemDisabled(id);
 
     // Configure url route for each item
-    const configureUrl = isDisabled ? "" : itemUrl(item.doc || item.id);
+    const configureUrl = isDisabled ? "" : itemUrl(doc || id);
 
     // Icon Component for item types
     const IconComponent = item.isDisabled
@@ -50,8 +50,8 @@ const CardList = ({
       : itemTypes[item.type];
 
     return (
-      <React.Fragment key={index}>
-        <CategoryItem index={index} text={item?.category} />
+      <React.Fragment key={id}>
+        <CategoryItem index={id} text={item?.category} />
         <NewItemCard
           isActive={index < 1 && !!isAdmin}
           type="new"
@@ -61,7 +61,7 @@ const CardList = ({
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
           IconComponent={IconComponent}
-          index={index}
+          index={id}
           isDisabled={isDisabled}
           subtitle={item.subtitle}
           title={item.title}

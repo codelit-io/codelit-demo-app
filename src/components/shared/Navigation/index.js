@@ -9,6 +9,7 @@
  * @return {<form></form>}
  */
 
+/* TODO: Make this component shareable and generic! */
 import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
@@ -18,18 +19,17 @@ import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withAuthentication } from "../Session";
 import useUserRole from "hooks/useUserRole";
-import AppBar from "@material-ui/core/AppBar";
 import ThemeSwitch from "./ThemeSwitch";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
-const Container = lazy(() => import("@material-ui/core/Container"));
 const Grid = lazy(() => import("@material-ui/core/Grid"));
 const MoAvatar = lazy(() => import("components/library/MoAvatar"));
 const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
+const AppBar = lazy(() => import("@material-ui/core/AppBar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
 
-const Navigation = ({ authUser, classes, firebase }) => {
+const Navigation = ({ authUser, classes, firebase, match }) => {
   const userRole = useUserRole(authUser);
   return (
     <header className={classes.root}>
@@ -40,41 +40,39 @@ const Navigation = ({ authUser, classes, firebase }) => {
         elevation={0}
       >
         <Toolbar disableGutters={true}>
-          <Container maxWidth="lg">
-            <Grid container alignItems="baseline">
-              <Grid item xs={3} sm={3} md={3} lg={3}>
-                <MoSkoolLogo />
-              </Grid>
-              <Grid
-                item
-                xs={9}
-                sm={9}
-                md={9}
-                lg={9}
-                style={{ textAlign: "right" }}
-              >
-                <Button
-                  color="primary"
-                  className={classes.button}
-                  aria-label="Courses"
-                  aria-haspopup="true"
-                  startIcon={<AppsIcon />}
-                  component={Link}
-                  to={ROUTES.COLLECTIONS.path}
-                >
-                  Courses
-                </Button>
-                <>
-                  <ThemeSwitch />
-                  <MoAvatar
-                    authUser={authUser}
-                    isAdmin={userRole.isAdmin}
-                    firebase={firebase}
-                  />
-                </>
-              </Grid>
+          <Grid container alignItems="baseline">
+            <Grid item xs={3} sm={3} md={3} lg={3}>
+              <MoSkoolLogo />
             </Grid>
-          </Container>
+            <Grid
+              item
+              xs={9}
+              sm={9}
+              md={9}
+              lg={9}
+              style={{ textAlign: "right" }}
+            >
+              <Button
+                color="primary"
+                className={classes.button}
+                aria-label="Courses"
+                aria-haspopup="true"
+                startIcon={<AppsIcon />}
+                component={Link}
+                to={ROUTES.COLLECTIONS.path}
+              >
+                Courses
+              </Button>
+              <>
+                <ThemeSwitch />
+                <MoAvatar
+                  authUser={authUser}
+                  isAdmin={userRole.isAdmin}
+                  firebase={firebase}
+                />
+              </>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     </header>
