@@ -6,7 +6,7 @@ exports[`QuestionsEditPage Component should match the snapshot 1`] = `
 >
   <ForwardRef(WithStyles) />
   <h1>
-    Todo
+    Todo: This page should look like QuestionEditPage component
   </h1>
 </ForwardRef(WithStyles)>
 `;
