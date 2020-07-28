@@ -25,7 +25,7 @@ import withAuthentication from "components/shared/Session/withAuthentication";
 import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
-import { Container } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 
@@ -54,10 +54,6 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
     },
     [history, match]
   );
-
-  if (!data) {
-    return null;
-  }
 
   const breadcrumbsOptions = [
     {

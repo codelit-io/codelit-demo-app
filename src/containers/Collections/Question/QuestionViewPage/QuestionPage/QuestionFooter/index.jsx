@@ -20,7 +20,7 @@ const QuestionFooter = ({
   return (
     <section className={classes.section}>
       <div className={classes.footer}>
-        <AppBar position="static" color="default" elevation={0}>
+        <AppBar position="static" color="transparent" elevation={0}>
           <Container maxWidth="xl">
             <Grid container alignItems="center">
               <Grid item xs={6} sm={6} md={6}>

@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 const useQuestion = ({ firebase, questionId, questionPath }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
 
   useEffect(() => {
     (async () => {
