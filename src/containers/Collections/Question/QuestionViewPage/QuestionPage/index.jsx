@@ -11,7 +11,6 @@
 import React, { lazy, useCallback, useEffect, useState, Suspense } from "react";
 
 import { BROWSER_MOCKUP } from "constants/i18n";
-import { retry } from "helpers/retryLazyImports";
 import awardPlayerPoints from "../awardPlayerPoints";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -24,13 +23,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
 import MoButtonIcon from "components/library/MoButtonIcon";
 
-const CodeEditor = lazy(() =>
-  retry(() => import("components/shared/CodeEditor"))
-);
+const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
-const MoConfetti = lazy(() =>
-  retry(() => import("components/library/MoConfetti"))
-);
+const MoConfetti = lazy(() => import("components/library/MoConfetti"));
 
 const QuestionFooter = lazy(() => import("./QuestionFooter"));
 

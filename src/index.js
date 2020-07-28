@@ -16,13 +16,12 @@ import * as serviceWorker from "./serviceWorker";
 import * as Sentry from "@sentry/browser";
 
 import Firebase, { FirebaseContext } from "./components/shared/Firebase";
-import { retry } from "helpers/retryLazyImports";
 import MoSpinner from "components/library/MoSpinner";
 
 // Global state for theme options
 
-const App = lazy(() => retry(() => import("./App")));
-const Theme = lazy(() => retry(() => import("App/Theme")));
+const App = lazy(() => import("./App"));
+const Theme = lazy(() => import("App/Theme"));
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>

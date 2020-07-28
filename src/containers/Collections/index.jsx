@@ -17,30 +17,32 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { Switch, Route } from "react-router-dom";
-import { retry } from "helpers/retryLazyImports";
 
 // Courses Routes
 const CoursesViewPage = lazy(() =>
-  retry(() => import("containers/Collections/Courses/CoursesViewPage"))
+  import("containers/Collections/Courses/CoursesViewPage")
 );
+
 const CoursesEditPage = lazy(() =>
-  retry(() => import("containers/Collections/Courses/CoursesEditPage"))
+  import("containers/Collections/Courses/CoursesEditPage")
 );
 
 // Questions Routes
 const QuestionsViewPage = lazy(() =>
-  retry(() => import("containers/Collections/Questions/QuestionsViewPage"))
+  import("containers/Collections/Questions/QuestionsViewPage")
 );
+
 const QuestionsEditPage = lazy(() =>
-  retry(() => import("containers/Collections/Questions/QuestionsEditPage"))
+  import("containers/Collections/Questions/QuestionsEditPage")
 );
 
 // Question Routes
 const QuestionViewPage = lazy(() =>
-  retry(() => import("containers/Collections/Question/QuestionViewPage"))
+  import("containers/Collections/Question/QuestionViewPage")
 );
+
 const QuestionEditPage = lazy(() =>
-  retry(() => import("containers/Collections/Question/QuestionEditPage"))
+  import("containers/Collections/Question/QuestionEditPage")
 );
 
 const Collections = () => (

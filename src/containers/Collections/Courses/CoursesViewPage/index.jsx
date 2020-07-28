@@ -19,13 +19,12 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { retry } from "helpers/retryLazyImports";
 import { withAuthentication } from "components/shared/Session";
 import PropTypes from "prop-types";
 import useCollections from "hooks/useCollections";
 import useUserRole from "hooks/useUserRole";
 
-const CoursesPage = lazy(() => retry(() => import("./CoursesPage")));
+const CoursesPage = lazy(() => import("./CoursesPage"));
 const collection = {
   path: "courses",
   title: COURSES.PAGE_TITLE,
