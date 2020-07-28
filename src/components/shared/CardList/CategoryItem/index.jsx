@@ -19,11 +19,11 @@ import MoTypography from "components/library/MoTypography";
 
 // MUI components
 import Grid from "@material-ui/core/Grid";
-import Grow from "@material-ui/core/Grow";
+import Fade from "@material-ui/core/Fade";
 
 const CategoryItem = ({ index, text }) =>
   text ? (
-    <Grow in={text && true} mountOnEnter timeout={{ enter: 200 }} unmountOnExit>
+    <Fade in={text && true} mountOnEnter timeout={{ enter: 200 }} unmountOnExit>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <MoTypography
           font="breeSerif"
@@ -32,7 +32,7 @@ const CategoryItem = ({ index, text }) =>
           variant="h6"
         ></MoTypography>
       </Grid>
-    </Grow>
+    </Fade>
   ) : null;
 
 export default CategoryItem;

@@ -19,12 +19,13 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { retry } from "helpers/retryLazyImports";
 import { withAuthentication } from "components/shared/Session";
+import Container from "@material-ui/core/Container";
+import Navigation from "components/shared/Navigation";
 import PropTypes from "prop-types";
 import useUserRole from "hooks/useUserRole";
 
-const CoursesForm = lazy(() => retry(() => import("./CoursesForm")));
+const CoursesForm = lazy(() => import("./CoursesForm"));
 const collection = {
   path: "courses",
   title: COURSES.PAGE_TITLE,
@@ -53,16 +54,19 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <CoursesForm
-      authUser={authUser}
-      collectionDetails={collectionDetails}
-      courses={courses}
-      isAdmin={userRole.isAdmin}
-      firebase={firebase}
-      match={match}
-      itemUrl={doc => itemUrl(doc)}
-      newItem={newItem}
-    />
+    <Container maxWidth="xl">
+      <Navigation />
+      <CoursesForm
+        authUser={authUser}
+        collectionDetails={collectionDetails}
+        courses={courses}
+        isAdmin={userRole.isAdmin}
+        firebase={firebase}
+        match={match}
+        itemUrl={doc => itemUrl(doc)}
+        newItem={newItem}
+      />
+    </Container>
   );
 };
 

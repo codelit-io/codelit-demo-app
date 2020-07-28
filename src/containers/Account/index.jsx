@@ -6,7 +6,8 @@ import { compose } from "recompose";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { ACCOUNT } from "constants/i18n";
-
+import Container from "@material-ui/core/Container";
+import Navigation from "components/shared/Navigation";
 import {
   AuthUserContext,
   withAuthorization,
@@ -41,17 +42,20 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
-        <Typography variant="h6" noWrap>
-          Email: {authUser.email}
-        </Typography>
-        <Typography variant="h6" noWrap>
-          Points: {authUser.points}
-        </Typography>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
-      </MoPage>
+      <Container maxWidth="lg">
+        <Navigation />
+        <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
+          <Typography variant="h6" noWrap>
+            Email: {authUser.email}
+          </Typography>
+          <Typography variant="h6" noWrap>
+            Points: {authUser.points}
+          </Typography>
+          <PasswordForgetForm />
+          <PasswordChangeForm />
+          <LoginManagement authUser={authUser} />
+        </MoPage>
+      </Container>
     )}
   </AuthUserContext.Consumer>
 );

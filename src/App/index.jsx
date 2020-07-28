@@ -18,20 +18,18 @@ import React, { Suspense, lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { retry } from "helpers/retryLazyImports";
 import MoSpinner from "components/library/MoSpinner";
 
-const Account = lazy(() => retry(() => import("containers/Account")));
-const AdminPage = lazy(() => retry(() => import("containers/AdminPage")));
-const LandingPage = lazy(() => retry(() => import("containers/Landing")));
-const NotFound = lazy(() => retry(() => import("components/shared/NotFound")));
-const PasswordForgot = lazy(() =>
-  retry(() => import("components/shared/PasswordForgot"))
-);
-const Playground = lazy(() => retry(() => import("containers/Playground")));
-const Collections = lazy(() => retry(() => import("containers/Collections")));
-const SignUp = lazy(() => retry(() => import("containers/SignUp")));
-const SignIn = lazy(() => retry(() => import("containers/SignIn")));
+const Account = lazy(() => import("containers/Account"));
+const AdminPage = lazy(() => import("containers/AdminPage"));
+const LandingPage = lazy(() => import("containers/Landing"));
+const NotFound = lazy(() => import("components/shared/NotFound"));
+const PasswordReset = lazy(() => import("containers/PasswordReset"));
+
+const Playground = lazy(() => import("containers/Playground"));
+const Collections = lazy(() => import("containers/Collections"));
+const SignUp = lazy(() => import("containers/SignUp"));
+const SignIn = lazy(() => import("containers/SignIn"));
 
 const App = () => {
   return (
@@ -46,10 +44,7 @@ const App = () => {
 
           <Route path={ROUTES.SIGN_IN.path} component={SignIn} />
           <Route path={ROUTES.SIGN_UP.path} component={SignUp} />
-          <Route
-            path={ROUTES.PASSWORD_FORGET.path}
-            component={PasswordForgot}
-          />
+          <Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordReset} />
           <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
           <Route path={ROUTES.COLLECTIONS.path} component={Collections} />
           <Route component={NotFound} />

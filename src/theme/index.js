@@ -84,7 +84,7 @@ const colors = {
   },
   white: {
     light: "#FFF",
-    medium: "#FFFFF2"
+    medium: "#f5f5f5"
   },
   blue: {
     superLight: "#e0e3ea",
@@ -142,7 +142,7 @@ const getTheme = ({ isDarkMode }) => {
 
   const palette = {
     background: {
-      default: isDarkMode ? colors.black.dark : colors.white.light,
+      default: isDarkMode ? colors.black.dark : colors.white.medium,
       paper: isDarkMode ? colors.black.medium : colors.white.light
     },
     primary: {

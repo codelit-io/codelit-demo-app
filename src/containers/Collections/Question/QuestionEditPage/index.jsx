@@ -20,18 +20,19 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import * as ROLES from "constants/roles";
 
-import Container from "@material-ui/core/Container";
-import MoSnackbar from "components/library/MoSnackBar";
-import Navigation from "components/shared/Navigation";
-import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
-import withAuthorization from "components/shared/Session/withAuthorization";
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/questionFirebase";
+import Container from "@material-ui/core/Container";
+import MoSnackbar from "components/library/MoSnackBar";
+import MoBreadcrumbs from "components/library/MoBreadcrumbs";
+import Navigation from "components/shared/Navigation";
+import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
+import withAuthorization from "components/shared/Session/withAuthorization";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [question, setQuestion] = useState();
+  const [question, setQuestion] = useState(null);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
   const navToQuestionViewPage = useCallback(() => {
@@ -42,6 +43,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
 
   const onSubmit = useCallback(
     event => {
+      debugger;
       // editedAt is only available on existing db items nad safe to update
       event.editedAt
         ? updateQuestion(
@@ -109,13 +111,24 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     };
   }, [firebase, match]);
 
-  if (!match.params && !question) {
+  if (!match.params) {
     return;
   }
 
+  const breadcrumbsOptions = [
+    {
+      title: "Back to question",
+      url: `/courses/${match.params.collection}/${match.params.questionId}`
+    }
+  ];
+
   return (
     <Container maxWidth="xl">
-      <Navigation />
+      <Navigation
+        Breadcrumbs={() => (
+          <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
+        )}
+      />
       <QuestionForm
         isLoading={isLoading}
         isCard={false}

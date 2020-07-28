@@ -7,7 +7,7 @@ const QuestionsEditPage = () => {
   return (
     <Container maxWidth="lg">
       <Navigation />
-      <h1>Todo</h1>
+      <h1>Todo: This page should look like QuestionEditPage component</h1>
     </Container>
   );
 };

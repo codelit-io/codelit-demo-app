@@ -5,6 +5,10 @@ const styles = theme => ({
   },
   appBar: {
     boxShadow: "none"
+  },
+  leftSide: {
+    display: "flex",
+    alignItems: "center"
   }
 });
 

@@ -83,7 +83,7 @@ const CodeEditor = ({
       hint: {
         ...theme.editorFont,
         color: "#8e8e8e",
-        top: "4.25rem",
+        top: "3.25rem",
         position: "absolute",
         zIndex: "0",
         padding: "0.625rem"
@@ -121,7 +121,7 @@ const CodeEditor = ({
           <Grow
             in={codeAnswer && true}
             mountOnEnter
-            timeout={{ enter: 200 }}
+            timeout={{ enter: 400 }}
             unmountOnExit
           >
             <div>
@@ -162,7 +162,7 @@ const CodeEditor = ({
           <Grow
             in={(isPlayground && true) || (codeAnswer && true)}
             mountOnEnter
-            timeout={{ enter: 200 }}
+            timeout={{ enter: 400 }}
             unmountOnExit
           >
             <div>

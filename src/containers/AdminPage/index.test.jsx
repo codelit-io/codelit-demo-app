@@ -1,13 +1,28 @@
 import React from "react";
 
+import AdminPage from ".";
 import ShallowRenderer from "react-test-renderer/shallow";
-import Admin from "./index.jsx";
+import useGlobal from "store";
+import useGlobalHook from "use-global-hook";
+
+beforeEach(() => {
+  useGlobal.mockClear();
+  useGlobalHook.mockClear();
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
+
+// Mock functionality of global and store hooks
+jest.mock("store", () => jest.fn().mockReturnValue([]));
+jest.mock("use-global-hook", () => jest.fn());
 
 const renderer = new ShallowRenderer();
 
-describe("Admin Component", () => {
+describe("AdminPage Component", () => {
   test("should match the snapshot", () => {
-    renderer.render(<Admin />);
+    renderer.render(<AdminPage />);
     expect(renderer.getRenderOutput()).toMatchSnapshot();
   });
 });

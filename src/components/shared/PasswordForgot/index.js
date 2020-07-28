@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import * as ROUTES from "constants/routes";
-import Button from "@material-ui/core/Button";
 import { compose } from "recompose";
-import Input from "@material-ui/core/Input";
 import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { withFirebase } from "components/shared/Firebase";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   button: {

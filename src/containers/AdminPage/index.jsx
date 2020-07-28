@@ -22,10 +22,9 @@ import React, { Suspense, lazy } from "react";
 
 import * as ROLES from "constants/roles";
 import * as ROUTES from "constants/routes";
+import { ADMIN_PAGE } from "constants/i18n";
 import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
-import MoPage from "components/library/MoPage";
-import MoSpinner from "components/library/MoSpinner";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import {
@@ -33,8 +32,11 @@ import {
   withEmailVerification,
   withAuthentication
 } from "components/shared/Session";
-import { ADMIN_PAGE } from "constants/i18n";
+import MoPage from "components/library/MoPage";
+import MoSpinner from "components/library/MoSpinner";
 import MoTabs from "./MoTabs";
+import Container from "@material-ui/core/Container";
+import Navigation from "components/shared/Navigation";
 
 const Collection = lazy(() => import("./Collection"));
 const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
@@ -50,34 +52,37 @@ const AdminPage = ({ history }) => {
   };
 
   return (
-    <MoPage title={ADMIN_PAGE.PAGE_TITLE} isLoading={false}>
-      <MoTabs
-        handleTabChange={path => handleTabChange(path)}
-        tabItems={tabItems}
-      ></MoTabs>
-      <Suspense
-        fallback={<MoSpinner isLoading={true} color="primary" />}
-      ></Suspense>
-      <Switch>
-        <Route
-          exact
-          path={ROUTES.ADMIN_COURSES.path}
-          component={AdminCourses}
-        />
-        <Route
-          exact
-          path={ROUTES.ADMIN_COURSES.path + "/:collection"}
-          component={Collection}
-        />
-        <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
-        <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
-        <Route
-          exact
-          path={ROUTES.ADMIN_USERS.path + "/:id"}
-          component={UserItem}
-        />
-      </Switch>
-    </MoPage>
+    <Container maxWidth="lg">
+      <Navigation />
+      <MoPage title={ADMIN_PAGE.PAGE_TITLE} isLoading={false}>
+        <MoTabs
+          handleTabChange={path => handleTabChange(path)}
+          tabItems={tabItems}
+        ></MoTabs>
+        <Suspense
+          fallback={<MoSpinner isLoading={true} color="primary" />}
+        ></Suspense>
+        <Switch>
+          <Route
+            exact
+            path={ROUTES.ADMIN_COURSES.path}
+            component={AdminCourses}
+          />
+          <Route
+            exact
+            path={ROUTES.ADMIN_COURSES.path + "/:collection"}
+            component={Collection}
+          />
+          <Route exact path={ROUTES.ADMIN_DETAILS.path} component={UserList} />
+          <Route exact path={ROUTES.ADMIN_USERS.path} component={UserList} />
+          <Route
+            exact
+            path={ROUTES.ADMIN_USERS.path + "/:id"}
+            component={UserItem}
+          />
+        </Switch>
+      </MoPage>
+    </Container>
   );
 };
 
