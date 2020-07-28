@@ -9,7 +9,6 @@ import MailIcon from "@material-ui/icons/Mail";
 import withStyles from "@material-ui/core/styles/withStyles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import styles from "./styles";
-
 const Footer = ({ classes }) => {
   return (
     <Fade
@@ -21,7 +20,7 @@ const Footer = ({ classes }) => {
       <div className={classes.footer}>
         <Container maxWidth="lg">
           <Grid container className={classes.container}>
-            <Grid item md={12}>
+            <Grid item md={12} className={classes.footerText}>
               <Button
                 href="https://github.com/mo-sharif"
                 aria-label="Mo Github"
