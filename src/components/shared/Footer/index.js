@@ -9,7 +9,13 @@ import MailIcon from "@material-ui/icons/Mail";
 import withStyles from "@material-ui/core/styles/withStyles";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import styles from "./styles";
+import useTheme from "@material-ui/core/styles/useTheme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 const Footer = ({ classes }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Fade
       in={true}
@@ -20,7 +26,22 @@ const Footer = ({ classes }) => {
       <div className={classes.footer}>
         <Container maxWidth="lg">
           <Grid container className={classes.container}>
-            <Grid item md={12} className={classes.footerText}>
+            {!isMobile && (
+              <Grid item md={6}>
+                <Button
+                  href="https://mosh-media.com"
+                  aria-label="Mo Sharif Github"
+                  className={classes.footerButton}
+                >
+                  Developed with{" "}
+                  <span role="img" aria-label="heart emoji">
+                    &nbsp;💙
+                  </span>{" "}
+                  by Mo Sharif
+                </Button>
+              </Grid>
+            )}
+            <Grid item md={6} className={classes.footerText}>
               <Button
                 href="https://github.com/mo-sharif"
                 aria-label="Mo Github"
@@ -38,7 +59,7 @@ const Footer = ({ classes }) => {
                 <YouTubeIcon />
               </Button>
               <Button
-                href="mailto:mo@moskool.com?subject=I 💙 MoSkool"
+                href="mailto:mo@mosh-media.com?subject=I 💙 MoSkool"
                 aria-label="Mo Email"
                 className={classes.footerButton}
                 color="primary"
@@ -52,5 +73,4 @@ const Footer = ({ classes }) => {
     </Fade>
   );
 };
-
 export default withStyles(styles)(Footer);

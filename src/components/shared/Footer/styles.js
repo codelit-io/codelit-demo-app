@@ -7,13 +7,6 @@ const styles = theme => ({
   },
   footerButton: {
     textTransform: "initial"
-  },
-  footer: {
-    zIndex: "10",
-    position: "fixed",
-    bottom: "0.25rem",
-    right: 0,
-    width: "100%"
   }
 });
 
