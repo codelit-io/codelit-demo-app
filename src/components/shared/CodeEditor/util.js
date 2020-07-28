@@ -2,16 +2,13 @@
  *  Figure out a new way to do this                    *
  * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-export const addFocusOnEditor = () => {
-  setTimeout(() => {
-    try {
-      document
-        .querySelector(".npm__react-simple-code-editor__textarea")
-        .focus();
-    } catch {
-      console.log("Focus on editor failed");
-    }
-  }, 400);
+export const addFocusOnEditor = async () => {
+  await wait(400);
+  try {
+    document.querySelector(".npm__react-simple-code-editor__textarea").focus();
+  } catch {
+    console.log("Focus on editor failed");
+  }
 };
 
 export const getPreviewElement = () => {
@@ -23,3 +20,9 @@ export const getPreviewElement = () => {
   }
   return element;
 };
+
+async function wait(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
