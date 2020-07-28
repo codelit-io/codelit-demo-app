@@ -10,17 +10,19 @@ const MoBreadcrumbs = ({ breadcrumbsOptions }) => {
       maxItems={3}
       style={{ marginLeft: "1rem" }}
     >
-      {breadcrumbsOptions.map((item, index) => (
-        <MUILink
-          component={Link}
-          color="inherit"
-          key={index}
-          to={item.url || "#"}
-          // onClick={handleClick}
-        >
-          {item.title}
-        </MUILink>
-      ))}
+      {breadcrumbsOptions.map(
+        (item, index) =>
+          item.title && (
+            <MUILink
+              component={Link}
+              color="inherit"
+              key={index}
+              to={item.url || "#"}
+            >
+              {item.title}
+            </MUILink>
+          )
+      )}
     </Breadcrumbs>
   );
 };
