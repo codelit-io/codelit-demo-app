@@ -34,7 +34,7 @@ Deadline March 2021
 
 To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
-## 👉 Ready to Ship it? 📦 
+## 👉 Ready to Ship it? 📦
 
 - [OnBoarding 🚀](docs/ONBOARDING.md)
 - [File Architecture](docs/ARCHITECTURE.md)
@@ -91,3 +91,7 @@ DEV Dependencies:
 # Mind Map
 
 [Architecture and components mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
+
+# Storybook
+
+http://localhost:9009/
