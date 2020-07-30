@@ -43,8 +43,8 @@ const MoTypography = ({
         fontFamily: theme.openSans
       },
       margin: {
-        marginBottom: theme.space[marginBottom],
-        marginTop: theme.space[marginTop]
+        marginBottom: marginBottom && theme.space[marginBottom],
+        marginTop: marginTop && theme.space[marginTop]
       }
     })
   );

@@ -26,9 +26,9 @@
  * @see See [react-live](https://github.com/FormidableLabs/react-live)
  * */
 
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 
-import { addFocusOnEditor, getPreviewElement } from "./util";
+import { addFocusOnEditor } from "./util";
 import { LiveEditor, LiveProvider, LivePreview, LiveError } from "react-live";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
@@ -59,7 +59,7 @@ const CodeEditor = ({
   title
 }) => {
   useEffect(() => {
-    if (!isEditMode) {
+    if (!isEditMode && codeQuestion?.length >= 0) {
       addFocusOnEditor();
     }
   }, [codeQuestion, isEditMode]);
@@ -67,10 +67,19 @@ const CodeEditor = ({
   // Global state for dark mode theme
   const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
 
-  const onChange = userAnswer => {
-    const previewElement = getPreviewElement();
-    handleOnChange({ userAnswer, previewElement });
-  };
+  const onChange = useCallback(
+    async userAnswer => {
+      await handleOnChange({ userAnswer });
+      /* 
+      TODO: previewElement is user's answer preview element
+      can be used to grab outerText, lastChild, offsetHeight and offsetWidth
+      and can be compared to the answer's params
+
+      const previewElement = await getPreviewElement();
+       */
+    },
+    [handleOnChange]
+  );
 
   // TODO move number lines for editor to another component
   // Count newlines and pad to match actual line numbers
