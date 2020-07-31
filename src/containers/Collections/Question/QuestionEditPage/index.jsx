@@ -22,7 +22,7 @@ import * as ROLES from "constants/roles";
 
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
-import { createQuestion, updateQuestion } from "helpers/questionFirebase";
+import { createQuestion, updateQuestion } from "helpers/collectionFirebase";
 import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
@@ -43,13 +43,13 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
 
   const onSubmit = useCallback(
     event => {
-      debugger;
       // editedAt is only available on existing db items nad safe to update
       event.editedAt
         ? updateQuestion(
             {
               ...event,
-              id: match.params.questionId
+              id: match.params.questionId,
+              doc: match.params.collection
             },
             firebase,
             match
@@ -58,7 +58,8 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
             authUser,
             {
               ...event,
-              id: match.params.questionId
+              id: match.params.questionId,
+              doc: match.params.collection
             },
             firebase,
             match

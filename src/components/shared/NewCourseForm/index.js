@@ -28,9 +28,9 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 
 import MoFormDialog from "components/library/MoFormDialog";
-import { questionMock } from "mocks/question";
+import { createCourse } from "helpers/collectionFirebase";
 
-const NewCourseForm = ({ authUser, firebase }) => {
+const NewCourseForm = ({ authUser, firebase, match }) => {
   /* TODO: add watch and error
    * const { watch, errors } = useForm();
    */
@@ -46,38 +46,7 @@ const NewCourseForm = ({ authUser, firebase }) => {
     /* TODO: Move to hooks or helpers */
     const onSubmit = formData => {
       if (formData.title) {
-        // Generate random id to post fix each document id
-        const uid = Math.random()
-          .toString(36)
-          .substring(7);
-        // Create doc based on title name, doc is lowercase without spaces
-        const doc = formData?.title.replace(/\s+/g, "-").toLowerCase();
-        // Final Id for storing
-        const id = `${doc}-${uid}`;
-
-        const payload = {
-          ...formData,
-          doc: id,
-          id: 1,
-          userId: authUser.uid,
-          createdAt: firebase.fieldValue.serverTimestamp()
-        };
-
-        // Create courses in db with doc, then set the payload
-        firebase
-          .collection("courses")
-          .doc(id)
-          .set(payload, { merge: true });
-
-        // Add a questions array to the collection created above add a placeholder entry
-        // TODO: figure a more efficient way to do this with one firebase query
-        firebase
-          .collection("courses")
-          .doc(id)
-          .collection("questions")
-          .doc()
-          .set({ ...questionMock });
-
+        createCourse(authUser, formData, firebase, match);
         // Set Dialog state back to false to close the Dialog
         handleDialogState(false);
       }
