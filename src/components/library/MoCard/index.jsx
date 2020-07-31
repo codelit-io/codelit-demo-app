@@ -21,7 +21,7 @@
  * @see See [React hoc](https://reactjs.org/docs/higher-order-components.html)
  * */
 
-import React from "react";
+import React, { lazy } from "react";
 import ButtonBase from "@material-ui/core/ButtonBase";
 
 import Typography from "@material-ui/core/Typography";
@@ -32,13 +32,19 @@ import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
+const CardProgress = lazy(() =>
+  import("components/shared/CardList/CardItem/CardProgress")
+);
+
 const MoCard = ({
-  ActionComponent,
+  authUser,
   classes,
   content,
   IconComponent,
   isDisabled,
   index,
+  item,
+  match,
   subtitle,
   title,
   type,
@@ -58,7 +64,7 @@ const MoCard = ({
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <>
-            {ActionComponent && <ActionComponent />}
+            <CardProgress authUser={authUser} item={item} match={match} />
             <Typography
               variant="h2"
               component="h1"

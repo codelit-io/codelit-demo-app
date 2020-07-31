@@ -29,15 +29,13 @@ const CategoryItem = lazy(() => import("./CategoryItem"));
 
 const CardList = ({
   authUser,
-  ActionComponent,
   itemUrl,
   isAdmin,
   isItemDisabled,
   items,
+  match,
   newItem
 }) => {
-  // const ActionComponentWithProps = (items) => <ActionComponent {...items}/>
-
   return items.map((item, index) => {
     const { doc, id } = item;
 
@@ -62,10 +60,12 @@ const CardList = ({
         />
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
-          ActionComponent={ActionComponent}
+          authUser={authUser}
           IconComponent={IconComponent}
           index={id}
+          item={item}
           isDisabled={isDisabled}
+          match={match}
           subtitle={item.subtitle}
           title={item.title}
           type={item.type}

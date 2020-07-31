@@ -45,25 +45,8 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     event => {
       // editedAt is only available on existing db items nad safe to update
       event.editedAt
-        ? updateQuestion(
-            {
-              ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
-            },
-            firebase,
-            match
-          )
-        : createQuestion(
-            authUser,
-            {
-              ...event,
-              id: match.params.questionId,
-              doc: match.params.collection
-            },
-            firebase,
-            match
-          );
+        ? updateQuestion(event, firebase, match)
+        : createQuestion(authUser, event, firebase, match);
 
       setSnackbarProps({
         autoHideDuration: 2000,

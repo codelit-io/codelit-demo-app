@@ -23,16 +23,16 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   // create question by id
   await firebase.createQuestionById(match.params.collection, {
     ...event,
-    id: event.id,
+    id: Number(match.params.questionId),
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
   });
 
   const increment = firebase.fieldValue.increment(1);
-  debugger;
+
   const payload = {
-    doc: event.doc,
+    doc: match.params.collection,
     itemsLength: increment
   };
 
@@ -47,12 +47,12 @@ export const updateQuestion = async (event, firebase, match) => {
   if (!match.params.collection) {
     return;
   }
-
+  debugger;
   await firebase
     .doc("courses/" + match.params.collection + "/questions", String(event.uid))
     .update({
       ...event,
-      id: Number(event.id),
+      id: Number(match.params.questionId),
       editedAt: firebase.fieldValue.serverTimestamp(),
       question: event?.question ? escapeCode(event.question) : ""
     });
