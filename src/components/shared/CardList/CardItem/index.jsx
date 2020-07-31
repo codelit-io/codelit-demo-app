@@ -29,6 +29,7 @@ import Grow from "@material-ui/core/Grow";
 import MoCard from "components/library/MoCard";
 
 const CardItem = ({
+  ActionComponent,
   IconComponent,
   index,
   isDisabled,
@@ -40,6 +41,7 @@ const CardItem = ({
   <Grow in={title && true} mountOnEnter timeout={{ enter: 200 }} unmountOnExit>
     <Grid item xs={12} sm={12} md={4} lg={4}>
       <MoCard
+        ActionComponent={ActionComponent}
         IconComponent={IconComponent}
         // Add one to offset for the first card from 0 to 1
         index={index}

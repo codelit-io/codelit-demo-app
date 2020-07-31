@@ -29,12 +29,15 @@ const CategoryItem = lazy(() => import("./CategoryItem"));
 
 const CardList = ({
   authUser,
+  ActionComponent,
   itemUrl,
   isAdmin,
   isItemDisabled,
   items,
   newItem
 }) => {
+  // const ActionComponentWithProps = (items) => <ActionComponent {...items}/>
+
   return items.map((item, index) => {
     const { doc, id } = item;
 
@@ -48,7 +51,6 @@ const CardList = ({
     const IconComponent = item.isDisabled
       ? itemTypes.disabled
       : itemTypes[item.type];
-
     return (
       <React.Fragment key={id}>
         <CategoryItem index={id} text={item?.category} />
@@ -60,6 +62,7 @@ const CardList = ({
         />
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
+          ActionComponent={ActionComponent}
           IconComponent={IconComponent}
           index={id}
           isDisabled={isDisabled}

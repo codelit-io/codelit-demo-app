@@ -15,6 +15,7 @@ import MoPage from "components/library/MoPage";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Navigation from "components/shared/Navigation";
+import CardProgress from "components/shared/CardList/CardItem/CardProgress";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
@@ -24,6 +25,7 @@ const CoursesPage = ({
   courses,
   itemUrl,
   isAdmin,
+  match,
   newItem
 }) => {
   return (
@@ -33,6 +35,9 @@ const CoursesPage = ({
         <Grid container spacing={4} alignItems="center">
           <CardList
             authUser={authUser}
+            ActionComponent={() => (
+              <CardProgress authUser={authUser} items={courses} match={match} />
+            )}
             items={courses}
             isAdmin={isAdmin}
             itemUrl={doc => itemUrl(doc)}

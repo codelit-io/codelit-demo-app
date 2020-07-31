@@ -33,12 +33,12 @@ import styles from "./styles";
 import PropTypes from "prop-types";
 
 const MoCard = ({
+  ActionComponent,
   classes,
   content,
   IconComponent,
   isDisabled,
   index,
-  points,
   subtitle,
   title,
   type,
@@ -57,10 +57,17 @@ const MoCard = ({
     >
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="h2" component="h1" className={classes.heroIcon}>
-            {IconComponent && <IconComponent />}
-            {!IconComponent && index && index}
-          </Typography>
+          <>
+            {ActionComponent && <ActionComponent />}
+            <Typography
+              variant="h2"
+              component="h1"
+              className={classes.heroIcon}
+            >
+              {IconComponent && <IconComponent />}
+              {!IconComponent && index && index}
+            </Typography>
+          </>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography gutterBottom variant="h5" component="h2">
