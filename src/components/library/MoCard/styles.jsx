@@ -2,9 +2,9 @@ const styles = theme => ({
   card: {
     ...theme.card,
     textAlign: "center",
-    paddingTop: theme.spacing(4),
+    paddingTop: theme.spacing(5),
     paddingRight: theme.spacing(2),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(5),
     paddingLeft: theme.spacing(2),
     width: "100%"
   },
