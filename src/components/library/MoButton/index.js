@@ -14,6 +14,7 @@ const MoButton = ({
   href,
   isArrowIcon,
   text,
+  type,
   size,
   variant
 }) => {
@@ -30,6 +31,7 @@ const MoButton = ({
       onClick={e => handleOnCLick(e)}
       component={Link}
       to={hrefProp}
+      type={type}
       className={`${classes.button} ${variant === "text" && classes.noShadow}`}
       color={"primary"}
       size={size}
@@ -52,6 +54,7 @@ MoButton.propTypes = {
   text: PropTypes.string,
   color: PropTypes.oneOf(["primary", "secondary", "default", null]),
   size: PropTypes.oneOf(["small", "medium", "large", null]),
+  type: PropTypes.oneOf(["submit", "button", null]),
   variant: PropTypes.oneOf(["contained", "outlined", "text", null])
 };
 
