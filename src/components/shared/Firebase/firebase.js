@@ -12,7 +12,7 @@ class Firebase {
     // this.db = app.database();
     this.firestore = app.firestore();
 
-    /* Helper */
+    // Helper
     this.serverValue = app.database.ServerValue;
     this.fieldValue = app.firestore.FieldValue;
 
@@ -22,7 +22,7 @@ class Firebase {
     this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
-  /* Auth API */
+  // Auth API
   createUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -47,7 +47,7 @@ class Firebase {
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
-  /* User API */
+  // User API
   user = uid => this.firestore.doc(`users/${uid}`);
 
   currentUser = user => {
@@ -60,15 +60,10 @@ class Firebase {
 
   users = () => this.firestore.collection("users");
 
-  /* Questions API */
-
-  question = id => this.firestore.collection("questions").doc(id);
-
-  questions = () => this.firestore.collection("questions");
-
-  /* Get Any collection or Doc  */
+  // Get a Collection
   collection = collectionPath => this.firestore.collection(collectionPath);
 
+  // Get a Doc from a collection
   doc = (collectionPath, id) =>
     this.firestore.collection(collectionPath).doc(id);
 
@@ -85,13 +80,11 @@ class Firebase {
       .set({ ...question, uid: uid });
   };
 
-  /* Helper  */
-
+  // Helper
   createId = collectionPath =>
     this.firestore.collection(collectionPath).doc().id;
 
   // *** Merge Auth and DB User API *** //
-
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(
       authUser => {
