@@ -21,7 +21,7 @@
  * @see See [React hoc](https://reactjs.org/docs/higher-order-components.html)
  * */
 
-import React from "react";
+import React, { lazy } from "react";
 import ButtonBase from "@material-ui/core/ButtonBase";
 
 import Typography from "@material-ui/core/Typography";
@@ -32,13 +32,19 @@ import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
+const CardProgress = lazy(() =>
+  import("components/shared/CardList/CardItem/CardProgress")
+);
+
 const MoCard = ({
+  authUser,
   classes,
   content,
   IconComponent,
   isDisabled,
   index,
-  points,
+  item,
+  match,
   subtitle,
   title,
   type,
@@ -55,15 +61,13 @@ const MoCard = ({
       className={`${classes.card} ${isDisabled && classes.disableCard} ${type &&
         classes[type]}`}
     >
-      <Grid container spacing={4}>
+      <Grid container alignContent="flex-start" alignItems="flex-start">
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography variant="h2" component="h1" className={classes.heroIcon}>
-            {IconComponent && <IconComponent />}
             {!IconComponent && index && index}
+            {IconComponent && <IconComponent />}
           </Typography>
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h4" component="h4">
             {title ? title : "Empty Title"}
           </Typography>
           <Typography className={classes.subtitle} component="h6" gutterBottom>
@@ -73,6 +77,7 @@ const MoCard = ({
             {content}
           </Typography>
         </Grid>
+        <CardProgress authUser={authUser} item={item} match={match} />
       </Grid>
     </Paper>
   </ButtonBase>

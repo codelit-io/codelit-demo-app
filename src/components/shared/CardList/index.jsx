@@ -33,6 +33,7 @@ const CardList = ({
   isAdmin,
   isItemDisabled,
   items,
+  match,
   newItem
 }) => {
   return items.map((item, index) => {
@@ -48,7 +49,6 @@ const CardList = ({
     const IconComponent = item.isDisabled
       ? itemTypes.disabled
       : itemTypes[item.type];
-
     return (
       <React.Fragment key={id}>
         <CategoryItem index={id} text={item?.category} />
@@ -60,9 +60,12 @@ const CardList = ({
         />
         <SignUpCard isActive={index < 1 && !authUser} type="signup" />
         <CardItem
+          authUser={authUser}
           IconComponent={IconComponent}
           index={id}
+          item={item}
           isDisabled={isDisabled}
+          match={match}
           subtitle={item.subtitle}
           title={item.title}
           type={item.type}

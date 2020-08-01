@@ -22,6 +22,7 @@ const CoursesForm = ({
   firebase,
   itemUrl,
   isAdmin,
+  match,
   newItem
 }) => {
   return (
@@ -29,7 +30,7 @@ const CoursesForm = ({
       <Grid container spacing={4} alignItems="center">
         {/* {history.location.pathname === ROUTES.ADMIN_COURSES.path && */}
         {/* userRole.isAdmin && ( */}
-        <NewCourseForm authUser={authUser} firebase={firebase} />
+        <NewCourseForm authUser={authUser} firebase={firebase} match={match} />
         {/* )} */}
       </Grid>
       <Footer />

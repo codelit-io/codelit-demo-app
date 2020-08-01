@@ -24,6 +24,7 @@ const CoursesPage = ({
   courses,
   itemUrl,
   isAdmin,
+  match,
   newItem
 }) => {
   return (
@@ -37,6 +38,7 @@ const CoursesPage = ({
             isAdmin={isAdmin}
             itemUrl={doc => itemUrl(doc)}
             isItemDisabled={() => {}}
+            match={match}
             newItem={newItem}
           />
         </Grid>

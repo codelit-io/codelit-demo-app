@@ -59,8 +59,8 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
       courses={courses.data}
       isAdmin={userRole.isAdmin}
       firebase={firebase}
-      match={match}
       itemUrl={doc => itemUrl(doc)}
+      match={match}
       newItem={newItem}
     />
   );

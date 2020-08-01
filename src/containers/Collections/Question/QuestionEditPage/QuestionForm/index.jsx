@@ -34,7 +34,6 @@ const QuestionForm = ({
       if (userAnswer[0] === "{}" || userAnswer[0] === typeof Object) {
         return;
       }
-      debugger;
       setQuestion({ ...question, ...code });
     },
     [setQuestion, question]
