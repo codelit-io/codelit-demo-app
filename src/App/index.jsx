@@ -47,6 +47,7 @@ const App = () => {
           <Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordReset} />
           <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
           <Route path={ROUTES.COLLECTIONS.path} component={Collections} />
+          <Route path={ROUTES.COMPANIES.path} component={Collections} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

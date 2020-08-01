@@ -60,6 +60,12 @@ export const ADMIN_COLLECTIONS_PRO = {
 };
 export const ADMIN_USERS = { path: "/admin/users", title: "Users" };
 
+/* Companies */
+export const COMPANIES = {
+  path: "/:companyName",
+  title: "Companies"
+};
+
 /* External pages */
 export const SUBMIT_ISSUE_GITHUB = {
   path:
