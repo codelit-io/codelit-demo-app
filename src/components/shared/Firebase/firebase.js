@@ -2,28 +2,17 @@ import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
+import config from "./config";
 
-/*  Api keys and configs  */
-
-const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
-};
 class Firebase {
   constructor() {
     app.initializeApp(config);
-
     this.auth = app.auth();
     // Db is not in use but available if needed
     // this.db = app.database();
     this.firestore = app.firestore();
 
     /* Helper */
-
     this.serverValue = app.database.ServerValue;
     this.fieldValue = app.firestore.FieldValue;
 
@@ -59,7 +48,6 @@ class Firebase {
     });
 
   /* User API */
-
   user = uid => this.firestore.doc(`users/${uid}`);
 
   currentUser = user => {
@@ -79,7 +67,6 @@ class Firebase {
   questions = () => this.firestore.collection("questions");
 
   /* Get Any collection or Doc  */
-
   collection = collectionPath => this.firestore.collection(collectionPath);
 
   doc = (collectionPath, id) =>

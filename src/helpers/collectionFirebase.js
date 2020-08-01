@@ -12,6 +12,8 @@ import { questionMock } from "mocks/question";
  * such as adding, editing and deleting a question. All data is queried from Firebase
  */
 
+/* ---🥇 Question helpers for Firestore 🥇--- */
+
 /* Create Question
  * createQuestion(authUser, event, firebase, match)
  */
@@ -24,7 +26,6 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   await firebase.createQuestionById(match.params.collection, {
     ...event,
     id: Number(match.params.questionId),
-    itemsLength: 1,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
@@ -33,30 +34,13 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   const increment = firebase.fieldValue.increment(1);
 
   const payload = {
-    doc: match.params.collection,
+    // doc: match.params.collection,
     itemsLength: increment
   };
 
   // update courses with number of questions
-  await updateCourse(authUser, payload, firebase);
-};
-
-/* Edit Question
- * updateQuestion(event, firebase, match)
- */
-export const updateQuestion = async (event, firebase, match) => {
-  if (!match.params.collection) {
-    return;
-  }
-  debugger;
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", String(event.uid))
-    .update({
-      ...event,
-      id: Number(match.params.questionId),
-      editedAt: firebase.fieldValue.serverTimestamp(),
-      question: event?.question ? escapeCode(event.question) : ""
-    });
+  // await updateCourse(authUser, payload, firebase);
+  await updateStats(payload, firebase, match);
 };
 
 /* Remove Question
@@ -68,7 +52,38 @@ export const removeQuestion = async (id, firebase, match) => {
     .delete();
 };
 
-/* Remove Question
+/* Edit and update Question
+ * updateQuestion(event, firebase, match)
+ */
+export const updateQuestion = async (event, firebase, match) => {
+  if (!match.params.collection) {
+    return;
+  }
+
+  await firebase
+    .doc("courses/" + match.params.collection + "/questions", String(event.uid))
+    .update({
+      ...event,
+      id: Number(match.params.questionId),
+      editedAt: firebase.fieldValue.serverTimestamp(),
+      question: event?.question ? escapeCode(event.question) : ""
+    });
+};
+
+/* Update stats for questions
+ * updateStats(event, firebase, match)
+ */
+export const updateStats = async (event, firebase, match) => {
+  if (!match.params.collection) {
+    return;
+  }
+
+  await firebase
+    .doc("courses/" + match.params.collection + "/questions", "--stats--")
+    .update(event);
+};
+
+/* Click on Question
  * rowClick(id, history, match)
  */
 export const rowClick = (id, history, match) => {
@@ -83,6 +98,8 @@ export const escapeCode = code => {
   }
   return JSON.stringify(code, null, 2);
 };
+
+/* ---🥈 Course helpers for Firestore 🥈--- */
 
 /* Create Course
  * createCourse(authUser, event, firebase, match)
