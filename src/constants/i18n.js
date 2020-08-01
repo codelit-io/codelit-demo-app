@@ -14,6 +14,8 @@ export const COURSES = {
   PAGE_TITLE: "Your Courses",
   ADD_A_COURSES: "Add a course",
   ADD_A_COURSES_SUBTITLE: "My awesome new course in React",
+  NEW_COURSE: "New Course",
+  CREATE_COURSE: "Create Course",
   REACT_COURSES: "React JS courses"
 };
 
