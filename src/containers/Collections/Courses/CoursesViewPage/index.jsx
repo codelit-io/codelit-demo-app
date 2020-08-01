@@ -23,6 +23,7 @@ import { withAuthentication } from "components/shared/Session";
 import PropTypes from "prop-types";
 import useCollections from "hooks/useCollections";
 import useUserRole from "hooks/useUserRole";
+import CardProgress from "components/shared/CardList/CardItem/CardProgress";
 
 const CoursesPage = lazy(() => import("./CoursesPage"));
 const collection = {
@@ -31,10 +32,17 @@ const collection = {
   isProgressBar: false
 };
 
-// Configure url route for each item
-const itemUrl = doc => `/courses/${doc}`;
-
 const CoursesViewPage = ({ authUser, firebase, history, match }) => {
+  const itemOptions = {
+    authUser,
+    ActionComponent: CardProgress,
+    itemUrl: doc => `/courses/${doc}`,
+    isItemDisabled: () => {},
+    firebase,
+    newItem: { title: "Add a course", url: "courses/isEditMode" },
+    match
+  };
+
   const collectionDetails = {
     collectionPath: collection.path,
     data: [],
@@ -43,10 +51,7 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
     title: collection.title
   };
   const userRole = useUserRole(authUser);
-
   const courses = useCollections(collectionDetails, firebase);
-
-  const newItem = { title: "Add a course", url: "courses/isEditMode" };
 
   if (!courses || !courses?.data?.length) {
     return null;
@@ -54,14 +59,10 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
 
   return (
     <CoursesPage
-      authUser={authUser}
       collectionDetails={collectionDetails}
       courses={courses.data}
+      itemOptions={itemOptions}
       isAdmin={userRole.isAdmin}
-      firebase={firebase}
-      itemUrl={doc => itemUrl(doc)}
-      match={match}
-      newItem={newItem}
     />
   );
 };

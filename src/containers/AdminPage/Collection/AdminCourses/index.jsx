@@ -7,24 +7,34 @@ import useUserRole from "hooks/useUserRole";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
-const AdminCourses = ({ authUser, firebase }) => {
+const AdminCourses = ({ authUser, firebase, match }) => {
   const userRole = useUserRole(authUser);
   const courses = useCollections({ collectionPath: "courses" }, firebase);
   if (!courses?.data) {
     return null;
   }
 
+  const itemOptions = {
+    authUser,
+    // Top right component of the card
+    // ActionComponent: ,
+    // Configure url route for each item
+    itemUrl: doc => itemUrl(doc),
+    // isItemDisabled is configured based on points and question's id
+    isItemDisabled: () => {},
+    firebase,
+    newItem: { title: "Add nre Couree  ", url: "courses/isEditMode" },
+    match
+  };
+
   const itemUrl = doc => `courses/${doc}`;
 
   return (
     <Grid container spacing={4} alignItems="center">
       <CardList
-        authUser={authUser}
         isAdmin={userRole.isAdmin}
         items={courses.data}
-        isItemDisabled={() => {}}
-        itemUrl={doc => itemUrl(doc)}
-        newItem={{ title: "Add nre Couree  ", url: "courses/isEditMode" }}
+        itemOptions={itemOptions}
       />
     </Grid>
   );

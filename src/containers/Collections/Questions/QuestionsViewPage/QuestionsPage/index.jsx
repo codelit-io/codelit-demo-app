@@ -19,15 +19,12 @@ import MoButtonIcon from "components/library/MoButtonIcon";
 const CardList = lazy(() => import("components/shared/CardList"));
 
 const QuestionsPage = ({
-  authUser,
   questions,
   courseDetails,
   handleOnClick,
   isLoading,
-  isItemDisabled,
+  itemOptions,
   isAdmin,
-  itemUrl,
-  newItem,
   points
 }) => {
   const IconComponent = () => (
@@ -42,19 +39,15 @@ const QuestionsPage = ({
       <Grid container spacing={4} alignItems="center">
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <MoPointsGroup
-            authUser={authUser}
+            authUser={itemOptions.authUser}
             points={points}
             progress={calculateProgress(questions?.length, points)}
           />
         </Grid>
         <CardList
-          authUser={authUser}
-          points={points}
-          items={questions}
           isAdmin={isAdmin}
-          isItemDisabled={id => isItemDisabled(id)}
-          itemUrl={id => itemUrl(id)}
-          newItem={newItem}
+          items={questions}
+          itemOptions={itemOptions}
         />
       </Grid>
       <Footer />

@@ -29,15 +29,22 @@ const QuestionsPage = lazy(() => import("./QuestionsPage"));
 const Questions = ({ authUser, history, firebase, match }) => {
   const userRole = useUserRole(authUser);
   const [points, setPoints] = useState(0);
+
   const doc = match.params.collection;
-  const collectionPath = "courses/" + doc + "/questions";
-  const collectionDetailsPath = "courses";
-  const newItem = { title: "Add a question", url: `${doc}/0/isEditMode` };
-  // Configure url route for each item
-  const itemUrl = id => `${doc}/${id}`;
-  // isItemDisabled is configured based on points and question's id
-  const isItemDisabled = id =>
-    points ? points < Number(id) - 1 : Number(id) !== 1;
+
+  const itemOptions = {
+    authUser,
+    // Top right component of the card
+    // ActionComponent: ,
+    doc,
+    // Configure url route for each item
+    itemUrl: id => `${doc}/${id}`,
+    // isItemDisabled is configured based on points and question's id
+    isItemDisabled: id => (points ? points < Number(id) - 1 : Number(id) !== 1),
+    firebase,
+    newItem: { title: "Add a question", url: `${doc}/0/isEditMode` },
+    match
+  };
 
   useEffect(() => {
     setPoints(authUser?.reports?.[doc]?.points);
@@ -45,7 +52,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
 
   // Get details about a course/questions
   const courseDetails = useCollectionDetails(
-    { collectionPath: collectionDetailsPath },
+    { collectionPath: "courses" },
     doc,
     firebase
   );
@@ -53,7 +60,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
   // Get list of questions
   const questions = useCollections(
     {
-      collectionPath,
+      collectionPath: "courses/" + doc + "/questions",
       data: []
     },
     firebase
@@ -74,17 +81,13 @@ const Questions = ({ authUser, history, firebase, match }) => {
     <Container maxWidth="lg">
       <Navigation />
       <QuestionsPage
-        authUser={authUser}
         questions={questions.data}
         courseDetails={courseDetails}
         hasData={questions.data.length && true}
         handleOnClick={e => handleOnClick(e)}
-        isItemDisabled={id => isItemDisabled(id)}
         isAdmin={userRole.isAdmin}
         isLoading={questions.data.isLoading && false}
-        itemUrl={id => itemUrl(id)}
-        doc={doc}
-        newItem={newItem}
+        itemOptions={itemOptions}
         points={points}
       />
     </Container>

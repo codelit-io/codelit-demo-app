@@ -18,28 +18,16 @@ import Navigation from "components/shared/Navigation";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
-const CoursesPage = ({
-  authUser,
-  collectionDetails,
-  courses,
-  itemUrl,
-  isAdmin,
-  match,
-  newItem
-}) => {
+const CoursesPage = ({ collectionDetails, courses, isAdmin, itemOptions }) => {
   return (
     <Container maxWidth="lg">
       <Navigation />
       <MoPage title={collectionDetails?.title}>
         <Grid container spacing={4} alignItems="center">
           <CardList
-            authUser={authUser}
-            items={courses}
             isAdmin={isAdmin}
-            itemUrl={doc => itemUrl(doc)}
-            isItemDisabled={() => {}}
-            match={match}
-            newItem={newItem}
+            items={courses}
+            itemOptions={itemOptions}
           />
         </Grid>
         <Footer />

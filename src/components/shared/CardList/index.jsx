@@ -27,23 +27,17 @@ import NewItemCard from "./NewItemCard";
 const CardItem = lazy(() => import("./CardItem"));
 const CategoryItem = lazy(() => import("./CategoryItem"));
 
-const CardList = ({
-  authUser,
-  itemUrl,
-  isAdmin,
-  isItemDisabled,
-  items,
-  match,
-  newItem
-}) => {
+const CardList = ({ isAdmin, items, itemOptions }) => {
   return items.map((item, index) => {
     const { doc, id } = item;
 
     // Detect if item is disabled
-    const isDisabled = item.isDisabled ? item.isDisabled : isItemDisabled(id);
+    const isDisabled = item.isDisabled
+      ? item.isDisabled
+      : itemOptions?.isItemDisabled(id);
 
     // Configure url route for each item
-    const configureUrl = isDisabled ? "" : itemUrl(doc || id);
+    const configureUrl = isDisabled ? "" : itemOptions?.itemUrl(doc || id);
 
     // Icon Component for item types
     const IconComponent = item.isDisabled
@@ -55,17 +49,19 @@ const CardList = ({
         <NewItemCard
           isActive={index < 1 && !!isAdmin}
           type="new"
-          title={newItem?.title}
-          url={newItem?.url}
+          title={itemOptions?.newItem?.title}
+          url={itemOptions?.newItem?.url}
         />
-        <SignUpCard isActive={index < 1 && !authUser} type="signup" />
+        <SignUpCard
+          isActive={index < 1 && !itemOptions?.authUser}
+          type="signup"
+        />
         <CardItem
-          authUser={authUser}
           IconComponent={IconComponent}
           index={id}
           item={item}
           isDisabled={isDisabled}
-          match={match}
+          itemOptions={itemOptions}
           subtitle={item.subtitle}
           title={item.title}
           type={item.type}
