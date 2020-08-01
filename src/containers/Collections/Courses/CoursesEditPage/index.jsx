@@ -28,7 +28,7 @@ import useUserRole from "hooks/useUserRole";
 const CoursesForm = lazy(() => import("./CoursesForm"));
 const collection = {
   path: "courses",
-  title: COURSES.PAGE_TITLE,
+  title: COURSES.NEW_COURSE,
   isProgressBar: false
 };
 
@@ -54,7 +54,7 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Navigation />
       <CoursesForm
         authUser={authUser}
