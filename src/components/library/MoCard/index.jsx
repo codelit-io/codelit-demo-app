@@ -61,22 +61,13 @@ const MoCard = ({
       className={`${classes.card} ${isDisabled && classes.disableCard} ${type &&
         classes[type]}`}
     >
-      <Grid container spacing={4}>
+      <Grid container alignContent="flex-start" alignItems="flex-start">
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <>
-            <CardProgress authUser={authUser} item={item} match={match} />
-            <Typography
-              variant="h2"
-              component="h1"
-              className={classes.heroIcon}
-            >
-              {IconComponent && <IconComponent />}
-              {!IconComponent && index && index}
-            </Typography>
-          </>
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography variant="h2" component="h1" className={classes.heroIcon}>
+            {!IconComponent && index && index}
+            {IconComponent && <IconComponent />}
+          </Typography>
+          <Typography gutterBottom variant="h4" component="h4">
             {title ? title : "Empty Title"}
           </Typography>
           <Typography className={classes.subtitle} component="h6" gutterBottom>
@@ -86,6 +77,7 @@ const MoCard = ({
             {content}
           </Typography>
         </Grid>
+        <CardProgress authUser={authUser} item={item} match={match} />
       </Grid>
     </Paper>
   </ButtonBase>

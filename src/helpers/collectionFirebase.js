@@ -24,6 +24,7 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   await firebase.createQuestionById(match.params.collection, {
     ...event,
     id: Number(match.params.questionId),
+    itemsLength: 1,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""

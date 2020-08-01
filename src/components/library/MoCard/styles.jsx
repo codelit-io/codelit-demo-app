@@ -3,7 +3,9 @@ const styles = theme => ({
     ...theme.card,
     textAlign: "center",
     paddingTop: theme.spacing(4),
+    paddingRight: theme.spacing(2),
     paddingBottom: theme.spacing(4),
+    paddingLeft: theme.spacing(2),
     width: "100%"
   },
   disableCard: {
@@ -15,7 +17,9 @@ const styles = theme => ({
   heroIcon: {
     color: theme.grey.light,
     "& svg": {
-      fontSize: theme.fontSize.xl
+      fontSize: theme.fontSize.xl,
+      width: "64px",
+      height: "64px"
     }
   },
   new: {

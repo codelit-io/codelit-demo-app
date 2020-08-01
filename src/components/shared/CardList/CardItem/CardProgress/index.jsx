@@ -2,7 +2,7 @@ import React from "react";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
-import DoneAllIcon from "@material-ui/icons/DoneAll";
+import CheckIcon from "@material-ui/icons/Check";
 import Typography from "@material-ui/core/Typography";
 
 const CardProgress = ({ authUser, item }) => {
@@ -11,16 +11,15 @@ const CardProgress = ({ authUser, item }) => {
   try {
     points = authUser?.reports[item?.doc].points;
   } catch {}
-
   const progress =
     item?.itemsLength &&
     points &&
     Math.round((points / item?.itemsLength) * 100);
 
   const finishedCourse =
-    progress === 100 ? <DoneAllIcon /> : progress && `${progress}%`;
+    progress === 100 ? <CheckIcon /> : progress && `${progress}%`;
   return (
-    <Box position="fixed" display="inline-flex" right={20} top={20}>
+    <Box position="fixed" display="inline-flex" top={16} right={16}>
       <CircularProgress variant="static" value={progress} color="secondary" />
       <Box
         top={0}
