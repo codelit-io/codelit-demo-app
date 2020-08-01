@@ -22,8 +22,10 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
             the collection or questions Such as name and description
             */
       const whereOptions = locationHash
-        ? ["type", "==", locationHash.substring(1)]
-        : ["id", ">", 0];
+        ? // where condition based on hash for current location
+          ["type", "==", locationHash.substring(1)]
+        : // otherwise use a condition where an id must be greater than 0 for a question
+          ["id", ">", 0];
 
       const unsubscribe = firebase
         .collection(collectionPath)
