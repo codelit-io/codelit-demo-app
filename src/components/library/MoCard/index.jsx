@@ -7,9 +7,26 @@
  * Used to display each course as a card in the list of courses
  * Used in CoursesList
  *
+ * Example itemOptions
+ *
+ *   const itemOptions = {
+ *      authUser,
+ *      // Top right component of the card
+ *      ActionComponent: ,
+ *      doc,
+ *      // Configure url route for each item
+ *      itemUrl: id => `${doc}/${id}`,
+ *      // isItemDisabled is configured based on points and question's id
+ *      isItemDisabled: id => doSomething,
+ *      firebase,
+ *      newItem: {title: "TITLE", url: "someDocument/1/isEditMode"}
+ *      match
+ *    }
+ *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {String} content - text content shows under subtitle
  * @param {Element} IconComponent - Component icon passed to card from parent
+ * @param {Boolean} itemOptions - options to configure the card to handle special cases and logic
  * @param {Boolean} isDisabled - boolean flag to disable card, navigation and greys out the card
  * @param {Number} points - Number of points for the course
  * @param {String} subtitle - Text displayed under the title
