@@ -54,12 +54,13 @@ const CollectionTable = ({
       )
     },
     { title: "Language", field: "language" },
-    { title: "Category", field: "category" },
-    {
-      title: "Content",
-      field: "content",
-      editComponent: props => <MoTextarea {...props} />
-    }
+    { title: "Category", field: "category" }
+    // TODO: Update to use markdown for content for each question
+    // {
+    //   title: "Content",
+    //   field: "content",
+    //   editComponent: props => <MoTextarea {...props} />
+    // }
   ]);
 
   return (

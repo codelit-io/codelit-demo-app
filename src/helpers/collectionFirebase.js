@@ -12,6 +12,9 @@ import { questionMock } from "mocks/question";
  * such as adding, editing and deleting a question. All data is queried from Firebase
  */
 
+// Special document each course has to keep track of number of items in a course and other stuff coming later
+const statsDoc = "--stats--";
+
 /* ---🥇 Question helpers for Firestore 🥇--- */
 
 /* Create Question
@@ -22,24 +25,31 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     return;
   }
 
+  const getStatsDoc = await firebase
+    .collection(`courses/${match.params.collection}/questions`)
+    .doc(statsDoc)
+    .get();
+
+  const stats = getStatsDoc.data();
+
   // create question by id
   await firebase.createQuestionById(match.params.collection, {
     ...event,
-    id: Number(match.params.questionId),
+    // order new item to the end by creating id from total num of items + 1
+    id: Number(stats.itemsLength) + 1,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
   });
 
+  // increment a field in the stats doc
   const increment = firebase.fieldValue.increment(1);
 
   const payload = {
-    // doc: match.params.collection,
     itemsLength: increment
   };
 
-  // update courses with number of questions
-  // await updateCourse(authUser, payload, firebase);
+  // Update stats doc and increment itemsLength
   await updateStats(payload, firebase, match);
 };
 
@@ -50,6 +60,16 @@ export const removeQuestion = async (id, firebase, match) => {
   await firebase
     .doc("courses/" + match.params.collection + "/questions", id)
     .delete();
+
+  // decrement a field in the stats doc
+  const decrement = firebase.fieldValue.increment(-1);
+
+  const payload = {
+    itemsLength: decrement
+  };
+
+  // Update stats doc and decrement itemsLength
+  await updateStats(payload, firebase, match);
 };
 
 /* Edit and update Question
@@ -79,7 +99,7 @@ export const updateStats = async (event, firebase, match) => {
   }
 
   await firebase
-    .doc("courses/" + match.params.collection + "/questions", "--stats--")
+    .doc("courses/" + match.params.collection + "/questions", statsDoc)
     .update(event);
 };
 
