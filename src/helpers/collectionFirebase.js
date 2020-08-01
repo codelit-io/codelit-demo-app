@@ -15,6 +15,10 @@ import { questionMock } from "mocks/question";
 // Special document each course has to keep track of number of items in a course and other stuff coming later
 const statsDoc = "--stats--";
 
+// Questions path to list of questions used with firebase query
+const getQuestionsPath = match =>
+  `courses/${match.params.collection}/questions`;
+
 /* ---🥇 Question helpers for Firestore 🥇--- */
 
 /* Create Question
@@ -26,7 +30,7 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   }
 
   const getStatsDoc = await firebase
-    .collection(`courses/${match.params.collection}/questions`)
+    .collection(getQuestionsPath(match))
     .doc(statsDoc)
     .get();
 
@@ -49,17 +53,17 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     itemsLength: increment
   };
 
+  const collectionPath = getQuestionsPath(match);
+
   // Update stats doc and increment itemsLength
-  await updateStats(payload, firebase, match);
+  await updateStats(payload, firebase, collectionPath);
 };
 
 /* Remove Question
  * removeQuestion(id, firebase, match)
  */
 export const removeQuestion = async (id, firebase, match) => {
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", id)
-    .delete();
+  await firebase.doc(getQuestionsPath(match), id).delete();
 
   // decrement a field in the stats doc
   const decrement = firebase.fieldValue.increment(-1);
@@ -67,9 +71,9 @@ export const removeQuestion = async (id, firebase, match) => {
   const payload = {
     itemsLength: decrement
   };
-
+  const collectionPath = getQuestionsPath(match);
   // Update stats doc and decrement itemsLength
-  await updateStats(payload, firebase, match);
+  await updateStats(payload, firebase, collectionPath);
 };
 
 /* Edit and update Question
@@ -80,27 +84,23 @@ export const updateQuestion = async (event, firebase, match) => {
     return;
   }
 
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", String(event.uid))
-    .update({
-      ...event,
-      id: Number(match.params.questionId),
-      editedAt: firebase.fieldValue.serverTimestamp(),
-      question: event?.question ? escapeCode(event.question) : ""
-    });
+  await firebase.doc(getQuestionsPath(match), String(event.uid)).update({
+    ...event,
+    id: Number(match.params.questionId),
+    editedAt: firebase.fieldValue.serverTimestamp(),
+    question: event?.question ? escapeCode(event.question) : ""
+  });
 };
 
 /* Update stats for questions
- * updateStats(event, firebase, match)
+ * updateStats(event, firebase, collectionPath)
  */
-export const updateStats = async (event, firebase, match) => {
-  if (!match.params.collection) {
+export const updateStats = async (event, firebase, collectionPath) => {
+  if (!collectionPath) {
     return;
   }
 
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", statsDoc)
-    .update(event);
+  await firebase.doc(collectionPath, statsDoc).update(event);
 };
 
 /* Click on Question
