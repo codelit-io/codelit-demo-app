@@ -11,6 +11,8 @@ import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import DialogActions from "@material-ui/core/DialogActions";
+import Box from "@material-ui/core/box";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 
@@ -100,24 +102,28 @@ const QuestionForm = ({
 
       {children && <section className={classes.section}>{children}</section>}
       {question && (
-        <section className={classes.section}>
-          <Button
-            type="button"
-            color="default"
-            onClick={() => navToQuestionViewPage()}
-          >
-            Back to Question
-          </Button>
-          <Button
-            onKeyPress={e => {
-              e.key === "Enter" && e.preventDefault();
-            }}
-            type="submit"
-            color="primary"
-          >
-            Save
-          </Button>
-        </section>
+        <Box position="static" width="100%" zIndex="10">
+          <DialogActions>
+            <Button
+              type="button"
+              color="default"
+              onClick={() => navToQuestionViewPage()}
+              variant="contained"
+            >
+              Back to Question
+            </Button>
+            <Button
+              onKeyPress={e => {
+                e.key === "Enter" && e.preventDefault();
+              }}
+              type="submit"
+              color="primary"
+              variant="contained"
+            >
+              Save
+            </Button>
+          </DialogActions>
+        </Box>
       )}
     </form>
   );

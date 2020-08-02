@@ -72,14 +72,7 @@ const QuestionPage = ({
           opacity: 1
         }
       },
-      section: { paddingBottom: theme.space?.xl },
-      footer: {
-        zIndex: "10",
-        position: "fixed",
-        bottom: 0,
-        right: 0,
-        width: "100%"
-      }
+      section: { paddingBottom: theme.space?.xl }
     })
   );
 

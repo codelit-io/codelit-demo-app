@@ -156,9 +156,6 @@ const CoursesForm = ({
           </Grid>
         </Grid>
         <DialogActions>
-          {/* <Button onClick={() => handleDialog()} color="default">
-              Cancel
-          </Button> */}
           <Button type="submit" color="primary" variant="contained">
             {COURSES.CREATE_COURSE}
           </Button>
