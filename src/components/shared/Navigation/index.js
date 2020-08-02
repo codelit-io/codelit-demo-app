@@ -16,7 +16,6 @@ import { compose } from "recompose";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { withAuthentication } from "../Session";
 import useUserRole from "hooks/useUserRole";
 import ThemeSwitch from "./ThemeSwitch";
 import useTheme from "@material-ui/core/styles/useTheme";
@@ -87,7 +86,4 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
   );
 };
 
-export default compose(
-  withStyles(styles),
-  withAuthentication(false)
-)(Navigation);
+export default compose(withStyles(styles))(Navigation);
