@@ -7,12 +7,13 @@ import Typography from "@material-ui/core/Typography";
 
 const CardProgress = ({ authUser, item }) => {
   let points;
-
+  debugger;
   try {
     points = authUser?.reports[item?.doc].points;
   } catch {}
   const progress =
-    /* Move to --stats-- table */
+    /* TODO: This should come form teh --stats-- doc in each collection */
+    /* BROKEN!! */
     item?.itemsLength &&
     points &&
     Math.round((points / item?.itemsLength) * 100);
