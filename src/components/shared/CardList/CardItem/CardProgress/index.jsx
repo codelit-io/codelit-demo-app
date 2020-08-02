@@ -12,6 +12,7 @@ const CardProgress = ({ authUser, item }) => {
     points = authUser?.reports[item?.doc].points;
   } catch {}
   const progress =
+    /* Move to --stats-- table */
     item?.itemsLength &&
     points &&
     Math.round((points / item?.itemsLength) * 100);
