@@ -1,5 +1,5 @@
 import * as ROUTES from "constants/routes";
-import { questionMock } from "mocks/question";
+import { statsMock } from "mocks/question";
 
 /**
  *
@@ -35,12 +35,12 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     .get();
 
   const stats = getStatsDoc.data();
-
+  const newId = Number(stats.itemsLength) + 1;
   // create question by id
   await firebase.createQuestionById(match.params.collection, {
     ...event,
     // order new item to the end by creating id from total num of items + 1
-    id: Number(stats.itemsLength) + 1,
+    id: newId,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
@@ -57,6 +57,7 @@ export const createQuestion = async (authUser, event, firebase, match) => {
 
   // Update stats doc and increment itemsLength
   await updateStats(payload, firebase, collectionPath);
+  return newId;
 };
 
 /* Remove Question
@@ -150,14 +151,17 @@ export const createCourse = async (authUser, event, firebase) => {
     .doc(doc)
     .set(payload, { merge: true });
 
-  // Add a questions array to the collection created above add a placeholder entry
+  // Add a stats doc to the collection created above as a placeholder entry
   // TODO: figure a more efficient way to do this with one firebase query
   await firebase
     .collection("courses")
     .doc(doc)
     .collection("questions")
-    .doc()
-    .set({ ...questionMock });
+    .doc(statsDoc)
+    .set({ ...statsMock });
+
+  // return new item doc
+  return doc;
 };
 
 export const updateCourse = async (authUser, event, firebase) => {
@@ -170,4 +174,5 @@ export const updateCourse = async (authUser, event, firebase) => {
     .collection("courses")
     .doc(event.doc)
     .set(payload, { merge: true });
+  return event.id;
 };
