@@ -1,3 +1,4 @@
+// 🔴 DEPRECATED 🔴
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -22,7 +23,7 @@ const withAuthorization = condition => Component => {
     componentWillUnmount() {
       this.listener();
     }
-
+    // TODO: Deprecated us authUser from withAuthentication
     render() {
       return (
         <AuthUserContext.Consumer>

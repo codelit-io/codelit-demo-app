@@ -27,6 +27,7 @@ const withEmailVerification = Component => {
 
     render() {
       return (
+        /* TODO: 🔴 DEPRECATED use withAuthentication */
         <AuthUserContext.Consumer>
           {authUser =>
             needsEmailVerification(authUser) ? (
