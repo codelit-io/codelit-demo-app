@@ -19,11 +19,13 @@ const ComponentName = ({ authUser }) => {
   ...
 }
 
-withAuthentication(ComponentName)
+const isUserRole = () => "isAdmin"
+withAuthentication(isUserRole)(ComponentName)
 
 ```
 
-**AuthUserContext** Using Context API
+**DEPRECATED AuthUserContext** Using Context API
+
 ```
 import { AuthUserContext } from "../Session";
 
@@ -54,13 +56,13 @@ import { AuthUserContext } from "../Session";
 ### Code Snippets
 
 - Make queries from your component in `useEffect`
-- Invoke firebase class with the helper method you need 
+- Invoke firebase class with the helper method you need
 
 ```
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      /* Make a firebase query to get details about 
+      /* Make a firebase query to get details about
             the collection or questions Such as name and description */
       const getCollectionDetails = await firebase
         .collection("collections")
