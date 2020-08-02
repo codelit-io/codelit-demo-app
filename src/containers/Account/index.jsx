@@ -39,7 +39,7 @@ const SIGN_IN_METHODS = [
 const AccountPage = ({ authUser, firebase }) => {
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
         <Typography variant="h6" noWrap>
           Email: {authUser?.email}

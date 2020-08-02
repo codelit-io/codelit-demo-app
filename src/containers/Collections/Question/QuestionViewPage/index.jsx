@@ -68,9 +68,11 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   return (
     <Container maxWidth="xl">
       <Navigation
+        authUser={authUser}
         Breadcrumbs={() => (
           <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
         )}
+        firebase={firebase}
       />
       <QuestionPage
         authUser={authUser}
@@ -86,6 +88,4 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-const isUserRole = false;
-
-export default withAuthentication(isUserRole)(QuestionViewPage);
+export default withAuthentication(false)(QuestionViewPage);

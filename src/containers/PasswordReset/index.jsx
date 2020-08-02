@@ -6,9 +6,9 @@ import MoPage from "components/library/MoPage";
 
 import PasswordForgetForm from "components/shared/PasswordForgot";
 
-const PasswordReset = () => (
+const PasswordReset = ({ authUser, firebase }) => (
   <Container maxWidth="lg">
-    <Navigation />
+    <Navigation authUser={authUser} firebase={firebase} />
     <MoPage title="Reset your password">
       <PasswordForgetForm />
     </MoPage>

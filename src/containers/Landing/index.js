@@ -14,6 +14,7 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 
+import { compose } from "recompose";
 import { LANDING_PAGE } from "constants/i18n";
 import { ReactComponent as Researching } from "assets/researching.svg";
 import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
@@ -30,16 +31,17 @@ import styles from "./styles";
 import MoTypography from "components/library/MoTypography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
+import { withAuthentication } from "components/shared/Session";
 
 const Navigation = lazy(() => import("components/shared/Navigation"));
 
-const LandingPage = ({ classes }) => {
+const LandingPage = ({ authUser, classes, firebase }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <Grid container spacing={4} className={classes.container}>
         <Grid item sm={12} md={6} xs={12}>
           <Fade
@@ -197,4 +199,7 @@ const LandingPage = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(LandingPage);
+export default compose(
+  withStyles(styles),
+  withAuthentication(false)
+)(LandingPage);

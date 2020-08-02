@@ -11,9 +11,7 @@ import Messages from "components/shared/Messages";
 
 const FeatureRequest = () => <Messages />;
 
-const isUserRole = false;
-
 export default compose(
   withEmailVerification,
-  withAuthentication(isUserRole)
+  withAuthentication(false)
 )(FeatureRequest);

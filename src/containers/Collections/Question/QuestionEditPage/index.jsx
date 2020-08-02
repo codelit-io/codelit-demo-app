@@ -111,9 +111,11 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   return (
     <Container maxWidth="xl">
       <Navigation
+        authUser={authUser}
         Breadcrumbs={() => (
           <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
         )}
+        firebase={firebase}
       />
       <QuestionForm
         isLoading={isLoading}

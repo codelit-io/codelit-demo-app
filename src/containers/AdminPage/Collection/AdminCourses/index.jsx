@@ -40,6 +40,4 @@ const AdminCourses = ({ authUser, firebase, match }) => {
   );
 };
 
-const isUserRole = false;
-
-export default withAuthentication(isUserRole)(AdminCourses);
+export default withAuthentication(false)(AdminCourses);

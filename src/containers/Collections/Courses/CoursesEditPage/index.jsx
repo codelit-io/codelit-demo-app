@@ -55,7 +55,7 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
 
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <CoursesForm
         authUser={authUser}
         collectionDetails={collectionDetails}

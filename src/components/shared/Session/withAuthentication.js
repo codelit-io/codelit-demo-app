@@ -7,29 +7,26 @@ import useUserRole from "hooks/useUserRole";
 
 const withAuthentication = isUserRole => Component => {
   const WithAuthentication = props => {
-    const authUserCache = JSON.parse(localStorage.getItem("authUser"));
-    const [authUser, setAuthUser] = useState(authUserCache);
+    const [authUser, setAuthUser] = useState(null);
     const { firebase } = props;
     const history = useHistory();
     const userRole = useUserRole(authUser);
 
     /* TODO: Add caching */
     useEffect(() => {
-      const listener = !authUserCache
-        ? firebase.onAuthUserListener(
-            authUser => {
-              localStorage.setItem("authUser", JSON.stringify(authUser));
-              setAuthUser(authUser);
-            },
-            () => {
-              localStorage.setItem("authUser", null);
-              setAuthUser(null);
-            }
-          )
-        : () => null;
+      const listener = firebase.onAuthUserListener(
+        authUser => {
+          localStorage.setItem("authUser", JSON.stringify(authUser));
+          setAuthUser(authUser);
+        },
+        () => {
+          localStorage.setItem("authUser", null);
+          setAuthUser(null);
+        }
+      );
 
       return () => listener();
-    }, [authUserCache, firebase]);
+    }, [firebase]);
 
     // if isUserRole is available then redirect to correct page per permission
     if (isUserRole) {

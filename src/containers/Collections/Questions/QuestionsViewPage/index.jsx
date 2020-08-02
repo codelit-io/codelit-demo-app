@@ -79,7 +79,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
 
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <QuestionsPage
         questions={questions.data}
         courseDetails={courseDetails}
@@ -94,6 +94,4 @@ const Questions = ({ authUser, history, firebase, match }) => {
   );
 };
 
-const isUserRole = false;
-
-export default withAuthentication(isUserRole)(Questions);
+export default withAuthentication(false)(Questions);

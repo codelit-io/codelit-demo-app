@@ -59,8 +59,10 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
 
   return (
     <CoursesPage
+      authUser={authUser}
       collectionDetails={collectionDetails}
       courses={courses.data}
+      firebase={firebase}
       itemOptions={itemOptions}
       isAdmin={userRole.isAdmin}
     />
@@ -72,6 +74,4 @@ CoursesViewPage.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-const isUserRole = false;
-
-export default withAuthentication(isUserRole)(CoursesViewPage);
+export default withAuthentication(false)(CoursesViewPage);

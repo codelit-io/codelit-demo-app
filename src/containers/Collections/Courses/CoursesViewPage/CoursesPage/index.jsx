@@ -21,10 +21,17 @@ import NewItemCard from "components/shared/CardList/NewItemCard";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
-const CoursesPage = ({ collectionDetails, courses, isAdmin, itemOptions }) => {
+const CoursesPage = ({
+  authUser,
+  collectionDetails,
+  courses,
+  firebase,
+  isAdmin,
+  itemOptions
+}) => {
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={collectionDetails?.title}>
         <Grid container spacing={4} alignItems="center">
           <Fade

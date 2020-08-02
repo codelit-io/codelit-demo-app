@@ -11,9 +11,9 @@ import SocialSignIn from "components/shared/SocialSignIn";
 import SignInForm from "./SignInForm";
 import MoButton from "components/library/MoButton";
 
-const SignInPage = ({ authUser }) => (
+const SignInPage = ({ authUser, firebase }) => (
   <Container maxWidth="lg">
-    <Navigation />
+    <Navigation authUser={authUser} firebase={firebase} />
     <MoPage
       title={
         authUser ? SIGN_IN.PAGE_LOGGED_IN_TITLE : SIGN_IN.PAGE_LOGGED_IN_TITLE
@@ -47,6 +47,4 @@ const SignInPage = ({ authUser }) => (
   </Container>
 );
 
-const isUserRole = false;
-
-export default withAuthentication(isUserRole)(SignInPage);
+export default withAuthentication(false)(SignInPage);
