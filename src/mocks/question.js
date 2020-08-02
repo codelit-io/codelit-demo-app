@@ -16,6 +16,14 @@ export const question = () => {
   };
 };
 
+export const statsMock = {
+  id: 0,
+  itemsLength: 0,
+  title: "Stats",
+  subtitle: "Question stats",
+  isDisabled: true
+};
+
 export const questionMock = {
   id: 1,
   question: "<p>Hello React</p>",
