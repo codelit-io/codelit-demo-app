@@ -10,7 +10,6 @@
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
- * @withAuthorization - HOC wraps around components and prevents render based on a condition - firebase and match props - EXAMPLE USAGE: withAuthorization(condition)(Component)
  * @withEmailVerification - HOC provides email verification stuff
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  *
