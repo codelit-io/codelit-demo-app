@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 const CardProgress = ({ authUser, item }) => {
   let points;
-  debugger;
+
   try {
     points = authUser?.reports[item?.doc].points;
   } catch {}

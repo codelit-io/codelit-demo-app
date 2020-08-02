@@ -225,6 +225,7 @@ class DefaultLoginToggle extends Component {
 }
 
 export default compose(
+  /* TODO: Upgrade email verification -- BROKEN -- */
   withEmailVerification,
   withAuthentication(false)
 )(AccountPage);

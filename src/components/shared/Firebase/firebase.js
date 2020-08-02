@@ -35,7 +35,7 @@ class Firebase {
 
   signOut = () => {
     this.auth.signOut();
-    localStorage.removeItem("authUser");
+    localStorage.setItem("authUser", null);
   };
 
   passwordReset = email => this.auth.sendPasswordResetEmail(email);

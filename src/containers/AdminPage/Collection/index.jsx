@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-import { AuthUserContext } from "components/shared/Session";
 import MoSpinner from "components/library/MoSpinner";
-import { withFirebase } from "components/shared/Firebase";
 import QuestionsTable from "./CollectionTable";
 import {
   createQuestion,
@@ -10,7 +8,9 @@ import {
   removeQuestion,
   rowClick
 } from "helpers/collectionFirebase";
-const Collection = ({ firebase, history, match }) => {
+import { withAuthentication } from "components/shared/Session";
+
+const Collection = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
 
@@ -83,19 +83,14 @@ const Collection = ({ firebase, history, match }) => {
   }
 
   return (
-    /* TODO: Deprecated  use withAuthentication*/
-    <AuthUserContext.Consumer>
-      {authUser => (
-        <QuestionsTable
-          questions={questions}
-          onUpdateQuestion={event => onUpdateQuestion(event)}
-          onRemoveQuestion={id => onRemoveQuestion(id)}
-          onCreateQuestion={event => onCreateQuestion(event, authUser)}
-          handleRowClick={id => handleRowClick(id)}
-        />
-      )}
-    </AuthUserContext.Consumer>
+    <QuestionsTable
+      questions={questions}
+      onUpdateQuestion={event => onUpdateQuestion(event)}
+      onRemoveQuestion={id => onRemoveQuestion(id)}
+      onCreateQuestion={event => onCreateQuestion(event, authUser)}
+      handleRowClick={id => handleRowClick(id)}
+    />
   );
 };
 
-export default withFirebase(Collection);
+export default withAuthentication("isAdmin")(Collection);

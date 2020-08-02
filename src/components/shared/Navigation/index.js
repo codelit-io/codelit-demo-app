@@ -5,7 +5,6 @@
  *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {Class} firebase - Firebase class provides access to authUser and db
- * @param {Class} history - Firebase class provides access to authUser and db
  * @return {<form></form>}
  */
 
@@ -14,7 +13,7 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { compose } from "recompose";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withAuthentication } from "../Session";
@@ -90,6 +89,5 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
 
 export default compose(
   withStyles(styles),
-  withAuthentication(false),
-  withRouter
+  withAuthentication(false)
 )(Navigation);
