@@ -20,7 +20,6 @@
 
 import React, { Suspense, lazy } from "react";
 
-import * as ROLES from "constants/roles";
 import * as ROUTES from "constants/routes";
 import { ADMIN_PAGE } from "constants/i18n";
 import { compose } from "recompose";
@@ -28,7 +27,6 @@ import { Switch, Route } from "react-router-dom";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import {
-  withAuthorization,
   withEmailVerification,
   withAuthentication
 } from "components/shared/Session";
@@ -86,10 +84,7 @@ const AdminPage = ({ history }) => {
   );
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-
 export default compose(
   withEmailVerification,
-  withAuthentication,
-  withAuthorization(condition)
+  withAuthentication("isAdmin")
 )(AdminPage);

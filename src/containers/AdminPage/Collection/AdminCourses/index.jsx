@@ -39,4 +39,7 @@ const AdminCourses = ({ authUser, firebase, match }) => {
     </Grid>
   );
 };
-export default withAuthentication(AdminCourses);
+
+const isUserRole = false;
+
+export default withAuthentication(isUserRole)(AdminCourses);

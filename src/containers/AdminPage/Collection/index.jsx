@@ -83,6 +83,7 @@ const Collection = ({ firebase, history, match }) => {
   }
 
   return (
+    /* TODO: Deprecated  use withAuthentication*/
     <AuthUserContext.Consumer>
       {authUser => (
         <QuestionsTable
