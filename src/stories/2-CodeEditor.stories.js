@@ -153,7 +153,10 @@ export const CodeTypist = () => {
           hideWhenDone: boolean("Hide when done", true)
         }}
       >
-        Welcome to the Jungle ! 🍌
+        Welcome to the Jungle !{" "}
+        <span role="img" aria-label="banana">
+          🍌
+        </span>
       </Typist>
     </ThemeProvider>
   );
