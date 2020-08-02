@@ -7,7 +7,7 @@
  * @returns {<CoursePage/>} - returns CoursePage component which contains the rest of the components
  */
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { useForm } from "react-hook-form";
 import { createCourse } from "helpers/collectionFirebase";
@@ -32,6 +32,7 @@ const CoursesForm = ({
   firebase,
   isAdmin,
   match,
+  history,
   newItem
 }) => {
   const { register, handleSubmit } = useForm();
@@ -42,10 +43,19 @@ const CoursesForm = ({
     id: 0
   });
 
-  /* TODO: Move to hooks or helpers */
-  const onSubmit = formData => {
+  const navtoCourse = useCallback(
+    doc => {
+      history.push(`/courses/${doc}`);
+    },
+    [history]
+  );
+
+  const onSubmit = async formData => {
     if (formData.title) {
-      createCourse(authUser, formData, firebase, match);
+      // Create courses and return it's doc
+      const doc = await createCourse(authUser, formData, firebase, match);
+
+      await navtoCourse(doc);
     }
   };
 

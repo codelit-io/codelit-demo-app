@@ -60,6 +60,7 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
         authUser={authUser}
         collectionDetails={collectionDetails}
         courses={courses}
+        history={history}
         isAdmin={userRole.isAdmin}
         firebase={firebase}
         match={match}

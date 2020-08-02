@@ -35,18 +35,23 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [question, setQuestion] = useState(null);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const navToQuestionViewPage = useCallback(() => {
-    history.push(
-      `/courses/${match.params.collection}/${match.params.questionId}`
-    );
-  }, [history, match]);
+  const collectionPath = `/courses/${match.params.collection}/${match.params
+    .questionId || question.id}`;
+
+  const navToQuestionViewPage = useCallback(
+    collectionPath => {
+      history.push(collectionPath);
+    },
+    [history]
+  );
 
   const onSubmit = useCallback(
-    event => {
+    async event => {
       // editedAt is only available on existing db items nad safe to update
-      event.editedAt
+      const id = (await event.editedAt)
         ? updateQuestion(event, firebase, match)
         : createQuestion(authUser, event, firebase, match);
+      navToQuestionViewPage(`/courses/${match.params.collection}/${await id}`);
 
       setSnackbarProps({
         autoHideDuration: 2000,
@@ -54,7 +59,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         title: "Saved"
       });
     },
-    [authUser, firebase, setSnackbarProps, match]
+    [authUser, firebase, setSnackbarProps, match, navToQuestionViewPage]
   );
 
   /* TODO: Move to custom hook */
@@ -63,7 +68,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
     const unsubscribe = firebase
       .getCollectionById(`courses/${match.params.collection}/questions`, id)
       .onSnapshot(snapshot => {
-        if (snapshot.size) {
+        if (snapshot.size && id > 0) {
           const question = [];
           snapshot.forEach(doc =>
             question.push({ ...doc.data(), uid: doc.id })
@@ -102,7 +107,7 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const breadcrumbsOptions = [
     {
       title: "Back to question",
-      url: `/courses/${match.params.collection}/${match.params.questionId}`
+      url: collectionPath
     }
   ];
 
