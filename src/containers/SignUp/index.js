@@ -44,5 +44,6 @@ const SignUpPage = ({ authUser }) => (
     </MoPage>
   </Container>
 );
+const isUserRole = false;
 
-export default withAuthentication(SignUpPage);
+export default withAuthentication(isUserRole)(SignUpPage);

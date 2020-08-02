@@ -47,4 +47,6 @@ const SignInPage = ({ authUser }) => (
   </Container>
 );
 
-export default withAuthentication(SignInPage);
+const isUserRole = false;
+
+export default withAuthentication(isUserRole)(SignInPage);
