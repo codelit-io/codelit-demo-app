@@ -21,8 +21,6 @@
 import React, { lazy } from "react";
 
 import itemTypes from "./itemTypes";
-import SignUpCard from "./SignUpCard";
-import NewItemCard from "./NewItemCard";
 
 const CardItem = lazy(() => import("./CardItem"));
 const CategoryItem = lazy(() => import("./CategoryItem"));
@@ -43,19 +41,10 @@ const CardList = ({ isAdmin, items, itemOptions }) => {
     const IconComponent = item.isDisabled
       ? itemTypes.disabled
       : itemTypes[item.type];
+
     return (
       <React.Fragment key={id}>
         <CategoryItem index={id} text={item?.category} />
-        <NewItemCard
-          isActive={index < 1 && !!isAdmin}
-          type="new"
-          title={itemOptions?.newItem?.title}
-          url={itemOptions?.newItem?.url}
-        />
-        <SignUpCard
-          isActive={index < 1 && !itemOptions?.authUser}
-          type="signup"
-        />
         <CardItem
           IconComponent={IconComponent}
           index={id}
