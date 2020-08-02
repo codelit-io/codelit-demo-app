@@ -19,7 +19,7 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { withAuthorization } from "components/shared/Session";
+import { withAuthentication } from "components/shared/Session";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import PropTypes from "prop-types";
@@ -76,6 +76,4 @@ CoursesEditPage.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-const condition = authUser => !!authUser;
-
-export default withAuthorization(condition)(CoursesEditPage);
+export default withAuthentication("isAdmin")(CoursesEditPage);

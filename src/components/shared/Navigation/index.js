@@ -90,6 +90,6 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
 
 export default compose(
   withStyles(styles),
-  withAuthentication,
+  withAuthentication(false),
   withRouter
 )(Navigation);

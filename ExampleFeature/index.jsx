@@ -130,4 +130,6 @@ ExampleFeature.propTypes = {
 	match: PropTypes.object.isRequired,
 };
 
-export default withAuthentication(ExampleFeature);
+const isUserRole = false
+
+export default withAuthentication(isUserRole)(ExampleFeature);

@@ -36,6 +36,7 @@ const MoDrawer = classes => {
         onClose={() => toggleDrawer(false)}
         onOpen={() => toggleDrawer(true)}
       >
+        {/* TODO: Deprecated us authUser from withAuthentication */}
         <AuthUserContext.Consumer>
           {authUser =>
             authUser ? (

@@ -14,8 +14,10 @@ const FeatureRequest = () => <Messages />;
 
 const condition = authUser => !!authUser;
 
+const isUserRole = false;
+
 export default compose(
   withEmailVerification,
-  withAuthentication,
-  withAuthorization(condition)
+  withAuthentication(isUserRole)
+  // withAuthorization(condition)
 )(FeatureRequest);

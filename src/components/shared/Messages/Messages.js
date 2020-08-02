@@ -92,7 +92,7 @@ class Messages extends Component {
 
   render() {
     const { text, messages, isLoading } = this.state;
-
+    // TODO: Deprecated us authUser from withAuthentication
     return (
       <AuthUserContext.Consumer>
         {authUser => (

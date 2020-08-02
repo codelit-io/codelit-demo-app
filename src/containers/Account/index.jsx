@@ -9,12 +9,9 @@ import { ACCOUNT } from "constants/i18n";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import {
-  AuthUserContext,
-  withAuthorization,
   withEmailVerification,
   withAuthentication
 } from "components/shared/Session";
-import { withFirebase } from "components/shared/Firebase";
 import PasswordForgetForm from "components/shared/PasswordForgot";
 import PasswordChangeForm from "components/shared/PasswordChange";
 import MoPage from "components/library/MoPage";
@@ -39,28 +36,23 @@ const SIGN_IN_METHODS = [
   }
 ];
 
-const AccountPage = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <Container maxWidth="lg">
-        <Navigation />
-        <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
-          <Typography variant="h6" noWrap>
-            Email: {authUser.email}
-          </Typography>
-          <Typography variant="h6" noWrap>
-            Points: {authUser.points}
-          </Typography>
-          <PasswordForgetForm />
-          <PasswordChangeForm />
-          <LoginManagement authUser={authUser} />
-        </MoPage>
-      </Container>
-    )}
-  </AuthUserContext.Consumer>
-);
+const AccountPage = ({ authUser, firebase }) => {
+  return (
+    <Container maxWidth="lg">
+      <Navigation />
+      <MoPage title={ACCOUNT.PAGE_TITLE} isLoading={false}>
+        <Typography variant="h6" noWrap>
+          Email: {authUser?.email}
+        </Typography>
+        <PasswordForgetForm />
+        <PasswordChangeForm />
+        <LoginManagement authUser={authUser} firebase={firebase} />
+      </MoPage>
+    </Container>
+  );
+};
 
-class LoginManagementBase extends Component {
+class LoginManagement extends Component {
   constructor(props) {
     super(props);
 
@@ -71,7 +63,7 @@ class LoginManagementBase extends Component {
   }
 
   componentDidMount() {
-    this.fetchSignInMethods();
+    this.props.authUser && this.fetchSignInMethods();
   }
 
   fetchSignInMethods = () => {
@@ -232,12 +224,7 @@ class DefaultLoginToggle extends Component {
   }
 }
 
-const LoginManagement = withFirebase(LoginManagementBase);
-
-const condition = authUser => !!authUser;
-
 export default compose(
   withEmailVerification,
-  withAuthentication,
-  withAuthorization(condition)
+  withAuthentication(false)
 )(AccountPage);

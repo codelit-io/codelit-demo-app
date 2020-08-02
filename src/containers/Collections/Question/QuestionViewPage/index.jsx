@@ -86,4 +86,6 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-export default withAuthentication(QuestionViewPage);
+const isUserRole = false;
+
+export default withAuthentication(isUserRole)(QuestionViewPage);

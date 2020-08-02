@@ -93,4 +93,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
     </Container>
   );
 };
-export default withAuthentication(Questions);
+
+const isUserRole = false;
+
+export default withAuthentication(isUserRole)(Questions);

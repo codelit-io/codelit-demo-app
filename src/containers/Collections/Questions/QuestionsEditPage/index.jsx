@@ -2,6 +2,7 @@ import React from "react";
 
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
+import { withAuthentication } from "components/shared/Session";
 
 const QuestionsEditPage = () => {
   return (
@@ -12,4 +13,4 @@ const QuestionsEditPage = () => {
   );
 };
 
-export default QuestionsEditPage;
+export default withAuthentication("isAdmin")(QuestionsEditPage);

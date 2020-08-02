@@ -18,8 +18,6 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import * as ROLES from "constants/roles";
-
 import { compose } from "recompose";
 import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/collectionFirebase";
@@ -28,7 +26,6 @@ import MoSnackbar from "components/library/MoSnackBar";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 import Navigation from "components/shared/Navigation";
 import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
-import withAuthorization from "components/shared/Session/withAuthorization";
 
 const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -136,9 +133,4 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-
-export default compose(
-  withAuthentication,
-  withAuthorization(condition)
-)(QuestionEditPage);
+export default compose(withAuthentication("isAdmin"))(QuestionEditPage);

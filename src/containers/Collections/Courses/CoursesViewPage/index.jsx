@@ -72,4 +72,6 @@ CoursesViewPage.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication(CoursesViewPage);
+const isUserRole = false;
+
+export default withAuthentication(isUserRole)(CoursesViewPage);
