@@ -121,6 +121,17 @@ exports[`App Component should match the snapshot 1`] = `
             "_status": -1,
           }
         }
+        path="/:companyName"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_ctor": [Function],
+            "_result": null,
+            "_status": -1,
+          }
+        }
       />
     </Switch>
   </React.Suspense>

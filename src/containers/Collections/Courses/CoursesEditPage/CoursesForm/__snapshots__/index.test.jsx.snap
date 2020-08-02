@@ -2,13 +2,152 @@
 
 exports[`CoursesForm Component should match the snapshot 1`] = `
 <ForwardRef(WithStyles)>
-  <ForwardRef(WithStyles)
-    alignItems="center"
-    container={true}
-    spacing={4}
+  <form
+    autoComplete="off"
+    onSubmit={[Function]}
   >
-    <UNDEFINED />
-  </ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)
+      alignItems="center"
+      container={true}
+      spacing={4}
+    >
+      <ForwardRef(WithStyles)
+        item={true}
+        md={12}
+      >
+        <ForwardRef(WithStyles)
+          autoFocus={true}
+          fullWidth={true}
+          inputRef={[Function]}
+          label="Title"
+          margin="dense"
+          name="title"
+          placeholder="Master React Course"
+        />
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        item={true}
+        md={12}
+      >
+        <ForwardRef(WithStyles)
+          fullWidth={true}
+          inputRef={[Function]}
+          label="Subtitle"
+          margin="dense"
+          name="subtitle"
+          placeholder="Learn React best practices"
+        />
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        item={true}
+        md={6}
+      >
+        <ForwardRef(WithStyles)
+          component="fieldset"
+        >
+          <ForwardRef(WithStyles)
+            component="legend"
+          >
+            Difficulty
+          </ForwardRef(WithStyles)>
+          <ForwardRef(RadioGroup)
+            aria-label="difficulty"
+            name="difficulty"
+          >
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="Easy"
+              value="easy"
+            />
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="Medium"
+              value="medium"
+            />
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="Hard"
+              value="hard"
+            />
+          </ForwardRef(RadioGroup)>
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        item={true}
+        md={6}
+      >
+        <ForwardRef(WithStyles)
+          component="fieldset"
+        >
+          <ForwardRef(WithStyles)
+            component="legend"
+          >
+            Type
+          </ForwardRef(WithStyles)>
+          <ForwardRef(RadioGroup)
+            aria-label="type"
+            name="type"
+          >
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="Html"
+              value="html"
+            />
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="JavaScript"
+              value="js"
+            />
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="React"
+              value="reactJsx"
+            />
+            <ForwardRef(WithStyles)
+              control={<ForwardRef(WithStyles) />}
+              inputRef={[Function]}
+              label="CSS in JS"
+              value="reactStyle"
+            />
+          </ForwardRef(RadioGroup)>
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        item={true}
+        md={12}
+      >
+        <ForwardRef(WithStyles)
+          control={
+            <ForwardRef(WithStyles)
+              color="primary"
+            />
+          }
+          defaultValue={false}
+          inputRef={[Function]}
+          label="Disable a course"
+          name="isDisabled"
+        />
+        <ForwardRef(WithStyles)>
+          Disabling a course disables the course from being accessed
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+    <ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        color="primary"
+        type="submit"
+        variant="contained"
+      >
+        Create Course
+      </ForwardRef(WithStyles)>
+    </ForwardRef(WithStyles)>
+  </form>
   <ForwardRef(WithStyles) />
 </ForwardRef(WithStyles)>
 `;
