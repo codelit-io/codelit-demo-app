@@ -31,6 +31,7 @@ exports[`CoursesEditPage Component should match the snapshot 1`] = `
         "location": Object {
           "hash": "#",
         },
+        "push": [Function],
       }
     }
     itemUrl={[Function]}

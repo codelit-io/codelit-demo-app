@@ -1,13 +1,18 @@
 import React from "react";
 
+import * as ROUTES from "constants/routes";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
-// import useGlobal from "store";
+import useGlobal from "store";
 
-const QuestionsEditPage = () => {
+const QuestionsEditPage = ({ history }) => {
   // Global state
-  // const [state] = useGlobal();
-  // const { authUser, firebase } = state;
+  const [{ authUser, firebase, userRole }] = useGlobal();
+
+  if (!userRole?.isAdmin && authUser && firebase) {
+    // TODO: Navigate to not authorized page
+    history.push(ROUTES.SIGN_IN.path);
+  }
 
   return (
     <Container maxWidth="lg">

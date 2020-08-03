@@ -49,14 +49,17 @@ export const createQuestion = async (authUser, event, firebase, match) => {
   // increment a field in the stats doc
   const increment = firebase.fieldValue.increment(1);
 
-  const payload = {
-    itemsLength: increment
-  };
-
   const collectionPath = getQuestionsPath(match);
 
   // Update stats doc and increment itemsLength
-  await updateStats(payload, firebase, collectionPath);
+  await updateStats({ itemsLength: increment }, firebase, collectionPath);
+
+  /* TODO: Remove update course and only use --stats-- table/doc */
+  await updateCourse(
+    authUser,
+    { itemsLength: increment, doc: match.params.collection },
+    firebase
+  );
   return newId;
 };
 
@@ -69,12 +72,9 @@ export const removeQuestion = async (id, firebase, match) => {
   // decrement a field in the stats doc
   const decrement = firebase.fieldValue.increment(-1);
 
-  const payload = {
-    itemsLength: decrement
-  };
   const collectionPath = getQuestionsPath(match);
   // Update stats doc and decrement itemsLength
-  await updateStats(payload, firebase, collectionPath);
+  await updateStats({ itemsLength: decrement }, firebase, collectionPath);
 };
 
 /* Edit and update Question
