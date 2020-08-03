@@ -27,8 +27,8 @@ import QuestionForm from "containers/Collections/Question/QuestionEditPage/Quest
 import useGlobal from "store";
 
 const QuestionEditPage = ({ history, match }) => {
-  const [state] = useGlobal();
-  const { authUser, firebase } = state;
+  const [{ authUser, firebase }] = useGlobal();
+  // const { authUser, firebase } = state;
 
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState(null);

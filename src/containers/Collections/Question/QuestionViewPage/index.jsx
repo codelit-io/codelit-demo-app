@@ -29,8 +29,10 @@ import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 import useGlobal from "store";
 
 const QuestionViewPage = ({ history, match }) => {
-  const [state] = useGlobal();
-  const { authUser, firebase, userRole } = state;
+  const [{ authUser, firebase, userRole }] = useGlobal();
+
+  // const { authUser, firebase, userRole } = state;
+
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,

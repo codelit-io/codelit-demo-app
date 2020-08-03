@@ -41,7 +41,7 @@ const CoursesPage = ({
           unmountOnExit
         >
           <Grid container spacing={4} alignItems="center">
-            {!!isAdmin && !courses.isLoading && (
+            {!!isAdmin && !courses?.isLoading && (
               <Grid item xs={12} sm={12} md={4} lg={4}>
                 <NewItemCard
                   type="new"
@@ -51,7 +51,7 @@ const CoursesPage = ({
               </Grid>
             )}
 
-            {!itemOptions?.authUser && !courses.isLoading && (
+            {!itemOptions?.authUser && !courses?.isLoading && (
               <Grid item xs={12} sm={12} md={4} lg={4}>
                 <SignUpCard type="signup" />
               </Grid>

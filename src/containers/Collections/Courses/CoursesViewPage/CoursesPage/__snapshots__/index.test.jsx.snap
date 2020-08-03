@@ -6,44 +6,21 @@ exports[`CoursesPage Component should match the snapshot 1`] = `
 >
   <ForwardRef(WithStyles) />
   <ForwardRef(WithStyles)>
-    <ForwardRef(WithStyles)
-      alignItems="center"
-      container={true}
-      spacing={4}
+    <ForwardRef(Grow)
+      in={true}
+      mountOnEnter={true}
+      timeout={
+        Object {
+          "enter": 400,
+          "exit": 400,
+        }
+      }
+      unmountOnExit={true}
     >
-      <ForwardRef(Fade)
-        in={false}
-        mountOnEnter={true}
-        timeout={
-          Object {
-            "enter": 200,
-            "exit": 200,
-          }
-        }
-        unmountOnExit={true}
-      >
-        <ForwardRef(WithStyles)
-          item={true}
-          lg={4}
-          md={4}
-          sm={12}
-          xs={12}
-        >
-          <NewItemCard
-            type="new"
-          />
-        </ForwardRef(WithStyles)>
-      </ForwardRef(Fade)>
-      <ForwardRef(Fade)
-        in={true}
-        mountOnEnter={true}
-        timeout={
-          Object {
-            "enter": 200,
-            "exit": 200,
-          }
-        }
-        unmountOnExit={true}
+      <ForwardRef(WithStyles)
+        alignItems="center"
+        container={true}
+        spacing={4}
       >
         <ForwardRef(WithStyles)
           item={true}
@@ -56,9 +33,9 @@ exports[`CoursesPage Component should match the snapshot 1`] = `
             type="signup"
           />
         </ForwardRef(WithStyles)>
-      </ForwardRef(Fade)>
-      <UNDEFINED />
-    </ForwardRef(WithStyles)>
+        <UNDEFINED />
+      </ForwardRef(WithStyles)>
+    </ForwardRef(Grow)>
     <ForwardRef(WithStyles) />
   </ForwardRef(WithStyles)>
 </ForwardRef(WithStyles)>

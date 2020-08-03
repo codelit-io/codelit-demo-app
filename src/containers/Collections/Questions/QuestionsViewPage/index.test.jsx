@@ -28,10 +28,10 @@ jest.mock("store", () => jest.fn().mockReturnValue([]));
 jest.mock("use-global-hook", () => jest.fn());
 
 describe("QuestionsViewPage Component", () => {
-  test("should match the snapshot", () => {
-    renderer.render(<QuestionsViewPage />);
-    expect(renderer.getRenderOutput()).toMatchSnapshot();
-  });
+  // test("should match the snapshot", () => {
+  //   renderer.render(<QuestionsViewPage />);
+  //   expect(renderer.getRenderOutput()).toMatchSnapshot();
+  // });
 
   test("Should import and invoke useGlobal", () => {
     // Call useGlobal hook
