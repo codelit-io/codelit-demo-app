@@ -26,9 +26,8 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
           ["type", "==", locationHash.substring(1)]
         : // otherwise use a condition where an id must be greater than 0 for a question
           ["id", ">", 0];
-
       const unsubscribe = firebase
-        .collection(collectionPath)
+        ?.collection(collectionPath)
         .where(...whereOptions)
         .orderBy("id")
         .onSnapshot(

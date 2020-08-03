@@ -19,11 +19,10 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { withAuthentication } from "components/shared/Session";
 import PropTypes from "prop-types";
 import useCollections from "hooks/useCollections";
-import useUserRole from "hooks/useUserRole";
 import CardProgress from "components/shared/CardList/CardItem/CardProgress";
+import useGlobal from "store";
 
 const CoursesPage = lazy(() => import("./CoursesPage"));
 const collection = {
@@ -32,7 +31,11 @@ const collection = {
   isProgressBar: false
 };
 
-const CoursesViewPage = ({ authUser, firebase, history, match }) => {
+const CoursesViewPage = props => {
+  const [state] = useGlobal();
+  const { history, match } = props;
+  const { authUser, userRole, firebase } = state;
+  console.log(props);
   const itemOptions = {
     authUser,
     ActionComponent: CardProgress,
@@ -50,7 +53,7 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
     locationHash: history.location.hash,
     title: collection.title
   };
-  const userRole = useUserRole(authUser);
+
   const courses = useCollections(collectionDetails, firebase);
 
   if (!courses || !courses?.data?.length) {
@@ -65,14 +68,14 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
       isLoading={courses.data && false}
       firebase={firebase}
       itemOptions={itemOptions}
-      isAdmin={userRole.isAdmin}
+      isAdmin={userRole?.isAdmin}
     />
   );
 };
 
 CoursesViewPage.propTypes = {
-  firebase: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withAuthentication(false)(CoursesViewPage);
+export default CoursesViewPage;

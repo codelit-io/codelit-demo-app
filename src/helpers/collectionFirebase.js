@@ -91,6 +91,8 @@ export const updateQuestion = async (event, firebase, match) => {
     editedAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
   });
+
+  return Number(match.params.questionId);
 };
 
 /* Update stats for questions

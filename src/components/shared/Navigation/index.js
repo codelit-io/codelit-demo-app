@@ -15,7 +15,6 @@ import * as ROUTES from "constants/routes";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import useUserRole from "hooks/useUserRole";
 import ThemeSwitch from "./ThemeSwitch";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -30,18 +29,10 @@ const AppBar = lazy(() => import("@material-ui/core/AppBar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
 
 const Navigation = ({ Breadcrumbs, classes }) => {
-  const [authUser, addToAuthUser] = useGlobal(
-    state => state.authUser,
-    actions => actions.addToAuthUser
-  );
+  const [state, actions] = useGlobal();
+  const { authUser, firebase, userRole } = state;
 
-  const [firebase, addToFirebase] = useGlobal(
-    state => state.firebaseCache,
-    actions => actions.addToFirebase
-  );
-
-  const userRole = useUserRole(authUser);
-
+  /* TODO: mode to Global State */
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -84,9 +75,8 @@ const Navigation = ({ Breadcrumbs, classes }) => {
                 <ThemeSwitch />
                 <MoAvatar
                   authUser={authUser}
-                  addToAuthUser={() => addToAuthUser}
-                  addToFirebase={() => addToFirebase}
-                  isAdmin={userRole.isAdmin}
+                  actions={actions}
+                  isAdmin={userRole?.isAdmin}
                   firebase={firebase}
                 />
               </>

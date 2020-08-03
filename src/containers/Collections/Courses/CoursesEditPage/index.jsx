@@ -19,11 +19,11 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { withAuthentication } from "components/shared/Session";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import PropTypes from "prop-types";
 import useUserRole from "hooks/useUserRole";
+import useGlobal from "store";
 
 const CoursesForm = lazy(() => import("./CoursesForm"));
 const collection = {
@@ -35,7 +35,10 @@ const collection = {
 // Configure url route for each item
 const itemUrl = doc => `/courses/${doc}`;
 
-const CoursesEditPage = ({ authUser, firebase, history, match }) => {
+const CoursesEditPage = ({ history, match }) => {
+  const [state] = useGlobal();
+  const { authUser, firebase } = state;
+
   const collectionDetails = {
     collectionPath: collection.path,
     data: [],
@@ -76,4 +79,4 @@ CoursesEditPage.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication("isAdmin")(CoursesEditPage);
+export default CoursesEditPage;

@@ -47,7 +47,6 @@ const QuestionEditPage = ({ history, match }) => {
   const onSubmit = useCallback(
     async event => {
       // createdAt is only available on existing db items and safe to update
-      debugger;
       const id = (await event.createdAt)
         ? updateQuestion(event, firebase, match)
         : createQuestion(authUser, event, firebase, match);

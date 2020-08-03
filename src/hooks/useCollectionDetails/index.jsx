@@ -37,7 +37,7 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
       /* Make a firebase query to get details about 
             the collection or questions Such as name and description */
       const getCollectionDetails = await firebase
-        .collection(collectionPath)
+        ?.collection(collectionPath)
         .where("doc", "==", doc)
         .onSnapshot(
           snapshot => {
