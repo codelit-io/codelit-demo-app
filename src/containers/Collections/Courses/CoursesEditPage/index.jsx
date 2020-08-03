@@ -18,11 +18,11 @@
 
 import React, { lazy } from "react";
 
+import * as ROUTES from "constants/routes";
 import { COURSES } from "constants/i18n";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import PropTypes from "prop-types";
-import useUserRole from "hooks/useUserRole";
 import useGlobal from "store";
 
 const CoursesForm = lazy(() => import("./CoursesForm"));
@@ -36,8 +36,7 @@ const collection = {
 const itemUrl = doc => `/courses/${doc}`;
 
 const CoursesEditPage = ({ history, match }) => {
-  const [state] = useGlobal();
-  const { authUser, firebase } = state;
+  const [{ authUser, firebase, userRole }] = useGlobal();
 
   const collectionDetails = {
     collectionPath: collection.path,
@@ -46,7 +45,6 @@ const CoursesEditPage = ({ history, match }) => {
     locationHash: history.location.hash,
     title: collection.title
   };
-  const userRole = useUserRole(authUser);
 
   // Initial dummy data
   const courses = { isLoading: false, data: [{ id: 1, question: "" }] };
@@ -54,6 +52,11 @@ const CoursesEditPage = ({ history, match }) => {
 
   if (!courses || !courses?.data?.length) {
     return null;
+  }
+
+  if (!userRole?.isAdmin) {
+    // TODO: Navigate to not authorized page
+    history.push(ROUTES.SIGN_IN.path);
   }
 
   return (
@@ -64,7 +67,7 @@ const CoursesEditPage = ({ history, match }) => {
         collectionDetails={collectionDetails}
         courses={courses}
         history={history}
-        isAdmin={userRole.isAdmin}
+        isAdmin={userRole?.isAdmin}
         firebase={firebase}
         match={match}
         itemUrl={doc => itemUrl(doc)}

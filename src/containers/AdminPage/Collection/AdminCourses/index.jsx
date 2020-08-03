@@ -32,7 +32,7 @@ const AdminCourses = ({ authUser, firebase, match }) => {
   return (
     <Grid container spacing={4} alignItems="center">
       <CardList
-        isAdmin={userRole.isAdmin}
+        isAdmin={userRole?.isAdmin}
         items={courses.data}
         itemOptions={itemOptions}
       />

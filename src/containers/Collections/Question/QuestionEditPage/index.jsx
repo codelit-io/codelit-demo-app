@@ -18,6 +18,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
+import * as ROUTES from "constants/routes";
 import { createQuestion, updateQuestion } from "helpers/collectionFirebase";
 import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
@@ -27,7 +28,7 @@ import QuestionForm from "containers/Collections/Question/QuestionEditPage/Quest
 import useGlobal from "store";
 
 const QuestionEditPage = ({ history, match }) => {
-  const [{ authUser, firebase }] = useGlobal();
+  const [{ authUser, firebase, userRole }] = useGlobal();
 
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState(null);
@@ -100,6 +101,11 @@ const QuestionEditPage = ({ history, match }) => {
       setSnackbarProps(null);
     };
   }, [firebase, match]);
+
+  if (!userRole?.isAdmin) {
+    // TODO: Navigate to not authorized page
+    history.push(ROUTES.SIGN_IN.path);
+  }
 
   if (!match.params) {
     return;
