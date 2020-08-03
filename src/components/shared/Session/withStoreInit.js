@@ -3,17 +3,15 @@ import React, { useEffect } from "react";
 // import * as ROUTES from "constants/routes";
 // import { useHistory } from "react-router-dom";
 import { withFirebase } from "../Firebase";
-import getUserRole from "helpers/getUserRole";
 import useGlobal from "store";
+import getUserRole from "helpers/getUserRole";
 
 const withStoreInit = Component => {
   const WithStoreInit = ({ firebase }) => {
     const [state, actions] = useGlobal();
-
     if (process.env.NODE_ENV === "development") {
       console.log({ state });
     }
-
     /* TODO: Add caching */
     useEffect(() => {
       (async () => {
@@ -29,7 +27,7 @@ const withStoreInit = Component => {
           },
           () => {
             actions.addToState({
-              firebase: null,
+              firebase: firebase,
               authUser: null,
               userRole: null
             });
@@ -39,7 +37,7 @@ const withStoreInit = Component => {
       })();
     }, [actions, firebase]);
 
-    return <Component />;
+    return firebase ? <Component /> : null;
   };
   return withFirebase(React.memo(WithStoreInit));
 };
