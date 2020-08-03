@@ -31,7 +31,6 @@ import styles from "./styles";
 import MoTypography from "components/library/MoTypography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useTheme from "@material-ui/core/styles/useTheme";
-import { withAuthentication } from "components/shared/Session";
 
 const Navigation = lazy(() => import("components/shared/Navigation"));
 
@@ -199,7 +198,4 @@ const LandingPage = ({ authUser, classes, firebase }) => {
   );
 };
 
-export default compose(
-  withStyles(styles),
-  withAuthentication(false)
-)(LandingPage);
+export default compose(withStyles(styles))(LandingPage);

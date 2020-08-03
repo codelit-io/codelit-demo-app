@@ -19,6 +19,7 @@ import useUserRole from "hooks/useUserRole";
 import ThemeSwitch from "./ThemeSwitch";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useGlobal from "store";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
@@ -28,7 +29,17 @@ const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
 const AppBar = lazy(() => import("@material-ui/core/AppBar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
 
-const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
+const Navigation = ({ Breadcrumbs, classes }) => {
+  const [authUser, addToAuthUser] = useGlobal(
+    state => state.authUser,
+    actions => actions.addToAuthUser
+  );
+
+  const [firebase, addToFirebase] = useGlobal(
+    state => state.firebaseCache,
+    actions => actions.addToFirebase
+  );
+
   const userRole = useUserRole(authUser);
 
   const theme = useTheme();
@@ -73,6 +84,8 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
                 <ThemeSwitch />
                 <MoAvatar
                   authUser={authUser}
+                  addToAuthUser={() => addToAuthUser}
+                  addToFirebase={() => addToFirebase}
                   isAdmin={userRole.isAdmin}
                   firebase={firebase}
                 />

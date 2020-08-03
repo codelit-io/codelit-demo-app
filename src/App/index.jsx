@@ -19,6 +19,7 @@ import React, { Suspense, lazy } from "react";
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
+import withStoreInit from "components/shared/Session/withStoreInit";
 
 const Account = lazy(() => import("containers/Account"));
 const AdminPage = lazy(() => import("containers/AdminPage"));
@@ -55,4 +56,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withStoreInit(App);

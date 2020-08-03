@@ -1,6 +1,6 @@
 import * as ROLES from "constants/roles";
 
-const userRole = authUser => {
+const getUserRole = authUser => {
   if (!authUser) {
     return { isLoggedIn: false };
   }
@@ -12,4 +12,4 @@ const userRole = authUser => {
   };
 };
 
-export default userRole;
+export default getUserRole;

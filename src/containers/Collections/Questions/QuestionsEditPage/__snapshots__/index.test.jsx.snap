@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QuestionsEditPage Component should match the snapshot 1`] = `
-<ForwardRef(WithStyles)
-  maxWidth="lg"
->
-  <ForwardRef(WithStyles) />
-  <h1>
-    Todo: This page should look like QuestionEditPage component
-  </h1>
-</ForwardRef(WithStyles)>
+<Context.Consumer>
+  [Function]
+</Context.Consumer>
 `;

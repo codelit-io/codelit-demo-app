@@ -35,7 +35,6 @@ exports[`QuestionPage Component should match the snapshot 1`] = `
       Object {
         "buttonArea": "makeStyles-buttonArea-5",
         "fixedIcon": "makeStyles-fixedIcon-4",
-        "footer": "makeStyles-footer-7",
         "grey": "makeStyles-grey-2",
         "lightGrey": "makeStyles-lightGrey-3",
         "section": "makeStyles-section-6",

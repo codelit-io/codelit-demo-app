@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import * as ROUTES from "constants/routes";
-import { useHistory } from "react-router-dom";
+// import * as ROUTES from "constants/routes";
+// import { useHistory } from "react-router-dom";
 import { withFirebase } from "../Firebase";
 // import useUserRole from "hooks/useUserRole";
-import userRole from "helpers/userRole";
+import userRole from "helpers/getUserRole";
 
 const withAuthentication = isUserRole => Component => {
   const WithAuthentication = props => {
     const [authUser, setAuthUser] = useState(null);
     const { firebase } = props;
-    const history = useHistory();
+    // const history = useHistory();
     // const userRole = useUserRole(authUser);
 
     /* TODO: Add caching */
@@ -33,16 +33,12 @@ const withAuthentication = isUserRole => Component => {
     if (isUserRole) {
       if (!userRole(authUser)[isUserRole]) {
         // TODO: Navigate to not authorized page
-        history.push(ROUTES.SIGN_IN.path);
+        // history.push(ROUTES.SIGN_IN.path);
         return () => null;
       }
     }
 
-    return authUser ? (
-      <Component {...props} authUser={authUser} />
-    ) : (
-      <Component {...props} />
-    );
+    return <Component {...props} authUser={authUser} />;
   };
   return withFirebase(React.memo(WithAuthentication));
 };
