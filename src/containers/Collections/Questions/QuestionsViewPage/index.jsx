@@ -18,16 +18,17 @@
 import React, { lazy, useEffect, useState, useCallback } from "react";
 
 import Container from "@material-ui/core/Container";
-import { withAuthentication } from "components/shared/Session";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import useUserRole from "hooks/useUserRole";
 import Navigation from "components/shared/Navigation";
+import useGlobal from "store";
 
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
-const Questions = ({ authUser, history, firebase, match }) => {
-  const userRole = useUserRole(authUser);
+const Questions = ({ history, match }) => {
+  const [state] = useGlobal();
+  const { authUser, firebase, userRole } = state;
+
   const [points, setPoints] = useState(0);
 
   const doc = match.params.collection;
@@ -85,7 +86,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
         courseDetails={courseDetails}
         hasData={questions.data.length && true}
         handleOnClick={e => handleOnClick(e)}
-        isAdmin={userRole.isAdmin}
+        isAdmin={userRole?.isAdmin}
         isLoading={questions.data && false}
         itemOptions={itemOptions}
         points={points}
@@ -94,4 +95,4 @@ const Questions = ({ authUser, history, firebase, match }) => {
   );
 };
 
-export default withAuthentication(false)(Questions);
+export default Questions;

@@ -2,9 +2,13 @@ import React from "react";
 
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
-import { withAuthentication } from "components/shared/Session";
+// import useGlobal from "store";
 
 const QuestionsEditPage = () => {
+  // Global state
+  // const [state] = useGlobal();
+  // const { authUser, firebase } = state;
+
   return (
     <Container maxWidth="lg">
       <Navigation />
@@ -13,4 +17,4 @@ const QuestionsEditPage = () => {
   );
 };
 
-export default withAuthentication("isAdmin")(QuestionsEditPage);
+export default QuestionsEditPage;

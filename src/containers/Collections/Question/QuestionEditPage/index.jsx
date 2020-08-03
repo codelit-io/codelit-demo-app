@@ -18,16 +18,18 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import { compose } from "recompose";
-import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/collectionFirebase";
 import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 import Navigation from "components/shared/Navigation";
 import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
+import useGlobal from "store";
 
-const QuestionEditPage = ({ authUser, firebase, history, match }) => {
+const QuestionEditPage = ({ history, match }) => {
+  const [state] = useGlobal();
+  const { authUser, firebase } = state;
+
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState(null);
   const [snackbarProps, setSnackbarProps] = useState(null);
@@ -44,8 +46,9 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
 
   const onSubmit = useCallback(
     async event => {
-      // editedAt is only available on existing db items nad safe to update
-      const id = (await event.editedAt)
+      // createdAt is only available on existing db items and safe to update
+      debugger;
+      const id = (await event.createdAt)
         ? updateQuestion(event, firebase, match)
         : createQuestion(authUser, event, firebase, match);
       navToQuestionViewPage(`/courses/${match.params.collection}/${await id}`);
@@ -62,6 +65,9 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   /* TODO: Move to custom hook */
   useEffect(() => {
     const id = match.params.questionId;
+    if (!firebase) {
+      return;
+    }
     const unsubscribe = firebase
       .getCollectionById(`courses/${match.params.collection}/questions`, id)
       .onSnapshot(snapshot => {
@@ -135,4 +141,4 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-export default compose(withAuthentication("isAdmin"))(QuestionEditPage);
+export default QuestionEditPage;
