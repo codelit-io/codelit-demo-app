@@ -36,7 +36,7 @@ const useAuthentication = firebase => {
         setState({ authUser, isLoading: false });
       },
       error => {
-        localStorage.removeItem("authUser");
+        localStorage.setItem("authUser", null);
         setState({ authUser: null, isLoading: false, isError: error });
       }
     );

@@ -2,28 +2,17 @@ import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
+import config from "./config";
 
-/*  Api keys and configs  */
-
-const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
-};
 class Firebase {
   constructor() {
     app.initializeApp(config);
-
     this.auth = app.auth();
     // Db is not in use but available if needed
     // this.db = app.database();
     this.firestore = app.firestore();
 
-    /* Helper */
-
+    // Helper
     this.serverValue = app.database.ServerValue;
     this.fieldValue = app.firestore.FieldValue;
 
@@ -33,7 +22,7 @@ class Firebase {
     this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
-  /* Auth API */
+  // Auth API
   createUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -46,7 +35,7 @@ class Firebase {
 
   signOut = () => {
     this.auth.signOut();
-    localStorage.removeItem("authUser");
+    localStorage.setItem("authUser", null);
   };
 
   passwordReset = email => this.auth.sendPasswordResetEmail(email);
@@ -58,8 +47,7 @@ class Firebase {
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
 
-  /* User API */
-
+  // User API
   user = uid => this.firestore.doc(`users/${uid}`);
 
   currentUser = user => {
@@ -72,16 +60,10 @@ class Firebase {
 
   users = () => this.firestore.collection("users");
 
-  /* Questions API */
-
-  question = id => this.firestore.collection("questions").doc(id);
-
-  questions = () => this.firestore.collection("questions");
-
-  /* Get Any collection or Doc  */
-
+  // Get a Collection
   collection = collectionPath => this.firestore.collection(collectionPath);
 
+  // Get a Doc from a collection
   doc = (collectionPath, id) =>
     this.firestore.collection(collectionPath).doc(id);
 
@@ -98,13 +80,11 @@ class Firebase {
       .set({ ...question, uid: uid });
   };
 
-  /* Helper  */
-
+  // Helper
   createId = collectionPath =>
     this.firestore.collection(collectionPath).doc().id;
 
   // *** Merge Auth and DB User API *** //
-
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(
       authUser => {

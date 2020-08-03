@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CoursesViewPage Component should match the snapshot 1`] = `
-<Context.Consumer>
-  [Function]
-</Context.Consumer>
-`;
+exports[`CoursesViewPage Component should match the snapshot 1`] = `null`;

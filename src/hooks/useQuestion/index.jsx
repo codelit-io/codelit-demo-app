@@ -21,9 +21,14 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
     (async () => {
       setIsLoading(true);
       const unsubscribe = await firebase
-        .getCollectionById(questionPath, questionId)
+        ?.getCollectionById(questionPath, questionId)
         .onSnapshot(
           snapshot => {
+            // 0 is default id for stats doc
+            if (questionId === 0) {
+              return;
+            }
+
             if (snapshot.size) {
               const question = [];
               snapshot.forEach(doc =>

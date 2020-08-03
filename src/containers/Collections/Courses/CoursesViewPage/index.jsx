@@ -19,10 +19,10 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { withAuthentication } from "components/shared/Session";
 import PropTypes from "prop-types";
 import useCollections from "hooks/useCollections";
-import useUserRole from "hooks/useUserRole";
+import CardProgress from "components/shared/CardList/CardItem/CardProgress";
+import useGlobal from "store";
 
 const CoursesPage = lazy(() => import("./CoursesPage"));
 const collection = {
@@ -31,10 +31,21 @@ const collection = {
   isProgressBar: false
 };
 
-// Configure url route for each item
-const itemUrl = doc => `/courses/${doc}`;
+const CoursesViewPage = props => {
+  const [state] = useGlobal();
+  const { history, match } = props;
+  const { authUser, userRole, firebase } = state;
+  console.log(props);
+  const itemOptions = {
+    authUser,
+    ActionComponent: CardProgress,
+    itemUrl: doc => `/courses/${doc}`,
+    isItemDisabled: () => {},
+    firebase,
+    newItem: { title: "Add a course", url: "courses/isEditMode" },
+    match
+  };
 
-const CoursesViewPage = ({ authUser, firebase, history, match }) => {
   const collectionDetails = {
     collectionPath: collection.path,
     data: [],
@@ -42,11 +53,8 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
     locationHash: history.location.hash,
     title: collection.title
   };
-  const userRole = useUserRole(authUser);
 
   const courses = useCollections(collectionDetails, firebase);
-
-  const newItem = { title: "Add a course", url: "courses/isEditMode" };
 
   if (!courses || !courses?.data?.length) {
     return null;
@@ -57,18 +65,17 @@ const CoursesViewPage = ({ authUser, firebase, history, match }) => {
       authUser={authUser}
       collectionDetails={collectionDetails}
       courses={courses.data}
-      isAdmin={userRole.isAdmin}
+      isLoading={courses.data && false}
       firebase={firebase}
-      itemUrl={doc => itemUrl(doc)}
-      match={match}
-      newItem={newItem}
+      itemOptions={itemOptions}
+      isAdmin={userRole?.isAdmin}
     />
   );
 };
 
 CoursesViewPage.propTypes = {
-  firebase: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withAuthentication(CoursesViewPage);
+export default CoursesViewPage;

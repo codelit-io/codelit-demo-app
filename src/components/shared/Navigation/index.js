@@ -5,7 +5,6 @@
  *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {Class} firebase - Firebase class provides access to authUser and db
- * @param {Class} history - Firebase class provides access to authUser and db
  * @return {<form></form>}
  */
 
@@ -13,15 +12,13 @@
 import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
-import { compose } from "recompose";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { withAuthentication } from "../Session";
-import useUserRole from "hooks/useUserRole";
 import ThemeSwitch from "./ThemeSwitch";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useGlobal from "store";
 
 const AppsIcon = lazy(() => import("@material-ui/icons/Apps"));
 const Button = lazy(() => import("@material-ui/core/Button"));
@@ -31,9 +28,11 @@ const Toolbar = lazy(() => import("@material-ui/core/Toolbar"));
 const AppBar = lazy(() => import("@material-ui/core/AppBar"));
 const MoSkoolLogo = lazy(() => import("components/library/MoSkoolLogo"));
 
-const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
-  const userRole = useUserRole(authUser);
+const Navigation = ({ Breadcrumbs, classes }) => {
+  const [state, actions] = useGlobal();
+  const { authUser, firebase, userRole } = state;
 
+  /* TODO: mode to Global State */
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -76,7 +75,8 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
                 <ThemeSwitch />
                 <MoAvatar
                   authUser={authUser}
-                  isAdmin={userRole.isAdmin}
+                  actions={actions}
+                  isAdmin={userRole?.isAdmin}
                   firebase={firebase}
                 />
               </>
@@ -88,8 +88,4 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
   );
 };
 
-export default compose(
-  withStyles(styles),
-  withAuthentication,
-  withRouter
-)(Navigation);
+export default withStyles(styles)(Navigation);

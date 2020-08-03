@@ -13,7 +13,6 @@
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @withAuthorization - HOC wraps around components and prevents render based on a condition - firebase and match props - EXAMPLE USAGE: withAuthorization(condition)(Component)
  * @withAuthentication - HOC if user is authenticated, hoc will provide firebase and match props - EXAMPLE USAGE: withAuthentication(Component)
  * @withEmailVerification - HOC provides email verification stuff
  * @withStyle - HOC provides classes object to component for styling
@@ -130,4 +129,6 @@ ExampleFeature.propTypes = {
 	match: PropTypes.object.isRequired,
 };
 
-export default withAuthentication(ExampleFeature);
+const isUserRole = false
+
+export default withAuthentication(isUserRole)(ExampleFeature);

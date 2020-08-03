@@ -8,5 +8,6 @@ export const initialState = {
   courses: [],
   themeOptions: {
     isDarkMode
-  }
+  },
+  firebase: null
 };

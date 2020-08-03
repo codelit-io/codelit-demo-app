@@ -11,23 +11,23 @@ import React, { lazy } from "react";
 
 import calculateProgress from "./calculateProgress";
 import Footer from "components/shared/Footer";
+import Grow from "@material-ui/core/Grow";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
 import MoButtonIcon from "components/library/MoButtonIcon";
+import SignUpCard from "components/shared/CardList/SignUpCard";
+import NewItemCard from "components/shared/CardList/NewItemCard";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
 const QuestionsPage = ({
-  authUser,
   questions,
   courseDetails,
   handleOnClick,
   isLoading,
-  isItemDisabled,
+  itemOptions,
   isAdmin,
-  itemUrl,
-  newItem,
   points
 }) => {
   const IconComponent = () => (
@@ -39,24 +39,42 @@ const QuestionsPage = ({
       IconComponent={isAdmin && IconComponent}
       isLoading={isLoading}
     >
-      <Grid container spacing={4} alignItems="center">
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <MoPointsGroup
-            authUser={authUser}
-            points={points}
-            progress={calculateProgress(questions?.length, points)}
+      <Grow
+        in={!isLoading && true}
+        mountOnEnter
+        timeout={{ enter: 400, exit: 400 }}
+        unmountOnExit
+      >
+        <Grid container spacing={4}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <MoPointsGroup
+              authUser={itemOptions?.authUser}
+              points={points}
+              progress={calculateProgress(questions?.length, points)}
+            />
+          </Grid>
+
+          {!!isAdmin && (
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+              <NewItemCard
+                title={itemOptions?.newItem?.title}
+                url={itemOptions?.newItem?.url}
+              />
+            </Grid>
+          )}
+
+          {!itemOptions?.authUser && (
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+              <SignUpCard />
+            </Grid>
+          )}
+          <CardList
+            isAdmin={isAdmin}
+            items={questions}
+            itemOptions={itemOptions}
           />
         </Grid>
-        <CardList
-          authUser={authUser}
-          points={points}
-          items={questions}
-          isAdmin={isAdmin}
-          isItemDisabled={id => isItemDisabled(id)}
-          itemUrl={id => itemUrl(id)}
-          newItem={newItem}
-        />
-      </Grid>
+      </Grow>
       <Footer />
     </MoPage>
   );

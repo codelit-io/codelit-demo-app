@@ -19,23 +19,26 @@
 import React, { lazy } from "react";
 
 import { COURSES } from "constants/i18n";
-import { withAuthentication } from "components/shared/Session";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import PropTypes from "prop-types";
 import useUserRole from "hooks/useUserRole";
+import useGlobal from "store";
 
 const CoursesForm = lazy(() => import("./CoursesForm"));
 const collection = {
   path: "courses",
-  title: COURSES.PAGE_TITLE,
+  title: COURSES.NEW_COURSE,
   isProgressBar: false
 };
 
 // Configure url route for each item
 const itemUrl = doc => `/courses/${doc}`;
 
-const CoursesEditPage = ({ authUser, firebase, history, match }) => {
+const CoursesEditPage = ({ history, match }) => {
+  const [state] = useGlobal();
+  const { authUser, firebase } = state;
+
   const collectionDetails = {
     collectionPath: collection.path,
     data: [],
@@ -54,12 +57,13 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
   }
 
   return (
-    <Container maxWidth="xl">
-      <Navigation />
+    <Container maxWidth="lg">
+      <Navigation authUser={authUser} firebase={firebase} />
       <CoursesForm
         authUser={authUser}
         collectionDetails={collectionDetails}
         courses={courses}
+        history={history}
         isAdmin={userRole.isAdmin}
         firebase={firebase}
         match={match}
@@ -71,8 +75,8 @@ const CoursesEditPage = ({ authUser, firebase, history, match }) => {
 };
 
 CoursesEditPage.propTypes = {
-  firebase: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
-export default withAuthentication(CoursesEditPage);
+export default CoursesEditPage;

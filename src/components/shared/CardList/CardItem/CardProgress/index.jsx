@@ -12,6 +12,8 @@ const CardProgress = ({ authUser, item }) => {
     points = authUser?.reports[item?.doc].points;
   } catch {}
   const progress =
+    /* TODO: This should come form teh --stats-- doc in each collection */
+    /* BROKEN!! */
     item?.itemsLength &&
     points &&
     Math.round((points / item?.itemsLength) * 100);

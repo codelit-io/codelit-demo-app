@@ -10,7 +10,6 @@
  * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
- * @withAuthorization - HOC wraps around components and prevents render based on a condition - firebase and match props - EXAMPLE USAGE: withAuthorization(condition)(Component)
  * @withEmailVerification - HOC provides email verification stuff
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  *
@@ -20,7 +19,6 @@
 
 import React, { Suspense, lazy } from "react";
 
-import * as ROLES from "constants/roles";
 import * as ROUTES from "constants/routes";
 import { ADMIN_PAGE } from "constants/i18n";
 import { compose } from "recompose";
@@ -28,7 +26,6 @@ import { Switch, Route } from "react-router-dom";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import {
-  withAuthorization,
   withEmailVerification,
   withAuthentication
 } from "components/shared/Session";
@@ -46,14 +43,14 @@ const tabItems = [
   { name: ADMIN_PAGE.USERS, path: "users" }
 ];
 
-const AdminPage = ({ history }) => {
+const AdminPage = ({ authUser, firebase, history }) => {
   const handleTabChange = path => {
     history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
   };
 
   return (
     <Container maxWidth="lg">
-      <Navigation />
+      <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={ADMIN_PAGE.PAGE_TITLE} isLoading={false}>
         <MoTabs
           handleTabChange={path => handleTabChange(path)}
@@ -86,10 +83,7 @@ const AdminPage = ({ history }) => {
   );
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-
 export default compose(
   withEmailVerification,
-  withAuthentication,
-  withAuthorization(condition)
+  withAuthentication("isAdmin")
 )(AdminPage);

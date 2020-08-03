@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AuthUserContext } from "components/shared/Session";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -11,7 +10,7 @@ const styles = theme => ({
   }
 });
 
-const MoDrawer = classes => {
+const MoDrawer = ({ authUser, classes }) => {
   const [state, setState] = useState({
     isDrawerOpen: false
   });
@@ -36,25 +35,21 @@ const MoDrawer = classes => {
         onClose={() => toggleDrawer(false)}
         onOpen={() => toggleDrawer(true)}
       >
-        <AuthUserContext.Consumer>
-          {authUser =>
-            authUser ? (
-              <div
-                onClick={() => toggleDrawer(false)}
-                onKeyDown={() => toggleDrawer(false)}
-              >
-                <h1>NavigationAuth</h1>
-              </div>
-            ) : (
-              <div
-                onClick={() => toggleDrawer(false)}
-                onKeyDown={() => toggleDrawer(false)}
-              >
-                <h1>NavigationNonAuth</h1>
-              </div>
-            )
-          }
-        </AuthUserContext.Consumer>
+        authUser ? (
+        <div
+          onClick={() => toggleDrawer(false)}
+          onKeyDown={() => toggleDrawer(false)}
+        >
+          <h1>NavigationAuth</h1>
+        </div>
+        ) : (
+        <div
+          onClick={() => toggleDrawer(false)}
+          onKeyDown={() => toggleDrawer(false)}
+        >
+          <h1>NavigationNonAuth</h1>
+        </div>
+        )
       </SwipeableDrawer>
     </>
   );

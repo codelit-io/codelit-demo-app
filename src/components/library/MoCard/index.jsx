@@ -7,9 +7,26 @@
  * Used to display each course as a card in the list of courses
  * Used in CoursesList
  *
+ * Example itemOptions
+ *
+ *   const itemOptions = {
+ *      authUser,
+ *      // Top right component of the card
+ *      ActionComponent: ,
+ *      doc,
+ *      // Configure url route for each item
+ *      itemUrl: id => `${doc}/${id}`,
+ *      // isItemDisabled is configured based on points and question's id
+ *      isItemDisabled: id => doSomething,
+ *      firebase,
+ *      newItem: {title: "TITLE", url: "someDocument/1/isEditMode"}
+ *      match
+ *    }
+ *
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {String} content - text content shows under subtitle
  * @param {Element} IconComponent - Component icon passed to card from parent
+ * @param {Boolean} itemOptions - options to configure the card to handle special cases and logic
  * @param {Boolean} isDisabled - boolean flag to disable card, navigation and greys out the card
  * @param {Number} points - Number of points for the course
  * @param {String} subtitle - Text displayed under the title
@@ -21,7 +38,7 @@
  * @see See [React hoc](https://reactjs.org/docs/higher-order-components.html)
  * */
 
-import React, { lazy } from "react";
+import React from "react";
 import ButtonBase from "@material-ui/core/ButtonBase";
 
 import Typography from "@material-ui/core/Typography";
@@ -32,19 +49,14 @@ import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
 import PropTypes from "prop-types";
 
-const CardProgress = lazy(() =>
-  import("components/shared/CardList/CardItem/CardProgress")
-);
-
 const MoCard = ({
-  authUser,
+  itemOptions,
   classes,
   content,
   IconComponent,
   isDisabled,
   index,
   item,
-  match,
   subtitle,
   title,
   type,
@@ -77,7 +89,13 @@ const MoCard = ({
             {content}
           </Typography>
         </Grid>
-        <CardProgress authUser={authUser} item={item} match={match} />
+        {itemOptions?.ActionComponent && (
+          <itemOptions.ActionComponent
+            authUser={itemOptions.authUser}
+            item={item}
+            match={itemOptions.match}
+          />
+        )}
       </Grid>
     </Paper>
   </ButtonBase>

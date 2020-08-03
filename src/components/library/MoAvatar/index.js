@@ -20,7 +20,7 @@ import SportsMotorsportsIcon from "@material-ui/icons/SportsMotorsports";
 import Tooltip from "@material-ui/core/Tooltip";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 
-const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
+const MoAvatar = ({ actions, authUser, isAdmin, classes, firebase }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = event => {
@@ -117,6 +117,7 @@ const MoAvatar = ({ authUser, isAdmin, classes, firebase }) => {
               onClick={() => {
                 firebase.signOut();
                 handleClose();
+                actions.addToState(null);
               }}
             >
               <ListItemIcon>

@@ -134,7 +134,8 @@ const typography = {
     borderRadius: space.sm,
     textTransform: "none"
   },
-  fontFamily: fontFamily.BreeSerif
+  fontFamily: fontFamily.BreeSerif,
+  h4: { lineHeight: 1.5 }
 };
 
 const getTheme = ({ isDarkMode }) => {

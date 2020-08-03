@@ -1,5 +1,5 @@
 import * as ROUTES from "constants/routes";
-import { questionMock } from "mocks/question";
+import { statsMock } from "mocks/question";
 
 /**
  *
@@ -12,6 +12,15 @@ import { questionMock } from "mocks/question";
  * such as adding, editing and deleting a question. All data is queried from Firebase
  */
 
+// Special document each course has to keep track of number of items in a course and other stuff coming later
+const statsDoc = "--stats--";
+
+// Questions path to list of questions used with firebase query
+const getQuestionsPath = match =>
+  `courses/${match.params.collection}/questions`;
+
+/* ---🥇 Question helpers for Firestore 🥇--- */
+
 /* Create Question
  * createQuestion(authUser, event, firebase, match)
  */
@@ -20,55 +29,84 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     return;
   }
 
+  const getStatsDoc = await firebase
+    .collection(getQuestionsPath(match))
+    .doc(statsDoc)
+    .get();
+
+  const stats = getStatsDoc.data();
+  const newId = Number(stats.itemsLength) + 1;
   // create question by id
   await firebase.createQuestionById(match.params.collection, {
     ...event,
-    id: Number(match.params.questionId),
-    itemsLength: 1,
+    // order new item to the end by creating id from total num of items + 1
+    id: newId,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
     question: event?.question ? escapeCode(event.question) : ""
   });
 
+  // increment a field in the stats doc
   const increment = firebase.fieldValue.increment(1);
 
   const payload = {
-    doc: match.params.collection,
     itemsLength: increment
   };
 
-  // update courses with number of questions
-  await updateCourse(authUser, payload, firebase);
-};
+  const collectionPath = getQuestionsPath(match);
 
-/* Edit Question
- * updateQuestion(event, firebase, match)
- */
-export const updateQuestion = async (event, firebase, match) => {
-  if (!match.params.collection) {
-    return;
-  }
-  debugger;
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", String(event.uid))
-    .update({
-      ...event,
-      id: Number(match.params.questionId),
-      editedAt: firebase.fieldValue.serverTimestamp(),
-      question: event?.question ? escapeCode(event.question) : ""
-    });
+  // Update stats doc and increment itemsLength
+  await updateStats(payload, firebase, collectionPath);
+  return newId;
 };
 
 /* Remove Question
  * removeQuestion(id, firebase, match)
  */
 export const removeQuestion = async (id, firebase, match) => {
-  await firebase
-    .doc("courses/" + match.params.collection + "/questions", id)
-    .delete();
+  await firebase.doc(getQuestionsPath(match), id).delete();
+
+  // decrement a field in the stats doc
+  const decrement = firebase.fieldValue.increment(-1);
+
+  const payload = {
+    itemsLength: decrement
+  };
+  const collectionPath = getQuestionsPath(match);
+  // Update stats doc and decrement itemsLength
+  await updateStats(payload, firebase, collectionPath);
 };
 
-/* Remove Question
+/* Edit and update Question
+ * updateQuestion(event, firebase, match)
+ */
+export const updateQuestion = async (event, firebase, match) => {
+  if (!match.params.collection) {
+    return;
+  }
+
+  await firebase.doc(getQuestionsPath(match), String(event.uid)).update({
+    ...event,
+    id: Number(match.params.questionId),
+    editedAt: firebase.fieldValue.serverTimestamp(),
+    question: event?.question ? escapeCode(event.question) : ""
+  });
+
+  return Number(match.params.questionId);
+};
+
+/* Update stats for questions
+ * updateStats(event, firebase, collectionPath)
+ */
+export const updateStats = async (event, firebase, collectionPath) => {
+  if (!collectionPath) {
+    return;
+  }
+
+  await firebase.doc(collectionPath, statsDoc).update(event);
+};
+
+/* Click on Question
  * rowClick(id, history, match)
  */
 export const rowClick = (id, history, match) => {
@@ -83,6 +121,8 @@ export const escapeCode = code => {
   }
   return JSON.stringify(code, null, 2);
 };
+
+/* ---🥈 Course helpers for Firestore 🥈--- */
 
 /* Create Course
  * createCourse(authUser, event, firebase, match)
@@ -113,14 +153,17 @@ export const createCourse = async (authUser, event, firebase) => {
     .doc(doc)
     .set(payload, { merge: true });
 
-  // Add a questions array to the collection created above add a placeholder entry
+  // Add a stats doc to the collection created above as a placeholder entry
   // TODO: figure a more efficient way to do this with one firebase query
   await firebase
     .collection("courses")
     .doc(doc)
     .collection("questions")
-    .doc()
-    .set({ ...questionMock });
+    .doc(statsDoc)
+    .set({ ...statsMock });
+
+  // return new item doc
+  return doc;
 };
 
 export const updateCourse = async (authUser, event, firebase) => {
@@ -133,4 +176,5 @@ export const updateCourse = async (authUser, event, firebase) => {
     .collection("courses")
     .doc(event.doc)
     .set(payload, { merge: true });
+  return event.id;
 };

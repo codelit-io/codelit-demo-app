@@ -18,35 +18,38 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import * as ROLES from "constants/roles";
-
-import { compose } from "recompose";
-import { withAuthentication } from "components/shared/Session";
 import { createQuestion, updateQuestion } from "helpers/collectionFirebase";
 import Container from "@material-ui/core/Container";
 import MoSnackbar from "components/library/MoSnackBar";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
 import Navigation from "components/shared/Navigation";
 import QuestionForm from "containers/Collections/Question/QuestionEditPage/QuestionForm";
-import withAuthorization from "components/shared/Session/withAuthorization";
+import useGlobal from "store";
 
-const QuestionEditPage = ({ authUser, firebase, history, match }) => {
+const QuestionEditPage = ({ history, match }) => {
+  const [{ authUser, firebase }] = useGlobal();
+
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState(null);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const navToQuestionViewPage = useCallback(() => {
-    history.push(
-      `/courses/${match.params.collection}/${match.params.questionId}`
-    );
-  }, [history, match]);
+  const collectionPath = `/courses/${match.params.collection}/${match.params
+    .questionId || question.id}`;
+
+  const navToQuestionViewPage = useCallback(
+    collectionPath => {
+      history.push(collectionPath);
+    },
+    [history]
+  );
 
   const onSubmit = useCallback(
-    event => {
-      // editedAt is only available on existing db items nad safe to update
-      event.editedAt
+    async event => {
+      // createdAt is only available on existing db items and safe to update
+      const id = (await event.createdAt)
         ? updateQuestion(event, firebase, match)
         : createQuestion(authUser, event, firebase, match);
+      navToQuestionViewPage(`/courses/${match.params.collection}/${await id}`);
 
       setSnackbarProps({
         autoHideDuration: 2000,
@@ -54,16 +57,19 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
         title: "Saved"
       });
     },
-    [authUser, firebase, setSnackbarProps, match]
+    [authUser, firebase, setSnackbarProps, match, navToQuestionViewPage]
   );
 
   /* TODO: Move to custom hook */
   useEffect(() => {
     const id = match.params.questionId;
+    if (!firebase) {
+      return;
+    }
     const unsubscribe = firebase
       .getCollectionById(`courses/${match.params.collection}/questions`, id)
       .onSnapshot(snapshot => {
-        if (snapshot.size) {
+        if (snapshot.size && id > 0) {
           const question = [];
           snapshot.forEach(doc =>
             question.push({ ...doc.data(), uid: doc.id })
@@ -102,16 +108,18 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   const breadcrumbsOptions = [
     {
       title: "Back to question",
-      url: `/courses/${match.params.collection}/${match.params.questionId}`
+      url: collectionPath
     }
   ];
 
   return (
     <Container maxWidth="xl">
       <Navigation
+        authUser={authUser}
         Breadcrumbs={() => (
           <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
         )}
+        firebase={firebase}
       />
       <QuestionForm
         isLoading={isLoading}
@@ -131,9 +139,4 @@ const QuestionEditPage = ({ authUser, firebase, history, match }) => {
   );
 };
 
-const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN];
-
-export default compose(
-  withAuthentication,
-  withAuthorization(condition)
-)(QuestionEditPage);
+export default QuestionEditPage;

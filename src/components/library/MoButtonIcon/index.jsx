@@ -5,8 +5,8 @@ import EditIcon from "@material-ui/icons/Edit";
 
 const MoButtonIcon = ({ editIcon, handleIconClick }) =>
   editIcon && (
-    <IconButton size="medium" onClick={e => handleIconClick(e)}>
-      <EditIcon color="primary" fontSize="large" />
+    <IconButton onClick={e => handleIconClick(e)}>
+      <EditIcon color="primary" fontSize="small" />
     </IconButton>
   );
 

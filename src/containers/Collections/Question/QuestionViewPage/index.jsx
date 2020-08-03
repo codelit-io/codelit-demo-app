@@ -20,23 +20,22 @@
 import React, { useCallback } from "react";
 
 import * as ROUTES from "constants/routes";
-import withAuthentication from "components/shared/Session/withAuthentication";
 
-import useUserRole from "hooks/useUserRole";
 import useQuestion from "hooks/useQuestion";
 import QuestionPage from "./QuestionPage";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import MoBreadcrumbs from "components/library/MoBreadcrumbs";
+import useGlobal from "store";
 
-const QuestionViewPage = ({ authUser, firebase, history, match }) => {
+const QuestionViewPage = ({ history, match }) => {
+  const [{ authUser, firebase, userRole }] = useGlobal();
+
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,
     questionPath: `courses/${match.params.collection}/questions`
   });
-
-  const userRole = useUserRole(authUser);
 
   /* Handler to send user to editMode page */
   const handleOnClick = useCallback(() => {
@@ -68,9 +67,11 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
   return (
     <Container maxWidth="xl">
       <Navigation
+        authUser={authUser}
         Breadcrumbs={() => (
           <MoBreadcrumbs breadcrumbsOptions={breadcrumbsOptions} />
         )}
+        firebase={firebase}
       />
       <QuestionPage
         authUser={authUser}
@@ -80,10 +81,10 @@ const QuestionViewPage = ({ authUser, firebase, history, match }) => {
         handleNavigation={id => handleNavigation(id)}
         isLoading={isLoading}
         match={match}
-        isAdmin={userRole.isAdmin}
+        isAdmin={userRole?.isAdmin}
       />
     </Container>
   );
 };
 
-export default withAuthentication(QuestionViewPage);
+export default QuestionViewPage;

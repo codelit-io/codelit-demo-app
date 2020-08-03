@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QuestionEditPage Component should match the snapshot 1`] = `
-<Context.Consumer>
-  [Function]
-</Context.Consumer>
+<ForwardRef(WithStyles)
+  maxWidth="xl"
+>
+  <ForwardRef(WithStyles)
+    Breadcrumbs={[Function]}
+  />
+  <withRouter(WithStyles(QuestionForm))
+    isCard={false}
+    isLoading={true}
+    navToQuestionViewPage={[Function]}
+    onSubmit={[Function]}
+    question={null}
+    setQuestion={[Function]}
+  />
+</ForwardRef(WithStyles)>
 `;

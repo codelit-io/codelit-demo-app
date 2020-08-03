@@ -2,27 +2,44 @@
 
 exports[`QuestionsPage Component should match the snapshot 1`] = `
 <ForwardRef(WithStyles)>
-  <ForwardRef(WithStyles)
-    alignItems="center"
-    container={true}
-    spacing={4}
+  <ForwardRef(Grow)
+    in={true}
+    mountOnEnter={true}
+    timeout={
+      Object {
+        "enter": 400,
+        "exit": 400,
+      }
+    }
+    unmountOnExit={true}
   >
     <ForwardRef(WithStyles)
-      item={true}
-      lg={12}
-      md={12}
-      sm={12}
-      xs={12}
+      container={true}
+      spacing={4}
     >
-      <MoPointsGroup
-        progress="0% Complete"
-      />
+      <ForwardRef(WithStyles)
+        item={true}
+        lg={12}
+        md={12}
+        sm={12}
+        xs={12}
+      >
+        <MoPointsGroup
+          progress="0% Complete"
+        />
+      </ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        item={true}
+        lg={4}
+        md={4}
+        sm={12}
+        xs={12}
+      >
+        <SignUpCard />
+      </ForwardRef(WithStyles)>
+      <UNDEFINED />
     </ForwardRef(WithStyles)>
-    <UNDEFINED
-      isItemDisabled={[Function]}
-      itemUrl={[Function]}
-    />
-  </ForwardRef(WithStyles)>
+  </ForwardRef(Grow)>
   <ForwardRef(WithStyles) />
 </ForwardRef(WithStyles)>
 `;

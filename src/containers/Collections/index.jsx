@@ -49,6 +49,7 @@ const Collections = () => (
   <Switch>
     {/*  @see Link [Example Courses Page](https://moskool.com/courses) */}
     <Route component={CoursesViewPage} exact path={ROUTES.COLLECTIONS.path} />
+    <Route component={CoursesViewPage} exact path={ROUTES.COMPANIES.path} />
 
     {/*  @see Link [Example Courses Page](https://moskool.com/courses/isEditMode) */}
     <Route

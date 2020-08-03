@@ -14,7 +14,10 @@ import MoPage from "components/library/MoPage";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Grow from "@material-ui/core/Grow";
 import Navigation from "components/shared/Navigation";
+import SignUpCard from "components/shared/CardList/SignUpCard";
+import NewItemCard from "components/shared/CardList/NewItemCard";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
@@ -22,26 +25,44 @@ const CoursesPage = ({
   authUser,
   collectionDetails,
   courses,
-  itemUrl,
+  firebase,
+  isLoading,
   isAdmin,
-  match,
-  newItem
+  itemOptions
 }) => {
   return (
     <Container maxWidth="lg">
-      <Navigation />
-      <MoPage title={collectionDetails?.title}>
-        <Grid container spacing={4} alignItems="center">
-          <CardList
-            authUser={authUser}
-            items={courses}
-            isAdmin={isAdmin}
-            itemUrl={doc => itemUrl(doc)}
-            isItemDisabled={() => {}}
-            match={match}
-            newItem={newItem}
-          />
-        </Grid>
+      <Navigation authUser={authUser} firebase={firebase} />
+      <MoPage title={collectionDetails?.title} isLoading={isLoading}>
+        <Grow
+          in={!isLoading && true}
+          mountOnEnter
+          timeout={{ enter: 400, exit: 400 }}
+          unmountOnExit
+        >
+          <Grid container spacing={4} alignItems="center">
+            {!!isAdmin && !courses?.isLoading && (
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <NewItemCard
+                  type="new"
+                  title={itemOptions?.newItem?.title}
+                  url={itemOptions?.newItem?.url}
+                />
+              </Grid>
+            )}
+
+            {!itemOptions?.authUser && !courses?.isLoading && (
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <SignUpCard type="signup" />
+              </Grid>
+            )}
+            <CardList
+              isAdmin={isAdmin}
+              items={courses}
+              itemOptions={itemOptions}
+            />
+          </Grid>
+        </Grow>
         <Footer />
       </MoPage>
     </Container>

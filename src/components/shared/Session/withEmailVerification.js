@@ -10,7 +10,7 @@ const needsEmailVerification = authUser =>
   authUser.providerData
     .map(provider => provider.providerId)
     .includes("password");
-
+/* TODO: Upgrade email verification */
 const withEmailVerification = Component => {
   class WithEmailVerification extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ const withEmailVerification = Component => {
 
     render() {
       return (
+        /* TODO: 🔴 merge this into withAuthentication */
         <AuthUserContext.Consumer>
           {authUser =>
             needsEmailVerification(authUser) ? (

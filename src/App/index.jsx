@@ -19,6 +19,7 @@ import React, { Suspense, lazy } from "react";
 import * as ROUTES from "constants/routes";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
+import withStoreInit from "components/shared/Session/withStoreInit";
 
 const Account = lazy(() => import("containers/Account"));
 const AdminPage = lazy(() => import("containers/AdminPage"));
@@ -47,6 +48,7 @@ const App = () => {
           <Route path={ROUTES.PASSWORD_FORGET.path} component={PasswordReset} />
           <Route path={ROUTES.PLAYGROUND.path} component={Playground} />
           <Route path={ROUTES.COLLECTIONS.path} component={Collections} />
+          <Route path={ROUTES.COMPANIES.path} component={Collections} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>
@@ -54,4 +56,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withStoreInit(App);

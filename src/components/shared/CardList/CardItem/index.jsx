@@ -23,40 +23,35 @@ import React from "react";
 
 // MUI components
 import Grid from "@material-ui/core/Grid";
-import Grow from "@material-ui/core/Grow";
 
 // Mo Skool components
 import MoCard from "components/library/MoCard";
 
 const CardItem = ({
-  authUser,
   IconComponent,
   index,
   item,
   isDisabled,
-  match,
+  itemOptions,
   subtitle,
   title,
   type,
   url
 }) => (
-  <Grow in={title && true} mountOnEnter timeout={{ enter: 200 }} unmountOnExit>
-    <Grid item xs={12} sm={12} md={4} lg={4}>
-      <MoCard
-        authUser={authUser}
-        IconComponent={IconComponent}
-        // Add one to offset for the first card from 0 to 1
-        item={item}
-        index={index}
-        isDisabled={isDisabled}
-        match={match}
-        subtitle={subtitle}
-        title={title}
-        type={type}
-        url={url}
-      />
-    </Grid>
-  </Grow>
+  <Grid item xs={12} sm={12} md={4} lg={4}>
+    <MoCard
+      IconComponent={IconComponent}
+      // Add one to offset for the first card from 0 to 1
+      item={item}
+      index={index}
+      isDisabled={isDisabled}
+      itemOptions={itemOptions}
+      subtitle={subtitle}
+      title={title}
+      type={type}
+      url={url}
+    />
+  </Grid>
 );
 
 export default CardItem;
