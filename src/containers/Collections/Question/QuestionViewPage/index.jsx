@@ -31,8 +31,6 @@ import useGlobal from "store";
 const QuestionViewPage = ({ history, match }) => {
   const [{ authUser, firebase, userRole }] = useGlobal();
 
-  // const { authUser, firebase, userRole } = state;
-
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,

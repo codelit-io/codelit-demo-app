@@ -8,7 +8,7 @@ import HelpIcon from "@material-ui/icons/Help";
 import IconButton from "@material-ui/core/IconButton";
 import QuestionPageNav from "./QuestionPageNav";
 import Tooltip from "@material-ui/core/Tooltip";
-import Box from "@material-ui/core/box";
+import Box from "@material-ui/core/Box";
 
 const QuestionFooter = ({
   classes,

@@ -11,7 +11,7 @@ import MoHintEdit from "components/library/MoHintEdit";
 import MoPageContentEdit from "components/library/MoPageContentEdit";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import Box from "@material-ui/core/box";
+import Box from "@material-ui/core/Box";
 
 const CodeEditor = lazy(() => import("components/shared/CodeEditor"));
 

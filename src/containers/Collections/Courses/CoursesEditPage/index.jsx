@@ -75,7 +75,7 @@ const CoursesEditPage = ({ history, match }) => {
 };
 
 CoursesEditPage.propTypes = {
-  firebase: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
 
