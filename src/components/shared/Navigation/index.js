@@ -12,7 +12,6 @@
 import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
-import { compose } from "recompose";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -86,4 +85,4 @@ const Navigation = ({ authUser, Breadcrumbs, classes, firebase }) => {
   );
 };
 
-export default compose(withStyles(styles))(Navigation);
+export default withStyles(styles)(Navigation);
