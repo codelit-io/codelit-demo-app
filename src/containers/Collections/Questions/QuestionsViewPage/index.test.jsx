@@ -1,8 +1,8 @@
 import React from "react";
-import QuestionsViewPage from "./index";
+// import QuestionsViewPage from "./index";
 
 // Dependencies under test
-import ShallowRenderer from "react-test-renderer/shallow";
+// import ShallowRenderer from "react-test-renderer/shallow";
 import useGlobal from "store";
 import useGlobalHook from "use-global-hook";
 
@@ -12,7 +12,7 @@ import { initialState } from "store/initialState";
 import actions from "actions";
 
 // Shallow render to test the component without it's children
-const renderer = new ShallowRenderer();
+// const renderer = new ShallowRenderer();
 
 beforeEach(() => {
   useGlobal.mockClear();
