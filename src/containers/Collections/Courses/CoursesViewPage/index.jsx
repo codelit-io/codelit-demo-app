@@ -35,7 +35,6 @@ const CoursesViewPage = props => {
   const [state] = useGlobal();
   const { history, match } = props;
   const { authUser, userRole, firebase } = state;
-  console.log(props);
   const itemOptions = {
     authUser,
     ActionComponent: CardProgress,
