@@ -37,7 +37,11 @@ const withAuthentication = isUserRole => Component => {
       }
     }
 
-    return <Component {...props} authUser={authUser} />;
+    return authUser ? (
+      <Component {...props} authUser={authUser} />
+    ) : (
+      <Component {...props} />
+    );
   };
   return withFirebase(React.memo(WithAuthentication));
 };

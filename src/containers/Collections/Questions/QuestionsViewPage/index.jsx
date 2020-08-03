@@ -86,7 +86,7 @@ const Questions = ({ authUser, history, firebase, match }) => {
         hasData={questions.data.length && true}
         handleOnClick={e => handleOnClick(e)}
         isAdmin={userRole.isAdmin}
-        isLoading={questions.data.isLoading && false}
+        isLoading={questions.data && false}
         itemOptions={itemOptions}
         points={points}
       />
