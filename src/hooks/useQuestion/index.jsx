@@ -22,9 +22,9 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
   useEffect(() => {
     // Used for canceling async firebase call
     let didCancel = false;
-    const fetchData = () =>
+    const fetchData = async () =>
       !didCancel &&
-      firebase?.getCollectionById(questionPath, questionId).onSnapshot(
+      (await firebase?.getCollectionById(questionPath, questionId).onSnapshot(
         snapshot => {
           // 0 is default id for stats doc
           if (questionId === 0) {
@@ -36,14 +36,13 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
             snapshot.forEach(doc =>
               question.push({ ...doc.data(), uid: doc.id })
             );
-            question.map(data => {
+            question.map(data =>
               setState({
                 data,
                 isLoading: false,
                 isError: false
-              });
-              return data;
-            });
+              })
+            );
           } else {
             return setState({
               data: {
@@ -62,7 +61,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
             isLoading: false,
             isError: false
           })
-      );
+      ));
 
     // fetch data from firebase
     fetchData();

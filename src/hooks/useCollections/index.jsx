@@ -29,7 +29,7 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
         ["id", ">", 0];
     const fetchData = async () =>
       !didCancel &&
-      firebase
+      (await firebase
         ?.collection(collectionPath)
         .where(...whereOptions)
         .orderBy("id")
@@ -62,7 +62,7 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
               isLoading: false,
               isError: false
             })
-        );
+        ));
     // fetch data from firebase
     fetchData();
 
