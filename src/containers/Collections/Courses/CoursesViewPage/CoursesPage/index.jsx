@@ -34,12 +34,7 @@ const CoursesPage = ({
     <Container maxWidth="lg">
       <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={collectionDetails?.title}>
-        <Grow
-          in={!isLoading}
-          mountOnEnter
-          timeout={{ enter: 400, exit: 400 }}
-          unmountOnExit
-        >
+        <Grow in={!isLoading} timeout={{ enter: 600 }}>
           <Grid container spacing={4} alignItems="center">
             <CardList
               isAdmin={isAdmin}

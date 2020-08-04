@@ -14,7 +14,6 @@ import React, { lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 
-import { compose } from "recompose";
 import { LANDING_PAGE } from "constants/i18n";
 import { ReactComponent as Researching } from "assets/researching.svg";
 import { ReactComponent as SourceCode } from "assets/sourceCode.svg";
@@ -198,4 +197,4 @@ const LandingPage = ({ authUser, classes, firebase }) => {
   );
 };
 
-export default compose(withStyles(styles))(LandingPage);
+export default withStyles(styles)(LandingPage);

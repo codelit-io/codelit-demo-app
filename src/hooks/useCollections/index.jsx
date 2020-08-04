@@ -46,15 +46,12 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
                 isError: false
               });
             } else {
-              setState(prevState => {
-                return {
-                  data: prevState.data,
-                  isLoading: false,
-                  isError: false
-                };
+              setState({
+                data: [],
+                isLoading: false,
+                isError: false
               });
             }
-            /* Unsubscribe from firebase on unmount */
           },
           () =>
             setState({

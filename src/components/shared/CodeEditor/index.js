@@ -130,7 +130,7 @@ const CodeEditor = ({
           <Grow
             in={codeAnswer && true}
             mountOnEnter
-            timeout={{ enter: 400, exit: 400 }}
+            timeout={{ enter: 600, exit: 600 }}
             unmountOnExit
           >
             <div>

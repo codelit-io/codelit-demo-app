@@ -7,7 +7,7 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 
 import calculateProgress from "./calculateProgress";
 import Footer from "components/shared/Footer";
@@ -30,6 +30,7 @@ const QuestionsPage = ({
   isAdmin,
   points
 }) => {
+  useEffect(() => {}, []);
   const IconComponent = () => (
     <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
   );
@@ -38,12 +39,7 @@ const QuestionsPage = ({
       title={courseDetails?.data?.title}
       IconComponent={isAdmin && IconComponent}
     >
-      <Grow
-        in={!isLoading}
-        mountOnEnter
-        timeout={{ enter: 400, exit: 400 }}
-        unmountOnExit
-      >
+      <Grow in={!isLoading} timeout={{ enter: 600 }}>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <MoPointsGroup

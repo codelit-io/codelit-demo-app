@@ -9,27 +9,24 @@
  * Entry component to the app and provides the App component with Firebase class instance
  */
 
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import * as Sentry from "@sentry/browser";
 
 import Firebase, { FirebaseContext } from "./components/shared/Firebase";
-import MoSpinner from "components/library/MoSpinner";
 
 // Global state for theme options
 
-const App = lazy(() => import("./App"));
-const Theme = lazy(() => import("App/Theme"));
+import App from "./App"; /* webpackChunkName: "App" */
+import Theme from "App/Theme"; /* webpackChunkName: "Theme" */
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
-      <Theme>
-        <App />
-      </Theme>
-    </Suspense>
+    <Theme>
+      <App />
+    </Theme>
   </FirebaseContext.Provider>,
   document.getElementById("root")
 );
