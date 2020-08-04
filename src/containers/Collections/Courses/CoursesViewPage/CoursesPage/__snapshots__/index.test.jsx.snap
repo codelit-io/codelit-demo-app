@@ -8,20 +8,18 @@ exports[`CoursesPage Component should match the snapshot 1`] = `
   <ForwardRef(WithStyles)>
     <ForwardRef(Grow)
       in={true}
-      mountOnEnter={true}
       timeout={
         Object {
-          "enter": 400,
-          "exit": 400,
+          "enter": 600,
         }
       }
-      unmountOnExit={true}
     >
       <ForwardRef(WithStyles)
         alignItems="center"
         container={true}
         spacing={4}
       >
+        <UNDEFINED />
         <ForwardRef(WithStyles)
           item={true}
           lg={4}
@@ -29,11 +27,8 @@ exports[`CoursesPage Component should match the snapshot 1`] = `
           sm={12}
           xs={12}
         >
-          <SignUpCard
-            type="signup"
-          />
+          <SignUpCard />
         </ForwardRef(WithStyles)>
-        <UNDEFINED />
       </ForwardRef(WithStyles)>
     </ForwardRef(Grow)>
     <ForwardRef(WithStyles) />

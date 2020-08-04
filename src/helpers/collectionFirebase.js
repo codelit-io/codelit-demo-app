@@ -29,12 +29,8 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     return;
   }
 
-  const getStatsDoc = await firebase
-    .collection(getQuestionsPath(match))
-    .doc(statsDoc)
-    .get();
+  const stats = await getStatsDoc(firebase, match);
 
-  const stats = getStatsDoc.data();
   const newId = Number(stats.itemsLength) + 1;
   // create question by id
   await firebase.createQuestionById(match.params.collection, {
@@ -61,6 +57,15 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     firebase
   );
   return newId;
+};
+
+// --stats-- doc lives with the questions and provides details about the questions and course
+export const getStatsDoc = async (firebase, match) => {
+  const fetchData = await firebase
+    .collection(getQuestionsPath(match))
+    .doc(statsDoc)
+    .get();
+  return fetchData.data();
 };
 
 /* Remove Question

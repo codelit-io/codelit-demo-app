@@ -15,7 +15,7 @@ exports[`QuestionsViewPage Component should match the snapshot 1`] = `
     }
     handleOnClick={[Function]}
     hasData={0}
-    isLoading={false}
+    isLoading={true}
     itemOptions={
       Object {
         "authUser": undefined,

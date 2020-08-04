@@ -24,8 +24,8 @@ exports[`CodeEditor Component should match the snapshot 1`] = `
         mountOnEnter={true}
         timeout={
           Object {
-            "enter": 400,
-            "exit": 400,
+            "enter": 600,
+            "exit": 600,
           }
         }
         unmountOnExit={true}

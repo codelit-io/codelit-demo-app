@@ -59,10 +59,10 @@ const CodeEditor = ({
   title
 }) => {
   useEffect(() => {
-    if (!isEditMode && codeQuestion?.length >= 0) {
+    if (!isEditMode) {
       addFocusOnEditor();
     }
-  }, [codeQuestion, isEditMode]);
+  }, [isEditMode]);
 
   // Global state for dark mode theme
   const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
@@ -130,7 +130,7 @@ const CodeEditor = ({
           <Grow
             in={codeAnswer && true}
             mountOnEnter
-            timeout={{ enter: 400, exit: 400 }}
+            timeout={{ enter: 600, exit: 600 }}
             unmountOnExit
           >
             <div>

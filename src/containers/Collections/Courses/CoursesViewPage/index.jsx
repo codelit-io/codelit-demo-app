@@ -64,7 +64,7 @@ const CoursesViewPage = props => {
       authUser={authUser}
       collectionDetails={collectionDetails}
       courses={courses.data}
-      isLoading={courses.data && false}
+      isLoading={courses.isLoading}
       firebase={firebase}
       itemOptions={itemOptions}
       isAdmin={userRole?.isAdmin}

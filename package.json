@@ -21,6 +21,7 @@
 		"use-global-hook": "^0.1.12"
 	},
 	"scripts": {
+		"analyze": "source-map-explorer build/static/js/main.*",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"deploy": "npm run lint && react-scripts build && firebase deploy --only hosting:tool-builder",
@@ -84,7 +85,8 @@
 		"imagemin-lint-staged": "^0.4.0",
 		"lint-staged": "^10.2.11",
 		"prettier-eslint-cli": "^5.0.0",
-		"react-test-renderer": "^16.13.1"
+		"react-test-renderer": "^16.13.1",
+		"source-map-explorer": "^2.4.2"
 	},
 	"lint-staged": {
 		"src/**/*.{js,jsx}": [

@@ -28,15 +28,21 @@
 import { useEffect, useState } from "react";
 
 const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState({});
+  const [state, setState] = useState({
+    data: {},
+    isLoading: true,
+    isError: false
+  });
+
   useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      /* Make a firebase query to get details about 
-            the collection or questions Such as name and description */
-      const getCollectionDetails = await firebase
+    /* Make a firebase query to get details about 
+          the collection or questions Such as name and description */
+
+    // Used for canceling async firebase call
+    let didCancel = false;
+    const fetchData = async () =>
+      !didCancel &&
+      (await firebase
         ?.collection(collectionPath)
         .where("doc", "==", doc)
         .onSnapshot(
@@ -46,26 +52,42 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
               snapshot.forEach(doc =>
                 data.push({ ...doc.data(), uid: doc.id })
               );
-              setData(data[0]);
-              setIsLoading(false);
+              data.map(data =>
+                setState({
+                  data,
+                  isLoading: false,
+                  isError: false
+                })
+              );
             } else {
-              setData({
-                title: "My new course",
-                category: "#ReactFTW",
-                id: "1"
+              setState({
+                data: {
+                  title: "My new course",
+                  category: "#ReactFTW",
+                  id: "1"
+                },
+                isLoading: false,
+                isError: false
               });
-              setIsLoading(false);
             }
-            /* Unsubscribe from firebase on unmount */
           },
-          error => setIsError(error.message)
-        );
+          () =>
+            setState({
+              data: [],
+              isLoading: false,
+              isError: false
+            })
+        ));
 
-      return () => getCollectionDetails();
-    })();
+    // fetch data from firebase
+    fetchData();
+
+    return () => {
+      didCancel = true;
+    };
   }, [firebase, collectionPath, doc]);
 
-  return { isLoading, isError, data };
+  return { ...state };
 };
 
 export default useCollectionDetails;
