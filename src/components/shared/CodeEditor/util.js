@@ -3,9 +3,12 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 export const addFocusOnEditor = async () => {
-  await wait(400);
+  await wait(800);
   try {
-    document.querySelector(".npm__react-simple-code-editor__textarea").focus();
+    const element = document.querySelector(
+      ".npm__react-simple-code-editor__textarea"
+    );
+    focusAtEnd(element);
   } catch {
     console.log("Focus on editor failed");
   }
@@ -25,4 +28,11 @@ async function wait(ms) {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
   });
+}
+
+function focusAtEnd(el) {
+  el.focus();
+  let s = el.value;
+  el.value = "";
+  el.value = s;
 }

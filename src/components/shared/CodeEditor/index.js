@@ -59,10 +59,10 @@ const CodeEditor = ({
   title
 }) => {
   useEffect(() => {
-    if (!isEditMode && codeQuestion?.length >= 0) {
+    if (!isEditMode) {
       addFocusOnEditor();
     }
-  }, [codeQuestion, isEditMode]);
+  }, [isEditMode]);
 
   // Global state for dark mode theme
   const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
