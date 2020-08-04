@@ -87,7 +87,7 @@ const Questions = ({ history, match }) => {
         hasData={questions.data.length && true}
         handleOnClick={e => handleOnClick(e)}
         isAdmin={userRole?.isAdmin}
-        isLoading={questions.data && false}
+        isLoading={questions.isLoading}
         itemOptions={itemOptions}
         points={points}
       />

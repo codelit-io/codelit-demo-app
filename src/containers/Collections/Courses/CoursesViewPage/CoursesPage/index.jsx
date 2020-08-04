@@ -33,14 +33,19 @@ const CoursesPage = ({
   return (
     <Container maxWidth="lg">
       <Navigation authUser={authUser} firebase={firebase} />
-      <MoPage title={collectionDetails?.title} isLoading={isLoading}>
+      <MoPage title={collectionDetails?.title}>
         <Grow
-          in={!isLoading && true}
+          in={!isLoading}
           mountOnEnter
           timeout={{ enter: 400, exit: 400 }}
           unmountOnExit
         >
           <Grid container spacing={4} alignItems="center">
+            <CardList
+              isAdmin={isAdmin}
+              items={courses}
+              itemOptions={itemOptions}
+            />
             {!!isAdmin && !courses?.isLoading && (
               <Grid item xs={12} sm={12} md={4} lg={4}>
                 <NewItemCard
@@ -50,17 +55,11 @@ const CoursesPage = ({
                 />
               </Grid>
             )}
-
             {!itemOptions?.authUser && !courses?.isLoading && (
               <Grid item xs={12} sm={12} md={4} lg={4}>
-                <SignUpCard type="signup" />
+                <SignUpCard />
               </Grid>
             )}
-            <CardList
-              isAdmin={isAdmin}
-              items={courses}
-              itemOptions={itemOptions}
-            />
           </Grid>
         </Grow>
         <Footer />
