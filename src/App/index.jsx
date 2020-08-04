@@ -21,21 +21,38 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MoSpinner from "components/library/MoSpinner";
 import withStoreInit from "components/shared/Session/withStoreInit";
 
-const Account = lazy(() => import("containers/Account"));
-const AdminPage = lazy(() => import("containers/AdminPage"));
-const LandingPage = lazy(() => import("containers/Landing"));
-const NotFound = lazy(() => import("components/shared/NotFound"));
-const PasswordReset = lazy(() => import("containers/PasswordReset"));
+const Account = lazy(() =>
+  import("containers/Account" /* webpackChunkName: "Account Page" */)
+);
+const AdminPage = lazy(() =>
+  import("containers/AdminPage" /* webpackChunkName: "Admin Page" */)
+);
+const LandingPage = lazy(() =>
+  import("containers/Landing" /* webpackChunkName: "Landing Page" */)
+);
+const NotFound = lazy(() =>
+  import("components/shared/NotFound" /* webpackChunkName: "Not Found" */)
+);
+const PasswordReset = lazy(() =>
+  import("containers/PasswordReset" /* webpackChunkName: "Password Reset" */)
+);
 
-const Playground = lazy(() => import("containers/Playground"));
-const Collections = lazy(() => import("containers/Collections"));
-const SignUp = lazy(() => import("containers/SignUp"));
-const SignIn = lazy(() => import("containers/SignIn"));
+const Playground = lazy(() =>
+  import("containers/Playground" /* webpackChunkName: "Playground Page" */)
+);
+const Collections = lazy(() =>
+  import("containers/Collections" /* webpackChunkName: "Collections Page" */)
+);
+const SignUp = lazy(() =>
+  import("containers/SignUp" /* webpackChunkName: "Sign up Page" */)
+);
+const SignIn = lazy(() =>
+  import("containers/SignIn" /* webpackChunkName: "Sign in Page" */)
+);
 
 const App = () => {
   return (
     <Router>
-      {/* Page size based on the page */}
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
         <Switch>
           <Route path={ROUTES.ADMIN.path} component={AdminPage} />
