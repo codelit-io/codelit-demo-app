@@ -17,59 +17,58 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
   });
 
   useEffect(() => {
-    (async () => {
-      /* Make a firebase query to get details about 
-            the collection or questions Such as name and description
-            */
-      let didCancel = false;
-      const whereOptions = locationHash
-        ? // where condition based on hash for current location
-          ["type", "==", locationHash.substring(1)]
-        : // otherwise use a condition where an id must be greater than 0 for a question
-          ["id", ">", 0];
-      const fetchData = async () =>
-        !didCancel &&
-        firebase
-          ?.collection(collectionPath)
-          .where(...whereOptions)
-          .orderBy("id")
-          .onSnapshot(
-            snapshot => {
-              if (snapshot.size) {
-                const data = [];
-                snapshot.forEach(doc =>
-                  data.push({ ...doc.data(), uid: doc.id })
-                );
-                setState({
-                  data,
-                  isLoading: false,
-                  isError: false
-                });
-              } else {
-                setState(prevState => {
-                  return {
-                    data: prevState.data,
-                    isLoading: false,
-                    isError: false
-                  };
-                });
-              }
-              /* Unsubscribe from firebase on unmount */
-            },
-            () =>
+    /* Make a firebase query to get details about 
+          the collection or questions Such as name and description
+          */
+    // Used for canceling async firebase call
+    let didCancel = false;
+    const whereOptions = locationHash
+      ? // where condition based on hash for current location
+        ["type", "==", locationHash.substring(1)]
+      : // otherwise use a condition where an id must be greater than 0 for a question
+        ["id", ">", 0];
+    const fetchData = async () =>
+      !didCancel &&
+      firebase
+        ?.collection(collectionPath)
+        .where(...whereOptions)
+        .orderBy("id")
+        .onSnapshot(
+          snapshot => {
+            if (snapshot.size) {
+              const data = [];
+              snapshot.forEach(doc =>
+                data.push({ ...doc.data(), uid: doc.id })
+              );
               setState({
-                data: [],
+                data,
                 isLoading: false,
                 isError: false
-              })
-          );
+              });
+            } else {
+              setState(prevState => {
+                return {
+                  data: prevState.data,
+                  isLoading: false,
+                  isError: false
+                };
+              });
+            }
+            /* Unsubscribe from firebase on unmount */
+          },
+          () =>
+            setState({
+              data: [],
+              isLoading: false,
+              isError: false
+            })
+        );
+    // fetch data from firebase
+    fetchData();
 
-      fetchData();
-
-      return () => {
-        didCancel = true;
-      };
-    })();
+    return () => {
+      didCancel = true;
+    };
   }, [collectionPath, firebase, locationHash]);
 
   return { ...state };
