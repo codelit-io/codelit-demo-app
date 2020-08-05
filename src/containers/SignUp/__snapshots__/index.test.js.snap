@@ -1,7 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUpForm Component should match the snapshot 1`] = `
-<Context.Consumer>
-  [Function]
-</Context.Consumer>
+<ForwardRef(WithStyles)
+  maxWidth="lg"
+>
+  <ForwardRef(WithStyles) />
+  <ForwardRef(WithStyles)
+    isLoading={false}
+    title="Sign up to get started 😎"
+  >
+    <ForwardRef(WithStyles)
+      container={true}
+      spacing={3}
+    >
+      <React.Fragment>
+        <ForwardRef(WithStyles)
+          item={true}
+          md={6}
+          sm={6}
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(WithStyles) />
+        </ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          item={true}
+          md={6}
+          sm={6}
+        >
+          <ForwardRef(WithStyles) />
+        </ForwardRef(WithStyles)>
+      </React.Fragment>
+    </ForwardRef(WithStyles)>
+  </ForwardRef(WithStyles)>
+</ForwardRef(WithStyles)>
 `;
