@@ -1,4 +1,4 @@
-# Current State management tools
+# Classic State management tools
 
 Using context api for all firebase stuff and they are provided to most pages
 

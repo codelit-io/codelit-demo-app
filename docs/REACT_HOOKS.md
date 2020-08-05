@@ -5,7 +5,7 @@
 - `useTheme`: [Material-ui theme](https://material-ui.com/styles/api/)
 - `useStyles`: [Material-ui styles](https://material-ui.com/styles/basics/)
 - `useForm`: [React hook form](https://react-hook-form.com/get-started/)
-- `useCollection`: Custom hook to fetch data from firebase based on a path and return an array of docs 
+- `useCollection`: Custom hook to fetch data from firebase based on a path and return an array of docs
 - `useCollections`: Custom hook to fetch data from firebase and return a list of all collections
 - `useCollectionDetails`: Custom hook to fetch data about a collection based on a route path
 
@@ -27,9 +27,9 @@ useEffect(() => {
 }, [prop1, prop2])
 ```
 
-###  useState
+### useState
 
--  State for your component
+- State for your component
 
 ```
 const [isLoading, setIsLoading] = setState(false)
@@ -37,9 +37,9 @@ const [isLoading, setIsLoading] = setState(false)
 setIsLoading(true)
 ```
 
-###  useCallback
+### useCallback
 
-- Cache heavy functionality and complex calculations to prevent them from running again on re-render 
+- Cache heavy functionality and complex calculations to prevent them from running again on re-render
 
 ```
 useCallback(() => {
@@ -51,7 +51,7 @@ useCallback(() => {
 }, [prop1, prop2])
 ```
 
-###  useMemo
+### useMemo
 
 - Cache values you need to return to prevent them from returning value on every render
 
@@ -64,3 +64,7 @@ if (prop1) {
 
 }, [prop1])
 ```
+
+### useGlobal
+
+[See State Management](docs/STATE_MANAGEMENT.md)
