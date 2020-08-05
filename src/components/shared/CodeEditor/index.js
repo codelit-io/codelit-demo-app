@@ -34,6 +34,7 @@ import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
 import MoProgressLinear from "components/library/MoProgressLinear";
 import MoBrowserMockup from "components/library/MoBrowserMockup";
+import MoSpinner from "components/library/MoSpinner";
 import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -119,6 +120,11 @@ const CodeEditor = ({
   const codeEditorTheme = useMemo(() => getTheme({ isDarkMode }), [isDarkMode]);
 
   const classes = useStyles();
+
+  if (!codeAnswer) {
+    return <MoSpinner isLoading={true} color="primary" />;
+  }
+
   return (
     <Grid container spacing={2}>
       <LiveProvider
@@ -129,9 +135,9 @@ const CodeEditor = ({
         <Grid item md={md} sm={sm} xs={12} style={{ width: "100%" }}>
           <Grow
             in={codeAnswer && true}
-            mountOnEnter
+            // mountOnEnter
             timeout={{ enter: 600, exit: 600 }}
-            unmountOnExit
+            // unmountOnExit
           >
             <div>
               <MoBrowserMockup
@@ -170,9 +176,9 @@ const CodeEditor = ({
         <Grid item md={md} sm={sm} xs={12}>
           <Grow
             in={(isPlayground && true) || (codeAnswer && true)}
-            mountOnEnter
-            timeout={{ enter: 400 }}
-            unmountOnExit
+            // mountOnEnter
+            timeout={{ enter: 400, exit: 400 }}
+            // unmountOnExit
           >
             <div>
               <MoBrowserMockup isEditor={false}>
