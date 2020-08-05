@@ -14,9 +14,7 @@ import MoPage from "components/library/MoPage";
 
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Grow from "@material-ui/core/Grow";
 import Navigation from "components/shared/Navigation";
-import SignUpCard from "components/shared/CardList/SignUpCard";
 import NewItemCard from "components/shared/CardList/NewItemCard";
 
 const CardList = lazy(() => import("components/shared/CardList"));
@@ -30,33 +28,30 @@ const CoursesPage = ({
   isAdmin,
   itemOptions
 }) => {
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <Container maxWidth="lg">
       <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={collectionDetails?.title}>
-        <Grow in={!isLoading} timeout={{ enter: 600 }}>
-          <Grid container spacing={4} alignItems="center">
-            <CardList
-              isAdmin={isAdmin}
-              items={courses}
-              itemOptions={itemOptions}
-            />
-            {!!isAdmin && !courses?.isLoading && (
-              <Grid item xs={12} sm={12} md={4} lg={4}>
-                <NewItemCard
-                  type="new"
-                  title={itemOptions?.newItem?.title}
-                  url={itemOptions?.newItem?.url}
-                />
-              </Grid>
-            )}
-            {!itemOptions?.authUser && !courses?.isLoading && (
-              <Grid item xs={12} sm={12} md={4} lg={4}>
-                <SignUpCard />
-              </Grid>
-            )}
-          </Grid>
-        </Grow>
+        <Grid container spacing={4} alignItems="center">
+          <CardList
+            isAdmin={isAdmin}
+            items={courses}
+            itemOptions={itemOptions}
+          />
+          {isAdmin && (
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+              <NewItemCard
+                type="new"
+                title={itemOptions?.newItem?.title}
+                url={itemOptions?.newItem?.url}
+              />
+            </Grid>
+          )}
+        </Grid>
         <Footer />
       </MoPage>
     </Container>

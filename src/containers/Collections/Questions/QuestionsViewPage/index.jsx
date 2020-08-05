@@ -17,12 +17,12 @@
 
 import React, { lazy, useEffect, useState, useCallback } from "react";
 
-import Container from "@material-ui/core/Container";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import Navigation from "components/shared/Navigation";
 import useGlobal from "store";
 
+const Container = lazy(() => import("@material-ui/core/Container"));
+const Navigation = lazy(() => import("components/shared/Navigation"));
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ history, match }) => {
@@ -34,7 +34,7 @@ const Questions = ({ history, match }) => {
   const doc = match.params.collection;
 
   const itemOptions = {
-    authUser,
+    userRole,
     // Top right component of the card
     // ActionComponent: ,
     doc,

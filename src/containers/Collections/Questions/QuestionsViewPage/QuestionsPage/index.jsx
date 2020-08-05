@@ -7,11 +7,10 @@
  * @param {Number} points - Number of points the user has for this course
  */
 
-import React, { lazy, useEffect } from "react";
+import React, { lazy } from "react";
 
 import calculateProgress from "./calculateProgress";
 import Footer from "components/shared/Footer";
-import Grow from "@material-ui/core/Grow";
 import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
@@ -30,7 +29,9 @@ const QuestionsPage = ({
   isAdmin,
   points
 }) => {
-  useEffect(() => {}, []);
+  if (isLoading) {
+    return null;
+  }
   const IconComponent = () => (
     <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
   );
@@ -39,35 +40,30 @@ const QuestionsPage = ({
       title={courseDetails?.data?.title}
       IconComponent={isAdmin && IconComponent}
     >
-      <Grow in={!isLoading} timeout={{ enter: 600 }}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          {
             <MoPointsGroup
               authUser={itemOptions?.authUser}
               points={points}
               progress={calculateProgress(questions?.length, points)}
             />
-          </Grid>
-          <CardList
-            isAdmin={isAdmin}
-            items={questions}
-            itemOptions={itemOptions}
-          />
-          {!itemOptions?.authUser && !isLoading && (
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-              <SignUpCard />
-            </Grid>
-          )}
-          {!!isAdmin && !isLoading && (
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-              <NewItemCard
-                title={itemOptions?.newItem?.title}
-                url={itemOptions?.newItem?.url}
-              />
-            </Grid>
-          )}
+          }
         </Grid>
-      </Grow>
+        <CardList
+          isAdmin={isAdmin}
+          items={questions}
+          itemOptions={itemOptions}
+        />
+        {isAdmin && (
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <NewItemCard
+              title={itemOptions?.newItem?.title}
+              url={itemOptions?.newItem?.url}
+            />
+          </Grid>
+        )}
+      </Grid>
       <Footer />
     </MoPage>
   );
