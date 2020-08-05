@@ -1,28 +1,6 @@
 {
 	"env": {
-		"browser": true,
-		"es6": true
+		"browser": true
 	},
-	"extends": ["react-app", "prettier"],
-	"parserOptions": {
-		"sourceType": "module"
-	},
-	"plugins": ["simple-import-sort", "import"],
-	"rules": {
-		"simple-import-sort/sort": "error",
-		"sort-imports": "off",
-		"import/first": "error",
-		"import/newline-after-import": "error",
-		"import/no-duplicates": "error"
-	},
-	"overrides": [
-		{
-			"files": "server/**/*.js",
-			"env": { "node": true },
-			"rules": {
-				"simple-import-sort/sort": "off",
-				"import/order": ["error", { "newlines-between": "always" }]
-			}
-		}
-	]
+	"extends": ["react-app", "prettier"]
 }
