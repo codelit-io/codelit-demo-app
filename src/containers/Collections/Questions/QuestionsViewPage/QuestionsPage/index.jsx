@@ -15,7 +15,6 @@ import Grid from "@material-ui/core/Grid";
 import MoPage from "components/library/MoPage";
 import MoPointsGroup from "components/library/MoPointsGroup";
 import MoButtonIcon from "components/library/MoButtonIcon";
-import SignUpCard from "components/shared/CardList/SignUpCard";
 import NewItemCard from "components/shared/CardList/NewItemCard";
 
 const CardList = lazy(() => import("components/shared/CardList"));
