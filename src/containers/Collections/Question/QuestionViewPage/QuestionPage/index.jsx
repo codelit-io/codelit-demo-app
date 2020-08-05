@@ -98,11 +98,12 @@ const QuestionPage = ({
         next: Number(question.id) + 1,
         prev: Number(question.id) - 1
       };
-      setMatchPercent();
+      //TODO: find a better solution for this
       setQuestion({
         question:
           "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>"
       });
+      setMatchPercent();
       setIsCorrect(false);
       setSnackbarProps({ isActive: false });
       handleNavigation(id[type]);

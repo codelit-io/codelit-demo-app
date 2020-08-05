@@ -21,11 +21,13 @@ import Firebase, { FirebaseContext } from "./components/shared/Firebase";
 
 import App from "./App"; /* webpackChunkName: "App" */
 import Theme from "App/Theme"; /* webpackChunkName: "Theme" */
+import ServiceWorkerProvider from "components/shared/ServiceWorkerProvider";
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <Theme>
       <App />
+      <ServiceWorkerProvider />
     </Theme>
   </FirebaseContext.Provider>,
   document.getElementById("root")
@@ -37,4 +39,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-serviceWorker.unregister();
+serviceWorker.register();

@@ -31,6 +31,7 @@ import React, {
 import PropTypes from "prop-types";
 
 // used to retry imports if they fail
+// 🔴Retry is not in use
 import { retry } from "helpers/retryLazyImport";
 
 import useGlobal from "store";
@@ -40,6 +41,7 @@ const [{ authUser, userRole, firebase }] = useGlobal();
 
 
 // lazy load imports and retry if they fail
+// 🔴Retry is not in use
 const ExampleChild = lazy(() => retry(() => import("./ExampleChild")));
 
 const ExampleFeature = ({ authUser, firebase, history, match }) => {
