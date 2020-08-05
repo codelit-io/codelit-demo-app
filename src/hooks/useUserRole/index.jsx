@@ -1,5 +1,6 @@
 /**
- *
+ * ⚠️ NOT IN USE ⚠️
+ * use userRole from useGlobal instead
  * @author MoSkool
  * @version 1.0.0
  * @visibleName  useUserRole hook 🕵️‍♂️👩🏻‍🔬👩‍💻
