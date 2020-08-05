@@ -6,7 +6,6 @@
  *
  * Custom Hook to get authUser object from firebase
  *
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @returns {isLoading: boolean, isError: Object, authUser: Object} - returns loading boolean, error Object and authUser Object
  *
  * @example
