@@ -41,7 +41,10 @@ const tabItems = [
 
 const AdminPage = ({ history }) => {
   const [{ authUser, userRole, firebase }] = useGlobal();
-  canViewPage({ history, userRole });
+
+  if (canViewPage({ history, userRole })) {
+    return null;
+  }
 
   const handleTabChange = path => {
     history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);

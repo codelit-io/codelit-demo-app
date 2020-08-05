@@ -13,6 +13,7 @@ import PasswordChangeForm from "components/shared/PasswordChange";
 import MoPage from "components/library/MoPage";
 import Typography from "@material-ui/core/Typography";
 import useGlobal from "store";
+import canViewPage from "helpers/canViwePage";
 
 const SIGN_IN_METHODS = [
   {
@@ -33,8 +34,12 @@ const SIGN_IN_METHODS = [
   }
 ];
 
-const AccountPage = () => {
-  const [{ authUser, firebase }] = useGlobal();
+const AccountPage = ({ history }) => {
+  const [{ authUser, firebase, userRole }] = useGlobal();
+
+  if (canViewPage({ history, userRole })) {
+    return null;
+  }
 
   return (
     <Container maxWidth="lg">
