@@ -57,3 +57,8 @@ export const BROWSER_MOCKUP = {
   CODE_PREVIEW: "Code Preview",
   VIEW_ALL_COURSES: "View All Courses"
 };
+
+export const NO_ACCESS = {
+  TITLE: "You don't have access to this page",
+  BACK_HOME: "Return back home"
+};

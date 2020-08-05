@@ -5,6 +5,10 @@ export const SIGN_UP = { path: "/signup", title: "Email Sign up" };
 export const PASSWORD_FORGET = { path: "/pw-forget", title: "Forgot Password" };
 export const PLAYGROUND = { path: "/playgound", title: "React Playground" };
 export const NOT_FOUND = { path: "/not_found", title: "Page Not Found" };
+export const NO_ACCESS = {
+  path: "/no_access",
+  title: "You don’t have access to this page"
+};
 export const LANDING = {
   path: "/",
   title: "New way to Mastering Front-end Development"

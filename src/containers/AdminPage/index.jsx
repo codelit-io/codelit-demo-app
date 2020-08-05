@@ -23,10 +23,11 @@ import { Switch, Route } from "react-router-dom";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
 import { withEmailVerification } from "components/shared/Session";
+import canViewPage from "helpers/canViwePage";
+import Container from "@material-ui/core/Container";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
 import MoTabs from "./MoTabs";
-import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
 import useGlobal from "store";
 
@@ -39,7 +40,8 @@ const tabItems = [
 ];
 
 const AdminPage = ({ history }) => {
-  const [{ authUser, firebase }] = useGlobal();
+  const [{ authUser, userRole, firebase }] = useGlobal();
+  canViewPage({ history, userRole });
 
   const handleTabChange = path => {
     history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
