@@ -31,10 +31,8 @@ const collection = {
   isProgressBar: false
 };
 
-const CoursesViewPage = props => {
-  const [state] = useGlobal();
-  const { history, match } = props;
-  const { authUser, userRole, firebase } = state;
+const CoursesViewPage = ({ history, match }) => {
+  const [{ authUser, userRole, firebase }] = useGlobal();
   const itemOptions = {
     authUser,
     ActionComponent: CardProgress,
