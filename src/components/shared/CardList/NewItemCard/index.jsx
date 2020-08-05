@@ -23,11 +23,12 @@ import MoCard from "components/library/MoCard";
 
 import { COURSES } from "constants/i18n";
 
-const NewItemCard = ({ title, url }) => {
+const NewItemCard = ({ item, title, url }) => {
   return (
     <MoCard
       IconComponent={AddCircleOutlineIcon}
       isDisabled={false}
+      item={item}
       title={title || COURSES.ADD_A_COURSES}
       type="new"
       url={url}

@@ -45,6 +45,7 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
+import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
 import PropTypes from "prop-types";
@@ -61,45 +62,61 @@ const MoCard = ({
   title,
   type,
   url
-}) => (
-  <ButtonBase
-    component={Link}
-    to={url}
-    disabled={isDisabled}
-    className={classes.link}
-  >
-    <Paper
-      elevation={3}
-      className={`${classes.card} ${isDisabled && classes.disableCard} ${type &&
-        classes[type]}`}
-    >
-      <Grid container alignContent="flex-start" alignItems="flex-start">
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="h2" component="h1" className={classes.heroIcon}>
-            {!IconComponent && index && index}
-            {IconComponent && <IconComponent />}
-          </Typography>
-          <Typography gutterBottom variant="h4" component="h4">
-            {title ? title : "Empty Title"}
-          </Typography>
-          <Typography className={classes.subtitle} component="h6" gutterBottom>
-            {subtitle}
-          </Typography>
-          <Typography className={classes.subtitle} component="p" gutterBottom>
-            {content}
-          </Typography>
-        </Grid>
-        {itemOptions?.ActionComponent && (
-          <itemOptions.ActionComponent
-            authUser={itemOptions.authUser}
-            item={item}
-            match={itemOptions.match}
-          />
-        )}
-      </Grid>
-    </Paper>
-  </ButtonBase>
-);
+}) => {
+  return (
+    <Grow in={true} timeout={{ enter: 600 }}>
+      <ButtonBase
+        component={Link}
+        to={url}
+        disabled={isDisabled}
+        className={classes.link}
+      >
+        <Paper
+          elevation={3}
+          className={`${classes.card} ${isDisabled &&
+            classes.disableCard} ${type && classes[type]}`}
+        >
+          <Grid container alignContent="flex-start" alignItems="flex-start">
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Typography
+                variant="h2"
+                component="h1"
+                className={classes.heroIcon}
+              >
+                {!IconComponent && index && index}
+                {IconComponent && <IconComponent />}
+              </Typography>
+              <Typography gutterBottom variant="h4" component="h4">
+                {title ? title : "Empty Title"}
+              </Typography>
+              <Typography
+                className={classes.subtitle}
+                component="h6"
+                gutterBottom
+              >
+                {subtitle}
+              </Typography>
+              <Typography
+                className={classes.subtitle}
+                component="p"
+                gutterBottom
+              >
+                {content}
+              </Typography>
+            </Grid>
+            {itemOptions?.ActionComponent && (
+              <itemOptions.ActionComponent
+                authUser={itemOptions.authUser}
+                item={item}
+                match={itemOptions.match}
+              />
+            )}
+          </Grid>
+        </Paper>
+      </ButtonBase>
+    </Grow>
+  );
+};
 
 MoCard.propTypes = {
   title: PropTypes.string,

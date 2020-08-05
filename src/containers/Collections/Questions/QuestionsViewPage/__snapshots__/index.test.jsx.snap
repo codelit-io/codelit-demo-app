@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QuestionsViewPage Component should match the snapshot 1`] = `
-<ForwardRef(WithStyles)
+<UNDEFINED
   maxWidth="lg"
 >
-  <ForwardRef(WithStyles) />
+  <UNDEFINED />
   <UNDEFINED
     courseDetails={
       Object {
@@ -18,7 +18,6 @@ exports[`QuestionsViewPage Component should match the snapshot 1`] = `
     isLoading={true}
     itemOptions={
       Object {
-        "authUser": undefined,
         "doc": "test-collection",
         "firebase": undefined,
         "isItemDisabled": [Function],
@@ -33,10 +32,11 @@ exports[`QuestionsViewPage Component should match the snapshot 1`] = `
           "title": "Add a question",
           "url": "test-collection/0/isEditMode",
         },
+        "userRole": undefined,
       }
     }
     points={0}
     questions={Array []}
   />
-</ForwardRef(WithStyles)>
+</UNDEFINED>
 `;

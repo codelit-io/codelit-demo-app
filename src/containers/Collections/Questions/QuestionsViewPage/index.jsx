@@ -6,9 +6,6 @@
  *
  * A Container that fetches firebase data using hooks and renders cards of questions
  *
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @withAuthentication - HOC provides firebase and match props
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  *
  * @see Link [Questions Page](https://moskool.com/courses/mo-easy)
@@ -17,24 +14,23 @@
 
 import React, { lazy, useEffect, useState, useCallback } from "react";
 
-import Container from "@material-ui/core/Container";
 import useCollectionDetails from "hooks/useCollectionDetails";
 import useCollections from "hooks/useCollections";
-import Navigation from "components/shared/Navigation";
 import useGlobal from "store";
 
+const Container = lazy(() => import("@material-ui/core/Container"));
+const Navigation = lazy(() => import("components/shared/Navigation"));
 const QuestionsPage = lazy(() => import("./QuestionsPage"));
 
 const Questions = ({ history, match }) => {
-  const [state] = useGlobal();
-  const { authUser, firebase, userRole } = state;
+  const [{ authUser, firebase, userRole }] = useGlobal();
 
   const [points, setPoints] = useState(0);
 
   const doc = match.params.collection;
 
   const itemOptions = {
-    authUser,
+    userRole,
     // Top right component of the card
     // ActionComponent: ,
     doc,

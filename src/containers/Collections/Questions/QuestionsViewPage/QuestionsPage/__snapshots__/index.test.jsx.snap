@@ -2,41 +2,23 @@
 
 exports[`QuestionsPage Component should match the snapshot 1`] = `
 <ForwardRef(WithStyles)>
-  <ForwardRef(Grow)
-    in={true}
-    timeout={
-      Object {
-        "enter": 600,
-      }
-    }
+  <ForwardRef(WithStyles)
+    container={true}
+    spacing={4}
   >
     <ForwardRef(WithStyles)
-      container={true}
-      spacing={4}
+      item={true}
+      lg={12}
+      md={12}
+      sm={12}
+      xs={12}
     >
-      <ForwardRef(WithStyles)
-        item={true}
-        lg={12}
-        md={12}
-        sm={12}
-        xs={12}
-      >
-        <MoPointsGroup
-          progress="0% Complete"
-        />
-      </ForwardRef(WithStyles)>
-      <UNDEFINED />
-      <ForwardRef(WithStyles)
-        item={true}
-        lg={4}
-        md={4}
-        sm={12}
-        xs={12}
-      >
-        <SignUpCard />
-      </ForwardRef(WithStyles)>
+      <MoPointsGroup
+        progress="0% Complete"
+      />
     </ForwardRef(WithStyles)>
-  </ForwardRef(Grow)>
+    <UNDEFINED />
+  </ForwardRef(WithStyles)>
   <ForwardRef(WithStyles) />
 </ForwardRef(WithStyles)>
 `;

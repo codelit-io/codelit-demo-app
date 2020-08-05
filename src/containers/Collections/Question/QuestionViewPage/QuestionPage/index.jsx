@@ -1,9 +1,6 @@
 /**
  * Single Question is code editor, code preview and error console. This container fetches a single question
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} history - Provides several different implementations for managing session history in JavaScript in various environments - comes from withRouter and passed to withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Object} userRole - User role  object returns an objet of roles with a boolean  flag to indicate if the user has the role or not
  * @returns {<CodeEditor/>} - returns CodeEditor component which renders the rest of the components
  */

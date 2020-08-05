@@ -8,9 +8,11 @@ import {
   removeQuestion,
   rowClick
 } from "helpers/collectionFirebase";
-import { withAuthentication } from "components/shared/Session";
+import useGlobal from "store";
 
-const Collection = ({ authUser, firebase, history, match }) => {
+const Collection = ({ history, match }) => {
+  const [{ authUser, firebase }] = useGlobal();
+
   const [isLoading, setIsLoading] = useState(false);
   const [questions, setQuestions] = useState(null);
 
@@ -93,4 +95,4 @@ const Collection = ({ authUser, firebase, history, match }) => {
   );
 };
 
-export default withAuthentication("isAdmin")(Collection);
+export default Collection;

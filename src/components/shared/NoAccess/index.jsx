@@ -1,7 +1,6 @@
 import React from "react";
-
-import { ReactComponent as PageNotFound } from "assets/page_not_found.svg";
-import { NOT_FOUND } from "constants/i18n";
+import { ReactComponent as NoAccessSvg } from "assets/noAccess.svg";
+import { NO_ACCESS } from "constants/i18n";
 import Container from "@material-ui/core/Container";
 import Footer from "components/shared/Footer";
 import MoPage from "components/library/MoPage";
@@ -17,26 +16,26 @@ const NoAccess = () => {
   return (
     <Container maxWidth="lg">
       <Navigation authUser={authUser} firebase={firebase} />
-      <MoPage title={NOT_FOUND.TITLE}>
+      <MoPage title={NO_ACCESS.TITLE}>
         <Grid container>
           <Grid item md={6}>
             <MoButton
               isArrowIcon={true}
               variant="text"
               size="large"
-              text={NOT_FOUND.BACK_HOME}
+              text={NO_ACCESS.BACK_HOME}
               href="/"
             />
           </Grid>
           <Grid item md={6}>
-            <PageNotFound
+            <NoAccessSvg
               style={{
                 width: "100%",
                 display: "block",
                 margin: "auto",
                 position: "relative"
               }}
-              alt={NOT_FOUND.TITLE}
+              alt={NO_ACCESS.TITLE}
             />
           </Grid>
         </Grid>

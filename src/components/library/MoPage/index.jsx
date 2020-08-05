@@ -3,7 +3,6 @@
  * Default page used through out the app, used to wrap elements with page like styles
  * provides a heading title and a subtitle for the page with loading spinner
  * @param {Boolean} isAdmin - based on user role
- * @param {Boolean} isLoading - loading or not
  * @param {String} title - Title for the page
  * @param {String} subtitle - Subtitle for the page
  */
@@ -13,19 +12,8 @@ import React from "react";
 import MoTypography from "../MoTypography";
 import styles from "./styles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MoSpinner from "../MoSpinner";
 
-const MoPage = ({
-  classes,
-  children,
-  IconComponent,
-  isLoading,
-  subtitle,
-  title
-}) => {
-  if (isLoading) {
-    return <MoSpinner isLoading={isLoading} />;
-  }
+const MoPage = ({ classes, children, IconComponent, subtitle, title }) => {
   return (
     <section className={classes.section}>
       <MoTypography

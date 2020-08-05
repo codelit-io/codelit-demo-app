@@ -7,8 +7,6 @@
  * A Container contains a list of courses created by MoSkool and a list of courses created by the community
  *
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @withFirebase - HOC provides firebase instance to access db and back-end
  * @returns {<CoursesOrg/>} - returns component which then the children fetch the correct data
  *
@@ -31,10 +29,8 @@ const collection = {
   isProgressBar: false
 };
 
-const CoursesViewPage = props => {
-  const [state] = useGlobal();
-  const { history, match } = props;
-  const { authUser, userRole, firebase } = state;
+const CoursesViewPage = ({ history, match }) => {
+  const [{ authUser, userRole, firebase }] = useGlobal();
   const itemOptions = {
     authUser,
     ActionComponent: CardProgress,

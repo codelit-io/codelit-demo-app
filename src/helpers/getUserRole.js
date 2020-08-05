@@ -8,7 +8,8 @@ const getUserRole = authUser => {
   return {
     isAdmin: !!(authUser.roles && authUser.roles[ROLES.ADMIN]),
     isAuthor: !!(authUser.roles && authUser.roles[ROLES.AUTHOR]),
-    isStudent: !!(authUser.roles && authUser.roles[ROLES.STUDENT])
+    isStudent: !!(authUser.roles && authUser.roles[ROLES.STUDENT]),
+    isLoggedIn: true
   };
 };
 

@@ -33,6 +33,9 @@ const LandingPage = lazy(() =>
 const NotFound = lazy(() =>
   import("components/shared/NotFound" /* webpackChunkName: "Not Found" */)
 );
+const NoAccess = lazy(() =>
+  import("components/shared/NoAccess" /* webpackChunkName: "No Access" */)
+);
 const PasswordReset = lazy(() =>
   import("containers/PasswordReset" /* webpackChunkName: "Password Reset" */)
 );
@@ -55,6 +58,7 @@ const App = () => {
     <Router>
       <Suspense fallback={<MoSpinner isLoading={true} color="primary" />}>
         <Switch>
+          <Route exact path={ROUTES.NO_ACCESS.path} component={NoAccess} />
           <Route path={ROUTES.ADMIN.path} component={AdminPage} />
           <Route path={ROUTES.ACCOUNT.path} component={Account} />
           <Route exact path={ROUTES.LANDING.path} component={LandingPage} />

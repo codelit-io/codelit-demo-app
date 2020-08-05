@@ -15,14 +15,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 const Footer = ({ classes }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
-    <Fade
-      in={true}
-      mountOnEnter
-      timeout={{ enter: 1200, exit: 1200 }}
-      unmountOnExit
-    >
+    <Fade in={true} timeout={{ enter: 1200 }}>
       <div className={classes.footer}>
         <Container maxWidth="lg">
           <Grid container className={classes.container}>
