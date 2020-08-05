@@ -10,10 +10,7 @@
  * @param {Object} authUser - Passed from parent container and has everything about the logged in user
  * @param {Object} classes - Class names that has styling details for elements - used with Material-UI
  * @param {Object} children - Pass child components that are being wrapped by this component
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
- * @withAuthentication - HOC if user is authenticated, hoc will provide firebase and match props - EXAMPLE USAGE: withAuthentication(Component)
  * @withEmailVerification - HOC provides email verification stuff
  * @withStyle - HOC provides classes object to component for styling
  * @returns {<ExampleChild/>} - returns component which then the children fetch the correct data
@@ -35,12 +32,12 @@ import PropTypes from "prop-types";
 
 // used to retry imports if they fail
 import { retry } from "helpers/retryLazyImport";
-/*
- * withAuthentication - higher order component
- * Provides your component with necessary props: authUser, firebase, history, match
- * Wraps component and used at the end of the file with export statement
- */
-import { withAuthentication } from "components/shared/Session";
+
+import useGlobal from "store";
+
+
+const [{ authUser, userRole, firebase }] = useGlobal();
+
 
 // lazy load imports and retry if they fail
 const ExampleChild = lazy(() => retry(() => import("./ExampleChild")));
@@ -131,4 +128,4 @@ ExampleFeature.propTypes = {
 
 const isUserRole = false
 
-export default withAuthentication(isUserRole)(ExampleFeature);
+export default ExampleFeature;

@@ -1,14 +1,14 @@
 import React, { lazy } from "react";
 
-import { withAuthentication } from "components/shared/Session";
 import Grid from "@material-ui/core/Grid";
 import useCollections from "hooks/useCollections";
-import useUserRole from "hooks/useUserRole";
+import useGlobal from "store";
 
 const CardList = lazy(() => import("components/shared/CardList"));
 
-const AdminCourses = ({ authUser, firebase, match }) => {
-  const userRole = useUserRole(authUser);
+const AdminCourses = ({ match }) => {
+  const [{ authUser, userRole, firebase }] = useGlobal();
+
   const courses = useCollections({ collectionPath: "courses" }, firebase);
   if (!courses?.data) {
     return null;
@@ -40,4 +40,4 @@ const AdminCourses = ({ authUser, firebase, match }) => {
   );
 };
 
-export default withAuthentication(false)(AdminCourses);
+export default AdminCourses;

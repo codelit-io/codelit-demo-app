@@ -7,8 +7,6 @@
  * Admin page grabs a list of courses from firebase and routes
  * admin users to the admin sub pages (users and collections)
  *
- * @param {Object} firebase - Firebase class provides access to authUser and db - comes from withAuthentication hoc
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Class} history - Firebase class provides access to authUser and db
  * @withEmailVerification - HOC provides email verification stuff
  * @returns - returns a lesson list on the left column and course tracking info on the right column
@@ -21,19 +19,16 @@ import React, { Suspense, lazy } from "react";
 
 import * as ROUTES from "constants/routes";
 import { ADMIN_PAGE } from "constants/i18n";
-import { compose } from "recompose";
 import { Switch, Route } from "react-router-dom";
 import { UserList } from "components/shared/Users";
 import { UserItem } from "components/shared/Users";
-import {
-  withEmailVerification,
-  withAuthentication
-} from "components/shared/Session";
+import { withEmailVerification } from "components/shared/Session";
 import MoPage from "components/library/MoPage";
 import MoSpinner from "components/library/MoSpinner";
 import MoTabs from "./MoTabs";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
+import useGlobal from "store";
 
 const Collection = lazy(() => import("./Collection"));
 const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
@@ -43,7 +38,9 @@ const tabItems = [
   { name: ADMIN_PAGE.USERS, path: "users" }
 ];
 
-const AdminPage = ({ authUser, firebase, history }) => {
+const AdminPage = ({ history }) => {
+  const [{ authUser, firebase }] = useGlobal();
+
   const handleTabChange = path => {
     history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
   };
@@ -83,7 +80,4 @@ const AdminPage = ({ authUser, firebase, history }) => {
   );
 };
 
-export default compose(
-  withEmailVerification,
-  withAuthentication("isAdmin")
-)(AdminPage);
+export default withEmailVerification(AdminPage);

@@ -2,20 +2,17 @@
 
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import { compose } from "recompose";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { ACCOUNT } from "constants/i18n";
 import Container from "@material-ui/core/Container";
 import Navigation from "components/shared/Navigation";
-import {
-  withEmailVerification,
-  withAuthentication
-} from "components/shared/Session";
+import { withEmailVerification } from "components/shared/Session";
 import PasswordForgetForm from "components/shared/PasswordForgot";
 import PasswordChangeForm from "components/shared/PasswordChange";
 import MoPage from "components/library/MoPage";
 import Typography from "@material-ui/core/Typography";
+import useGlobal from "store";
 
 const SIGN_IN_METHODS = [
   {
@@ -36,7 +33,9 @@ const SIGN_IN_METHODS = [
   }
 ];
 
-const AccountPage = ({ authUser, firebase }) => {
+const AccountPage = () => {
+  const [{ authUser, firebase }] = useGlobal();
+
   return (
     <Container maxWidth="lg">
       <Navigation authUser={authUser} firebase={firebase} />
@@ -224,8 +223,4 @@ class DefaultLoginToggle extends Component {
   }
 }
 
-export default compose(
-  /* TODO: Upgrade email verification -- BROKEN -- */
-  withEmailVerification,
-  withAuthentication(false)
-)(AccountPage);
+export default withEmailVerification(AccountPage);

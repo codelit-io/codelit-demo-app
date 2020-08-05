@@ -1,9 +1,7 @@
 /**
  * Course page contains layout styling for the page, progress status, and a list of questions
- * @param {Object} authUser - Passed from parent container and has everything about the logged in user
- * @param {Array} courses - List of courses passed to this component from the db
+ * @param {Array} questions - List of questions passed to this component from the db
  * @param {Object} courseDetails - Contains details about the course we are looking at, this is queried from the db
- * @param {Object} match - Contains information about how a <Route path> matched the URL - comes from withRouter and passed to withAuthentication hoc
  * @param {Number} points - Number of points the user has for this course
  */
 

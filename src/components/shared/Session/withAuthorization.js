@@ -23,7 +23,8 @@ const withAuthorization = condition => Component => {
     componentWillUnmount() {
       this.listener();
     }
-    // TODO: Deprecated us authUser from withAuthentication
+    // Deprecated us authUser from global state
+    //  const [{ authUser, firebase }] = useGlobal();
     render() {
       return (
         <AuthUserContext.Consumer>
