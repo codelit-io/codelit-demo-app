@@ -7,6 +7,7 @@ import config from "./config";
 class Firebase {
   constructor() {
     app.initializeApp(config);
+
     this.auth = app.auth();
     this.firestore = app.firestore();
 
@@ -110,7 +111,7 @@ class Firebase {
                 ...dbUser
               };
               // track users
-              this.analytics.setUser(authUser);
+              this.analytics.setUserProperties({ ...authUser });
 
               next(authUser);
             });
