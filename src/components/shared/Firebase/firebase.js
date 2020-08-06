@@ -1,19 +1,20 @@
 import app from "firebase/app";
 import "firebase/auth";
-import "firebase/database";
 import "firebase/firestore";
+import "firebase/analytics";
 import config from "./config";
 
 class Firebase {
   constructor() {
     app.initializeApp(config);
+
     this.auth = app.auth();
-    // Db is not in use but available if needed
-    // this.db = app.database();
     this.firestore = app.firestore();
 
+    // analytics
+    this.analytics = app.analytics();
+
     // Helper
-    this.serverValue = app.database.ServerValue;
     this.fieldValue = app.firestore.FieldValue;
 
     this.emailAuthProvider = app.auth.EmailAuthProvider;
@@ -109,6 +110,8 @@ class Firebase {
                 photoURL: authUser.photoURL || "",
                 ...dbUser
               };
+              // track users
+              this.analytics.setUserProperties({ ...authUser });
 
               next(authUser);
             });
