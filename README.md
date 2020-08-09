@@ -1,6 +1,11 @@
 [![CircleCI](https://circleci.com/gh/moskool/moskool-react-app.svg?style=svg&circle-token=25e17fbacf3e095631aba484af8169e19df89031)](https://moskool.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=mo-sharif/MoSkool&utm_campaign=Badge_Grade)
 
+# 🕊 Moving to Gatsby 🕊
+
+This template will be open sourced soon
+[👉 Moving to Gatsby repo](https://github.com/moskool/moskool-gatsby)
+
 # 🥇 Mission & Features 🥇
 
 Mo Skool's primary goal is to provide a free and new learning experience to master Front-end development without paying any fees. Mo Skool main features:
