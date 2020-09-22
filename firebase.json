@@ -2,12 +2,6 @@
 	"hosting": {
 		"site": "tool-builder",
 		"public": "build",
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-		"rewrites": [
-			{
-				"source": "**",
-				"function": "preRender"
-			}
-		]
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
 	}
 }
