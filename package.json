@@ -91,9 +91,7 @@
 	},
 	"lint-staged": {
 		"src/**/*.{js,jsx}": [
-			"eslint --fix",
-			"prettier-eslint --write",
-			"git add"
+			"eslint --fix"
 		],
 		"*.{png,jpeg,jpg,gif,svg}": [
 			"imagemin-lint-staged",
