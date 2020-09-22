@@ -45,8 +45,9 @@ Few steps to get it fully customized with your configs
 
 - [ ] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
 
-- [ ] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
-
+- [ ] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots
+- [ ] Remove unused routes, dependencies, features and containers. Some components are built specifically for Mo Skool and they might not apply to your project.
+- [ ] Have fun 🤘 
 
 # Can I make this better?
 
