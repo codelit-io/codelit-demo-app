@@ -7,12 +7,13 @@ Great and simple getting started **Web App** template. You get a great front-end
 
 ## What does it do? 🤔
 
-- Email and Social sign in
-- Material-UI library with Dark mode
-- Custom Components Library
-- Custom Theme with Responsive mode
-- Global Hook State
-- Save and Read DB data from firestore collection.
+- 📝 Email and Social sign in
+- 🏗 Material-UI library with Dark mode
+- 🚀 Custom Components Library
+- 🎉 Custom Theme with Responsive mode
+- 🌏 Global Hook State
+- 🎣 Custom Permission and Roles Hooks
+- ♺ Save and Read DB data from firestore collection.
 - Admin and protected routes
 - Single Page routing and lazy loading
 - Built using Functional Components
@@ -25,12 +26,15 @@ Great and simple getting started **Web App** template. You get a great front-end
 
 # What do I need? 🤘
 
-## [x][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
+Few steps to get it fully customized with your configs
 
+[x][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
 [x] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
 [x] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
-[x] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed.
-[x] Have fun 🤘
+[x] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
+[x] Adjust prettier and linter configs
+[x] To view the `courses` page populate the data based on the screenshots found in `screenshots` fold!
+[x] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
 
 # Helpful Resources
 
