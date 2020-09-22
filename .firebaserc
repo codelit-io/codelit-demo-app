@@ -1,8 +1,8 @@
 {
   "projects": {
-    "development": "moskool-dev",
-    "default": "moskool-dev",
-    "production": "tool-builder",
-    "website": "reactup"
+    "development": "motemplate-dev",
+    "default": "motemplate-dev",
+    "production": "motemplate-prod",
+    "website": "motemplate"
   }
 }

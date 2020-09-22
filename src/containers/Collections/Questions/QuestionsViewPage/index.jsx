@@ -8,7 +8,7 @@
  *
  * @returns - returns a lesson list on the left column and course tracking info on the right column
  *
- * @see Link [Questions Page](https://moskool.com/courses/mo-easy)
+ * @see Link [Questions Page](https://localhost:3000/courses/mo-easy)
  *
  */
 
@@ -41,7 +41,7 @@ const Questions = ({ history, match }) => {
       points ? points < Number(id) - 1 : Number(id) !== 1,
     firebase,
     newItem: { title: "Add a question", url: `${doc}/0/isEditMode` },
-    match,
+    match
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Questions = ({ history, match }) => {
   const questions = useCollections(
     {
       collectionPath: "courses/" + doc + "/questions",
-      data: [],
+      data: []
     },
     firebase
   );

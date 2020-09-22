@@ -4,7 +4,9 @@
 
 Great and simple getting started Web App template. You get a great **React** front-end app paired with **Firebase** serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app.
 
-Used for Front-end/React courses and code questions in each course. Answering these questions can be done by solving broken code in each course and earning points.
+Used for Front-end/React courses and code questions in each course. Answering these questions can be done by solving broken code in each course and earning points. 
+
+This template is the simpler version of [Moskool.com](https://Moskool.com)
 
 ## What does it do? 🤔
 
@@ -29,14 +31,26 @@ Used for Front-end/React courses and code questions in each course. Answering th
 
 Few steps to get it fully customized with your configs
 
-[ ][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
-[ ] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
-[ ] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
-[ ] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
-[ ] Adjust prettier and linter configs
-[ ] Review and update Routes and Constants
-[ ] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
-[ ] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
+- [ ] [setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
+
+- [ ] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
+
+- [ ] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
+
+- [ ] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
+
+- [ ] Adjust prettier and linter configs
+
+- [ ] Review and update Routes and Constants
+
+- [ ] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
+
+- [ ] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
+
+
+# Can I make this better?
+
+YESS!! PRs are welcomed 🙌
 
 # Getting Started
 
