@@ -46,7 +46,7 @@ const AdminPage = ({ history }) => {
     return null;
   }
 
-  const handleTabChange = path => {
+  const handleTabChange = (path) => {
     history.push(`${ROUTES.ADMIN_COLLECTIONS.path}/${path}`);
   };
 
@@ -55,7 +55,7 @@ const AdminPage = ({ history }) => {
       <Navigation authUser={authUser} firebase={firebase} />
       <MoPage title={ADMIN_PAGE.PAGE_TITLE} isLoading={false}>
         <MoTabs
-          handleTabChange={path => handleTabChange(path)}
+          handleTabChange={(path) => handleTabChange(path)}
           tabItems={tabItems}
         ></MoTabs>
         <Suspense

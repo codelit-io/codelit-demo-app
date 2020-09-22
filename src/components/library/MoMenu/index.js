@@ -15,7 +15,7 @@ import styles from "./styles";
 const MoMenu = ({ authUser, classes }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 

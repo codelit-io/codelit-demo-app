@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     margin: theme.spacing(1)
   },
@@ -35,20 +35,20 @@ const PasswordForgetFormBase = ({ firebase, classes }) => {
 
   const isInvalid = email === "";
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     firebase
       .passwordReset(email)
       .then(() => {
         setState({ ...INITIAL_STATE });
       })
-      .catch(error => {
+      .catch((error) => {
         setState({ error });
       });
 
     event.preventDefault();
   };
 
-  const onChange = event => {
+  const onChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 

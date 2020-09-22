@@ -35,9 +35,10 @@ const Questions = ({ history, match }) => {
     // ActionComponent: ,
     doc,
     // Configure url route for each item
-    itemUrl: id => `${doc}/${id}`,
+    itemUrl: (id) => `${doc}/${id}`,
     // isItemDisabled is configured based on points and question's id
-    isItemDisabled: id => (points ? points < Number(id) - 1 : Number(id) !== 1),
+    isItemDisabled: (id) =>
+      points ? points < Number(id) - 1 : Number(id) !== 1,
     firebase,
     newItem: { title: "Add a question", url: `${doc}/0/isEditMode` },
     match
@@ -81,7 +82,7 @@ const Questions = ({ history, match }) => {
         questions={questions.data}
         courseDetails={courseDetails}
         hasData={questions.data.length && true}
-        handleOnClick={e => handleOnClick(e)}
+        handleOnClick={(e) => handleOnClick(e)}
         isAdmin={userRole?.isAdmin}
         isLoading={questions.isLoading}
         itemOptions={itemOptions}

@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   section: {
     maxHeight: "100%",
     height: "100%",

@@ -11,7 +11,7 @@ import Typist from "react-typist";
 import createStyles from "@material-ui/core/styles/createStyles";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     hint: {
       ...theme.editorFont,

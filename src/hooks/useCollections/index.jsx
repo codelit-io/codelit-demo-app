@@ -34,10 +34,10 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
         .where(...whereOptions)
         .orderBy("id")
         .onSnapshot(
-          snapshot => {
+          (snapshot) => {
             if (snapshot.size) {
               const data = [];
-              snapshot.forEach(doc =>
+              snapshot.forEach((doc) =>
                 data.push({ ...doc.data(), uid: doc.id })
               );
               setState({

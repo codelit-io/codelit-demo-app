@@ -23,7 +23,7 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 const MoAvatar = ({ actions, authUser, isAdmin, classes, firebase }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 

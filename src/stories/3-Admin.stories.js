@@ -27,10 +27,10 @@ export const Table = () => {
       <CssBaseline />
       <QuestionsTable
         questions={questions}
-        onUpdateQuestion={event => console.log(event)}
-        onRemoveQuestion={id => console.log(id)}
-        onCreateQuestion={event => console.log(event)}
-        handleRowClick={id => console.log(id)}
+        onUpdateQuestion={(event) => console.log(event)}
+        onRemoveQuestion={(id) => console.log(id)}
+        onCreateQuestion={(event) => console.log(event)}
+        handleRowClick={(id) => console.log(id)}
       />
     </ThemeProvider>
   );

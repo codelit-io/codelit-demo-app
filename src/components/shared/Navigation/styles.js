@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
     paddingBottom: theme.space?.lg

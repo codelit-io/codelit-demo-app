@@ -46,7 +46,7 @@ const QuestionPage = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const useStyles = makeStyles(theme =>
+  const useStyles = makeStyles((theme) =>
     createStyles({
       textAlignRight: { textAlign: "right" },
       grey: { color: theme.grey?.medium },
@@ -93,7 +93,7 @@ const QuestionPage = ({
    *
    */
   const triggerQuestion = useCallback(
-    type => {
+    (type) => {
       const id = {
         next: Number(question.id) + 1,
         prev: Number(question.id) - 1
@@ -166,7 +166,7 @@ const QuestionPage = ({
   }
 
   const IconComponent = () => (
-    <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
+    <MoButtonIcon editIcon={true} handleIconClick={(e) => handleOnClick(e)} />
   );
 
   return (
@@ -192,7 +192,7 @@ const QuestionPage = ({
           codeAnswer={question?.answer}
           codeLanguage={question?.language}
           codeQuestion={question?.question}
-          handleOnChange={userAnswer => handleOnChange(userAnswer)}
+          handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
           isEditMode={false}
           isConsole={isConsole}
           isPlayground={question?.isPlayground}
@@ -208,9 +208,9 @@ const QuestionPage = ({
       <QuestionFooter
         isAdmin={isAdmin}
         classes={classes}
-        setIsConsole={e => setIsConsole(e)}
-        setIsHintTypist={e => setIsHintTypist(e)}
-        triggerQuestion={e => triggerQuestion(e)}
+        setIsConsole={(e) => setIsConsole(e)}
+        setIsHintTypist={(e) => setIsHintTypist(e)}
+        triggerQuestion={(e) => triggerQuestion(e)}
         question={question}
       />
       <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />

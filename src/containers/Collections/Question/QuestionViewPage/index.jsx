@@ -42,7 +42,7 @@ const QuestionViewPage = ({ history, match }) => {
   }, [userRole, history, match]);
 
   const handleNavigation = useCallback(
-    id => {
+    (id) => {
       history.push(
         `${ROUTES.COLLECTIONS.path}/${match.params.collection}/${id}`
       );
@@ -74,7 +74,7 @@ const QuestionViewPage = ({ history, match }) => {
         data={data}
         firebase={firebase}
         handleOnClick={() => handleOnClick()}
-        handleNavigation={id => handleNavigation(id)}
+        handleNavigation={(id) => handleNavigation(id)}
         isLoading={isLoading}
         match={match}
         isAdmin={userRole?.isAdmin}

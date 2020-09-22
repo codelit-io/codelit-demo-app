@@ -6,7 +6,7 @@ class ServiceWorkerProvider extends Component {
     serviceWorker.register({ onUpdate: this.onUpdate });
   }
 
-  onUpdate = registration => {
+  onUpdate = (registration) => {
     if (registration.waiting) {
       registration.waiting.postMessage({ type: "SKIP_WAITING" });
     }

@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   card: {
     ...theme.card,
     textAlign: "center",

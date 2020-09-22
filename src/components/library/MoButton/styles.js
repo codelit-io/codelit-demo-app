@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     boxShadow: theme.shadow?.lg,
     borderRadius: theme.space?.xs,

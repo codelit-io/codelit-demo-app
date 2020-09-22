@@ -23,7 +23,7 @@
 
 import * as ROLES from "constants/roles";
 
-const useUserRole = authUser => {
+const useUserRole = (authUser) => {
   if (!authUser) {
     return { isLoggedIn: false };
   }

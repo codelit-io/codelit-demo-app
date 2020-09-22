@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { withFirebase } from "components/shared/Firebase";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     width: "100%",
     textAlign: "center",
@@ -22,8 +22,8 @@ const styles = theme => ({
 
 const SignInWithFacebookBase = ({ firebase, history, classes }) => {
   const [error, setError] = useState(null);
-  const onSubmit = event => {
-    firebase.signInWithFacebook().then(socialAuthUser => {
+  const onSubmit = (event) => {
+    firebase.signInWithFacebook().then((socialAuthUser) => {
       // Create a user in your Firebase Realtime Database too
       return firebase
         .user(socialAuthUser.user.uid)
@@ -38,7 +38,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
         .then(() => {
           setError(null);
         })
-        .catch(error => setError(error));
+        .catch((error) => setError(error));
     });
     event.preventDefault();
   };

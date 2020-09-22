@@ -39,9 +39,9 @@ class Firebase {
     localStorage.setItem("authUser", null);
   };
 
-  passwordReset = email => this.auth.sendPasswordResetEmail(email);
+  passwordReset = (email) => this.auth.sendPasswordResetEmail(email);
 
-  passwordUpdate = password => this.auth.currentUser.updatePassword(password);
+  passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
   sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
@@ -49,9 +49,9 @@ class Firebase {
     });
 
   // User API
-  user = uid => this.firestore.doc(`users/${uid}`);
+  user = (uid) => this.firestore.doc(`users/${uid}`);
 
-  currentUser = user => {
+  currentUser = (user) => {
     if (!user) {
       return;
     }
@@ -62,7 +62,7 @@ class Firebase {
   users = () => this.firestore.collection("users");
 
   // Get a Collection
-  collection = collectionPath => this.firestore.collection(collectionPath);
+  collection = (collectionPath) => this.firestore.collection(collectionPath);
 
   // Get a Doc from a collection
   doc = (collectionPath, id) =>
@@ -82,17 +82,17 @@ class Firebase {
   };
 
   // Helper
-  createId = collectionPath =>
+  createId = (collectionPath) =>
     this.firestore.collection(collectionPath).doc().id;
 
   // *** Merge Auth and DB User API *** //
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(
-      authUser => {
+      (authUser) => {
         if (authUser) {
           this.user(authUser.uid)
             .get()
-            .then(snapshot => {
+            .then((snapshot) => {
               const dbUser = snapshot.data();
 
               // default empty roles
@@ -119,14 +119,14 @@ class Firebase {
           fallback();
         }
       },
-      e => {
+      (e) => {
         console.log(e);
       }
     );
 
   // *** Message API ***
 
-  message = uid => this.firestore.doc(`messages/${uid}`);
+  message = (uid) => this.firestore.doc(`messages/${uid}`);
 
   messages = () => this.firestore.collection("messages");
 }

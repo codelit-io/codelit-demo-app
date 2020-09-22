@@ -22,7 +22,7 @@
 
 import { useEffect, useState } from "react";
 
-const useAuthentication = firebase => {
+const useAuthentication = (firebase) => {
   const [state, setState] = useState({
     authUser: JSON.parse(localStorage.getItem("authUser")),
     isLoading: true
@@ -30,11 +30,11 @@ const useAuthentication = firebase => {
 
   useEffect(() => {
     const listener = firebase.onAuthUserListener(
-      authUser => {
+      (authUser) => {
         localStorage.setItem("authUser", JSON.stringify(authUser));
         setState({ authUser, isLoading: false });
       },
-      error => {
+      (error) => {
         localStorage.setItem("authUser", null);
         setState({ authUser: null, isLoading: false, isError: error });
       }

@@ -7,8 +7,8 @@ import { withFirebase } from "../Firebase";
 // import useUserRole from "hooks/useUserRole";
 import userRole from "helpers/getUserRole";
 
-const withAuthentication = isUserRole => Component => {
-  const WithAuthentication = props => {
+const withAuthentication = (isUserRole) => (Component) => {
+  const WithAuthentication = (props) => {
     const [authUser, setAuthUser] = useState(null);
     const { firebase } = props;
     // const history = useHistory();
@@ -17,7 +17,7 @@ const withAuthentication = isUserRole => Component => {
     /* TODO: Add caching */
     useEffect(() => {
       const listener = firebase.onAuthUserListener(
-        authUser => {
+        (authUser) => {
           localStorage.setItem("authUser", JSON.stringify(authUser));
           setAuthUser(authUser);
         },

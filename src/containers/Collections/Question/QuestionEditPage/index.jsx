@@ -30,18 +30,19 @@ const QuestionEditPage = ({ history, match }) => {
   const [question, setQuestion] = useState(null);
   const [snackbarProps, setSnackbarProps] = useState(null);
 
-  const collectionPath = `/courses/${match.params.collection}/${match.params
-    .questionId || question.id}`;
+  const collectionPath = `/courses/${match.params.collection}/${
+    match.params.questionId || question.id
+  }`;
 
   const navToQuestionViewPage = useCallback(
-    collectionPath => {
+    (collectionPath) => {
       history.push(collectionPath);
     },
     [history]
   );
 
   const onSubmit = useCallback(
-    async event => {
+    async (event) => {
       // createdAt is only available on existing db items and safe to update
       const id = (await event.createdAt)
         ? updateQuestion(event, firebase, match)
@@ -65,10 +66,10 @@ const QuestionEditPage = ({ history, match }) => {
     }
     const unsubscribe = firebase
       .getCollectionById(`courses/${match.params.collection}/questions`, id)
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         if (snapshot.size && id > 0) {
           const question = [];
-          snapshot.forEach(doc =>
+          snapshot.forEach((doc) =>
             question.push({ ...doc.data(), uid: doc.id })
           );
           try {
@@ -129,10 +130,10 @@ const QuestionEditPage = ({ history, match }) => {
         title={question?.title}
         label={question?.label}
         question={question}
-        setQuestion={e => setQuestion(e)}
+        setQuestion={(e) => setQuestion(e)}
         subtitle={question?.subtitle}
         navToQuestionViewPage={() => navToQuestionViewPage()}
-        onSubmit={event => onSubmit(event)}
+        onSubmit={(event) => onSubmit(event)}
       />
       {!isLoading && snackbarProps && (
         <MoSnackbar authUser={authUser} snackbarProps={snackbarProps} />

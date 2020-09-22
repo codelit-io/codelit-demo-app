@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     alignItems: "center",
     paddingBottom: theme.space?.xl,

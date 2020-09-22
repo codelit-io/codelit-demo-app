@@ -1,6 +1,6 @@
 import * as ROLES from "constants/roles";
 
-const getUserRole = authUser => {
+const getUserRole = (authUser) => {
   if (!authUser) {
     return { isLoggedIn: false };
   }

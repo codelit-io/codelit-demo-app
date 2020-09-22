@@ -16,7 +16,7 @@ import { statsMock } from "mocks/question";
 const statsDoc = "--stats--";
 
 // Questions path to list of questions used with firebase query
-const getQuestionsPath = match =>
+const getQuestionsPath = (match) =>
   `courses/${match.params.collection}/questions`;
 
 /* ---🥇 Question helpers for Firestore 🥇--- */
@@ -120,7 +120,7 @@ export const rowClick = (id, history, match) => {
   );
 };
 
-export const escapeCode = code => {
+export const escapeCode = (code) => {
   if (!code) {
     return;
   }
@@ -137,9 +137,7 @@ export const createCourse = async (authUser, event, firebase) => {
     return;
   }
   // Generate random id to post fix each document id
-  const randomId = Math.random()
-    .toString(36)
-    .substring(7);
+  const randomId = Math.random().toString(36).substring(7);
   // Create doc based on title name, doc is lowercase without spaces
   const cleanTitle = event?.title.replace(/\s+/g, "-").toLowerCase();
   // Final Id for storing
@@ -153,10 +151,7 @@ export const createCourse = async (authUser, event, firebase) => {
     createdAt: firebase.fieldValue.serverTimestamp()
   };
 
-  await firebase
-    .collection("courses")
-    .doc(doc)
-    .set(payload, { merge: true });
+  await firebase.collection("courses").doc(doc).set(payload, { merge: true });
 
   // Add a stats doc to the collection created above as a placeholder entry
   // TODO: figure a more efficient way to do this with one firebase query

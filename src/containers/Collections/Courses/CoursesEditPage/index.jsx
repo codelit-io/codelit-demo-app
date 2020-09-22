@@ -31,7 +31,7 @@ const collection = {
 };
 
 // Configure url route for each item
-const itemUrl = doc => `/courses/${doc}`;
+const itemUrl = (doc) => `/courses/${doc}`;
 
 const CoursesEditPage = ({ history, match }) => {
   const [{ authUser, firebase, userRole }] = useGlobal();
@@ -68,7 +68,7 @@ const CoursesEditPage = ({ history, match }) => {
         isAdmin={userRole?.isAdmin}
         firebase={firebase}
         match={match}
-        itemUrl={doc => itemUrl(doc)}
+        itemUrl={(doc) => itemUrl(doc)}
         newItem={newItem}
       />
     </Container>

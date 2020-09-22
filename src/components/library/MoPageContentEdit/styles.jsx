@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   text: {
     color: theme.palette.yinYang.main,
     backgroundColor: theme.palette.yinYang.background,

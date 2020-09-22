@@ -66,10 +66,10 @@ const CodeEditor = ({
   }, [isEditMode]);
 
   // Global state for dark mode theme
-  const [isDarkMode] = useGlobal(state => state.themeOptions.isDarkMode);
+  const [isDarkMode] = useGlobal((state) => state.themeOptions.isDarkMode);
 
   const onChange = useCallback(
-    async userAnswer => {
+    async (userAnswer) => {
       await handleOnChange({ userAnswer });
       /* 
       TODO: previewElement is user's answer preview element
@@ -88,7 +88,7 @@ const CodeEditor = ({
   // Create content with all line numbers and newline them
   const lineNos = [...Array(lines).keys()].slice(1).join("\\00000a");
 
-  const useStyles = makeStyles(theme =>
+  const useStyles = makeStyles((theme) =>
     createStyles({
       hint: {
         ...theme.editorFont,
@@ -147,7 +147,7 @@ const CodeEditor = ({
               >
                 <div>
                   <LiveEditor
-                    onChange={e => onChange(e)}
+                    onChange={(e) => onChange(e)}
                     theme={codeEditorTheme}
                     className={classes.liveEditor}
                   />

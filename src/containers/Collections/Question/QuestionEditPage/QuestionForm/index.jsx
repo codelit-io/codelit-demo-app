@@ -29,7 +29,7 @@ const QuestionForm = ({
   const { handleSubmit, register } = useForm();
 
   const handleChange = useCallback(
-    code => {
+    (code) => {
       const userAnswer = { ...Object.values(code) };
       if (userAnswer[0] === "{}" || userAnswer[0] === typeof Object) {
         return;
@@ -44,7 +44,7 @@ const QuestionForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(e => onSubmit({ ...question, ...e }))}>
+    <form onSubmit={handleSubmit((e) => onSubmit({ ...question, ...e }))}>
       <section className={classes.section}>
         <MoPageHeaderEdit
           text={title}
@@ -74,7 +74,7 @@ const QuestionForm = ({
           isEditMode={true}
           noInline={false}
           isPlayground={question?.isPlayground}
-          handleOnChange={code => handleChange({ question: code.userAnswer })}
+          handleOnChange={(code) => handleChange({ question: code.userAnswer })}
           sm={6}
           md={6}
           title="Question Code"
@@ -90,7 +90,7 @@ const QuestionForm = ({
             isEditMode={true}
             noInline={false}
             isPlayground={question?.isPlayground}
-            handleOnChange={code => handleChange({ answer: code.userAnswer })}
+            handleOnChange={(code) => handleChange({ answer: code.userAnswer })}
             sm={6}
             md={6}
             title="Answer Code"
@@ -102,7 +102,7 @@ const QuestionForm = ({
       {question && (
         <Box position="static" width="100%" zIndex="10">
           <Button
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               e.key === "Enter" && e.preventDefault();
             }}
             type="submit"

@@ -30,7 +30,7 @@ const QuestionsPage = ({
     return null;
   }
   const IconComponent = () => (
-    <MoButtonIcon editIcon={true} handleIconClick={e => handleOnClick(e)} />
+    <MoButtonIcon editIcon={true} handleIconClick={(e) => handleOnClick(e)} />
   );
   return (
     <MoPage

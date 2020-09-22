@@ -22,13 +22,13 @@ const MoButton = ({
   const hrefProp = href || "#";
 
   /* Prevent errors when handleButtonClick not available  */
-  const handleOnCLick = e => {
+  const handleOnCLick = (e) => {
     return handleButtonClick ? handleButtonClick(e) : null;
   };
 
   return (
     <Button
-      onClick={e => handleOnCLick(e)}
+      onClick={(e) => handleOnCLick(e)}
       component={Link}
       to={hrefProp}
       type={type}

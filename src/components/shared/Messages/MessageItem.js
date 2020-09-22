@@ -15,8 +15,8 @@ const MessageItem = ({ authUser, message, onEditMessage, onRemoveMessage }) => {
     });
   };
 
-  const onChangeEditText = event => {
-    setState(prevState => {
+  const onChangeEditText = (event) => {
+    setState((prevState) => {
       return { ...prevState, editText: event.target.value };
     });
   };
@@ -33,7 +33,7 @@ const MessageItem = ({ authUser, message, onEditMessage, onRemoveMessage }) => {
         <input
           type="text"
           value={state.editText}
-          onChange={e => onChangeEditText(e)}
+          onChange={(e) => onChangeEditText(e)}
         />
       ) : (
         <span>

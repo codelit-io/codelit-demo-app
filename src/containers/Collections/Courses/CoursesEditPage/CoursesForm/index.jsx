@@ -42,13 +42,13 @@ const CoursesForm = ({
   });
 
   const navtoCourse = useCallback(
-    doc => {
+    (doc) => {
       history.push(`/courses/${doc}`);
     },
     [history]
   );
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData) => {
     if (formData.title) {
       // Create courses and return it's doc
       const doc = await createCourse(authUser, formData, firebase, match);

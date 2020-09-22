@@ -46,13 +46,13 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
         ?.collection(collectionPath)
         .where("doc", "==", doc)
         .onSnapshot(
-          snapshot => {
+          (snapshot) => {
             if (snapshot.size) {
               const data = [];
-              snapshot.forEach(doc =>
+              snapshot.forEach((doc) =>
                 data.push({ ...doc.data(), uid: doc.id })
               );
-              data.map(data =>
+              data.map((data) =>
                 setState({
                   data,
                   isLoading: false,

@@ -19,9 +19,9 @@ class UserList extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
 
-    this.unsubscribe = this.props.firebase.users().onSnapshot(snapShot => {
+    this.unsubscribe = this.props.firebase.users().onSnapshot((snapShot) => {
       const users = [];
-      snapShot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
+      snapShot.forEach((doc) => users.push({ ...doc.data(), uid: doc.id }));
 
       this.setState({
         users,

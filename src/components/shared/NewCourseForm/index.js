@@ -44,7 +44,7 @@ const NewCourseForm = ({ authUser, firebase, match }) => {
 
   const Form = ({ handleDialogState }) => {
     /* TODO: Move to hooks or helpers */
-    const onSubmit = formData => {
+    const onSubmit = (formData) => {
       if (formData.title) {
         createCourse(authUser, formData, firebase, match);
         // Set Dialog state back to false to close the Dialog

@@ -34,7 +34,7 @@ const CoursesViewPage = ({ history, match }) => {
   const itemOptions = {
     authUser,
     ActionComponent: CardProgress,
-    itemUrl: doc => `/courses/${doc}`,
+    itemUrl: (doc) => `/courses/${doc}`,
     isItemDisabled: () => {},
     firebase,
     newItem: { title: "Add a course", url: "courses/isEditMode" },

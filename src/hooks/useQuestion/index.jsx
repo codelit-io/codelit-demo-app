@@ -25,7 +25,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
     const fetchData = async () =>
       !didCancel &&
       (await firebase?.getCollectionById(questionPath, questionId).onSnapshot(
-        snapshot => {
+        (snapshot) => {
           // 0 is default id for stats doc
           if (questionId === 0) {
             return;
@@ -33,10 +33,10 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
 
           if (snapshot.size) {
             const question = [];
-            snapshot.forEach(doc =>
+            snapshot.forEach((doc) =>
               question.push({ ...doc.data(), uid: doc.id })
             );
-            question.map(data =>
+            question.map((data) =>
               setState({
                 data,
                 isLoading: false,

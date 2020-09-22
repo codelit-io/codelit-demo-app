@@ -96,7 +96,7 @@ export const Editor = () => {
         isEditMode={boolean("Edit mode", false)}
         isConsole={boolean("Show console", false)}
         isPlayground={true}
-        handleOnChange={userAnswer => handleOnChange(userAnswer)}
+        handleOnChange={(userAnswer) => handleOnChange(userAnswer)}
         sm={number("Small devices", 12, options, "Column")}
         md={number("Medium devices", 12, options, "Column")}
         title={text("Code editor title", "JSX Editor")}

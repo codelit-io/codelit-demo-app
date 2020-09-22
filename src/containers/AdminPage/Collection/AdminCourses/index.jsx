@@ -19,7 +19,7 @@ const AdminCourses = ({ match }) => {
     // Top right component of the card
     // ActionComponent: ,
     // Configure url route for each item
-    itemUrl: doc => itemUrl(doc),
+    itemUrl: (doc) => itemUrl(doc),
     // isItemDisabled is configured based on points and question's id
     isItemDisabled: () => {},
     firebase,
@@ -27,7 +27,7 @@ const AdminCourses = ({ match }) => {
     match
   };
 
-  const itemUrl = doc => `courses/${doc}`;
+  const itemUrl = (doc) => `courses/${doc}`;
 
   return (
     <Grid container spacing={4} alignItems="center">

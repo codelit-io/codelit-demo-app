@@ -73,20 +73,20 @@ class LoginManagement extends Component {
   fetchSignInMethods = () => {
     this.props.firebase.auth
       .fetchSignInMethodsForEmail(this.props.authUser.email)
-      .then(activeSignInMethods =>
+      .then((activeSignInMethods) =>
         this.setState({ activeSignInMethods, error: null })
       )
-      .catch(error => this.setState({ error }));
+      .catch((error) => this.setState({ error }));
   };
 
-  onSocialLoginLink = provider => {
+  onSocialLoginLink = (provider) => {
     this.props.firebase.auth.currentUser
       .linkWithPopup(this.props.firebase[provider])
       .then(this.fetchSignInMethods)
-      .catch(error => this.setState({ error }));
+      .catch((error) => this.setState({ error }));
   };
 
-  onDefaultLoginLink = password => {
+  onDefaultLoginLink = (password) => {
     const credential = this.props.firebase.emailAuthProvider.credential(
       this.props.authUser.email,
       password
@@ -95,14 +95,14 @@ class LoginManagement extends Component {
     this.props.firebase.auth.currentUser
       .linkAndRetrieveDataWithCredential(credential)
       .then(this.fetchSignInMethods)
-      .catch(error => this.setState({ error }));
+      .catch((error) => this.setState({ error }));
   };
 
-  onUnlink = providerId => {
+  onUnlink = (providerId) => {
     this.props.firebase.auth.currentUser
       .unlink(providerId)
       .then(this.fetchSignInMethods)
-      .catch(error => this.setState({ error }));
+      .catch((error) => this.setState({ error }));
   };
 
   render() {
@@ -111,7 +111,7 @@ class LoginManagement extends Component {
     return (
       <div>
         <List>
-          {SIGN_IN_METHODS.map(signInMethod => {
+          {SIGN_IN_METHODS.map((signInMethod) => {
             const onlyOneLeft = activeSignInMethods.length === 1;
             const isEnabled = activeSignInMethods.includes(signInMethod.id);
 
@@ -177,14 +177,14 @@ class DefaultLoginToggle extends Component {
     this.state = { passwordOne: "", passwordTwo: "" };
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
 
     this.props.onLink(this.state.passwordOne);
     this.setState({ passwordOne: "", passwordTwo: "" });
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 

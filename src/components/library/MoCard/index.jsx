@@ -73,8 +73,9 @@ const MoCard = ({
       >
         <Paper
           elevation={3}
-          className={`${classes.card} ${isDisabled &&
-            classes.disableCard} ${type && classes[type]}`}
+          className={`${classes.card} ${isDisabled && classes.disableCard} ${
+            type && classes[type]
+          }`}
         >
           <Grid container alignContent="flex-start" alignItems="flex-start">
             <Grid item xs={12} sm={12} md={12} lg={12}>

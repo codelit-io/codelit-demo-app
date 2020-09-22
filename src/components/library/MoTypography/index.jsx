@@ -34,7 +34,7 @@ const MoTypography = ({
   text,
   variant
 }) => {
-  const useStyles = makeStyles(theme =>
+  const useStyles = makeStyles((theme) =>
     createStyles({
       breeSerif: {
         fontFamily: theme.breeSerif

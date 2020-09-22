@@ -69,7 +69,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
     setState({ isActive });
   }, [isActive]);
 
-  const handleButtonClick = e => {
+  const handleButtonClick = (e) => {
     setState({
       isActive: false,
       Transition: Grow
@@ -117,7 +117,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
               color="primary"
               variant="text"
               size="large"
-              handleButtonClick={e => handleButtonClick(e)}
+              handleButtonClick={(e) => handleButtonClick(e)}
               text={buttonText}
             />
           )

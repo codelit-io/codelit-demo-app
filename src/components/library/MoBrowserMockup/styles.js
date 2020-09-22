@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   editor: {
     ...theme.editorFont,
     [theme.breakpoints.up(600)]: {

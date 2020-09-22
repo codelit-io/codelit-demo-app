@@ -23,7 +23,7 @@ class UserItem extends Component {
     this.setState({ isLoading: true });
     this.unsubscribe = this.props.firebase
       .user(this.props.match.params.id)
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         this.setState({
           user: snapshot.data(),
           isLoading: false

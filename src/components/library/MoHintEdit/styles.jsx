@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   text: {
     ...theme.editorFont,
     color: theme.palette.yinYang.main,

@@ -12,13 +12,13 @@ const style = {
     boxShadow: "0px 4px 10px -8px black"
   }
 };
-const MoTextarea = props => {
+const MoTextarea = (props) => {
   return (
     <textarea
       aria-label={props.value}
       placeholder=""
       value={props.value}
-      onChange={e => props.onChange(e.target.value)}
+      onChange={(e) => props.onChange(e.target.value)}
       style={style.textarea}
     />
   );

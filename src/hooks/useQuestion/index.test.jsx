@@ -9,7 +9,7 @@ jest.mock("components/shared/Firebase"); // SoundPlayer is now a mock constructo
 let useEffect;
 
 const mockUseEffect = () => {
-  useEffect.mockImplementationOnce(f => f());
+  useEffect.mockImplementationOnce((f) => f());
 };
 
 beforeAll(() => {

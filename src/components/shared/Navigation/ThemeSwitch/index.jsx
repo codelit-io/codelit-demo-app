@@ -23,8 +23,8 @@ import useGlobal from "store";
 const ThemeSwitch = () => {
   // Global State
   const [themeOptions, addToThemeOptions] = useGlobal(
-    state => state.themeOptions,
-    actions => actions.addToThemeOptions
+    (state) => state.themeOptions,
+    (actions) => actions.addToThemeOptions
   );
   // set dark mode option in local storage and cache this function with useCallback
   const cacheIsDarkMode = useCallback(() => {

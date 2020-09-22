@@ -28,7 +28,7 @@ Great and simple getting started **Web App** template. You get a great front-end
 
 [x] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
 [x] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
-[x] Keep in mind the Firebase DB rules update per your use cases
+[x] Commitizen and Husky Commit hooks can get annoying nad prevent commits and pushes from happening, disable the in `package.json` if needed.
 [x] Have fun 🤘
 
 # Helpful Resources

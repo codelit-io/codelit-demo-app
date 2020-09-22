@@ -4,14 +4,14 @@ import AuthUserContext from "./context";
 import { withFirebase } from "../Firebase";
 import Button from "@material-ui/core/Button";
 
-const needsEmailVerification = authUser =>
+const needsEmailVerification = (authUser) =>
   authUser &&
   !authUser.emailVerified &&
   authUser.providerData
-    .map(provider => provider.providerId)
+    .map((provider) => provider.providerId)
     .includes("password");
 /* TODO: Upgrade email verification */
-const withEmailVerification = Component => {
+const withEmailVerification = (Component) => {
   class WithEmailVerification extends React.Component {
     constructor(props) {
       super(props);
@@ -29,7 +29,7 @@ const withEmailVerification = Component => {
       return (
         /* TODO: 🔴 merge this into withAuthentication */
         <AuthUserContext.Consumer>
-          {authUser =>
+          {(authUser) =>
             needsEmailVerification(authUser) ? (
               <div>
                 {this.state.isSent ? (

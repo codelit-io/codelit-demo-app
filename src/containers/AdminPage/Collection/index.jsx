@@ -24,10 +24,10 @@ const Collection = ({ history, match }) => {
       .doc(match.params.collection)
       .collection("questions")
       .orderBy("id")
-      .onSnapshot(snapshot => {
+      .onSnapshot((snapshot) => {
         if (snapshot.size) {
           let questions = [];
-          snapshot.forEach(doc => {
+          snapshot.forEach((doc) => {
             let data = { ...doc.data() };
             let question;
             try {
@@ -60,21 +60,21 @@ const Collection = ({ history, match }) => {
   );
 
   const onUpdateQuestion = useCallback(
-    event => {
+    (event) => {
       updateQuestion(event, firebase, match);
     },
     [firebase, match]
   );
 
   const onRemoveQuestion = useCallback(
-    id => {
+    (id) => {
       removeQuestion(id, firebase, match);
     },
     [firebase, match]
   );
 
   const handleRowClick = useCallback(
-    id => {
+    (id) => {
       rowClick(id, history, match);
     },
     [history, match]
@@ -87,10 +87,10 @@ const Collection = ({ history, match }) => {
   return (
     <QuestionsTable
       questions={questions}
-      onUpdateQuestion={event => onUpdateQuestion(event)}
-      onRemoveQuestion={id => onRemoveQuestion(id)}
-      onCreateQuestion={event => onCreateQuestion(event, authUser)}
-      handleRowClick={id => handleRowClick(id)}
+      onUpdateQuestion={(event) => onUpdateQuestion(event)}
+      onRemoveQuestion={(id) => onRemoveQuestion(id)}
+      onCreateQuestion={(event) => onCreateQuestion(event, authUser)}
+      handleRowClick={(id) => handleRowClick(id)}
     />
   );
 };

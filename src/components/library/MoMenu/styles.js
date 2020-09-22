@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme) => ({
   avatar: {
     width: theme.spacing(4),
     height: theme.spacing(4)
