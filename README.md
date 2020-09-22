@@ -3,7 +3,9 @@
 
 ## What is this? 🤩
 
-Great and simple getting started **Web App** template. You get a great front-end app paired with Firebase serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app. It's yours now do what you like with it 😜
+Great and simple getting started **Web App** template. You get a great front-end app paired with Firebase serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app.
+
+Used for Front-end/React courses and code questions in each course. Answering these questions can be done by solving broken code in each course and earning points.
 
 ## What does it do? 🤔
 
@@ -33,7 +35,8 @@ Few steps to get it fully customized with your configs
 [x] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
 [x] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
 [x] Adjust prettier and linter configs
-[x] To view the `courses` page populate the data based on the screenshots found in `screenshots` fold!
+[x] Review and update Routes and Constants
+[x] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
 [x] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
 
 # Helpful Resources
