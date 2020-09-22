@@ -32,6 +32,6 @@ jobs:
           name: Deploy
           command: |
             if [ "$CIRCLE_BRANCH" = "release" ]; then
-              yarn run firebase use tool-builder
-              yarn run firebase deploy --only hosting:tool-builder --token=$FIREBASE_TOKEN
+              yarn run firebase use YOUR_PROJECT
+              yarn run firebase deploy --only hosting:YOUR_PROJECT --token=$FIREBASE_TOKEN
             fi

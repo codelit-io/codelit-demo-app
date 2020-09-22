@@ -1,19 +1,37 @@
 [![CircleCI](https://circleci.com/gh/moskool/moskool-react-app.svg?style=svg&circle-token=25e17fbacf3e095631aba484af8169e19df89031)](https://moskool.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=mo-sharif/MoSkool&utm_campaign=Badge_Grade)
 
-# 🥇 Mission & Features 🥇
+## What is this? 🤩
 
-Mo Skool's primary goal is to provide a free and new learning experience to master Front-end development without paying any fees. Mo Skool main features:
+Great and simple getting started **Web App** template. You get a great front-end app paired with Firebase serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app. It's yours now do what you like with it 😜
 
-- High teach React and JSX Playground
-- Community driven Front-end courses
-- Easy to use Admin and Authoring tools
-- Progress tracking and custom learning plans
-- Social learning and collect points to unlock new courses
+## What does it do? 🤔
 
-To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
+- Email and Social sign in
+- Material-UI library with Dark mode
+- Custom Components Library
+- Custom Theme with Responsive mode
+- Save and Read DB data from firestore collection.
+- Admin and protected routes
+- Single Page routing and lazy loading
+- Built using Functional Components
+- Simple state management with Higher order components and context API
+- Circle CI ready (Builds and live deployment)
+- Story book
+- Prettier and Linter
+- Commit hooks and commitizen
+- Offline and PWA ready
 
-## Some Resources
+# What do I need? 🤘
+
+## [x][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
+
+[x] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
+[x] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
+[x] Keep in mind the Firebase DB rules update per your use cases
+[x] Have fun 🤘
+
+# Helpful Resources
 
 - [Get started 🚀](docs/ONBOARDING.md)
 - [File Architecture](docs/ARCHITECTURE.md)
