@@ -1,11 +1,6 @@
 [![CircleCI](https://circleci.com/gh/moskool/moskool-react-app.svg?style=svg&circle-token=25e17fbacf3e095631aba484af8169e19df89031)](https://moskool.com)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=mo-sharif/MoSkool&utm_campaign=Badge_Grade)
 
-# 🕊 Moving to Gatsby 🕊
-
-This template will be open sourced soon
-[👉 Moving to Gatsby repo](https://github.com/moskool/moskool-gatsby)
-
 # 🥇 Mission & Features 🥇
 
 Mo Skool's primary goal is to provide a free and new learning experience to master Front-end development without paying any fees. Mo Skool main features:
@@ -16,32 +11,11 @@ Mo Skool's primary goal is to provide a free and new learning experience to mast
 - Progress tracking and custom learning plans
 - Social learning and collect points to unlock new courses
 
-## 🚀 Mo Skool KPIs 🚀
-
-Deadline March 2021
-
-- [ ] Deliver Higher performance & Simple UI
-  - [ ] Reduce initial load time by 100 ms
-  - [ ] Reduce number of API calls
-  - [ ] Enhance component rendering
-  - [ ] Add State management
-- [ ] Add and Upgrade features
-  - [ ] Create analytic and insight graph data
-  - [ ] Create Course plans
-  - [ ] Connect courses to outside sources
-- [ ] Gain and retain users
-  - [ ] Gain at least 100 users and authors
-  - [ ] Create at least 100 total YouTube videos
-  - [ ] Finish and Promote marketing website
-- [ ] Build an Engineering and product team
-  - [ ] Grow to at least 3 part time engineer
-  - [ ] Grow to at least 1 product or marketing developer
-
 To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.com/1454606428/pages-containers)
 
-## 👉 Ready to Ship it? 📦
+## Some Resources
 
-- [OnBoarding 🚀](docs/ONBOARDING.md)
+- [Get started 🚀](docs/ONBOARDING.md)
 - [File Architecture](docs/ARCHITECTURE.md)
 - [Firebase](docs/FIREBASE.md)
 - [HOC](docs/HOC.md)
@@ -50,14 +24,6 @@ To understand logic flow check out 👉 [Mind map 🗺](https://www.mindmeister.
 - [Store / State Management](docs/STATE_MANAGEMENT.md)
 - [Styling](docs/STYLING.md)
 - [Testing](docs/TESTING.md)
-
-## What kind of courses?
-
-- HTML
-- JavaScript
-- CSS in JS
-- React
-- JSX
 
 # Current Tech
 
