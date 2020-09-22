@@ -11,6 +11,7 @@ Great and simple getting started **Web App** template. You get a great front-end
 - Material-UI library with Dark mode
 - Custom Components Library
 - Custom Theme with Responsive mode
+- Global Hook State
 - Save and Read DB data from firestore collection.
 - Admin and protected routes
 - Single Page routing and lazy loading
