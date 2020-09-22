@@ -2,7 +2,7 @@
 
 ## What is this? 🤩
 
-Great and simple getting started **Web App** template. You get a great front-end app paired with Firebase serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app.
+Great and simple getting started Web App template. You get a great **React** front-end app paired with **Firebase** serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app.
 
 Used for Front-end/React courses and code questions in each course. Answering these questions can be done by solving broken code in each course and earning points.
 
@@ -15,28 +15,37 @@ Used for Front-end/React courses and code questions in each course. Answering th
 - 🌏 Global Hook State
 - 🎣 Custom Permission and Roles Hooks
 - ♺ Save and Read DB data from firestore collection.
-- Admin and protected routes
-- Single Page routing and lazy loading
-- Built using Functional Components
-- Simple state management with Higher order components and context API
-- Circle CI ready (Builds and live deployment)
-- Story book
-- Prettier and Linter
-- Commit hooks and commitizen
-- Offline and PWA ready
+- 🚓 Admin and protected routes
+- 📱 Single Page routing and lazy loading
+- 🍼 Built using Functional Components
+- 🙏 Simple state management with Higher order components and context API
+- 🚢 Circle CI ready (Builds and live deployment)
+- 💎 Story book
+- 💅 Prettier and Linter
+- 🛂 Commit hooks and commitizen
+- 🔥 Offline and PWA ready
 
 # What do I need? 🤘
 
 Few steps to get it fully customized with your configs
 
-[x][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
-[x] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
-[x] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
-[x] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
-[x] Adjust prettier and linter configs
-[x] Review and update Routes and Constants
-[x] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
-[x] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
+[ ][setup firebase account and get configs](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
+[ ] Update `YOUR_PROJECT` in `.circleci/config.yml` with your firebase info
+[ ] Setup Circle Ci deployments following this [firebase hosting deployment article](https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/)
+[ ] Commitizen and Husky Commit hooks can get annoying and prevent commits and pushes from happening, disable the in `package.json` if needed
+[ ] Adjust prettier and linter configs
+[ ] Review and update Routes and Constants
+[ ] It's important to populate firestore with dummy data to view the pages, the UI is data driven. Follow the pics in the `screenshots` folder to create similar data.
+[ ] Finally, create an admin account by signing up in the app and adding the admin property in firestore. See screenshots Have fun 🤘
+
+# Getting Started
+
+- Install `yarn`
+- Start `yarn start`
+
+- check yarn dependencies for updates `yarn check-updates`
+- build `yarn build`
+- test `yarn test`
 
 # Helpful Resources
 
@@ -49,19 +58,6 @@ Few steps to get it fully customized with your configs
 - [Store / State Management](docs/STATE_MANAGEMENT.md)
 - [Styling](docs/STYLING.md)
 - [Testing](docs/TESTING.md)
-
-# Current Tech
-
-User Interface is powered by a React frontend, paired with a Firebase serverless backend
-
-# Getting Started
-
-- Install `yarn`
-- Start `yarn start`
-
-- check yarn dependencies for updates `yarn check-updates`
-- build `yarn build`
-- test `yarn test`
 
 # 3rd Party Dependencies
 
@@ -78,7 +74,7 @@ User Interface is powered by a React frontend, paired with a Firebase serverless
 
 DEV Dependencies:
 
-- [react-test-renderer](https://reactjs.org/docs/test-renderer.html): used for testing along side Jest
+- [react-test-renderer](https://reactjs.org/docs/test-renderer.html): used for testing with Jest
 - husky for pre-push and comments
 - commitizen for commits
 - Prettier code formatting
