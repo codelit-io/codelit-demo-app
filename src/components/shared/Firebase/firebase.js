@@ -45,7 +45,7 @@ class Firebase {
 
   sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
     });
 
   // User API
@@ -108,7 +108,7 @@ class Firebase {
                 providerData: authUser.providerData,
                 reports: authUser.reports,
                 photoURL: authUser.photoURL || "",
-                ...dbUser
+                ...dbUser,
               };
               // track users
               this.analytics.setUserProperties({ ...authUser });

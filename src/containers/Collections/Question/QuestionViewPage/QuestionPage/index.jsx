@@ -34,7 +34,7 @@ const QuestionPage = ({
   isAdmin,
   isLoading,
   data,
-  match
+  match,
 }) => {
   const [question, setQuestion] = useState(data);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -55,7 +55,7 @@ const QuestionPage = ({
         opacity: 0,
         position: "absolute",
         right: theme.space?.md,
-        top: theme.space?.md
+        top: theme.space?.md,
       },
       buttonArea: {
         textAlign: "left",
@@ -63,13 +63,13 @@ const QuestionPage = ({
         width: "100%",
         "&:hover": {
           opacity: "1",
-          cursor: "text"
+          cursor: "text",
         },
         "&:hover $fixedIcon": {
-          opacity: 1
-        }
+          opacity: 1,
+        },
       },
-      section: { paddingBottom: theme.space?.xl }
+      section: { paddingBottom: theme.space?.xl },
     })
   );
 
@@ -96,12 +96,12 @@ const QuestionPage = ({
     (type) => {
       const id = {
         next: Number(question.id) + 1,
-        prev: Number(question.id) - 1
+        prev: Number(question.id) - 1,
       };
       //TODO: find a better solution for this
       setQuestion({
         question:
-          "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>"
+          "<pre style={{color:'rgb(169, 169, 169)'}}>No code to preview</pre>",
       });
       setMatchPercent();
       setIsCorrect(false);
@@ -152,7 +152,7 @@ const QuestionPage = ({
           buttonText: "Keep Going",
           isActive: true,
           title: "Hooray!",
-          onClick: () => triggerQuestion("next")
+          onClick: () => triggerQuestion("next"),
         });
       } else {
         setQuestion({ ...question, question: userAnswer });

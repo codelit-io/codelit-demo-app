@@ -28,7 +28,7 @@ const Playground = () => {
         </section>
       );
     };`,
-    isPlayground: true
+    isPlayground: true,
   };
 
   const [question, setQuestion] = useState(initialState);

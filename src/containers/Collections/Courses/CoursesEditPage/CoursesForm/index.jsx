@@ -31,14 +31,14 @@ const CoursesForm = ({
   isAdmin,
   match,
   history,
-  newItem
+  newItem,
 }) => {
   const { register, handleSubmit } = useForm();
 
   const [formData] = useState({
     title: "Master React Course",
     desc: "Learn React best practices",
-    id: 0
+    id: 0,
   });
 
   const navtoCourse = useCallback(

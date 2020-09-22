@@ -24,7 +24,7 @@ const QuestionForm = ({
   subtitle,
   setQuestion,
   title,
-  onSubmit
+  onSubmit,
 }) => {
   const { handleSubmit, register } = useForm();
 

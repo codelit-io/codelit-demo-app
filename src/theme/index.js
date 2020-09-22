@@ -24,12 +24,12 @@ const fontSize = {
   sm: "1.5rem",
   md: "2rem",
   lg: "3rem",
-  xl: "4rem"
+  xl: "4rem",
 };
 const fontFamily = {
   MonoSpace: "monospace",
   OpenSans: "Open Sans",
-  BreeSerif: "Bree Serif"
+  BreeSerif: "Bree Serif",
 };
 const shadows = [
   "",
@@ -56,7 +56,7 @@ const shadows = [
   "",
   "",
   "",
-  ""
+  "",
 ];
 
 const colors = {
@@ -69,32 +69,32 @@ const colors = {
     medium: "#424B54",
     mediumDark: "#747474",
     dark: "#383c40",
-    darkest: "#2b2b2b"
+    darkest: "#2b2b2b",
   },
   green: {
     light: "#41D3BD",
     medium: "#99bb33",
     dark: "#157A6E",
-    darkest: ""
+    darkest: "",
   },
   yellow: {
     light: "#F5D547",
     dark: "",
-    darkest: ""
+    darkest: "",
   },
   white: {
     light: "#FFF",
-    medium: "#f5f5f5"
+    medium: "#f5f5f5",
   },
   blue: {
     superLight: "#e0e3ea",
-    medium: "#276ef1"
+    medium: "#276ef1",
   },
   black: {
     light: "#1b1b1b",
     medium: "#1c1c1f",
-    dark: "#000"
-  }
+    dark: "#000",
+  },
 };
 
 const space = {
@@ -107,35 +107,35 @@ const space = {
   md1: "2rem",
   md2: "2.25rem",
   lg: "3rem",
-  xl: "6rem"
+  xl: "6rem",
 };
 
 const card = {
   boxShadow: shadows[3],
   "&:hover": {
-    transform: "translateY(-5px)"
+    transform: "translateY(-5px)",
   },
   "&:hover .desc": {
-    color: "white"
+    color: "white",
   },
   borderRadius: space.sm,
   transition:
     "transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s cubic-bezier(.4,0,.2,1)",
-  transform: "translateY(0)"
+  transform: "translateY(0)",
 };
 
 const editorFont = {
   fontFamily: fontFamily.MonoSpace,
-  fontSize: "16px"
+  fontSize: "16px",
 };
 
 const typography = {
   button: {
     borderRadius: space.sm,
-    textTransform: "none"
+    textTransform: "none",
   },
   fontFamily: fontFamily.BreeSerif,
-  h4: { lineHeight: 1.5 }
+  h4: { lineHeight: 1.5 },
 };
 
 const getTheme = ({ isDarkMode }) => {
@@ -144,16 +144,16 @@ const getTheme = ({ isDarkMode }) => {
   const palette = {
     background: {
       default: isDarkMode ? colors.black.dark : colors.white.medium,
-      paper: isDarkMode ? colors.black.medium : colors.white.light
+      paper: isDarkMode ? colors.black.medium : colors.white.light,
     },
     primary: {
-      main: colors.primary
+      main: colors.primary,
       //TODO: change colors for light/dark
       //light:
       //dark:
     },
     secondary: {
-      main: colors.secondary
+      main: colors.secondary,
       //TODO: change colors for light/dark
       // light:
       // dark:
@@ -163,12 +163,12 @@ const getTheme = ({ isDarkMode }) => {
       main: isDarkMode ? colors.white.light : colors.black.medium,
       light: isDarkMode ? colors.grey.light : colors.grey.dark,
       dark: isDarkMode ? colors.black.dark : colors.white.light,
-      background: isDarkMode ? colors.black.medium : colors.grey.superLight
-    }
+      background: isDarkMode ? colors.black.medium : colors.grey.superLight,
+    },
   };
 
   const fontOptions = {
-    breakpoints: ["sm", "md", "lg", "xl"]
+    breakpoints: ["sm", "md", "lg", "xl"],
   };
 
   theme = createMuiTheme({
@@ -185,7 +185,7 @@ const getTheme = ({ isDarkMode }) => {
     breeSerif: fontFamily.BreeSerif,
     openSans: fontFamily.OpenSans,
     typography,
-    palette
+    palette,
   });
 
   theme = responsiveFontSizes(theme, fontOptions);

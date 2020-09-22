@@ -7,7 +7,7 @@ const MoPageSubtitleEdit = ({
   name,
   textAlign,
   width,
-  register
+  register,
 }) => {
   const styles = {
     text: {
@@ -18,11 +18,11 @@ const MoPageSubtitleEdit = ({
       margin: margin || "",
       width: "100%",
       border: "none",
-      outline: "none"
+      outline: "none",
     },
     container: {
-      width: width || ""
-    }
+      width: width || "",
+    },
   };
 
   return (

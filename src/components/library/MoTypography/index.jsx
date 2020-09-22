@@ -32,20 +32,20 @@ const MoTypography = ({
   marginBottom,
   marginTop,
   text,
-  variant
+  variant,
 }) => {
   const useStyles = makeStyles((theme) =>
     createStyles({
       breeSerif: {
-        fontFamily: theme.breeSerif
+        fontFamily: theme.breeSerif,
       },
       openSans: {
-        fontFamily: theme.openSans
+        fontFamily: theme.openSans,
       },
       margin: {
         marginBottom: marginBottom && theme.space[marginBottom],
-        marginTop: marginTop && theme.space[marginTop]
-      }
+        marginTop: marginTop && theme.space[marginTop],
+      },
     })
   );
 
@@ -84,8 +84,8 @@ MoTypography.propTypes = {
     "body2",
     "button",
     "caption",
-    "overline"
-  ]).isRequired
+    "overline",
+  ]).isRequired,
 };
 
 export default MoTypography;

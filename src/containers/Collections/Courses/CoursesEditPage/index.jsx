@@ -27,7 +27,7 @@ const CoursesForm = lazy(() => import("./CoursesForm"));
 const collection = {
   path: "courses",
   title: COURSES.NEW_COURSE,
-  isProgressBar: false
+  isProgressBar: false,
 };
 
 // Configure url route for each item
@@ -41,7 +41,7 @@ const CoursesEditPage = ({ history, match }) => {
     data: [],
     isProgressBar: collection.isProgressBar,
     locationHash: history.location.hash,
-    title: collection.title
+    title: collection.title,
   };
 
   // Initial dummy data
@@ -77,7 +77,7 @@ const CoursesEditPage = ({ history, match }) => {
 
 CoursesEditPage.propTypes = {
   history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
 };
 
 export default CoursesEditPage;

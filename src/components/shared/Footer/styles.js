@@ -1,13 +1,13 @@
 const styles = (theme) => ({
   container: {
-    paddingTop: theme.space.xl
+    paddingTop: theme.space.xl,
   },
   footerText: {
-    textAlign: "right"
+    textAlign: "right",
   },
   footerButton: {
-    textTransform: "initial"
-  }
+    textTransform: "initial",
+  },
 });
 
 export default styles;

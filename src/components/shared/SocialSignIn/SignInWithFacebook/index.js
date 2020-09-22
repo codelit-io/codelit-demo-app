@@ -13,11 +13,11 @@ const styles = (theme) => ({
     textAlign: "center",
     textTransform: "initial",
     justifyContent: "end",
-    paddingLeft: "1em"
+    paddingLeft: "1em",
   },
   form: {
-    marginTop: theme.spacing(4)
-  }
+    marginTop: theme.spacing(4),
+  },
 });
 
 const SignInWithFacebookBase = ({ firebase, history, classes }) => {
@@ -31,7 +31,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
           {
             username: socialAuthUser.additionalUserInfo.profile.name,
             email: socialAuthUser.additionalUserInfo.profile.email || "none",
-            roles: {}
+            roles: {},
           },
           { merge: true }
         )
@@ -60,7 +60,7 @@ const SignInWithFacebookBase = ({ firebase, history, classes }) => {
 };
 
 SignInWithFacebookBase.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const SignInWithFacebook = compose(

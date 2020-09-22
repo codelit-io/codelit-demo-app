@@ -20,9 +20,9 @@ beforeAll(() => {
         return {
           onSnapshot: () => {
             "";
-          }
+          },
         };
-      }
+      },
     };
   });
 });

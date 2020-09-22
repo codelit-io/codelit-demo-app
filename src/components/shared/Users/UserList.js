@@ -12,7 +12,7 @@ class UserList extends Component {
 
     this.state = {
       isLoading: false,
-      users: []
+      users: [],
     };
   }
 
@@ -25,7 +25,7 @@ class UserList extends Component {
 
       this.setState({
         users,
-        isLoading: false
+        isLoading: false,
       });
     });
   }

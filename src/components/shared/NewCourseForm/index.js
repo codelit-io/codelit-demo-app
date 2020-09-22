@@ -39,7 +39,7 @@ const NewCourseForm = ({ authUser, firebase, match }) => {
   const [formData] = useState({
     title: "Master React Course",
     desc: "Learn React best practices",
-    id: 0
+    id: 0,
   });
 
   const Form = ({ handleDialogState }) => {

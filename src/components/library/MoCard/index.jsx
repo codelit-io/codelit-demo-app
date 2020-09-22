@@ -61,7 +61,7 @@ const MoCard = ({
   subtitle,
   title,
   type,
-  url
+  url,
 }) => {
   return (
     <Grow in={true} timeout={{ enter: 600 }}>
@@ -126,7 +126,7 @@ MoCard.propTypes = {
   IconComponent: PropTypes.elementType,
   isDisabled: PropTypes.bool,
   points: PropTypes.number,
-  url: PropTypes.any
+  url: PropTypes.any,
 };
 
 export default withStyles(styles)(MoCard);

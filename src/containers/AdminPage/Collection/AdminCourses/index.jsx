@@ -24,7 +24,7 @@ const AdminCourses = ({ match }) => {
     isItemDisabled: () => {},
     firebase,
     newItem: { title: "Add nre Couree  ", url: "courses/isEditMode" },
-    match
+    match,
   };
 
   const itemUrl = (doc) => `courses/${doc}`;

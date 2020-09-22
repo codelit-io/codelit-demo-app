@@ -1,7 +1,7 @@
 export const course = {
   id: "123",
   question: [],
-  title: "Test Course"
+  title: "Test Course",
 };
 
 export const collections = {
@@ -13,7 +13,7 @@ export const collections = {
       title: "Html",
       type: "html",
       subtitle: "Learn Html",
-      doc: "html"
+      doc: "html",
     },
     {
       id: 1,
@@ -22,7 +22,7 @@ export const collections = {
       title: "JavaScript",
       type: "js",
       subtitle: "Learn JavaScript",
-      doc: "js"
+      doc: "js",
     },
     {
       id: 2,
@@ -31,8 +31,8 @@ export const collections = {
       title: "React",
       type: "reactJsx",
       subtitle: "Learn React",
-      doc: "react"
-    }
+      doc: "react",
+    },
   ],
   "courses/html/questions": [
     {
@@ -45,25 +45,25 @@ export const collections = {
           label: "hello",
           title: "hello",
           question: "Hello World",
-          answer: "<p>Hello React</p>"
-        }
-      ]
-    }
+          answer: "<p>Hello React</p>",
+        },
+      ],
+    },
   ],
   "courses/js/questions": [
     {
       id: "1",
       title: "JavaScript",
       subtitle: "Learn Basic JavaScript in JSX",
-      questions: [{ id: "1" }]
-    }
+      questions: [{ id: "1" }],
+    },
   ],
   "courses/react/questions": [
     {
       id: "1",
       title: "React",
       subtitle: "Learn Basic to Advanced ",
-      questions: [{ id: "1" }]
-    }
-  ]
+      questions: [{ id: "1" }],
+    },
+  ],
 };

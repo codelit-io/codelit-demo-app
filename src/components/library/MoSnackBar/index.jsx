@@ -57,12 +57,12 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
     IconComponent,
     isActive,
     title,
-    onClick
+    onClick,
   } = snackbarProps;
 
   const [state, setState] = React.useState({
     isActive,
-    Transition: Grow
+    Transition: Grow,
   });
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
   const handleButtonClick = (e) => {
     setState({
       isActive: false,
-      Transition: Grow
+      Transition: Grow,
     });
     onClick && onClick(e);
   };
@@ -81,7 +81,7 @@ const MoSnackBar = ({ authUser, classes, snackbarProps }) => {
     setState({
       ...state,
       Transition: Grow,
-      isActive: false
+      isActive: false,
     });
   };
 
@@ -136,7 +136,7 @@ MoSnackBar.propTypes = {
     IconComponent: PropTypes.func,
     isActive: PropTypes.bool.isRequired,
     onClick: PropTypes.func,
-    title: PropTypes.string
-  }).isRequired
+    title: PropTypes.string,
+  }).isRequired,
 };
 export default withStyles(styles)(MoSnackBar);

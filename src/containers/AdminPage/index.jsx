@@ -36,7 +36,7 @@ const AdminCourses = lazy(() => import("./Collection/AdminCourses"));
 
 const tabItems = [
   { name: ADMIN_PAGE.COURSES, path: "courses" },
-  { name: ADMIN_PAGE.USERS, path: "users" }
+  { name: ADMIN_PAGE.USERS, path: "users" },
 ];
 
 const AdminPage = ({ history }) => {

@@ -80,7 +80,7 @@ const EmailSignInForm = ({ classes, onSubmit, isInvalid, onChange, error }) => {
 };
 
 EmailSignInForm.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(EmailSignInForm);

@@ -8,7 +8,7 @@ const CollectionTable = ({
   questions,
   onUpdateQuestion,
   onRemoveQuestion,
-  onCreateQuestion
+  onCreateQuestion,
   // handleRowClick,
 }) => {
   const [state, setState] = useState(questions);
@@ -17,17 +17,17 @@ const CollectionTable = ({
     {
       title: "Label",
       field: "label",
-      editComponent: (props) => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     {
       title: "Question",
       field: "question",
-      editComponent: (props) => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     {
       title: "Answer",
       field: "answer",
-      editComponent: (props) => <MoTextarea {...props} />
+      editComponent: (props) => <MoTextarea {...props} />,
     },
     { title: "Title", field: "title" },
     { title: "Subtitle", field: "subtitle" },
@@ -51,10 +51,10 @@ const CollectionTable = ({
           <MenuItem value={0.91}>91%</MenuItem>
           <MenuItem value={0.9}>90%</MenuItem>
         </Select>
-      )
+      ),
     },
     { title: "Language", field: "language" },
-    { title: "Category", field: "category" }
+    { title: "Category", field: "category" },
     // TODO: Update to use markdown for content for each question
     // {
     //   title: "Content",
@@ -107,7 +107,7 @@ const CollectionTable = ({
                 onRemoveQuestion(oldData.uid);
                 return data;
               });
-            })
+            }),
         }}
       />
     )

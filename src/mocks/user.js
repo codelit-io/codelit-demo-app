@@ -2,9 +2,9 @@ export const authUser = {
   id: "123",
   name: "Mo",
   roles: [{ ADMIN: "ADMIN" }],
-  courses: []
+  courses: [],
 };
 
 export const userRole = {
-  isAdmin: false
+  isAdmin: false,
 };

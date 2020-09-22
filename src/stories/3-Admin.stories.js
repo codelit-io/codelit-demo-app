@@ -17,7 +17,7 @@ import MoBrowserMockup from "components/library/MoBrowserMockup";
 export default {
   title: "Admin",
   component: MoBrowserMockup,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const Table = () => {

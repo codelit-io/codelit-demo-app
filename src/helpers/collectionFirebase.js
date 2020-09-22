@@ -39,7 +39,7 @@ export const createQuestion = async (authUser, event, firebase, match) => {
     id: newId,
     userId: authUser.uid,
     createdAt: firebase.fieldValue.serverTimestamp(),
-    question: event?.question ? escapeCode(event.question) : ""
+    question: event?.question ? escapeCode(event.question) : "",
   });
 
   // increment a field in the stats doc
@@ -94,7 +94,7 @@ export const updateQuestion = async (event, firebase, match) => {
     ...event,
     id: Number(match.params.questionId),
     editedAt: firebase.fieldValue.serverTimestamp(),
-    question: event?.question ? escapeCode(event.question) : ""
+    question: event?.question ? escapeCode(event.question) : "",
   });
 
   return Number(match.params.questionId);
@@ -148,7 +148,7 @@ export const createCourse = async (authUser, event, firebase) => {
     doc,
     id: 1,
     userId: authUser.uid,
-    createdAt: firebase.fieldValue.serverTimestamp()
+    createdAt: firebase.fieldValue.serverTimestamp(),
   };
 
   await firebase.collection("courses").doc(doc).set(payload, { merge: true });
@@ -170,7 +170,7 @@ export const updateCourse = async (authUser, event, firebase) => {
   const payload = {
     ...event,
     userId: authUser.uid,
-    editedAt: firebase.fieldValue.serverTimestamp()
+    editedAt: firebase.fieldValue.serverTimestamp(),
   };
   await firebase
     .collection("courses")

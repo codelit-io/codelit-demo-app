@@ -17,7 +17,7 @@ class Messages extends Component {
       text: "",
       isLoading: false,
       messages: [],
-      limit: 15
+      limit: 15,
     };
   }
 
@@ -40,7 +40,7 @@ class Messages extends Component {
           );
           this.setState({
             messages: messages.reverse(),
-            isLoading: false
+            isLoading: false,
           });
         } else {
           this.setState({ messages: null, isLoading: false });
@@ -61,7 +61,7 @@ class Messages extends Component {
       this.props.firebase.messages().add({
         text: this.state.text,
         userId: authUser.uid,
-        createdAt: this.props.firebase.fieldValue.serverTimestamp()
+        createdAt: this.props.firebase.fieldValue.serverTimestamp(),
       });
 
       this.setState({ text: "" });
@@ -75,7 +75,7 @@ class Messages extends Component {
     this.props.firebase.message(message.uid).update({
       ...messageSnapshot,
       text,
-      editedAt: this.props.firebase.fieldValue.serverTimestamp()
+      editedAt: this.props.firebase.fieldValue.serverTimestamp(),
     });
   };
 

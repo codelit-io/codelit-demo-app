@@ -25,7 +25,7 @@ const MoPaper = ({
   children,
   isDisabled,
   textAlign = "left",
-  maxWidth = "lg"
+  maxWidth = "lg",
 }) => (
   <Paper
     elevation={3}
@@ -38,7 +38,7 @@ const MoPaper = ({
 
 MoPaper.propTypes = {
   isDisabled: PropTypes.bool,
-  textAlign: PropTypes.string
+  textAlign: PropTypes.string,
 };
 
 export default withStyles(styles)(MoPaper);

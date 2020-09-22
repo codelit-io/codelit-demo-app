@@ -12,7 +12,7 @@ export const question = () => {
             </section>
           );
         };`,
-    isPlayground: true
+    isPlayground: true,
   };
 };
 
@@ -21,7 +21,7 @@ export const statsMock = {
   itemsLength: 0,
   title: "Stats",
   subtitle: "Question stats",
-  isDisabled: true
+  isDisabled: true,
 };
 
 export const questionMock = {
@@ -30,7 +30,7 @@ export const questionMock = {
   answer: "Answer goes here",
   title: "My first question",
   subtitle: "My first question",
-  label: "My first question"
+  label: "My first question",
 };
 
 export const questions = [
@@ -41,7 +41,7 @@ export const questions = [
     title: "My first question",
     subtitle: "My first question",
     label: "My first question",
-    match: 10
+    match: 10,
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ export const questions = [
     answer: "Answer goes here",
     title: "My first question",
     subtitle: "My first question",
-    label: "My first question"
+    label: "My first question",
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ export const questions = [
     answer: "Answer goes here",
     title: "My first question",
     subtitle: "My first question",
-    label: "My first question"
+    label: "My first question",
   },
   {
     id: 4,
@@ -65,6 +65,6 @@ export const questions = [
     answer: "Answer goes here",
     title: "My first question",
     subtitle: "My first question",
-    label: "My first question"
-  }
+    label: "My first question",
+  },
 ];

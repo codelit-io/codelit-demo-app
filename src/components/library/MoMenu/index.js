@@ -39,7 +39,7 @@ const MoMenu = ({ authUser, classes }) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center"
+          horizontal: "center",
         }}
         elevation={3}
         getContentAnchorEl={null}
@@ -49,7 +49,7 @@ const MoMenu = ({ authUser, classes }) => {
         onClose={handleClose}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center"
+          horizontal: "center",
         }}
         TransitionComponent={Slide}
       >

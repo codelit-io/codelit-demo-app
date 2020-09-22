@@ -18,10 +18,10 @@ beforeAll(() => {
     collection: jest.fn().mockImplementation(() => ({
       where: jest.fn().mockImplementation(() => ({
         orderBy: jest.fn().mockImplementation(() => ({
-          onSnapshot: jest.fn()
-        }))
-      }))
-    }))
+          onSnapshot: jest.fn(),
+        })),
+      })),
+    })),
   }));
 });
 

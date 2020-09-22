@@ -10,11 +10,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    margin: theme.spacing(1)
-  }
+    margin: theme.spacing(1),
+  },
 });
 
 const INITIAL_STATE = {
@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
   isAdmin: false,
-  error: null
+  error: null,
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
@@ -55,7 +55,7 @@ const SignUpFormBase = (props) => {
           {
             username,
             email,
-            roles
+            roles,
           },
           { merge: true }
         );

@@ -9,7 +9,7 @@ const MoPageHeaderEdit = ({
   text,
   register,
   name,
-  placeholder
+  placeholder,
 }) => {
   return (
     <input

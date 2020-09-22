@@ -25,7 +25,7 @@ import MoPaper from "components/library/MoPaper";
 export default {
   title: "Welcome",
   component: MoTypography,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 const Welcome = () => {
@@ -52,7 +52,7 @@ const Welcome = () => {
             cursor={{
               show: true,
               blink: false,
-              hideWhenDone: true
+              hideWhenDone: true,
             }}
           >
             {text("Text", "Mo Skool")}
@@ -275,5 +275,5 @@ const Welcome = () => {
 export const ToStorybook = () => <Welcome showApp={linkTo("Button")} />;
 
 ToStorybook.story = {
-  name: "Mo Skool"
+  name: "Mo Skool",
 };

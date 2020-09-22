@@ -16,7 +16,7 @@ const QuestionFooter = ({
   setIsConsole,
   setIsHintTypist,
   triggerQuestion,
-  question
+  question,
 }) => {
   return (
     <Box position="fixed" bottom="0" right="0" width="100%" zIndex="10">

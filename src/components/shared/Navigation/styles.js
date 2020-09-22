@@ -1,15 +1,15 @@
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    paddingBottom: theme.space?.lg
+    paddingBottom: theme.space?.lg,
   },
   appBar: {
-    boxShadow: "none"
+    boxShadow: "none",
   },
   leftSide: {
     display: "flex",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 export default styles;

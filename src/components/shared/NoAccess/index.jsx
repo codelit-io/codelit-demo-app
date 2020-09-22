@@ -33,7 +33,7 @@ const NoAccess = () => {
                 width: "100%",
                 display: "block",
                 margin: "auto",
-                position: "relative"
+                position: "relative",
               }}
               alt={NO_ACCESS.TITLE}
             />

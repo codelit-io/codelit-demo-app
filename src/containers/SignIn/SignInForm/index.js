@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 const INITIAL_STATE = {
   email: "",
   password: "",
-  error: null
+  error: null,
 };
 
 const SignInFormBase = ({ firebase, history }) => {

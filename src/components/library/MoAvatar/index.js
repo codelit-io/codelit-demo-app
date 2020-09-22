@@ -54,7 +54,7 @@ const MoAvatar = ({ actions, authUser, isAdmin, classes, firebase }) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center"
+          horizontal: "center",
         }}
         elevation={3}
         getContentAnchorEl={null}
@@ -64,7 +64,7 @@ const MoAvatar = ({ actions, authUser, isAdmin, classes, firebase }) => {
         onClose={handleClose}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center"
+          horizontal: "center",
         }}
         TransitionComponent={Grow}
       >

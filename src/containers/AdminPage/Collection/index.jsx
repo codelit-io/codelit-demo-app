@@ -6,7 +6,7 @@ import {
   createQuestion,
   updateQuestion,
   removeQuestion,
-  rowClick
+  rowClick,
 } from "helpers/collectionFirebase";
 import useGlobal from "store";
 
@@ -39,7 +39,7 @@ const Collection = ({ history, match }) => {
             questions.push({
               ...doc.data(),
               uid: doc.id,
-              question
+              question,
             });
           });
           setQuestions(questions);

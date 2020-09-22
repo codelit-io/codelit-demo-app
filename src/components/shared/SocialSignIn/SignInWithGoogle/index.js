@@ -13,8 +13,8 @@ const styles = (theme) => ({
     textAlign: "center",
     textTransform: "initial",
     justifyContent: "end",
-    paddingLeft: "1em"
-  }
+    paddingLeft: "1em",
+  },
 });
 
 const SignInWithGoogleBase = ({ firebase, classes }) => {
@@ -28,7 +28,7 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
           {
             username: socialAuthUser.user.displayName,
             email: socialAuthUser.user.email,
-            roles: {}
+            roles: {},
           },
           { merge: true }
         );
@@ -57,7 +57,7 @@ const SignInWithGoogleBase = ({ firebase, classes }) => {
 };
 
 SignInWithGoogleBase.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const SignInWithGoogle = compose(

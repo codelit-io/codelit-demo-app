@@ -11,7 +11,7 @@ class UserItem extends Component {
     this.state = {
       isLoading: false,
       user: null,
-      ...props.location.state
+      ...props.location.state,
     };
   }
 
@@ -26,7 +26,7 @@ class UserItem extends Component {
       .onSnapshot((snapshot) => {
         this.setState({
           user: snapshot.data(),
-          isLoading: false
+          isLoading: false,
         });
       });
   }

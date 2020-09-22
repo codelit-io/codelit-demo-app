@@ -18,20 +18,20 @@ import canViewPage from "helpers/canViwePage";
 const SIGN_IN_METHODS = [
   {
     id: "password",
-    provider: null
+    provider: null,
   },
   {
     id: "google.com",
-    provider: "googleProvider"
+    provider: "googleProvider",
   },
   {
     id: "facebook.com",
-    provider: "facebookProvider"
+    provider: "facebookProvider",
   },
   {
     id: "twitter.com",
-    provider: "twitterProvider"
-  }
+    provider: "twitterProvider",
+  },
 ];
 
 const AccountPage = ({ history }) => {
@@ -62,7 +62,7 @@ class LoginManagement extends Component {
 
     this.state = {
       activeSignInMethods: [],
-      error: null
+      error: null,
     };
   }
 
@@ -149,7 +149,7 @@ const SocialLoginToggle = ({
   isEnabled,
   signInMethod,
   onLink,
-  onUnlink
+  onUnlink,
 }) =>
   isEnabled ? (
     <Button

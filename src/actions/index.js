@@ -1,14 +1,14 @@
 export const addToState = (store, data) => {
   const state = {
     ...store.state,
-    ...data
+    ...data,
   };
   store.setState(state);
 };
 export const addToCollections = (store, data) => {
   const collections = {
     ...store.state.collections,
-    ...data
+    ...data,
   };
   store.setState({ collections });
 };
@@ -16,7 +16,7 @@ export const addToCollections = (store, data) => {
 export const addToAuthUser = (store, data) => {
   let authUser = {
     ...store.state.authUser,
-    ...data
+    ...data,
   };
 
   if (!data) {
@@ -28,7 +28,7 @@ export const addToAuthUser = (store, data) => {
 export const addToUserRole = (store, data) => {
   let userRole = {
     ...store.state.userRole,
-    ...data
+    ...data,
   };
 
   if (!data) {
@@ -40,7 +40,7 @@ export const addToUserRole = (store, data) => {
 export const addToFirebase = (store, data) => {
   const firebaseCache = {
     ...store.state.firebaseCache,
-    ...data
+    ...data,
   };
   store.setState({ firebaseCache });
 };
@@ -48,7 +48,7 @@ export const addToFirebase = (store, data) => {
 export const addToCourses = (store, data) => {
   const courses = {
     ...store.state.courses,
-    ...data
+    ...data,
   };
   store.setState({ courses });
 };
@@ -56,7 +56,7 @@ export const addToCourses = (store, data) => {
 export const addToThemeOptions = (store, data) => {
   const themeOptions = {
     ...store.state.themeOptions,
-    ...data
+    ...data,
   };
   store.setState({ themeOptions });
 };

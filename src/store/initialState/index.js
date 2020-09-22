@@ -7,7 +7,7 @@ export const initialState = {
   collections: {},
   courses: [],
   themeOptions: {
-    isDarkMode
+    isDarkMode,
   },
-  firebase: null
+  firebase: null,
 };

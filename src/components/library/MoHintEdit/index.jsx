@@ -26,7 +26,7 @@ const MoHintEdit = ({
   text,
   register,
   name,
-  placeholder
+  placeholder,
 }) => {
   if (!text && !children) {
     return null;

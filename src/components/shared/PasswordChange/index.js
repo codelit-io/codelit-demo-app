@@ -8,17 +8,17 @@ import { withFirebase } from "../Firebase";
 
 const styles = (theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    margin: theme.spacing(1)
-  }
+    margin: theme.spacing(1),
+  },
 });
 
 const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
-  error: null
+  error: null,
 };
 
 const PasswordChangeForm = ({ firebase, classes }) => {

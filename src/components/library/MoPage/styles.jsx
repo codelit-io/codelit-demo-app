@@ -7,10 +7,10 @@ const styles = (theme) => ({
     paddingBottom: theme.space?.lg,
     [theme.breakpoints.up(400)]: {
       paddingTop: theme.space?.lg,
-      paddingBottom: theme.space?.lg
-    }
+      paddingBottom: theme.space?.lg,
+    },
   },
-  textAlignRight: { textAlign: "right" }
+  textAlignRight: { textAlign: "right" },
 });
 
 export default styles;

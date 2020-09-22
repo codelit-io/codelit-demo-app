@@ -24,7 +24,7 @@ const CoursesPage = ({
   firebase,
   isLoading,
   isAdmin,
-  itemOptions
+  itemOptions,
 }) => {
   if (isLoading) {
     return null;

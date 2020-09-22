@@ -22,7 +22,7 @@ const withStoreInit = (Component) => {
             actions.addToState({
               firebase: firebase,
               authUser: null,
-              userRole: { isAdmin: false }
+              userRole: { isAdmin: false },
             });
           }
         );

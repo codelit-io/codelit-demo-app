@@ -30,7 +30,7 @@ const MoProgressCircular = ({ value }) => {
 };
 
 MoProgressCircular.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
 };
 
 export default MoProgressCircular;

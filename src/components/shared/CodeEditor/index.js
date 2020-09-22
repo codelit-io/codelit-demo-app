@@ -57,7 +57,7 @@ const CodeEditor = ({
   md,
   matchPercent,
   sm,
-  title
+  title,
 }) => {
   useEffect(() => {
     if (!isEditMode) {
@@ -96,7 +96,7 @@ const CodeEditor = ({
         top: "3.25rem",
         position: "absolute",
         zIndex: "0",
-        padding: "0.625rem"
+        padding: "0.625rem",
       },
       liveEditor: {
         overflow: "visible !important",
@@ -111,9 +111,9 @@ const CodeEditor = ({
           whiteSpace: "pre",
           textAlign: "right",
           opacity: 1,
-          top: 0
-        }
-      }
+          top: 0,
+        },
+      },
     })
   );
 
@@ -160,7 +160,7 @@ const CodeEditor = ({
                         cursor={{
                           show: true,
                           blink: false,
-                          hideWhenDone: true
+                          hideWhenDone: true,
                         }}
                       >
                         {codeAnswer}

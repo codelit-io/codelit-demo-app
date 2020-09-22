@@ -25,7 +25,7 @@ import { useEffect, useState } from "react";
 const useAuthentication = (firebase) => {
   const [state, setState] = useState({
     authUser: JSON.parse(localStorage.getItem("authUser")),
-    isLoading: true
+    isLoading: true,
   });
 
   useEffect(() => {

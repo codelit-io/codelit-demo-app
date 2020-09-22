@@ -12,24 +12,24 @@ const getTheme = ({ isDarkMode }) => {
 
   return {
     plain: {
-      color: plain
+      color: plain,
     },
     styles: [
       {
         types: ["prolog", "comment", "doctype", "cdata"],
         style: {
-          color: "hsl(30, 20%, 50%)"
-        }
+          color: "hsl(30, 20%, 50%)",
+        },
       },
       {
         types: ["property", "tag", "boolean", "number", "constant", "symbol"],
-        style: { color: primary }
+        style: { color: primary },
       },
       {
         types: ["attr-name", "string", "char", "builtin", "insterted"],
         style: {
-          color: secondary
-        }
+          color: secondary,
+        },
       },
       {
         types: [
@@ -38,50 +38,50 @@ const getTheme = ({ isDarkMode }) => {
           "url",
           "string",
           "variable",
-          "language-css"
+          "language-css",
         ],
         style: {
-          color: tertiary
-        }
+          color: tertiary,
+        },
       },
       {
         types: ["deleted"],
         style: {
-          color: "rgb(255, 85, 85)"
-        }
+          color: "rgb(255, 85, 85)",
+        },
       },
       {
         types: ["italic"],
         style: {
-          fontStyle: "italic"
-        }
+          fontStyle: "italic",
+        },
       },
       {
         types: ["important", "bold"],
         style: {
-          fontWeight: "bold"
-        }
+          fontWeight: "bold",
+        },
       },
       {
         types: ["regex", "important"],
         style: {
-          color: "#e90"
-        }
+          color: "#e90",
+        },
       },
       {
         types: ["atrule", "attr-value", "keyword"],
         style: {
-          color: primary
-        }
+          color: primary,
+        },
       },
       {
         types: ["punctuation", "symbol"],
         style: {
           color: yinYang,
-          opacity: "0.7"
-        }
-      }
-    ]
+          opacity: "0.7",
+        },
+      },
+    ],
   };
 };
 

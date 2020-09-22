@@ -7,9 +7,9 @@ const styles = (theme) => ({
     paddingBottom: theme.space?.lg,
     [theme.breakpoints.up(400)]: {
       paddingTop: theme.space?.lg,
-      paddingBottom: theme.space?.lg
-    }
-  }
+      paddingBottom: theme.space?.lg,
+    },
+  },
 });
 
 export default styles;

@@ -31,13 +31,13 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
-    "aria-controls": `scrollable-auto-tabpanel-${index}`
+    "aria-controls": `scrollable-auto-tabpanel-${index}`,
   };
 }
 
@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: "100%",
     backgroundColor: theme.palette.background.paper,
-    marginBottom: theme.space.md
+    marginBottom: theme.space.md,
   },
-  appBar: { boxShadow: "none", backgroundColor: "transparent" }
+  appBar: { boxShadow: "none", backgroundColor: "transparent" },
 }));
 
 const MoTabs = ({ tabItems, handleTabChange }) => {

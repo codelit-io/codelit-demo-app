@@ -9,8 +9,8 @@ const style = {
     overflow: "auto",
     height: "auto",
     padding: "8px",
-    boxShadow: "0px 4px 10px -8px black"
-  }
+    boxShadow: "0px 4px 10px -8px black",
+  },
 };
 const MoTextarea = (props) => {
   return (

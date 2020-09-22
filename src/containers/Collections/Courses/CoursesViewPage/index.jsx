@@ -26,7 +26,7 @@ const CoursesPage = lazy(() => import("./CoursesPage"));
 const collection = {
   path: "courses",
   title: COURSES.PAGE_TITLE,
-  isProgressBar: false
+  isProgressBar: false,
 };
 
 const CoursesViewPage = ({ history, match }) => {
@@ -38,7 +38,7 @@ const CoursesViewPage = ({ history, match }) => {
     isItemDisabled: () => {},
     firebase,
     newItem: { title: "Add a course", url: "courses/isEditMode" },
-    match
+    match,
   };
 
   const collectionDetails = {
@@ -46,7 +46,7 @@ const CoursesViewPage = ({ history, match }) => {
     data: [],
     isProgressBar: collection.isProgressBar,
     locationHash: history.location.hash,
-    title: collection.title
+    title: collection.title,
   };
 
   const courses = useCollections(collectionDetails, firebase);
@@ -70,7 +70,7 @@ const CoursesViewPage = ({ history, match }) => {
 
 CoursesViewPage.propTypes = {
   match: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 
 export default CoursesViewPage;

@@ -12,7 +12,7 @@ const itemTypes = {
   html: () => <Html />,
   reactJsx: () => <ReactJsx />,
   reactStyle: () => <ReactStyle />,
-  disabled: () => <LockIcon />
+  disabled: () => <LockIcon />,
 };
 
 export default itemTypes;

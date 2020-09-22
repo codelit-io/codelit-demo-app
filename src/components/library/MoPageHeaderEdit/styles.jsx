@@ -6,8 +6,8 @@ const styles = (theme) => ({
     marginBottom: theme.space?.md,
     width: "100%",
     border: "none",
-    outline: "none"
-  }
+    outline: "none",
+  },
 });
 
 export default styles;

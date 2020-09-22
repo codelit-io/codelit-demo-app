@@ -7,7 +7,7 @@ import {
   withKnobs,
   text,
   boolean,
-  number
+  number,
 } from "@storybook/addon-knobs";
 import { ThemeProvider } from "@material-ui/core/styles";
 import getTheme from "theme";
@@ -24,7 +24,7 @@ import CodeEditor from "components/shared/CodeEditor";
 export default {
   title: "Code editor",
   component: MoBrowserMockup,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const BrowserMockup = () => {
@@ -67,7 +67,7 @@ export const Editor = () => {
         </section>
       );
     };`,
-    isPlayground: true
+    isPlayground: true,
   };
 
   const [question, setQuestion] = useState(initialState);
@@ -83,7 +83,7 @@ export const Editor = () => {
     range: true,
     min: 1,
     max: 12,
-    step: 1
+    step: 1,
   };
 
   return (
@@ -113,20 +113,20 @@ export const CodeTypist = () => {
       range: true,
       min: 0,
       max: 200,
-      step: 1
+      step: 1,
     },
     {
       range: true,
       min: 0,
       max: 100,
-      step: 1
+      step: 1,
     },
     {
       range: true,
       min: 0,
       max: 5000,
-      step: 1
-    }
+      step: 1,
+    },
   ];
 
   return (
@@ -150,7 +150,7 @@ export const CodeTypist = () => {
         cursor={{
           show: boolean("Display", true),
           blink: boolean("Blink", false),
-          hideWhenDone: boolean("Hide when done", true)
+          hideWhenDone: boolean("Hide when done", true),
         }}
       >
         Welcome to the Jungle !{" "}

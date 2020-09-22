@@ -16,7 +16,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
   const [state, setState] = useState({
     data: {},
     isLoading: true,
-    isError: false
+    isError: false,
   });
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
               setState({
                 data,
                 isLoading: false,
-                isError: false
+                isError: false,
               })
             );
           } else {
@@ -48,10 +48,10 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
               data: {
                 label: "You have finished all questions ✅",
                 title: "Nice Job 🎉",
-                language: "html"
+                language: "html",
               },
               isLoading: false,
-              isError: false
+              isError: false,
             });
           }
         },
@@ -59,7 +59,7 @@ const useQuestion = ({ firebase, questionId, questionPath }) => {
           setState({
             data: [],
             isLoading: false,
-            isError: false
+            isError: false,
           })
       ));
 

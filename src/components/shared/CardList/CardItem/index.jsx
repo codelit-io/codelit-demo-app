@@ -36,7 +36,7 @@ const CardItem = ({
   subtitle,
   title,
   type,
-  url
+  url,
 }) => (
   <Grid item xs={12} sm={12} md={4} lg={4}>
     <MoCard

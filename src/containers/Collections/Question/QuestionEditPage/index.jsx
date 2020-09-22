@@ -52,7 +52,7 @@ const QuestionEditPage = ({ history, match }) => {
       setSnackbarProps({
         autoHideDuration: 2000,
         isActive: true,
-        title: "Saved"
+        title: "Saved",
       });
     },
     [authUser, firebase, setSnackbarProps, match, navToQuestionViewPage]
@@ -76,7 +76,7 @@ const QuestionEditPage = ({ history, match }) => {
             /* Questions can contain special JSON characters that needs to be parsed */
             setQuestion({
               ...question[0],
-              question: JSON.parse(question[0].question)
+              question: JSON.parse(question[0].question),
             });
           } catch {
             setQuestion(question[0]);
@@ -87,7 +87,7 @@ const QuestionEditPage = ({ history, match }) => {
             label: "Subtitle goes here",
             question: "<h1>Question goes here</h1>",
             answer: "<h1>Answer goes here🎉</h1>",
-            language: "html"
+            language: "html",
           });
         }
         setIsLoading(false);
@@ -111,8 +111,8 @@ const QuestionEditPage = ({ history, match }) => {
   const breadcrumbsOptions = [
     {
       title: "Back to question",
-      url: collectionPath
-    }
+      url: collectionPath,
+    },
   ];
 
   return (

@@ -3,20 +3,20 @@ const styles = (theme) => ({
     alignItems: "center",
     paddingBottom: theme.space?.xl,
     [theme.breakpoints.down("sm")]: {
-      paddingTop: theme.space?.lg
-    }
+      paddingTop: theme.space?.lg,
+    },
   },
   responsiveGrid: {
     [theme.breakpoints.down("sm")]: {
-      paddingBottom: theme.space?.md
-    }
+      paddingBottom: theme.space?.md,
+    },
   },
   svg: {
-    width: "100%"
+    width: "100%",
   },
   checkMark: {
-    color: theme.green?.light
-  }
+    color: theme.green?.light,
+  },
 });
 
 export default styles;

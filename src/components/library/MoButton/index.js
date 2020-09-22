@@ -16,7 +16,7 @@ const MoButton = ({
   text,
   type,
   size,
-  variant
+  variant,
 }) => {
   /* Make sure href isn't set to prevent router link errors */
   const hrefProp = href || "#";
@@ -55,7 +55,7 @@ MoButton.propTypes = {
   color: PropTypes.oneOf(["primary", "secondary", "default", null]),
   size: PropTypes.oneOf(["small", "medium", "large", null]),
   type: PropTypes.oneOf(["submit", "button", null]),
-  variant: PropTypes.oneOf(["contained", "outlined", "text", null])
+  variant: PropTypes.oneOf(["contained", "outlined", "text", null]),
 };
 
 export default withStyles(styles)(MoButton);

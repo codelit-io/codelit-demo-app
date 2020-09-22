@@ -31,7 +31,7 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
   const [state, setState] = useState({
     data: {},
     isLoading: true,
-    isError: false
+    isError: false,
   });
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
                 setState({
                   data,
                   isLoading: false,
-                  isError: false
+                  isError: false,
                 })
               );
             } else {
@@ -64,10 +64,10 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
                 data: {
                   title: "My new course",
                   category: "#ReactFTW",
-                  id: "1"
+                  id: "1",
                 },
                 isLoading: false,
-                isError: false
+                isError: false,
               });
             }
           },
@@ -75,7 +75,7 @@ const useCollectionDetails = ({ collectionPath }, doc, firebase) => {
             setState({
               data: [],
               isLoading: false,
-              isError: false
+              isError: false,
             })
         ));
 

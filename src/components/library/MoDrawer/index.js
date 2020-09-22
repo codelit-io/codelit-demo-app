@@ -6,13 +6,13 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const styles = (theme) => ({
   menuButton: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 });
 
 const MoDrawer = ({ authUser, classes }) => {
   const [state, setState] = useState({
-    isDrawerOpen: false
+    isDrawerOpen: false,
   });
 
   const toggleDrawer = (isDrawerOpen) => {

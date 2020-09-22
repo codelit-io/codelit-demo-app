@@ -30,7 +30,7 @@ const QuestionViewPage = ({ history, match }) => {
   const { data, isLoading } = useQuestion({
     firebase,
     questionId: match.params.questionId,
-    questionPath: `courses/${match.params.collection}/questions`
+    questionPath: `courses/${match.params.collection}/questions`,
   });
 
   /* Handler to send user to editMode page */
@@ -53,11 +53,11 @@ const QuestionViewPage = ({ history, match }) => {
   const breadcrumbsOptions = [
     {
       title: "Back to course",
-      url: `/courses/${match.params.collection}`
+      url: `/courses/${match.params.collection}`,
     },
     {
-      title: data.title
-    }
+      title: data.title,
+    },
   ];
 
   return (

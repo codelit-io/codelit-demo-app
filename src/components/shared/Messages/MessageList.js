@@ -8,7 +8,7 @@ const MessageList = ({
   authUser,
   messages,
   onEditMessage,
-  onRemoveMessage
+  onRemoveMessage,
 }) => (
   <List>
     {messages.map((message) => (

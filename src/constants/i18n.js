@@ -1,13 +1,13 @@
 export const ACCOUNT = {
   PAGE_TITLE: "Your Account",
   NEW_PASSWORD: "New Password",
-  CONFIRM_NEW_PASSWORD: "Confirm New Password"
+  CONFIRM_NEW_PASSWORD: "Confirm New Password",
 };
 
 export const ADMIN_PAGE = {
   PAGE_TITLE: "Admin",
   COURSES: "Courses",
-  USERS: "Users"
+  USERS: "Users",
 };
 
 export const COURSES = {
@@ -16,7 +16,7 @@ export const COURSES = {
   ADD_A_COURSES_SUBTITLE: "My awesome new course in React",
   NEW_COURSE: "New Course",
   CREATE_COURSE: "Create Course",
-  REACT_COURSES: "React JS courses"
+  REACT_COURSES: "React JS courses",
 };
 
 export const LANDING_PAGE = {
@@ -33,14 +33,14 @@ export const LANDING_PAGE = {
   LEARN_ALL_ABOUT_REACT: "Learn all about React",
   TRY_THE_PLAYGROUND: "Try the playground",
   PLAYGROUND_SUBTITLE:
-    "Write code in JSX and watch it render your code magically."
+    "Write code in JSX and watch it render your code magically.",
 };
 
 export const SIGN_IN = {
   CORE: "Sign in",
   PAGE_TITLE: "You are logged in 👍",
   PAGE_LOGGED_IN_TITLE: "Welcome Back 🤩",
-  VIEW_ALL_COURSES: "View All Courses"
+  VIEW_ALL_COURSES: "View All Courses",
 };
 
 export const SIGN_UP = {
@@ -49,20 +49,20 @@ export const SIGN_UP = {
   PAGE_TITLE: "You are signed up 👍",
   PAGE_LOGGED_IN_TITLE: "Sign up to get started 😎",
   VIEW_ALL_COURSES: "View All Courses",
-  SIGN_UP_TO_EARN_REWARDS: "Save progress & earn points"
+  SIGN_UP_TO_EARN_REWARDS: "Save progress & earn points",
 };
 
 export const BROWSER_MOCKUP = {
   CODE_EDITOR: "Code Editor",
   CODE_PREVIEW: "Code Preview",
-  VIEW_ALL_COURSES: "View All Courses"
+  VIEW_ALL_COURSES: "View All Courses",
 };
 
 export const NO_ACCESS = {
   TITLE: "You don't have access to this page",
-  BACK_HOME: "Return back home"
+  BACK_HOME: "Return back home",
 };
 export const NOT_FOUND = {
   TITLE: "Lost? Nothing is here",
-  BACK_HOME: "Return back home"
+  BACK_HOME: "Return back home",
 };

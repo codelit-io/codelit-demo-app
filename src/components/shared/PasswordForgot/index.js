@@ -10,16 +10,16 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    margin: theme.spacing(1)
-  }
+    margin: theme.spacing(1),
+  },
 });
 
 const INITIAL_STATE = {
   email: "",
-  error: null
+  error: null,
 };
 
 const PasswordForgotPage = () => (

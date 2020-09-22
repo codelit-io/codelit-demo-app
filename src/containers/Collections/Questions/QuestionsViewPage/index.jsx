@@ -41,7 +41,7 @@ const Questions = ({ history, match }) => {
       points ? points < Number(id) - 1 : Number(id) !== 1,
     firebase,
     newItem: { title: "Add a question", url: `${doc}/0/isEditMode` },
-    match
+    match,
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Questions = ({ history, match }) => {
   const questions = useCollections(
     {
       collectionPath: "courses/" + doc + "/questions",
-      data: []
+      data: [],
     },
     firebase
   );

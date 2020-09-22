@@ -13,7 +13,7 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
   const [state, setState] = useState({
     data,
     isLoading: true,
-    isError: false
+    isError: false,
   });
 
   useEffect(() => {
@@ -43,13 +43,13 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
               setState({
                 data,
                 isLoading: false,
-                isError: false
+                isError: false,
               });
             } else {
               setState({
                 data: [],
                 isLoading: false,
-                isError: false
+                isError: false,
               });
             }
           },
@@ -57,7 +57,7 @@ const useCollections = ({ collectionPath, data, locationHash }, firebase) => {
             setState({
               data: [],
               isLoading: false,
-              isError: false
+              isError: false,
             })
         ));
     // fetch data from firebase
@@ -78,7 +78,7 @@ useCollections.propTypes = {
     collectionPath: PropTypes.string.isRequired,
     whereProps: PropTypes.arrayOf(["html", "js", "reactStyle", "reactJsx"])
       .isRequired,
-    locationHash: PropTypes.string
-  })
+    locationHash: PropTypes.string,
+  }),
 };
 export default useCollections;

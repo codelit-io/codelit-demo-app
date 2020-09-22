@@ -17,7 +17,7 @@ import MoBreadcrumbs from "components/library/MoSkoolLogo";
 export default {
   title: "Navigation",
   component: MoBreadcrumbs,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const Avatar = () => {
@@ -52,8 +52,8 @@ export const BreadCrumbs = () => {
   const breadcrumbsOptions = [
     {
       title: "Back to question",
-      url: `/courses/match.params.collection/match.params.questionId`
-    }
+      url: `/courses/match.params.collection/match.params.questionId`,
+    },
   ];
 
   return (
@@ -65,5 +65,5 @@ export const BreadCrumbs = () => {
 };
 
 MoBreadcrumbs.story = {
-  name: "to Storybook"
+  name: "to Storybook",
 };

@@ -24,7 +24,7 @@ const QuestionsPage = ({
   isLoading,
   itemOptions,
   isAdmin,
-  points
+  points,
 }) => {
   if (isLoading) {
     return null;
