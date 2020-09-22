@@ -2,11 +2,11 @@
 
 ## What is this? 🤩
 
-Great and simple getting started Web App template. You get a great **React** front-end app paired with **Firebase** serverless technologies. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app.
+Simple Web App template to get your started on your next SPA project. You get an awesome **React** front-end app paired with **Firebase** serverless backend. Very easy to get started, just configure firebase and circle ci and you will have a fully up and running full-stack app with CI.
 
-Used for Front-end/React courses and code questions in each course. Answering these questions can be done by solving broken code in each course and earning points. 
+To understand how this template was being used, check out the live version of [Mo Skool](https://Moskool.com). Basically a school for Front-end & React learning. Each course features a series of questions and can be solved interactively and ear points to unlock new material. 
 
-This template is the simpler version of [Moskool.com](https://Moskool.com)
+Pretty much the simpler version of [Moskool.com](https://Moskool.com)
 
 ## What does it do? 🤔
 
