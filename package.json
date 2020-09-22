@@ -46,8 +46,7 @@
 	"husky": {
 		"hooks": {
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-			"pre-commit": "lint-staged",
-			"pre-push": "yarn pre-push"
+			"pre-commit": "lint-staged"
 		}
 	},
 	"browserslist": {
@@ -91,7 +90,9 @@
 	},
 	"lint-staged": {
 		"src/**/*.{js,jsx}": [
-			"eslint --fix"
+			"eslint --fix",
+			"prettier-eslint --write",
+			"git add"
 		],
 		"*.{png,jpeg,jpg,gif,svg}": [
 			"imagemin-lint-staged",
