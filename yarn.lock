@@ -11429,19 +11429,6 @@ jspdf@2.0.0:
     dompurify "^2.0.12"
     html2canvas "^1.0.0-rc.5"
 
-jspdf@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/jspdf/-/jspdf-2.1.0.tgz#2322f8644bc41845b3abe20db4c3ca0adeadb84c"
-  integrity sha512-NQygqZEKhSw+nExySJxB72Ge/027YEyIM450Vh/hgay/H9cgZNnkXXOQPRspe9EuCW4sq92zg8hpAXyyBdnaIQ==
-  dependencies:
-    atob "^2.1.2"
-    btoa "^1.2.1"
-  optionalDependencies:
-    canvg "^3.0.6"
-    core-js "^3.6.0"
-    dompurify "^2.0.12"
-    html2canvas "^1.0.0-rc.5"
-
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -16267,9 +16254,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
