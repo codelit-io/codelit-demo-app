@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b57ecbebd9b431c8071e0e42fb89b7b)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=mo-sharif/MoSkool&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4350fc50221847dc86c8a169448bdc9c)](https://www.codacy.com/gh/mo-sharif/codelit/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mo-sharif/codelit&amp;utm_campaign=Badge_Grade)
 
 ## What is this? 🤩
 
